@@ -1,4 +1,4 @@
-# Formrift — локальный проверочный прототип
+# Tallshift — локальный проверочный прототип
 
 Текущий этап — [Foundations / 06: системный стенд](../art-direction/foundations/review.html), EN основной, RU/VI дополнительные. [Описание и проверки](../docs/art-direction-2026/foundations-06.ru.md). [Afterlight / 05](../art-direction/afterlight/review.html) сохранён отдельно; светлая оболочка ниже — исторический функциональный прототип RU/EN.
 

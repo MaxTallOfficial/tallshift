@@ -1,4 +1,8 @@
-# formrift
+# Tallshift
+
+**by Max Tall** · [Naming and brand conventions (RU)](docs/branding.ru.md)
+
+Repository: [MaxTallOfficial/tallshift](https://github.com/MaxTallOfficial/tallshift).
 
 Work in progress: an original UI and motion library for developers and AI-assisted builders. Materials combine React + TypeScript source, an adaptation prompt, and integration instructions for Next.js and Vite.
 

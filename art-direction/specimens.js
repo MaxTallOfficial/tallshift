@@ -253,7 +253,7 @@ export function initSpecimens(root, { getConfig, onNotice = () => {} }) {
     if (copying) refs.copy.textContent = strings.copying;
     renderField(); renderTabs(); renderTiles(); renderSaved();
   }
-  listen(window, 'formrift:stylechange', render);
+  listen(window, 'tallshift:stylechange', render);
   render();
   return () => { state.disposed = true; abort.abort(); if (refs.dialog.open) refs.dialog.close(); root.replaceChildren(); root.classList.remove('ds-lab'); delete root.dataset.motion; delete root.dataset.guides; delete root.dataset.density; root.style.removeProperty('--ds-expression'); };
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "0.1.0",
   "status": "candidate-not-approved",
-  "format": "Formrift internal token format",
+  "format": "Tallshift internal token format",
   "accents": [
     {
       "id": "berry",

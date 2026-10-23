@@ -36,7 +36,7 @@ function apply(){
   for(const button of $('color-options').querySelectorAll('button'))button.setAttribute('aria-pressed',String(button.dataset.accent===state.accent));
   updateAction();
   const url=new URL(location.href);url.search=new URLSearchParams({direction:state.direction,accent:state.accent,lang:state.locale});try{history.replaceState({},'',url);}catch{/* A local file may restrict history updates. */}
-  dispatchEvent(new CustomEvent('formrift:stylechange',{detail:config()}));draw();
+  dispatchEvent(new CustomEvent('tallshift:stylechange',{detail:config()}));draw();
   requestAnimationFrame(()=>requestAnimationFrame(()=>document.body.classList.remove('style-updating')));
 }
 function updateAction(){const t=copy[state.direction][state.locale];$('compose-label').textContent=target===1?t.reverse:t.action;$('geometry-label').textContent=state.direction==='type'?'FRAGMENT → GLYPH':state.direction==='night'?'APERTURE → ELEMENTS':'MATTER → ELEMENTS';$('artifact-caption').textContent=target===1?'A SYSTEM OF PARTS. READY FOR CONTEXT.':'ONE MATERIAL. MANY POSSIBILITIES.';canvas.setAttribute('aria-label',state.locale==='ru'?'Авторский геометрический этюд: '+t.signature:'Original geometry study: '+t.signature);}
@@ -47,7 +47,7 @@ $('motion').addEventListener('click',()=>{state.motion=state.motion==='full'?'of
 media.addEventListener('change',()=>{cancelAnimationFrame(raf);progress=target;apply();});
 function transition(to){cancelAnimationFrame(raf);target=to;updateAction();if(effectiveMotion()!=='full'){progress=target;draw();return;}const from=progress,start=performance.now();const step=now=>{const t=Math.min(1,(now-start)/480),e=1-(1-t)**3;progress=from+(to-from)*e;draw();if(t<1)raf=requestAnimationFrame(step);};raf=requestAnimationFrame(step);}
 $('compose').addEventListener('click',()=>transition(target===1?0:1));$('replay').addEventListener('click',()=>{cancelAnimationFrame(raf);progress=0;draw();transition(1);});
-$('save-direction').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({...config(),note:'Preview parameters only. No approval has been recorded.',pantoneNotice:'Accent HEX is an original sRGB interpretation, not official Pantone digital color.'},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`formrift-${state.direction}-${state.accent}-candidate.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),5000);notice(state.locale==='ru'?'Параметры просмотра скачаны. Стиль не помечен как утверждённый.':'Preview settings downloaded. The style remains unapproved.');});
+$('save-direction').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({...config(),note:'Preview parameters only. No approval has been recorded.',pantoneNotice:'Accent HEX is an original sRGB interpretation, not official Pantone digital color.'},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`tallshift-${state.direction}-${state.accent}-candidate.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),5000);notice(state.locale==='ru'?'Параметры просмотра скачаны. Стиль не помечен как утверждённый.':'Preview settings downloaded. The style remains unapproved.');});
 
 // Locally authored geometry. No remote assets, shaders, continuous render loop or scene runtime.
 const lerp=(a,b,t)=>a+(b-a)*t;

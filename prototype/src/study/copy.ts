@@ -60,11 +60,11 @@ const en = {
   guideBody: 'Next.js and Vite steps, in English, Russian and Vietnamese.',
   footer: 'Afterlight · design study 05',
   status: 'Style and color under review',
-  name: 'formrift — working name',
+  name: 'Tallshift by Max Tall',
   dismiss: 'Dismiss notification',
   languageLabel: 'Language',
   navLabel: 'Main navigation',
-  pageTitle: 'formrift — React components and animations',
+  pageTitle: 'Tallshift — React components and animations',
   pageDescription: 'React sections, components and animations, with source code, adaptation prompts and setup guides for Next.js and Vite.',
 } as const;
 
@@ -124,11 +124,11 @@ const ru: Record<CopyKey, string> = {
   guideBody: 'Подключение в Next.js и Vite. На английском, русском и вьетнамском.',
   footer: 'Afterlight · дизайн-этюд 05',
   status: 'Стиль и цвет на согласовании',
-  name: 'formrift — рабочее имя',
+  name: 'Tallshift by Max Tall',
   dismiss: 'Закрыть уведомление',
   languageLabel: 'Язык',
   navLabel: 'Основная навигация',
-  pageTitle: 'formrift — компоненты и анимации для React',
+  pageTitle: 'Tallshift — компоненты и анимации для React',
   pageDescription: 'Секции, компоненты и анимации для React: исходный код, промпты для адаптации и инструкции для Next.js и Vite.',
 };
 
@@ -186,11 +186,11 @@ const vi: Record<CopyKey, string> = {
   guideBody: 'Hướng dẫn cho Next.js và Vite bằng tiếng Anh, tiếng Nga và tiếng Việt.',
   footer: 'Afterlight · bản nghiên cứu thiết kế 05',
   status: 'Đang xem xét phong cách và màu sắc',
-  name: 'formrift — tên tạm thời',
+  name: 'Tallshift by Max Tall',
   dismiss: 'Đóng thông báo',
   languageLabel: 'Ngôn ngữ',
   navLabel: 'Điều hướng chính',
-  pageTitle: 'formrift — component và hiệu ứng cho React',
+  pageTitle: 'Tallshift — component và hiệu ứng cho React',
   pageDescription: 'Component, khối giao diện và hiệu ứng chuyển động cho React, kèm mã nguồn, prompt tùy chỉnh và hướng dẫn tích hợp với Next.js và Vite.',
 };
 

@@ -60,7 +60,7 @@ export function Foundations() {
 
   useEffect(() => {
     document.documentElement.lang = locale;
-    document.title = `formrift — ${t.title}`;
+    document.title = `Tallshift — ${t.title}`;
     const url = new URL(location.href);
     url.searchParams.set('lang', locale); url.searchParams.set('accent', 'saffron'); url.searchParams.set('shade', shadeId);
     url.searchParams.set('font', typeface); url.searchParams.set('view', view);
@@ -123,7 +123,7 @@ export function Foundations() {
   return <div id="top" className="foundations" style={style} data-motion={off ? 'off' : 'on'} data-palette="saffron" data-shade={shadeId} data-typeface={typeface}>
     <a className="f-skip" href="#preview">{t.previewTitle}</a>
     <header className="f-header f-width">
-      <a className="f-brand" href="#top">formrift<span aria-hidden="true" /></a>
+      <a className="f-brand" href="#top">tallshift<span aria-hidden="true" /></a>
       <span className="f-edition">AFTERLIGHT / 04</span>
       <nav aria-label={t.navLabel}><a href="#colors">{t.paletteCompareTitle}</a><a href="#type">{t.typographyTitle}</a></nav>
       <div className="f-languages" role="group" aria-label={t.languageLabel}>{languages.map(language => <button type="button" key={language.id} lang={language.id} aria-label={language.label} title={language.label} aria-pressed={locale === language.id} onClick={() => setLocale(language.id)}>{language.short}</button>)}</div>

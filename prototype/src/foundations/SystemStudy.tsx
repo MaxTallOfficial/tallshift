@@ -100,7 +100,7 @@ export function SystemStudy() {
   }, []);
   useEffect(() => {
     document.documentElement.lang = locale;
-    document.title = 'formrift — Afterlight interface system';
+    document.title = 'Tallshift UI — Afterlight interface system';
     const url = new URL(location.href);
     for (const [key, value] of Object.entries({ lang: locale, view, target, accent: 'saffron', shade: 'light', font: 'manrope' })) url.searchParams.set(key, value);
     try { history.replaceState({}, '', url); } catch { /* File previews can restrict history. */ }
@@ -154,7 +154,7 @@ export function SystemStudy() {
   }
   function exportSystem() {
     saveFile(JSON.stringify({
-      schemaVersion: 1, format: 'formrift-system-token-graph', reviewVersion: systemReview.id, status: 'visual-review', productionReady: false,
+      schemaVersion: 1, format: 'tallshift-system-token-graph', reviewVersion: systemReview.id, status: 'visual-review', productionReady: false,
       approved: { direction: 'afterlight', typeface: 'Manrope', color: { family: 'saffron', shade: 'light', value: '#EBD183' } },
       locale, tokens: systemTokenGraph, resolved: resolvedSystemTokens, css: systemCssText(), scales: systemScale,
       specimenConfig: { material: 'A001', accent: previewAccent, duration: off ? 0 : duration, motion: off ? 'off' : motionProfile },
@@ -173,7 +173,7 @@ export function SystemStudy() {
 
   return <div id="top" className="system-study" style={style} data-motion={off ? 'off' : 'on'}>
     <a className="sy-skip" href="#discovery">{t.discovery}</a>
-    <header className="sy-header sy-width"><div className="sy-header-main"><a className="sy-brand" href="#top">formrift<span aria-hidden="true" /></a><span className="sy-edition">{t.edition}</span><div className="sy-locales"><SystemSegmentedControl label={b.languageLabel} value={locale} options={languages.map(language => ({ value: language.id, label: language.short, ariaLabel: language.label, lang: language.id }))} onChange={setLocale} /></div></div><nav aria-label={t.nav}>{navIds.map((id, i) => <a key={id} href={`#${id}`} aria-current={active === id ? 'location' : undefined}>{navLabels[i]}</a>)}</nav></header>
+    <header className="sy-header sy-width"><div className="sy-header-main"><a className="sy-brand" href="#top">tallshift<span aria-hidden="true" /></a><span className="sy-edition">{t.edition}</span><div className="sy-locales"><SystemSegmentedControl label={b.languageLabel} value={locale} options={languages.map(language => ({ value: language.id, label: language.short, ariaLabel: language.label, lang: language.id }))} onChange={setLocale} /></div></div><nav aria-label={t.nav}>{navIds.map((id, i) => <a key={id} href={`#${id}`} aria-current={active === id ? 'location' : undefined}>{navLabels[i]}</a>)}</nav></header>
     <main className="sy-width">
       <section className="sy-intro"><div><p className="sy-kicker">AFTERLIGHT / SYSTEM STUDY</p><h1>{t.title}<span>{t.titleSecond}</span></h1><p className="sy-lead">{t.intro}</p></div><aside className="sy-decisions" aria-label={t.approved}><span>{t.approved}</span><strong><i aria-hidden="true" />{t.introColor}</strong><p>{t.introType}</p><p>{t.introBase}</p><span className="sy-review">{t.review}</span></aside></section>
       <DiscoveryLab locale={locale} onOpenMaterial={openMaterial} />
@@ -204,7 +204,7 @@ export function SystemStudy() {
       </section>
       <section id="handoff" className="sy-section" aria-labelledby="sy-handoff-title"><header className="sy-section-heading"><span className="sy-kicker">SYSTEM / HANDOFF</span><h2 id="sy-handoff-title">{t.handoffTitle}</h2><p>{t.handoffIntro}</p></header><div className="sy-handoff-panel"><div><span className="sy-kicker">{t.alias}</span><p>{t.graph}</p><code>primitive.color.accent<br />→ semantic.action.primary.default<br />→ component.button.primary.background</code><span className="sy-help">{Object.keys(systemTokenGraph).length} tokens · {t.approvedNote}</span></div><button type="button" className="sy-button sy-button-primary" onClick={exportSystem}>{t.export}</button></div><details className="sy-coverage"><summary>{t.coverage} · 44</summary><p>{t.coverageNote}</p><div className="sy-table-scroll" tabIndex={0}><table><thead><tr><th>ID</th><th>{t.family}</th><th>{t.state}</th></tr></thead><tbody>{systemCoverage.map(item => <tr key={item.id}><td>{item.id}</td><td><a href={`#${item.specimen}`} onClick={() => { if (item.view) setView(item.view); }}>{item.name}</a></td><td>{item.status === 'review-specimen' ? t.inspect : item.status === 'partial-specimen' ? t.partial : t.contract}</td></tr>)}</tbody></table></div></details></section>
     </main>
-    <footer className="sy-footer sy-width"><span>formrift / Afterlight / System {systemReview.version}</span><a href={`${systemReview.archive}?lang=${locale}&shade=light`}>{t.archive}</a></footer>
+    <footer className="sy-footer sy-width"><span>Tallshift UI / Afterlight / System {systemReview.version} · by Max Tall</span><a href={`${systemReview.archive}?lang=${locale}&shade=light`}>{t.archive}</a></footer>
     <span className="sy-announcement" role="status" aria-live="polite">{copy.state === 'done' ? b.copied : ''}</span>
     {notice && <div className="sy-toast"><p role="status">{notice}</p><button type="button" aria-label={t.close} onClick={() => setNotice('')}>×</button></div>}
   </div>;

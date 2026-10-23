@@ -1,6 +1,6 @@
 export const systemReview = Object.freeze({
   version: '07',
   id: 'foundations-07',
-  tokenFilename: 'formrift-afterlight-system-07.tokens.json',
+  tokenFilename: 'tallshift-ui-07.tokens.json',
   archive: '../foundations-06.html',
 });

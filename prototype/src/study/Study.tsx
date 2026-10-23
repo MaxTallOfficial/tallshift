@@ -102,7 +102,7 @@ export function Study() {
   return <div className="study" data-motion={config.motion} style={{ '--accent': accent.color } as CSSProperties}>
     <a href="#material" className="skip-link">{t.material}</a>
     <header className="site-header page-width">
-      <a className="brand" href="#" aria-label={t.name}>formrift<span aria-hidden="true" /></a>
+      <a className="brand" href="#" aria-label={t.name}>tallshift<span aria-hidden="true" /></a>
       <nav aria-label={t.navLabel}><a href="#material">{t.material}</a><a href="#idea">{t.kit}</a></nav>
       <div className="header-controls"><button type="button" aria-label={!motion ? t.motionOff : reduced ? t.reduced : t.motionOn} aria-pressed={motion && !reduced} onClick={() => setMotion(!motion)}><span className="motion-symbol" aria-hidden="true">{config.motion === 'off' ? 'Ⅱ' : '≋'}</span><span className="motion-word">{!motion ? t.motionOff : reduced ? t.reduced : t.motionOn}</span></button><div className="language-picker" role="group" aria-label={t.languageLabel}>{languages.map(language => <button type="button" key={language.id} lang={language.id} aria-label={language.label} title={language.label} aria-pressed={locale === language.id} onClick={() => setLocale(language.id)}>{language.short}</button>)}</div></div>
     </header>

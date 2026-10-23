@@ -1,5 +1,7 @@
 import { useId, useState } from 'react';
 import { accessProductOffer, accessStatesCopy, type AccessScenario, type AccessStatesLocale } from './access-states-copy';
+import { SystemButton } from './SystemButton';
+import { SystemAccordion } from './SystemAccordion';
 import './access-states-lab.css';
 
 type AccessStatesLabProps = { locale: AccessStatesLocale; onOpenMaterial: () => void };
@@ -51,7 +53,7 @@ export function AccessStatesLab({ locale, onOpenMaterial }: AccessStatesLabProps
         <p className="as-description">{t.freeDescription}</p>
         <ul className="as-benefits">{t.freeBenefits.map(benefit => <li key={benefit}>{benefit}</li>)}</ul>
         <div className="as-free-footer">
-          <button type="button" className="sy-button sy-button-primary" onClick={onOpenMaterial}>{t.open}</button>
+          <SystemButton variant="primary" onClick={onOpenMaterial}>{t.open}</SystemButton>
           <p>{t.freeDelivery}</p>
         </div>
       </article>
@@ -65,14 +67,14 @@ export function AccessStatesLab({ locale, onOpenMaterial }: AccessStatesLabProps
         <h3 id={`${id}-pro-title`} className="as-claim">{t.proClaim} <span>{t.proClaimAccent}</span></h3>
         <p className="as-description">{t.proDescription}</p>
         <ul className="as-benefits">{t.proBenefits.map(benefit => <li key={benefit}>{benefit}</li>)}</ul>
-        <details className="as-offer-details"><summary>{t.details}</summary>
+        <SystemAccordion className="as-offer-details" headingLevel={4} items={[{ id: 'offer-scope', title: t.details, content: <>
         <div className="as-scope"><p>{t.scope}</p><ul aria-label={t.scope}>{accessProductOffer.itemIds.map(itemId => <li key={itemId}><code>{itemId}</code></li>)}</ul></div>
         <dl className="as-offer-facts">
           <div><dt>{t.version}</dt><dd>{t.versionValue}</dd></div>
           <div><dt>{t.license}</dt><dd>{t.licenseValue}</dd></div>
           <div><dt>{t.updates}</dt><dd>{t.updatesValue}</dd></div>
         </dl>
-        </details>
+        </> }]} />
         <div className="as-pro-footer"><p className="as-sale-state">{t.notOnSale}</p><p className="as-price-note">{t.priceNote}</p><p className="as-pack-note">{t.packNote}</p></div>
       </article>
     </div>
@@ -102,7 +104,7 @@ export function AccessStatesLab({ locale, onOpenMaterial }: AccessStatesLabProps
               <p>{state.body}</p>
             </div>
             <div className="as-state-action">
-              <button type="button" className={`sy-button ${isFree ? 'sy-button-primary' : 'as-button-unavailable'}`} disabled={!isFree} onClick={isFree ? onOpenMaterial : undefined} aria-describedby={reasonId}>{state.action}</button>
+              <SystemButton variant={isFree ? 'primary' : 'secondary'} className={!isFree ? 'as-button-unavailable' : undefined} disabled={!isFree} onClick={isFree ? onOpenMaterial : undefined} aria-describedby={reasonId}>{state.action}</SystemButton>
               <p id={reasonId}>{state.reason}</p>
             </div>
           </div>;

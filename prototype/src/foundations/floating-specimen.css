@@ -1,0 +1,7 @@
+.floating-specimen { scroll-margin-top: 100px; margin-block: 48px; padding: clamp(20px, 4vw, 40px); border: 1px solid #45433b; border-radius: 20px; background: #161512; }
+.floating-specimen header { max-width: 720px; }
+.floating-specimen h2 { font-size: clamp(26px, 3vw, 38px); line-height: 1.18; margin: 12px 0; letter-spacing: -.03em; }
+.floating-specimen header > p:last-child, .floating-specimen-note { color: #b8b6ae; line-height: 1.65; }
+.floating-specimen-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 28px 0; }
+.floating-specimen-note { max-width: 760px; font-size: 13px; }
+.floating-specimen-status { min-height: 24px; margin-bottom: 0; font-size: 14px; }

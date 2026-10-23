@@ -1,0 +1,13 @@
+.modal-specimen { margin-block: 48px; padding: 32px; border: 1px solid var(--f-line, #45433c); border-radius: 16px; background: var(--f-surface, #161512); }
+.modal-specimen h2 { margin: 0; font-size: 28px; line-height: 1.3; font-weight: 600; letter-spacing: -.025em; }
+.modal-specimen header > p, .modal-specimen-note { color: var(--f-muted, #b4b2aa); line-height: 1.6; max-inline-size: 70ch; }
+.modal-specimen-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-block: 24px; }
+.modal-specimen-note { font-size: 13px; }
+.modal-specimen-notice { min-block-size: 24px; color: var(--f-text, #eeede7); font-size: 14px; }
+.modal-specimen-form { display: grid; gap: 24px; }
+.modal-specimen-guide { list-style: none; padding: 0; margin: 0; display: grid; gap: 28px; }
+.modal-specimen-guide li { padding-block-start: 24px; border-block-start: 1px solid var(--f-line, #45433c); }
+.modal-specimen-guide li > span { color: var(--f-accent, #ebd183); font-size: 12px; font-variant-numeric: tabular-nums; }
+.modal-specimen-guide h3 { margin: 10px 0; font-size: 18px; line-height: 1.4; font-weight: 600; }
+.modal-specimen-guide p { margin: 0; color: var(--f-muted, #b4b2aa); font-size: 15px; line-height: 1.7; }
+@media (max-width: 600px) { .modal-specimen { padding: 20px; } .modal-specimen h2 { font-size: 24px; } }

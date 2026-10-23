@@ -1,16 +1,16 @@
-.as-lab { min-inline-size: 0; margin-block: 80px; scroll-margin-block-start: 24px; }
-.as-heading { max-inline-size: 780px; margin-block-end: 28px; }
-.as-heading > span { color: var(--f-secondary); font-size: 11px; letter-spacing: .1em; }
-.as-heading h2 { margin-block: 12px 14px; font-size: 28px; font-weight: 550; line-height: 1.3; letter-spacing: -.015em; }
-.as-heading > p { color: var(--f-secondary); font-size: 16px; line-height: 1.7; }
-.as-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-.as-card { min-inline-size: 0; padding: clamp(20px, 3vw, 32px); border: 1px solid var(--f-line); border-radius: 12px; background: var(--f-surface); }
-.as-card h3 { margin: 0 0 16px; font-size: 20px; line-height: 1.4; }
-.as-card h4 { margin-block: 24px 12px; font-size: 14px; font-weight: 500; }
-.as-row { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
-.as-note, .as-card .system-tabpanel > p { color: var(--f-secondary); font-size: 14px; line-height: 1.7; }
-.as-note { margin-block: 14px 20px; }
-.as-wide { grid-column: 1 / -1; }
-@media (max-width: 760px) { .as-grid { grid-template-columns: minmax(0, 1fr); } }
+.act-lab { min-inline-size: 0; margin-block: 80px; scroll-margin-block-start: 24px; }
+.act-heading { max-inline-size: 780px; margin-block-end: 28px; }
+.act-heading > span { color: var(--f-secondary); font-size: 11px; letter-spacing: .1em; }
+.act-heading h2 { margin-block: 12px 14px; font-size: 28px; font-weight: 550; line-height: 1.3; letter-spacing: -.015em; }
+.act-heading > p { color: var(--f-secondary); font-size: 16px; line-height: 1.7; }
+.act-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.act-card { min-inline-size: 0; padding: clamp(20px, 3vw, 32px); border: 1px solid var(--f-line); border-radius: 12px; background: var(--f-surface); }
+.act-card h3 { margin: 0 0 16px; font-size: 20px; line-height: 1.4; }
+.act-card h4 { margin-block: 24px 12px; font-size: 14px; font-weight: 500; }
+.act-row { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.act-note, .act-card .system-tabpanel > p { color: var(--f-secondary); font-size: 14px; line-height: 1.7; }
+.act-note { margin-block: 14px 20px; }
+.act-wide { grid-column: 1 / -1; }
+@media (max-width: 760px) { .act-grid { grid-template-columns: minmax(0, 1fr); } }
 
-@media (max-width: 767px) { .as-lab { margin-block: 56px; }.as-heading h2 { font-size: 24px; } }
+@media (max-width: 767px) { .act-lab { margin-block: 56px; }.act-heading h2 { font-size: 24px; } }

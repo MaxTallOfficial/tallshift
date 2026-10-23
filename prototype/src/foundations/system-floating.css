@@ -1,0 +1,17 @@
+.system-floating { z-index: 120; box-sizing: border-box; overflow: auto; overscroll-behavior: contain; color: var(--sy-text, #eeede8); background: var(--sy-raised, #1e1d19); border: 1px solid var(--sy-border, #47453e); border-radius: 12px; box-shadow: 0 14px 42px #0006; font: 400 14px/1.5 Manrope, sans-serif; }
+.system-menu { width: 252px; padding: 6px; }
+.system-menu > button { appearance: none; display: block; width: 100%; min-height: 44px; padding: 10px 12px; border: 0; border-radius: 7px; background: transparent; color: inherit; text-align: start; font: inherit; cursor: pointer; }
+.system-menu > button:hover:not(:disabled), .system-menu > button:focus-visible { background: #ffffff0c; }
+.system-menu > button:focus-visible, .system-floating:focus-visible { outline: 2px solid #b8b8b2; outline-offset: -2px; }
+.system-menu > button:disabled { color: #929087; cursor: not-allowed; }
+.system-menu > button[data-destructive] { color: #eea89f; }
+.system-popover { width: 320px; padding: 16px; }
+.system-popover > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.system-popover h4 { margin: 8px 0 0; font-size: 16px; font-weight: 600; line-height: 1.4; }
+.system-popover p { margin: 0 0 12px; }
+.system-popover dl { margin: 0; display: grid; gap: 12px; }
+.system-popover dt { color: #aaa89f; font-size: 12px; }
+.system-popover dd { margin: 3px 0 0; overflow-wrap: anywhere; }
+.system-tooltip-anchor { display: inline-flex; }
+.system-tooltip { width: max-content; max-width: 280px; padding: 8px 12px; font-size: 12px; }
+@media (forced-colors: active) { .system-floating { border-color: CanvasText; box-shadow: none; } .system-menu > button:focus-visible { outline-color: Highlight; } .system-menu > button:disabled { color: GrayText; } }

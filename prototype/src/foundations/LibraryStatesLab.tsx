@@ -1,3 +1,6 @@
+import { SystemSkeleton } from './SystemSkeleton';
+import { SystemEmptyState } from './SystemEmptyState';
+import { SystemButton } from './SystemButton';
 import { useId, useRef, useState } from 'react';
 import { discoveryMaterials, type DiscoveryMaterial } from './discovery-data';
 import { libraryStateCollections as collections, libraryStatesCopy, libraryText } from './library-states-copy';
@@ -122,16 +125,11 @@ export function LibraryStatesLab({ locale, onOpenMaterial }: { locale: LibrarySt
             return <div className="ls-result-frame" key={`${entry.collectionId}-${entry.page}`} data-state="results" data-collection={entry.collectionId} data-page={entry.page} data-active={active} aria-hidden={!active || undefined} inert={!active || undefined}>{renderMaterials(entry.materials)}</div>;
           })}
           <div className="ls-result-frame" data-state="loading" data-active={mode === 'loading'} aria-hidden={mode !== 'loading' || undefined} inert={mode !== 'loading' || undefined}>
-          <div className="ls-skeletons" aria-hidden="true">{[0, 1].map((key) => <div className="ls-skeleton" key={key}><i /><i /><i /><i /></div>)}</div>
+          <div className="ls-skeletons" aria-hidden="true">{[0, 1].map((key) => <div className="ls-skeleton" key={key}><SystemSkeleton width="35%" height={8} /><SystemSkeleton width="70%" height={24} /><SystemSkeleton /><SystemSkeleton width="55%" /></div>)}</div>
           <div className="ls-state-copy"><h4>{t.loadingTitle}</h4><p>{t.loadingBody}</p></div>
           </div>
           {(['empty', 'error'] as const).map((state) => <div className="ls-result-frame" key={state} data-state={state} data-active={mode === state} aria-hidden={mode !== state || undefined} inert={mode !== state || undefined}>
-            <div className={`ls-state ls-state-${state}`}>
-              <span className="ls-state-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><circle cx="12" cy="12" r="9" />{state === 'empty' ? <path d="M8 12h8" /> : <path d="M12 7v6m0 3v.1" />}</svg></span>
-              <h4>{state === 'empty' ? t.emptyTitle : t.errorTitle}</h4>
-              <p>{state === 'empty' ? t.emptyBody : t.errorBody}</p>
-              <button type="button" className="ls-button" onClick={restoreResults}>{t.restore}</button>
-            </div>
+            <SystemEmptyState headingLevel={4} title={state === 'empty' ? t.emptyTitle : t.errorTitle} icon={state === 'empty' ? 'search' : 'warning'} action={<SystemButton onClick={restoreResults}>{t.restore}</SystemButton>}><p>{state === 'empty' ? t.emptyBody : t.errorBody}</p></SystemEmptyState>
           </div>)}
         </div>
         <div className="ls-pagination-stack">

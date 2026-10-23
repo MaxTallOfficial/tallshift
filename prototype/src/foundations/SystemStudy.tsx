@@ -10,6 +10,11 @@ import { InteractionLab } from './InteractionLab';
 import { TypeLayoutSpecimen } from './TypeLayoutSpecimen';
 import { SystemButton } from './SystemButton';
 import { SystemTabList } from './SystemTabs';
+import { ModalSpecimen } from './ModalSpecimen';
+import { FloatingSpecimen } from './FloatingSpecimen';
+import { FeedbackSpecimen } from './FeedbackSpecimen';
+import { SystemToastRegion } from './SystemToastRegion';
+import { SystemTextLink } from './SystemTextLink';
 import { ActionSpecimen } from './ActionSpecimen';
 import { ControlAuditSpecimen } from './ControlAuditSpecimen';
 import { SystemRadioGroup } from './SystemRadioGroup';
@@ -37,7 +42,7 @@ type View = 'demo' | 'source' | 'prompt';
 const views: View[] = ['demo', 'source', 'prompt'];
 const theme = getSaffronTheme();
 const checks = saffronContrastChecks();
-const navIds = ['discovery', 'library-states', 'workbench', 'access-states', 'controls', 'actions', 'system-type', 'roles', 'handoff'] as const;
+const navIds = ['discovery', 'library-states', 'workbench', 'access-states', 'controls', 'actions', 'modals', 'floating', 'feedback', 'system-type', 'roles', 'handoff'] as const;
 const emptyCopy = { key: '', state: 'idle' as 'idle' | 'busy' | 'done' | 'error', value: '' };
 
 function CopyIcon({ done = false }: { done?: boolean }) {
@@ -70,6 +75,8 @@ export function SystemStudy() {
   const [copy, setCopy] = useState(emptyCopy);
   const [copyPending, setCopyPending] = useState(false);
   const [notice, setNotice] = useState('');
+  const [noticeKey, setNoticeKey] = useState(0);
+  const notify = (message: string) => { setNotice(message); setNoticeKey(key => key + 1); };
   const [zipBusy, setZipBusy] = useState(false);
   const [active, setActive] = useState('');
   const workHeading = useRef<HTMLHeadingElement>(null);
@@ -86,7 +93,7 @@ export function SystemStudy() {
   const selectedFile = sourceFiles.find(file => file.path === filePath) ?? sourceFiles[0];
   const prompt = useMemo(() => studyPrompt({ ...config, context, mode: 'preserve' }), [config, context]);
   const style = { ...theme, ...systemCssVariables, '--sy-display': `${typographyScale.display.desktopSize}px`, '--sy-display-mobile': `${typographyScale.display.mobileSize}px` } as CSSProperties;
-  const navLabels = [t.discovery, t.libraryStates, t.workbench, t.access, t.controls, t.actions, t.type, t.roles, t.handoff];
+  const navLabels = [t.discovery, t.libraryStates, t.workbench, t.access, t.controls, t.actions, t.modals, t.floating, t.feedback, t.type, t.roles, t.handoff];
 
   useEffect(() => {
     alive.current = true;
@@ -153,8 +160,8 @@ export function SystemStudy() {
     try {
       const bytes = await studyArchive(captured);
       saveFile(new Uint8Array(bytes).buffer, 'application/zip', `A001-${captured.target}-${captured.locale}-${captured.accent === theme['--f-accent'] ? 'saffron-lighter' : captured.accent.slice(1).toLowerCase()}.zip`);
-      if (alive.current) setNotice(t.zipDone);
-    } catch { if (alive.current) setNotice(t.zipError); }
+      if (alive.current) notify(t.zipDone);
+    } catch { if (alive.current) notify(t.zipError); }
     finally { archiveBusy.current = false; if (alive.current) setZipBusy(false); }
   }
   function exportSystem() {
@@ -166,7 +173,7 @@ export function SystemStudy() {
       motion: { responseMs: 120, stateMs: 160, panelMs: 180, reduced: 'No spatial or repeating motion', modeOff: true },
       coverage: systemCoverage, contrast: checks, limitations: ['Specimens are under visual review.', 'Only A001 is an interactive library material.', 'No checkout, account or server entitlements are implemented here.'],
     }, null, 2) + '\n', 'application/json', systemReview.tokenFilename);
-    setNotice(t.exported);
+    notify(t.exported);
   }
   function openMaterial() {
     setView('demo'); document.getElementById('workbench')?.scrollIntoView({ behavior: off ? 'auto' : 'smooth' }); workHeading.current?.focus({ preventScroll: true });
@@ -194,6 +201,9 @@ export function SystemStudy() {
       <AccessStatesLab locale={locale} onOpenMaterial={openMaterial} />
       <InteractionLab locale={locale} motionOff={off} />
       <ActionSpecimen locale={locale} motionOff={off} />
+      <ModalSpecimen locale={locale} />
+      <FloatingSpecimen locale={locale} />
+      <FeedbackSpecimen locale={locale} motionOff={off} />
       <ControlAuditSpecimen locale={locale} />
       <IconSpecimen locale={locale} />
       <ProgressSpecimen locale={locale} motionOff={off} />
@@ -205,10 +215,10 @@ export function SystemStudy() {
         <SystemMotionControls locale={locale} duration={duration} onDurationChange={setDuration} forceOff={forceOff} onForceOffChange={setForceOff} reduced={reduced} profile={motionProfile} onProfileChange={setMotionProfile} onReplay={() => setPreviewRevision(value => value + 1)} />
         <details className="sy-contrast"><summary>{b.contrastTitle} · {checks.filter(check => check.passes).length}/{checks.length}</summary><p>{b.contrastNote}</p><div className="sy-table-scroll" tabIndex={0}><table><thead><tr><th>{b.pair}</th><th>{b.ratio}</th><th>{b.required}</th></tr></thead><tbody>{checks.map(check => <tr key={check.label}><td>{check.label}</td><td>{check.ratio.toFixed(2)}:1</td><td>{check.minimum}:1 {check.passes ? '✓' : '×'}</td></tr>)}</tbody></table></div></details>
       </section>
-      <section id="handoff" className="sy-section" aria-labelledby="sy-handoff-title"><header className="sy-section-heading"><span className="sy-kicker">SYSTEM / HANDOFF</span><h2 id="sy-handoff-title">{t.handoffTitle}</h2><p>{t.handoffIntro}</p></header><div className="sy-handoff-panel"><div><span className="sy-kicker">{t.alias}</span><p>{t.graph}</p><code>primitive.color.accent<br />→ semantic.action.primary.default<br />→ component.button.primary.background</code><span className="sy-help">{Object.keys(systemTokenGraph).length} tokens · {t.approvedNote}</span></div><SystemButton variant="primary" className="sy-button sy-button-primary" onClick={exportSystem}>{t.export}</SystemButton></div><details className="sy-coverage"><summary>{t.coverage} · 44</summary><p>{t.coverageNote}</p><div className="sy-table-scroll" tabIndex={0}><table><thead><tr><th>ID</th><th>{t.family}</th><th>{t.implementation}</th><th>{t.state}</th></tr></thead><tbody>{systemCoverage.map(item => <tr key={item.id}><td>{item.id}</td><td><a href={`#${item.specimen}`} onClick={() => { if (item.view) setView(item.view); }}>{item.name}</a></td><td>{item.implementation === 'shared-api' ? t.sharedApi : item.implementation === 'composed-api' ? t.composedApi : t.localApi}{item.api && <small className="sy-api-name">{item.api}</small>}</td><td>{item.status === 'review-specimen' ? t.inspect : item.status === 'partial-specimen' ? t.partial : t.contract}</td></tr>)}</tbody></table></div></details></section>
+      <section id="handoff" className="sy-section" aria-labelledby="sy-handoff-title"><header className="sy-section-heading"><span className="sy-kicker">SYSTEM / HANDOFF</span><h2 id="sy-handoff-title">{t.handoffTitle}</h2><p>{t.handoffIntro}</p></header><div className="sy-handoff-panel"><div><span className="sy-kicker">{t.alias}</span><p>{t.graph}</p><code>primitive.color.accent<br />→ semantic.action.primary.default<br />→ component.button.primary.background</code><span className="sy-help">{Object.keys(systemTokenGraph).length} tokens · {t.approvedNote}</span></div><SystemButton variant="primary" className="sy-button sy-button-primary" onClick={exportSystem}>{t.export}</SystemButton></div><details className="sy-coverage"><summary>{t.coverage} · 44</summary><p>{t.coverageNote}</p><div className="sy-table-scroll" tabIndex={0}><table><thead><tr><th>ID</th><th>{t.family}</th><th>{t.implementation}</th><th>{t.state}</th></tr></thead><tbody>{systemCoverage.map(item => <tr key={item.id}><td>{item.id}</td><td><SystemTextLink href={`#${item.specimen}`} onClick={() => { if (item.view) setView(item.view); }}>{item.name}</SystemTextLink></td><td>{item.implementation === 'shared-api' ? t.sharedApi : item.implementation === 'composed-api' ? t.composedApi : t.localApi}{item.api && <small className="sy-api-name">{item.api}</small>}</td><td>{item.status === 'review-specimen' ? t.inspect : item.status === 'partial-specimen' ? t.partial : t.contract}</td></tr>)}</tbody></table></div></details></section>
     </main>
-    <footer className="sy-footer sy-width"><span>Tallshift UI / Afterlight / System {systemReview.version} · by Max Tall</span><a href={`${systemReview.archive}?lang=${locale}&shade=light`}>{t.archive}</a></footer>
+    <footer className="sy-footer sy-width"><span>Tallshift UI / Afterlight / System {systemReview.version} · by Max Tall</span><SystemTextLink href={`${systemReview.archive}?lang=${locale}&shade=light`}>{t.archive}</SystemTextLink></footer>
     <span className="sy-announcement" role="status" aria-live="polite">{copy.state === 'done' ? b.copied : ''}</span>
-    {notice && <div className="sy-toast"><p role="status">{notice}</p><button type="button" aria-label={t.close} onClick={() => setNotice('')}>×</button></div>}
+    <div className="sy-toast-host"><SystemToastRegion label={t.notifications} dismissLabel={t.close} items={notice ? [{id:'system-notice',title:notice}] : []} announcement={notice} announcementKey={noticeKey} onDismiss={() => setNotice('')} /></div>
   </div>;
 }

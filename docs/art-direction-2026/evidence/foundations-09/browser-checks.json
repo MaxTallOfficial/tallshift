@@ -1,0 +1,187 @@
+{
+  "review": "foundations-09",
+  "browser": "IAB Chromium",
+  "sheets": [
+    {
+      "contentHeight": 341,
+      "contentScrollHeight": 1199,
+      "dialog": {
+        "bottom": 600,
+        "left": 0,
+        "right": 320,
+        "top": 0
+      },
+      "footerBottom": 600,
+      "lang": "en",
+      "pageScrollWidth": 320,
+      "width": 320
+    },
+    {
+      "contentHeight": 333,
+      "contentScrollHeight": 1054,
+      "dialog": {
+        "bottom": 600,
+        "left": 208,
+        "right": 768,
+        "top": 0
+      },
+      "footerBottom": 600,
+      "lang": "en",
+      "pageScrollWidth": 768,
+      "width": 768
+    },
+    {
+      "contentHeight": 333,
+      "contentScrollHeight": 1054,
+      "dialog": {
+        "bottom": 600,
+        "left": 880,
+        "right": 1440,
+        "top": 0
+      },
+      "footerBottom": 600,
+      "lang": "en",
+      "pageScrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "contentHeight": 288,
+      "contentScrollHeight": 1250,
+      "dialog": {
+        "bottom": 600,
+        "left": 0,
+        "right": 320,
+        "top": 0
+      },
+      "footerBottom": 600,
+      "lang": "ru",
+      "pageScrollWidth": 320,
+      "width": 320
+    },
+    {
+      "contentHeight": 333,
+      "contentScrollHeight": 1054,
+      "dialog": {
+        "bottom": 600,
+        "left": 208,
+        "right": 768,
+        "top": 0
+      },
+      "footerBottom": 600,
+      "lang": "ru",
+      "pageScrollWidth": 768,
+      "width": 768
+    },
+    {
+      "contentHeight": 333,
+      "contentScrollHeight": 1054,
+      "dialog": {
+        "bottom": 600,
+        "left": 880,
+        "right": 1440,
+        "top": 0
+      },
+      "footerBottom": 600,
+      "lang": "ru",
+      "pageScrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "contentHeight": 319,
+      "contentScrollHeight": 1199,
+      "dialog": {
+        "bottom": 600,
+        "left": 0,
+        "right": 320,
+        "top": 0
+      },
+      "footerBottom": 600,
+      "lang": "vi",
+      "pageScrollWidth": 320,
+      "width": 320
+    },
+    {
+      "contentHeight": 370,
+      "contentScrollHeight": 1054,
+      "dialog": {
+        "bottom": 600,
+        "left": 208,
+        "right": 768,
+        "top": 0
+      },
+      "footerBottom": 600,
+      "lang": "vi",
+      "pageScrollWidth": 768,
+      "width": 768
+    },
+    {
+      "contentHeight": 370,
+      "contentScrollHeight": 1054,
+      "dialog": {
+        "bottom": 600,
+        "left": 880,
+        "right": 1440,
+        "top": 0
+      },
+      "footerBottom": 600,
+      "lang": "vi",
+      "pageScrollWidth": 1440,
+      "width": 1440
+    }
+  ],
+  "menuBounds320x600": [
+    {
+      "activeInMenu": true,
+      "bottom": 495.953125,
+      "lang": "en",
+      "left": 12,
+      "right": 264,
+      "top": 331.953125
+    },
+    {
+      "activeInMenu": true,
+      "bottom": 495.8671875,
+      "lang": "ru",
+      "left": 12,
+      "right": 264,
+      "top": 331.8671875
+    },
+    {
+      "activeInMenu": true,
+      "bottom": 496.15625,
+      "lang": "vi",
+      "left": 12,
+      "right": 264,
+      "top": 332.15625
+    }
+  ],
+  "checks": {
+    "modalTabBoundary": "Tab after Save locally -> Close dialog; Shift+Tab before Close -> Save locally; both inside modal",
+    "modalEscape": "Returned Open editor and released html overflow lock",
+    "draftRetention": "Tallshift QA / Keep this draft retained after Escape and reopen",
+    "nestedEscape": "Popover -> tooltip -> modal, separate presses, portal inside active native dialog",
+    "menuFirstOpen": "Select source file focused on first open",
+    "menuDisabled": "ArrowDown skipped Rename unavailable to Remove from selection",
+    "menuEscape": "Returned File actions",
+    "menuTab": "Moved to Package details and closed menu",
+    "popoverFirstOpen": "Close details focused on first open",
+    "popoverTab": "Moved to About package details and closed popover",
+    "presetDeletion": "Safe initial focus Keep preset; removed 1 local preset; fallback Save preset",
+    "sourceSheetResize": "320 -> 1024 closes modal and focuses visible File actions",
+    "toastRetry": "2 cards preserved; error became Local retry completed; focus stayed on card dismiss",
+    "toastDismiss": "Removed focused second card; focus moved to first remaining card",
+    "loadingHeights": [
+      184,
+      184
+    ],
+    "accordion": "Native summary Enter opened Product scope"
+  },
+  "limits": [
+    "No real screen reader",
+    "No Safari or Firefox run",
+    "No real touch device",
+    "No complete keyboard/zoom/forced-colors/reduced-motion matrix",
+    "Hoverability of tooltip not exercised",
+    "Geometry is viewport overflow evidence, not visual approval"
+  ]
+}

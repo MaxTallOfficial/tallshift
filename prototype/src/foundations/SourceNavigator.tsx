@@ -1,6 +1,9 @@
-import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { sourceNavigationWords } from './source-navigation-copy';
 import './source-navigator.css';
+import { SystemMenu } from './SystemMenu';
+import { SystemPopover } from './SystemPopover';
+import { SystemSheet } from './SystemSheet';
 
 export interface SourceNavigatorProps {
   locale: 'en' | 'ru' | 'vi';
@@ -52,90 +55,22 @@ export function SourceNavigator({ locale, files, selectedPath, onSelect, onCopy,
   const id = useId();
   const rootRef = useRef<HTMLDivElement>(null);
   const menuTrigger = useRef<HTMLButtonElement>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const infoTrigger = useRef<HTMLButtonElement>(null);
-  const infoClose = useRef<HTMLButtonElement>(null);
   const filesTrigger = useRef<HTMLButtonElement>(null);
-  const sheetRef = useRef<HTMLDialogElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [notice, setNotice] = useState('');
-  const [menuUp, setMenuUp] = useState(false);
-  const [infoUp, setInfoUp] = useState(false);
-  const [menuRight, setMenuRight] = useState(0);
-  const [infoRight, setInfoRight] = useState(0);
-  const openingMenuIndex = useRef<'first' | 'last'>('first');
   const hierarchy = useMemo(() => fileHierarchy(files), [files]);
   const selected = files.find(file => file.path === selectedPath) ?? files[0];
 
   useEffect(() => {
-    if (!menuOpen && !infoOpen) return;
-    const outside = (event: PointerEvent) => {
-      const target = event.target as Node;
-      if (menuOpen && !menuRef.current?.contains(target) && !menuTrigger.current?.contains(target)) setMenuOpen(false);
-      if (infoOpen && !rootRef.current?.querySelector('.sn-info')?.contains(target) && !infoTrigger.current?.contains(target)) setInfoOpen(false);
-    };
-    const escape = (event: globalThis.KeyboardEvent) => {
-      if (event.key !== 'Escape') return;
-      event.preventDefault();
-      event.stopPropagation();
-      if (menuOpen) { setMenuOpen(false); menuTrigger.current?.focus({ preventScroll: true }); }
-      else if (infoOpen) { setInfoOpen(false); infoTrigger.current?.focus({ preventScroll: true }); }
-    };
-    const focusOutside = (event: FocusEvent) => {
-      const target = event.target as Node;
-      if (menuOpen && !menuRef.current?.contains(target) && !menuTrigger.current?.contains(target)) setMenuOpen(false);
-      if (infoOpen && !rootRef.current?.querySelector('.sn-info')?.contains(target) && !infoTrigger.current?.contains(target)) setInfoOpen(false);
-    };
-    const resized = () => { setMenuOpen(false); setInfoOpen(false); };
-    document.addEventListener('pointerdown', outside);
-    document.addEventListener('keydown', escape);
-    document.addEventListener('focusin', focusOutside);
-    window.addEventListener('resize', resized);
-    return () => {
-      document.removeEventListener('pointerdown', outside);
-      document.removeEventListener('keydown', escape);
-      document.removeEventListener('focusin', focusOutside);
-      window.removeEventListener('resize', resized);
-    };
-  }, [menuOpen, infoOpen]);
-
-  useLayoutEffect(() => {
-    if (!menuOpen) return;
-    const items = Array.from(menuRef.current?.querySelectorAll<HTMLButtonElement>('button:not(:disabled)') ?? []);
-    (openingMenuIndex.current === 'last' ? items.at(-1) : items[0])?.focus({ preventScroll: true });
-  }, [menuOpen]);
-  useLayoutEffect(() => { if (infoOpen) infoClose.current?.focus({ preventScroll: true }); }, [infoOpen]);
-  useEffect(() => {
     const media = matchMedia('(min-width: 768px)');
-    const onChange = () => { if (media.matches) sheetRef.current?.close(); };
+    const onChange = () => { if (media.matches) setSheetOpen(false); };
     media.addEventListener('change', onChange);
     return () => media.removeEventListener('change', onChange);
   }, []);
   useEffect(() => { setNotice(''); }, [selectedPath, locale]);
 
-  function showMenu(last = false) {
-    if (!selected) return;
-    setInfoOpen(false);
-    const rect = menuTrigger.current?.getBoundingClientRect();
-    setMenuUp(Boolean(rect && innerHeight - rect.bottom < 132 && rect.top > 132));
-    setMenuRight(rect ? Math.min(0, rect.right - Math.min(252, innerWidth - 48) - 16) : 0);
-    openingMenuIndex.current = last ? 'last' : 'first';
-    setMenuOpen(true);
-  }
-  function menuKey(event: KeyboardEvent<HTMLDivElement>) {
-    const items = Array.from(menuRef.current?.querySelectorAll<HTMLButtonElement>('button:not(:disabled)') ?? []);
-    const index = items.indexOf(document.activeElement as HTMLButtonElement);
-    let next = -1;
-    if (event.key === 'ArrowDown') next = (index + 1) % items.length;
-    else if (event.key === 'ArrowUp') next = (index - 1 + items.length) % items.length;
-    else if (event.key === 'Home') next = 0;
-    else if (event.key === 'End') next = items.length - 1;
-    if (next >= 0) { event.preventDefault(); items[next]?.focus(); }
-    else if (event.key === 'Tab') setMenuOpen(false);
-  }
-  function closeMenu() { setMenuOpen(false); menuTrigger.current?.focus({ preventScroll: true }); }
   function download() {
     if (!selected) return;
     try {
@@ -149,26 +84,15 @@ export function SourceNavigator({ locale, files, selectedPath, onSelect, onCopy,
       window.setTimeout(() => URL.revokeObjectURL(url), 2000);
       setNotice(t.downloaded);
     } catch { setNotice(t.downloadFailed); }
-    closeMenu();
+    setMenuOpen(false);
   }
   function openSheet() {
     setMenuOpen(false); setInfoOpen(false);
-    const dialog = sheetRef.current;
-    if (!dialog || dialog.open) return;
-    dialog.showModal(); setSheetOpen(true);
+    setSheetOpen(true);
   }
   function select(path: string, inSheet: boolean) {
     onSelect(path);
-    if (inSheet) sheetRef.current?.close();
-  }
-  function sheetKey(event: KeyboardEvent<HTMLDialogElement>) {
-    if (event.key !== 'Tab') return;
-    const stops = Array.from(event.currentTarget.querySelectorAll<HTMLElement>('button:not(:disabled), summary, [href], input:not(:disabled), [tabindex="0"]'))
-      .filter(element => element.getClientRects().length > 0);
-    const first = stops[0];
-    const last = stops.at(-1);
-    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
-    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    if (inSheet) setSheetOpen(false);
   }
   function list(nodes: FileNode[], inSheet: boolean) {
     return <ul className="sn-file-list">{nodes.map(node => <li key={node.path}>{node.children ? <details open><summary><Icon kind="folder" /><span>{node.name}</span></summary>{list(node.children, inSheet)}</details> : <button type="button" className="sn-file" title={node.path} aria-current={selected?.path === node.path ? 'true' : undefined} onClick={() => select(node.path, inSheet)}><Icon kind="file" /><span>{node.name}</span>{selected?.path === node.path && <span className="sn-selected-dot" aria-hidden="true" />}</button>}</li>)}</ul>;
@@ -182,26 +106,21 @@ export function SourceNavigator({ locale, files, selectedPath, onSelect, onCopy,
       <button type="button" className="sn-control sn-files-trigger" ref={filesTrigger} aria-haspopup="dialog" aria-controls={`${id}-sheet`} aria-expanded={sheetOpen} onClick={openSheet}><Icon kind="folder" /><span>{t.files}</span><span className="sn-count">{files.length}</span></button>
       <span className="sn-desktop-title">{t.files}<span className="sn-count">{files.length}</span></span>
       <div className="sn-menu-wrap">
-        <button type="button" className="sn-control sn-icon-control" ref={menuTrigger} title={t.actions} aria-label={t.actions} aria-haspopup="menu" aria-controls={`${id}-menu`} aria-expanded={menuOpen} disabled={!selected} onClick={() => menuOpen ? closeMenu() : showMenu()} onKeyDown={event => { if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) { event.preventDefault(); showMenu(event.key === 'ArrowUp' || event.key === 'End'); } }}><Icon kind="more" /></button>
-        {menuOpen && <div id={`${id}-menu`} className={`sn-menu${menuUp ? ' sn-up' : ''}`} style={{ right: menuRight }} ref={menuRef} role="menu" aria-label={t.actions} onKeyDown={menuKey}>
-          <button type="button" role="menuitem" tabIndex={-1} disabled={copyBusy} onClick={() => { onCopy(); closeMenu(); }}>{copyBusy ? t.copying : t.copy}</button>
-          <button type="button" role="menuitem" tabIndex={-1} onClick={download}>{t.download}</button>
-        </div>}
+        <SystemMenu label={t.actions} open={menuOpen} onOpenChange={next => { setMenuOpen(next); if (next) setInfoOpen(false); }} trigger={props => <button {...props} ref={node => { props.ref.current = node; menuTrigger.current = node; }} type="button" className="sn-control sn-icon-control" aria-label={t.actions} disabled={!selected}><Icon kind="more" /></button>} items={[
+          { id: 'copy', label: copyBusy ? t.copying : t.copy, disabled: copyBusy, onSelect: onCopy },
+          { id: 'download', label: t.download, onSelect: download },
+        ]} />
       </div>
       <div className="sn-info-wrap">
-        <button type="button" className="sn-control sn-icon-control" ref={infoTrigger} title={t.about} aria-label={t.about} aria-haspopup="dialog" aria-controls={`${id}-info`} aria-expanded={infoOpen} disabled={!selected} onClick={() => { setMenuOpen(false); const rect = infoTrigger.current?.getBoundingClientRect(); setInfoUp(Boolean(rect && innerHeight - rect.bottom < 320 && rect.top > 320)); setInfoRight(rect ? Math.min(0, rect.right - Math.min(304, innerWidth - 48) - 16) : 0); setInfoOpen(!infoOpen); }}><Icon kind="info" /></button>
-        {infoOpen && selected && <div className={`sn-info${infoUp ? ' sn-up' : ''}`} style={{ right: infoRight }} id={`${id}-info`} role="dialog" aria-modal="false" aria-labelledby={`${id}-info-title`}>
-          <header><h4 id={`${id}-info-title`}>{t.about}</h4><button ref={infoClose} type="button" className="sn-control sn-icon-control" aria-label={t.close} onClick={() => { setInfoOpen(false); infoTrigger.current?.focus({ preventScroll: true }); }}><Icon kind="close" /></button></header>
-          <dl><div><dt>{t.path}</dt><dd>{selected.path}</dd></div><div><dt>{t.type}</dt><dd>{fileType(selected.path)}</dd></div><div><dt>{t.bytes}</dt><dd>{new Intl.NumberFormat(locale).format(new TextEncoder().encode(selected.content).byteLength)} {t.byteUnit}</dd></div></dl>
-        </div>}
+        <SystemPopover title={t.about} closeLabel={t.close} open={infoOpen} onOpenChange={next => { setInfoOpen(next); if (next) setMenuOpen(false); }} trigger={props => <button {...props} type="button" className="sn-control sn-icon-control" aria-label={t.about} disabled={!selected}><Icon kind="info" /></button>}>
+          {selected && <dl><div><dt>{t.path}</dt><dd>{selected.path}</dd></div><div><dt>{t.type}</dt><dd>{fileType(selected.path)}</dd></div><div><dt>{t.bytes}</dt><dd>{new Intl.NumberFormat(locale).format(new TextEncoder().encode(selected.content).byteLength)} {t.byteUnit}</dd></div></dl>}
+        </SystemPopover>
       </div>
     </div>
     <nav className="sn-desktop-files" aria-label={t.sourceFiles}>{fileList(false)}</nav>
     <p className="sn-status" role="status">{notice}</p>
-    <dialog className="sn-sheet" id={`${id}-sheet`} ref={sheetRef} aria-labelledby={`${id}-sheet-title`} aria-describedby={`${id}-sheet-description`} onKeyDown={sheetKey} onClose={() => { setSheetOpen(false); requestAnimationFrame(() => { if (filesTrigger.current && getComputedStyle(filesTrigger.current).display !== 'none') filesTrigger.current.focus({ preventScroll: true }); else menuTrigger.current?.focus({ preventScroll: true }); }); }}>
-      <header><h3 id={`${id}-sheet-title`}>{t.files}</h3><button autoFocus type="button" className="sn-control sn-icon-control" aria-label={t.close} onClick={() => sheetRef.current?.close()}><Icon kind="close" /></button></header>
-      <p id={`${id}-sheet-description`}>{t.sheetDescription}</p>
+    <SystemSheet id={`${id}-sheet`} open={sheetOpen} onOpenChange={setSheetOpen} title={t.files} description={t.sheetDescription} closeLabel={t.close} returnFocusRef={filesTrigger} fallbackFocusRef={menuTrigger}>
       <nav aria-label={t.sourceFiles}>{fileList(true)}</nav>
-    </dialog>
+    </SystemSheet>
   </div>;
 }

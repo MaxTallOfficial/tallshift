@@ -107,3 +107,6 @@
 .sy-api-name { display: block; margin-top: 4px; color: var(--f-muted); font: 11px/1.5 var(--sy-font-code, monospace); overflow-wrap: anywhere; }
 
 .sy-context.system-field { display: block; }.sy-context.system-field textarea { padding: 12px 14px; font-size: 16px; }
+
+.sy-toast-host { position: fixed; inset-inline-end: 24px; bottom: 24px; z-index: 20; width: min(420px, calc(100% - 32px)); pointer-events: none; }.sy-toast-host .sf-toast { pointer-events: auto; box-shadow: 0 12px 40px #0005; }.sy-toast-host .sf-toast-region:focus-visible { outline: 2px solid var(--f-focus); outline-offset: 3px; }
+@media (max-width:767px) { .sy-toast-host { inset-inline-end:16px; bottom:16px; } }

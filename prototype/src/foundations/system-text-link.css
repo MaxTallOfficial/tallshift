@@ -1,0 +1,8 @@
+.system-text-link { color: var(--f-text); text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; overflow-wrap: anywhere; border-radius: 2px; }
+.system-text-link:visited { color: var(--f-secondary); }
+.system-text-link:hover { color: var(--f-accent); text-decoration-thickness: 2px; }
+.system-text-link:focus-visible { outline: 2px solid var(--f-focus); outline-offset: 4px; }
+.system-text-link[data-variant=navigation] { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+.system-text-link[data-variant=navigation]:hover { text-decoration: underline; }
+.system-text-link[aria-current] { color: var(--f-accent); }
+@media (forced-colors: active) { .system-text-link { color: LinkText; }.system-text-link:visited { color: VisitedText; }.system-text-link:focus-visible { outline-color: Highlight; } }

@@ -29,19 +29,19 @@ export function ActionSpecimen({ locale, motionOff = false }: { locale: Locale; 
     { value: 'prompt', label: t.prompt, content: <p>{t.promptBody}</p> },
     { value: 'unavailable', label: t.unavailableTab, disabled: true, content: null },
   ];
-  return <section id="actions" className="as-lab" lang={locale} data-motion={motionOff ? 'off' : undefined} aria-labelledby={`${id}-heading`}>
-    <header className="as-heading"><span>{t.eyebrow}</span><h2 id={`${id}-heading`}>{t.title}</h2><p>{t.intro}</p></header>
-    <div className="as-grid">
-      <article className="as-card"><h3>{t.buttons}</h3><div className="as-row">
+  return <section id="actions" className="act-lab" lang={locale} data-motion={motionOff ? 'off' : undefined} aria-labelledby={`${id}-heading`}>
+    <header className="act-heading"><span>{t.eyebrow}</span><h2 id={`${id}-heading`}>{t.title}</h2><p>{t.intro}</p></header>
+    <div className="act-grid">
+      <article className="act-card"><h3>{t.buttons}</h3><div className="act-row">
         <SystemButton variant="primary" leadingIcon={<SystemIcon name="plus" />} onClick={() => document.getElementById('workbench')?.scrollIntoView({ behavior: 'instant' })}>{t.primary}</SystemButton>
         <SystemButton onClick={() => document.getElementById('handoff')?.scrollIntoView({ behavior: 'instant' })}>{t.secondary}</SystemButton>
         <SystemButton variant="quiet" onClick={() => { setRemoved(false); setSaved(false); setReplayed(false); setBusy(false); setCompleted(false); }}>{t.quiet}</SystemButton>
         <SystemButton variant={removed ? 'secondary' : 'destructive'} onClick={() => setRemoved(!removed)}>{removed ? t.restore : t.destructive}</SystemButton>
-      </div><p className="as-note" role="status">{removed ? t.removed : t.normal}</p><h4>{t.sizes}</h4><div className="as-row">{(['small', 'medium', 'large'] as const).map(size => <SystemButton key={size} size={size} onClick={() => document.getElementById('workbench')?.scrollIntoView({ behavior: 'instant' })}>{t.sizeLabel}</SystemButton>)}</div></article>
-      <article className="as-card"><h3>{t.pending}</h3><div className="as-row"><SystemButton variant="primary" loading={busy} onClick={() => { setBusy(true); setCompleted(false); }}>{t.start}</SystemButton><SystemButton disabled={!busy} onClick={() => { setBusy(false); setCompleted(true); }}>{t.finish}</SystemButton></div><p className="as-note" role="status">{busy ? t.waiting : completed ? t.complete : t.idle}</p><SystemButton disabled aria-describedby={`${id}-unavailable`}>{t.unavailable}</SystemButton><p className="as-note" id={`${id}-unavailable`}>{t.reason}</p><h4>{t.icons}</h4><div className="as-row"><SystemIconButton icon="plus" label={t.favorite} aria-pressed={saved} onClick={() => setSaved(!saved)} /><SystemIconButton icon="replay" label={t.replay} onClick={() => setReplayed(true)} /></div><p className="as-note" role="status">{replayed ? t.replayed : '\u00a0'}</p></article>
-      <article className="as-card"><h3>{t.auto}</h3><p className="as-note">{t.autoHint}</p><SystemTabs label={`${t.tabs}: ${t.auto}`} value={autoTab} onChange={setAutoTab} options={options} /></article>
-      <article className="as-card"><h3>{t.manual}</h3><p className="as-note">{t.manualHint}</p><SystemTabs activation="manual" label={`${t.tabs}: ${t.manual}`} value={manualTab} onChange={setManualTab} options={options} /></article>
-      <article className="as-card as-wide"><h3>{t.vertical}</h3><SystemTabs orientation="vertical" activation="manual" label={`${t.tabs}: ${t.vertical}`} value={verticalTab} onChange={setVerticalTab} options={options} /></article>
+      </div><p className="act-note" role="status">{removed ? t.removed : t.normal}</p><h4>{t.sizes}</h4><div className="act-row">{(['small', 'medium', 'large'] as const).map(size => <SystemButton key={size} size={size} onClick={() => document.getElementById('workbench')?.scrollIntoView({ behavior: 'instant' })}>{t.sizeLabel}</SystemButton>)}</div></article>
+      <article className="act-card"><h3>{t.pending}</h3><div className="act-row"><SystemButton variant="primary" loading={busy} onClick={() => { setBusy(true); setCompleted(false); }}>{t.start}</SystemButton><SystemButton disabled={!busy} onClick={() => { setBusy(false); setCompleted(true); }}>{t.finish}</SystemButton></div><p className="act-note" role="status">{busy ? t.waiting : completed ? t.complete : t.idle}</p><SystemButton disabled aria-describedby={`${id}-unavailable`}>{t.unavailable}</SystemButton><p className="act-note" id={`${id}-unavailable`}>{t.reason}</p><h4>{t.icons}</h4><div className="act-row"><SystemIconButton icon="plus" label={t.favorite} aria-pressed={saved} onClick={() => setSaved(!saved)} /><SystemIconButton icon="replay" label={t.replay} onClick={() => setReplayed(true)} /></div><p className="act-note" role="status">{replayed ? t.replayed : '\u00a0'}</p></article>
+      <article className="act-card"><h3>{t.auto}</h3><p className="act-note">{t.autoHint}</p><SystemTabs label={`${t.tabs}: ${t.auto}`} value={autoTab} onChange={setAutoTab} options={options} /></article>
+      <article className="act-card"><h3>{t.manual}</h3><p className="act-note">{t.manualHint}</p><SystemTabs activation="manual" label={`${t.tabs}: ${t.manual}`} value={manualTab} onChange={setManualTab} options={options} /></article>
+      <article className="act-card act-wide"><h3>{t.vertical}</h3><SystemTabs orientation="vertical" activation="manual" label={`${t.tabs}: ${t.vertical}`} value={verticalTab} onChange={setVerticalTab} options={options} /></article>
     </div>
   </section>;
 }

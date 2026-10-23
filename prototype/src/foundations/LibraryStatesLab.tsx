@@ -1,3 +1,7 @@
+import { SystemContentTile } from './SystemContentTile';
+import { SystemCollectionTile } from './SystemCollectionTile';
+import { SystemPagination } from './SystemPagination';
+import { paginationRange } from './pagination';
 import { SystemSkeleton } from './SystemSkeleton';
 import { SystemEmptyState } from './SystemEmptyState';
 import { SystemButton } from './SystemButton';
@@ -37,10 +41,6 @@ const collectionPitches: Record<LibraryStatesLocale, Record<(typeof collections)
   },
 };
 
-function Arrow({ back = false }: { back?: boolean }) {
-  return <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={back ? 'M15 10H5m5-5-5 5 5 5' : 'M5 10h10m-5-5 5 5-5 5'} /></svg>;
-}
-
 /** A bounded system specimen: local paging and explicit appearance examples only. */
 export function LibraryStatesLab({ locale, onOpenMaterial }: { locale: LibraryStatesLocale; onOpenMaterial: () => void }) {
   const t = libraryStatesCopy[locale];
@@ -52,10 +52,7 @@ export function LibraryStatesLab({ locale, onOpenMaterial }: { locale: LibrarySt
   const [announcement, setAnnouncement] = useState<'page' | 'restored' | 'mode' | null>(null);
   const collection = collections.find(({ id: itemId }) => itemId === collectionId);
   const materials = collection ? discoveryMaterials.filter(({ id: materialId }) => (collection.ids as readonly string[]).includes(materialId)) : discoveryMaterials;
-  const pageCount = Math.max(1, Math.ceil(materials.length / pageSize));
-  const currentPage = Math.min(Math.max(page, 1), pageCount);
-  const first = materials.length === 0 ? 0 : (currentPage - 1) * pageSize + 1;
-  const last = Math.min(currentPage * pageSize, materials.length);
+  const { pages: pageCount, current: currentPage, first, last } = paginationRange(materials.length, pageSize, page);
   const range = libraryText(t.range, { first, last, total: materials.length });
   const pageLabel = libraryText(t.page, { page: currentPage, pages: pageCount });
   const liveText = !announcement ? '' : mode === 'loading' ? `${t.loadingTitle}. ${t.loadingBody}` : mode === 'empty' ? `${t.emptyTitle}. ${t.emptyBody}` : mode === 'error' ? `${t.errorTitle}. ${t.errorBody}` : `${announcement === 'restored' ? `${t.restored} ` : ''}${collection?.name ?? t.all}. ${range}. ${pageLabel}.`;
@@ -72,13 +69,12 @@ export function LibraryStatesLab({ locale, onOpenMaterial }: { locale: LibrarySt
   };
 
   const renderMaterials = (items: readonly DiscoveryMaterial[]) => <ul className="ls-materials">
-    {items.map((material) => <li className="ls-material" key={material.id}>
-      <div className="ls-material-meta"><span>{material.id} · {t.categories[material.category]}</span><span>{material.access === 'free' ? t.free : t.pro}</span></div>
-      <p className="ls-material-name">{material.name}</p>
-      <h4>{material.pitch[locale]}</h4>
-      <p className="ls-material-description">{material.description[locale]}</p>
-      <div className="ls-material-bottom"><span className={material.available ? 'ls-readiness ls-readiness-ready' : 'ls-readiness'}>{material.available ? t.ready : t.notBuilt}</span>{material.available && <button type="button" className="ls-button" onClick={onOpenMaterial}>{t.open}</button>}</div>
-    </li>)}
+    {items.map((material) => <li key={material.id}><SystemContentTile density="compact" headingLevel={4}
+      name={material.name} title={material.pitch[locale]} description={material.description[locale]}
+      metadata={<><span>{material.id} · {t.categories[material.category]}</span><span>{material.access === 'free' ? t.free : t.pro}</span></>}
+      status={<span className={material.available ? 'ls-readiness ls-readiness-ready' : 'ls-readiness'}>{material.available ? t.ready : t.notBuilt}</span>}
+      action={material.available ? { state: 'ready', label: t.open, onOpen: onOpenMaterial } : { state: 'planned', label: t.planned, reason: t.notBuilt }}
+    /></li>)}
   </ul>;
 
   return <section id="library-states" className="ls-lab" aria-labelledby={`${id}-title`} lang={locale}>
@@ -94,16 +90,14 @@ export function LibraryStatesLab({ locale, onOpenMaterial }: { locale: LibrarySt
     </div>
     <p className="ls-caption" id={`${id}-collection-note`}>{t.collectionScope}</p>
     <div className="ls-collections" role="group" aria-labelledby={`${id}-collections`} aria-describedby={`${id}-collection-note`}>
-      {collections.map((entry, index) => {
+      {collections.map((entry) => {
         const count = discoveryMaterials.filter(({ id: materialId }) => (entry.ids as readonly string[]).includes(materialId)).length;
-        return <button type="button" key={entry.id} className="ls-collection" aria-pressed={entry.id === collectionId} onClick={() => selectCollection(entry.id)}>
-          <span className={`ls-collection-mark ls-collection-mark-${index}`} aria-hidden="true"><i /><i /><i /></span>
-          <span className="ls-collection-top"><span>{entry.name}</span><span className="ls-access">{entry.access === 'free' ? t.free : t.pro} · {t.planned}</span></span>
-          <span className="ls-collection-pitch">{collectionPitches[locale][entry.id]}</span>
-          <span className="ls-collection-count">{libraryText(t.plannedItems, { count: entry.ids.length })}</span>
-          <span className="ls-members"><span>{t.members}: </span>{entry.ids.join(' · ')}</span>
-          <span className="ls-collection-action">{libraryText(t.sampleMatches, { count })}</span>
-        </button>;
+        return <SystemCollectionTile key={entry.id} name={entry.name} title={collectionPitches[locale][entry.id]}
+          accessLabel={`${entry.access === 'free' ? t.free : t.pro} · ${t.planned}`}
+          countLabel={libraryText(t.plannedItems, { count: entry.ids.length })}
+          membersLabel={t.members} memberIds={entry.ids}
+          actionLabel={libraryText(t.sampleMatches, { count })}
+          selected={entry.id === collectionId} onSelect={() => selectCollection(entry.id)} />;
       })}
     </div>
 
@@ -135,13 +129,12 @@ export function LibraryStatesLab({ locale, onOpenMaterial }: { locale: LibrarySt
         <div className="ls-pagination-stack">
           {resultSets.map((set) => {
             const active = mode === 'results' && collectionId === set.id;
-            const count = Math.max(1, Math.ceil(set.materials.length / pageSize));
             const selectedPage = collectionId === set.id ? currentPage : 1;
-            return <nav className="ls-pagination" key={set.id} aria-label={t.pagination} data-active={active} aria-hidden={!active || undefined} inert={!active || undefined}>
-              <button type="button" className="ls-page" aria-label={t.previous} title={t.previous} aria-disabled={selectedPage === 1} onClick={() => { if (currentPage > 1) selectPage(currentPage - 1); }}><Arrow back /></button>
-              <div>{Array.from({ length: count }, (_, index) => index + 1).map((number) => <button type="button" className="ls-page" key={number} aria-label={libraryText(t.page, { page: number, pages: count })} aria-current={number === selectedPage ? 'page' : undefined} onClick={() => selectPage(number)}>{number}</button>)}</div>
-              <button type="button" className="ls-page" aria-label={t.next} title={t.next} aria-disabled={selectedPage === count} onClick={() => { if (currentPage < pageCount) selectPage(currentPage + 1); }}><Arrow /></button>
-            </nav>;
+            return <div key={set.id} className="ls-pagination-frame" data-active={active} aria-hidden={!active || undefined} inert={!active || undefined}>
+              <SystemPagination total={set.materials.length} pageSize={pageSize} page={selectedPage} onPageChange={selectPage}
+                label={t.pagination} previousLabel={t.previous} nextLabel={t.next}
+                pageLabel={(number, pages) => libraryText(t.page, { page: number, pages })} />
+            </div>;
           })}
         </div>
       </div>

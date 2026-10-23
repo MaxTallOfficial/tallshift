@@ -27,3 +27,5 @@
 @media (prefers-reduced-motion:reduce) { .sys-search-control { transition:none; } }
 html[data-motion="off"] .sys-search-control { transition:none; }
 @media (forced-colors:active) { .sys-search-control:focus-within,.sys-search .sys-search-clear:focus-visible { outline:2px solid Highlight; outline-offset:0; box-shadow:none; }.sys-search-list > li[data-active] { border-color:Highlight; }.sys-search[data-disabled] .sys-search-control { opacity:1; color:GrayText; } }
+
+.sys-search-retry { min-height:44px; margin-top:8px; padding:8px 14px; border:1px solid var(--f-control-border); border-radius:8px; color:var(--f-text); background:var(--f-surface); font:600 14px/1.5 var(--sy-font-ui); }.sys-search-retry:focus-visible { outline:2px solid var(--f-focus); outline-offset:2px; }

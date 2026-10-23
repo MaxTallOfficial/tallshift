@@ -1,0 +1,4 @@
+.system-type { margin:0; font-family:Manrope,sans-serif; font-size:var(--type-desktop); font-weight:var(--type-weight); line-height:var(--type-leading); letter-spacing:var(--type-tracking); overflow-wrap:anywhere; color:inherit; }
+.system-type:lang(vi) { letter-spacing:0; }
+.system-type[data-numeric] { font-variant-numeric:tabular-nums; }
+@media(max-width:767px) { .system-type { font-size:var(--type-mobile); } }

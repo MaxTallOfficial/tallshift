@@ -1,6 +1,7 @@
 import { useId, useState } from 'react';
 import { accessProductOffer, accessStatesCopy, type AccessScenario, type AccessStatesLocale } from './access-states-copy';
-import { SystemButton } from './SystemButton';
+import { SystemOffer } from './SystemOffer';
+import { SystemEntitlementState } from './SystemEntitlementState';
 import { SystemAccordion } from './SystemAccordion';
 import './access-states-lab.css';
 
@@ -43,30 +44,12 @@ export function AccessStatesLab({ locale, onOpenMaterial }: AccessStatesLabProps
     </div>
 
     <div className="as-offers">
-      <article className="as-offer as-offer-free" aria-labelledby={`${id}-free-title`}>
-        <header className="as-offer-head">
-          <div><span className="as-id">A001</span><p className="as-offer-name">State Relay</p></div>
-          <AccessMark kind="free" />
-        </header>
-        <span className="as-badge as-badge-free">{t.freeAccess}</span>
-        <h3 id={`${id}-free-title`} className="as-claim">{t.freeClaim} <span>{t.freeClaimAccent}</span></h3>
-        <p className="as-description">{t.freeDescription}</p>
-        <ul className="as-benefits">{t.freeBenefits.map(benefit => <li key={benefit}>{benefit}</li>)}</ul>
-        <div className="as-free-footer">
-          <SystemButton variant="primary" onClick={onOpenMaterial}>{t.open}</SystemButton>
-          <p>{t.freeDelivery}</p>
-        </div>
-      </article>
-
-      <article className="as-offer as-offer-pro" aria-labelledby={`${id}-pro-title`}>
-        <header className="as-offer-head">
-          <div><span className="as-id">{accessProductOffer.offerId}</span><p className="as-offer-name">{accessProductOffer.name}</p></div>
-          <AccessMark kind="pro" />
-        </header>
-        <span className="as-badge">{t.planned}</span>
-        <h3 id={`${id}-pro-title`} className="as-claim">{t.proClaim} <span>{t.proClaimAccent}</span></h3>
-        <p className="as-description">{t.proDescription}</p>
-        <ul className="as-benefits">{t.proBenefits.map(benefit => <li key={benefit}>{benefit}</li>)}</ul>
+      <SystemOffer offer={{ id: 'A001', name: 'State Relay', availability: 'available', badge: t.freeAccess,
+        headline: <>{t.freeClaim} <span>{t.freeClaimAccent}</span></>, description: t.freeDescription,
+        benefits: t.freeBenefits, deliveryNote: t.freeDelivery }} illustration={<AccessMark kind="free" />} action={{ label: t.open, onAction: onOpenMaterial }} />
+      <SystemOffer offer={{ id: accessProductOffer.offerId, name: accessProductOffer.name, availability: 'planned', badge: t.planned,
+        headline: <>{t.proClaim} <span>{t.proClaimAccent}</span></>, description: t.proDescription,
+        benefits: t.proBenefits, priceLabel: t.notOnSale, priceNote: t.priceNote, deliveryNote: t.packNote }} illustration={<AccessMark kind="pro" />} details={
         <SystemAccordion className="as-offer-details" headingLevel={4} items={[{ id: 'offer-scope', title: t.details, content: <>
         <div className="as-scope"><p>{t.scope}</p><ul aria-label={t.scope}>{accessProductOffer.itemIds.map(itemId => <li key={itemId}><code>{itemId}</code></li>)}</ul></div>
         <dl className="as-offer-facts">
@@ -75,8 +58,7 @@ export function AccessStatesLab({ locale, onOpenMaterial }: AccessStatesLabProps
           <div><dt>{t.updates}</dt><dd>{t.updatesValue}</dd></div>
         </dl>
         </> }]} />
-        <div className="as-pro-footer"><p className="as-sale-state">{t.notOnSale}</p><p className="as-price-note">{t.priceNote}</p><p className="as-pack-note">{t.packNote}</p></div>
-      </article>
+      } />
     </div>
 
     <div className="as-access-panel">
@@ -94,20 +76,11 @@ export function AccessStatesLab({ locale, onOpenMaterial }: AccessStatesLabProps
           const active = scenario === value;
           const state = t.scenarios[value];
           const isFree = value === 'free';
-          const reasonId = `${id}-${value}-action-reason`;
-          return <div key={value} className="as-state" data-scenario={value} data-active={active} inert={!active} aria-hidden={!active}>
-            <div className="as-state-copy" role={active ? 'status' : undefined} aria-live={active ? 'polite' : undefined} aria-atomic={active ? true : undefined}>
-              <span className="as-simulated">{t.simulated}</span>
-              <span className="as-state-item" aria-label={t.scenarioItem}>{isFree ? 'A001 · State Relay' : 'PACK-PRODUCT · Product'}</span>
-              <span className="as-state-status"><span aria-hidden="true" />{state.status}</span>
-              <h3>{state.title}</h3>
-              <p>{state.body}</p>
-            </div>
-            <div className="as-state-action">
-              <SystemButton variant={isFree ? 'primary' : 'secondary'} className={!isFree ? 'as-button-unavailable' : undefined} disabled={!isFree} onClick={isFree ? onOpenMaterial : undefined} aria-describedby={reasonId}>{state.action}</SystemButton>
-              <p id={reasonId}>{state.reason}</p>
-            </div>
-          </div>;
+          return <SystemEntitlementState key={value} active={active} announce state={{ kind: value,
+            simulationLabel: t.simulated, itemLabel: isFree ? 'A001 · State Relay' : 'PACK-PRODUCT · Product',
+            status: state.status, title: state.title, body: state.body,
+            action: { label: state.action, reason: state.reason, disabled: !isFree, onAction: isFree ? onOpenMaterial : undefined },
+          }} />;
         })}
       </div>
     </div>

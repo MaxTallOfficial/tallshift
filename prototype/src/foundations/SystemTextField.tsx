@@ -12,7 +12,7 @@ export interface SystemFieldProps {
   className?: string;
   announceError?: boolean;
 }
-export type SystemTextInputProps = SystemFieldProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'className' | 'size'>;
+export type SystemTextInputProps = SystemFieldProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'className' | 'size' | 'prefix'> & { prefix?: ReactNode; suffix?: ReactNode };
 export type SystemTextareaProps = SystemFieldProps & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'className'>;
 
 function FieldFrame({ id, label, description, error, requirement, counter, className = '', announceError, children }: SystemFieldProps & { id: string; children: ReactNode }) {
@@ -28,9 +28,10 @@ function describedBy(id: string, description: ReactNode, error: ReactNode, count
 }
 
 /** Native single-line input. The caller owns validation, value and translated messages. */
-export const SystemTextInput = forwardRef<HTMLInputElement, SystemTextInputProps>(function SystemTextInput({ id: suppliedId, label, description, error, requirement, counter, className, announceError, 'aria-describedby': externalDescription, ...input }, ref) {
+export const SystemTextInput = forwardRef<HTMLInputElement, SystemTextInputProps>(function SystemTextInput({ id: suppliedId, label, description, error, requirement, counter, className, announceError, prefix, suffix, 'aria-describedby': externalDescription, ...input }, ref) {
   const generatedId = useId(); const id = suppliedId ?? generatedId;
-  return <FieldFrame {...{ id, label, description, error, requirement, counter, className, announceError }}><input {...input} id={id} ref={ref} className="system-field-control" aria-invalid={error ? true : input['aria-invalid']} aria-describedby={describedBy(id, description, error, counter, externalDescription)} /></FieldFrame>;
+  const control = <input {...input} id={id} ref={ref} className="system-field-control" aria-invalid={error ? true : input['aria-invalid']} aria-describedby={[describedBy(id, description, error, counter, externalDescription), prefix ? `${id}-prefix` : '', suffix ? `${id}-suffix` : ''].filter(Boolean).join(' ') || undefined} />;
+  return <FieldFrame {...{ id, label, description, error, requirement, counter, className, announceError }}>{prefix || suffix ? <div className="system-field-affixed" data-disabled={input.disabled || undefined} data-invalid={Boolean(error) || undefined}>{prefix && <span id={`${id}-prefix`}>{prefix}</span>}{control}{suffix && <span id={`${id}-suffix`}>{suffix}</span>}</div> : control}</FieldFrame>;
 });
 /** Native resizable textarea. Counter is explicit so callers can use their chosen counting policy. */
 export const SystemTextarea = forwardRef<HTMLTextAreaElement, SystemTextareaProps>(function SystemTextarea({ id: suppliedId, label, description, error, requirement, counter, className, announceError, 'aria-describedby': externalDescription, ...textarea }, ref) {

@@ -1,8 +1,15 @@
+import { SystemNavigationShell } from './SystemNavigationShell';
+import { SystemBrandMark } from './SystemBrandMark';
+import { SystemLocaleControl } from './SystemLocaleControl';
+import { SystemTypography } from './SystemTypography';
+import { SystemCodePanel } from './SystemCodePanel';
+import { SystemPromptPanel, SystemCopyFallback } from './SystemPromptPanel';
+import { SystemDownloadAction } from './SystemDownloadAction';
+import { CompletionStatesSpecimen } from './CompletionStatesSpecimen';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { AfterlightExample } from '../study/AfterlightExample';
 import { PromptDocument } from '../study/PromptDocument';
 import { studyArchive, studyFiles, studyPrompt } from '../study/recipe';
-import { languages } from '../study/copy';
 import { words as baseWords, type Locale } from './copy';
 import { getSaffronTheme, saffronContrastChecks } from './tokens';
 import { DiscoveryLab } from './DiscoveryLab';
@@ -24,7 +31,6 @@ import { SystemCheckbox } from './SystemCheckbox';
 import { LibraryStatesLab } from './LibraryStatesLab';
 import { AccessStatesLab } from './AccessStatesLab';
 import { SourceNavigator } from './SourceNavigator';
-import { SystemSegmentedControl } from './SystemSegmentedControl';
 import { SystemIcon } from './SystemIcon';
 import { IconSpecimen } from './IconSpecimen';
 import { SystemColorControl, SystemHexColorField } from './SystemColorControl';
@@ -47,9 +53,6 @@ const emptyCopy = { key: '', state: 'idle' as 'idle' | 'busy' | 'done' | 'error'
 
 function CopyIcon({ done = false }: { done?: boolean }) {
   return <SystemIcon name={done ? 'check' : 'copy'} size={20} />;
-}
-function Source({ text }: { text: string }) {
-  return <code>{text.split(/("[^"\n]*"|'[^'\n]*'|\b(?:import|from|export|default|function|return|const|as|true|false)\b|\b\d+\b)/g).map((part, i) => <span key={i} className={/^['"]/.test(part) ? 'sy-string' : /^\d+$/.test(part) ? 'sy-number' : /^(import|from|export|default|function|return|const|as|true|false)$/.test(part) ? 'sy-keyword' : undefined}>{part}</span>)}</code>;
 }
 function saveFile(bytes: BlobPart, type: string, name: string) {
   const url = URL.createObjectURL(new Blob([bytes], { type }));
@@ -78,6 +81,7 @@ export function SystemStudy() {
   const [noticeKey, setNoticeKey] = useState(0);
   const notify = (message: string) => { setNotice(message); setNoticeKey(key => key + 1); };
   const [zipBusy, setZipBusy] = useState(false);
+  const [zipError,setZipError] = useState('');
   const [active, setActive] = useState('');
   const workHeading = useRef<HTMLHeadingElement>(null);
   const copying = useRef(false);
@@ -155,13 +159,13 @@ export function SystemStudy() {
   }
   async function downloadArchive() {
     if (archiveBusy.current) return;
-    archiveBusy.current = true; setZipBusy(true);
+    archiveBusy.current = true; setZipBusy(true); setZipError('');
     const captured = { ...config, context, mode: 'preserve' as const };
     try {
       const bytes = await studyArchive(captured);
       saveFile(new Uint8Array(bytes).buffer, 'application/zip', `A001-${captured.target}-${captured.locale}-${captured.accent === theme['--f-accent'] ? 'saffron-lighter' : captured.accent.slice(1).toLowerCase()}.zip`);
       if (alive.current) notify(t.zipDone);
-    } catch { if (alive.current) notify(t.zipError); }
+    } catch { if (alive.current) { setZipError(t.zipError); notify(t.zipError); } }
     finally { archiveBusy.current = false; if (alive.current) setZipBusy(false); }
   }
   function exportSystem() {
@@ -180,10 +184,9 @@ export function SystemStudy() {
   }
 
   return <div id="top" className="system-study" style={style} data-motion={off ? 'off' : 'on'}>
-    <a className="sy-skip" href="#discovery">{t.discovery}</a>
-    <header className="sy-header sy-width"><div className="sy-header-main"><a className="sy-brand" href="#top">tallshift<span aria-hidden="true" /></a><span className="sy-edition">{t.edition}</span><div className="sy-locales"><SystemSegmentedControl label={b.languageLabel} value={locale} options={languages.map(language => ({ value: language.id, label: language.short, ariaLabel: language.label, lang: language.id }))} onChange={setLocale} /></div></div><nav aria-label={t.nav}>{navIds.map((id, i) => <a key={id} href={`#${id}`} aria-current={active === id ? 'location' : undefined}>{navLabels[i]}</a>)}</nav></header>
+    <SystemNavigationShell className="sy-width" brand={<SystemBrandMark aria-label={locale === 'ru' ? 'Tallshift — на главную' : locale === 'vi' ? 'Tallshift — trang chủ' : 'Tallshift — home'} />} edition={t.edition} localeControl={<SystemLocaleControl locale={locale} onChange={setLocale} label={b.languageLabel} />} label={t.nav} items={navIds.map((id,i)=>({id,href:`#${id}`,label:navLabels[i]}))} activeId={active} skipLink={{href:'#discovery',label:t.discovery}} menuLabels={{open:locale==='ru'?'Навигация':locale==='vi'?'Điều hướng':'Navigation',close:locale==='ru'?'Закрыть навигацию':locale==='vi'?'Đóng điều hướng':'Close navigation'}} />
     <main className="sy-width">
-      <section className="sy-intro"><div><p className="sy-kicker">AFTERLIGHT / SYSTEM STUDY</p><h1>{t.title}<span>{t.titleSecond}</span></h1><p className="sy-lead">{t.intro}</p></div><aside className="sy-decisions" aria-label={t.approved}><span>{t.approved}</span><strong><i aria-hidden="true" />{t.introColor}</strong><p>{t.introType}</p><p>{t.introBase}</p><span className="sy-review">{t.review}</span></aside></section>
+      <section className="sy-intro"><div><p className="sy-kicker">AFTERLIGHT / SYSTEM STUDY</p><SystemTypography as="h1" textRole="display">{t.title}<span>{t.titleSecond}</span></SystemTypography><p className="sy-lead">{t.intro}</p></div><aside className="sy-decisions" aria-label={t.approved}><span>{t.approved}</span><strong><i aria-hidden="true" />{t.introColor}</strong><p>{t.introType}</p><p>{t.introBase}</p><span className="sy-review">{t.review}</span></aside></section>
       <DiscoveryLab locale={locale} onOpenMaterial={openMaterial} />
       <LibraryStatesLab locale={locale} onOpenMaterial={openMaterial} />
       <section id="workbench" className="sy-section" aria-labelledby="sy-work-title"><header className="sy-section-heading"><span className="sy-kicker">02 / A001</span><h2 id="sy-work-title" tabIndex={-1} ref={workHeading}>{t.workTitle}</h2><p>{t.workIntro}</p></header>
@@ -192,11 +195,11 @@ export function SystemStudy() {
           <div className="sy-workbar"><SystemTabList className="sy-tabs" label={b.viewLabel} value={view} onChange={setView} options={views.map(item => ({ value: item, label: b[item], tabId: `sy-tab-${item}`, panelId: `sy-panel-${item}` }))} /><SystemButton variant="primary" className="sy-button sy-button-primary" loading={view === 'demo' ? zipBusy : copyPending} onClick={() => { if (view === 'demo') void downloadArchive(); else void copyText(view === 'source' ? selectedFile.content : prompt); }}>{view === 'demo' ? <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M10 3v9m-4-4 4 4 4-4M4 13v4h12v-4" /></svg> : <CopyIcon done={copy.state === 'done'} />}{view === 'demo' ? t.getFiles : copy.state === 'done' ? b.copied : view === 'source' ? t.copySource : b.copyPrompt}</SystemButton></div>
           <div className="sy-work-body"><div className="sy-representations">
             <div id="sy-panel-demo" role="tabpanel" aria-labelledby="sy-tab-demo" inert={view !== 'demo'} aria-hidden={view !== 'demo'}><SystemPreviewViewport locale={locale} label="A001 — State Relay" width={width} onWidthChange={setWidth} motionOff={off}><AfterlightExample key={previewRevision} {...config} /></SystemPreviewViewport></div>
-            <div id="sy-panel-source" role="tabpanel" aria-labelledby="sy-tab-source" inert={view !== 'source'} aria-hidden={view !== 'source'}><div className="sy-filebar"><SystemSelect label={t.file} value={selectedFile.path} options={sourceFiles.map(file => ({ value: file.path, label: file.path }))} onChange={setFilePath} /><SystemCheckbox className="sy-check" label={t.wrap} checked={wrap} onChange={setWrap} /></div><div className="sy-source-layout"><SourceNavigator locale={locale} files={sourceFiles} selectedPath={selectedFile.path} onSelect={setFilePath} onCopy={() => void copyText(selectedFile.content)} copyBusy={copyPending} /><pre className="sy-source" data-wrap={wrap} tabIndex={0}><Source text={selectedFile.content} /></pre></div><p className="sy-help">{t.fileNote}</p></div>
-            <div id="sy-panel-prompt" role="tabpanel" aria-labelledby="sy-tab-prompt" inert={view !== 'prompt'} aria-hidden={view !== 'prompt'}><div className="sy-prompt"><PromptDocument locale={locale} files={files} prompt={prompt} /></div></div>
-          </div><aside className="sy-work-settings"><SystemRadioGroup label={t.target} value={target} onChange={setTarget} options={[{value:'next',label:'Next.js'},{value:'vite',label:'Vite'}]} /><SystemHexColorField locale={locale} value={previewAccent} onChange={setPreviewAccent} /><SystemTextarea className="sy-context" label={t.context} description={t.contextNote} maxLength={4000} value={context} onChange={event => setContext(event.target.value)} placeholder={t.contextPlaceholder} /><SystemButton className="sy-button sy-button-secondary" loading={zipBusy} onClick={() => void downloadArchive()}>{t.zip}</SystemButton><span className="sy-work-identity"><i aria-hidden="true" style={{ background: previewAccent }} />{previewAccent === theme['--f-accent'] ? 'Saffron Lighter' : previewAccent} / Manrope</span></aside></div>
+            <div id="sy-panel-source" role="tabpanel" aria-labelledby="sy-tab-source" inert={view !== 'source'} aria-hidden={view !== 'source'}><SystemCodePanel label={t.file} source={selectedFile.content} filePath={selectedFile.path} wrap={wrap} toolbar={<div className="sy-filebar"><SystemSelect label={t.file} value={selectedFile.path} options={sourceFiles.map(file=>({value:file.path,label:file.path}))} onChange={setFilePath}/><SystemCheckbox className="sy-check" label={t.wrap} checked={wrap} onChange={setWrap}/></div>} navigation={<SourceNavigator locale={locale} files={sourceFiles} selectedPath={selectedFile.path} onSelect={setFilePath} onCopy={()=>void copyText(selectedFile.content)} copyBusy={copyPending}/>} description={t.fileNote}/></div>
+            <div id="sy-panel-prompt" role="tabpanel" aria-labelledby="sy-tab-prompt" inert={view !== 'prompt'} aria-hidden={view !== 'prompt'}><SystemPromptPanel label={b.copyPrompt} prompt={prompt}><PromptDocument locale={locale} files={files} prompt={prompt} /></SystemPromptPanel></div>
+          </div><aside className="sy-work-settings"><SystemRadioGroup label={t.target} value={target} onChange={setTarget} options={[{value:'next',label:'Next.js'},{value:'vite',label:'Vite'}]} /><SystemHexColorField locale={locale} value={previewAccent} onChange={setPreviewAccent} /><SystemTextarea className="sy-context" label={t.context} description={t.contextNote} maxLength={4000} value={context} onChange={event => setContext(event.target.value)} placeholder={t.contextPlaceholder} /><SystemDownloadAction label={t.zip} onDownload={downloadArchive} loading={zipBusy} error={zipError} failureMessage={t.zipError}/><span className="sy-work-identity"><i aria-hidden="true" style={{ background: previewAccent }} />{previewAccent === theme['--f-accent'] ? 'Saffron Lighter' : previewAccent} / Manrope</span></aside></div>
         </div>
-        {copy.state === 'error' && <div className="sy-copy-error" role="alert"><p>{b.copyError}</p><label>{b.manualCopy}<textarea readOnly value={copy.value} onFocus={event => event.currentTarget.select()} /></label></div>}
+        {copy.state === 'error' && <SystemCopyFallback title={b.copyError} label={b.manualCopy} value={copy.value}/>}
       </section>
       <AccessStatesLab locale={locale} onOpenMaterial={openMaterial} />
       <InteractionLab locale={locale} motionOff={off} />
@@ -205,6 +208,7 @@ export function SystemStudy() {
       <FloatingSpecimen locale={locale} />
       <FeedbackSpecimen locale={locale} motionOff={off} />
       <ControlAuditSpecimen locale={locale} />
+      <CompletionStatesSpecimen locale={locale}/>
       <IconSpecimen locale={locale} />
       <ProgressSpecimen locale={locale} motionOff={off} />
       <div className="sy-foundations"><TypeLayoutSpecimen locale={locale} /></div>

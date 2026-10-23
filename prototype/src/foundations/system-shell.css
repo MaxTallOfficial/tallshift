@@ -1,0 +1,12 @@
+.system-brand { display:inline-flex; min-height:44px; align-items:center; font:650 29px/1 Manrope,sans-serif; letter-spacing:-.055em; color:var(--f-text); text-decoration:none; }
+.system-brand > span { display:inline-flex; align-items:center; gap:6px; }.system-brand i { width:6px; height:6px; margin-top:-20px; border-radius:50%; background:var(--f-accent); }
+.system-brand[data-compact] { min-width:44px; justify-content:center; }.system-brand[data-inverse] { color:var(--f-on-accent); }.system-brand[data-inverse] i { background:currentColor; }
+.system-shell-main { display:flex; align-items:center; flex-wrap:wrap; gap:16px 24px; min-height:88px; padding-block:12px; }
+.system-shell-edition { color:var(--f-muted); font-size:12px; line-height:1.5; }.system-shell-locale { margin-left:auto; }.system-shell-toggle.system-button { display:none; }
+.system-shell nav { display:flex; gap:28px; overflow-x:auto; min-height:55px; border-block:1px solid var(--f-line); scrollbar-width:thin; }
+.system-shell nav a { display:flex; flex:0 0 auto; min-height:54px; align-items:center; border-bottom:2px solid transparent; color:var(--f-secondary); font-size:13px; line-height:1.5; text-decoration:none; }
+.system-shell nav a[aria-current] { color:var(--f-accent); border-bottom-color:var(--f-accent); }.system-shell nav a:hover { color:var(--f-text); }
+.system-shell :is(a,button):focus-visible { outline:2px solid var(--sy-focus-ring); outline-offset:4px; border-radius:4px; }
+.system-shell-skip:not(:focus) { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }.system-shell-skip:focus { position:fixed; top:12px; left:12px; z-index:70; padding:12px 16px; border-radius:8px; color:var(--f-on-accent); background:var(--f-accent); }
+@media(max-width:767px) { .system-shell-main { gap:12px; min-height:80px; }.system-brand { font-size:26px; }.system-shell-edition { display:none; }.system-shell-toggle.system-button { display:inline-flex; width:100%; }.system-shell nav { display:none; }.system-shell[data-mobile-open=true] nav { display:grid; grid-template-columns:minmax(0,1fr); gap:0; overflow:visible; padding-block:8px; }.system-shell nav a { padding-inline:12px; border-bottom:0; border-left:2px solid transparent; min-height:44px; overflow-wrap:anywhere; }.system-shell nav a[aria-current] { border-left-color:currentColor; background:var(--f-inset); } }
+@media(forced-colors:active) { .system-brand i { background:CanvasText; }.system-shell nav a[aria-current] { color:LinkText; border-color:Highlight; } }

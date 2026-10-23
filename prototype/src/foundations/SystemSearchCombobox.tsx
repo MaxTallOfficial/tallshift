@@ -20,6 +20,11 @@ export interface SystemSearchComboboxProps {
   clearLabel: string;
   listLabel: string;
   emptyText: string;
+  status?: 'ready' | 'loading' | 'error';
+  loadingText?: string;
+  errorText?: string;
+  retryLabel?: string;
+  onRetry?: () => void;
   hint?: string;
   locale?: string;
   disabled?: boolean;
@@ -30,7 +35,8 @@ export interface SystemSearchComboboxProps {
 interface MenuPlacement { above: boolean; height: number; width: number; left: number }
 
 /** Editable, synchronous local search. Suggestions never filter a second time inside the control. */
-export function SystemSearchCombobox({ label, placeholder, value, onChange, onSelect, options, clearLabel, listLabel, emptyText, hint, locale, disabled = false, readOnly = false, inputRef }: SystemSearchComboboxProps) {
+export function SystemSearchCombobox({ label, placeholder, value, onChange, onSelect, options, clearLabel, listLabel, emptyText, hint, locale, status = 'ready', loadingText, errorText, retryLabel, onRetry, disabled = false, readOnly = false, inputRef }: SystemSearchComboboxProps) {
+  const suggestions = status === 'ready' ? options : [];
   const id = useId();
   const rootRef = useRef<HTMLDivElement>(null);
   const controlRef = useRef<HTMLDivElement>(null);
@@ -41,7 +47,7 @@ export function SystemSearchCombobox({ label, placeholder, value, onChange, onSe
   const [activeValue, setActiveValue] = useState<string | null>(null);
   const [placement, setPlacement] = useState<MenuPlacement>({ above: false, height: 280, width: 0, left: 0 });
   const expanded = open && !disabled && !readOnly;
-  const activeIndex = activeValue === null ? -1 : options.findIndex(option => option.value === activeValue);
+  const activeIndex = activeValue === null ? -1 : suggestions.findIndex(option => option.value === activeValue);
   const activeId = expanded && activeIndex >= 0 ? `${id}-option-${activeIndex}` : undefined;
 
   function close() {
@@ -53,7 +59,7 @@ export function SystemSearchCombobox({ label, placeholder, value, onChange, onSe
     setOpen(true);
   }
   function select(index: number) {
-    const option = options[index];
+    const option = suggestions[index];
     if (!option || disabled || readOnly) return;
     onChange(option.label);
     onSelect?.(option);
@@ -62,7 +68,7 @@ export function SystemSearchCombobox({ label, placeholder, value, onChange, onSe
   }
 
   useEffect(() => { if (disabled || readOnly) { setOpen(false); setActiveValue(null); } }, [disabled, readOnly]);
-  useEffect(() => { setActiveValue(null); }, [value]);
+  useEffect(() => { setActiveValue(null); }, [value, status]);
   useEffect(() => {
     if (!expanded) return;
     const outside = (event: PointerEvent) => {
@@ -87,7 +93,7 @@ export function SystemSearchCombobox({ label, placeholder, value, onChange, onSe
       const gap = 8;
       const below = viewportTop + viewportHeight - rect.bottom - inset - gap;
       const above = rect.top - viewportTop - inset - gap;
-      const desired = Math.min(280, Math.max(52, options.length * 60 + 10));
+      const desired = Math.min(280, Math.max(52, suggestions.length * 60 + 10));
       const useAbove = below < desired && above > below;
       const width = Math.max(0, Math.min(rect.width, viewportWidth - inset * 2));
       const left = Math.max(viewportLeft + inset, Math.min(rect.left, viewportLeft + viewportWidth - inset - width)) - rect.left;
@@ -112,7 +118,7 @@ export function SystemSearchCombobox({ label, placeholder, value, onChange, onSe
       window.visualViewport?.removeEventListener('scroll', position);
       observer.disconnect();
     };
-  }, [expanded, options.length]);
+  }, [expanded, suggestions.length]);
 
   useLayoutEffect(() => {
     if (!expanded || activeIndex < 0) return;
@@ -130,10 +136,10 @@ export function SystemSearchCombobox({ label, placeholder, value, onChange, onSe
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
       event.preventDefault();
       show();
-      if (!options.length) { setActiveValue(null); return; }
+      if (!suggestions.length) { setActiveValue(null); return; }
       const direction = event.key === 'ArrowDown' ? 1 : -1;
-      const next = activeIndex < 0 ? (direction > 0 ? 0 : options.length - 1) : (activeIndex + direction + options.length) % options.length;
-      setActiveValue(options[next].value);
+      const next = activeIndex < 0 ? (direction > 0 ? 0 : suggestions.length - 1) : (activeIndex + direction + suggestions.length) % suggestions.length;
+      setActiveValue(suggestions[next].value);
     } else if (event.key === 'Enter' && expanded && activeIndex >= 0) {
       event.preventDefault();
       select(activeIndex);
@@ -150,16 +156,18 @@ export function SystemSearchCombobox({ label, placeholder, value, onChange, onSe
     <label htmlFor={`${id}-input`} className="sys-search-label">{label}</label>
     <div ref={controlRef} className="sys-search-control" data-expanded={expanded || undefined}>
       <span className="sys-search-icon"><SystemIcon name="search" size={20} /></span>
-      <input ref={element => { ownInputRef.current = element; if (inputRef) inputRef.current = element; }} id={`${id}-input`} className="sys-search-input" type="text" inputMode="search" role="combobox" autoComplete="off" autoCorrect="off" spellCheck={false} disabled={disabled} readOnly={readOnly} aria-readonly={readOnly || undefined} value={value} placeholder={placeholder} aria-autocomplete="list" aria-haspopup="listbox" aria-expanded={expanded} aria-controls={expanded ? `${id}-list` : undefined} aria-activedescendant={activeId} aria-describedby={hint ? `${id}-hint` : undefined} onFocus={show} onClick={show} onChange={event => { onChange(event.target.value); setActiveValue(null); show(); }} onKeyDown={keyDown} onCompositionStart={() => { composing.current = true; setActiveValue(null); }} onCompositionEnd={() => { composing.current = false; }} />
+      <input ref={element => { ownInputRef.current = element; if (inputRef) inputRef.current = element; }} id={`${id}-input`} className="sys-search-input" type="text" inputMode="search" role="combobox" autoComplete="off" autoCorrect="off" spellCheck={false} disabled={disabled} readOnly={readOnly} aria-readonly={readOnly || undefined} value={value} placeholder={placeholder} aria-busy={status === 'loading' || undefined} aria-invalid={status === 'error' || undefined} aria-autocomplete="list" aria-haspopup="listbox" aria-expanded={expanded} aria-controls={expanded ? `${id}-list` : undefined} aria-activedescendant={activeId} aria-describedby={hint ? `${id}-hint` : undefined} onFocus={show} onClick={show} onChange={event => { onChange(event.target.value); setActiveValue(null); show(); }} onKeyDown={keyDown} onCompositionStart={() => { composing.current = true; setActiveValue(null); }} onCompositionEnd={() => { composing.current = false; }} />
       {value && !readOnly && <button className="sys-search-clear" type="button" disabled={disabled} aria-label={clearLabel} onPointerDown={event => event.preventDefault()} onClick={() => { onChange(''); setActiveValue(null); show(); ownInputRef.current?.focus({ preventScroll: true }); }}><SystemIcon name="close" size={20} /></button>}
       {expanded && <div className={`sys-search-menu${placement.above ? ' sys-search-menu-above' : ''}`} style={menuStyle}>
         <ul ref={listRef} id={`${id}-list`} className="sys-search-list" role="listbox" aria-label={listLabel}>
-          {options.map((option, index) => <li key={option.value} id={`${id}-option-${index}`} data-search-option-index={index} role="option" aria-selected={activeIndex === index} data-active={activeIndex === index || undefined} onPointerMove={event => { if (event.pointerType !== 'touch') setActiveValue(option.value); }} onMouseDown={event => event.preventDefault()} onClick={() => select(index)}>
+          {suggestions.map((option, index) => <li key={option.value} id={`${id}-option-${index}`} data-search-option-index={index} role="option" aria-selected={activeIndex === index} data-active={activeIndex === index || undefined} onPointerMove={event => { if (event.pointerType !== 'touch') setActiveValue(option.value); }} onMouseDown={event => event.preventDefault()} onClick={() => select(index)}>
             <span className="sys-search-option-copy"><span className="sys-search-option-label">{option.label}</span>{option.detail && <span className="sys-search-option-detail">{option.detail}</span>}</span>
             {option.meta && <span className="sys-search-option-meta">{option.meta}</span>}
           </li>)}
         </ul>
-        {!options.length && <p className="sys-search-empty" role="status">{emptyText}</p>}
+        {status === 'loading' && <p className="sys-search-empty" role="status">{loadingText ?? hint ?? label}</p>}
+        {status === 'error' && <div className="sys-search-empty"><p role="alert">{errorText ?? hint ?? label}</p>{onRetry && retryLabel && <button type="button" className="sys-search-retry" onClick={() => { ownInputRef.current?.focus(); onRetry(); }}>{retryLabel}</button>}</div>}
+        {status === 'ready' && !suggestions.length && <p className="sys-search-empty" role="status">{emptyText}</p>}
       </div>}
     </div>
     {hint && <p className="sys-search-hint" id={`${id}-hint`}>{hint}</p>}

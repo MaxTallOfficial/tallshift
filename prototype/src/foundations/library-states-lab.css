@@ -96,3 +96,8 @@ html[data-motion=off] :is(.ls-button,.ls-collection,.ls-state-option),.system-st
 .ls-skeleton { background:var(--sy-component-skeleton-background,var(--f-inset)); }
 .ls-skeleton i { background:var(--sy-component-skeleton-shape,var(--f-raised)); }
 .ls-page[aria-current=page] { background:var(--sy-component-pagination-current-background,var(--f-raised)); color:var(--sy-component-pagination-current-foreground,var(--f-text)); }
+
+.ls-materials > li { display:flex; min-width:0; }
+.ls-materials .system-content-tile { flex:1; }
+.ls-pagination-frame { grid-area:1/1; align-self:start; min-width:0; }
+.ls-pagination-frame[data-active=false] { visibility:hidden; pointer-events:none; }

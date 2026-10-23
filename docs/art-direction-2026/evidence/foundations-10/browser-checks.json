@@ -1,0 +1,139 @@
+{
+  "review": "foundations-10",
+  "scope": "IAB Chromium only; not visual approval or full browser/AT conformance",
+  "responsive": [
+    {
+      "delta": 0,
+      "heights": [
+        833.4765625,
+        833.4765625,
+        833.4765625
+      ],
+      "lang": "en",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "delta": 0,
+      "heights": [
+        748.3984375,
+        748.3984375,
+        748.3984375
+      ],
+      "lang": "en",
+      "scrollWidth": 768,
+      "width": 768
+    },
+    {
+      "delta": 0,
+      "heights": [
+        774.125,
+        774.125,
+        774.125
+      ],
+      "lang": "en",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "delta": 0,
+      "heights": [
+        876.625,
+        876.625,
+        876.625
+      ],
+      "lang": "ru",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "delta": 0,
+      "heights": [
+        748.3984375,
+        748.3984375,
+        748.3984375
+      ],
+      "lang": "ru",
+      "scrollWidth": 768,
+      "width": 768
+    },
+    {
+      "delta": 0,
+      "heights": [
+        797.21875,
+        797.21875,
+        797.21875
+      ],
+      "lang": "ru",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "delta": 0,
+      "heights": [
+        875.4765625,
+        875.4765625,
+        875.4765625
+      ],
+      "lang": "vi",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "delta": 0,
+      "heights": [
+        748.3984375,
+        748.3984375,
+        748.3984375
+      ],
+      "lang": "vi",
+      "scrollWidth": 768,
+      "width": 768
+    },
+    {
+      "delta": 0,
+      "heights": [
+        754.328125,
+        754.328125,
+        754.328125
+      ],
+      "lang": "vi",
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  ],
+  "consumerRuntime": [
+    {
+      "dialogContainsEditedValue": true,
+      "menuBackground": "rgb(30, 29, 25)",
+      "menuFocus": true,
+      "portalInTheme": true,
+      "target": "Next.js"
+    },
+    {
+      "dialogContainsEditedValue": true,
+      "menuBackground": "rgb(30, 29, 25)",
+      "menuFocus": true,
+      "portalInTheme": true,
+      "target": "Vite"
+    }
+  ],
+  "domAudit": {
+    "danglingReferences": [],
+    "duplicateIds": [],
+    "h1Count": 1,
+    "iframeCount": 1
+  },
+  "checks": {
+    "mobileNavigation": "Closed disclosure focuses Workbench heading; Escape returns trigger",
+    "selectGroups": "Library and Framework, 3 options, native keyboard index preserved",
+    "searchRetry": "Error visible; Restore suggestions -> focused combobox and 1 suggestion",
+    "menuSelection": "Checkbox Wrap source lines toggles visible state to On; radio item exposes checked state",
+    "portalTheme": "Within SystemTheme or system-study; never loses scoped color variables"
+  },
+  "limits": [
+    "Safari/Firefox not available through this browser environment",
+    "No real screen reader or touch device run",
+    "No complete combinations/zoom/forced-colors/reduced-motion matrix"
+  ]
+}

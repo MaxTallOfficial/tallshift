@@ -1,0 +1,68 @@
+{
+  "scope": "Installed local tgz in independent Next.js and Vite consumer, type checking and production builds; runtime browser checks recorded separately",
+  "node": "v24.19.0",
+  "next": "16.4.3",
+  "react": "19.3.1",
+  "bundleHash": "a1ecbd52f599496042db6a2bbd4a6c2e185cc4ac72aa043a43ac5c05b6c22961",
+  "tarballHash": "ea6e178a0c4d0f91ab210906f7c3e8895cce6addcb0639ef4e09a8c02e57a8c6",
+  "results": [
+    {
+      "command": "npm",
+      "args": [
+        "run",
+        "build:system"
+      ],
+      "cwd": "prototype",
+      "passed": true,
+      "durationMs": 908
+    },
+    {
+      "command": "npm",
+      "args": [
+        "pack",
+        "/Users/maxtall/Documents/ChatGPT/Vibelock (временное название) 2/packages/tallshift-ui",
+        "--pack-destination",
+        "/Users/maxtall/Documents/ChatGPT/Vibelock (временное название) 2/packages/tallshift-ui"
+      ],
+      "cwd": "prototype",
+      "passed": true,
+      "durationMs": 399
+    },
+    {
+      "command": "npm",
+      "args": [
+        "install",
+        "--no-audit",
+        "--no-fund",
+        "--force",
+        "/Users/maxtall/Documents/ChatGPT/Vibelock (временное название) 2/packages/tallshift-ui/tallshift-ui-0.1.0.tgz"
+      ],
+      "cwd": "prototype/.qa/system-consumer",
+      "passed": true,
+      "durationMs": 407
+    },
+    {
+      "command": "/Users/maxtall/Documents/ChatGPT/Vibelock (временное название) 2/prototype/.qa/system-consumer/node_modules/.bin/next",
+      "args": [
+        "build",
+        "--webpack"
+      ],
+      "cwd": "prototype/.qa/system-consumer",
+      "passed": true,
+      "durationMs": 8566
+    },
+    {
+      "command": "/Users/maxtall/Documents/ChatGPT/Vibelock (временное название) 2/prototype/node_modules/.bin/vite",
+      "args": [
+        "build",
+        "/Users/maxtall/Documents/ChatGPT/Vibelock (временное название) 2/prototype/.qa/system-consumer",
+        "--outDir",
+        "dist-vite",
+        "--emptyOutDir"
+      ],
+      "cwd": "prototype",
+      "passed": true,
+      "durationMs": 463
+    }
+  ]
+}

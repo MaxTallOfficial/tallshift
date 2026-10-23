@@ -1,0 +1,4 @@
+@font-face { font-family:Manrope;src:url('../../../art-direction/assets/fonts/Manrope.ttf') format('truetype');font-weight:200 800;font-display:swap; }
+.tallshift-ui { color:var(--f-text);background:var(--f-canvas);font:400 16px/1.65 Manrope,Arial,sans-serif;color-scheme:dark;font-synthesis:none;-webkit-font-smoothing:antialiased; }
+.tallshift-ui *,.tallshift-ui *::before,.tallshift-ui *::after { box-sizing:border-box; }
+.tallshift-ui :where(h1,h2,h3,h4,h5,h6,p,ul,ol,dl,dd) { margin:0; }

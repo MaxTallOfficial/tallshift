@@ -1,0 +1,37 @@
+.system-content-tile { display:flex; flex-direction:column; min-width:0; overflow:hidden; border:1px solid var(--f-line); border-radius:12px; background:var(--f-surface); color:var(--f-text); }
+.system-content-tile[data-state=ready] { border-color:var(--f-selected-border); }
+.system-content-preview { min-width:0; }
+.system-content-body { display:flex; flex:1; flex-direction:column; min-width:0; padding:24px; }
+.system-content-meta { display:flex; flex-wrap:wrap; align-items:start; justify-content:space-between; gap:8px; color:var(--f-muted); font-size:12px; line-height:1.5; }
+.system-content-tile .system-content-name { margin:20px 0 0; color:var(--f-secondary); font-size:14px; font-weight:600; line-height:1.5; }
+.system-content-tile :is(h3,h4) { margin:8px 0 16px; color:var(--f-text); font-size:24px; font-weight:600; line-height:1.3; letter-spacing:-.015em; overflow-wrap:anywhere; text-wrap:pretty; }
+.system-content-tile[data-state=ready] :is(h3,h4) { color:var(--f-accent); }
+.system-content-tile .system-content-description { margin:0; color:var(--f-secondary); font-size:16px; line-height:1.65; }
+.system-content-status { display:flex; align-items:start; flex-wrap:wrap; gap:8px; margin:18px 0 22px; color:var(--f-muted); font-size:12px; line-height:1.65; }
+.system-content-footer { margin-top:auto; }
+.system-content-actions { display:flex; gap:8px; flex-wrap:wrap; }
+.system-content-actions > .system-button { flex:1; }
+.system-content-tile .system-content-note { margin:10px 0 0; min-height:40px; color:var(--f-muted); font-size:12px; line-height:1.7; }
+.system-content-tile[data-density=compact] { background:var(--f-inset); }
+.system-collection-tile { display:flex; flex-direction:column; align-items:stretch; min-width:0; padding:24px; border:1px solid var(--sy-component-collection-border,var(--f-control-border)); border-radius:12px; background:var(--sy-component-collection-background,var(--f-surface)); color:var(--f-text); text-align:left; font:inherit; cursor:pointer; }
+.system-collection-tile:hover:not(:disabled) { border-color:var(--f-secondary); background:var(--f-raised); }
+.system-collection-tile[aria-pressed=true] { border-color:var(--f-accent); background:var(--f-inset); box-shadow:inset 0 0 0 1px var(--f-accent); }
+.system-collection-tile:disabled { opacity:.55; cursor:not-allowed; }
+.system-collection-tile:focus-visible { outline:2px solid var(--sy-focus-ring,#B8B8B2); outline-offset:4px; }
+.system-collection-name { color:var(--f-secondary); font-size:12px; font-weight:600; line-height:1.5; }
+.system-collection-access { margin-top:4px; color:var(--f-secondary); font-size:12px; line-height:1.5; }
+.system-collection-title { margin-top:16px; font-size:24px; font-weight:600; line-height:1.3; letter-spacing:-.015em; text-wrap:balance; }
+.system-collection-count { margin-top:8px; color:var(--f-secondary); font-size:14px; line-height:1.5; }
+.system-collection-members { margin:16px 0 24px; color:var(--f-muted); font-size:12px; line-height:1.65; overflow-wrap:anywhere; }
+.system-collection-members > span { display:block; }
+.system-collection-action { margin-top:auto; padding-top:16px; border-top:1px solid var(--f-line); font-size:14px; font-weight:600; line-height:1.5; }
+.system-catalog-toolbar { min-width:0; }
+.system-catalog-search-row { display:grid; grid-template-columns:minmax(0,1fr) minmax(210px,260px); align-items:start; gap:24px; padding:32px; border:1px solid var(--f-line); border-bottom:0; border-radius:16px 16px 0 0; background:var(--f-surface); }
+.system-pagination { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:8px; }
+.system-pagination > div { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:4px; }
+.system-pagination .system-button { min-width:44px; padding-inline:10px; }
+.system-pagination [aria-current=page] { background:var(--sy-component-pagination-current-background,var(--f-raised)); color:var(--sy-component-pagination-current-foreground,var(--f-text)); border-color:var(--f-secondary); }
+.system-pagination > div > span { padding:8px 2px; color:var(--f-muted); }
+.system-content-tile:lang(vi) :is(h3,h4),.system-collection-tile:lang(vi) .system-collection-title { letter-spacing:0; }
+@media(max-width:767px) { .system-catalog-search-row { grid-template-columns:minmax(0,1fr); padding:20px; }.system-content-body,.system-collection-tile { padding:16px; }.system-content-tile :is(h3,h4),.system-collection-title { font-size:20px; } }
+@media(max-width:600px) { .system-content-tile .system-content-note { min-height:0; } }

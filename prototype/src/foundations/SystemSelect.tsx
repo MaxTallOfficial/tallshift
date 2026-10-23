@@ -6,6 +6,7 @@ export interface SystemSelectOption {
   value: string;
   label: string;
   disabled?: boolean;
+  group?: string;
 }
 export interface SystemSelectProps {
   label: string;
@@ -143,6 +144,9 @@ export function SystemSelect({ label, value, options, onChange, disabled = false
     }
   }
 
+  const groups: { label?: string; entries: {option: SystemSelectOption; index: number}[] }[] = [];
+  options.forEach((option,index) => { let group = groups.at(-1); if (!group || group.label !== option.group) { group = {label:option.group, entries:[]}; groups.push(group); } group.entries.push({option,index}); });
+  const optionNode = (option: SystemSelectOption, index: number) => <li key={option.value} id={`${id}-option-${index}`} data-system-select-index={index} role="option" aria-selected={value === option.value} aria-disabled={option.disabled || undefined} data-active={activeIndex === index || undefined} onPointerMove={event => { if (!option.disabled && event.pointerType !== 'touch') setActiveValue(option.value); }} onMouseDown={event => event.preventDefault()} onClick={() => choose(index)}><span>{option.label}</span>{value === option.value && <SelectIcon check />}</li>;
   return <div ref={rootRef} className={`sys-select${up ? ' sys-select-up' : ''}`} style={{ '--sys-menu-height': `${room}px` } as CSSProperties}>
     <span id={`${id}-label`} className="sys-select-label">{label}</span>
     <div className="sys-select-control">
@@ -150,9 +154,7 @@ export function SystemSelect({ label, value, options, onChange, disabled = false
       <span id={`${id}-value`} title={selected?.label}>{selected?.label ?? '—'}</span><SelectIcon />
     </button>
     {expanded && <ul id={`${id}-list`} className="sys-select-list" role="listbox" aria-labelledby={`${id}-label`}>
-      {options.map((option, index) => <li key={option.value} id={`${id}-option-${index}`} data-system-select-index={index} role="option" aria-selected={value === option.value} aria-disabled={option.disabled || undefined} data-active={activeIndex === index || undefined} onPointerMove={event => { if (!option.disabled && event.pointerType !== 'touch') setActiveValue(option.value); }} onMouseDown={event => event.preventDefault()} onClick={() => choose(index)}>
-        <span>{option.label}</span>{value === option.value && <SelectIcon check />}
-      </li>)}
+      {groups.map((group,index) => group.label ? <li role="presentation" className="sys-select-group" key={index}><span className="sys-select-group-label" aria-hidden="true">{group.label}</span><ul role="group" aria-label={group.label}>{group.entries.map(entry => optionNode(entry.option,entry.index))}</ul></li> : group.entries.map(entry => optionNode(entry.option,entry.index)))}
     </ul>}
     </div>
     {hint && <p className="sys-select-hint" id={`${id}-hint`}>{hint}</p>}

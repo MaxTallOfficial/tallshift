@@ -1,0 +1,17 @@
+{
+  "name": "tallshift-ui-consumer-smoke",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@tallshift/ui": "file:../../../packages/tallshift-ui/tallshift-ui-0.1.0.tgz",
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/node": "^24"
+  }
+}

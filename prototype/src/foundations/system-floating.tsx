@@ -21,7 +21,7 @@ export function useFloatingState(open: boolean | undefined, defaultOpen: boolean
 export function FloatingPortal({ children, anchor }: { children: ReactNode; anchor?: HTMLElement | null }) {
   if (typeof document === 'undefined') return children;
   const modal = anchor?.closest('dialog[open]') ?? document.activeElement?.closest('dialog[open]');
-  return createPortal(children, modal ?? document.body);
+  return createPortal(children, modal ?? anchor?.closest('[data-tallshift-theme], .system-study') ?? document.body);
 }
 export function useFloatingPosition(open: boolean, trigger: RefObject<HTMLElement | null>, panel: RefObject<HTMLElement | null>, align: 'start' | 'end' = 'start') {
   const [position, setPosition] = useState<CSSProperties>({ position: 'fixed', visibility: 'hidden' });

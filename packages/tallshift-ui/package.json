@@ -1,0 +1,8 @@
+{
+ "name":"@tallshift/ui","version":"0.1.0","private":true,"type":"module",
+ "description":"Tallshift UI implementation candidate: Afterlight, Manrope and Saffron Lighter.",
+ "files":["dist","README.md","Manrope-OFL.txt"],
+ "main":"./dist/index.js","module":"./dist/index.js","types":"./dist/types/foundations/index.d.ts",
+ "exports":{".":{"types":"./dist/types/foundations/index.d.ts","import":"./dist/index.js"},"./styles.css":"./dist/styles.css"},
+ "sideEffects":["**/*.css"],"peerDependencies":{"react":"^19.0.0","react-dom":"^19.0.0"}
+}

@@ -1,0 +1,451 @@
+{
+  "version": "10",
+  "implementation": "v1-candidate",
+  "productionReady": false,
+  "components": [
+    {
+      "id": "01",
+      "name": "Brand mark",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemBrandMark",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "top"
+    },
+    {
+      "id": "02",
+      "name": "Typography",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemTypography",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "system-type"
+    },
+    {
+      "id": "03",
+      "name": "Icon",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemIcon",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "icons"
+    },
+    {
+      "id": "04",
+      "name": "Button",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemButton",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "actions"
+    },
+    {
+      "id": "05",
+      "name": "Icon button",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemIconButton",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "actions"
+    },
+    {
+      "id": "06",
+      "name": "Text link",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemTextLink",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "handoff"
+    },
+    {
+      "id": "07",
+      "name": "Text input",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemTextInput",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "controls"
+    },
+    {
+      "id": "08",
+      "name": "Textarea",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemTextarea",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "controls"
+    },
+    {
+      "id": "09",
+      "name": "Search combobox",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemSearchCombobox",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "discovery"
+    },
+    {
+      "id": "10",
+      "name": "Select",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemSelect",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "discovery"
+    },
+    {
+      "id": "11",
+      "name": "Checkbox",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemCheckbox",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "controls"
+    },
+    {
+      "id": "12",
+      "name": "Radio group",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemRadioGroup",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "workbench"
+    },
+    {
+      "id": "13",
+      "name": "Switch",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemSwitch",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "controls"
+    },
+    {
+      "id": "14",
+      "name": "Slider + number",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemDurationControl",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "roles"
+    },
+    {
+      "id": "15",
+      "name": "Color control",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemColorControl",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "roles"
+    },
+    {
+      "id": "16",
+      "name": "Segmented control",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemSegmentedControl",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "icons"
+    },
+    {
+      "id": "17",
+      "name": "Tabs",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemTabs",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "workbench"
+    },
+    {
+      "id": "18",
+      "name": "Filter chip",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemFilterChip",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "discovery"
+    },
+    {
+      "id": "19",
+      "name": "Badge",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemBadge",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "discovery"
+    },
+    {
+      "id": "20",
+      "name": "Tooltip",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemTooltip",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "floating"
+    },
+    {
+      "id": "21",
+      "name": "Popover",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemPopover",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "floating"
+    },
+    {
+      "id": "22",
+      "name": "Menu",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemMenu",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "floating"
+    },
+    {
+      "id": "23",
+      "name": "Dialog",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemDialog",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "modals"
+    },
+    {
+      "id": "24",
+      "name": "Sheet",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemSheet",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "modals"
+    },
+    {
+      "id": "25",
+      "name": "Accordion",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemAccordion",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "access-states"
+    },
+    {
+      "id": "26",
+      "name": "Toast",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemToastRegion",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "feedback"
+    },
+    {
+      "id": "27",
+      "name": "Inline alert",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemInlineAlert",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "feedback"
+    },
+    {
+      "id": "28",
+      "name": "Status / progress",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemProgress",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "progress"
+    },
+    {
+      "id": "29",
+      "name": "Skeleton",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemSkeleton",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "library-states"
+    },
+    {
+      "id": "30",
+      "name": "Empty / error state",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemEmptyState",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "library-states"
+    },
+    {
+      "id": "31",
+      "name": "Content tile",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemContentTile",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "discovery"
+    },
+    {
+      "id": "32",
+      "name": "Collection tile",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemCollectionTile",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "library-states"
+    },
+    {
+      "id": "33",
+      "name": "Catalog toolbar",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemCatalogToolbar",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "discovery"
+    },
+    {
+      "id": "34",
+      "name": "Preview viewport",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemPreviewViewport",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "workbench",
+      "view": "demo"
+    },
+    {
+      "id": "35",
+      "name": "Motion controls",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemMotionControls",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "roles"
+    },
+    {
+      "id": "36",
+      "name": "Code panel",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemCodePanel",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "workbench",
+      "view": "source"
+    },
+    {
+      "id": "37",
+      "name": "Prompt panel",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemPromptPanel",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "workbench",
+      "view": "prompt"
+    },
+    {
+      "id": "38",
+      "name": "File tree",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SourceNavigator",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "workbench",
+      "view": "source"
+    },
+    {
+      "id": "39",
+      "name": "Download action",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemDownloadAction",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "workbench"
+    },
+    {
+      "id": "40",
+      "name": "Offer / price",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemOffer",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "access-states"
+    },
+    {
+      "id": "41",
+      "name": "Entitlement state",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemEntitlementState",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "access-states"
+    },
+    {
+      "id": "42",
+      "name": "Navigation shell",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemNavigationShell",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "top"
+    },
+    {
+      "id": "43",
+      "name": "Pagination / load more",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemPagination",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "library-states"
+    },
+    {
+      "id": "44",
+      "name": "Locale control",
+      "status": "review-specimen",
+      "implementation": "shared-api",
+      "api": "SystemLocaleControl",
+      "visualApproval": "pending",
+      "releaseVerification": "pending",
+      "specimen": "top"
+    }
+  ]
+}

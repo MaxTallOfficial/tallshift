@@ -1,6 +1,6 @@
 import { useId, useLayoutEffect, useRef, type ReactNode } from 'react';
 import { FloatingPortal, useFloatingDismiss, useFloatingPosition, useFloatingState, type FloatingReason, type FloatingTriggerProps } from './system-floating';
-export interface SystemMenuItem { id: string; label: ReactNode; disabled?: boolean; destructive?: boolean; onSelect: () => void; }
+export interface SystemMenuItem { id: string; label: ReactNode; disabled?: boolean; destructive?: boolean; kind?: 'action' | 'checkbox' | 'radio'; checked?: boolean; onSelect: () => void; }
 export interface SystemMenuProps {
   label: string; items: readonly SystemMenuItem[];
   trigger: (props: FloatingTriggerProps) => ReactNode;
@@ -24,6 +24,6 @@ export function SystemMenu({ label, items, trigger, open, defaultOpen = false, o
       if (event.key === 'End') next = enabled.length - 1;
       if (next !== undefined) { event.preventDefault(); enabled[next]?.focus(); }
       if (event.key === 'Tab') close('focus-out', true);
-    }}>{items.map(item => <button key={item.id} type="button" role="menuitem" tabIndex={-1} disabled={item.disabled} data-destructive={item.destructive || undefined} onClick={() => { if (item.disabled) return; close('action', true); item.onSelect(); }}>{item.label}</button>)}</div></FloatingPortal>}
+    }}>{items.map(item => <button key={item.id} type="button" role={item.kind === 'checkbox' ? 'menuitemcheckbox' : item.kind === 'radio' ? 'menuitemradio' : 'menuitem'} aria-checked={item.kind === 'checkbox' || item.kind === 'radio' ? Boolean(item.checked) : undefined} tabIndex={-1} disabled={item.disabled} data-destructive={item.destructive || undefined} onClick={() => { if (item.disabled) return; close('action', true); item.onSelect(); }}><span>{item.label}</span>{(item.kind === 'checkbox' || item.kind === 'radio') && <span aria-hidden="true" className="system-menu-check">{item.checked ? '✓' : ''}</span>}</button>)}</div></FloatingPortal>}
   </>;
 }

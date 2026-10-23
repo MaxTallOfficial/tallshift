@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1.0.0",
+  "itemId": "A001",
+  "itemVersion": "0.1.0-prototype",
+  "configSchemaVersion": "1.0.0",
+  "shareMode": "appearance",
+  "configProjection": {
+    "motion": "subtle",
+    "accent": "#6D5EF8"
+  }
+}

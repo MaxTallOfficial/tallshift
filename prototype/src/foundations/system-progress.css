@@ -1,0 +1,14 @@
+.sys-progress { min-width:0; color:var(--f-text); font-family:var(--f-font,Manrope,Arial,sans-serif); }
+.sys-progress-heading { display:flex; justify-content:space-between; align-items:baseline; gap:12px; min-width:0; margin-bottom:12px; font-size:14px; font-weight:600; line-height:1.5; }
+.sys-progress-heading > span { min-width:0; overflow-wrap:anywhere; }
+.sys-progress-value { color:var(--f-secondary); text-align:end; font-size:12px; font-weight:400; font-variant-numeric:tabular-nums; }
+.sys-progress-track { position:relative; box-sizing:border-box; width:100%; height:8px; overflow:hidden; border:1px solid var(--f-control-border); border-radius:8px; background:var(--sy-component-progress-track-background,var(--f-inset)); }
+.sys-progress-track > span { display:block; width:var(--sys-progress-fill,0%); height:100%; border-radius:inherit; background:var(--sy-component-progress-fill-background,var(--f-accent)); }
+.sys-progress[data-tone="success"] .sys-progress-track > span { background:var(--sy-component-progress-success,var(--f-success)); }
+.sys-progress[data-tone="error"] .sys-progress-track > span { background:var(--sy-component-progress-error,var(--f-error)); }
+.sys-progress[data-indeterminate] .sys-progress-track > span { width:36%; animation:sys-progress-wait 1400ms ease-in-out infinite; }
+.sys-progress-hint { margin:10px 0 0; color:var(--f-muted); font-size:12px; line-height:1.65; overflow-wrap:anywhere; }
+@keyframes sys-progress-wait { 0% { transform:translateX(-105%); } 100% { transform:translateX(285%); } }
+@media (prefers-reduced-motion:reduce) { .sys-progress[data-indeterminate] .sys-progress-track > span { animation:none; width:36%; margin-inline:auto; } }
+html[data-motion="off"] .sys-progress[data-indeterminate] .sys-progress-track > span,[data-motion="off"] .sys-progress[data-indeterminate] .sys-progress-track > span { animation:none; width:36%; margin-inline:auto; }
+@media (forced-colors:active) { .sys-progress-track { border-color:CanvasText; background:Canvas; }.sys-progress .sys-progress-track > span { background:Highlight; forced-color-adjust:none; } }

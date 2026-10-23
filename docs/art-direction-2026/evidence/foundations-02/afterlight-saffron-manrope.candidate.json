@@ -1,0 +1,479 @@
+{
+  "schemaVersion": 1,
+  "reviewVersion": "foundations-02",
+  "status": "candidate-not-approved",
+  "direction": "afterlight",
+  "palette": {
+    "id": "saffron",
+    "name": "Saffron",
+    "accent": "#E4C56A",
+    "neutrals": {
+      "--f-canvas": "#1C180E",
+      "--f-surface": "#282216",
+      "--f-raised": "#352D1D",
+      "--f-inset": "#151107",
+      "--f-text": "#F2EDDF",
+      "--f-secondary": "#D2C6A7",
+      "--f-muted": "#B9AA85",
+      "--f-line": "#51462D",
+      "--f-control-border": "#A2946D",
+      "--f-code-bg": "#191409",
+      "--f-code-text": "#E5DAC0"
+    }
+  },
+  "typeface": "manrope",
+  "locale": "en",
+  "typography": {
+    "status": "approved-family",
+    "display": {
+      "size": 48,
+      "mobileSize": 32,
+      "weight": 550,
+      "lineHeight": 1.2
+    },
+    "body": {
+      "size": 15,
+      "weight": 400,
+      "lineHeight": 1.7
+    },
+    "ui": {
+      "size": 14,
+      "weight": 600
+    },
+    "families": {
+      "en": "Manrope",
+      "ru": "Manrope",
+      "vi": "Manrope"
+    },
+    "fallback": "Manrope, Arial, sans-serif",
+    "code": "ui-monospace, SFMono-Regular, Consolas, monospace"
+  },
+  "tokens": {
+    "--f-on-accent": "#171C1A",
+    "--f-focus": "#F0DDB2",
+    "--f-success": "#9DC7A8",
+    "--f-success-bg": "#1D3026",
+    "--f-success-border": "#5F8D6A",
+    "--f-error": "#E9A8A3",
+    "--f-error-bg": "#362421",
+    "--f-error-border": "#A66F68",
+    "--f-warning": "#E4C98C",
+    "--f-warning-bg": "#332D1E",
+    "--f-warning-border": "#9F8C5F",
+    "--f-code-keyword": "#B6C8DE",
+    "--f-code-string": "#C2D19A",
+    "--f-code-number": "#DBB998",
+    "--f-canvas": "#1C180E",
+    "--f-surface": "#282216",
+    "--f-raised": "#352D1D",
+    "--f-inset": "#151107",
+    "--f-text": "#F2EDDF",
+    "--f-secondary": "#D2C6A7",
+    "--f-muted": "#B9AA85",
+    "--f-line": "#51462D",
+    "--f-control-border": "#A2946D",
+    "--f-code-bg": "#191409",
+    "--f-code-text": "#E5DAC0",
+    "--f-accent": "#E4C56A",
+    "--f-accent-hover": "#E9CF83",
+    "--f-accent-pressed": "#CFB25F",
+    "--f-selected-bg": "#3D3119",
+    "--f-selected-border": "#B69A51",
+    "--f-selected-text": "#F4E7BC"
+  },
+  "contrast": [
+    {
+      "label": "text / canvas",
+      "foreground": "#F2EDDF",
+      "background": "#1C180E",
+      "ratio": 15.134119332455562,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "secondary / canvas",
+      "foreground": "#D2C6A7",
+      "background": "#1C180E",
+      "ratio": 10.431791267836498,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "muted / canvas",
+      "foreground": "#B9AA85",
+      "background": "#1C180E",
+      "ratio": 7.713814490246332,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Accent text / canvas",
+      "foreground": "#E4C56A",
+      "background": "#1C180E",
+      "ratio": 10.530793620760598,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Control boundary / canvas",
+      "foreground": "#A2946D",
+      "background": "#1C180E",
+      "ratio": 5.894504344038148,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Focus ring / canvas",
+      "foreground": "#F0DDB2",
+      "background": "#1C180E",
+      "ratio": 13.22564036723339,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "text / surface",
+      "foreground": "#F2EDDF",
+      "background": "#282216",
+      "ratio": 13.493462023240248,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "secondary / surface",
+      "foreground": "#D2C6A7",
+      "background": "#282216",
+      "ratio": 9.300903225009927,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "muted / surface",
+      "foreground": "#B9AA85",
+      "background": "#282216",
+      "ratio": 6.877576460973425,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Accent text / surface",
+      "foreground": "#E4C56A",
+      "background": "#282216",
+      "ratio": 9.389172945899992,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Control boundary / surface",
+      "foreground": "#A2946D",
+      "background": "#282216",
+      "ratio": 5.2554938126814825,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Focus ring / surface",
+      "foreground": "#F0DDB2",
+      "background": "#282216",
+      "ratio": 11.79187715571827,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "text / raised",
+      "foreground": "#F2EDDF",
+      "background": "#352D1D",
+      "ratio": 11.625109266427126,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "secondary / raised",
+      "foreground": "#D2C6A7",
+      "background": "#352D1D",
+      "ratio": 8.013067075075261,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "muted / raised",
+      "foreground": "#B9AA85",
+      "background": "#352D1D",
+      "ratio": 5.92528275614651,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Accent text / raised",
+      "foreground": "#E4C56A",
+      "background": "#352D1D",
+      "ratio": 8.08911465637772,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Control boundary / raised",
+      "foreground": "#A2946D",
+      "background": "#352D1D",
+      "ratio": 4.527799442146629,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Focus ring / raised",
+      "foreground": "#F0DDB2",
+      "background": "#352D1D",
+      "ratio": 10.159131893313225,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "text / inset",
+      "foreground": "#F2EDDF",
+      "background": "#151107",
+      "ratio": 16.10091269497123,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "secondary / inset",
+      "foreground": "#D2C6A7",
+      "background": "#151107",
+      "ratio": 11.098191891179331,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "muted / inset",
+      "foreground": "#B9AA85",
+      "background": "#151107",
+      "ratio": 8.20658612003348,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Accent text / inset",
+      "foreground": "#E4C56A",
+      "background": "#151107",
+      "ratio": 11.203518683311149,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Control boundary / inset",
+      "foreground": "#A2946D",
+      "background": "#151107",
+      "ratio": 6.271055337852149,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Focus ring / inset",
+      "foreground": "#F0DDB2",
+      "background": "#151107",
+      "ratio": 14.070516837490867,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Large display text / canvas",
+      "foreground": "#F2EDDF",
+      "background": "#1C180E",
+      "ratio": 15.134119332455562,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Button label / accent",
+      "foreground": "#171C1A",
+      "background": "#E4C56A",
+      "ratio": 10.26196045413803,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Button label / accent-hover",
+      "foreground": "#171C1A",
+      "background": "#E9CF83",
+      "ratio": 11.267486582180188,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Button label / accent-pressed",
+      "foreground": "#171C1A",
+      "background": "#CFB25F",
+      "ratio": 8.367067577179027,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Selected label / selected background",
+      "foreground": "#F4E7BC",
+      "background": "#3D3119",
+      "ratio": 10.293820819286209,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Selected boundary / selected background",
+      "foreground": "#B69A51",
+      "background": "#3D3119",
+      "ratio": 4.679837368332952,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Selected boundary / surface",
+      "foreground": "#B69A51",
+      "background": "#282216",
+      "ratio": 5.809378423726574,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Selected boundary / raised",
+      "foreground": "#B69A51",
+      "background": "#352D1D",
+      "ratio": 5.004991219416365,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Focus ring / selected background",
+      "foreground": "#F0DDB2",
+      "background": "#3D3119",
+      "ratio": 9.499134559859296,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "success label / status background",
+      "foreground": "#9DC7A8",
+      "background": "#1D3026",
+      "ratio": 7.430696212355375,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "success boundary / status background",
+      "foreground": "#5F8D6A",
+      "background": "#1D3026",
+      "ratio": 3.662415260205791,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "success boundary / surface",
+      "foreground": "#5F8D6A",
+      "background": "#282216",
+      "ratio": 4.136907998392619,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Focus ring / success background",
+      "foreground": "#F0DDB2",
+      "background": "#1D3026",
+      "ratio": 10.439379086591895,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "error label / status background",
+      "foreground": "#E9A8A3",
+      "background": "#362421",
+      "ratio": 7.40281168612121,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "error boundary / status background",
+      "foreground": "#A66F68",
+      "background": "#362421",
+      "ratio": 3.5600837512217414,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "error boundary / surface",
+      "foreground": "#A66F68",
+      "background": "#282216",
+      "ratio": 3.829094989047015,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Focus ring / error background",
+      "foreground": "#F0DDB2",
+      "background": "#362421",
+      "ratio": 10.9634444636547,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "warning label / status background",
+      "foreground": "#E4C98C",
+      "background": "#332D1E",
+      "ratio": 8.49075147408944,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "warning boundary / status background",
+      "foreground": "#9F8C5F",
+      "background": "#332D1E",
+      "ratio": 4.163669363327248,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "warning boundary / surface",
+      "foreground": "#9F8C5F",
+      "background": "#282216",
+      "ratio": 4.802772511103182,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Focus ring / warning background",
+      "foreground": "#F0DDB2",
+      "background": "#332D1E",
+      "ratio": 10.2227364581349,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Code text / code background",
+      "foreground": "#E5DAC0",
+      "background": "#191409",
+      "ratio": 13.202452781542872,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Code keyword / code background",
+      "foreground": "#B6C8DE",
+      "background": "#191409",
+      "ratio": 10.743967240174037,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Code string / code background",
+      "foreground": "#C2D19A",
+      "background": "#191409",
+      "ratio": 11.246139375686088,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Code number / code background",
+      "foreground": "#DBB998",
+      "background": "#191409",
+      "ratio": 9.957726376439007,
+      "minimum": 4.5,
+      "passes": true
+    }
+  ],
+  "item": "A001"
+}

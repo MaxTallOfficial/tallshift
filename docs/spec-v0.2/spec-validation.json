@@ -1,0 +1,641 @@
+{
+  "scope": "Specification consistency only; no application, security, accessibility, performance or user research executed",
+  "status": "passed",
+  "checks_passed": 151,
+  "checks": [
+    {
+      "check": "24_unique_ids",
+      "passed": true
+    },
+    {
+      "check": "24_unique_slugs",
+      "passed": true
+    },
+    {
+      "check": "12_sections_8_components_4_effects",
+      "passed": true
+    },
+    {
+      "check": "6_free_18_pro",
+      "passed": true
+    },
+    {
+      "check": "5_unique_offers",
+      "passed": true
+    },
+    {
+      "check": "PACK-PRODUCT_balanced6",
+      "passed": true
+    },
+    {
+      "check": "PACK-PRODUCT_ownership",
+      "passed": true
+    },
+    {
+      "check": "PACK-EDITORIAL_balanced6",
+      "passed": true
+    },
+    {
+      "check": "PACK-EDITORIAL_ownership",
+      "passed": true
+    },
+    {
+      "check": "PACK-PLAYFUL_balanced6",
+      "passed": true
+    },
+    {
+      "check": "PACK-PLAYFUL_ownership",
+      "passed": true
+    },
+    {
+      "check": "18_disjoint_pro_in_bundle",
+      "passed": true
+    },
+    {
+      "check": "free_offer_membership",
+      "passed": true
+    },
+    {
+      "check": "S001_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "S001_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "S001_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "S001_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S001_not_started",
+      "passed": true
+    },
+    {
+      "check": "S002_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "S002_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "S002_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "S002_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S002_not_started",
+      "passed": true
+    },
+    {
+      "check": "S003_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "S003_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "S003_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "S003_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S003_not_started",
+      "passed": true
+    },
+    {
+      "check": "S004_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "S004_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "S004_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "S004_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S004_not_started",
+      "passed": true
+    },
+    {
+      "check": "S005_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "S005_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "S005_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "S005_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S005_not_started",
+      "passed": true
+    },
+    {
+      "check": "S006_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "S006_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "S006_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "S006_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S006_not_started",
+      "passed": true
+    },
+    {
+      "check": "S007_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "S007_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "S007_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "S007_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S007_not_started",
+      "passed": true
+    },
+    {
+      "check": "S008_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "S008_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "S008_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "S008_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S008_not_started",
+      "passed": true
+    },
+    {
+      "check": "S009_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "S009_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "S009_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "S009_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S009_not_started",
+      "passed": true
+    },
+    {
+      "check": "S010_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "S010_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "S010_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "S010_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S010_not_started",
+      "passed": true
+    },
+    {
+      "check": "S011_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "S011_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "S011_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "S011_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S011_not_started",
+      "passed": true
+    },
+    {
+      "check": "S012_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "S012_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "S012_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "S012_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S012_not_started",
+      "passed": true
+    },
+    {
+      "check": "C001_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "C001_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "C001_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "C001_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "C001_not_started",
+      "passed": true
+    },
+    {
+      "check": "C002_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "C002_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "C002_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "C002_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "C002_not_started",
+      "passed": true
+    },
+    {
+      "check": "C003_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "C003_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "C003_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "C003_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "C003_not_started",
+      "passed": true
+    },
+    {
+      "check": "C004_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "C004_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "C004_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "C004_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "C004_not_started",
+      "passed": true
+    },
+    {
+      "check": "C005_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "C005_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "C005_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "C005_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "C005_not_started",
+      "passed": true
+    },
+    {
+      "check": "C006_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "C006_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "C006_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "C006_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "C006_not_started",
+      "passed": true
+    },
+    {
+      "check": "C007_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "C007_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "C007_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "C007_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "C007_not_started",
+      "passed": true
+    },
+    {
+      "check": "C008_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "C008_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "C008_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "C008_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "C008_not_started",
+      "passed": true
+    },
+    {
+      "check": "E001_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "E001_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "E001_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "E001_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "E001_not_started",
+      "passed": true
+    },
+    {
+      "check": "E002_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "E002_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "E002_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "E002_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "E002_not_started",
+      "passed": true
+    },
+    {
+      "check": "E003_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "E003_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "E003_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "E003_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "E003_not_started",
+      "passed": true
+    },
+    {
+      "check": "E004_dependency_scope",
+      "passed": true
+    },
+    {
+      "check": "E004_studio_api_separation",
+      "passed": true
+    },
+    {
+      "check": "E004_unique_studio_keys",
+      "passed": true
+    },
+    {
+      "check": "E004_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "E004_not_started",
+      "passed": true
+    },
+    {
+      "check": "acyclic_dependencies",
+      "passed": true
+    },
+    {
+      "check": "96_families_192_targets",
+      "passed": true
+    },
+    {
+      "check": "8_guides_4_generic_prompts",
+      "passed": true
+    },
+    {
+      "check": "PACK-PRODUCT_complete_showcase",
+      "passed": true
+    },
+    {
+      "check": "PACK-EDITORIAL_complete_showcase",
+      "passed": true
+    },
+    {
+      "check": "PACK-PLAYFUL_complete_showcase",
+      "passed": true
+    },
+    {
+      "check": "S012_exported_pause",
+      "passed": true
+    },
+    {
+      "check": "E003_exported_pause",
+      "passed": true
+    },
+    {
+      "check": "product-spec-v0.2.ru.md_code_fences",
+      "passed": true
+    },
+    {
+      "check": "business-and-product.ru.md_code_fences",
+      "passed": true
+    },
+    {
+      "check": "content-catalog.ru.md_code_fences",
+      "passed": true
+    },
+    {
+      "check": "content-production-and-review.ru.md_code_fences",
+      "passed": true
+    },
+    {
+      "check": "delivery-and-operations.ru.md_code_fences",
+      "passed": true
+    },
+    {
+      "check": "design-and-layout.ru.md_code_fences",
+      "passed": true
+    },
+    {
+      "check": "engineering-and-quality.ru.md_code_fences",
+      "passed": true
+    },
+    {
+      "check": "security-and-privacy.ru.md_code_fences",
+      "passed": true
+    },
+    {
+      "check": "local_links_exist",
+      "passed": true
+    },
+    {
+      "check": "engineering_json_examples_parse",
+      "passed": true
+    }
+  ],
+  "item_counts": {
+    "total": 24,
+    "free": 6,
+    "pro": 18,
+    "sections": 12,
+    "components": 8,
+    "effects": 4
+  },
+  "json_examples_parsed": 2,
+  "acceptance_rows_by_prefix": {
+    "PROD": 10,
+    "CAT": 8,
+    "CNT": 10,
+    "UX": 16,
+    "LAY": 14,
+    "ENG": 18,
+    "QA": 13,
+    "SEC": 38
+  },
+  "local_link_errors": [],
+  "documents": [
+    "docs/product-spec-v0.2.ru.md",
+    "docs/spec-v0.2/business-and-product.ru.md",
+    "docs/spec-v0.2/content-catalog.ru.md",
+    "docs/spec-v0.2/content-production-and-review.ru.md",
+    "docs/spec-v0.2/delivery-and-operations.ru.md",
+    "docs/spec-v0.2/design-and-layout.ru.md",
+    "docs/spec-v0.2/engineering-and-quality.ru.md",
+    "docs/spec-v0.2/security-and-privacy.ru.md"
+  ]
+}

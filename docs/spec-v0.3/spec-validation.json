@@ -1,0 +1,864 @@
+{
+  "status": "passed",
+  "scope": "Planning documents and inventory consistency only. No scripts, website, accessibility/security/performance tests or user studies implemented/executed.",
+  "checks_passed": 210,
+  "counts": {
+    "items": 32,
+    "free": 9,
+    "pro": 23,
+    "animation_listing": 12,
+    "new_animation_items": 8,
+    "animation_categories": 8,
+    "platform_motion_scenarios": 10,
+    "active_offers": 6,
+    "prompt_families": 128,
+    "react_target_cases_planned": 256
+  },
+  "checks": [
+    {
+      "check": "32_unique_ids_slugs",
+      "passed": true
+    },
+    {
+      "check": "type_counts",
+      "passed": true
+    },
+    {
+      "check": "9_free_23_pro",
+      "passed": true
+    },
+    {
+      "check": "original24_identity_and_access_preserved",
+      "passed": true
+    },
+    {
+      "check": "8_new_A_ids",
+      "passed": true
+    },
+    {
+      "check": "old_offer_snapshots_unchanged",
+      "passed": true
+    },
+    {
+      "check": "6_current_offers",
+      "passed": true
+    },
+    {
+      "check": "free_scope9",
+      "passed": true
+    },
+    {
+      "check": "base_themed_packs_still18",
+      "passed": true
+    },
+    {
+      "check": "motion8pro_and3overlap",
+      "passed": true
+    },
+    {
+      "check": "bundle23_union",
+      "passed": true
+    },
+    {
+      "check": "new_prices_not_inherited",
+      "passed": true
+    },
+    {
+      "check": "8_nonempty_unique_categories",
+      "passed": true
+    },
+    {
+      "check": "12_motion_items_not_double_counted",
+      "passed": true
+    },
+    {
+      "check": "4free_8pro_motion",
+      "passed": true
+    },
+    {
+      "check": "S001_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "S001_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S001_planning_status",
+      "passed": true
+    },
+    {
+      "check": "S001_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "S001_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "S002_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "S002_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S002_planning_status",
+      "passed": true
+    },
+    {
+      "check": "S002_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "S002_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "S003_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "S003_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S003_planning_status",
+      "passed": true
+    },
+    {
+      "check": "S003_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "S003_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "S004_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "S004_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S004_planning_status",
+      "passed": true
+    },
+    {
+      "check": "S004_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "S004_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "S005_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "S005_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S005_planning_status",
+      "passed": true
+    },
+    {
+      "check": "S005_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "S005_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "S006_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "S006_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S006_planning_status",
+      "passed": true
+    },
+    {
+      "check": "S006_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "S006_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "S007_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "S007_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S007_planning_status",
+      "passed": true
+    },
+    {
+      "check": "S007_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "S007_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "S008_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "S008_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S008_planning_status",
+      "passed": true
+    },
+    {
+      "check": "S008_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "S008_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "S009_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "S009_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S009_planning_status",
+      "passed": true
+    },
+    {
+      "check": "S009_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "S009_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "S010_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "S010_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S010_planning_status",
+      "passed": true
+    },
+    {
+      "check": "S010_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "S010_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "S011_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "S011_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S011_planning_status",
+      "passed": true
+    },
+    {
+      "check": "S011_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "S011_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "S012_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "S012_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "S012_planning_status",
+      "passed": true
+    },
+    {
+      "check": "S012_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "S012_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "C001_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "C001_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "C001_planning_status",
+      "passed": true
+    },
+    {
+      "check": "C001_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "C001_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "C002_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "C002_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "C002_planning_status",
+      "passed": true
+    },
+    {
+      "check": "C002_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "C002_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "C003_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "C003_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "C003_planning_status",
+      "passed": true
+    },
+    {
+      "check": "C003_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "C003_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "C004_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "C004_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "C004_planning_status",
+      "passed": true
+    },
+    {
+      "check": "C004_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "C004_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "C005_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "C005_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "C005_planning_status",
+      "passed": true
+    },
+    {
+      "check": "C005_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "C005_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "C006_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "C006_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "C006_planning_status",
+      "passed": true
+    },
+    {
+      "check": "C006_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "C006_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "C007_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "C007_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "C007_planning_status",
+      "passed": true
+    },
+    {
+      "check": "C007_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "C007_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "C008_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "C008_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "C008_planning_status",
+      "passed": true
+    },
+    {
+      "check": "C008_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "C008_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "E001_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "E001_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "E001_planning_status",
+      "passed": true
+    },
+    {
+      "check": "E001_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "E001_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "E002_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "E002_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "E002_planning_status",
+      "passed": true
+    },
+    {
+      "check": "E002_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "E002_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "E003_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "E003_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "E003_planning_status",
+      "passed": true
+    },
+    {
+      "check": "E003_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "E003_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "E004_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "E004_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "E004_planning_status",
+      "passed": true
+    },
+    {
+      "check": "E004_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "E004_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "A001_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "A001_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "A001_planning_status",
+      "passed": true
+    },
+    {
+      "check": "A001_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "A001_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "A002_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "A002_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "A002_planning_status",
+      "passed": true
+    },
+    {
+      "check": "A002_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "A002_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "A003_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "A003_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "A003_planning_status",
+      "passed": true
+    },
+    {
+      "check": "A003_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "A003_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "A004_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "A004_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "A004_planning_status",
+      "passed": true
+    },
+    {
+      "check": "A004_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "A004_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "A005_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "A005_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "A005_planning_status",
+      "passed": true
+    },
+    {
+      "check": "A005_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "A005_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "A006_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "A006_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "A006_planning_status",
+      "passed": true
+    },
+    {
+      "check": "A006_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "A006_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "A007_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "A007_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "A007_planning_status",
+      "passed": true
+    },
+    {
+      "check": "A007_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "A007_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "A008_scope_safe_dependencies",
+      "passed": true
+    },
+    {
+      "check": "A008_ru_en_titles",
+      "passed": true
+    },
+    {
+      "check": "A008_planning_status",
+      "passed": true
+    },
+    {
+      "check": "A008_studio_no_callbacks",
+      "passed": true
+    },
+    {
+      "check": "A008_explicit_entitlement_sources",
+      "passed": true
+    },
+    {
+      "check": "acyclic_graph",
+      "passed": true
+    },
+    {
+      "check": "A007_motion_contract_complete",
+      "passed": true
+    },
+    {
+      "check": "A007_prompt_script_instructions_delivery",
+      "passed": true
+    },
+    {
+      "check": "E003_motion_contract_complete",
+      "passed": true
+    },
+    {
+      "check": "E003_prompt_script_instructions_delivery",
+      "passed": true
+    },
+    {
+      "check": "E001_motion_contract_complete",
+      "passed": true
+    },
+    {
+      "check": "E001_prompt_script_instructions_delivery",
+      "passed": true
+    },
+    {
+      "check": "A005_motion_contract_complete",
+      "passed": true
+    },
+    {
+      "check": "A005_prompt_script_instructions_delivery",
+      "passed": true
+    },
+    {
+      "check": "E002_motion_contract_complete",
+      "passed": true
+    },
+    {
+      "check": "E002_prompt_script_instructions_delivery",
+      "passed": true
+    },
+    {
+      "check": "A006_motion_contract_complete",
+      "passed": true
+    },
+    {
+      "check": "A006_prompt_script_instructions_delivery",
+      "passed": true
+    },
+    {
+      "check": "A003_motion_contract_complete",
+      "passed": true
+    },
+    {
+      "check": "A003_prompt_script_instructions_delivery",
+      "passed": true
+    },
+    {
+      "check": "E004_motion_contract_complete",
+      "passed": true
+    },
+    {
+      "check": "E004_prompt_script_instructions_delivery",
+      "passed": true
+    },
+    {
+      "check": "A008_motion_contract_complete",
+      "passed": true
+    },
+    {
+      "check": "A008_prompt_script_instructions_delivery",
+      "passed": true
+    },
+    {
+      "check": "A002_motion_contract_complete",
+      "passed": true
+    },
+    {
+      "check": "A002_prompt_script_instructions_delivery",
+      "passed": true
+    },
+    {
+      "check": "A004_motion_contract_complete",
+      "passed": true
+    },
+    {
+      "check": "A004_prompt_script_instructions_delivery",
+      "passed": true
+    },
+    {
+      "check": "A001_motion_contract_complete",
+      "passed": true
+    },
+    {
+      "check": "A001_prompt_script_instructions_delivery",
+      "passed": true
+    },
+    {
+      "check": "A003_total_duration_capped",
+      "passed": true
+    },
+    {
+      "check": "A007_progress_computed",
+      "passed": true
+    },
+    {
+      "check": "128families_256reactcases",
+      "passed": true
+    },
+    {
+      "check": "motion48families_96cases",
+      "passed": true
+    },
+    {
+      "check": "10_platform_scenarios_not_items",
+      "passed": true
+    },
+    {
+      "check": "product-spec-v0.3.ru.md_balanced_fences",
+      "passed": true
+    },
+    {
+      "check": "motion-catalog.ru.md_balanced_fences",
+      "passed": true
+    },
+    {
+      "check": "site-motion.ru.md_balanced_fences",
+      "passed": true
+    },
+    {
+      "check": "local_links_resolve",
+      "passed": true
+    },
+    {
+      "check": "no_trailing_whitespace",
+      "passed": true
+    }
+  ],
+  "documents": [
+    "docs/product-spec-v0.3.ru.md",
+    "docs/spec-v0.3/motion-catalog.ru.md",
+    "docs/spec-v0.3/site-motion.ru.md"
+  ]
+}

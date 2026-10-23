@@ -1,0 +1,438 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.invalid/ui-library/v1/item-manifest.schema.json",
+  "title": "Author/release bundle manifest; never return raw for private items",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "itemId": {
+      "$ref": "common.schema.json#/$defs/itemId"
+    },
+    "itemVersion": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "kind": {
+      "enum": [
+        "section",
+        "component",
+        "effect",
+        "animation"
+      ]
+    },
+    "access": {
+      "enum": [
+        "free",
+        "pro"
+      ]
+    },
+    "artifactState": {
+      "enum": [
+        "planned",
+        "built"
+      ]
+    },
+    "sourceDigest": {
+      "anyOf": [
+        {
+          "$ref": "common.schema.json#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "configSchemaVersion": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "configSchemaPath": {
+      "$ref": "common.schema.json#/$defs/relativePath"
+    },
+    "exporterVersion": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "entry": {
+      "$ref": "common.schema.json#/$defs/relativePath"
+    },
+    "exportName": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9]*$",
+      "maxLength": 100
+    },
+    "renderProfile": {
+      "enum": [
+        "server-compatible",
+        "client-interactive",
+        "client-motion"
+      ]
+    },
+    "styles": {
+      "const": "css-modules"
+    },
+    "locales": {
+      "$ref": "common.schema.json#/$defs/locales"
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/target"
+      },
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true
+    },
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "peer": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "range": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "license": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              }
+            },
+            "required": [
+              "name",
+              "range",
+              "license"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 20,
+          "uniqueItems": true
+        },
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "range": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "license": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              }
+            },
+            "required": [
+              "name",
+              "range",
+              "license"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 20,
+          "uniqueItems": true
+        },
+        "optional": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "range": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "license": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              }
+            },
+            "required": [
+              "name",
+              "range",
+              "license"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 20,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "peer",
+        "required",
+        "optional"
+      ]
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/file"
+      },
+      "minItems": 1,
+      "maxItems": 200,
+      "uniqueItems": true
+    },
+    "includedItems": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/releaseRef"
+      },
+      "minItems": 0,
+      "maxItems": 32,
+      "uniqueItems": true
+    },
+    "verification": {
+      "$ref": "common.schema.json#/$defs/verification"
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "animationEntry": {
+          "$ref": "common.schema.json#/$defs/relativePath"
+        },
+        "trigger": {
+          "enum": [
+            "state-change",
+            "content-change",
+            "enter-viewport",
+            "selection",
+            "open-close",
+            "layout-change",
+            "native-scroll",
+            "value-change",
+            "pointer-move",
+            "hover-focus"
+          ]
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "minItems": 1,
+          "maxItems": 30,
+          "uniqueItems": true
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "setState",
+              "play",
+              "pause",
+              "replay",
+              "scrub",
+              "reverse",
+              "destroy",
+              "begin",
+              "settle",
+              "run",
+              "reset",
+              "cancel"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true
+        },
+        "markupContract": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "interruptionPolicy": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "focusPolicy": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "cleanupPolicy": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "reducedMotion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "supportedAdapters": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "react-typescript",
+              "dom-typescript"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 2,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "animationEntry",
+        "trigger",
+        "states",
+        "capabilities",
+        "markupContract",
+        "interruptionPolicy",
+        "focusPolicy",
+        "cleanupPolicy",
+        "reducedMotion",
+        "supportedAdapters"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1000
+      },
+      "minItems": 0,
+      "maxItems": 30,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "itemId",
+    "itemVersion",
+    "kind",
+    "access",
+    "artifactState",
+    "sourceDigest",
+    "configSchemaVersion",
+    "configSchemaPath",
+    "exporterVersion",
+    "entry",
+    "exportName",
+    "renderProfile",
+    "styles",
+    "locales",
+    "targets",
+    "dependencies",
+    "files",
+    "includedItems",
+    "verification",
+    "limitations"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "effect",
+              "animation"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "animation"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "artifactState": {
+            "const": "planned"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "sourceDigest": {
+            "type": "null"
+          },
+          "verification": {
+            "properties": {
+              "status": {
+                "const": "planned"
+              }
+            }
+          },
+          "files": {
+            "items": {
+              "properties": {
+                "byteLength": {
+                  "type": "null"
+                },
+                "sha256": {
+                  "type": "null"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "artifactState": {
+            "const": "built"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "sourceDigest": {
+            "$ref": "common.schema.json#/$defs/sha256"
+          },
+          "files": {
+            "items": {
+              "properties": {
+                "byteLength": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 5242880
+                },
+                "sha256": {
+                  "$ref": "common.schema.json#/$defs/sha256"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

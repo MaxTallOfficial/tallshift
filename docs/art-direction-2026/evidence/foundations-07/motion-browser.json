@@ -1,0 +1,27 @@
+[
+  {
+    "applied": "160 ms",
+    "height": 743.859375,
+    "phase": "initial",
+    "rangeHeight": 44
+  },
+  {
+    "applied": "160 ms",
+    "height": 743.859375,
+    "invalid": "true",
+    "phase": "invalid35",
+    "rangeHeight": 44
+  },
+  {
+    "duration": "400ms",
+    "motion": "expressive",
+    "phase": "expressive400"
+  },
+  {
+    "duration": "0ms",
+    "motion": "off",
+    "phase": "off"
+  },
+  "true",
+  "true"
+]

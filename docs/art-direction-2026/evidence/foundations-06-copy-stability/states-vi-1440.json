@@ -1,0 +1,63 @@
+{
+  "locale": "vi",
+  "scrollWidth": 1440,
+  "width": 1440,
+  "access": [
+    {
+      "height": 436.28125,
+      "state": "free"
+    },
+    {
+      "height": 436.28125,
+      "state": "no-access"
+    },
+    {
+      "height": 436.28125,
+      "state": "pending"
+    },
+    {
+      "height": 436.28125,
+      "state": "owner"
+    },
+    {
+      "height": 436.28125,
+      "state": "error"
+    },
+    {
+      "height": 436.28125,
+      "state": "closed"
+    }
+  ],
+  "library": [
+    {
+      "height": 651.1953125,
+      "state": "page 1"
+    },
+    {
+      "height": 651.1953125,
+      "state": "page 2"
+    },
+    {
+      "height": 651.1953125,
+      "state": "page 3"
+    },
+    {
+      "height": 651.1953125,
+      "state": "loading"
+    },
+    {
+      "height": 651.1953125,
+      "state": "empty"
+    },
+    {
+      "height": 651.1953125,
+      "state": "error"
+    },
+    {
+      "height": 651.1953125,
+      "state": "Playful one result"
+    }
+  ],
+  "accessDelta": 0,
+  "libraryDelta": 0
+}

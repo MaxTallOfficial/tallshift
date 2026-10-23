@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "itemId": "A001",
+  "itemVersion": "0.1.0-prototype",
+  "lifecycle": "planned",
+  "manifestPath": "A001.manifest.planned.json",
+  "sourceDigest": null,
+  "bundleDigest": null,
+  "manifestDigest": null,
+  "publishedAt": null,
+  "statusChangedAt": null,
+  "verification": {
+    "status": "planned",
+    "testedAt": null,
+    "reportId": null,
+    "environments": []
+  },
+  "supportStartsAt": null,
+  "supportEndsAt": null,
+  "replacement": null,
+  "statusReason": null
+}

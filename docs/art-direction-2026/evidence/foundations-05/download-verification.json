@@ -1,0 +1,38 @@
+{
+  "downloadedZip": "/Users/maxtall/Downloads/A001-vite-en-saffron-lighter.zip",
+  "fileCount": 23,
+  "checksumCount": 22,
+  "allChecksumsPass": true,
+  "sourceFilesMatchWithExportImportRewrite": [
+    "src/createStateRelay.ts",
+    "src/useStateRelay.ts",
+    "AfterlightExample.tsx",
+    "AfterlightExample.module.css"
+  ],
+  "config": {
+    "locale": "en",
+    "motion": "off",
+    "accent": "#EBD183",
+    "duration": 0
+  },
+  "target": "vite-react-ts",
+  "projectContextPresent": true,
+  "containerQueryPresent": true,
+  "tokenDownload": "/Users/maxtall/Downloads/formrift-afterlight-system-05.tokens.json",
+  "tokenCount": 188,
+  "resolvedCount": 188,
+  "coverage": {
+    "review-specimen": 26,
+    "partial-specimen": 9,
+    "contract-only": 9
+  },
+  "contrastPass": 49,
+  "contrastTotal": 49,
+  "status": "visual-review",
+  "productionReady": false,
+  "limitations": [
+    "This validates the actual downloaded local archive, not independent Next.js or Vite integration builds.",
+    "Clipboard success was observed in UI; system clipboard readback was not independently verified.",
+    "No complete accessibility certification is claimed."
+  ]
+}

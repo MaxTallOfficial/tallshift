@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.invalid/ui-library/v1/public-item.schema.json",
+  "title": "Explicit public allowlist; no source, prompts, object keys, hashes or user rights",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "itemId": {
+      "$ref": "common.schema.json#/$defs/itemId"
+    },
+    "itemVersion": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 100
+    },
+    "kind": {
+      "enum": [
+        "section",
+        "component",
+        "effect",
+        "animation"
+      ]
+    },
+    "access": {
+      "enum": [
+        "free",
+        "pro"
+      ]
+    },
+    "title": {
+      "$ref": "common.schema.json#/$defs/localizedText"
+    },
+    "description": {
+      "$ref": "common.schema.json#/$defs/localizedText"
+    },
+    "categorySlugs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+        "maxLength": 80
+      },
+      "minItems": 1,
+      "maxItems": 10,
+      "uniqueItems": true
+    },
+    "posterPath": {
+      "$ref": "common.schema.json#/$defs/relativePath"
+    },
+    "lifecycle": {
+      "enum": [
+        "planned",
+        "review",
+        "verified",
+        "published",
+        "deprecated",
+        "revoked"
+      ]
+    },
+    "verificationStatus": {
+      "enum": [
+        "planned",
+        "failed",
+        "passed"
+      ]
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/target"
+      },
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true
+    },
+    "locales": {
+      "$ref": "common.schema.json#/$defs/locales"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/localizedText"
+      },
+      "minItems": 0,
+      "maxItems": 30,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "itemId",
+    "itemVersion",
+    "slug",
+    "kind",
+    "access",
+    "title",
+    "description",
+    "categorySlugs",
+    "posterPath",
+    "lifecycle",
+    "verificationStatus",
+    "targets",
+    "locales",
+    "limitations"
+  ]
+}

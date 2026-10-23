@@ -1,0 +1,21 @@
+{
+  "version": "foundations-06",
+  "tokenDownload": "/Users/maxtall/Downloads/formrift-afterlight-system-06.tokens.json",
+  "tokens": 210,
+  "resolved": 210,
+  "coverage": {
+    "review-specimen": 35,
+    "partial-specimen": 9
+  },
+  "contrastPass": 49,
+  "productionReady": false,
+  "sourceDownload": "/Users/maxtall/Downloads/AfterlightExample.module.css",
+  "sourceBytes": 7609,
+  "sourceSha256": "d21999964d3a054503894b73f0d3e8d89df6f4a0c3c44e7ad9ccdcb5a5eb20f5",
+  "sourceMatchesRepository": true,
+  "clipboard": "Copied observed; no independent system clipboard readback",
+  "limitations": [
+    "No payment or server entitlement checks.",
+    "No independent Next.js/Vite integration builds or complete accessibility certification."
+  ]
+}

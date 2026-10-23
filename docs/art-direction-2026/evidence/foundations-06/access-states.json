@@ -1,0 +1,32 @@
+[
+  {
+    "action": "Open State Relay",
+    "disabled": false,
+    "state": "free"
+  },
+  {
+    "action": "Sales are closed",
+    "disabled": true,
+    "state": "no-access"
+  },
+  {
+    "action": "Awaiting confirmation",
+    "disabled": true,
+    "state": "pending"
+  },
+  {
+    "action": "Files are not available yet",
+    "disabled": true,
+    "state": "owner"
+  },
+  {
+    "action": "Access not verified",
+    "disabled": true,
+    "state": "error"
+  },
+  {
+    "action": "Sales are closed",
+    "disabled": true,
+    "state": "closed"
+  }
+]

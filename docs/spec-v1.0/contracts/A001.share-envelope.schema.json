@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.invalid/ui-library/v1/A001.share-envelope.schema.json",
+  "title": "A001 appearance share envelope; no user content exists in this config",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "itemId": {
+      "const": "A001"
+    },
+    "itemVersion": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "configSchemaVersion": {
+      "const": "1.0.0"
+    },
+    "shareMode": {
+      "const": "appearance"
+    },
+    "configProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "motion": {
+          "enum": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        "accent": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        },
+        "duration": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 480,
+          "description": "Optional milliseconds override; absent defaults off=0, subtle=120, expressive=180."
+        }
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "itemId",
+    "itemVersion",
+    "configSchemaVersion",
+    "shareMode",
+    "configProjection"
+  ]
+}

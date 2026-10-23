@@ -1,0 +1,30 @@
+{
+  "presetChecks": [
+    {
+      "label": "Телефон · 320",
+      "contentHeight": 386,
+      "scrollWidth": 320,
+      "width": 320,
+      "height": 440
+    },
+    {
+      "label": "Планшет · 640",
+      "contentHeight": 386,
+      "scrollWidth": 640,
+      "width": 640,
+      "height": 440
+    },
+    {
+      "label": "По ширине",
+      "contentHeight": 380,
+      "scrollWidth": 886,
+      "width": 886,
+      "height": 440
+    }
+  ],
+  "iconCheck": {
+    "count": 30,
+    "size": "20",
+    "stroke": "1.75"
+  }
+}

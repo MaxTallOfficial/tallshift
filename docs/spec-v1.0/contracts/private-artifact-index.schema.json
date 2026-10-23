@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.invalid/ui-library/v1/private-artifact-index.schema.json",
+  "title": "Server-only storage index; schema data must never enter public build",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "itemId": {
+      "$ref": "common.schema.json#/$defs/itemId"
+    },
+    "itemVersion": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "access": {
+      "const": "pro"
+    },
+    "storageNamespace": {
+      "const": "private-artifacts"
+    },
+    "objectKey": {
+      "$ref": "common.schema.json#/$defs/relativePath"
+    },
+    "bundleDigest": {
+      "$ref": "common.schema.json#/$defs/sha256"
+    },
+    "manifestDigest": {
+      "$ref": "common.schema.json#/$defs/sha256"
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "common.schema.json#/$defs/file"
+          },
+          {
+            "properties": {
+              "byteLength": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 5242880
+              },
+              "sha256": {
+                "$ref": "common.schema.json#/$defs/sha256"
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 200,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "itemId",
+    "itemVersion",
+    "access",
+    "storageNamespace",
+    "objectKey",
+    "bundleDigest",
+    "manifestDigest",
+    "files"
+  ]
+}

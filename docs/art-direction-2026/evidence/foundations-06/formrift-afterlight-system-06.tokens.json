@@ -1,0 +1,2699 @@
+{
+  "schemaVersion": 1,
+  "format": "formrift-system-token-graph",
+  "reviewVersion": "foundations-06",
+  "status": "visual-review",
+  "productionReady": false,
+  "approved": {
+    "direction": "afterlight",
+    "typeface": "Manrope",
+    "color": {
+      "family": "saffron",
+      "shade": "light",
+      "value": "#EBD183"
+    }
+  },
+  "locale": "en",
+  "tokens": {
+    "primitive.color.on-accent": {
+      "$type": "color",
+      "$value": "#171C1A",
+      "$description": "Approved dark Saffron base: --f-on-accent."
+    },
+    "primitive.color.focus": {
+      "$type": "color",
+      "$value": "#B8B8B2",
+      "$description": "Approved dark Saffron base: --f-focus."
+    },
+    "primitive.color.success": {
+      "$type": "color",
+      "$value": "#9DC7A8",
+      "$description": "Approved dark Saffron base: --f-success."
+    },
+    "primitive.color.success-bg": {
+      "$type": "color",
+      "$value": "#1D3026",
+      "$description": "Approved dark Saffron base: --f-success-bg."
+    },
+    "primitive.color.success-border": {
+      "$type": "color",
+      "$value": "#5F8D6A",
+      "$description": "Approved dark Saffron base: --f-success-border."
+    },
+    "primitive.color.error": {
+      "$type": "color",
+      "$value": "#E9A8A3",
+      "$description": "Approved dark Saffron base: --f-error."
+    },
+    "primitive.color.error-bg": {
+      "$type": "color",
+      "$value": "#362421",
+      "$description": "Approved dark Saffron base: --f-error-bg."
+    },
+    "primitive.color.error-border": {
+      "$type": "color",
+      "$value": "#A66F68",
+      "$description": "Approved dark Saffron base: --f-error-border."
+    },
+    "primitive.color.warning": {
+      "$type": "color",
+      "$value": "#E4C98C",
+      "$description": "Approved dark Saffron base: --f-warning."
+    },
+    "primitive.color.warning-bg": {
+      "$type": "color",
+      "$value": "#332D1E",
+      "$description": "Approved dark Saffron base: --f-warning-bg."
+    },
+    "primitive.color.warning-border": {
+      "$type": "color",
+      "$value": "#9F8C5F",
+      "$description": "Approved dark Saffron base: --f-warning-border."
+    },
+    "primitive.color.code-keyword": {
+      "$type": "color",
+      "$value": "#B6C8DE",
+      "$description": "Approved dark Saffron base: --f-code-keyword."
+    },
+    "primitive.color.code-string": {
+      "$type": "color",
+      "$value": "#C2D19A",
+      "$description": "Approved dark Saffron base: --f-code-string."
+    },
+    "primitive.color.code-number": {
+      "$type": "color",
+      "$value": "#DBB998",
+      "$description": "Approved dark Saffron base: --f-code-number."
+    },
+    "primitive.color.canvas": {
+      "$type": "color",
+      "$value": "#0D0C09",
+      "$description": "Approved dark Saffron base: --f-canvas."
+    },
+    "primitive.color.surface": {
+      "$type": "color",
+      "$value": "#161512",
+      "$description": "Approved dark Saffron base: --f-surface."
+    },
+    "primitive.color.raised": {
+      "$type": "color",
+      "$value": "#1E1D19",
+      "$description": "Approved dark Saffron base: --f-raised."
+    },
+    "primitive.color.inset": {
+      "$type": "color",
+      "$value": "#090806",
+      "$description": "Approved dark Saffron base: --f-inset."
+    },
+    "primitive.color.text": {
+      "$type": "color",
+      "$value": "#EDECE8",
+      "$description": "Approved dark Saffron base: --f-text."
+    },
+    "primitive.color.secondary": {
+      "$type": "color",
+      "$value": "#C4C3BF",
+      "$description": "Approved dark Saffron base: --f-secondary."
+    },
+    "primitive.color.muted": {
+      "$type": "color",
+      "$value": "#A8A7A3",
+      "$description": "Approved dark Saffron base: --f-muted."
+    },
+    "primitive.color.line": {
+      "$type": "color",
+      "$value": "#3E3D39",
+      "$description": "Approved dark Saffron base: --f-line."
+    },
+    "primitive.color.control-border": {
+      "$type": "color",
+      "$value": "#858480",
+      "$description": "Approved dark Saffron base: --f-control-border."
+    },
+    "primitive.color.code-bg": {
+      "$type": "color",
+      "$value": "#0C0B07",
+      "$description": "Approved dark Saffron base: --f-code-bg."
+    },
+    "primitive.color.code-text": {
+      "$type": "color",
+      "$value": "#DBDAD6",
+      "$description": "Approved dark Saffron base: --f-code-text."
+    },
+    "primitive.color.accent": {
+      "$type": "color",
+      "$value": "#EBD183",
+      "$description": "Approved dark Saffron base: --f-accent."
+    },
+    "primitive.color.accent-hover": {
+      "$type": "color",
+      "$value": "#F0DB9B",
+      "$description": "Approved dark Saffron base: --f-accent-hover."
+    },
+    "primitive.color.accent-pressed": {
+      "$type": "color",
+      "$value": "#D8BE74",
+      "$description": "Approved dark Saffron base: --f-accent-pressed."
+    },
+    "primitive.color.selected-bg": {
+      "$type": "color",
+      "$value": "#24221F",
+      "$description": "Approved dark Saffron base: --f-selected-bg."
+    },
+    "primitive.color.selected-border": {
+      "$type": "color",
+      "$value": "#BBA361",
+      "$description": "Approved dark Saffron base: --f-selected-border."
+    },
+    "primitive.color.selected-text": {
+      "$type": "color",
+      "$value": "#F7EBCB",
+      "$description": "Approved dark Saffron base: --f-selected-text."
+    },
+    "primitive.color.scrim": {
+      "$type": "color",
+      "$value": "#000000B3",
+      "$description": "Dark backdrop; use behind modal content, never as text foreground."
+    },
+    "primitive.font.ui": {
+      "$type": "fontFamily",
+      "$value": "Manrope, Arial, sans-serif",
+      "$description": "Approved family for English, Russian and Vietnamese."
+    },
+    "primitive.font.code": {
+      "$type": "fontFamily",
+      "$value": "ui-monospace, SFMono-Regular, Consolas, monospace",
+      "$description": "Local system monospace; no extra web font."
+    },
+    "primitive.space.0": {
+      "$type": "dimension",
+      "$value": "0px",
+      "$description": "Spacing scale in CSS pixels."
+    },
+    "primitive.space.2": {
+      "$type": "dimension",
+      "$value": "2px",
+      "$description": "Spacing scale in CSS pixels."
+    },
+    "primitive.space.4": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$description": "Spacing scale in CSS pixels."
+    },
+    "primitive.space.8": {
+      "$type": "dimension",
+      "$value": "8px",
+      "$description": "Spacing scale in CSS pixels."
+    },
+    "primitive.space.12": {
+      "$type": "dimension",
+      "$value": "12px",
+      "$description": "Spacing scale in CSS pixels."
+    },
+    "primitive.space.16": {
+      "$type": "dimension",
+      "$value": "16px",
+      "$description": "Spacing scale in CSS pixels."
+    },
+    "primitive.space.24": {
+      "$type": "dimension",
+      "$value": "24px",
+      "$description": "Spacing scale in CSS pixels."
+    },
+    "primitive.space.32": {
+      "$type": "dimension",
+      "$value": "32px",
+      "$description": "Spacing scale in CSS pixels."
+    },
+    "primitive.space.44": {
+      "$type": "dimension",
+      "$value": "44px",
+      "$description": "Spacing scale in CSS pixels."
+    },
+    "primitive.space.48": {
+      "$type": "dimension",
+      "$value": "48px",
+      "$description": "Spacing scale in CSS pixels."
+    },
+    "primitive.space.64": {
+      "$type": "dimension",
+      "$value": "64px",
+      "$description": "Spacing scale in CSS pixels."
+    },
+    "primitive.space.80": {
+      "$type": "dimension",
+      "$value": "80px",
+      "$description": "Spacing scale in CSS pixels."
+    },
+    "primitive.radius.4": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$description": "Corner scale in CSS pixels."
+    },
+    "primitive.radius.8": {
+      "$type": "dimension",
+      "$value": "8px",
+      "$description": "Corner scale in CSS pixels."
+    },
+    "primitive.radius.12": {
+      "$type": "dimension",
+      "$value": "12px",
+      "$description": "Corner scale in CSS pixels."
+    },
+    "primitive.radius.16": {
+      "$type": "dimension",
+      "$value": "16px",
+      "$description": "Corner scale in CSS pixels."
+    },
+    "primitive.duration.response": {
+      "$type": "duration",
+      "$value": "120ms",
+      "$description": "Motion duration; state does not wait for an animation."
+    },
+    "primitive.duration.state": {
+      "$type": "duration",
+      "$value": "160ms",
+      "$description": "Motion duration; state does not wait for an animation."
+    },
+    "primitive.duration.panel": {
+      "$type": "duration",
+      "$value": "180ms",
+      "$description": "Motion duration; state does not wait for an animation."
+    },
+    "primitive.duration.off": {
+      "$type": "duration",
+      "$value": "0ms",
+      "$description": "Motion duration; state does not wait for an animation."
+    },
+    "primitive.ease.standard": {
+      "$type": "cubicBezier",
+      "$value": "cubic-bezier(.2,.8,.2,1)",
+      "$description": "Fast start and quiet finish for local state changes."
+    },
+    "primitive.layer.base": {
+      "$type": "number",
+      "$value": 0,
+      "$description": "Named stacking order; native dialog also uses the browser top layer."
+    },
+    "primitive.layer.sticky": {
+      "$type": "number",
+      "$value": 10,
+      "$description": "Named stacking order; native dialog also uses the browser top layer."
+    },
+    "primitive.layer.floating": {
+      "$type": "number",
+      "$value": 20,
+      "$description": "Named stacking order; native dialog also uses the browser top layer."
+    },
+    "primitive.layer.backdrop": {
+      "$type": "number",
+      "$value": 30,
+      "$description": "Named stacking order; native dialog also uses the browser top layer."
+    },
+    "primitive.layer.modal": {
+      "$type": "number",
+      "$value": 40,
+      "$description": "Named stacking order; native dialog also uses the browser top layer."
+    },
+    "primitive.layer.toast": {
+      "$type": "number",
+      "$value": 50,
+      "$description": "Named stacking order; native dialog also uses the browser top layer."
+    },
+    "semantic.surface.canvas": {
+      "$type": "color",
+      "$value": "{primitive.color.canvas}",
+      "$description": "Interface role: surface.canvas."
+    },
+    "semantic.surface.panel": {
+      "$type": "color",
+      "$value": "{primitive.color.surface}",
+      "$description": "Interface role: surface.panel."
+    },
+    "semantic.surface.raised": {
+      "$type": "color",
+      "$value": "{primitive.color.raised}",
+      "$description": "Interface role: surface.raised."
+    },
+    "semantic.surface.inset": {
+      "$type": "color",
+      "$value": "{primitive.color.inset}",
+      "$description": "Interface role: surface.inset."
+    },
+    "semantic.surface.inverse": {
+      "$type": "color",
+      "$value": "{primitive.color.text}",
+      "$description": "Interface role: surface.inverse."
+    },
+    "semantic.surface.scrim": {
+      "$type": "color",
+      "$value": "{primitive.color.scrim}",
+      "$description": "Interface role: surface.scrim."
+    },
+    "semantic.content.primary": {
+      "$type": "color",
+      "$value": "{primitive.color.text}",
+      "$description": "Interface role: content.primary."
+    },
+    "semantic.content.secondary": {
+      "$type": "color",
+      "$value": "{primitive.color.secondary}",
+      "$description": "Interface role: content.secondary."
+    },
+    "semantic.content.muted": {
+      "$type": "color",
+      "$value": "{primitive.color.muted}",
+      "$description": "Interface role: content.muted."
+    },
+    "semantic.content.inverse": {
+      "$type": "color",
+      "$value": "{primitive.color.on-accent}",
+      "$description": "Interface role: content.inverse."
+    },
+    "semantic.content.onAccent": {
+      "$type": "color",
+      "$value": "{primitive.color.on-accent}",
+      "$description": "Interface role: content.onAccent."
+    },
+    "semantic.action.primary.default": {
+      "$type": "color",
+      "$value": "{primitive.color.accent}",
+      "$description": "Interface role: action.primary.default."
+    },
+    "semantic.action.primary.hover": {
+      "$type": "color",
+      "$value": "{primitive.color.accent-hover}",
+      "$description": "Interface role: action.primary.hover."
+    },
+    "semantic.action.primary.pressed": {
+      "$type": "color",
+      "$value": "{primitive.color.accent-pressed}",
+      "$description": "Interface role: action.primary.pressed."
+    },
+    "semantic.action.secondary.background": {
+      "$type": "color",
+      "$value": "{primitive.color.surface}",
+      "$description": "Interface role: action.secondary.background."
+    },
+    "semantic.action.secondary.foreground": {
+      "$type": "color",
+      "$value": "{primitive.color.text}",
+      "$description": "Interface role: action.secondary.foreground."
+    },
+    "semantic.action.quiet.foreground": {
+      "$type": "color",
+      "$value": "{primitive.color.secondary}",
+      "$description": "Interface role: action.quiet.foreground."
+    },
+    "semantic.action.disabled.background": {
+      "$type": "color",
+      "$value": "{primitive.color.raised}",
+      "$description": "Interface role: action.disabled.background."
+    },
+    "semantic.action.disabled.foreground": {
+      "$type": "color",
+      "$value": "{primitive.color.muted}",
+      "$description": "Interface role: action.disabled.foreground."
+    },
+    "semantic.link.default": {
+      "$type": "color",
+      "$value": "{primitive.color.accent}",
+      "$description": "Interface role: link.default."
+    },
+    "semantic.link.visited": {
+      "$type": "color",
+      "$value": "{primitive.color.accent-pressed}",
+      "$description": "Interface role: link.visited."
+    },
+    "semantic.selection.background": {
+      "$type": "color",
+      "$value": "{primitive.color.selected-bg}",
+      "$description": "Interface role: selection.background."
+    },
+    "semantic.selection.border": {
+      "$type": "color",
+      "$value": "{primitive.color.selected-border}",
+      "$description": "Interface role: selection.border."
+    },
+    "semantic.selection.foreground": {
+      "$type": "color",
+      "$value": "{primitive.color.selected-text}",
+      "$description": "Interface role: selection.foreground."
+    },
+    "semantic.selection.textBackground": {
+      "$type": "color",
+      "$value": "{primitive.color.accent}",
+      "$description": "Interface role: selection.textBackground."
+    },
+    "semantic.selection.textForeground": {
+      "$type": "color",
+      "$value": "{primitive.color.on-accent}",
+      "$description": "Interface role: selection.textForeground."
+    },
+    "semantic.border.subtle": {
+      "$type": "color",
+      "$value": "{primitive.color.line}",
+      "$description": "Interface role: border.subtle."
+    },
+    "semantic.border.control": {
+      "$type": "color",
+      "$value": "{primitive.color.control-border}",
+      "$description": "Interface role: border.control."
+    },
+    "semantic.border.strong": {
+      "$type": "color",
+      "$value": "{primitive.color.muted}",
+      "$description": "Interface role: border.strong."
+    },
+    "semantic.focus.ring": {
+      "$type": "color",
+      "$value": "{primitive.color.focus}",
+      "$description": "Interface role: focus.ring."
+    },
+    "semantic.focus.gapColor": {
+      "$type": "color",
+      "$value": "{primitive.color.canvas}",
+      "$description": "Interface role: focus.gapColor."
+    },
+    "semantic.code.background": {
+      "$type": "color",
+      "$value": "{primitive.color.code-bg}",
+      "$description": "Interface role: code.background."
+    },
+    "semantic.code.foreground": {
+      "$type": "color",
+      "$value": "{primitive.color.code-text}",
+      "$description": "Interface role: code.foreground."
+    },
+    "semantic.code.keyword": {
+      "$type": "color",
+      "$value": "{primitive.color.code-keyword}",
+      "$description": "Interface role: code.keyword."
+    },
+    "semantic.code.string": {
+      "$type": "color",
+      "$value": "{primitive.color.code-string}",
+      "$description": "Interface role: code.string."
+    },
+    "semantic.code.number": {
+      "$type": "color",
+      "$value": "{primitive.color.code-number}",
+      "$description": "Interface role: code.number."
+    },
+    "semantic.media.placeholder": {
+      "$type": "color",
+      "$value": "{primitive.color.inset}",
+      "$description": "Interface role: media.placeholder."
+    },
+    "semantic.media.checkerLight": {
+      "$type": "color",
+      "$value": "{primitive.color.raised}",
+      "$description": "Interface role: media.checkerLight."
+    },
+    "semantic.media.checkerDark": {
+      "$type": "color",
+      "$value": "{primitive.color.surface}",
+      "$description": "Interface role: media.checkerDark."
+    },
+    "semantic.status.success.foreground": {
+      "$type": "color",
+      "$value": "{primitive.color.success}",
+      "$description": "Interface role: status.success.foreground."
+    },
+    "semantic.status.success.icon": {
+      "$type": "color",
+      "$value": "{primitive.color.success}",
+      "$description": "Interface role: status.success.icon."
+    },
+    "semantic.status.success.background": {
+      "$type": "color",
+      "$value": "{primitive.color.success-bg}",
+      "$description": "Interface role: status.success.background."
+    },
+    "semantic.status.success.border": {
+      "$type": "color",
+      "$value": "{primitive.color.success-border}",
+      "$description": "Interface role: status.success.border."
+    },
+    "semantic.status.warning.foreground": {
+      "$type": "color",
+      "$value": "{primitive.color.warning}",
+      "$description": "Interface role: status.warning.foreground."
+    },
+    "semantic.status.warning.icon": {
+      "$type": "color",
+      "$value": "{primitive.color.warning}",
+      "$description": "Interface role: status.warning.icon."
+    },
+    "semantic.status.warning.background": {
+      "$type": "color",
+      "$value": "{primitive.color.warning-bg}",
+      "$description": "Interface role: status.warning.background."
+    },
+    "semantic.status.warning.border": {
+      "$type": "color",
+      "$value": "{primitive.color.warning-border}",
+      "$description": "Interface role: status.warning.border."
+    },
+    "semantic.status.error.foreground": {
+      "$type": "color",
+      "$value": "{primitive.color.error}",
+      "$description": "Interface role: status.error.foreground."
+    },
+    "semantic.status.error.icon": {
+      "$type": "color",
+      "$value": "{primitive.color.error}",
+      "$description": "Interface role: status.error.icon."
+    },
+    "semantic.status.error.background": {
+      "$type": "color",
+      "$value": "{primitive.color.error-bg}",
+      "$description": "Interface role: status.error.background."
+    },
+    "semantic.status.error.border": {
+      "$type": "color",
+      "$value": "{primitive.color.error-border}",
+      "$description": "Interface role: status.error.border."
+    },
+    "semantic.status.info.foreground": {
+      "$type": "color",
+      "$value": "{primitive.color.text}",
+      "$description": "Interface role: status.info.foreground."
+    },
+    "semantic.status.info.icon": {
+      "$type": "color",
+      "$value": "{primitive.color.secondary}",
+      "$description": "Interface role: status.info.icon."
+    },
+    "semantic.status.info.background": {
+      "$type": "color",
+      "$value": "{primitive.color.raised}",
+      "$description": "Interface role: status.info.background."
+    },
+    "semantic.status.info.border": {
+      "$type": "color",
+      "$value": "{primitive.color.control-border}",
+      "$description": "Interface role: status.info.border."
+    },
+    "semantic.control.height": {
+      "$type": "dimension",
+      "$value": "{primitive.space.44}",
+      "$description": "Layout role: control.height."
+    },
+    "semantic.control.iconGap": {
+      "$type": "dimension",
+      "$value": "{primitive.space.8}",
+      "$description": "Layout role: control.iconGap."
+    },
+    "semantic.control.inlinePadding": {
+      "$type": "dimension",
+      "$value": "{primitive.space.16}",
+      "$description": "Layout role: control.inlinePadding."
+    },
+    "semantic.control.stackGap": {
+      "$type": "dimension",
+      "$value": "{primitive.space.12}",
+      "$description": "Layout role: control.stackGap."
+    },
+    "semantic.field.helpGap": {
+      "$type": "dimension",
+      "$value": "{primitive.space.8}",
+      "$description": "Layout role: field.helpGap."
+    },
+    "semantic.group.gap": {
+      "$type": "dimension",
+      "$value": "{primitive.space.24}",
+      "$description": "Layout role: group.gap."
+    },
+    "semantic.card.padding": {
+      "$type": "dimension",
+      "$value": "{primitive.space.24}",
+      "$description": "Layout role: card.padding."
+    },
+    "semantic.panel.padding": {
+      "$type": "dimension",
+      "$value": "{primitive.space.32}",
+      "$description": "Layout role: panel.padding."
+    },
+    "semantic.section.gap": {
+      "$type": "dimension",
+      "$value": "{primitive.space.80}",
+      "$description": "Layout role: section.gap."
+    },
+    "semantic.page.gutter": {
+      "$type": "dimension",
+      "$value": "{primitive.space.32}",
+      "$description": "Layout role: page.gutter."
+    },
+    "semantic.focus.width": {
+      "$type": "dimension",
+      "$value": "{primitive.space.2}",
+      "$description": "Layout role: focus.width."
+    },
+    "semantic.focus.offset": {
+      "$type": "dimension",
+      "$value": "{primitive.space.4}",
+      "$description": "Layout role: focus.offset."
+    },
+    "semantic.radius.control": {
+      "$type": "dimension",
+      "$value": "{primitive.radius.8}",
+      "$description": "Corner role: control."
+    },
+    "semantic.radius.card": {
+      "$type": "dimension",
+      "$value": "{primitive.radius.12}",
+      "$description": "Corner role: card."
+    },
+    "semantic.radius.panel": {
+      "$type": "dimension",
+      "$value": "{primitive.radius.16}",
+      "$description": "Corner role: panel."
+    },
+    "semantic.radius.overlay": {
+      "$type": "dimension",
+      "$value": "{primitive.radius.16}",
+      "$description": "Corner role: overlay."
+    },
+    "semantic.radius.small": {
+      "$type": "dimension",
+      "$value": "{primitive.radius.4}",
+      "$description": "Corner role: small."
+    },
+    "semantic.font.ui": {
+      "$type": "fontFamily",
+      "$value": "{primitive.font.ui}",
+      "$description": "Font role: ui."
+    },
+    "semantic.font.code": {
+      "$type": "fontFamily",
+      "$value": "{primitive.font.code}",
+      "$description": "Font role: code."
+    },
+    "semantic.motion.response": {
+      "$type": "duration",
+      "$value": "{primitive.duration.response}",
+      "$description": "Motion role: response."
+    },
+    "semantic.motion.state": {
+      "$type": "duration",
+      "$value": "{primitive.duration.state}",
+      "$description": "Motion role: state."
+    },
+    "semantic.motion.panel": {
+      "$type": "duration",
+      "$value": "{primitive.duration.panel}",
+      "$description": "Motion role: panel."
+    },
+    "semantic.motion.off": {
+      "$type": "duration",
+      "$value": "{primitive.duration.off}",
+      "$description": "Motion role: off."
+    },
+    "semantic.motion.ease": {
+      "$type": "cubicBezier",
+      "$value": "{primitive.ease.standard}",
+      "$description": "Shared state change easing."
+    },
+    "semantic.layer.base": {
+      "$type": "number",
+      "$value": "{primitive.layer.base}",
+      "$description": "Stacking role: base."
+    },
+    "semantic.layer.sticky": {
+      "$type": "number",
+      "$value": "{primitive.layer.sticky}",
+      "$description": "Stacking role: sticky."
+    },
+    "semantic.layer.floating": {
+      "$type": "number",
+      "$value": "{primitive.layer.floating}",
+      "$description": "Stacking role: floating."
+    },
+    "semantic.layer.backdrop": {
+      "$type": "number",
+      "$value": "{primitive.layer.backdrop}",
+      "$description": "Stacking role: backdrop."
+    },
+    "semantic.layer.modal": {
+      "$type": "number",
+      "$value": "{primitive.layer.modal}",
+      "$description": "Stacking role: modal."
+    },
+    "semantic.layer.toast": {
+      "$type": "number",
+      "$value": "{primitive.layer.toast}",
+      "$description": "Stacking role: toast."
+    },
+    "component.button.primary.background": {
+      "$type": "color",
+      "$value": "{semantic.action.primary.default}",
+      "$description": "Component role: button.primary.background."
+    },
+    "component.button.primary.hover": {
+      "$type": "color",
+      "$value": "{semantic.action.primary.hover}",
+      "$description": "Component role: button.primary.hover."
+    },
+    "component.button.primary.pressed": {
+      "$type": "color",
+      "$value": "{semantic.action.primary.pressed}",
+      "$description": "Component role: button.primary.pressed."
+    },
+    "component.button.primary.foreground": {
+      "$type": "color",
+      "$value": "{semantic.content.onAccent}",
+      "$description": "Component role: button.primary.foreground."
+    },
+    "component.button.secondary.background": {
+      "$type": "color",
+      "$value": "{semantic.surface.panel}",
+      "$description": "Component role: button.secondary.background."
+    },
+    "component.button.secondary.foreground": {
+      "$type": "color",
+      "$value": "{semantic.content.primary}",
+      "$description": "Component role: button.secondary.foreground."
+    },
+    "component.button.secondary.border": {
+      "$type": "color",
+      "$value": "{semantic.border.control}",
+      "$description": "Component role: button.secondary.border."
+    },
+    "component.button.disabled.background": {
+      "$type": "color",
+      "$value": "{semantic.action.disabled.background}",
+      "$description": "Component role: button.disabled.background."
+    },
+    "component.button.disabled.foreground": {
+      "$type": "color",
+      "$value": "{semantic.action.disabled.foreground}",
+      "$description": "Component role: button.disabled.foreground."
+    },
+    "component.input.background": {
+      "$type": "color",
+      "$value": "{semantic.surface.inset}",
+      "$description": "Component role: input.background."
+    },
+    "component.input.foreground": {
+      "$type": "color",
+      "$value": "{semantic.content.primary}",
+      "$description": "Component role: input.foreground."
+    },
+    "component.input.border": {
+      "$type": "color",
+      "$value": "{semantic.border.control}",
+      "$description": "Component role: input.border."
+    },
+    "component.input.errorBorder": {
+      "$type": "color",
+      "$value": "{semantic.status.error.border}",
+      "$description": "Component role: input.errorBorder."
+    },
+    "component.select.background": {
+      "$type": "color",
+      "$value": "{semantic.surface.inset}",
+      "$description": "Component role: select.background."
+    },
+    "component.select.foreground": {
+      "$type": "color",
+      "$value": "{semantic.content.primary}",
+      "$description": "Component role: select.foreground."
+    },
+    "component.select.border": {
+      "$type": "color",
+      "$value": "{semantic.border.control}",
+      "$description": "Component role: select.border."
+    },
+    "component.select.popup.background": {
+      "$type": "color",
+      "$value": "{semantic.surface.raised}",
+      "$description": "Component role: select.popup.background."
+    },
+    "component.select.popup.border": {
+      "$type": "color",
+      "$value": "{semantic.border.control}",
+      "$description": "Component role: select.popup.border."
+    },
+    "component.select.option.selected": {
+      "$type": "color",
+      "$value": "{semantic.selection.background}",
+      "$description": "Component role: select.option.selected."
+    },
+    "component.tabs.selected.background": {
+      "$type": "color",
+      "$value": "{semantic.selection.background}",
+      "$description": "Component role: tabs.selected.background."
+    },
+    "component.tabs.selected.foreground": {
+      "$type": "color",
+      "$value": "{semantic.selection.foreground}",
+      "$description": "Component role: tabs.selected.foreground."
+    },
+    "component.tabs.selected.border": {
+      "$type": "color",
+      "$value": "{semantic.selection.border}",
+      "$description": "Component role: tabs.selected.border."
+    },
+    "component.card.background": {
+      "$type": "color",
+      "$value": "{semantic.surface.panel}",
+      "$description": "Component role: card.background."
+    },
+    "component.card.border": {
+      "$type": "color",
+      "$value": "{semantic.border.subtle}",
+      "$description": "Component role: card.border."
+    },
+    "component.card.title": {
+      "$type": "color",
+      "$value": "{semantic.content.primary}",
+      "$description": "Component role: card.title."
+    },
+    "component.dialog.background": {
+      "$type": "color",
+      "$value": "{semantic.surface.raised}",
+      "$description": "Component role: dialog.background."
+    },
+    "component.dialog.scrim": {
+      "$type": "color",
+      "$value": "{semantic.surface.scrim}",
+      "$description": "Component role: dialog.scrim."
+    },
+    "component.popover.background": {
+      "$type": "color",
+      "$value": "{semantic.surface.raised}",
+      "$description": "Component role: popover.background."
+    },
+    "component.popover.border": {
+      "$type": "color",
+      "$value": "{semantic.border.control}",
+      "$description": "Component role: popover.border."
+    },
+    "component.menu.background": {
+      "$type": "color",
+      "$value": "{semantic.surface.raised}",
+      "$description": "Component role: menu.background."
+    },
+    "component.menu.border": {
+      "$type": "color",
+      "$value": "{semantic.border.control}",
+      "$description": "Component role: menu.border."
+    },
+    "component.menu.item.activeBackground": {
+      "$type": "color",
+      "$value": "{semantic.surface.inset}",
+      "$description": "Component role: menu.item.activeBackground."
+    },
+    "component.sheet.background": {
+      "$type": "color",
+      "$value": "{semantic.surface.panel}",
+      "$description": "Component role: sheet.background."
+    },
+    "component.sheet.border": {
+      "$type": "color",
+      "$value": "{semantic.border.control}",
+      "$description": "Component role: sheet.border."
+    },
+    "component.skeleton.background": {
+      "$type": "color",
+      "$value": "{semantic.surface.inset}",
+      "$description": "Component role: skeleton.background."
+    },
+    "component.skeleton.shape": {
+      "$type": "color",
+      "$value": "{semantic.surface.raised}",
+      "$description": "Component role: skeleton.shape."
+    },
+    "component.collection.background": {
+      "$type": "color",
+      "$value": "{semantic.surface.panel}",
+      "$description": "Component role: collection.background."
+    },
+    "component.collection.border": {
+      "$type": "color",
+      "$value": "{semantic.border.control}",
+      "$description": "Component role: collection.border."
+    },
+    "component.fileTree.background": {
+      "$type": "color",
+      "$value": "{semantic.surface.panel}",
+      "$description": "Component role: fileTree.background."
+    },
+    "component.fileTree.foreground": {
+      "$type": "color",
+      "$value": "{semantic.content.secondary}",
+      "$description": "Component role: fileTree.foreground."
+    },
+    "component.fileTree.selectedBackground": {
+      "$type": "color",
+      "$value": "{semantic.surface.inset}",
+      "$description": "Component role: fileTree.selectedBackground."
+    },
+    "component.offer.background": {
+      "$type": "color",
+      "$value": "{semantic.surface.panel}",
+      "$description": "Component role: offer.background."
+    },
+    "component.offer.border": {
+      "$type": "color",
+      "$value": "{semantic.border.subtle}",
+      "$description": "Component role: offer.border."
+    },
+    "component.offer.price": {
+      "$type": "color",
+      "$value": "{semantic.content.primary}",
+      "$description": "Component role: offer.price."
+    },
+    "component.entitlement.availableForeground": {
+      "$type": "color",
+      "$value": "{semantic.status.success.foreground}",
+      "$description": "Component role: entitlement.availableForeground."
+    },
+    "component.entitlement.pendingForeground": {
+      "$type": "color",
+      "$value": "{semantic.status.warning.foreground}",
+      "$description": "Component role: entitlement.pendingForeground."
+    },
+    "component.entitlement.errorForeground": {
+      "$type": "color",
+      "$value": "{semantic.status.error.foreground}",
+      "$description": "Component role: entitlement.errorForeground."
+    },
+    "component.pagination.currentBackground": {
+      "$type": "color",
+      "$value": "{semantic.surface.raised}",
+      "$description": "Component role: pagination.currentBackground."
+    },
+    "component.pagination.currentForeground": {
+      "$type": "color",
+      "$value": "{semantic.content.primary}",
+      "$description": "Component role: pagination.currentForeground."
+    },
+    "component.toast.success.background": {
+      "$type": "color",
+      "$value": "{semantic.status.success.background}",
+      "$description": "Component role: toast.success.background."
+    },
+    "component.toast.success.foreground": {
+      "$type": "color",
+      "$value": "{semantic.status.success.foreground}",
+      "$description": "Component role: toast.success.foreground."
+    },
+    "component.code.background": {
+      "$type": "color",
+      "$value": "{semantic.code.background}",
+      "$description": "Component role: code.background."
+    },
+    "component.code.foreground": {
+      "$type": "color",
+      "$value": "{semantic.code.foreground}",
+      "$description": "Component role: code.foreground."
+    },
+    "component.prompt.background": {
+      "$type": "color",
+      "$value": "{semantic.surface.inset}",
+      "$description": "Component role: prompt.background."
+    },
+    "component.prompt.foreground": {
+      "$type": "color",
+      "$value": "{semantic.content.secondary}",
+      "$description": "Component role: prompt.foreground."
+    },
+    "component.button.height": {
+      "$type": "dimension",
+      "$value": "{semantic.control.height}",
+      "$description": "Stable control hit area across states."
+    },
+    "component.button.radius": {
+      "$type": "dimension",
+      "$value": "{semantic.radius.control}",
+      "$description": "Shared control corner."
+    },
+    "component.input.height": {
+      "$type": "dimension",
+      "$value": "{semantic.control.height}",
+      "$description": "Stable control hit area across states."
+    },
+    "component.input.radius": {
+      "$type": "dimension",
+      "$value": "{semantic.radius.control}",
+      "$description": "Shared control corner."
+    },
+    "component.select.height": {
+      "$type": "dimension",
+      "$value": "{semantic.control.height}",
+      "$description": "Stable control hit area across states."
+    },
+    "component.select.radius": {
+      "$type": "dimension",
+      "$value": "{semantic.radius.control}",
+      "$description": "Shared control corner."
+    },
+    "component.card.padding": {
+      "$type": "dimension",
+      "$value": "{semantic.card.padding}",
+      "$description": "Comfortable card padding."
+    },
+    "component.dialog.radius": {
+      "$type": "dimension",
+      "$value": "{semantic.radius.overlay}",
+      "$description": "Overlay corner."
+    },
+    "component.button.transition": {
+      "$type": "duration",
+      "$value": "{semantic.motion.response}",
+      "$description": "Feedback starts immediately; no artificial pending delay."
+    }
+  },
+  "resolved": {
+    "primitive.color.on-accent": {
+      "type": "color",
+      "value": "#171C1A"
+    },
+    "primitive.color.focus": {
+      "type": "color",
+      "value": "#B8B8B2"
+    },
+    "primitive.color.success": {
+      "type": "color",
+      "value": "#9DC7A8"
+    },
+    "primitive.color.success-bg": {
+      "type": "color",
+      "value": "#1D3026"
+    },
+    "primitive.color.success-border": {
+      "type": "color",
+      "value": "#5F8D6A"
+    },
+    "primitive.color.error": {
+      "type": "color",
+      "value": "#E9A8A3"
+    },
+    "primitive.color.error-bg": {
+      "type": "color",
+      "value": "#362421"
+    },
+    "primitive.color.error-border": {
+      "type": "color",
+      "value": "#A66F68"
+    },
+    "primitive.color.warning": {
+      "type": "color",
+      "value": "#E4C98C"
+    },
+    "primitive.color.warning-bg": {
+      "type": "color",
+      "value": "#332D1E"
+    },
+    "primitive.color.warning-border": {
+      "type": "color",
+      "value": "#9F8C5F"
+    },
+    "primitive.color.code-keyword": {
+      "type": "color",
+      "value": "#B6C8DE"
+    },
+    "primitive.color.code-string": {
+      "type": "color",
+      "value": "#C2D19A"
+    },
+    "primitive.color.code-number": {
+      "type": "color",
+      "value": "#DBB998"
+    },
+    "primitive.color.canvas": {
+      "type": "color",
+      "value": "#0D0C09"
+    },
+    "primitive.color.surface": {
+      "type": "color",
+      "value": "#161512"
+    },
+    "primitive.color.raised": {
+      "type": "color",
+      "value": "#1E1D19"
+    },
+    "primitive.color.inset": {
+      "type": "color",
+      "value": "#090806"
+    },
+    "primitive.color.text": {
+      "type": "color",
+      "value": "#EDECE8"
+    },
+    "primitive.color.secondary": {
+      "type": "color",
+      "value": "#C4C3BF"
+    },
+    "primitive.color.muted": {
+      "type": "color",
+      "value": "#A8A7A3"
+    },
+    "primitive.color.line": {
+      "type": "color",
+      "value": "#3E3D39"
+    },
+    "primitive.color.control-border": {
+      "type": "color",
+      "value": "#858480"
+    },
+    "primitive.color.code-bg": {
+      "type": "color",
+      "value": "#0C0B07"
+    },
+    "primitive.color.code-text": {
+      "type": "color",
+      "value": "#DBDAD6"
+    },
+    "primitive.color.accent": {
+      "type": "color",
+      "value": "#EBD183"
+    },
+    "primitive.color.accent-hover": {
+      "type": "color",
+      "value": "#F0DB9B"
+    },
+    "primitive.color.accent-pressed": {
+      "type": "color",
+      "value": "#D8BE74"
+    },
+    "primitive.color.selected-bg": {
+      "type": "color",
+      "value": "#24221F"
+    },
+    "primitive.color.selected-border": {
+      "type": "color",
+      "value": "#BBA361"
+    },
+    "primitive.color.selected-text": {
+      "type": "color",
+      "value": "#F7EBCB"
+    },
+    "primitive.color.scrim": {
+      "type": "color",
+      "value": "#000000B3"
+    },
+    "primitive.font.ui": {
+      "type": "fontFamily",
+      "value": "Manrope, Arial, sans-serif"
+    },
+    "primitive.font.code": {
+      "type": "fontFamily",
+      "value": "ui-monospace, SFMono-Regular, Consolas, monospace"
+    },
+    "primitive.space.0": {
+      "type": "dimension",
+      "value": "0px"
+    },
+    "primitive.space.2": {
+      "type": "dimension",
+      "value": "2px"
+    },
+    "primitive.space.4": {
+      "type": "dimension",
+      "value": "4px"
+    },
+    "primitive.space.8": {
+      "type": "dimension",
+      "value": "8px"
+    },
+    "primitive.space.12": {
+      "type": "dimension",
+      "value": "12px"
+    },
+    "primitive.space.16": {
+      "type": "dimension",
+      "value": "16px"
+    },
+    "primitive.space.24": {
+      "type": "dimension",
+      "value": "24px"
+    },
+    "primitive.space.32": {
+      "type": "dimension",
+      "value": "32px"
+    },
+    "primitive.space.44": {
+      "type": "dimension",
+      "value": "44px"
+    },
+    "primitive.space.48": {
+      "type": "dimension",
+      "value": "48px"
+    },
+    "primitive.space.64": {
+      "type": "dimension",
+      "value": "64px"
+    },
+    "primitive.space.80": {
+      "type": "dimension",
+      "value": "80px"
+    },
+    "primitive.radius.4": {
+      "type": "dimension",
+      "value": "4px"
+    },
+    "primitive.radius.8": {
+      "type": "dimension",
+      "value": "8px"
+    },
+    "primitive.radius.12": {
+      "type": "dimension",
+      "value": "12px"
+    },
+    "primitive.radius.16": {
+      "type": "dimension",
+      "value": "16px"
+    },
+    "primitive.duration.response": {
+      "type": "duration",
+      "value": "120ms"
+    },
+    "primitive.duration.state": {
+      "type": "duration",
+      "value": "160ms"
+    },
+    "primitive.duration.panel": {
+      "type": "duration",
+      "value": "180ms"
+    },
+    "primitive.duration.off": {
+      "type": "duration",
+      "value": "0ms"
+    },
+    "primitive.ease.standard": {
+      "type": "cubicBezier",
+      "value": "cubic-bezier(.2,.8,.2,1)"
+    },
+    "primitive.layer.base": {
+      "type": "number",
+      "value": 0
+    },
+    "primitive.layer.sticky": {
+      "type": "number",
+      "value": 10
+    },
+    "primitive.layer.floating": {
+      "type": "number",
+      "value": 20
+    },
+    "primitive.layer.backdrop": {
+      "type": "number",
+      "value": 30
+    },
+    "primitive.layer.modal": {
+      "type": "number",
+      "value": 40
+    },
+    "primitive.layer.toast": {
+      "type": "number",
+      "value": 50
+    },
+    "semantic.surface.canvas": {
+      "type": "color",
+      "value": "#0D0C09"
+    },
+    "semantic.surface.panel": {
+      "type": "color",
+      "value": "#161512"
+    },
+    "semantic.surface.raised": {
+      "type": "color",
+      "value": "#1E1D19"
+    },
+    "semantic.surface.inset": {
+      "type": "color",
+      "value": "#090806"
+    },
+    "semantic.surface.inverse": {
+      "type": "color",
+      "value": "#EDECE8"
+    },
+    "semantic.surface.scrim": {
+      "type": "color",
+      "value": "#000000B3"
+    },
+    "semantic.content.primary": {
+      "type": "color",
+      "value": "#EDECE8"
+    },
+    "semantic.content.secondary": {
+      "type": "color",
+      "value": "#C4C3BF"
+    },
+    "semantic.content.muted": {
+      "type": "color",
+      "value": "#A8A7A3"
+    },
+    "semantic.content.inverse": {
+      "type": "color",
+      "value": "#171C1A"
+    },
+    "semantic.content.onAccent": {
+      "type": "color",
+      "value": "#171C1A"
+    },
+    "semantic.action.primary.default": {
+      "type": "color",
+      "value": "#EBD183"
+    },
+    "semantic.action.primary.hover": {
+      "type": "color",
+      "value": "#F0DB9B"
+    },
+    "semantic.action.primary.pressed": {
+      "type": "color",
+      "value": "#D8BE74"
+    },
+    "semantic.action.secondary.background": {
+      "type": "color",
+      "value": "#161512"
+    },
+    "semantic.action.secondary.foreground": {
+      "type": "color",
+      "value": "#EDECE8"
+    },
+    "semantic.action.quiet.foreground": {
+      "type": "color",
+      "value": "#C4C3BF"
+    },
+    "semantic.action.disabled.background": {
+      "type": "color",
+      "value": "#1E1D19"
+    },
+    "semantic.action.disabled.foreground": {
+      "type": "color",
+      "value": "#A8A7A3"
+    },
+    "semantic.link.default": {
+      "type": "color",
+      "value": "#EBD183"
+    },
+    "semantic.link.visited": {
+      "type": "color",
+      "value": "#D8BE74"
+    },
+    "semantic.selection.background": {
+      "type": "color",
+      "value": "#24221F"
+    },
+    "semantic.selection.border": {
+      "type": "color",
+      "value": "#BBA361"
+    },
+    "semantic.selection.foreground": {
+      "type": "color",
+      "value": "#F7EBCB"
+    },
+    "semantic.selection.textBackground": {
+      "type": "color",
+      "value": "#EBD183"
+    },
+    "semantic.selection.textForeground": {
+      "type": "color",
+      "value": "#171C1A"
+    },
+    "semantic.border.subtle": {
+      "type": "color",
+      "value": "#3E3D39"
+    },
+    "semantic.border.control": {
+      "type": "color",
+      "value": "#858480"
+    },
+    "semantic.border.strong": {
+      "type": "color",
+      "value": "#A8A7A3"
+    },
+    "semantic.focus.ring": {
+      "type": "color",
+      "value": "#B8B8B2"
+    },
+    "semantic.focus.gapColor": {
+      "type": "color",
+      "value": "#0D0C09"
+    },
+    "semantic.code.background": {
+      "type": "color",
+      "value": "#0C0B07"
+    },
+    "semantic.code.foreground": {
+      "type": "color",
+      "value": "#DBDAD6"
+    },
+    "semantic.code.keyword": {
+      "type": "color",
+      "value": "#B6C8DE"
+    },
+    "semantic.code.string": {
+      "type": "color",
+      "value": "#C2D19A"
+    },
+    "semantic.code.number": {
+      "type": "color",
+      "value": "#DBB998"
+    },
+    "semantic.media.placeholder": {
+      "type": "color",
+      "value": "#090806"
+    },
+    "semantic.media.checkerLight": {
+      "type": "color",
+      "value": "#1E1D19"
+    },
+    "semantic.media.checkerDark": {
+      "type": "color",
+      "value": "#161512"
+    },
+    "semantic.status.success.foreground": {
+      "type": "color",
+      "value": "#9DC7A8"
+    },
+    "semantic.status.success.icon": {
+      "type": "color",
+      "value": "#9DC7A8"
+    },
+    "semantic.status.success.background": {
+      "type": "color",
+      "value": "#1D3026"
+    },
+    "semantic.status.success.border": {
+      "type": "color",
+      "value": "#5F8D6A"
+    },
+    "semantic.status.warning.foreground": {
+      "type": "color",
+      "value": "#E4C98C"
+    },
+    "semantic.status.warning.icon": {
+      "type": "color",
+      "value": "#E4C98C"
+    },
+    "semantic.status.warning.background": {
+      "type": "color",
+      "value": "#332D1E"
+    },
+    "semantic.status.warning.border": {
+      "type": "color",
+      "value": "#9F8C5F"
+    },
+    "semantic.status.error.foreground": {
+      "type": "color",
+      "value": "#E9A8A3"
+    },
+    "semantic.status.error.icon": {
+      "type": "color",
+      "value": "#E9A8A3"
+    },
+    "semantic.status.error.background": {
+      "type": "color",
+      "value": "#362421"
+    },
+    "semantic.status.error.border": {
+      "type": "color",
+      "value": "#A66F68"
+    },
+    "semantic.status.info.foreground": {
+      "type": "color",
+      "value": "#EDECE8"
+    },
+    "semantic.status.info.icon": {
+      "type": "color",
+      "value": "#C4C3BF"
+    },
+    "semantic.status.info.background": {
+      "type": "color",
+      "value": "#1E1D19"
+    },
+    "semantic.status.info.border": {
+      "type": "color",
+      "value": "#858480"
+    },
+    "semantic.control.height": {
+      "type": "dimension",
+      "value": "44px"
+    },
+    "semantic.control.iconGap": {
+      "type": "dimension",
+      "value": "8px"
+    },
+    "semantic.control.inlinePadding": {
+      "type": "dimension",
+      "value": "16px"
+    },
+    "semantic.control.stackGap": {
+      "type": "dimension",
+      "value": "12px"
+    },
+    "semantic.field.helpGap": {
+      "type": "dimension",
+      "value": "8px"
+    },
+    "semantic.group.gap": {
+      "type": "dimension",
+      "value": "24px"
+    },
+    "semantic.card.padding": {
+      "type": "dimension",
+      "value": "24px"
+    },
+    "semantic.panel.padding": {
+      "type": "dimension",
+      "value": "32px"
+    },
+    "semantic.section.gap": {
+      "type": "dimension",
+      "value": "80px"
+    },
+    "semantic.page.gutter": {
+      "type": "dimension",
+      "value": "32px"
+    },
+    "semantic.focus.width": {
+      "type": "dimension",
+      "value": "2px"
+    },
+    "semantic.focus.offset": {
+      "type": "dimension",
+      "value": "4px"
+    },
+    "semantic.radius.control": {
+      "type": "dimension",
+      "value": "8px"
+    },
+    "semantic.radius.card": {
+      "type": "dimension",
+      "value": "12px"
+    },
+    "semantic.radius.panel": {
+      "type": "dimension",
+      "value": "16px"
+    },
+    "semantic.radius.overlay": {
+      "type": "dimension",
+      "value": "16px"
+    },
+    "semantic.radius.small": {
+      "type": "dimension",
+      "value": "4px"
+    },
+    "semantic.font.ui": {
+      "type": "fontFamily",
+      "value": "Manrope, Arial, sans-serif"
+    },
+    "semantic.font.code": {
+      "type": "fontFamily",
+      "value": "ui-monospace, SFMono-Regular, Consolas, monospace"
+    },
+    "semantic.motion.response": {
+      "type": "duration",
+      "value": "120ms"
+    },
+    "semantic.motion.state": {
+      "type": "duration",
+      "value": "160ms"
+    },
+    "semantic.motion.panel": {
+      "type": "duration",
+      "value": "180ms"
+    },
+    "semantic.motion.off": {
+      "type": "duration",
+      "value": "0ms"
+    },
+    "semantic.motion.ease": {
+      "type": "cubicBezier",
+      "value": "cubic-bezier(.2,.8,.2,1)"
+    },
+    "semantic.layer.base": {
+      "type": "number",
+      "value": 0
+    },
+    "semantic.layer.sticky": {
+      "type": "number",
+      "value": 10
+    },
+    "semantic.layer.floating": {
+      "type": "number",
+      "value": 20
+    },
+    "semantic.layer.backdrop": {
+      "type": "number",
+      "value": 30
+    },
+    "semantic.layer.modal": {
+      "type": "number",
+      "value": 40
+    },
+    "semantic.layer.toast": {
+      "type": "number",
+      "value": 50
+    },
+    "component.button.primary.background": {
+      "type": "color",
+      "value": "#EBD183"
+    },
+    "component.button.primary.hover": {
+      "type": "color",
+      "value": "#F0DB9B"
+    },
+    "component.button.primary.pressed": {
+      "type": "color",
+      "value": "#D8BE74"
+    },
+    "component.button.primary.foreground": {
+      "type": "color",
+      "value": "#171C1A"
+    },
+    "component.button.secondary.background": {
+      "type": "color",
+      "value": "#161512"
+    },
+    "component.button.secondary.foreground": {
+      "type": "color",
+      "value": "#EDECE8"
+    },
+    "component.button.secondary.border": {
+      "type": "color",
+      "value": "#858480"
+    },
+    "component.button.disabled.background": {
+      "type": "color",
+      "value": "#1E1D19"
+    },
+    "component.button.disabled.foreground": {
+      "type": "color",
+      "value": "#A8A7A3"
+    },
+    "component.input.background": {
+      "type": "color",
+      "value": "#090806"
+    },
+    "component.input.foreground": {
+      "type": "color",
+      "value": "#EDECE8"
+    },
+    "component.input.border": {
+      "type": "color",
+      "value": "#858480"
+    },
+    "component.input.errorBorder": {
+      "type": "color",
+      "value": "#A66F68"
+    },
+    "component.select.background": {
+      "type": "color",
+      "value": "#090806"
+    },
+    "component.select.foreground": {
+      "type": "color",
+      "value": "#EDECE8"
+    },
+    "component.select.border": {
+      "type": "color",
+      "value": "#858480"
+    },
+    "component.select.popup.background": {
+      "type": "color",
+      "value": "#1E1D19"
+    },
+    "component.select.popup.border": {
+      "type": "color",
+      "value": "#858480"
+    },
+    "component.select.option.selected": {
+      "type": "color",
+      "value": "#24221F"
+    },
+    "component.tabs.selected.background": {
+      "type": "color",
+      "value": "#24221F"
+    },
+    "component.tabs.selected.foreground": {
+      "type": "color",
+      "value": "#F7EBCB"
+    },
+    "component.tabs.selected.border": {
+      "type": "color",
+      "value": "#BBA361"
+    },
+    "component.card.background": {
+      "type": "color",
+      "value": "#161512"
+    },
+    "component.card.border": {
+      "type": "color",
+      "value": "#3E3D39"
+    },
+    "component.card.title": {
+      "type": "color",
+      "value": "#EDECE8"
+    },
+    "component.dialog.background": {
+      "type": "color",
+      "value": "#1E1D19"
+    },
+    "component.dialog.scrim": {
+      "type": "color",
+      "value": "#000000B3"
+    },
+    "component.popover.background": {
+      "type": "color",
+      "value": "#1E1D19"
+    },
+    "component.popover.border": {
+      "type": "color",
+      "value": "#858480"
+    },
+    "component.menu.background": {
+      "type": "color",
+      "value": "#1E1D19"
+    },
+    "component.menu.border": {
+      "type": "color",
+      "value": "#858480"
+    },
+    "component.menu.item.activeBackground": {
+      "type": "color",
+      "value": "#090806"
+    },
+    "component.sheet.background": {
+      "type": "color",
+      "value": "#161512"
+    },
+    "component.sheet.border": {
+      "type": "color",
+      "value": "#858480"
+    },
+    "component.skeleton.background": {
+      "type": "color",
+      "value": "#090806"
+    },
+    "component.skeleton.shape": {
+      "type": "color",
+      "value": "#1E1D19"
+    },
+    "component.collection.background": {
+      "type": "color",
+      "value": "#161512"
+    },
+    "component.collection.border": {
+      "type": "color",
+      "value": "#858480"
+    },
+    "component.fileTree.background": {
+      "type": "color",
+      "value": "#161512"
+    },
+    "component.fileTree.foreground": {
+      "type": "color",
+      "value": "#C4C3BF"
+    },
+    "component.fileTree.selectedBackground": {
+      "type": "color",
+      "value": "#090806"
+    },
+    "component.offer.background": {
+      "type": "color",
+      "value": "#161512"
+    },
+    "component.offer.border": {
+      "type": "color",
+      "value": "#3E3D39"
+    },
+    "component.offer.price": {
+      "type": "color",
+      "value": "#EDECE8"
+    },
+    "component.entitlement.availableForeground": {
+      "type": "color",
+      "value": "#9DC7A8"
+    },
+    "component.entitlement.pendingForeground": {
+      "type": "color",
+      "value": "#E4C98C"
+    },
+    "component.entitlement.errorForeground": {
+      "type": "color",
+      "value": "#E9A8A3"
+    },
+    "component.pagination.currentBackground": {
+      "type": "color",
+      "value": "#1E1D19"
+    },
+    "component.pagination.currentForeground": {
+      "type": "color",
+      "value": "#EDECE8"
+    },
+    "component.toast.success.background": {
+      "type": "color",
+      "value": "#1D3026"
+    },
+    "component.toast.success.foreground": {
+      "type": "color",
+      "value": "#9DC7A8"
+    },
+    "component.code.background": {
+      "type": "color",
+      "value": "#0C0B07"
+    },
+    "component.code.foreground": {
+      "type": "color",
+      "value": "#DBDAD6"
+    },
+    "component.prompt.background": {
+      "type": "color",
+      "value": "#090806"
+    },
+    "component.prompt.foreground": {
+      "type": "color",
+      "value": "#C4C3BF"
+    },
+    "component.button.height": {
+      "type": "dimension",
+      "value": "44px"
+    },
+    "component.button.radius": {
+      "type": "dimension",
+      "value": "8px"
+    },
+    "component.input.height": {
+      "type": "dimension",
+      "value": "44px"
+    },
+    "component.input.radius": {
+      "type": "dimension",
+      "value": "8px"
+    },
+    "component.select.height": {
+      "type": "dimension",
+      "value": "44px"
+    },
+    "component.select.radius": {
+      "type": "dimension",
+      "value": "8px"
+    },
+    "component.card.padding": {
+      "type": "dimension",
+      "value": "24px"
+    },
+    "component.dialog.radius": {
+      "type": "dimension",
+      "value": "16px"
+    },
+    "component.button.transition": {
+      "type": "duration",
+      "value": "120ms"
+    }
+  },
+  "css": ".system-study {\n  --f-on-accent: #171C1A;\n  --f-focus: #B8B8B2;\n  --f-success: #9DC7A8;\n  --f-success-bg: #1D3026;\n  --f-success-border: #5F8D6A;\n  --f-error: #E9A8A3;\n  --f-error-bg: #362421;\n  --f-error-border: #A66F68;\n  --f-warning: #E4C98C;\n  --f-warning-bg: #332D1E;\n  --f-warning-border: #9F8C5F;\n  --f-code-keyword: #B6C8DE;\n  --f-code-string: #C2D19A;\n  --f-code-number: #DBB998;\n  --f-canvas: #0D0C09;\n  --f-surface: #161512;\n  --f-raised: #1E1D19;\n  --f-inset: #090806;\n  --f-text: #EDECE8;\n  --f-secondary: #C4C3BF;\n  --f-muted: #A8A7A3;\n  --f-line: #3E3D39;\n  --f-control-border: #858480;\n  --f-code-bg: #0C0B07;\n  --f-code-text: #DBDAD6;\n  --f-accent: #EBD183;\n  --f-accent-hover: #F0DB9B;\n  --f-accent-pressed: #D8BE74;\n  --f-selected-bg: #24221F;\n  --f-selected-border: #BBA361;\n  --f-selected-text: #F7EBCB;\n  --f-font: Manrope, Arial, sans-serif;\n  --sy-surface-canvas: #0D0C09;\n  --sy-surface-panel: #161512;\n  --sy-surface-raised: #1E1D19;\n  --sy-surface-inset: #090806;\n  --sy-surface-inverse: #EDECE8;\n  --sy-surface-scrim: #000000B3;\n  --sy-content-primary: #EDECE8;\n  --sy-content-secondary: #C4C3BF;\n  --sy-content-muted: #A8A7A3;\n  --sy-content-inverse: #171C1A;\n  --sy-content-on-accent: #171C1A;\n  --sy-action-primary-default: #EBD183;\n  --sy-action-primary-hover: #F0DB9B;\n  --sy-action-primary-pressed: #D8BE74;\n  --sy-action-secondary-background: #161512;\n  --sy-action-secondary-foreground: #EDECE8;\n  --sy-action-quiet-foreground: #C4C3BF;\n  --sy-action-disabled-background: #1E1D19;\n  --sy-action-disabled-foreground: #A8A7A3;\n  --sy-link-default: #EBD183;\n  --sy-link-visited: #D8BE74;\n  --sy-selection-background: #24221F;\n  --sy-selection-border: #BBA361;\n  --sy-selection-foreground: #F7EBCB;\n  --sy-selection-text-background: #EBD183;\n  --sy-selection-text-foreground: #171C1A;\n  --sy-border-subtle: #3E3D39;\n  --sy-border-control: #858480;\n  --sy-border-strong: #A8A7A3;\n  --sy-focus-ring: #B8B8B2;\n  --sy-focus-gap-color: #0D0C09;\n  --sy-code-background: #0C0B07;\n  --sy-code-foreground: #DBDAD6;\n  --sy-code-keyword: #B6C8DE;\n  --sy-code-string: #C2D19A;\n  --sy-code-number: #DBB998;\n  --sy-media-placeholder: #090806;\n  --sy-media-checker-light: #1E1D19;\n  --sy-media-checker-dark: #161512;\n  --sy-status-success-foreground: #9DC7A8;\n  --sy-status-success-icon: #9DC7A8;\n  --sy-status-success-background: #1D3026;\n  --sy-status-success-border: #5F8D6A;\n  --sy-status-warning-foreground: #E4C98C;\n  --sy-status-warning-icon: #E4C98C;\n  --sy-status-warning-background: #332D1E;\n  --sy-status-warning-border: #9F8C5F;\n  --sy-status-error-foreground: #E9A8A3;\n  --sy-status-error-icon: #E9A8A3;\n  --sy-status-error-background: #362421;\n  --sy-status-error-border: #A66F68;\n  --sy-status-info-foreground: #EDECE8;\n  --sy-status-info-icon: #C4C3BF;\n  --sy-status-info-background: #1E1D19;\n  --sy-status-info-border: #858480;\n  --sy-control-height: 44px;\n  --sy-control-icon-gap: 8px;\n  --sy-control-inline-padding: 16px;\n  --sy-control-stack-gap: 12px;\n  --sy-field-help-gap: 8px;\n  --sy-group-gap: 24px;\n  --sy-card-padding: 24px;\n  --sy-panel-padding: 32px;\n  --sy-section-gap: 80px;\n  --sy-page-gutter: 32px;\n  --sy-focus-width: 2px;\n  --sy-focus-offset: 4px;\n  --sy-radius-control: 8px;\n  --sy-radius-card: 12px;\n  --sy-radius-panel: 16px;\n  --sy-radius-overlay: 16px;\n  --sy-radius-small: 4px;\n  --sy-font-ui: Manrope, Arial, sans-serif;\n  --sy-font-code: ui-monospace, SFMono-Regular, Consolas, monospace;\n  --sy-motion-response: 120ms;\n  --sy-motion-state: 160ms;\n  --sy-motion-panel: 180ms;\n  --sy-motion-off: 0ms;\n  --sy-motion-ease: cubic-bezier(.2,.8,.2,1);\n  --sy-layer-base: 0;\n  --sy-layer-sticky: 10;\n  --sy-layer-floating: 20;\n  --sy-layer-backdrop: 30;\n  --sy-layer-modal: 40;\n  --sy-layer-toast: 50;\n  --sy-component-button-primary-background: #EBD183;\n  --sy-component-button-primary-hover: #F0DB9B;\n  --sy-component-button-primary-pressed: #D8BE74;\n  --sy-component-button-primary-foreground: #171C1A;\n  --sy-component-button-secondary-background: #161512;\n  --sy-component-button-secondary-foreground: #EDECE8;\n  --sy-component-button-secondary-border: #858480;\n  --sy-component-button-disabled-background: #1E1D19;\n  --sy-component-button-disabled-foreground: #A8A7A3;\n  --sy-component-input-background: #090806;\n  --sy-component-input-foreground: #EDECE8;\n  --sy-component-input-border: #858480;\n  --sy-component-input-error-border: #A66F68;\n  --sy-component-select-background: #090806;\n  --sy-component-select-foreground: #EDECE8;\n  --sy-component-select-border: #858480;\n  --sy-component-select-popup-background: #1E1D19;\n  --sy-component-select-popup-border: #858480;\n  --sy-component-select-option-selected: #24221F;\n  --sy-component-tabs-selected-background: #24221F;\n  --sy-component-tabs-selected-foreground: #F7EBCB;\n  --sy-component-tabs-selected-border: #BBA361;\n  --sy-component-card-background: #161512;\n  --sy-component-card-border: #3E3D39;\n  --sy-component-card-title: #EDECE8;\n  --sy-component-dialog-background: #1E1D19;\n  --sy-component-dialog-scrim: #000000B3;\n  --sy-component-popover-background: #1E1D19;\n  --sy-component-popover-border: #858480;\n  --sy-component-menu-background: #1E1D19;\n  --sy-component-menu-border: #858480;\n  --sy-component-menu-item-active-background: #090806;\n  --sy-component-sheet-background: #161512;\n  --sy-component-sheet-border: #858480;\n  --sy-component-skeleton-background: #090806;\n  --sy-component-skeleton-shape: #1E1D19;\n  --sy-component-collection-background: #161512;\n  --sy-component-collection-border: #858480;\n  --sy-component-file-tree-background: #161512;\n  --sy-component-file-tree-foreground: #C4C3BF;\n  --sy-component-file-tree-selected-background: #090806;\n  --sy-component-offer-background: #161512;\n  --sy-component-offer-border: #3E3D39;\n  --sy-component-offer-price: #EDECE8;\n  --sy-component-entitlement-available-foreground: #9DC7A8;\n  --sy-component-entitlement-pending-foreground: #E4C98C;\n  --sy-component-entitlement-error-foreground: #E9A8A3;\n  --sy-component-pagination-current-background: #1E1D19;\n  --sy-component-pagination-current-foreground: #EDECE8;\n  --sy-component-toast-success-background: #1D3026;\n  --sy-component-toast-success-foreground: #9DC7A8;\n  --sy-component-code-background: #0C0B07;\n  --sy-component-code-foreground: #DBDAD6;\n  --sy-component-prompt-background: #090806;\n  --sy-component-prompt-foreground: #C4C3BF;\n  --sy-component-button-height: 44px;\n  --sy-component-button-radius: 8px;\n  --sy-component-input-height: 44px;\n  --sy-component-input-radius: 8px;\n  --sy-component-select-height: 44px;\n  --sy-component-select-radius: 8px;\n  --sy-component-card-padding: 24px;\n  --sy-component-dialog-radius: 16px;\n  --sy-component-button-transition: 120ms;\n}\n",
+  "scales": {
+    "fontFamily": "Manrope",
+    "typographyMobileMaxWidth": 767,
+    "typography": {
+      "display": {
+        "desktopSize": 48,
+        "mobileSize": 32,
+        "weight": 550,
+        "lineHeight": 1.2,
+        "trackingEm": -0.025,
+        "viTrackingEm": 0
+      },
+      "h1": {
+        "desktopSize": 40,
+        "mobileSize": 30,
+        "weight": 550,
+        "lineHeight": 1.2,
+        "trackingEm": -0.02,
+        "viTrackingEm": 0
+      },
+      "h2": {
+        "desktopSize": 28,
+        "mobileSize": 24,
+        "weight": 550,
+        "lineHeight": 1.3,
+        "trackingEm": -0.015,
+        "viTrackingEm": 0
+      },
+      "h3": {
+        "desktopSize": 20,
+        "mobileSize": 18,
+        "weight": 600,
+        "lineHeight": 1.4,
+        "trackingEm": -0.005,
+        "viTrackingEm": 0
+      },
+      "body": {
+        "desktopSize": 16,
+        "mobileSize": 16,
+        "weight": 400,
+        "lineHeight": 1.65,
+        "trackingEm": 0,
+        "viTrackingEm": 0
+      },
+      "ui": {
+        "desktopSize": 14,
+        "mobileSize": 14,
+        "weight": 600,
+        "lineHeight": 1.5,
+        "trackingEm": 0,
+        "viTrackingEm": 0
+      },
+      "meta": {
+        "desktopSize": 12,
+        "mobileSize": 12,
+        "weight": 400,
+        "lineHeight": 1.5,
+        "trackingEm": 0,
+        "viTrackingEm": 0
+      }
+    },
+    "spacing": [
+      4,
+      8,
+      12,
+      16,
+      24,
+      32,
+      48,
+      64
+    ],
+    "layout": {
+      "maxContentWidth": 1240,
+      "desktop": {
+        "referenceWidth": 1440,
+        "minViewportWidth": 1024,
+        "columns": 12,
+        "minimumMargin": 32,
+        "gutter": 32
+      },
+      "tablet": {
+        "referenceWidth": 768,
+        "minViewportWidth": 768,
+        "columns": 8,
+        "minimumMargin": 24,
+        "gutter": 24
+      },
+      "mobile": {
+        "referenceWidth": 320,
+        "minViewportWidth": 0,
+        "columns": 4,
+        "minimumMargin": 16,
+        "gutter": 16
+      }
+    },
+    "radius": {
+      "compact": 4,
+      "control": 8,
+      "card": 12,
+      "panel": 16
+    }
+  },
+  "motion": {
+    "responseMs": 120,
+    "stateMs": 160,
+    "panelMs": 180,
+    "reduced": "No spatial or repeating motion",
+    "modeOff": true
+  },
+  "coverage": [
+    {
+      "id": "01",
+      "name": "Brand mark",
+      "status": "review-specimen",
+      "specimen": "top"
+    },
+    {
+      "id": "02",
+      "name": "Typography",
+      "status": "review-specimen",
+      "specimen": "system-type"
+    },
+    {
+      "id": "03",
+      "name": "Icon",
+      "status": "partial-specimen",
+      "specimen": "controls",
+      "remaining": "Icons are present; the shared icon inventory and optical variants remain."
+    },
+    {
+      "id": "04",
+      "name": "Button",
+      "status": "review-specimen",
+      "specimen": "controls"
+    },
+    {
+      "id": "05",
+      "name": "Icon button",
+      "status": "review-specimen",
+      "specimen": "controls"
+    },
+    {
+      "id": "06",
+      "name": "Text link",
+      "status": "review-specimen",
+      "specimen": "top"
+    },
+    {
+      "id": "07",
+      "name": "Text input",
+      "status": "review-specimen",
+      "specimen": "controls"
+    },
+    {
+      "id": "08",
+      "name": "Textarea",
+      "status": "review-specimen",
+      "specimen": "controls"
+    },
+    {
+      "id": "09",
+      "name": "Search combobox",
+      "status": "partial-specimen",
+      "specimen": "discovery",
+      "remaining": "Free-text search is present; suggestion combobox behaviour remains."
+    },
+    {
+      "id": "10",
+      "name": "Select",
+      "status": "review-specimen",
+      "specimen": "discovery"
+    },
+    {
+      "id": "11",
+      "name": "Checkbox",
+      "status": "review-specimen",
+      "specimen": "controls"
+    },
+    {
+      "id": "12",
+      "name": "Radio group",
+      "status": "review-specimen",
+      "specimen": "workbench"
+    },
+    {
+      "id": "13",
+      "name": "Switch",
+      "status": "review-specimen",
+      "specimen": "controls"
+    },
+    {
+      "id": "14",
+      "name": "Slider + number",
+      "status": "partial-specimen",
+      "specimen": "roles",
+      "remaining": "Duration range and number are present; full component state matrix remains."
+    },
+    {
+      "id": "15",
+      "name": "Color control",
+      "status": "partial-specimen",
+      "specimen": "roles",
+      "remaining": "Approved color roles are shown read-only; editable color validation remains."
+    },
+    {
+      "id": "16",
+      "name": "Segmented control",
+      "status": "partial-specimen",
+      "specimen": "roles",
+      "remaining": "Single-choice examples are present; shared segmented-control API remains."
+    },
+    {
+      "id": "17",
+      "name": "Tabs",
+      "status": "review-specimen",
+      "specimen": "workbench"
+    },
+    {
+      "id": "18",
+      "name": "Filter chip",
+      "status": "partial-specimen",
+      "specimen": "discovery",
+      "remaining": "Single-category chips are present; removable multi-filter variant remains."
+    },
+    {
+      "id": "19",
+      "name": "Badge",
+      "status": "review-specimen",
+      "specimen": "discovery"
+    },
+    {
+      "id": "20",
+      "name": "Tooltip",
+      "status": "review-specimen",
+      "specimen": "controls"
+    },
+    {
+      "id": "21",
+      "name": "Popover",
+      "status": "review-specimen",
+      "specimen": "workbench",
+      "view": "source"
+    },
+    {
+      "id": "22",
+      "name": "Menu",
+      "status": "review-specimen",
+      "specimen": "workbench",
+      "view": "source"
+    },
+    {
+      "id": "23",
+      "name": "Dialog",
+      "status": "review-specimen",
+      "specimen": "controls"
+    },
+    {
+      "id": "24",
+      "name": "Sheet",
+      "status": "review-specimen",
+      "specimen": "workbench",
+      "view": "source"
+    },
+    {
+      "id": "25",
+      "name": "Accordion",
+      "status": "review-specimen",
+      "specimen": "workbench"
+    },
+    {
+      "id": "26",
+      "name": "Toast",
+      "status": "review-specimen",
+      "specimen": "controls"
+    },
+    {
+      "id": "27",
+      "name": "Inline alert",
+      "status": "review-specimen",
+      "specimen": "controls"
+    },
+    {
+      "id": "28",
+      "name": "Status / progress",
+      "status": "partial-specimen",
+      "specimen": "workbench",
+      "remaining": "Real A001 status is present; broader progress variants remain."
+    },
+    {
+      "id": "29",
+      "name": "Skeleton",
+      "status": "review-specimen",
+      "specimen": "library-states"
+    },
+    {
+      "id": "30",
+      "name": "Empty / error state",
+      "status": "review-specimen",
+      "specimen": "library-states"
+    },
+    {
+      "id": "31",
+      "name": "Content tile",
+      "status": "review-specimen",
+      "specimen": "discovery"
+    },
+    {
+      "id": "32",
+      "name": "Collection tile",
+      "status": "review-specimen",
+      "specimen": "library-states"
+    },
+    {
+      "id": "33",
+      "name": "Catalog toolbar",
+      "status": "review-specimen",
+      "specimen": "discovery"
+    },
+    {
+      "id": "34",
+      "name": "Preview viewport",
+      "status": "partial-specimen",
+      "specimen": "workbench",
+      "remaining": "One responsive A001 viewport is present; the shared isolation/viewport API remains."
+    },
+    {
+      "id": "35",
+      "name": "Motion controls",
+      "status": "partial-specimen",
+      "specimen": "roles",
+      "remaining": "A001 duration and global motion Off are present; full motion control family remains."
+    },
+    {
+      "id": "36",
+      "name": "Code panel",
+      "status": "review-specimen",
+      "specimen": "workbench"
+    },
+    {
+      "id": "37",
+      "name": "Prompt panel",
+      "status": "review-specimen",
+      "specimen": "workbench"
+    },
+    {
+      "id": "38",
+      "name": "File tree",
+      "status": "review-specimen",
+      "specimen": "workbench",
+      "view": "source"
+    },
+    {
+      "id": "39",
+      "name": "Download action",
+      "status": "review-specimen",
+      "specimen": "workbench"
+    },
+    {
+      "id": "40",
+      "name": "Offer / price",
+      "status": "review-specimen",
+      "specimen": "access-states"
+    },
+    {
+      "id": "41",
+      "name": "Entitlement state",
+      "status": "review-specimen",
+      "specimen": "access-states"
+    },
+    {
+      "id": "42",
+      "name": "Navigation shell",
+      "status": "review-specimen",
+      "specimen": "top"
+    },
+    {
+      "id": "43",
+      "name": "Pagination / load more",
+      "status": "review-specimen",
+      "specimen": "library-states"
+    },
+    {
+      "id": "44",
+      "name": "Locale control",
+      "status": "review-specimen",
+      "specimen": "top"
+    }
+  ],
+  "contrast": [
+    {
+      "label": "text / canvas",
+      "foreground": "#EDECE8",
+      "background": "#0D0C09",
+      "ratio": 16.54578597358896,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "secondary / canvas",
+      "foreground": "#C4C3BF",
+      "background": "#0D0C09",
+      "ratio": 11.088857316301072,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "muted / canvas",
+      "foreground": "#A8A7A3",
+      "background": "#0D0C09",
+      "ratio": 8.123084824854104,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Accent text / canvas",
+      "foreground": "#EBD183",
+      "background": "#0D0C09",
+      "ratio": 13.021379009270454,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Control boundary / canvas",
+      "foreground": "#858480",
+      "background": "#0D0C09",
+      "ratio": 5.224733952830658,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Focus ring / canvas",
+      "foreground": "#B8B8B2",
+      "background": "#0D0C09",
+      "ratio": 9.814343826747537,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "text / surface",
+      "foreground": "#EDECE8",
+      "background": "#161512",
+      "ratio": 15.445690813471325,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "secondary / surface",
+      "foreground": "#C4C3BF",
+      "background": "#161512",
+      "ratio": 10.351582079913388,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "muted / surface",
+      "foreground": "#A8A7A3",
+      "background": "#161512",
+      "ratio": 7.5829976802898456,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Accent text / surface",
+      "foreground": "#EBD183",
+      "background": "#161512",
+      "ratio": 12.155614394097652,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Control boundary / surface",
+      "foreground": "#858480",
+      "background": "#161512",
+      "ratio": 4.877352175767543,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Focus ring / surface",
+      "foreground": "#B8B8B2",
+      "background": "#161512",
+      "ratio": 9.161808361779629,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "text / raised",
+      "foreground": "#EDECE8",
+      "background": "#1E1D19",
+      "ratio": 14.268680680247584,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "secondary / raised",
+      "foreground": "#C4C3BF",
+      "background": "#1E1D19",
+      "ratio": 9.562759025632847,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "muted / raised",
+      "foreground": "#A8A7A3",
+      "background": "#1E1D19",
+      "ratio": 7.005149449498583,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Accent text / raised",
+      "foreground": "#EBD183",
+      "background": "#1E1D19",
+      "ratio": 11.229318413542684,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Control boundary / raised",
+      "foreground": "#858480",
+      "background": "#1E1D19",
+      "ratio": 4.505682627056107,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Focus ring / raised",
+      "foreground": "#B8B8B2",
+      "background": "#1E1D19",
+      "ratio": 8.463649800230314,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "text / inset",
+      "foreground": "#EDECE8",
+      "background": "#090806",
+      "ratio": 16.934882854374642,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "secondary / inset",
+      "foreground": "#C4C3BF",
+      "background": "#090806",
+      "ratio": 11.349627025285429,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "muted / inset",
+      "foreground": "#A8A7A3",
+      "background": "#090806",
+      "ratio": 8.314110320575697,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Accent text / inset",
+      "foreground": "#EBD183",
+      "background": "#090806",
+      "ratio": 13.327594619947563,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Control boundary / inset",
+      "foreground": "#858480",
+      "background": "#090806",
+      "ratio": 5.347600747265597,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Focus ring / inset",
+      "foreground": "#B8B8B2",
+      "background": "#090806",
+      "ratio": 10.045141600636386,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Large display text / canvas",
+      "foreground": "#EDECE8",
+      "background": "#0D0C09",
+      "ratio": 16.54578597358896,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Button label / accent",
+      "foreground": "#171C1A",
+      "background": "#EBD183",
+      "ratio": 11.48331659099012,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Button label / accent-hover",
+      "foreground": "#171C1A",
+      "background": "#F0DB9B",
+      "ratio": 12.576268543676656,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Button label / accent-pressed",
+      "foreground": "#171C1A",
+      "background": "#D8BE74",
+      "ratio": 9.47666345350318,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Selected label / selected background",
+      "foreground": "#F7EBCB",
+      "background": "#24221F",
+      "ratio": 13.372910453384488,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Selected boundary / selected background",
+      "foreground": "#BBA361",
+      "background": "#24221F",
+      "ratio": 6.44030135272817,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Selected boundary / surface",
+      "foreground": "#BBA361",
+      "background": "#161512",
+      "ratio": 7.411821943129828,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Selected boundary / raised",
+      "foreground": "#BBA361",
+      "background": "#1E1D19",
+      "ratio": 6.847017840932908,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Focus ring / selected background",
+      "foreground": "#B8B8B2",
+      "background": "#24221F",
+      "ratio": 7.960904516938428,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "success label / status background",
+      "foreground": "#9DC7A8",
+      "background": "#1D3026",
+      "ratio": 7.430696212355375,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "success boundary / status background",
+      "foreground": "#5F8D6A",
+      "background": "#1D3026",
+      "ratio": 3.662415260205791,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "success boundary / surface",
+      "foreground": "#5F8D6A",
+      "background": "#161512",
+      "ratio": 4.786173491014677,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Focus ring / success background",
+      "foreground": "#B8B8B2",
+      "background": "#1D3026",
+      "ratio": 7.010683339886443,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "error label / status background",
+      "foreground": "#E9A8A3",
+      "background": "#362421",
+      "ratio": 7.40281168612121,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "error boundary / status background",
+      "foreground": "#A66F68",
+      "background": "#362421",
+      "ratio": 3.5600837512217414,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "error boundary / surface",
+      "foreground": "#A66F68",
+      "background": "#161512",
+      "ratio": 4.430050882996367,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Focus ring / error background",
+      "foreground": "#B8B8B2",
+      "background": "#362421",
+      "ratio": 7.362625383326977,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "warning label / status background",
+      "foreground": "#E4C98C",
+      "background": "#332D1E",
+      "ratio": 8.49075147408944,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "warning boundary / status background",
+      "foreground": "#9F8C5F",
+      "background": "#332D1E",
+      "ratio": 4.163669363327248,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "warning boundary / surface",
+      "foreground": "#9F8C5F",
+      "background": "#161512",
+      "ratio": 5.556541862895554,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Focus ring / warning background",
+      "foreground": "#B8B8B2",
+      "background": "#332D1E",
+      "ratio": 6.865194527435577,
+      "minimum": 3,
+      "passes": true
+    },
+    {
+      "label": "Code text / code background",
+      "foreground": "#DBDAD6",
+      "background": "#0C0B07",
+      "ratio": 14.074642580203069,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Code keyword / code background",
+      "foreground": "#B6C8DE",
+      "background": "#0C0B07",
+      "ratio": 11.537470082691588,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Code string / code background",
+      "foreground": "#C2D19A",
+      "background": "#0C0B07",
+      "ratio": 12.076730475088109,
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "label": "Code number / code background",
+      "foreground": "#DBB998",
+      "background": "#0C0B07",
+      "ratio": 10.693160877316016,
+      "minimum": 4.5,
+      "passes": true
+    }
+  ],
+  "limitations": [
+    "Specimens are under visual review.",
+    "Only A001 is an interactive library material.",
+    "No checkout, account or server entitlements are implemented here."
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.invalid/ui-library/v1/offer-revision.schema.json",
+  "title": "Immutable paid offer snapshot; all monetary nulls forbidden while enabled",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "offerId": {
+      "type": "string",
+      "pattern": "^(PACK-[A-Z]+|BUNDLE-LAUNCH)$"
+    },
+    "revision": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "title": {
+      "$ref": "common.schema.json#/$defs/localizedText"
+    },
+    "itemIds": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/itemId"
+      },
+      "minItems": 1,
+      "maxItems": 32,
+      "uniqueItems": true
+    },
+    "purchaseModel": {
+      "const": "one-time"
+    },
+    "saleState": {
+      "enum": [
+        "disabled",
+        "enabled"
+      ]
+    },
+    "currency": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "currencyExponent": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "amountMinor": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000000
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "merchantRef": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "paymentProviderRef": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "termsRevision": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "licenseRevision": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "taxPolicyRef": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "refundPolicyRef": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "updatePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "functionalMonths": {
+          "const": 12
+        },
+        "securitySupportMonths": {
+          "const": 24
+        },
+        "eolNoticeDays": {
+          "const": 90
+        }
+      },
+      "required": [
+        "functionalMonths",
+        "securitySupportMonths",
+        "eolNoticeDays"
+      ]
+    }
+  },
+  "required": [
+    "offerId",
+    "revision",
+    "title",
+    "itemIds",
+    "purchaseModel",
+    "saleState",
+    "currency",
+    "currencyExponent",
+    "amountMinor",
+    "merchantRef",
+    "paymentProviderRef",
+    "termsRevision",
+    "licenseRevision",
+    "taxPolicyRef",
+    "refundPolicyRef",
+    "updatePolicy"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "saleState": {
+            "const": "enabled"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "currencyExponent": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4
+          },
+          "amountMinor": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100000000
+          },
+          "merchantRef": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "paymentProviderRef": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "termsRevision": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "licenseRevision": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "taxPolicyRef": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "refundPolicyRef": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+.container { container-type: inline-size; container-name: state-relay; width: 100%; min-width: 0; }
+.instrument {
+  --relay-accent: #c4db9b;
+  --relay-on-accent: #101713;
+  --relay-duration: 120ms;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0;
+  color: #e3e9e4;
+  background: transparent;
+  border: 0;
+  font-family: inherit;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.instrument * { box-sizing: border-box; }
+.metadata { display: flex; justify-content: flex-start; gap: 22px; align-items: center; grid-column: 1; grid-row: 1; }
+.identifier, .currentState { font: 500 11px/1.5 ui-monospace, monospace; letter-spacing: .03em; }
+.identifier { color: #d5dfd8; }
+.identifier > span { margin: 0 7px; color: #7e9588; }
+.currentState { display: flex; align-items: center; gap: 7px; color: #c1d0c6; }
+.currentState i { width: 5px; height: 5px; background: #aab9af; border-radius: 50%; }
+.instrument[data-state='success'] .currentState i { background: var(--relay-accent); }
+.instrument[data-state='error'] .currentState i { background: #f6b5a4; }
+.scenarios { border: 0; padding: 0; margin: 0; display: flex; gap: 6px; flex-wrap: wrap; grid-column: 2; grid-row: 1; }
+.scenarios legend { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.scenarios label { position: relative; cursor: pointer; }
+.scenarios input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.scenarios span { display: flex; align-items: center; min-height: 44px; padding: 8px 12px; border: 1px solid #3e5046; color: #b9c9bf; font-size: 12px; line-height: 1.4; transition: background-color var(--relay-duration), color var(--relay-duration); }
+.scenarios input:checked + span { color: #f1f4ee; border-color: #839b8a; background: #26362e; }
+.scenarios input:focus-visible + span { outline: 2px solid #f2f6ed; outline-offset: 3px; }
+.actionSurface { padding: 1px 1px 5px; margin-top: 18px; grid-column: 1 / -1; background: linear-gradient(105deg, #a2b394, #4e6547 58%, #7a9268); box-shadow: 0 15px 34px #0005; }
+.action { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: space-between; width: 100%; min-height: 170px; padding: 20px 26px 25px; overflow: hidden; border: 0; border-radius: 0; background: #dee5d9; color: #152019; font: inherit; text-align: left; cursor: pointer; transition: background-color var(--relay-duration), color var(--relay-duration); }
+.action::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(117deg, #fff7 0, #fff0 43%); pointer-events: none; }
+.action:hover { background: #edf2e7; }
+.action:focus-visible { outline: 2px solid #fff; outline-offset: 5px; }
+.action[aria-disabled='true'] { cursor: progress; }
+.buttonMeta { display: flex; justify-content: space-between; gap: 16px; font: 500 10px/1.4 ui-monospace, monospace; letter-spacing: .02em; opacity: .75; }
+.buttonMeta > span { font-size: 17px; line-height: .8; }
+.buttonContent { display: grid; grid-template-columns: 37px minmax(0, 1fr); align-items: center; gap: 20px; width: 100%; padding-top: 30px; }
+.iconStack { display: grid; place-items: center; width: 37px; height: 37px; }
+.icon { grid-area: 1/1; width: 34px; height: 34px; opacity: 0; transform: translateY(5px) scale(.88); transition: opacity var(--relay-duration), transform var(--relay-duration); }
+.visibleIcon { opacity: 1; transform: translateY(0) scale(1); }
+.labelStack { display: grid; min-width: 0; font-size: clamp(21px, 3.1vw, 32px); font-weight: 500; line-height: 1.18; letter-spacing: -.035em; }
+.labelStack > span { grid-area: 1/1; opacity: 0; transform: translateY(7px); overflow-wrap: anywhere; transition: opacity var(--relay-duration), transform var(--relay-duration); }
+.labelStack > .visibleLabel { opacity: 1; transform: translateY(0); }
+.stateEdge { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--relay-accent); }
+.instrument[data-state='success'] .action { background: var(--relay-accent); color: var(--relay-on-accent); }
+.instrument[data-state='error'] .action { background: #f0c9bb; color: #3e201b; }
+.instrument[data-state='error'] .stateEdge { background: #9c3c2c; }
+.instrument[data-state='pending'] .visibleIcon.pendingIcon { animation: relay-turn 900ms linear infinite; }
+.track { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); list-style: none; padding: 0; margin: 20px 0 0; gap: 10px; grid-column: 1 / -1; }
+.track li { position: relative; display: flex; flex-direction: column; gap: 7px; padding-bottom: 12px; color: #9aafa0; font-size: 10px; line-height: 1.4; border-bottom: 1px solid #3b5042; }
+.stepNumber { font: 500 10px/1.5 ui-monospace, monospace; letter-spacing: .03em; padding-left: 11px; }
+.track li i { position: absolute; left: 0; top: 4px; height: 4px; width: 4px; border-radius: 50%; background: transparent; }
+.track .activeStep { color: #f0f4ee; border-color: #becfba; }
+.activeStep i { background: var(--relay-accent) !important; }
+.instrument[data-state='error'] .activeStep i { background: #f6b5a4 !important; }
+.statusRow { display: flex; align-items: flex-start; justify-content: space-between; gap: 22px; margin-top: 12px; grid-column: 1 / -1; }
+.status { margin: 0; min-height: 45px; max-width: 34em; font-size: 12px; line-height: 1.7; color: #bacbbf; }
+.reset { display: inline-flex; flex-shrink: 0; align-items: center; gap: 9px; min-height: 44px; padding: 0 0 0 4px; border: 0; color: #d1ddd3; background: transparent; font: inherit; font-size: 11px; line-height: 1.4; cursor: pointer; }
+.reset > span { font-size: 19px; }
+.reset:hover { color: #fff; }
+.reset:focus-visible { outline: 2px solid #f2f6ed; outline-offset: 5px; }
+.instrument[data-motion='expressive'] .icon, .instrument[data-motion='expressive'] .labelStack > span { transition-timing-function: cubic-bezier(.2, .8, .2, 1); }
+.instrument[data-motion='off'] *, .instrument[data-motion='off'] *::before { animation: none !important; transition: none !important; }
+@keyframes relay-turn { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .instrument *, .instrument *::before { animation: none !important; transition: none !important; } }
+@media (max-width: 700px) {
+  .instrument { padding: 0; grid-template-columns: 1fr; }
+  .metadata { gap: 8px; }
+  .metadata { grid-column: 1; justify-content: space-between; }
+  .scenarios { grid-column: 1; grid-row: 3; margin-top: 16px; }
+  .identifier, .currentState { font-size: 9px; }
+  .identifier > span { margin: 0 3px; }
+  .action { padding: 17px 15px 21px; min-height: 148px; }
+  .buttonContent { gap: 13px; grid-template-columns: 30px minmax(0, 1fr); }
+  .iconStack, .icon { width: 30px; height: 30px; }
+  .labelStack { font-size: 24px; }
+  .track { gap: 8px; }
+  .track li { font-size: 9px; }
+  .statusRow { gap: 12px; }
+}
+/* The exported example responds to its embedding pane, not only the browser. */
+@container state-relay (max-width: 700px) {
+  .instrument { padding: 0; grid-template-columns: 1fr; }
+  .metadata { grid-column: 1; gap: 8px; justify-content: space-between; }
+  .scenarios { grid-column: 1; grid-row: 3; margin-top: 16px; }
+  .identifier, .currentState { font-size: 9px; }
+  .identifier > span { margin: 0 3px; }
+  .action { padding: 17px 15px 21px; min-height: 148px; }
+  .buttonContent { gap: 13px; grid-template-columns: 30px minmax(0, 1fr); }
+  .iconStack, .icon { width: 30px; height: 30px; }
+  .labelStack { font-size: 24px; }
+  .track { gap: 8px; }
+  .track li { font-size: 9px; }
+  .statusRow { gap: 12px; }
+}

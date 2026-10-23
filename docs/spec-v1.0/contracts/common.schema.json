@@ -1,0 +1,364 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.invalid/ui-library/v1/common.schema.json",
+  "title": "Shared definitions; identifiers use reserved .invalid, not a hosted contract service",
+  "$defs": {
+    "itemId": {
+      "type": "string",
+      "pattern": "^[SCEA][0-9]{3}$"
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(-[0-9A-Za-z.-]+)?$",
+      "maxLength": 80
+    },
+    "locale": {
+      "enum": [
+        "ru",
+        "en"
+      ]
+    },
+    "target": {
+      "enum": [
+        "vite-react-ts",
+        "next-app-router"
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:(?!0{64}$)[a-f0-9]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?Z$"
+    },
+    "relativePath": {
+      "type": "string",
+      "maxLength": 240,
+      "pattern": "^(?!.*(?:^|/)\\.\\.?(?:/|$))[A-Za-z0-9_][A-Za-z0-9_.-]*(?:/[A-Za-z0-9_][A-Za-z0-9_.-]*)*$"
+    },
+    "releaseRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "itemId": {
+          "$ref": "common.schema.json#/$defs/itemId"
+        },
+        "itemVersion": {
+          "$ref": "common.schema.json#/$defs/semver"
+        }
+      },
+      "required": [
+        "itemId",
+        "itemVersion"
+      ]
+    },
+    "locales": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "const": "ru"
+        },
+        {
+          "const": "en"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "localizedText": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ru": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "ru",
+        "en"
+      ]
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "planned",
+            "failed",
+            "passed"
+          ]
+        },
+        "testedAt": {
+          "anyOf": [
+            {
+              "$ref": "common.schema.json#/$defs/timestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reportId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "environments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "target": {
+                "$ref": "common.schema.json#/$defs/target"
+              },
+              "react": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "reactDom": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "typescript": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "framework": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "node": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "packageManager": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 60
+              },
+              "lockfileDigest": {
+                "$ref": "common.schema.json#/$defs/sha256"
+              },
+              "commit": {
+                "type": "string",
+                "pattern": "^([a-f0-9]{40}|[a-f0-9]{64})$"
+              },
+              "browserBuilds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "minItems": 1,
+                "maxItems": 10,
+                "uniqueItems": true
+              },
+              "command": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 240
+              },
+              "exitCode": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 255
+              }
+            },
+            "required": [
+              "target",
+              "react",
+              "reactDom",
+              "typescript",
+              "framework",
+              "node",
+              "packageManager",
+              "lockfileDigest",
+              "commit",
+              "browserBuilds",
+              "command",
+              "exitCode"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 20,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "status",
+        "testedAt",
+        "reportId",
+        "environments"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "planned"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "testedAt": {
+                "type": "null"
+              },
+              "reportId": {
+                "type": "null"
+              },
+              "environments": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "passed",
+                  "failed"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "testedAt": {
+                "$ref": "common.schema.json#/$defs/timestamp"
+              },
+              "reportId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "environments": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "passed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "environments": {
+                "items": {
+                  "properties": {
+                    "exitCode": {
+                      "const": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "$ref": "common.schema.json#/$defs/relativePath"
+        },
+        "kind": {
+          "enum": [
+            "source",
+            "style",
+            "config",
+            "schema",
+            "example",
+            "template",
+            "documentation",
+            "prompt",
+            "license",
+            "asset",
+            "manifest"
+          ]
+        },
+        "encoding": {
+          "enum": [
+            "utf8",
+            "binary"
+          ]
+        },
+        "mimeType": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "byteLength": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 5242880
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "$ref": "common.schema.json#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "licenseRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        }
+      },
+      "required": [
+        "path",
+        "kind",
+        "encoding",
+        "mimeType",
+        "byteLength",
+        "sha256",
+        "licenseRef"
+      ]
+    }
+  }
+}

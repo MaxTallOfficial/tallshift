@@ -1,0 +1,34 @@
+{
+  "measurements": [
+    {
+      "activePanels": 1,
+      "codeViewport": 560,
+      "file": "SelectedExample.tsx",
+      "height": 968.6953125
+    },
+    {
+      "activePanels": 1,
+      "codeViewport": 560,
+      "file": "AfterlightExample.module.css",
+      "height": 968.6953125
+    },
+    {
+      "activePanels": 1,
+      "codeViewport": 560,
+      "file": "SelectedExample.tsx",
+      "height": 968.6953125
+    }
+  ],
+  "inactivePanelAttributes": [
+    {
+      "id": "sy-panel-demo",
+      "inert": true,
+      "visibility": "hidden"
+    },
+    {
+      "id": "sy-panel-prompt",
+      "inert": true,
+      "visibility": "hidden"
+    }
+  ]
+}

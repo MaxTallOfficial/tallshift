@@ -1,0 +1,63 @@
+{
+  "locale": "ru",
+  "scrollWidth": 320,
+  "width": 320,
+  "access": [
+    {
+      "height": 890.8515625,
+      "state": "free"
+    },
+    {
+      "height": 890.8515625,
+      "state": "no-access"
+    },
+    {
+      "height": 890.8515625,
+      "state": "pending"
+    },
+    {
+      "height": 890.8515625,
+      "state": "owner"
+    },
+    {
+      "height": 890.8515625,
+      "state": "error"
+    },
+    {
+      "height": 890.8515625,
+      "state": "closed"
+    }
+  ],
+  "library": [
+    {
+      "height": 1177.171875,
+      "state": "page 1"
+    },
+    {
+      "height": 1177.171875,
+      "state": "page 2"
+    },
+    {
+      "height": 1177.171875,
+      "state": "page 3"
+    },
+    {
+      "height": 1177.171875,
+      "state": "loading"
+    },
+    {
+      "height": 1177.171875,
+      "state": "empty"
+    },
+    {
+      "height": 1177.171875,
+      "state": "error"
+    },
+    {
+      "height": 1177.171875,
+      "state": "Playful one result"
+    }
+  ],
+  "accessDelta": 0,
+  "libraryDelta": 0
+}

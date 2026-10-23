@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.next/
+.vite/
+.sites-runtime/
+*.tsbuildinfo
+.DS_Store
+prototype/.qa/
+
+# Local credentials and environment overrides
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12

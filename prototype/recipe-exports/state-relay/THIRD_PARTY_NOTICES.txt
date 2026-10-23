@@ -1,0 +1,5 @@
+State Relay A001 includes original code and CSS, with no bundled third-party
+runtime, font, image, icon package or motion library.
+
+React and react-dom are peer dependencies supplied by the host application,
+not redistributed by this recipe. Their licenses remain their own.

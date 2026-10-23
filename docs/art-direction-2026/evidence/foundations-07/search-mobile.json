@@ -1,0 +1,15 @@
+{
+  "border": "rgb(162, 162, 157)",
+  "menu": {
+    "bottom": 761.1015625,
+    "left": 38,
+    "right": 284,
+    "top": 481.1015625
+  },
+  "pageWidth": 320,
+  "shadow": "rgb(184, 184, 178) 0px 0px 0px 1px inset",
+  "viewport": [
+    320,
+    900
+  ]
+}

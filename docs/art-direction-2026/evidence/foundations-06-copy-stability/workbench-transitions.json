@@ -1,0 +1,167 @@
+{
+  "measurement": "getBoundingClientRect across Demo, Code, Prompt, Demo; captured browser results",
+  "cases": [
+    {
+      "locale": "en",
+      "width": 1440,
+      "heights": [
+        968.6953125,
+        968.6953125,
+        968.6953125,
+        968.6953125
+      ],
+      "toolbarHeights": [
+        88,
+        88,
+        88,
+        88
+      ],
+      "delta": 0,
+      "scrollWidth": 1440
+    },
+    {
+      "locale": "en",
+      "width": 768,
+      "heights": [
+        1298.8828125,
+        1298.8828125,
+        1298.8828125,
+        1298.8828125
+      ],
+      "toolbarHeights": [
+        88,
+        88,
+        88,
+        88
+      ],
+      "delta": 0,
+      "scrollWidth": 768
+    },
+    {
+      "locale": "en",
+      "width": 320,
+      "heights": [
+        1569.6640625,
+        1569.6640625,
+        1569.6640625,
+        1569.6640625
+      ],
+      "toolbarHeights": [
+        153,
+        153,
+        153,
+        153
+      ],
+      "delta": 0,
+      "scrollWidth": 320
+    },
+    {
+      "locale": "ru",
+      "width": 1440,
+      "heights": [
+        968.6953125,
+        968.6953125,
+        968.6953125,
+        968.6953125
+      ],
+      "toolbarHeights": [
+        88,
+        88,
+        88,
+        88
+      ],
+      "delta": 0,
+      "scrollWidth": 1440
+    },
+    {
+      "locale": "ru",
+      "width": 768,
+      "heights": [
+        1298.8828125,
+        1298.8828125,
+        1298.8828125,
+        1298.8828125
+      ],
+      "toolbarHeights": [
+        88,
+        88,
+        88,
+        88
+      ],
+      "delta": 0,
+      "scrollWidth": 768
+    },
+    {
+      "locale": "ru",
+      "width": 320,
+      "heights": [
+        1589.4609375,
+        1589.4609375,
+        1589.4609375,
+        1589.4609375
+      ],
+      "toolbarHeights": [
+        153,
+        153,
+        153,
+        153
+      ],
+      "delta": 0,
+      "scrollWidth": 320
+    },
+    {
+      "locale": "vi",
+      "width": 1440,
+      "heights": [
+        968.6953125,
+        968.6953125,
+        968.6953125,
+        968.6953125
+      ],
+      "toolbarHeights": [
+        88,
+        88,
+        88,
+        88
+      ],
+      "delta": 0,
+      "scrollWidth": 1440
+    },
+    {
+      "locale": "vi",
+      "width": 768,
+      "heights": [
+        1298.8828125,
+        1298.8828125,
+        1298.8828125,
+        1298.8828125
+      ],
+      "toolbarHeights": [
+        88,
+        88,
+        88,
+        88
+      ],
+      "delta": 0,
+      "scrollWidth": 768
+    },
+    {
+      "locale": "vi",
+      "width": 320,
+      "heights": [
+        1569.8671875,
+        1569.8671875,
+        1569.8671875,
+        1569.8671875
+      ],
+      "toolbarHeights": [
+        173,
+        173,
+        173,
+        173
+      ],
+      "delta": 0,
+      "scrollWidth": 320
+    }
+  ]
+}

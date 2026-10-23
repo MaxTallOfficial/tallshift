@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "1.0.0",
+  "itemId": "A001",
+  "itemVersion": "0.1.0-prototype",
+  "kind": "animation",
+  "access": "free",
+  "artifactState": "planned",
+  "sourceDigest": null,
+  "configSchemaVersion": "1.0.0",
+  "configSchemaPath": "config.schema.json",
+  "exporterVersion": "0.1.0-prototype",
+  "entry": "src/useStateRelay.ts",
+  "exportName": "useStateRelay",
+  "renderProfile": "client-motion",
+  "styles": "css-modules",
+  "locales": [
+    "ru",
+    "en"
+  ],
+  "targets": [
+    "vite-react-ts",
+    "next-app-router"
+  ],
+  "dependencies": {
+    "peer": [
+      {
+        "name": "react",
+        "range": ">=19.3.1 <20.0.0",
+        "license": "MIT"
+      },
+      {
+        "name": "react-dom",
+        "range": ">=19.3.1 <20.0.0",
+        "license": "MIT"
+      }
+    ],
+    "required": [],
+    "optional": []
+  },
+  "files": [
+    {
+      "path": "src/useStateRelay.ts",
+      "kind": "source",
+      "encoding": "utf8",
+      "mimeType": "text/typescript",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "src/StateRelay.module.css",
+      "kind": "style",
+      "encoding": "utf8",
+      "mimeType": "text/css",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "Example.tsx",
+      "kind": "example",
+      "encoding": "utf8",
+      "mimeType": "text/tsx",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "config.schema.json",
+      "kind": "schema",
+      "encoding": "utf8",
+      "mimeType": "application/schema+json",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "config.json",
+      "kind": "config",
+      "encoding": "utf8",
+      "mimeType": "application/json",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "README.ru.md",
+      "kind": "documentation",
+      "encoding": "utf8",
+      "mimeType": "text/markdown",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "README.en.md",
+      "kind": "documentation",
+      "encoding": "utf8",
+      "mimeType": "text/markdown",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "INSTALL.ru.md",
+      "kind": "documentation",
+      "encoding": "utf8",
+      "mimeType": "text/markdown",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "INSTALL.en.md",
+      "kind": "documentation",
+      "encoding": "utf8",
+      "mimeType": "text/markdown",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "INTEGRATE.ru.md",
+      "kind": "documentation",
+      "encoding": "utf8",
+      "mimeType": "text/markdown",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "INTEGRATE.en.md",
+      "kind": "documentation",
+      "encoding": "utf8",
+      "mimeType": "text/markdown",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "prompts/preserve.ru.md",
+      "kind": "prompt",
+      "encoding": "utf8",
+      "mimeType": "text/markdown",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "prompts/preserve.en.md",
+      "kind": "prompt",
+      "encoding": "utf8",
+      "mimeType": "text/markdown",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "prompts/adapt.ru.md",
+      "kind": "prompt",
+      "encoding": "utf8",
+      "mimeType": "text/markdown",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "prompts/adapt.en.md",
+      "kind": "prompt",
+      "encoding": "utf8",
+      "mimeType": "text/markdown",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "LICENSE.txt",
+      "kind": "license",
+      "encoding": "utf8",
+      "mimeType": "text/plain",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.txt",
+      "kind": "license",
+      "encoding": "utf8",
+      "mimeType": "text/plain",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    }
+  ],
+  "includedItems": [],
+  "verification": {
+    "status": "planned",
+    "testedAt": null,
+    "reportId": null,
+    "environments": []
+  },
+  "animation": {
+    "animationEntry": "src/useStateRelay.ts",
+    "trigger": "state-change",
+    "states": [
+      "idle",
+      "pending",
+      "success",
+      "error"
+    ],
+    "capabilities": [
+      "begin",
+      "settle",
+      "run",
+      "reset",
+      "cancel",
+      "destroy"
+    ],
+    "markupContract": "Native button and separate status; host owns operation and announcement.",
+    "interruptionPolicy": "Latest ticket wins; stale settles cannot change the newer host outcome.",
+    "focusPolicy": "Focus stays on action; motion never blocks operation or keyboard.",
+    "cleanupPolicy": "Cancel owned animations and cleanup subscriptions on unmount.",
+    "reducedMotion": "Off or system reduce changes presentation immediately.",
+    "supportedAdapters": [
+      "react-typescript"
+    ]
+  },
+  "limitations": [
+    "Planned contract fixture only, not a packaged or verified release. React peer range is a candidate until fixtures pass."
+  ]
+}

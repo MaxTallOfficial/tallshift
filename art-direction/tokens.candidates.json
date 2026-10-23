@@ -1,0 +1,1607 @@
+{
+  "schemaVersion": "0.1.0",
+  "status": "candidate-not-approved",
+  "format": "Formrift internal token format",
+  "accents": [
+    {
+      "id": "berry",
+      "hex": "#B52C68",
+      "name": "Festival Fuchsia",
+      "pantone": "19-2434 TCX",
+      "season": "AW 2026–27",
+      "ru": "Ягодный",
+      "en": "Berry"
+    },
+    {
+      "id": "acacia",
+      "hex": "#D6DE45",
+      "name": "Acacia",
+      "pantone": "13-0640 TCX",
+      "season": "AW 2026–27",
+      "ru": "Акация",
+      "en": "Acacia"
+    },
+    {
+      "id": "saffron",
+      "hex": "#C99A29",
+      "name": "Arrowwood",
+      "pantone": "16-0954 TCX",
+      "season": "SS 2027",
+      "ru": "Охра",
+      "en": "Saffron"
+    },
+    {
+      "id": "clay",
+      "hex": "#C98068",
+      "name": "Muted Clay",
+      "pantone": "16-1330 TCX",
+      "season": "AW 2026–27",
+      "ru": "Глина",
+      "en": "Clay"
+    },
+    {
+      "id": "waterfall",
+      "hex": "#70C5BA",
+      "name": "Waterfall",
+      "pantone": "15-5516 TCX",
+      "season": "SS 2027",
+      "ru": "Аква",
+      "en": "Waterfall"
+    },
+    {
+      "id": "fire",
+      "hex": "#ED6038",
+      "name": "Dragon Fire",
+      "pantone": "16-1460 TCX",
+      "season": "SS 2027",
+      "ru": "Огонь",
+      "en": "Fire"
+    }
+  ],
+  "componentAliases": {
+    "button": {
+      "primary": {
+        "background": "color.accent",
+        "foreground": "color.onAccent",
+        "hover": "color.accentHover",
+        "focus": "color.focus"
+      },
+      "secondary": {
+        "background": "color.surface",
+        "foreground": "color.text",
+        "border": "color.border"
+      },
+      "radius": "control.radius",
+      "minHit": "control.minHit"
+    },
+    "input": {
+      "background": "color.background",
+      "foreground": "color.text",
+      "placeholder": "color.textSecondary",
+      "border": "color.border",
+      "error": "color.error",
+      "radius": "control.radius"
+    },
+    "card": {
+      "surface": "color.surface",
+      "border": "color.divider",
+      "selectedOutline": "color.selectedBorder",
+      "radius": "control.radiusPanel"
+    },
+    "dialog": {
+      "background": "color.surface",
+      "foreground": "color.text",
+      "radius": "control.radiusDialog",
+      "layer": "layer.dialog"
+    },
+    "toast": {
+      "foreground": "color.text",
+      "surface": "color.surface",
+      "success": "color.success",
+      "error": "color.error",
+      "layer": "layer.toast"
+    },
+    "tabs": {
+      "foreground": "color.textSecondary",
+      "selectedForeground": "color.text",
+      "selectedSurface": "color.surface",
+      "motion": "motion.selection"
+    }
+  },
+  "variants": [
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "material",
+      "accentCandidate": "berry",
+      "color": {
+        "background": "#EDEBE4",
+        "surface": "#F9F8F3",
+        "text": "#24231F",
+        "textSecondary": "#5F6159",
+        "border": "#77796D",
+        "divider": "#D5D4CA",
+        "accent": "#B52C68",
+        "onAccent": "#FFFFFF",
+        "accentHover": "#a72860",
+        "accentSoft": "#f3e6e6",
+        "link": "#B52C68",
+        "selectedBorder": "#B52C68",
+        "focus": "#B52C68",
+        "success": "#1C6E4B",
+        "error": "#B52845",
+        "warning": "#7D5612"
+      },
+      "type": {
+        "body": "Manrope",
+        "display": "Manrope",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 10,
+        "radiusPanel": 16,
+        "radiusDialog": 24,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "material",
+      "accentCandidate": "acacia",
+      "color": {
+        "background": "#EDEBE4",
+        "surface": "#F9F8F3",
+        "text": "#24231F",
+        "textSecondary": "#5F6159",
+        "border": "#77796D",
+        "divider": "#D5D4CA",
+        "accent": "#D6DE45",
+        "onAccent": "#171818",
+        "accentHover": "#d9e154",
+        "accentSoft": "#f6f6e3",
+        "link": "#71752d",
+        "selectedBorder": "#868b32",
+        "focus": "#868b32",
+        "success": "#1C6E4B",
+        "error": "#B52845",
+        "warning": "#7D5612"
+      },
+      "type": {
+        "body": "Manrope",
+        "display": "Manrope",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 10,
+        "radiusPanel": 16,
+        "radiusDialog": 24,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "material",
+      "accentCandidate": "saffron",
+      "color": {
+        "background": "#EDEBE4",
+        "surface": "#F9F8F3",
+        "text": "#24231F",
+        "textSecondary": "#5F6159",
+        "border": "#77796D",
+        "divider": "#D5D4CA",
+        "accent": "#C99A29",
+        "onAccent": "#171818",
+        "accentHover": "#cda23a",
+        "accentSoft": "#f5f0e1",
+        "link": "#8c6e23",
+        "selectedBorder": "#a78126",
+        "focus": "#a78126",
+        "success": "#1C6E4B",
+        "error": "#B52845",
+        "warning": "#7D5612"
+      },
+      "type": {
+        "body": "Manrope",
+        "display": "Manrope",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 10,
+        "radiusPanel": 16,
+        "radiusDialog": 24,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "material",
+      "accentCandidate": "clay",
+      "color": {
+        "background": "#EDEBE4",
+        "surface": "#F9F8F3",
+        "text": "#24231F",
+        "textSecondary": "#5F6159",
+        "border": "#77796D",
+        "divider": "#D5D4CA",
+        "accent": "#C98068",
+        "onAccent": "#171818",
+        "accentHover": "#cd8a74",
+        "accentSoft": "#f5ede6",
+        "link": "#9b6553",
+        "selectedBorder": "#b77660",
+        "focus": "#b77660",
+        "success": "#1C6E4B",
+        "error": "#B52845",
+        "warning": "#7D5612"
+      },
+      "type": {
+        "body": "Manrope",
+        "display": "Manrope",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 10,
+        "radiusPanel": 16,
+        "radiusDialog": 24,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "material",
+      "accentCandidate": "waterfall",
+      "color": {
+        "background": "#EDEBE4",
+        "surface": "#F9F8F3",
+        "text": "#24231F",
+        "textSecondary": "#5F6159",
+        "border": "#77796D",
+        "divider": "#D5D4CA",
+        "accent": "#70C5BA",
+        "onAccent": "#171818",
+        "accentHover": "#7bcac0",
+        "accentSoft": "#edf3ee",
+        "link": "#4a7b74",
+        "selectedBorder": "#559189",
+        "focus": "#559189",
+        "success": "#1C6E4B",
+        "error": "#B52845",
+        "warning": "#7D5612"
+      },
+      "type": {
+        "body": "Manrope",
+        "display": "Manrope",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 10,
+        "radiusPanel": 16,
+        "radiusDialog": 24,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "material",
+      "accentCandidate": "fire",
+      "color": {
+        "background": "#EDEBE4",
+        "surface": "#F9F8F3",
+        "text": "#24231F",
+        "textSecondary": "#5F6159",
+        "border": "#77796D",
+        "divider": "#D5D4CA",
+        "accent": "#ED6038",
+        "onAccent": "#171818",
+        "accentHover": "#ee6d48",
+        "accentSoft": "#f8eae2",
+        "link": "#be5031",
+        "selectedBorder": "#e25c36",
+        "focus": "#e25c36",
+        "success": "#1C6E4B",
+        "error": "#B52845",
+        "warning": "#7D5612"
+      },
+      "type": {
+        "body": "Manrope",
+        "display": "Manrope",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 10,
+        "radiusPanel": 16,
+        "radiusDialog": 24,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "type",
+      "accentCandidate": "berry",
+      "color": {
+        "background": "#E5E1D7",
+        "surface": "#F6F2E9",
+        "text": "#22211D",
+        "textSecondary": "#625E55",
+        "border": "#7D786B",
+        "divider": "#CEC8BB",
+        "accent": "#B52C68",
+        "onAccent": "#FFFFFF",
+        "accentHover": "#a72860",
+        "accentSoft": "#f0e0dd",
+        "link": "#B52C68",
+        "selectedBorder": "#B52C68",
+        "focus": "#B52C68",
+        "success": "#1C6E4B",
+        "error": "#B52845",
+        "warning": "#7D5612"
+      },
+      "type": {
+        "body": "Golos Text",
+        "display": "Unbounded",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 2,
+        "radiusPanel": 2,
+        "radiusDialog": 2,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "type",
+      "accentCandidate": "acacia",
+      "color": {
+        "background": "#E5E1D7",
+        "surface": "#F6F2E9",
+        "text": "#22211D",
+        "textSecondary": "#625E55",
+        "border": "#7D786B",
+        "divider": "#CEC8BB",
+        "accent": "#D6DE45",
+        "onAccent": "#171818",
+        "accentHover": "#d9e154",
+        "accentSoft": "#f3f0da",
+        "link": "#6f732d",
+        "selectedBorder": "#808531",
+        "focus": "#808531",
+        "success": "#1C6E4B",
+        "error": "#B52845",
+        "warning": "#7D5612"
+      },
+      "type": {
+        "body": "Golos Text",
+        "display": "Unbounded",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 2,
+        "radiusPanel": 2,
+        "radiusDialog": 2,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "type",
+      "accentCandidate": "saffron",
+      "color": {
+        "background": "#E5E1D7",
+        "surface": "#F6F2E9",
+        "text": "#22211D",
+        "textSecondary": "#625E55",
+        "border": "#7D786B",
+        "divider": "#CEC8BB",
+        "accent": "#C99A29",
+        "onAccent": "#171818",
+        "accentHover": "#cda23a",
+        "accentSoft": "#f2ead8",
+        "link": "#876a23",
+        "selectedBorder": "#9e7b25",
+        "focus": "#9e7b25",
+        "success": "#1C6E4B",
+        "error": "#B52845",
+        "warning": "#7D5612"
+      },
+      "type": {
+        "body": "Golos Text",
+        "display": "Unbounded",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 2,
+        "radiusPanel": 2,
+        "radiusDialog": 2,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "type",
+      "accentCandidate": "clay",
+      "color": {
+        "background": "#E5E1D7",
+        "surface": "#F6F2E9",
+        "text": "#22211D",
+        "textSecondary": "#625E55",
+        "border": "#7D786B",
+        "divider": "#CEC8BB",
+        "accent": "#C98068",
+        "onAccent": "#171818",
+        "accentHover": "#cd8a74",
+        "accentSoft": "#f2e8dd",
+        "link": "#956251",
+        "selectedBorder": "#ae705c",
+        "focus": "#ae705c",
+        "success": "#1C6E4B",
+        "error": "#B52845",
+        "warning": "#7D5612"
+      },
+      "type": {
+        "body": "Golos Text",
+        "display": "Unbounded",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 2,
+        "radiusPanel": 2,
+        "radiusDialog": 2,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "type",
+      "accentCandidate": "waterfall",
+      "color": {
+        "background": "#E5E1D7",
+        "surface": "#F6F2E9",
+        "text": "#22211D",
+        "textSecondary": "#625E55",
+        "border": "#7D786B",
+        "divider": "#CEC8BB",
+        "accent": "#70C5BA",
+        "onAccent": "#171818",
+        "accentHover": "#7bcac0",
+        "accentSoft": "#eaeee5",
+        "link": "#487771",
+        "selectedBorder": "#528a83",
+        "focus": "#528a83",
+        "success": "#1C6E4B",
+        "error": "#B52845",
+        "warning": "#7D5612"
+      },
+      "type": {
+        "body": "Golos Text",
+        "display": "Unbounded",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 2,
+        "radiusPanel": 2,
+        "radiusDialog": 2,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "type",
+      "accentCandidate": "fire",
+      "color": {
+        "background": "#E5E1D7",
+        "surface": "#F6F2E9",
+        "text": "#22211D",
+        "textSecondary": "#625E55",
+        "border": "#7D786B",
+        "divider": "#CEC8BB",
+        "accent": "#ED6038",
+        "onAccent": "#171818",
+        "accentHover": "#ee6d48",
+        "accentSoft": "#f5e5d9",
+        "link": "#b84e30",
+        "selectedBorder": "#d55834",
+        "focus": "#d55834",
+        "success": "#1C6E4B",
+        "error": "#B52845",
+        "warning": "#7D5612"
+      },
+      "type": {
+        "body": "Golos Text",
+        "display": "Unbounded",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 2,
+        "radiusPanel": 2,
+        "radiusDialog": 2,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "night",
+      "accentCandidate": "berry",
+      "color": {
+        "background": "#12191A",
+        "surface": "#1C2526",
+        "text": "#E8EBE4",
+        "textSecondary": "#A2AFA9",
+        "border": "#72827D",
+        "divider": "#344440",
+        "accent": "#B52C68",
+        "onAccent": "#FFFFFF",
+        "accentHover": "#a72860",
+        "accentSoft": "#2a262c",
+        "link": "#cb6b95",
+        "selectedBorder": "#bb3d74",
+        "focus": "#bb3d74",
+        "success": "#7AD2A8",
+        "error": "#FF93A6",
+        "warning": "#EBC46A"
+      },
+      "type": {
+        "body": "Manrope",
+        "display": "Golos Text",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 16,
+        "radiusPanel": 20,
+        "radiusDialog": 24,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "night",
+      "accentCandidate": "acacia",
+      "color": {
+        "background": "#12191A",
+        "surface": "#1C2526",
+        "text": "#E8EBE4",
+        "textSecondary": "#A2AFA9",
+        "border": "#72827D",
+        "divider": "#344440",
+        "accent": "#D6DE45",
+        "onAccent": "#171818",
+        "accentHover": "#d9e154",
+        "accentSoft": "#2d3629",
+        "link": "#D6DE45",
+        "selectedBorder": "#D6DE45",
+        "focus": "#D6DE45",
+        "success": "#7AD2A8",
+        "error": "#FF93A6",
+        "warning": "#EBC46A"
+      },
+      "type": {
+        "body": "Manrope",
+        "display": "Golos Text",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 16,
+        "radiusPanel": 20,
+        "radiusDialog": 24,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "night",
+      "accentCandidate": "saffron",
+      "color": {
+        "background": "#12191A",
+        "surface": "#1C2526",
+        "text": "#E8EBE4",
+        "textSecondary": "#A2AFA9",
+        "border": "#72827D",
+        "divider": "#344440",
+        "accent": "#C99A29",
+        "onAccent": "#171818",
+        "accentHover": "#cda23a",
+        "accentSoft": "#2c3026",
+        "link": "#C99A29",
+        "selectedBorder": "#C99A29",
+        "focus": "#C99A29",
+        "success": "#7AD2A8",
+        "error": "#FF93A6",
+        "warning": "#EBC46A"
+      },
+      "type": {
+        "body": "Manrope",
+        "display": "Golos Text",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 16,
+        "radiusPanel": 20,
+        "radiusDialog": 24,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "night",
+      "accentCandidate": "clay",
+      "color": {
+        "background": "#12191A",
+        "surface": "#1C2526",
+        "text": "#E8EBE4",
+        "textSecondary": "#A2AFA9",
+        "border": "#72827D",
+        "divider": "#344440",
+        "accent": "#C98068",
+        "onAccent": "#171818",
+        "accentHover": "#cd8a74",
+        "accentSoft": "#2c2d2c",
+        "link": "#C98068",
+        "selectedBorder": "#C98068",
+        "focus": "#C98068",
+        "success": "#7AD2A8",
+        "error": "#FF93A6",
+        "warning": "#EBC46A"
+      },
+      "type": {
+        "body": "Manrope",
+        "display": "Golos Text",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 16,
+        "radiusPanel": 20,
+        "radiusDialog": 24,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "night",
+      "accentCandidate": "waterfall",
+      "color": {
+        "background": "#12191A",
+        "surface": "#1C2526",
+        "text": "#E8EBE4",
+        "textSecondary": "#A2AFA9",
+        "border": "#72827D",
+        "divider": "#344440",
+        "accent": "#70C5BA",
+        "onAccent": "#171818",
+        "accentHover": "#7bcac0",
+        "accentSoft": "#243333",
+        "link": "#70C5BA",
+        "selectedBorder": "#70C5BA",
+        "focus": "#70C5BA",
+        "success": "#7AD2A8",
+        "error": "#FF93A6",
+        "warning": "#EBC46A"
+      },
+      "type": {
+        "body": "Manrope",
+        "display": "Golos Text",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 16,
+        "radiusPanel": 20,
+        "radiusDialog": 24,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "status": "candidate-not-approved",
+      "direction": "night",
+      "accentCandidate": "fire",
+      "color": {
+        "background": "#12191A",
+        "surface": "#1C2526",
+        "text": "#E8EBE4",
+        "textSecondary": "#A2AFA9",
+        "border": "#72827D",
+        "divider": "#344440",
+        "accent": "#ED6038",
+        "onAccent": "#171818",
+        "accentHover": "#ee6d48",
+        "accentSoft": "#2f2a28",
+        "link": "#ED6038",
+        "selectedBorder": "#ED6038",
+        "focus": "#ED6038",
+        "success": "#7AD2A8",
+        "error": "#FF93A6",
+        "warning": "#EBC46A"
+      },
+      "type": {
+        "body": "Manrope",
+        "display": "Golos Text",
+        "code": "ui-monospace",
+        "size": {
+          "caption": 12,
+          "label": 14,
+          "body": 16,
+          "lead": 20,
+          "h3": 24,
+          "h2": 40,
+          "display": 96
+        },
+        "lineHeight": {
+          "caption": 1.5,
+          "label": 1.45,
+          "body": 1.6,
+          "lead": 1.5,
+          "heading": 1.1
+        }
+      },
+      "space": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "6": 24,
+        "8": 32,
+        "12": 48,
+        "16": 64,
+        "24": 96
+      },
+      "control": {
+        "minHit": 44,
+        "height": 48,
+        "compactVisualHeight": 36,
+        "radius": 16,
+        "radiusPanel": 20,
+        "radiusDialog": 24,
+        "focusRing": 2,
+        "focusOffset": 3
+      },
+      "motion": {
+        "feedback": 120,
+        "selection": 180,
+        "panel": 240,
+        "composition": 480,
+        "easing": "cubic-bezier(.2,0,0,1)",
+        "autoplay": false,
+        "systemReducedMotionPriority": true
+      },
+      "layer": {
+        "base": 0,
+        "sticky": 10,
+        "popover": 30,
+        "backdrop": 40,
+        "dialog": 50,
+        "toast": 60
+      }
+    }
+  ]
+}

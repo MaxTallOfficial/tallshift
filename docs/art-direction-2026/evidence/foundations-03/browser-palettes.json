@@ -1,0 +1,62 @@
+[
+  {
+    "audit": "Contrast checks49/49",
+    "body": "rgb(13, 11, 14)",
+    "canvas": "rgb(13, 11, 14)",
+    "font": "Manrope, Arial, sans-serif",
+    "html": "rgb(13, 11, 14)",
+    "pageWidth": 1440,
+    "palette": "berry",
+    "raised": "rgb(31, 27, 32)",
+    "selected": "rgb(34, 31, 35)",
+    "surface": "rgb(22, 19, 23)",
+    "text": "rgb(236, 234, 237)",
+    "theme": "#0D0B0E",
+    "width": 1440
+  },
+  {
+    "audit": "Contrast checks49/49",
+    "body": "rgb(12, 13, 10)",
+    "canvas": "rgb(12, 13, 10)",
+    "font": "Manrope, Arial, sans-serif",
+    "html": "rgb(12, 13, 10)",
+    "pageWidth": 1440,
+    "palette": "acacia",
+    "raised": "rgb(29, 30, 25)",
+    "selected": "rgb(32, 34, 29)",
+    "surface": "rgb(20, 21, 17)",
+    "text": "rgb(236, 237, 232)",
+    "theme": "#0C0D0A",
+    "width": 1440
+  },
+  {
+    "audit": "Contrast checks49/49",
+    "body": "rgb(14, 12, 11)",
+    "canvas": "rgb(14, 12, 11)",
+    "font": "Manrope, Arial, sans-serif",
+    "html": "rgb(14, 12, 11)",
+    "pageWidth": 1440,
+    "palette": "clay",
+    "raised": "rgb(31, 28, 26)",
+    "selected": "rgb(36, 33, 31)",
+    "surface": "rgb(23, 20, 19)",
+    "text": "rgb(238, 234, 233)",
+    "theme": "#0E0C0B",
+    "width": 1440
+  },
+  {
+    "audit": "Contrast checks49/49",
+    "body": "rgb(13, 12, 9)",
+    "canvas": "rgb(13, 12, 9)",
+    "font": "Manrope, Arial, sans-serif",
+    "html": "rgb(13, 12, 9)",
+    "pageWidth": 1440,
+    "palette": "saffron",
+    "raised": "rgb(30, 29, 25)",
+    "selected": "rgb(36, 34, 31)",
+    "surface": "rgb(22, 21, 18)",
+    "text": "rgb(237, 236, 232)",
+    "theme": "#0D0C09",
+    "width": 1440
+  }
+]

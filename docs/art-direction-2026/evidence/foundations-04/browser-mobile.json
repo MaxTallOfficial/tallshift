@@ -1,0 +1,62 @@
+[
+  {
+    "canvas": "rgb(13, 12, 9)",
+    "cards": [
+      "Original",
+      "Lighter",
+      "Muted",
+      "Deep gold",
+      "Warm amber"
+    ],
+    "copyWidth": 262,
+    "font": "Manrope, Arial, sans-serif",
+    "locale": "en",
+    "notesPreserved": true,
+    "pageWidth": 320,
+    "pickerColumns": "123.5px 123.5px",
+    "promptContainsNotes": true,
+    "radioCount": 5,
+    "shade": "gold",
+    "width": 320
+  },
+  {
+    "canvas": "rgb(13, 12, 9)",
+    "cards": [
+      "Исходный",
+      "Светлее",
+      "Приглушённый",
+      "Глубокое золото",
+      "Тёплый янтарь"
+    ],
+    "copyWidth": 262,
+    "font": "Manrope, Arial, sans-serif",
+    "locale": "ru",
+    "notesPreserved": true,
+    "pageWidth": 320,
+    "pickerColumns": "123.5px 123.5px",
+    "promptContainsNotes": true,
+    "radioCount": 5,
+    "shade": "gold",
+    "width": 320
+  },
+  {
+    "canvas": "rgb(13, 12, 9)",
+    "cards": [
+      "Ban đầu",
+      "Sáng hơn",
+      "Dịu hơn",
+      "Vàng đậm",
+      "Hổ phách ấm"
+    ],
+    "copyWidth": 262,
+    "font": "Manrope, Arial, sans-serif",
+    "locale": "vi",
+    "notesPreserved": true,
+    "pageWidth": 320,
+    "pickerColumns": "123.5px 123.5px",
+    "promptContainsNotes": true,
+    "radioCount": 5,
+    "shade": "gold",
+    "width": 320
+  }
+]

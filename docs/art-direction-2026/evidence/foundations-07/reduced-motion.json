@@ -1,0 +1,13 @@
+{
+  "reducedCheck": {
+    "offChecked": true,
+    "offDisabled": true,
+    "rangeDisabled": true,
+    "reason": "reduced"
+  },
+  "reducedFrame": {
+    "duration": "0ms",
+    "motion": "off"
+  },
+  "restoredMotion": "active"
+}

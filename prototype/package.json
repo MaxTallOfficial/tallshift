@@ -1,0 +1,33 @@
+{
+  "name": "formrift-local-prototype",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "build:study": "tsc -b && vite build --config vite.study.config.ts && node scripts/package-study.mjs",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test tests/*.test.ts",
+    "test:study": "node tests/study-export.mjs",
+    "build:foundations": "tsc -b && vite build --config vite.foundations.config.ts && node scripts/package-study.mjs foundations",
+    "test:foundations": "node --test tests/foundations-tokens.test.ts",
+    "test:system": "node --test tests/foundations-tokens.test.ts tests/system-tokens.test.ts tests/preset-validation.test.ts tests/system-catalog-contract.test.ts tests/discovery-filter.test.ts tests/config-control-validation.test.ts"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "5.3.0",
+    "fflate": "0.8.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "typescript": "7.0.2",
+    "vite": "8.3.5"
+  }
+}

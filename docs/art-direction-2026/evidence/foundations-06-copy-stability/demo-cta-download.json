@@ -1,0 +1,14 @@
+{
+  "trigger": "Get files in Demo toolbar",
+  "download": "/Users/maxtall/Downloads/A001-next-ru-saffron-lighter.zip",
+  "config": {
+    "locale": "ru",
+    "motion": "subtle",
+    "accent": "#EBD183",
+    "duration": 200
+  },
+  "files": 23,
+  "checksumCount": 22,
+  "allChecksumsPass": true,
+  "target": "next-app-router"
+}

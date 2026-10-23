@@ -1,0 +1,50 @@
+[
+  {
+    "disabled": false,
+    "invalid": "false",
+    "number": "160",
+    "panelHeight": 606.140625,
+    "rangeHeight": 44,
+    "rangeY": 21268.8359375
+  },
+  {
+    "disabled": false,
+    "invalid": "false",
+    "number": "0",
+    "panelHeight": 606.140625,
+    "rangeHeight": 44,
+    "rangeY": 21268.8359375
+  },
+  {
+    "disabled": false,
+    "invalid": "false",
+    "number": "400",
+    "panelHeight": 606.140625,
+    "rangeHeight": 44,
+    "rangeY": 21268.8359375
+  },
+  {
+    "disabled": false,
+    "invalid": "true",
+    "number": "35",
+    "panelHeight": 606.140625,
+    "rangeHeight": 44,
+    "rangeY": 21268.8359375
+  },
+  {
+    "disabled": false,
+    "invalid": "false",
+    "number": "200",
+    "panelHeight": 606.140625,
+    "rangeHeight": 44,
+    "rangeY": 21268.8359375
+  },
+  {
+    "disabled": true,
+    "invalid": "false",
+    "number": "200",
+    "panelHeight": 606.140625,
+    "rangeHeight": 44,
+    "rangeY": 21268.8359375
+  }
+]

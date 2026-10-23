@@ -1,0 +1,26 @@
+[
+  {
+    "checkboxWidth": 18,
+    "clearLabel": "Clear fields",
+    "clearRightGap": 0,
+    "locale": "en",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "checkboxWidth": 18,
+    "clearLabel": "Очистить поля",
+    "clearRightGap": 0,
+    "locale": "ru",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "checkboxWidth": 18,
+    "clearLabel": "Xóa nội dung",
+    "clearRightGap": 0,
+    "locale": "vi",
+    "scrollWidth": 320,
+    "width": 320
+  }
+]

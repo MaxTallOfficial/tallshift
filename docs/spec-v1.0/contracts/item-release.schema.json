@@ -1,0 +1,281 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.invalid/ui-library/v1/item-release.schema.json",
+  "title": "Release registry; status mutable with audit, artifact bytes immutable",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "itemId": {
+      "$ref": "common.schema.json#/$defs/itemId"
+    },
+    "itemVersion": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "lifecycle": {
+      "enum": [
+        "planned",
+        "review",
+        "verified",
+        "published",
+        "deprecated",
+        "revoked"
+      ]
+    },
+    "manifestPath": {
+      "$ref": "common.schema.json#/$defs/relativePath"
+    },
+    "sourceDigest": {
+      "anyOf": [
+        {
+          "$ref": "common.schema.json#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "bundleDigest": {
+      "anyOf": [
+        {
+          "$ref": "common.schema.json#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "manifestDigest": {
+      "anyOf": [
+        {
+          "$ref": "common.schema.json#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "publishedAt": {
+      "anyOf": [
+        {
+          "$ref": "common.schema.json#/$defs/timestamp"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "statusChangedAt": {
+      "anyOf": [
+        {
+          "$ref": "common.schema.json#/$defs/timestamp"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "verification": {
+      "$ref": "common.schema.json#/$defs/verification"
+    },
+    "supportStartsAt": {
+      "anyOf": [
+        {
+          "$ref": "common.schema.json#/$defs/timestamp"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "supportEndsAt": {
+      "anyOf": [
+        {
+          "$ref": "common.schema.json#/$defs/timestamp"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "replacement": {
+      "anyOf": [
+        {
+          "$ref": "common.schema.json#/$defs/releaseRef"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "statusReason": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "itemId",
+    "itemVersion",
+    "lifecycle",
+    "manifestPath",
+    "sourceDigest",
+    "bundleDigest",
+    "manifestDigest",
+    "publishedAt",
+    "statusChangedAt",
+    "verification",
+    "supportStartsAt",
+    "supportEndsAt",
+    "replacement",
+    "statusReason"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "lifecycle": {
+            "const": "planned"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "sourceDigest": {
+            "type": "null"
+          },
+          "bundleDigest": {
+            "type": "null"
+          },
+          "manifestDigest": {
+            "type": "null"
+          },
+          "publishedAt": {
+            "type": "null"
+          },
+          "verification": {
+            "properties": {
+              "status": {
+                "const": "planned"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "lifecycle": {
+            "enum": [
+              "verified",
+              "published",
+              "deprecated"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "sourceDigest": {
+            "$ref": "common.schema.json#/$defs/sha256"
+          },
+          "bundleDigest": {
+            "$ref": "common.schema.json#/$defs/sha256"
+          },
+          "manifestDigest": {
+            "$ref": "common.schema.json#/$defs/sha256"
+          },
+          "verification": {
+            "properties": {
+              "status": {
+                "const": "passed"
+              },
+              "environments": {
+                "allOf": [
+                  {
+                    "contains": {
+                      "properties": {
+                        "target": {
+                          "const": "vite-react-ts"
+                        }
+                      },
+                      "required": [
+                        "target"
+                      ]
+                    }
+                  },
+                  {
+                    "contains": {
+                      "properties": {
+                        "target": {
+                          "const": "next-app-router"
+                        }
+                      },
+                      "required": [
+                        "target"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "lifecycle": {
+            "enum": [
+              "published",
+              "deprecated"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "publishedAt": {
+            "$ref": "common.schema.json#/$defs/timestamp"
+          },
+          "statusChangedAt": {
+            "$ref": "common.schema.json#/$defs/timestamp"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "lifecycle": {
+            "const": "revoked"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "statusChangedAt": {
+            "$ref": "common.schema.json#/$defs/timestamp"
+          },
+          "statusReason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        }
+      }
+    }
+  ]
+}

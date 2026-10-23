@@ -1,0 +1,287 @@
+[
+  {
+    "locale": "en",
+    "font": "Manrope, Arial, sans-serif",
+    "height": 968.6953125,
+    "pageWidth": 1440,
+    "width": 1440,
+    "frame": {
+      "pageWidth": 886,
+      "scripts": 0,
+      "width": 886
+    },
+    "heights": [
+      968.6953125,
+      968.6953125,
+      968.6953125,
+      968.6953125
+    ],
+    "delta": 0
+  },
+  {
+    "locale": "en",
+    "font": "Manrope, Arial, sans-serif",
+    "height": 968.6953125,
+    "pageWidth": 1024,
+    "width": 1024,
+    "frame": {
+      "pageWidth": 606,
+      "scripts": 0,
+      "width": 606
+    },
+    "heights": [
+      968.6953125,
+      968.6953125,
+      968.6953125,
+      968.6953125
+    ],
+    "delta": 0
+  },
+  {
+    "locale": "en",
+    "font": "Manrope, Arial, sans-serif",
+    "height": 1510.46875,
+    "pageWidth": 768,
+    "width": 768,
+    "frame": {
+      "pageWidth": 654,
+      "scripts": 0,
+      "width": 654
+    },
+    "heights": [
+      1510.46875,
+      1510.46875,
+      1510.46875,
+      1510.46875
+    ],
+    "delta": 0
+  },
+  {
+    "locale": "en",
+    "font": "Manrope, Arial, sans-serif",
+    "height": 1775.0390625,
+    "pageWidth": 390,
+    "width": 390,
+    "frame": {
+      "pageWidth": 324,
+      "scripts": 0,
+      "width": 324
+    },
+    "heights": [
+      1775.0390625,
+      1775.0390625,
+      1775.0390625,
+      1775.0390625
+    ],
+    "delta": 0
+  },
+  {
+    "locale": "en",
+    "font": "Manrope, Arial, sans-serif",
+    "height": 1831.1328125,
+    "pageWidth": 320,
+    "width": 320,
+    "frame": {
+      "pageWidth": 254,
+      "scripts": 0,
+      "width": 254
+    },
+    "heights": [
+      1831.1328125,
+      1831.1328125,
+      1831.1328125,
+      1831.1328125
+    ],
+    "delta": 0
+  },
+  {
+    "locale": "ru",
+    "font": "Manrope, Arial, sans-serif",
+    "height": 968.6953125,
+    "pageWidth": 1440,
+    "width": 1440,
+    "frame": {
+      "pageWidth": 886,
+      "scripts": 0,
+      "width": 886
+    },
+    "heights": [
+      968.6953125,
+      968.6953125,
+      968.6953125,
+      968.6953125
+    ],
+    "delta": 0
+  },
+  {
+    "locale": "ru",
+    "font": "Manrope, Arial, sans-serif",
+    "height": 968.6953125,
+    "pageWidth": 1024,
+    "width": 1024,
+    "frame": {
+      "pageWidth": 606,
+      "scripts": 0,
+      "width": 606
+    },
+    "heights": [
+      968.6953125,
+      968.6953125,
+      968.6953125,
+      968.6953125
+    ],
+    "delta": 0
+  },
+  {
+    "locale": "ru",
+    "font": "Manrope, Arial, sans-serif",
+    "height": 1510.46875,
+    "pageWidth": 768,
+    "width": 768,
+    "frame": {
+      "pageWidth": 654,
+      "scripts": 0,
+      "width": 654
+    },
+    "heights": [
+      1510.46875,
+      1510.46875,
+      1510.46875,
+      1510.46875
+    ],
+    "delta": 0
+  },
+  {
+    "locale": "ru",
+    "font": "Manrope, Arial, sans-serif",
+    "height": 1794.8359375,
+    "pageWidth": 390,
+    "width": 390,
+    "frame": {
+      "pageWidth": 324,
+      "scripts": 0,
+      "width": 324
+    },
+    "heights": [
+      1794.8359375,
+      1794.8359375,
+      1794.8359375,
+      1794.8359375
+    ],
+    "delta": 0
+  },
+  {
+    "locale": "ru",
+    "font": "Manrope, Arial, sans-serif",
+    "height": 1897.375,
+    "pageWidth": 320,
+    "width": 320,
+    "frame": {
+      "pageWidth": 254,
+      "scripts": 0,
+      "width": 254
+    },
+    "heights": [
+      1897.375,
+      1897.375,
+      1897.375,
+      1897.375
+    ],
+    "delta": 0
+  },
+  {
+    "locale": "vi",
+    "font": "Manrope, Arial, sans-serif",
+    "height": 968.6953125,
+    "pageWidth": 1440,
+    "width": 1440,
+    "frame": {
+      "pageWidth": 886,
+      "scripts": 0,
+      "width": 886
+    },
+    "heights": [
+      968.6953125,
+      968.6953125,
+      968.6953125,
+      968.6953125
+    ],
+    "delta": 0
+  },
+  {
+    "locale": "vi",
+    "font": "Manrope, Arial, sans-serif",
+    "height": 968.6953125,
+    "pageWidth": 1024,
+    "width": 1024,
+    "frame": {
+      "pageWidth": 606,
+      "scripts": 0,
+      "width": 606
+    },
+    "heights": [
+      968.6953125,
+      968.6953125,
+      968.6953125,
+      968.6953125
+    ],
+    "delta": 0
+  },
+  {
+    "locale": "vi",
+    "font": "Manrope, Arial, sans-serif",
+    "height": 1510.46875,
+    "pageWidth": 768,
+    "width": 768,
+    "frame": {
+      "pageWidth": 654,
+      "scripts": 0,
+      "width": 654
+    },
+    "heights": [
+      1510.46875,
+      1510.46875,
+      1510.46875,
+      1510.46875
+    ],
+    "delta": 0
+  },
+  {
+    "locale": "vi",
+    "font": "Manrope, Arial, sans-serif",
+    "height": 1775.0390625,
+    "pageWidth": 390,
+    "width": 390,
+    "frame": {
+      "pageWidth": 324,
+      "scripts": 0,
+      "width": 324
+    },
+    "heights": [
+      1775.0390625,
+      1775.0390625,
+      1775.0390625,
+      1775.0390625
+    ],
+    "delta": 0
+  },
+  {
+    "locale": "vi",
+    "font": "Manrope, Arial, sans-serif",
+    "height": 1873.3359375,
+    "pageWidth": 320,
+    "width": 320,
+    "frame": {
+      "pageWidth": 254,
+      "scripts": 0,
+      "width": 254
+    },
+    "heights": [
+      1873.3359375,
+      1873.3359375,
+      1873.3359375,
+      1873.3359375
+    ],
+    "delta": 0
+  }
+]

@@ -1,0 +1,3084 @@
+{
+  "recordedAt": "2026-10-23T16:52:49.621Z",
+  "scope": "A001 configuration → actual React SSR CSS variables / selected source / complete prompt / ZIP fidelity. SHA-256 is verified for every ZIP file except checksums.json itself. Does not claim browser behavior, hydration, visual approval, target host typecheck or Next.js/Vite builds.",
+  "result": "passed",
+  "cases": 108,
+  "verifiedHashes": 2376,
+  "dimensions": {
+    "accents": [
+      "#EBD183",
+      "#000000",
+      "#FFFFFF",
+      "#777777",
+      "#808000",
+      "#AA44CC"
+    ],
+    "motionSelections": [
+      {
+        "motion": "subtle",
+        "duration": 20
+      },
+      {
+        "motion": "subtle",
+        "duration": 400
+      },
+      {
+        "motion": "off",
+        "duration": 160
+      }
+    ],
+    "locales": [
+      "en",
+      "ru",
+      "vi"
+    ],
+    "targets": [
+      "next",
+      "vite"
+    ],
+    "promptMode": "preserve"
+  },
+  "assertionsPerCase": [
+    "Applied config and SelectedExample static config match",
+    "Exported component equals mounted source with only helper imports relocated",
+    "Prompt includes all selected source files and applied configuration",
+    "Actual SSR accent, foreground and effective duration match controls",
+    "SSR starts in idle",
+    "ZIP bytes deterministic",
+    "ZIP config/source/prompt match file and prompt exports",
+    "Manifest target and visual-review status match",
+    "All ZIP files indexed and SHA-256 verified"
+  ],
+  "existingStudyExportSuite": {
+    "command": "npm run test:study",
+    "cases": 12,
+    "result": "passed",
+    "dimensions": "EN/RU/VI × Next/Vite × preserve/adapt"
+  },
+  "rows": [
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#EBD183",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#EBD183",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#EBD183",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#EBD183",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#EBD183",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#EBD183",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#EBD183",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#EBD183",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#EBD183",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#EBD183",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#EBD183",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#EBD183",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "off",
+        "accent": "#EBD183",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "off",
+        "accent": "#EBD183",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "off",
+        "accent": "#EBD183",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "off",
+        "accent": "#EBD183",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "off",
+        "accent": "#EBD183",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#EBD183",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "off",
+        "accent": "#EBD183",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#EBD183",
+        "foreground": "#101713",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 12.114761,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#000000",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#000000",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#000000",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#000000",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#000000",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#000000",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#000000",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#000000",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#000000",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#000000",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#000000",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#000000",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#000000",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#000000",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#000000",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#000000",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#000000",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#000000",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#000000",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#000000",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#000000",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#000000",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#000000",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#000000",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#000000",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "off",
+        "accent": "#000000",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#000000",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "off",
+        "accent": "#000000",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#000000",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "off",
+        "accent": "#000000",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#000000",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "off",
+        "accent": "#000000",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#000000",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "off",
+        "accent": "#000000",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#000000",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "off",
+        "accent": "#000000",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#000000",
+        "foreground": "#ffffff",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 21,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#FFFFFF",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#FFFFFF",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#FFFFFF",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#FFFFFF",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#FFFFFF",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#FFFFFF",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#FFFFFF",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#FFFFFF",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#FFFFFF",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#FFFFFF",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#FFFFFF",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#FFFFFF",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "off",
+        "accent": "#FFFFFF",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "off",
+        "accent": "#FFFFFF",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "off",
+        "accent": "#FFFFFF",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "off",
+        "accent": "#FFFFFF",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "off",
+        "accent": "#FFFFFF",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#FFFFFF",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "off",
+        "accent": "#FFFFFF",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#FFFFFF",
+        "foreground": "#101713",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 18.197672,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#777777",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#777777",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#777777",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#777777",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#777777",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#777777",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#777777",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#777777",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#777777",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#777777",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#777777",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#777777",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#777777",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#777777",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#777777",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#777777",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#777777",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#777777",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#777777",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#777777",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#777777",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#777777",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#777777",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#777777",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#777777",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "off",
+        "accent": "#777777",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#777777",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "off",
+        "accent": "#777777",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#777777",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "off",
+        "accent": "#777777",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#777777",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "off",
+        "accent": "#777777",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#777777",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "off",
+        "accent": "#777777",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#777777",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "off",
+        "accent": "#777777",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#777777",
+        "foreground": "#000000",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 4.6895,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#808000",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#808000",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#808000",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#808000",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#808000",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#808000",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#808000",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#808000",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#808000",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#808000",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#808000",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#808000",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#808000",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#808000",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#808000",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#808000",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#808000",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#808000",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#808000",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#808000",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#808000",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#808000",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#808000",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#808000",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#808000",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "off",
+        "accent": "#808000",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#808000",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "off",
+        "accent": "#808000",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#808000",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "off",
+        "accent": "#808000",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#808000",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "off",
+        "accent": "#808000",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#808000",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "off",
+        "accent": "#808000",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#808000",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "off",
+        "accent": "#808000",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#808000",
+        "foreground": "#000000",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 5.005507,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#AA44CC",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#AA44CC",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#AA44CC",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#AA44CC",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#AA44CC",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "subtle",
+        "duration": 20
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#AA44CC",
+        "duration": 20
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "20ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#AA44CC",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "subtle",
+        "accent": "#AA44CC",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#AA44CC",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "subtle",
+        "accent": "#AA44CC",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#AA44CC",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "subtle",
+        "duration": 400
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "subtle",
+        "accent": "#AA44CC",
+        "duration": 400
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "400ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "next",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "off",
+        "accent": "#AA44CC",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "en",
+      "target": "vite",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "en",
+        "motion": "off",
+        "accent": "#AA44CC",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "next",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "off",
+        "accent": "#AA44CC",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "ru",
+      "target": "vite",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "ru",
+        "motion": "off",
+        "accent": "#AA44CC",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "next",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "off",
+        "accent": "#AA44CC",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    },
+    {
+      "locale": "vi",
+      "target": "vite",
+      "selected": {
+        "accent": "#AA44CC",
+        "motion": "off",
+        "duration": 160
+      },
+      "applied": {
+        "locale": "vi",
+        "motion": "off",
+        "accent": "#AA44CC",
+        "duration": 0
+      },
+      "rendered": {
+        "accent": "#AA44CC",
+        "foreground": "#ffffff",
+        "duration": "0ms",
+        "state": "idle"
+      },
+      "contrast": 4.764081,
+      "zip": {
+        "fileCount": 23,
+        "verifiedHashes": 22,
+        "deterministic": true
+      },
+      "result": "passed"
+    }
+  ]
+}

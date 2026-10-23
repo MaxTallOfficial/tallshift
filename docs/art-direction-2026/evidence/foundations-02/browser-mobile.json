@@ -1,0 +1,44 @@
+[
+  {
+    "body": "15px",
+    "context": "Palette review — keep existing routing and spacing.",
+    "copyWidth": 262,
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "32px",
+    "lang": "ru",
+    "pageWidth": 320,
+    "palette": "saffron",
+    "paletteColumns": "123.5px 123.5px",
+    "promptContainsContext": true,
+    "typeColumns": "288px",
+    "viewport": 320
+  },
+  {
+    "body": "15px",
+    "context": "Palette review — keep existing routing and spacing.",
+    "copyWidth": 262,
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "32px",
+    "lang": "vi",
+    "pageWidth": 320,
+    "palette": "saffron",
+    "paletteColumns": "123.5px 123.5px",
+    "promptContainsContext": true,
+    "typeColumns": "288px",
+    "viewport": 320
+  },
+  {
+    "body": "15px",
+    "context": "Palette review — keep existing routing and spacing.",
+    "copyWidth": 262,
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "32px",
+    "lang": "en",
+    "pageWidth": 320,
+    "palette": "saffron",
+    "paletteColumns": "123.5px 123.5px",
+    "promptContainsContext": true,
+    "typeColumns": "288px",
+    "viewport": 320
+  }
+]

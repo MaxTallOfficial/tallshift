@@ -1,0 +1,26 @@
+[
+  {
+    "approval": "Chosen accent: Saffron Lighter#EBD183",
+    "locale": "en",
+    "pageWidth": 320,
+    "shade": "light",
+    "source": "{\n  \"locale\": \"en\",\n  \"motion\": \"subtle\",\n  \"accent\": \"#EBD183\",\n  \"duration\": 160,\n  \"target\": \"next\"\n}",
+    "width": 320
+  },
+  {
+    "approval": "Выбранный акцент: Saffron Lighter#EBD183",
+    "locale": "ru",
+    "pageWidth": 320,
+    "shade": "light",
+    "source": "{\n  \"locale\": \"ru\",\n  \"motion\": \"subtle\",\n  \"accent\": \"#EBD183\",\n  \"duration\": 160,\n  \"target\": \"next\"\n}",
+    "width": 320
+  },
+  {
+    "approval": "Màu nhấn đã chọn: Saffron Lighter#EBD183",
+    "locale": "vi",
+    "pageWidth": 320,
+    "shade": "light",
+    "source": "{\n  \"locale\": \"vi\",\n  \"motion\": \"subtle\",\n  \"accent\": \"#EBD183\",\n  \"duration\": 160,\n  \"target\": \"next\"\n}",
+    "width": 320
+  }
+]

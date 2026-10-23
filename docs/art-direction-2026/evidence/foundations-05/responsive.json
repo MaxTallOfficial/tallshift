@@ -1,0 +1,137 @@
+[
+  {
+    "body": "16px",
+    "discoveryColumns": "397.328px 397.336px 397.336px",
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "48px",
+    "locale": "en",
+    "pageWidth": 1440,
+    "width": 1440
+  },
+  {
+    "body": "16px",
+    "discoveryColumns": "397.328px 397.336px 397.336px",
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "48px",
+    "locale": "ru",
+    "pageWidth": 1440,
+    "width": 1440
+  },
+  {
+    "body": "16px",
+    "discoveryColumns": "397.328px 397.336px 397.336px",
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "48px",
+    "locale": "vi",
+    "pageWidth": 1440,
+    "width": 1440
+  },
+  {
+    "body": "16px",
+    "discoveryColumns": "468px 468px",
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "48px",
+    "locale": "en",
+    "pageWidth": 1024,
+    "width": 1024
+  },
+  {
+    "body": "16px",
+    "discoveryColumns": "468px 468px",
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "48px",
+    "locale": "ru",
+    "pageWidth": 1024,
+    "width": 1024
+  },
+  {
+    "body": "16px",
+    "discoveryColumns": "468px 468px",
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "48px",
+    "locale": "vi",
+    "pageWidth": 1024,
+    "width": 1024
+  },
+  {
+    "body": "16px",
+    "discoveryColumns": "348px 348px",
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "48px",
+    "locale": "en",
+    "pageWidth": 768,
+    "width": 768
+  },
+  {
+    "body": "16px",
+    "discoveryColumns": "348px 348px",
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "48px",
+    "locale": "ru",
+    "pageWidth": 768,
+    "width": 768
+  },
+  {
+    "body": "16px",
+    "discoveryColumns": "348px 348px",
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "48px",
+    "locale": "vi",
+    "pageWidth": 768,
+    "width": 768
+  },
+  {
+    "body": "16px",
+    "discoveryColumns": "358px",
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "32px",
+    "locale": "en",
+    "pageWidth": 390,
+    "width": 390
+  },
+  {
+    "body": "16px",
+    "discoveryColumns": "358px",
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "32px",
+    "locale": "ru",
+    "pageWidth": 390,
+    "width": 390
+  },
+  {
+    "body": "16px",
+    "discoveryColumns": "358px",
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "32px",
+    "locale": "vi",
+    "pageWidth": 390,
+    "width": 390
+  },
+  {
+    "body": "16px",
+    "discoveryColumns": "288px",
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "32px",
+    "locale": "en",
+    "pageWidth": 320,
+    "width": 320
+  },
+  {
+    "body": "16px",
+    "discoveryColumns": "288px",
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "32px",
+    "locale": "ru",
+    "pageWidth": 320,
+    "width": 320
+  },
+  {
+    "body": "16px",
+    "discoveryColumns": "288px",
+    "font": "Manrope, Arial, sans-serif",
+    "heading": "32px",
+    "locale": "vi",
+    "pageWidth": 320,
+    "width": 320
+  }
+]

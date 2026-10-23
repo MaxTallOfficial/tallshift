@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.invalid/ui-library/v1/A001.config.schema.json",
+  "title": "A001 State Relay config 1.0.0",
+  "description": "Serializable presentation data only. state/label/statusMessage belong to external host API, operation outcome never comes from config or timer.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "locale": {
+      "enum": [
+        "ru",
+        "en"
+      ]
+    },
+    "motion": {
+      "enum": [
+        "off",
+        "subtle",
+        "expressive"
+      ]
+    },
+    "accent": {
+      "type": "string",
+      "pattern": "^#[0-9a-fA-F]{6}$"
+    },
+    "duration": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 480,
+      "description": "Optional milliseconds override; absent defaults off=0, subtle=120, expressive=180."
+    }
+  },
+  "required": [
+    "locale",
+    "motion",
+    "accent"
+  ]
+}

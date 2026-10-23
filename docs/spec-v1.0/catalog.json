@@ -1,0 +1,3768 @@
+{
+  "planning_catalog_schema_version": 2,
+  "spec_version": "1.0",
+  "status": "baseline_for_local_prototype_and_staged_delivery",
+  "date": "2026-10-21",
+  "locales": [
+    "ru",
+    "en"
+  ],
+  "canonical_unique_item_count": 32,
+  "free_count": 9,
+  "pro_count": 23,
+  "common": {
+    "code_format": "React + TypeScript + CSS Modules (styling recommended)",
+    "environments": [
+      "vite",
+      "next-app-router"
+    ],
+    "prompt_modes": [
+      "preserve",
+      "adapt"
+    ],
+    "motion_presets": [
+      "off",
+      "subtle",
+      "expressive"
+    ],
+    "system_reduced_motion_priority": true,
+    "all_sources_bilingual": true,
+    "external_runtime_dependencies": [
+      "react",
+      "react-dom"
+    ],
+    "additional_motion_library": "not_required_in_v1; change needs ADR",
+    "common_bundle_files": [
+      "Component.tsx",
+      "Component.module.css",
+      "Example.tsx",
+      "config.json",
+      "manifest.json",
+      "README.ru.md",
+      "README.en.md",
+      "INTEGRATE.ru.md",
+      "INTEGRATE.en.md",
+      "LICENSE.txt",
+      "checksums.json",
+      "config.schema.json",
+      "base-bundle.index.json",
+      "THIRD_PARTY_NOTICES.txt"
+    ],
+    "notes_ru": "Перечень логический: Component заменяется exportName и путями src из manifest. Example генерируется под выбранную среду. assets включается при необходимости, все обязательные helpers включены локально. checksums не хеширует себя, хранит target/config/exporter metadata; целостность не является DRM. Пакетный ZIP нескольких элементов отложен после v1; commercial bundle означает права на 23 индивидуальных Pro комплектов в новом snapshot.",
+    "share_policy": {
+      "default": "appearance_and_motion_only",
+      "include_text_and_links": "explicit_opt_in_with_public_notice",
+      "project_context": "never",
+      "media": "bundled_preset_ids_only"
+    },
+    "studio_policy_ru": "runtime_props описывает кодовый React API, studio_fields — отдельный allowlist сериализуемых данных. Схема конкретного релиза уточняет структуру списков и запрещает unknown keys. Callbacks/children/ReactNode доступны только в коде проекта интегратора.",
+    "loop_pause_policy_ru": "При декоративном цикле includePauseControl=true по умолчанию; нативная доступная Pause/Resume кнопка входит в экспорт. Скрыть её можно только если цикл отключён либо интегратор явно подключил равноценный внешний control в локальном коде.",
+    "production_localization_gate": {
+      "required_locales": [
+        "ru",
+        "en"
+      ],
+      "required_content": [
+        "metadata",
+        "demo_copy",
+        "aria_labels",
+        "README",
+        "INTEGRATE",
+        "prompt_modes",
+        "error_messages"
+      ],
+      "note_ru": "Текущий JSON — задания на производство на русском, не готовые localized manifests. Публикация требует обоих полных языков и evidence."
+    },
+    "v1_export_scope": "one_item_at_a_time; multi_item_integration_verified; no_custom_batch_zip_in_v1",
+    "animation_bundle_extension": {
+      "script_required": true,
+      "script_format": "local React TypeScript hook/controller + CSS and complete Example",
+      "framework_free": "per-recipe opt-in only after test evidence; no promise for all items",
+      "remote_cdn_script": false,
+      "arbitrary_user_script_execution": false,
+      "script_entry_manifest_field": "animationEntry",
+      "instructions": [
+        "INSTALL.ru.md",
+        "INSTALL.en.md"
+      ],
+      "guide_sections": [
+        "markup",
+        "trigger",
+        "dependencies",
+        "setup",
+        "usage",
+        "cleanup",
+        "reduced-motion",
+        "keyboard-touch",
+        "troubleshooting",
+        "verification"
+      ]
+    },
+    "motion_tokens_authority": "design-and-motion.ru.md"
+  },
+  "products": [
+    {
+      "id": "FREE-STARTER",
+      "title": {
+        "ru": "Стартовый набор",
+        "en": "Starter"
+      },
+      "access": "free",
+      "item_ids": [
+        "S001",
+        "S002",
+        "S003",
+        "C001",
+        "C002",
+        "E001",
+        "A001",
+        "A003",
+        "A006"
+      ],
+      "price_hypothesis_usd": 0,
+      "offer_revision": "1.0-draft",
+      "sale_state": "free"
+    },
+    {
+      "id": "PACK-PRODUCT",
+      "title": {
+        "ru": "Продукт",
+        "en": "Product"
+      },
+      "access": "pro",
+      "item_ids": [
+        "S004",
+        "S005",
+        "S006",
+        "C003",
+        "C004",
+        "E002"
+      ],
+      "price_hypothesis_usd": 29,
+      "offer_revision": "1.0-draft",
+      "sale_state": "disabled"
+    },
+    {
+      "id": "PACK-EDITORIAL",
+      "title": {
+        "ru": "Редакционный",
+        "en": "Editorial"
+      },
+      "access": "pro",
+      "item_ids": [
+        "S007",
+        "S008",
+        "S009",
+        "C005",
+        "C006",
+        "E003"
+      ],
+      "price_hypothesis_usd": 29,
+      "offer_revision": "1.0-draft",
+      "sale_state": "disabled"
+    },
+    {
+      "id": "PACK-PLAYFUL",
+      "title": {
+        "ru": "Экспериментальный",
+        "en": "Playful"
+      },
+      "access": "pro",
+      "item_ids": [
+        "S010",
+        "S011",
+        "S012",
+        "C007",
+        "C008",
+        "E004"
+      ],
+      "price_hypothesis_usd": 29,
+      "offer_revision": "1.0-draft",
+      "sale_state": "disabled"
+    },
+    {
+      "id": "PACK-MOTION",
+      "title": {
+        "ru": "Анимации интерфейса",
+        "en": "UI Motion"
+      },
+      "access": "pro",
+      "item_ids": [
+        "E002",
+        "E003",
+        "E004",
+        "A002",
+        "A004",
+        "A005",
+        "A007",
+        "A008"
+      ],
+      "price_hypothesis_usd": 29,
+      "offer_revision": "1.0-draft",
+      "notes_ru": "8 Pro: 5 новых A и 3 прежних E; ранее купленные E не требуют повторного unlock.",
+      "sale_state": "disabled"
+    },
+    {
+      "id": "BUNDLE-LAUNCH",
+      "title": {
+        "ru": "Все наборы запуска",
+        "en": "Launch Bundle"
+      },
+      "access": "pro",
+      "includes_product_ids": [
+        "PACK-PRODUCT",
+        "PACK-EDITORIAL",
+        "PACK-PLAYFUL",
+        "PACK-MOTION"
+      ],
+      "item_ids": [
+        "S004",
+        "S005",
+        "S006",
+        "S007",
+        "S008",
+        "S009",
+        "S010",
+        "S011",
+        "S012",
+        "C003",
+        "C004",
+        "C005",
+        "C006",
+        "C007",
+        "C008",
+        "E002",
+        "E003",
+        "E004",
+        "A002",
+        "A004",
+        "A005",
+        "A007",
+        "A008"
+      ],
+      "price_hypothesis_usd": 79,
+      "offer_revision": "1.0-draft",
+      "notes_ru": "Новый предлагаемый snapshot23 Pro. Старый snapshot 18 не меняется, новые A не включаются автоматически в прежние grants. Цена прежнего scope59 не переносится.",
+      "sale_state": "disabled"
+    }
+  ],
+  "items": [
+    {
+      "id": "S001",
+      "type": "section",
+      "slug": "starter-split-hero",
+      "title": {
+        "ru": "Стартовый hero с двумя колонками",
+        "en": "Starter Split Hero"
+      },
+      "access": "free",
+      "pack": "FREE-STARTER",
+      "phase": "beta",
+      "purpose_ru": "Первый экран небольшого продукта без обязательных медиа.",
+      "composition_ru": "Заголовок, описание, две ссылки, контрастная декоративная панель с тремя карточками.",
+      "motion_ru": "Однократное мягкое появление без перекрытия клика.",
+      "responsive_ru": "Две колонки от 960px, ниже текст перед панелью; заголовок переносится естественно.",
+      "assets_ru": "Собственные CSS/SVG фигуры, внешние фото и шрифты не требуются.",
+      "dependencies": [
+        "C001",
+        "E001"
+      ],
+      "acceptance_ru": [
+        "Обе CTA ведут по заданным ссылкам, нет пустых href.",
+        "Длинный RU заголовок не выходит за контейнер; без анимации смысл полностью виден."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "eyebrow",
+        "title",
+        "description",
+        "primaryAction",
+        "secondaryAction",
+        "accent",
+        "surface",
+        "radius",
+        "density",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "eyebrow",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "title",
+          "type": "plain-text",
+          "maxLength": 120
+        },
+        {
+          "key": "description",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "primaryAction",
+          "type": "safe-link-object",
+          "note_ru": "label и проверенный URL; никакого исходного JS."
+        },
+        {
+          "key": "secondaryAction",
+          "type": "safe-link-object",
+          "note_ru": "label и проверенный URL; никакого исходного JS."
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "surface",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "radius",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 48
+        },
+        {
+          "key": "density",
+          "type": "enum",
+          "values": [
+            "compact",
+            "default",
+            "relaxed"
+          ]
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        }
+      ],
+      "share_default_fields": [
+        "accent",
+        "surface",
+        "radius",
+        "density",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "FREE-STARTER"
+      ]
+    },
+    {
+      "id": "S002",
+      "type": "section",
+      "slug": "starter-feature-grid",
+      "title": {
+        "ru": "Стартовая сетка преимуществ",
+        "en": "Starter Feature Grid"
+      },
+      "access": "free",
+      "pack": "FREE-STARTER",
+      "phase": "beta",
+      "purpose_ru": "Показать 3–6 преимуществ без сложного сценария взаимодействия.",
+      "composition_ru": "Заголовок и до шести карточек с номером/локальной иконкой и текстом.",
+      "motion_ru": "Небольшое появление групп; нет автоматического движения внутри карточек.",
+      "responsive_ru": "3/2/1 колонки по доступной ширине; высота карточек следует контенту.",
+      "assets_ru": "Набор своих простых SVG, текстовая альтернатива.",
+      "dependencies": [
+        "E001"
+      ],
+      "acceptance_ru": [
+        "Три и шесть карточек выглядят завершённо.",
+        "Удвоенное описание не обрезается и не требует скрытого hover."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "title",
+        "description",
+        "features[3..6]",
+        "accent",
+        "surface",
+        "radius",
+        "density",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "title",
+          "type": "plain-text",
+          "maxLength": 120
+        },
+        {
+          "key": "description",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "features",
+          "type": "bounded-structured-list",
+          "note_ru": "Только текст/числа/ID встроенных медиа по item schema, без HTML/JS.",
+          "minItems": 3,
+          "maxItems": 6
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "surface",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "radius",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 48
+        },
+        {
+          "key": "density",
+          "type": "enum",
+          "values": [
+            "compact",
+            "default",
+            "relaxed"
+          ]
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        }
+      ],
+      "share_default_fields": [
+        "accent",
+        "surface",
+        "radius",
+        "density",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "FREE-STARTER"
+      ]
+    },
+    {
+      "id": "S003",
+      "type": "section",
+      "slug": "starter-action-band",
+      "title": {
+        "ru": "Стартовый блок действия",
+        "en": "Starter Action Band"
+      },
+      "access": "free",
+      "pack": "FREE-STARTER",
+      "phase": "beta",
+      "purpose_ru": "Завершить короткий лендинг понятным действием.",
+      "composition_ru": "Контрастная полоса с заголовком, текстом, одной CTA и необязательной подписью.",
+      "motion_ru": "Ответ кнопки на взаимодействие, без декоративного autoplay.",
+      "responsive_ru": "Кнопка под текстом на узкой ширине; сам контейнер не имеет фиксированной высоты.",
+      "assets_ru": "Только код.",
+      "dependencies": [
+        "C001"
+      ],
+      "acceptance_ru": [
+        "CTA получает ссылку или обработчик; поведение однозначно.",
+        "Note отсутствует без пустого отступа."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "title",
+        "description",
+        "action",
+        "note",
+        "accent",
+        "surface",
+        "radius",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "title",
+          "type": "plain-text",
+          "maxLength": 120
+        },
+        {
+          "key": "description",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "action",
+          "type": "safe-link-object",
+          "note_ru": "label и проверенный URL; никакого исходного JS."
+        },
+        {
+          "key": "note",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "surface",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "radius",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 48
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        }
+      ],
+      "share_default_fields": [
+        "accent",
+        "surface",
+        "radius",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "FREE-STARTER"
+      ]
+    },
+    {
+      "id": "S004",
+      "type": "section",
+      "slug": "product-demo-hero",
+      "title": {
+        "ru": "Hero с интерактивным демо",
+        "en": "Product Demo Hero"
+      },
+      "access": "pro",
+      "pack": "PACK-PRODUCT",
+      "phase": "commercial_v1",
+      "purpose_ru": "Показать пользу цифрового продукта прямо в первом экране.",
+      "composition_ru": "Типографический блок, CTA и собственный абстрактный demo-panel с переключением метрик; реальные API не подразумеваются.",
+      "motion_ru": "Переход между выбранными demo-states; без автопереключения по умолчанию.",
+      "responsive_ru": "Панель идёт после текста; контрольные элементы остаются доступны на touch.",
+      "assets_ru": "Свои SVG/HTML схемы без брендов и скриншотов чужих продуктов.",
+      "dependencies": [
+        "C001",
+        "C004"
+      ],
+      "acceptance_ru": [
+        "Демо явно использует примерные данные.",
+        "Переключение клавиатурой меняет видимую панель; отключённое движение не скрывает данные."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "title",
+        "description",
+        "actions",
+        "demoStates[2..4]",
+        "initialState",
+        "accent",
+        "surface",
+        "radius",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "title",
+          "type": "plain-text",
+          "maxLength": 120
+        },
+        {
+          "key": "description",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "actions",
+          "type": "safe-link-list",
+          "note_ru": "label и проверенный URL; никакого исходного JS."
+        },
+        {
+          "key": "demoStates",
+          "type": "bounded-structured-list",
+          "note_ru": "Только текст/числа/ID встроенных медиа по item schema, без HTML/JS.",
+          "minItems": 2,
+          "maxItems": 4
+        },
+        {
+          "key": "initialState",
+          "type": "enum-from-current-item-ids"
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "surface",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "radius",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 48
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        }
+      ],
+      "share_default_fields": [
+        "accent",
+        "surface",
+        "radius",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "PACK-PRODUCT",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "S005",
+      "type": "section",
+      "slug": "product-feature-steps",
+      "title": {
+        "ru": "История возможностей по шагам",
+        "en": "Product Feature Steps"
+      },
+      "access": "pro",
+      "pack": "PACK-PRODUCT",
+      "phase": "commercial_v1",
+      "purpose_ru": "Объяснить 3–5 возможностей продукта с визуальным примером.",
+      "composition_ru": "Список шагов/вкладок рядом с общей областью схемы и пояснения; контент не зависит от скролл-перехвата.",
+      "motion_ru": "Контролируемая смена панели и stagger видимых деталей; никакого scroll-jacking.",
+      "responsive_ru": "На mobile переключатель над панелью; вертикальный список доступен без hover.",
+      "assets_ru": "Собственные SVG/HTML схемы для каждого шага.",
+      "dependencies": [
+        "C002",
+        "E002"
+      ],
+      "acceptance_ru": [
+        "После выбора шага подпись и иллюстрация соответствуют одному ID.",
+        "Скрытые панели не оставляют интерактивные элементы в tab-order."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "title",
+        "steps[3..5]",
+        "initialStep",
+        "accent",
+        "surface",
+        "density",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "title",
+          "type": "plain-text",
+          "maxLength": 120
+        },
+        {
+          "key": "steps",
+          "type": "bounded-structured-list",
+          "note_ru": "Только текст/числа/ID встроенных медиа по item schema, без HTML/JS.",
+          "minItems": 3,
+          "maxItems": 5
+        },
+        {
+          "key": "initialStep",
+          "type": "enum-from-current-item-ids"
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "surface",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "density",
+          "type": "enum",
+          "values": [
+            "compact",
+            "default",
+            "relaxed"
+          ]
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        }
+      ],
+      "share_default_fields": [
+        "accent",
+        "surface",
+        "density",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "PACK-PRODUCT",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "S006",
+      "type": "section",
+      "slug": "product-pricing-compare",
+      "title": {
+        "ru": "Сравнение тарифов",
+        "en": "Product Pricing Compare"
+      },
+      "access": "pro",
+      "pack": "PACK-PRODUCT",
+      "phase": "commercial_v1",
+      "purpose_ru": "Отобразить тарифы конечного сайта пользователя, без реализации оплаты.",
+      "composition_ru": "2–4 тарифные карточки, переключение периода и сравнимый список функций; ссылки задаёт интегратор.",
+      "motion_ru": "Мягкая смена значений периода, без анимации изменения размера текста.",
+      "responsive_ru": "Карточки вертикально на mobile; таблица сравнения заменяется семантически читаемыми группами.",
+      "assets_ru": "Только код и реальные подписи demo-данных.",
+      "dependencies": [
+        "C001"
+      ],
+      "acceptance_ru": [
+        "Период, сумма и подпись расчёта меняются согласованно.",
+        "Нет фиктивного платежа, нерабочих CTA и придуманной скидки."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "title",
+        "plans[2..4]",
+        "billingPeriods",
+        "initialPeriod",
+        "disclaimer",
+        "accent",
+        "surface",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "title",
+          "type": "plain-text",
+          "maxLength": 120
+        },
+        {
+          "key": "plans",
+          "type": "bounded-structured-list",
+          "note_ru": "Только текст/числа/ID встроенных медиа по item schema, без HTML/JS.",
+          "minItems": 2,
+          "maxItems": 4
+        },
+        {
+          "key": "billingPeriods",
+          "type": "enum-list",
+          "maxLength": 360,
+          "values": [
+            "monthly",
+            "yearly"
+          ],
+          "minItems": 1,
+          "maxItems": 2
+        },
+        {
+          "key": "initialPeriod",
+          "type": "enum-from-current-item-ids"
+        },
+        {
+          "key": "disclaimer",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "surface",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        }
+      ],
+      "share_default_fields": [
+        "accent",
+        "surface",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "PACK-PRODUCT",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "S007",
+      "type": "section",
+      "slug": "editorial-title-hero",
+      "title": {
+        "ru": "Редакционный типографический hero",
+        "en": "Editorial Title Hero"
+      },
+      "access": "pro",
+      "pack": "PACK-EDITORIAL",
+      "phase": "commercial_v1",
+      "purpose_ru": "Открыть портфолио или студийный сайт крупной типографикой.",
+      "composition_ru": "Асимметричный заголовок, короткая подпись, одна локальная работа/изображение, ссылки навигации по смыслу.",
+      "motion_ru": "Появление по смысловым группам без посимвольного разбиения доступного текста.",
+      "responsive_ru": "Один поток на mobile; крупный заголовок ограничен clamp и не перекрывает ссылки.",
+      "assets_ru": "Собственная абстрактная композиция/SVG, заменяемая локальным изображением.",
+      "dependencies": [
+        "E001"
+      ],
+      "acceptance_ru": [
+        "Отключение картинки оставляет завершённую композицию.",
+        "Заголовок остаётся одним понятным текстом для screen reader."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "title",
+        "description",
+        "image",
+        "imageAlt",
+        "caption",
+        "actions",
+        "accent",
+        "surface",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "title",
+          "type": "plain-text",
+          "maxLength": 120
+        },
+        {
+          "key": "description",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "caption",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "actions",
+          "type": "safe-link-list",
+          "note_ru": "label и проверенный URL; никакого исходного JS."
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "surface",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        {
+          "key": "demoPresetId",
+          "type": "enum-from-bundled-demo-presets",
+          "note_ru": "Только заранее собранные пресеты; произвольные ReactNode/SVG/remote media не принимаются."
+        }
+      ],
+      "share_default_fields": [
+        "accent",
+        "surface",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "PACK-EDITORIAL",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "S008",
+      "type": "section",
+      "slug": "editorial-project-index",
+      "title": {
+        "ru": "Редакционный список проектов",
+        "en": "Editorial Project Index"
+      },
+      "access": "pro",
+      "pack": "PACK-EDITORIAL",
+      "phase": "commercial_v1",
+      "purpose_ru": "Показать 3–8 проектов со своими ссылками и медиа.",
+      "composition_ru": "Нумерованный список/сетка работ; крупная область выбранного проекта дополняет доступные карточки.",
+      "motion_ru": "Смена превью по focus/выбору; hover не является единственным способом управления.",
+      "responsive_ru": "На mobile карточки с собственными изображениями; общий preview может убираться без потери информации.",
+      "assets_ru": "3–8 своих/разрешённых локальных иллюстраций.",
+      "dependencies": [
+        "C005"
+      ],
+      "acceptance_ru": [
+        "Фокус и touch дают доступ к названию, описанию и переходу.",
+        "Выбранная работа не вызывает автопрокрутку страницы."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "title",
+        "projects[3..8]",
+        "initialProject",
+        "accent",
+        "surface",
+        "density",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "title",
+          "type": "plain-text",
+          "maxLength": 120
+        },
+        {
+          "key": "projects",
+          "type": "bounded-structured-list",
+          "note_ru": "Только текст/числа/ID встроенных медиа по item schema, без HTML/JS.",
+          "minItems": 3,
+          "maxItems": 8
+        },
+        {
+          "key": "initialProject",
+          "type": "enum-from-current-item-ids"
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "surface",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "density",
+          "type": "enum",
+          "values": [
+            "compact",
+            "default",
+            "relaxed"
+          ]
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        }
+      ],
+      "share_default_fields": [
+        "accent",
+        "surface",
+        "density",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "PACK-EDITORIAL",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "S009",
+      "type": "section",
+      "slug": "editorial-contact-footer",
+      "title": {
+        "ru": "Редакционный контактный footer",
+        "en": "Editorial Contact Footer"
+      },
+      "access": "pro",
+      "pack": "PACK-EDITORIAL",
+      "phase": "commercial_v1",
+      "purpose_ru": "Закрыть сайт контактами и содержательной навигацией.",
+      "composition_ru": "Контактный заголовок, email, ссылки, локальное время/подпись как необязательный статичный контент, юридическая строка.",
+      "motion_ru": "Однократное появление декора; ссылки работают независимо от движения.",
+      "responsive_ru": "Контактный адрес переносится; колонки превращаются в один поток.",
+      "assets_ru": "Своя SVG линия или декоративный знак; никакого обязательного фото.",
+      "dependencies": [
+        "C001"
+      ],
+      "acceptance_ru": [
+        "Email сформирован безопасно и имеет читаемую подпись.",
+        "Не создаётся SSR hydration ошибка из локального времени или текущего года."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "title",
+        "email",
+        "links",
+        "note",
+        "copyright",
+        "accent",
+        "surface",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "title",
+          "type": "plain-text",
+          "maxLength": 120
+        },
+        {
+          "key": "email",
+          "type": "email-text",
+          "maxLength": 160
+        },
+        {
+          "key": "links",
+          "type": "safe-link-list",
+          "maxLength": 360,
+          "minItems": 0,
+          "maxItems": 8
+        },
+        {
+          "key": "note",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "copyright",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "surface",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        }
+      ],
+      "share_default_fields": [
+        "accent",
+        "surface",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "PACK-EDITORIAL",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "S010",
+      "type": "section",
+      "slug": "playful-sticker-hero",
+      "title": {
+        "ru": "Hero с графическими стикерами",
+        "en": "Playful Sticker Hero"
+      },
+      "access": "pro",
+      "pack": "PACK-PLAYFUL",
+      "phase": "commercial_v1",
+      "purpose_ru": "Создать характерный первый экран бренда через собственные формы и иллюстрации.",
+      "composition_ru": "Заголовок, 3–5 абстрактных стикеров с фиксированной композицией, короткий текст, CTA.",
+      "motion_ru": "Небольшой отклик декора на pointer; движение выключается на reduced motion.",
+      "responsive_ru": "Стикеры не перекрывают текст; на touch статичная композиция.",
+      "assets_ru": "Только собственные SVG/формы с записанным происхождением.",
+      "dependencies": [
+        "C007"
+      ],
+      "acceptance_ru": [
+        "Декор aria-hidden и click-through.",
+        "Движение не смещает текст и кликабельные зоны."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "title",
+        "description",
+        "action",
+        "stickers[3..5]",
+        "accent",
+        "surface",
+        "radius",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "title",
+          "type": "plain-text",
+          "maxLength": 120
+        },
+        {
+          "key": "description",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "action",
+          "type": "safe-link-object",
+          "note_ru": "label и проверенный URL; никакого исходного JS."
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "surface",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "radius",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 48
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        {
+          "key": "demoPresetId",
+          "type": "enum-from-bundled-demo-presets",
+          "note_ru": "Только заранее собранные пресеты; произвольные ReactNode/SVG/remote media не принимаются."
+        }
+      ],
+      "share_default_fields": [
+        "accent",
+        "surface",
+        "radius",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "PACK-PLAYFUL",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "S011",
+      "type": "section",
+      "slug": "playful-question-cards",
+      "title": {
+        "ru": "FAQ в карточках",
+        "en": "Playful Question Cards"
+      },
+      "access": "pro",
+      "pack": "PACK-PLAYFUL",
+      "phase": "commercial_v1",
+      "purpose_ru": "Ответить на 4–8 вопросов с выразительной, но читаемой композицией.",
+      "composition_ru": "Набор раскрывающихся карточек, смысловой заголовок, необязательная ссылка поддержки.",
+      "motion_ru": "Раскрытие ответа без скрытия фокуса; при reduced motion мгновенное.",
+      "responsive_ru": "Одна колонка на узких экранах, ответы не обрезаются фиксированной высотой.",
+      "assets_ru": "Только код и свои маркеры.",
+      "dependencies": [
+        "E001"
+      ],
+      "acceptance_ru": [
+        "aria-expanded/controls соответствуют состоянию; ID уникальны у двух экземпляров.",
+        "Весь длинный ответ доступен при zoom и клавиатуре."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "title",
+        "questions[4..8]",
+        "allowMultiple",
+        "initialOpenIds",
+        "supportAction",
+        "accent",
+        "surface",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "title",
+          "type": "plain-text",
+          "maxLength": 120
+        },
+        {
+          "key": "questions",
+          "type": "bounded-structured-list",
+          "note_ru": "Только текст/числа/ID встроенных медиа по item schema, без HTML/JS.",
+          "minItems": 4,
+          "maxItems": 8
+        },
+        {
+          "key": "allowMultiple",
+          "type": "boolean"
+        },
+        {
+          "key": "initialOpenIds",
+          "type": "bounded-id-list",
+          "maxItems": 8
+        },
+        {
+          "key": "supportAction",
+          "type": "safe-link-object",
+          "note_ru": "label и проверенный URL; никакого исходного JS."
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "surface",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        }
+      ],
+      "share_default_fields": [
+        "accent",
+        "surface",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "PACK-PLAYFUL",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "S012",
+      "type": "section",
+      "slug": "playful-orbit-cta",
+      "title": {
+        "ru": "CTA с орбитальной графикой",
+        "en": "Playful Orbit CTA"
+      },
+      "access": "pro",
+      "pack": "PACK-PLAYFUL",
+      "phase": "commercial_v1",
+      "purpose_ru": "Завершить страницу одним заметным действием и авторским декоративным акцентом.",
+      "composition_ru": "Центральный заголовок/CTA и несколько геометрических элементов вокруг; без пользовательского drag-редактора.",
+      "motion_ru": "В expressive допускается медленный декоративный цикл с Pause; off/reduced motion статичны.",
+      "responsive_ru": "Орбиты схлопываются в безопасное обрамление; CTA остаётся в нормальном потоке.",
+      "assets_ru": "Собственные SVG/кодовые формы.",
+      "dependencies": [
+        "C007",
+        "E004"
+      ],
+      "acceptance_ru": [
+        "Pause доступен и останавливает цикл, настройки сохраняют смысл.",
+        "Эффект не захватывает scroll/pointer основного действия.",
+        "Экспорт включает доступную нативную Pause/Resume кнопку, если включён декоративный цикл; onPausedChange — только кодовый callback. Панель сервиса не заменяет этот контроль."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "title",
+        "description",
+        "action",
+        "decorations[2..5]",
+        "accent",
+        "surface",
+        "radius",
+        "motion",
+        "paused",
+        "onPausedChange",
+        "includePauseControl"
+      ],
+      "studio_fields": [
+        {
+          "key": "title",
+          "type": "plain-text",
+          "maxLength": 120
+        },
+        {
+          "key": "description",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "action",
+          "type": "safe-link-object",
+          "note_ru": "label и проверенный URL; никакого исходного JS."
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "surface",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "radius",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 48
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        {
+          "key": "paused",
+          "type": "boolean"
+        },
+        {
+          "key": "includePauseControl",
+          "type": "boolean",
+          "constraint_ru": "Не может быть false при включённом цикле без внешнего контроля; внешние callbacks недоступны в Studio."
+        },
+        {
+          "key": "demoPresetId",
+          "type": "enum-from-bundled-demo-presets",
+          "note_ru": "Только заранее собранные пресеты; произвольные ReactNode/SVG/remote media не принимаются."
+        }
+      ],
+      "share_default_fields": [
+        "accent",
+        "surface",
+        "radius",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "PACK-PLAYFUL",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "C001",
+      "type": "component",
+      "slug": "press-button",
+      "title": {
+        "ru": "Кнопка с откликом",
+        "en": "Press Button"
+      },
+      "access": "free",
+      "pack": "FREE-STARTER",
+      "phase": "beta",
+      "purpose_ru": "Базовая настраиваемая кнопка или ссылка с чёткой обратной связью.",
+      "composition_ru": "Нативный button или link, текст, необязательная иконка, pending/disabled.",
+      "motion_ru": "Небольшое нажатие и focus feedback; off сохраняет различимые состояния.",
+      "responsive_ru": "Минимальная зона касания 44×44 CSS px, текст не обрезается.",
+      "assets_ru": "Своя SVG иконка или без иконки.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "pending защищает от повторного действия и объявляется доступно.",
+        "link/button семантика выбрана корректно, без вложенных interactive элементов."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "label",
+        "hrefOrOnClick",
+        "icon",
+        "pending",
+        "disabled",
+        "size",
+        "accent",
+        "radius",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "label",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "action",
+          "type": "safe-link-object",
+          "note_ru": "В Studio только label+href; кодовый callback настраивается интегратором локально."
+        },
+        {
+          "key": "pending",
+          "type": "boolean"
+        },
+        {
+          "key": "disabled",
+          "type": "boolean"
+        },
+        {
+          "key": "size",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ]
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "radius",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 48
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        {
+          "key": "demoPresetId",
+          "type": "enum-from-bundled-demo-presets",
+          "note_ru": "Только заранее собранные пресеты; произвольные ReactNode/SVG/remote media не принимаются."
+        }
+      ],
+      "share_default_fields": [
+        "size",
+        "accent",
+        "radius",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "FREE-STARTER"
+      ]
+    },
+    {
+      "id": "C002",
+      "type": "component",
+      "slug": "content-tabs",
+      "title": {
+        "ru": "Контентные вкладки",
+        "en": "Content Tabs"
+      },
+      "access": "free",
+      "pack": "FREE-STARTER",
+      "phase": "beta",
+      "purpose_ru": "Переключать небольшой связанный набор панелей.",
+      "composition_ru": "Tablist, 2–6 tabs, панели с управляемым активным ID.",
+      "motion_ru": "Подвижный индикатор, при reduced motion статичный; панели без автоплея.",
+      "responsive_ru": "На mobile доступная прокрутка только tablist при необходимости, не всей страницы.",
+      "assets_ru": "Только код.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "Стрелки/Home/End и Tab работают согласно выбранному паттерну APG.",
+        "Невидимые панели не получают фокус;controlled и uncontrolled режимы описаны."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "tabs[2..6]",
+        "value",
+        "defaultValue",
+        "onValueChange",
+        "orientation",
+        "accent",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "tabs",
+          "type": "bounded-structured-list",
+          "note_ru": "Только текст/числа/ID встроенных медиа по item schema, без HTML/JS.",
+          "minItems": 2,
+          "maxItems": 6
+        },
+        {
+          "key": "defaultValue",
+          "type": "enum-from-current-item-ids"
+        },
+        {
+          "key": "orientation",
+          "type": "enum",
+          "values": [
+            "horizontal",
+            "vertical"
+          ]
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        }
+      ],
+      "share_default_fields": [
+        "orientation",
+        "accent",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "FREE-STARTER"
+      ]
+    },
+    {
+      "id": "C003",
+      "type": "component",
+      "slug": "segmented-navigation",
+      "title": {
+        "ru": "Сегментированная навигация",
+        "en": "Segmented Navigation"
+      },
+      "access": "pro",
+      "pack": "PACK-PRODUCT",
+      "phase": "commercial_v1",
+      "purpose_ru": "Оформить короткую навигацию по страницам или якорям.",
+      "composition_ru": "3–6 ссылок в общей оболочке, active state задаётся проектом.",
+      "motion_ru": "Индикатор активной ссылки; без автоматического изменения маршрутов.",
+      "responsive_ru": "Mobile: компактный перенос/горизонтальная полоса с видимыми краями; не dropdown без основания.",
+      "assets_ru": "Только код.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "Используется nav и aria-current, а не tabs для настоящих ссылок.",
+        "Active маршрут не определяется обращением к window во время SSR."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "items[3..6]",
+        "activeId",
+        "ariaLabel",
+        "accent",
+        "surface",
+        "density",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "items",
+          "type": "bounded-structured-list",
+          "note_ru": "Только текст/числа/ID встроенных медиа по item schema, без HTML/JS.",
+          "minItems": 3,
+          "maxItems": 6
+        },
+        {
+          "key": "activeId",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "ariaLabel",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "surface",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "density",
+          "type": "enum",
+          "values": [
+            "compact",
+            "default",
+            "relaxed"
+          ]
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        }
+      ],
+      "share_default_fields": [
+        "accent",
+        "surface",
+        "density",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "PACK-PRODUCT",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "C004",
+      "type": "component",
+      "slug": "metric-switcher",
+      "title": {
+        "ru": "Переключатель метрик",
+        "en": "Metric Switcher"
+      },
+      "access": "pro",
+      "pack": "PACK-PRODUCT",
+      "phase": "commercial_v1",
+      "purpose_ru": "Переключать несколько компактных групп показателей с подписью.",
+      "composition_ru": "2–4 состояния, заголовок, значение и единицы, краткое пояснение.",
+      "motion_ru": "Переключение opacity, формат значений стабилен; не бесконечный счётчик.",
+      "responsive_ru": "Метрики переносимы в один столбец, длинная подпись видна.",
+      "assets_ru": "Только код.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "Intl форматирование учитывает RU/EN, сервер и клиент получают один locale.",
+        "Цифры не объявляются screen reader покадрово."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "states[2..4]",
+        "value",
+        "onValueChange",
+        "locale",
+        "accent",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "states",
+          "type": "bounded-structured-list",
+          "note_ru": "Только текст/числа/ID встроенных медиа по item schema, без HTML/JS.",
+          "minItems": 2,
+          "maxItems": 4
+        },
+        {
+          "key": "locale",
+          "type": "enum",
+          "values": [
+            "ru",
+            "en"
+          ]
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        }
+      ],
+      "share_default_fields": [
+        "accent",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "PACK-PRODUCT",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "C005",
+      "type": "component",
+      "slug": "project-card",
+      "title": {
+        "ru": "Карточка проекта",
+        "en": "Project Card"
+      },
+      "access": "pro",
+      "pack": "PACK-EDITORIAL",
+      "phase": "commercial_v1",
+      "purpose_ru": "Показать работу с изображением, ролью и переходом.",
+      "composition_ru": "Изображение, категория, название, подпись, одна основная ссылка.",
+      "motion_ru": "Мягкий crop/подъём без изменения доступной информации.",
+      "responsive_ru": "На touch вся важная информация видна без hover.",
+      "assets_ru": "Своя локальная абстрактная обложка.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "Нет вложенных ссылок и пустого alt для смыслового изображения.",
+        "Изображение резервирует размеры и не создаёт layout shift."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "title",
+        "category",
+        "description",
+        "image",
+        "alt",
+        "href",
+        "aspectRatio",
+        "accent",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "title",
+          "type": "plain-text",
+          "maxLength": 120
+        },
+        {
+          "key": "category",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "description",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "alt",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "href",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "aspectRatio",
+          "type": "enum",
+          "values": [
+            "auto",
+            "1:1",
+            "4:3",
+            "16:9"
+          ]
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        {
+          "key": "demoPresetId",
+          "type": "enum-from-bundled-demo-presets",
+          "note_ru": "Только заранее собранные пресеты; произвольные ReactNode/SVG/remote media не принимаются."
+        }
+      ],
+      "share_default_fields": [
+        "aspectRatio",
+        "accent",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "PACK-EDITORIAL",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "C006",
+      "type": "component",
+      "slug": "media-gallery",
+      "title": {
+        "ru": "Галерея с просмотром",
+        "en": "Media Gallery"
+      },
+      "access": "pro",
+      "pack": "PACK-EDITORIAL",
+      "phase": "commercial_v1",
+      "purpose_ru": "Показать 3–12 изображений с доступным увеличением.",
+      "composition_ru": "Сетка миниатюр, native dialog просмотра, предыдущий/следующий, подпись, закрытие.",
+      "motion_ru": "Opacity/небольшой переход; без принудительного autoplay.",
+      "responsive_ru": "Touch-кнопки доступны;zoom браузера не блокируется; swipe необязателен.",
+      "assets_ru": "Собственные/разрешённые локальные изображения.",
+      "dependencies": [
+        "C005"
+      ],
+      "acceptance_ru": [
+        "Escape закрывает, focus возвращается в исходную карточку, background не интерактивен.",
+        "Кнопки и клавиатура работают без swipe; без внешнего media embed."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "items[3..12]",
+        "columns",
+        "initialIndex",
+        "accent",
+        "radius",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "items",
+          "type": "bounded-structured-list",
+          "note_ru": "Только текст/числа/ID встроенных медиа по item schema, без HTML/JS.",
+          "minItems": 3,
+          "maxItems": 12
+        },
+        {
+          "key": "columns",
+          "type": "number",
+          "minimum": 1,
+          "maximum": 4
+        },
+        {
+          "key": "initialIndex",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 11
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "radius",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 48
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        }
+      ],
+      "share_default_fields": [
+        "columns",
+        "accent",
+        "radius",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "PACK-EDITORIAL",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "C007",
+      "type": "component",
+      "slug": "magnetic-button",
+      "title": {
+        "ru": "Кнопка с магнитным откликом",
+        "en": "Magnetic Button"
+      },
+      "access": "pro",
+      "pack": "PACK-PLAYFUL",
+      "phase": "commercial_v1",
+      "purpose_ru": "Добавить декоративный отклик на pointer, сохранив обычное действие.",
+      "composition_ru": "Нативная кнопка/ссылка со стабильной зоной действия и отдельным движущимся декором.",
+      "motion_ru": "Сдвигается декоративная оболочка, не реальная hit-area; off/reduced/touch без эффекта.",
+      "responsive_ru": "На touch обычная кнопка от 44×44 CSS px.",
+      "assets_ru": "Только код.",
+      "dependencies": [
+        "C001"
+      ],
+      "acceptance_ru": [
+        "Hit-area не убегает от pointer и не вызывает потерю hover.",
+        "Фокус виден при любом состоянии, подписки очищаются при unmount."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "label",
+        "hrefOrOnClick",
+        "strength",
+        "accent",
+        "radius",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "label",
+          "type": "plain-text",
+          "maxLength": 360
+        },
+        {
+          "key": "action",
+          "type": "safe-link-object",
+          "note_ru": "В Studio только label+href; кодовый callback настраивается интегратором локально."
+        },
+        {
+          "key": "strength",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 8
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "radius",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 48
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        }
+      ],
+      "share_default_fields": [
+        "strength",
+        "accent",
+        "radius",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "PACK-PLAYFUL",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "C008",
+      "type": "component",
+      "slug": "testimonial-switcher",
+      "title": {
+        "ru": "Переключатель отзывов",
+        "en": "Testimonial Switcher"
+      },
+      "access": "pro",
+      "pack": "PACK-PLAYFUL",
+      "phase": "commercial_v1",
+      "purpose_ru": "Показать несколько настоящих отзывов с ручным выбором.",
+      "composition_ru": "Цитата, автор, роль, необязательный avatar, кнопки prev/next и позиция.",
+      "motion_ru": "Смена карточки; autoplay по умолчанию отключён.",
+      "responsive_ru": "Высота следует тексту, кнопки не перекрывают цитату.",
+      "assets_ru": "Свои иллюстративные avatar; demo-отзывы явно вымышленные.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "Демо не выглядит подтверждённым отзывом реального клиента.",
+        "Позиция доступна без навязчивого live announcement на каждую анимацию."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "quotes[2..8]",
+        "initialIndex",
+        "onIndexChange",
+        "accent",
+        "surface",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "quotes",
+          "type": "bounded-structured-list",
+          "note_ru": "Только текст/числа/ID встроенных медиа по item schema, без HTML/JS.",
+          "minItems": 2,
+          "maxItems": 8
+        },
+        {
+          "key": "initialIndex",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 11
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "surface",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        }
+      ],
+      "share_default_fields": [
+        "accent",
+        "surface",
+        "motion"
+      ],
+      "granted_by_product_ids": [
+        "PACK-PLAYFUL",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "E001",
+      "type": "effect",
+      "slug": "content-reveal",
+      "title": {
+        "ru": "Появление контента",
+        "en": "Content Reveal"
+      },
+      "access": "free",
+      "pack": "FREE-STARTER",
+      "phase": "beta",
+      "purpose_ru": "Добавить однократное появление без потери доступности контента.",
+      "composition_ru": "Wrapper/hook с ограниченной дистанцией и duration, явным SSR fallback.",
+      "motion_ru": "IntersectionObserver запускает эффект; в off/reduced и при сбое контент виден.",
+      "responsive_ru": "Не привязан к фиксированной высоте viewport.",
+      "assets_ru": "Только код.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "Без JS в SSR смысловой контент виден, не остаётся opacity:0.",
+        "Observer и listeners отключаются после unmount, несколько экземпляров независимы."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "children",
+        "once",
+        "distance",
+        "duration",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "once",
+          "type": "boolean"
+        },
+        {
+          "key": "distance",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 24
+        },
+        {
+          "key": "duration",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 600
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        {
+          "key": "demoPresetId",
+          "type": "enum-from-bundled-demo-presets",
+          "note_ru": "Только заранее собранные пресеты; произвольные ReactNode/SVG/remote media не принимаются."
+        }
+      ],
+      "share_default_fields": [
+        "distance",
+        "duration",
+        "motion"
+      ],
+      "motion_category": "entrances-scroll",
+      "animation_listing_variant": "same_item_existing_rights; motion guide and script entry included in release, no new item identity",
+      "granted_by_product_ids": [
+        "FREE-STARTER"
+      ],
+      "animation_contract": {
+        "trigger": "enter-viewport",
+        "state_machine_ru": "visible-fallback → enter → settled",
+        "markup_contract_ru": "Wrapper/hook локального контента; SSR visible; не менять семантику children.",
+        "interruption_policy_ru": "Once/re-entry режим явно задан; resize/off/reduce завершают в видимом состоянии.",
+        "reduced_motion_ru": "IntersectionObserver запускает эффект; в off/reduced и при сбое контент виден. При системном reduce пространственное/циклическое движение выключено.",
+        "touch_fallback_ru": "Не привязан к фиксированной высоте viewport.",
+        "cleanup_ru": "Отменить свои animations/observers/listeners/RAF, восстановить только собственные изменения.",
+        "focus_policy_ru": "Контент/действия доступны без эффекта, декоративный слой не получает focus.",
+        "supported_adapters": [
+          "react-typescript"
+        ],
+        "framework_free_status": "not_promised_before_separate_verification",
+        "script_kind": "same_item_source_entry_with_motion_guide",
+        "delivery": [
+          "prompt",
+          "script",
+          "instructions",
+          "demo",
+          "example",
+          "config",
+          "license",
+          "checksums"
+        ]
+      }
+    },
+    {
+      "id": "E002",
+      "type": "effect",
+      "slug": "stagger-group",
+      "title": {
+        "ru": "Последовательное появление группы",
+        "en": "Stagger Group"
+      },
+      "access": "pro",
+      "pack": "PACK-PRODUCT",
+      "phase": "commercial_v1",
+      "purpose_ru": "Согласованно показать небольшой список однотипных элементов.",
+      "composition_ru": "Wrapper группы и child helper с лимитом задержки, без изменения DOM-семантики.",
+      "motion_ru": "CSS delay с максимальной общей задержкой 400ms; off/reduced без ожидания.",
+      "responsive_ru": "Учитывает визуальный порядок после переноса сетки.",
+      "assets_ru": "Только код.",
+      "dependencies": [
+        "E001"
+      ],
+      "acceptance_ru": [
+        "Первый интерактивный элемент доступен сразу, focus не ждёт animation.",
+        "Большое число children не превращает показ в длинную последовательность."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "children",
+        "interval",
+        "maxDelay",
+        "once",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "interval",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        {
+          "key": "maxDelay",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 400
+        },
+        {
+          "key": "once",
+          "type": "boolean"
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        {
+          "key": "demoPresetId",
+          "type": "enum-from-bundled-demo-presets",
+          "note_ru": "Только заранее собранные пресеты; произвольные ReactNode/SVG/remote media не принимаются."
+        }
+      ],
+      "share_default_fields": [
+        "interval",
+        "maxDelay",
+        "motion"
+      ],
+      "motion_category": "entrances-scroll",
+      "animation_listing_variant": "same_item_existing_rights; motion guide and script entry included in release, no new item identity",
+      "granted_by_product_ids": [
+        "PACK-PRODUCT",
+        "PACK-MOTION",
+        "BUNDLE-LAUNCH"
+      ],
+      "animation_contract": {
+        "trigger": "enter-viewport",
+        "state_machine_ru": "group-ready → stagger-enter → settled",
+        "markup_contract_ru": "Группа и локальные children wrappers, исходный DOM порядок сохранён.",
+        "interruption_policy_ru": "Новый состав группы отменяет устаревшие задержки; maxDelay≤400ms.",
+        "reduced_motion_ru": "CSS delay с максимальной общей задержкой 400ms; off/reduced без ожидания. При системном reduce пространственное/циклическое движение выключено.",
+        "touch_fallback_ru": "Учитывает визуальный порядок после переноса сетки.",
+        "cleanup_ru": "Отменить свои animations/observers/listeners/RAF, восстановить только собственные изменения.",
+        "focus_policy_ru": "Контент/действия доступны без эффекта, декоративный слой не получает focus.",
+        "supported_adapters": [
+          "react-typescript"
+        ],
+        "framework_free_status": "not_promised_before_separate_verification",
+        "script_kind": "same_item_source_entry_with_motion_guide",
+        "delivery": [
+          "prompt",
+          "script",
+          "instructions",
+          "demo",
+          "example",
+          "config",
+          "license",
+          "checksums"
+        ]
+      }
+    },
+    {
+      "id": "E003",
+      "type": "effect",
+      "slug": "soft-mesh-background",
+      "title": {
+        "ru": "Мягкий градиентный фон",
+        "en": "Soft Mesh Background"
+      },
+      "access": "pro",
+      "pack": "PACK-EDITORIAL",
+      "phase": "commercial_v1",
+      "purpose_ru": "Добавить локальный декоративный фон без WebGL.",
+      "composition_ru": "Несколько CSS gradient layers внутри ограниченного контейнера, контент поверх отдельным слоем.",
+      "motion_ru": "В expressive очень медленный сдвиг с Pause; off/reduced статичная версия.",
+      "responsive_ru": "Ограниченная площадь отрисовки, без больших full-page blur.",
+      "assets_ru": "Собственный код, grain как локальная SVG/texture с происхождением.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "Фон aria-hidden и не снижает контраст текста исходных пресетов.",
+        "Pause останавливает движение; нет перерисовки всей страницы на pointer.",
+        "Экспорт включает доступную нативную Pause/Resume кнопку, если включён декоративный цикл; onPausedChange — только кодовый callback. Панель сервиса не заменяет этот контроль."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "colors[2..4]",
+        "opacity",
+        "grain",
+        "motion",
+        "paused",
+        "onPausedChange",
+        "includePauseControl"
+      ],
+      "studio_fields": [
+        {
+          "key": "colors",
+          "type": "hex-color-list",
+          "minItems": 2,
+          "maxItems": 4
+        },
+        {
+          "key": "opacity",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.35
+        },
+        {
+          "key": "grain",
+          "type": "boolean"
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        {
+          "key": "paused",
+          "type": "boolean"
+        },
+        {
+          "key": "includePauseControl",
+          "type": "boolean",
+          "constraint_ru": "Не может быть false при включённом цикле без внешнего контроля; внешние callbacks недоступны в Studio."
+        }
+      ],
+      "share_default_fields": [
+        "colors",
+        "opacity",
+        "grain",
+        "motion"
+      ],
+      "motion_category": "backgrounds-pointer",
+      "animation_listing_variant": "same_item_existing_rights; motion guide and script entry included in release, no new item identity",
+      "granted_by_product_ids": [
+        "PACK-EDITORIAL",
+        "PACK-MOTION",
+        "BUNDLE-LAUNCH"
+      ],
+      "animation_contract": {
+        "trigger": "explicit-demo-start",
+        "state_machine_ru": "static → running ↔ paused → destroyed",
+        "markup_contract_ru": "Декоративный фон и доступный Pause/Resume в экспортируемом Example.",
+        "interruption_policy_ru": "Off/reduce/hidden переводят в static/paused; возобновление не теряет контент.",
+        "reduced_motion_ru": "В expressive очень медленный сдвиг с Pause; off/reduced статичная версия. При системном reduce пространственное/циклическое движение выключено.",
+        "touch_fallback_ru": "Ограниченная площадь отрисовки, без больших full-page blur.",
+        "cleanup_ru": "Отменить свои animations/observers/listeners/RAF, восстановить только собственные изменения.",
+        "focus_policy_ru": "Контент/действия доступны без эффекта, декоративный слой не получает focus.",
+        "supported_adapters": [
+          "react-typescript"
+        ],
+        "framework_free_status": "not_promised_before_separate_verification",
+        "script_kind": "same_item_source_entry_with_motion_guide",
+        "delivery": [
+          "prompt",
+          "script",
+          "instructions",
+          "demo",
+          "example",
+          "config",
+          "license",
+          "checksums"
+        ]
+      }
+    },
+    {
+      "id": "E004",
+      "type": "effect",
+      "slug": "pointer-spotlight",
+      "title": {
+        "ru": "Локальная подсветка",
+        "en": "Pointer Spotlight"
+      },
+      "access": "pro",
+      "pack": "PACK-PLAYFUL",
+      "phase": "commercial_v1",
+      "purpose_ru": "Добавить локальную реакцию фона на pointer без изменения содержимого.",
+      "composition_ru": "Радиальная маска/градиент внутри корня с ограниченной интенсивностью.",
+      "motion_ru": "Позиция через CSS variables и throttled rAF только в активной области; off/reduced/touch статично.",
+      "responsive_ru": "Не требует pointer на mobile; ширина контейнера не влияет на hit-area.",
+      "assets_ru": "Только код.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "Нет listener на всей странице без необходимости; цикл останавливается вне экрана/вкладки.",
+        "Декор pointer-events:none, сообщение и действия доступны без эффекта."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "radius",
+        "intensity",
+        "accent",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "radius",
+          "type": "number",
+          "minimum": 64,
+          "maximum": 320
+        },
+        {
+          "key": "intensity",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.35
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        }
+      ],
+      "share_default_fields": [
+        "radius",
+        "intensity",
+        "accent",
+        "motion"
+      ],
+      "motion_category": "backgrounds-pointer",
+      "animation_listing_variant": "same_item_existing_rights; motion guide and script entry included in release, no new item identity",
+      "granted_by_product_ids": [
+        "PACK-PLAYFUL",
+        "PACK-MOTION",
+        "BUNDLE-LAUNCH"
+      ],
+      "animation_contract": {
+        "trigger": "pointer-move",
+        "state_machine_ru": "static → pointer-active → settling → static",
+        "markup_contract_ru": "Локальный контейнер и декоративный aria-hidden click-through слой.",
+        "interruption_policy_ru": "Новый pointer заменяет позицию; pointerleave/off/reduce/hidden очищают цикл.",
+        "reduced_motion_ru": "Позиция через CSS variables и throttled rAF только в активной области; off/reduced/touch статично. При системном reduce пространственное/циклическое движение выключено.",
+        "touch_fallback_ru": "Не требует pointer на mobile; ширина контейнера не влияет на hit-area.",
+        "cleanup_ru": "Отменить свои animations/observers/listeners/RAF, восстановить только собственные изменения.",
+        "focus_policy_ru": "Контент/действия доступны без эффекта, декоративный слой не получает focus.",
+        "supported_adapters": [
+          "react-typescript"
+        ],
+        "framework_free_status": "not_promised_before_separate_verification",
+        "script_kind": "same_item_source_entry_with_motion_guide",
+        "delivery": [
+          "prompt",
+          "script",
+          "instructions",
+          "demo",
+          "example",
+          "config",
+          "license",
+          "checksums"
+        ]
+      }
+    },
+    {
+      "id": "A001",
+      "type": "animation",
+      "slug": "state-relay",
+      "title": {
+        "ru": "Отклик состояний",
+        "en": "State Relay"
+      },
+      "access": "free",
+      "pack": "FREE-STARTER",
+      "phase": "motion_release",
+      "purpose_ru": "Переход idle → pending → success/error с неподвижной областью действия.",
+      "composition_ru": "Рецепт состояния, не вторая копия кнопки C001: иконка, статус и текст реагируют на внешний результат операции.",
+      "motion_ru": "idle → pending → success | error → idle; результат приходит от приложения",
+      "responsive_ru": "Одинаковый отклик на touch/keyboard, без hover-only.",
+      "assets_ru": "Только собственный код и включённая примерная разметка, внешние ассеты не требуются.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "success не появляется до результата Clipboard/operation; повторный запрос не создаёт очередь устаревших статусов.",
+        "Unmount/Strict Mode/resize/off/reduce проверены в Next/Vite; нет оставшихся listeners/RAF/observers."
+      ],
+      "implementation_status": "local_prototype_verified",
+      "runtime_props": [
+        "locale",
+        "motion",
+        "accent",
+        "duration"
+      ],
+      "studio_fields": [
+        {
+          "key": "locale",
+          "type": "enum",
+          "values": [
+            "ru",
+            "en"
+          ]
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        {
+          "key": "accent",
+          "type": "hex-color",
+          "format": "#RRGGBB"
+        },
+        {
+          "key": "duration",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 480,
+          "optional": true
+        }
+      ],
+      "share_default_fields": [
+        "motion",
+        "accent",
+        "duration"
+      ],
+      "motion_category": "controls-feedback",
+      "animation_contract": {
+        "trigger": "state-change",
+        "state_machine_ru": "idle → pending → success | error → idle; результат приходит от приложения",
+        "markup_contract_ru": "Локальный button/status контейнер; операция и aria-live управляются интегратором; нативная разметка включена в Example.",
+        "interruption_policy_ru": "Последнее переданное состояние приоритетно; error не теряется за success прошлой операции.",
+        "reduced_motion_ru": "Off/reduce меняют состояние сразу, сохраняют сообщения и индикатор реального pending.",
+        "touch_fallback_ru": "Одинаковый отклик на touch/keyboard, без hover-only.",
+        "cleanup_ru": "Отменить свои animations/observers/listeners/RAF; восстановить только изменённые этим экземпляром свойства; обработать cancel/finished rejection.",
+        "focus_policy_ru": "Смысловое состояние и focus не ждут конца движения; слой декора не интерактивен.",
+        "supported_adapters": [
+          "react-typescript"
+        ],
+        "framework_free_status": "not_promised_before_separate_verification",
+        "use_cases": [
+          "copy_result",
+          "download_result",
+          "form_result"
+        ],
+        "script_kind": "local_source_hook_or_controller",
+        "delivery": [
+          "prompt",
+          "script",
+          "instructions",
+          "demo",
+          "example",
+          "config",
+          "license",
+          "checksums"
+        ]
+      },
+      "granted_by_product_ids": [
+        "FREE-STARTER"
+      ],
+      "verification_scope": "Controller tests and isolated Vite/Next builds; see recipe-verification.ru.md. Not a published release.",
+      "runtime_contract": {
+        "controller": "createStateRelay",
+        "adapter": "useStateRelay",
+        "methods": [
+          "begin",
+          "settle",
+          "run",
+          "reset",
+          "cancel",
+          "destroy"
+        ],
+        "state_source": "actual host operation / controller snapshot, not Studio input"
+      }
+    },
+    {
+      "id": "A002",
+      "type": "animation",
+      "slug": "context-bridge",
+      "title": {
+        "ru": "Связанный переход контента",
+        "en": "Context Bridge"
+      },
+      "access": "pro",
+      "pack": "PACK-MOTION",
+      "phase": "motion_release",
+      "purpose_ru": "Короткий переход между готовыми представлениями внутри выделенного контейнера.",
+      "composition_ru": "Отдельно от C003: анимирует смену содержимого и сохраняет контекст, а не двигает индикатор навигации.",
+      "motion_ru": "current → incoming-ready → transition → current",
+      "responsive_ru": "Нет свайпа как единственного способа; focus новой страницы задаётся семантикой приложения.",
+      "assets_ru": "Только собственный код и включённая примерная разметка, внешние ассеты не требуются.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "Back/Forward, быстрая смена ключей и pending fetch не теряют контент, фокус и историю.",
+        "Unmount/Strict Mode/resize/off/reduce проверены в Next/Vite; нет оставшихся listeners/RAF/observers."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "transitionKey",
+        "direction",
+        "duration",
+        "distance",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "direction",
+          "type": "enum",
+          "values": [
+            "forward",
+            "back",
+            "none"
+          ]
+        },
+        {
+          "key": "duration",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 480
+        },
+        {
+          "key": "distance",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 12
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        {
+          "key": "demoPresetId",
+          "type": "enum-from-bundled-demo-presets",
+          "note_ru": "Только авторские state/markup/media fixtures, без произвольного JS/DOM selector/HTML."
+        }
+      ],
+      "share_default_fields": [
+        "duration",
+        "distance",
+        "motion"
+      ],
+      "motion_category": "navigation-transitions",
+      "animation_contract": {
+        "trigger": "content-change",
+        "state_machine_ru": "current → incoming-ready → transition → current",
+        "markup_contract_ru": "Два presentation слоя в одном boundary; router/fetch/history принадлежат приложению. Next/Vite Example задаёт внешнее состояние.",
+        "interruption_policy_ru": "Новый ключ отменяет старый переход; URL и commit содержимого не ждут конца анимации.",
+        "reduced_motion_ru": "Без travel/crossfade при off; reduce допускает только короткую opacity по политике.",
+        "touch_fallback_ru": "Нет свайпа как единственного способа; focus новой страницы задаётся семантикой приложения.",
+        "cleanup_ru": "Отменить свои animations/observers/listeners/RAF; восстановить только изменённые этим экземпляром свойства; обработать cancel/finished rejection.",
+        "focus_policy_ru": "Смысловое состояние и focus не ждут конца движения; слой декора не интерактивен.",
+        "supported_adapters": [
+          "react-typescript"
+        ],
+        "framework_free_status": "not_promised_before_separate_verification",
+        "use_cases": [
+          "workspace_panels",
+          "mobile_studio",
+          "route_content"
+        ],
+        "script_kind": "local_source_hook_or_controller",
+        "delivery": [
+          "prompt",
+          "script",
+          "instructions",
+          "demo",
+          "example",
+          "config",
+          "license",
+          "checksums"
+        ]
+      },
+      "granted_by_product_ids": [
+        "PACK-MOTION",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "A003",
+      "type": "animation",
+      "slug": "line-assemble",
+      "title": {
+        "ru": "Сборка строк заголовка",
+        "en": "Line Assemble"
+      },
+      "access": "free",
+      "pack": "FREE-STARTER",
+      "phase": "motion_release",
+      "purpose_ru": "Однократное проявление заголовка по визуальным строкам с локальной маской.",
+      "composition_ru": "Это текстовый рецепт с учётом переноса строк, не общий reveal wrapper E001.",
+      "motion_ru": "visible-fallback → measured → enter → settled",
+      "responsive_ru": "Работает без pointer; длинный RU/EN и zoom не обрезаются.",
+      "assets_ru": "Только собственный код и включённая примерная разметка, внешние ассеты не требуются.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "Текст остаётся доступным до JS и при неудачной загрузке шрифта; нет принудительных переносов под один язык.",
+        "Unmount/Strict Mode/resize/off/reduce проверены в Next/Vite; нет оставшихся listeners/RAF/observers.",
+        "Общая длительность всех строк не превышает 480ms; long RU/resize/font load не создают длинную очередь и повторное скрытие уже показанного заголовка."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "text",
+        "duration",
+        "lineDelay",
+        "once",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "text",
+          "type": "plain-text",
+          "maxLength": 480
+        },
+        {
+          "key": "duration",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 480
+        },
+        {
+          "key": "lineDelay",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 80
+        },
+        {
+          "key": "once",
+          "type": "boolean"
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        {
+          "key": "demoPresetId",
+          "type": "enum-from-bundled-demo-presets",
+          "note_ru": "Только авторские state/markup/media fixtures, без произвольного JS/DOM selector/HTML."
+        }
+      ],
+      "share_default_fields": [
+        "duration",
+        "lineDelay",
+        "motion"
+      ],
+      "motion_category": "text-numbers",
+      "animation_contract": {
+        "trigger": "enter-viewport",
+        "state_machine_ru": "visible-fallback → measured → enter → settled",
+        "markup_contract_ru": "Нативный heading сохраняет один доступный текст и выбор/copy; визуальная маска не создаёт повторных screen-reader фраз.",
+        "interruption_policy_ru": "Resize/смена шрифта/локали пересчитывают строки без повторного нежелательного старта.",
+        "reduced_motion_ru": "SSR/нет JS/ошибка измерения показывают обычный текст; reduce без маски и смещений.",
+        "touch_fallback_ru": "Работает без pointer; длинный RU/EN и zoom не обрезаются.",
+        "cleanup_ru": "Отменить свои animations/observers/listeners/RAF; восстановить только изменённые этим экземпляром свойства; обработать cancel/finished rejection.",
+        "focus_policy_ru": "Смысловое состояние и focus не ждут конца движения; слой декора не интерактивен.",
+        "supported_adapters": [
+          "react-typescript"
+        ],
+        "framework_free_status": "not_promised_before_separate_verification",
+        "use_cases": [
+          "hero_heading",
+          "section_title"
+        ],
+        "script_kind": "local_source_hook_or_controller",
+        "delivery": [
+          "prompt",
+          "script",
+          "instructions",
+          "demo",
+          "example",
+          "config",
+          "license",
+          "checksums"
+        ],
+        "duration_semantics_ru": "duration — общий бюджет последовательности, включая задержки строк, максимум 480ms. Эффективный lineDelay уменьшается/обнуляется при большом числе строк. Уже видимый до инициализации текст не скрывается повторно: анимация пропускается."
+      },
+      "granted_by_product_ids": [
+        "FREE-STARTER"
+      ]
+    },
+    {
+      "id": "A004",
+      "type": "animation",
+      "slug": "focus-plane",
+      "title": {
+        "ru": "Переход общего кадра",
+        "en": "Focus Plane"
+      },
+      "access": "pro",
+      "pack": "PACK-MOTION",
+      "phase": "motion_release",
+      "purpose_ru": "Связать исходную миниатюру и готовую детальную область одним переходом геометрии.",
+      "composition_ru": "Рецепт shared-frame анимации, не карточка C005 и не новый lightbox C006; разметка/семантика детали входят в конкретный Example.",
+      "motion_ru": "idle → target-ready → morph → settled → return",
+      "responsive_ru": "Touch использует явное действие; кнопка возврата доступна с клавиатуры.",
+      "assets_ru": "Только собственный код и включённая примерная разметка, внешние ассеты не требуются.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "Условие target-ready не задерживает маршрут; при изменении scroll/resize есть безопасный fallback без улетающей копии.",
+        "Unmount/Strict Mode/resize/off/reduce проверены в Next/Vite; нет оставшихся listeners/RAF/observers."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "sourceRef",
+        "targetRef",
+        "layoutKey",
+        "duration",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "duration",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 480
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        {
+          "key": "demoPresetId",
+          "type": "enum-from-bundled-demo-presets",
+          "note_ru": "Только авторские state/markup/media fixtures, без произвольного JS/DOM selector/HTML."
+        }
+      ],
+      "share_default_fields": [
+        "duration",
+        "motion"
+      ],
+      "motion_category": "cards-media",
+      "animation_contract": {
+        "trigger": "selection",
+        "state_machine_ru": "idle → target-ready → morph → settled → return",
+        "markup_contract_ru": "Измеримые source/target rectangles, стабильные ключи, зарезервированные размеры; overlay декоративный aria-hidden и click-through.",
+        "interruption_policy_ru": "Отмена, повторный выбор и удаление исходной карточки завершаются стабильной обычной деталью.",
+        "reduced_motion_ru": "При off/reduce обычный переход к содержимому; действие и focus не зависят от overlay.",
+        "touch_fallback_ru": "Touch использует явное действие; кнопка возврата доступна с клавиатуры.",
+        "cleanup_ru": "Отменить свои animations/observers/listeners/RAF; восстановить только изменённые этим экземпляром свойства; обработать cancel/finished rejection.",
+        "focus_policy_ru": "Смысловое состояние и focus не ждут конца движения; слой декора не интерактивен.",
+        "supported_adapters": [
+          "react-typescript"
+        ],
+        "framework_free_status": "not_promised_before_separate_verification",
+        "use_cases": [
+          "card_to_detail",
+          "cover_to_studio"
+        ],
+        "script_kind": "local_source_hook_or_controller",
+        "delivery": [
+          "prompt",
+          "script",
+          "instructions",
+          "demo",
+          "example",
+          "config",
+          "license",
+          "checksums"
+        ]
+      },
+      "granted_by_product_ids": [
+        "PACK-MOTION",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "A005",
+      "type": "animation",
+      "slug": "edge-unfold",
+      "title": {
+        "ru": "Раскрытие от края",
+        "en": "Edge Unfold"
+      },
+      "access": "pro",
+      "pack": "PACK-MOTION",
+      "phase": "motion_release",
+      "purpose_ru": "Показать и закрыть панель или меню от выбранного края с ограниченной амплитудой.",
+      "composition_ru": "Переиспользуемая motion-логика слоя с полным native-dialog Example; не заменяет семантику menu/modal.",
+      "motion_ru": "closed → opening → open → closing → closed",
+      "responsive_ru": "Не требует edge-swipe; touch controls сохраняют target area.",
+      "assets_ru": "Только собственный код и включённая примерная разметка, внешние ассеты не требуются.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "Escape, быстрый open-close, focus return и reduced motion одинаково работают в демо и в распакованном Example.",
+        "Unmount/Strict Mode/resize/off/reduce проверены в Next/Vite; нет оставшихся listeners/RAF/observers."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "open",
+        "edge",
+        "duration",
+        "distance",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "open",
+          "type": "boolean"
+        },
+        {
+          "key": "edge",
+          "type": "enum",
+          "values": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ]
+        },
+        {
+          "key": "duration",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 480
+        },
+        {
+          "key": "distance",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 12
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        {
+          "key": "demoPresetId",
+          "type": "enum-from-bundled-demo-presets",
+          "note_ru": "Только авторские state/markup/media fixtures, без произвольного JS/DOM selector/HTML."
+        }
+      ],
+      "share_default_fields": [
+        "edge",
+        "duration",
+        "distance",
+        "motion"
+      ],
+      "motion_category": "overlays-menus",
+      "animation_contract": {
+        "trigger": "open-close",
+        "state_machine_ru": "closed → opening → open → closing → closed",
+        "markup_contract_ru": "Dialog/sheet контейнер и trigger; native dialog adapter с focus restore, Escape и inert background.",
+        "interruption_policy_ru": "Повторный toggle разворачивает переход из текущего состояния; close освобождает слой без ожидания animationend.",
+        "reduced_motion_ru": "Состояния меняются без сдвига; скрытый слой не остаётся tabbable.",
+        "touch_fallback_ru": "Не требует edge-swipe; touch controls сохраняют target area.",
+        "cleanup_ru": "Отменить свои animations/observers/listeners/RAF; восстановить только изменённые этим экземпляром свойства; обработать cancel/finished rejection.",
+        "focus_policy_ru": "Смысловое состояние и focus не ждут конца движения; слой декора не интерактивен.",
+        "supported_adapters": [
+          "react-typescript"
+        ],
+        "framework_free_status": "not_promised_before_separate_verification",
+        "use_cases": [
+          "filters_sheet",
+          "settings_drawer",
+          "navigation_menu"
+        ],
+        "script_kind": "local_source_hook_or_controller",
+        "delivery": [
+          "prompt",
+          "script",
+          "instructions",
+          "demo",
+          "example",
+          "config",
+          "license",
+          "checksums"
+        ]
+      },
+      "granted_by_product_ids": [
+        "PACK-MOTION",
+        "BUNDLE-LAUNCH"
+      ]
+    },
+    {
+      "id": "A006",
+      "type": "animation",
+      "slug": "ledger-reflow",
+      "title": {
+        "ru": "Перестроение списка",
+        "en": "Ledger Reflow"
+      },
+      "access": "free",
+      "pack": "FREE-STARTER",
+      "phase": "motion_release",
+      "purpose_ru": "Анимировать добавление, удаление, фильтрацию и смену порядка уже обновлённого списка.",
+      "composition_ru": "Отдельно от E002: обработка изменений геометрии и стабильных ключей после обновления данных, а не первичное появление группы.",
+      "motion_ru": "stable → measure-before → data-commit → measure-after → settle",
+      "responsive_ru": "Без обязательного drag; изменение позиции не уводит focus и опорную карточку за viewport.",
+      "assets_ru": "Только собственный код и включённая примерная разметка, внешние ассеты не требуются.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "Сохраняются keyboard focus и scroll anchor; два списка независимы, уходящий элемент не интерактивен.",
+        "Unmount/Strict Mode/resize/off/reduce проверены в Next/Vite; нет оставшихся listeners/RAF/observers."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "itemKeys",
+        "duration",
+        "maxDistance",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "duration",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 480
+        },
+        {
+          "key": "maxDistance",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 160
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        {
+          "key": "demoPresetId",
+          "type": "enum-from-bundled-demo-presets",
+          "note_ru": "Только авторские state/markup/media fixtures, без произвольного JS/DOM selector/HTML."
+        }
+      ],
+      "share_default_fields": [
+        "duration",
+        "maxDistance",
+        "motion"
+      ],
+      "motion_category": "lists-data",
+      "animation_contract": {
+        "trigger": "list-change",
+        "state_machine_ru": "stable → measure-before → data-commit → measure-after → settle",
+        "markup_contract_ru": "Список со стабильными item keys и локальными animation wrappers, не затирающими transform интегратора.",
+        "interruption_policy_ru": "Новый data commit заменяет текущую раскладку; отсутствие измерения даёт мгновенный нормальный layout.",
+        "reduced_motion_ru": "Новый порядок виден мгновенно, нативный DOM и focus следуют данным.",
+        "touch_fallback_ru": "Без обязательного drag; изменение позиции не уводит focus и опорную карточку за viewport.",
+        "cleanup_ru": "Отменить свои animations/observers/listeners/RAF; восстановить только изменённые этим экземпляром свойства; обработать cancel/finished rejection.",
+        "focus_policy_ru": "Смысловое состояние и focus не ждут конца движения; слой декора не интерактивен.",
+        "supported_adapters": [
+          "react-typescript"
+        ],
+        "framework_free_status": "not_promised_before_separate_verification",
+        "use_cases": [
+          "catalog_filters",
+          "saved_items",
+          "editable_lists"
+        ],
+        "script_kind": "local_source_hook_or_controller",
+        "delivery": [
+          "prompt",
+          "script",
+          "instructions",
+          "demo",
+          "example",
+          "config",
+          "license",
+          "checksums"
+        ]
+      },
+      "granted_by_product_ids": [
+        "FREE-STARTER"
+      ]
+    },
+    {
+      "id": "A007",
+      "type": "animation",
+      "slug": "scroll-chapters",
+      "title": {
+        "ru": "Прогресс глав при скролле",
+        "en": "Scroll Chapters"
+      },
+      "access": "pro",
+      "pack": "PACK-MOTION",
+      "phase": "motion_release",
+      "purpose_ru": "Показывать прогресс и активную главу рассказа при обычном прокручивании страницы.",
+      "composition_ru": "Оркестрация нескольких глав с индикатором; не копия E001/E002 и не перехват scroll.",
+      "motion_ru": "chapter-id + bounded progress; offscreen → paused",
+      "responsive_ru": "На mobile главы следуют потоком; safe viewport высота не блокирует чтение.",
+      "assets_ru": "Только собственный код и включённая примерная разметка, внешние ассеты не требуются.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "Нет wheel/touch preventDefault, auto-scroll и scroll-jacking; resize и anchor links работают обычно.",
+        "Unmount/Strict Mode/resize/off/reduce проверены в Next/Vite; нет оставшихся listeners/RAF/observers.",
+        "Controller сам выдаёт activeId/progress при native scroll; Next/Vite Example не содержит второй собственной реализации вычисления главы."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "chapters",
+        "stickyOffset",
+        "motion",
+        "onActiveChange",
+        "onProgressChange"
+      ],
+      "studio_fields": [
+        {
+          "key": "stickyOffset",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 160
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        {
+          "key": "demoPresetId",
+          "type": "enum-from-bundled-demo-presets",
+          "note_ru": "Только авторские state/markup/media fixtures, без произвольного JS/DOM selector/HTML."
+        }
+      ],
+      "share_default_fields": [
+        "motion"
+      ],
+      "motion_category": "entrances-scroll",
+      "animation_contract": {
+        "trigger": "native-scroll",
+        "state_machine_ru": "chapter-id + bounded progress; offscreen → paused",
+        "markup_contract_ru": "Семантические section anchors, необязательная sticky sidebar; обязательный контент в нормальном потоке.",
+        "interruption_policy_ru": "Scroll назад корректно меняет главу; поздние measurements не прыгают страницу.",
+        "reduced_motion_ru": "Off/reduce сохраняют главы и индикатор, отключают пространственное перемещение.",
+        "touch_fallback_ru": "На mobile главы следуют потоком; safe viewport высота не блокирует чтение.",
+        "cleanup_ru": "Отменить свои animations/observers/listeners/RAF; восстановить только изменённые этим экземпляром свойства; обработать cancel/finished rejection.",
+        "focus_policy_ru": "Смысловое состояние и focus не ждут конца движения; слой декора не интерактивен.",
+        "supported_adapters": [
+          "react-typescript"
+        ],
+        "framework_free_status": "not_promised_before_separate_verification",
+        "use_cases": [
+          "feature_story",
+          "case_study",
+          "how_it_works"
+        ],
+        "script_kind": "local_source_hook_or_controller",
+        "delivery": [
+          "prompt",
+          "script",
+          "instructions",
+          "demo",
+          "example",
+          "config",
+          "license",
+          "checksums"
+        ],
+        "output_contract_ru": "activeId/progress вычисляет scroll-controller из геометрии разделов и native scroll; host получает readonly значения и optional callbacks. Пользователю не нужно заново писать определение прогресса. Studio запускает bundled scroll preset, не подменяет измерение editable scalar."
+      },
+      "granted_by_product_ids": [
+        "PACK-MOTION",
+        "BUNDLE-LAUNCH"
+      ],
+      "runtime_outputs": [
+        "activeId",
+        "progress"
+      ]
+    },
+    {
+      "id": "A008",
+      "type": "animation",
+      "slug": "metric-roll",
+      "title": {
+        "ru": "Лента изменения чисел",
+        "en": "Metric Roll"
+      },
+      "access": "pro",
+      "pack": "PACK-MOTION",
+      "phase": "motion_release",
+      "purpose_ru": "Показать изменение числового значения через короткий переход локализованной цифровой ленты.",
+      "composition_ru": "Это анимация отдельного значения, не готовая карточка C004 и не генератор финансовых данных.",
+      "motion_ru": "formatted-current → new-value-ready → roll → settled",
+      "responsive_ru": "Плюс/минус, дробная часть, разделители RU/EN и длинные значения сохраняют смысл.",
+      "assets_ru": "Только собственный код и включённая примерная разметка, внешние ассеты не требуются.",
+      "dependencies": [],
+      "acceptance_ru": [
+        "Нет покадрового live announcement, выдуманного прогресса, рассинхронизации сервера/клиента и изменения периода без цены.",
+        "Unmount/Strict Mode/resize/off/reduce проверены в Next/Vite; нет оставшихся listeners/RAF/observers."
+      ],
+      "implementation_status": "not_started",
+      "runtime_props": [
+        "value",
+        "previousValue",
+        "locale",
+        "formatOptions",
+        "duration",
+        "motion"
+      ],
+      "studio_fields": [
+        {
+          "key": "value",
+          "type": "finite-number",
+          "minimum": -999999999,
+          "maximum": 999999999
+        },
+        {
+          "key": "previousValue",
+          "type": "finite-number",
+          "minimum": -999999999,
+          "maximum": 999999999
+        },
+        {
+          "key": "locale",
+          "type": "enum",
+          "values": [
+            "ru",
+            "en"
+          ]
+        },
+        {
+          "key": "duration",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 480
+        },
+        {
+          "key": "motion",
+          "type": "enum",
+          "values": [
+            "off",
+            "subtle",
+            "expressive"
+          ]
+        },
+        {
+          "key": "demoPresetId",
+          "type": "enum-from-bundled-demo-presets",
+          "note_ru": "Только авторские state/markup/media fixtures, без произвольного JS/DOM selector/HTML."
+        }
+      ],
+      "share_default_fields": [
+        "duration",
+        "motion"
+      ],
+      "motion_category": "text-numbers",
+      "animation_contract": {
+        "trigger": "value-change",
+        "state_machine_ru": "formatted-current → new-value-ready → roll → settled",
+        "markup_contract_ru": "Одна читаемая подпись значения; визуальные reels aria-hidden; размер зарезервирован, реальное значение обновляется сразу.",
+        "interruption_policy_ru": "Быстрое обновление идёт к последнему значению; не проигрывает все промежуточные числа.",
+        "reduced_motion_ru": "Off/reduce выводят конечное форматированное число без rolling.",
+        "touch_fallback_ru": "Плюс/минус, дробная часть, разделители RU/EN и длинные значения сохраняют смысл.",
+        "cleanup_ru": "Отменить свои animations/observers/listeners/RAF; восстановить только изменённые этим экземпляром свойства; обработать cancel/finished rejection.",
+        "focus_policy_ru": "Смысловое состояние и focus не ждут конца движения; слой декора не интерактивен.",
+        "supported_adapters": [
+          "react-typescript"
+        ],
+        "framework_free_status": "not_promised_before_separate_verification",
+        "use_cases": [
+          "metrics",
+          "counters",
+          "pricing_values"
+        ],
+        "script_kind": "local_source_hook_or_controller",
+        "delivery": [
+          "prompt",
+          "script",
+          "instructions",
+          "demo",
+          "example",
+          "config",
+          "license",
+          "checksums"
+        ]
+      },
+      "granted_by_product_ids": [
+        "PACK-MOTION",
+        "BUNDLE-LAUNCH"
+      ]
+    }
+  ],
+  "public_guides": [
+    {
+      "id": "G01",
+      "slug": "quick-start",
+      "title": {
+        "ru": "Быстрый старт",
+        "en": "Quick Start"
+      }
+    },
+    {
+      "id": "G02",
+      "slug": "next-integration",
+      "title": {
+        "ru": "Интеграция с Next.js",
+        "en": "Next.js Integration"
+      }
+    },
+    {
+      "id": "G03",
+      "slug": "vite-integration",
+      "title": {
+        "ru": "Интеграция с Vite",
+        "en": "Vite Integration"
+      }
+    },
+    {
+      "id": "G04",
+      "slug": "theme-and-tokens",
+      "title": {
+        "ru": "Оформление и токены",
+        "en": "Theme and Tokens"
+      }
+    },
+    {
+      "id": "G05",
+      "slug": "using-with-ai",
+      "title": {
+        "ru": "Использование с AI",
+        "en": "Using with AI"
+      }
+    },
+    {
+      "id": "G06",
+      "slug": "motion-and-accessibility",
+      "title": {
+        "ru": "Движение и доступность",
+        "en": "Motion and Accessibility"
+      }
+    },
+    {
+      "id": "G07",
+      "slug": "assets-and-license",
+      "title": {
+        "ru": "Ресурсы и лицензия",
+        "en": "Assets and License"
+      }
+    },
+    {
+      "id": "G08",
+      "slug": "troubleshooting",
+      "title": {
+        "ru": "Решение проблем",
+        "en": "Troubleshooting"
+      }
+    }
+  ],
+  "public_prompt_templates": [
+    {
+      "id": "P01",
+      "title": {
+        "ru": "Разобрать существующий проект перед интеграцией",
+        "en": "Inspect a Project before Integration"
+      }
+    },
+    {
+      "id": "P02",
+      "title": {
+        "ru": "Сопоставить токены и оформление",
+        "en": "Map Theme Tokens"
+      }
+    },
+    {
+      "id": "P03",
+      "title": {
+        "ru": "Проверить движение и доступность",
+        "en": "Review Motion and Accessibility"
+      }
+    },
+    {
+      "id": "P04",
+      "title": {
+        "ru": "Проверить интеграцию и перечислить изменения",
+        "en": "Verify Integration and Report Changes"
+      }
+    }
+  ],
+  "supporting_content": {
+    "collection_demo_sets": 3,
+    "collection_demo_localized_pages": 6,
+    "item_posters_per_locale": 32,
+    "total_item_poster_images": 64,
+    "general_prompt_templates": 4,
+    "general_prompt_localized_texts": 8,
+    "public_guide_topics": 8,
+    "public_guide_localized_pages": 16,
+    "notes_ru": "128 семейств item × mode × locale, 256 комбинаций React targets. В animation section 12 записей = 4 прежних E + 8 новых A, 48 семейств / 96 target cases — подмножество общих. 10 motion сценариев самой платформы не считаются контентными items. Все числа — план, не выполненные проверки.",
+    "prompt_families_mode_locale": 128,
+    "target_aware_output_combinations": 256,
+    "generated_item_prompt_families": 128,
+    "free_item_prompt_families": 36,
+    "pro_item_prompt_families": 92,
+    "animation_listing_entries": 12,
+    "new_animation_items": 8,
+    "animation_free_entries": 4,
+    "animation_pro_entries": 8,
+    "animation_prompt_families": 48,
+    "animation_target_cases": 96,
+    "animation_index_localized_pages": 2,
+    "animation_category_localized_pages": 16
+  },
+  "collection_showcases": [
+    {
+      "product_id": "PACK-PRODUCT",
+      "sections": [
+        "S004",
+        "S005",
+        "S006"
+      ],
+      "standalone_showcases": [
+        "C003",
+        "C004",
+        "E002"
+      ]
+    },
+    {
+      "product_id": "PACK-EDITORIAL",
+      "sections": [
+        "S007",
+        "S008",
+        "S009"
+      ],
+      "standalone_showcases": [
+        "C005",
+        "C006",
+        "E003"
+      ]
+    },
+    {
+      "product_id": "PACK-PLAYFUL",
+      "sections": [
+        "S010",
+        "S011",
+        "S012"
+      ],
+      "standalone_showcases": [
+        "C007",
+        "C008",
+        "E004"
+      ]
+    }
+  ],
+  "animation_categories": [
+    {
+      "id": "entrances-scroll",
+      "slug": "entrances-scroll",
+      "title": {
+        "ru": "Появление и скролл",
+        "en": "Entrances and Scroll"
+      },
+      "item_ids": [
+        "E001",
+        "E002",
+        "A007"
+      ]
+    },
+    {
+      "id": "controls-feedback",
+      "slug": "controls-feedback",
+      "title": {
+        "ru": "Отклик контролов",
+        "en": "Control Feedback"
+      },
+      "item_ids": [
+        "A001"
+      ]
+    },
+    {
+      "id": "navigation-transitions",
+      "slug": "navigation-transitions",
+      "title": {
+        "ru": "Навигация и переходы",
+        "en": "Navigation and Transitions"
+      },
+      "item_ids": [
+        "A002"
+      ]
+    },
+    {
+      "id": "text-numbers",
+      "slug": "text-numbers",
+      "title": {
+        "ru": "Текст и числа",
+        "en": "Text and Numbers"
+      },
+      "item_ids": [
+        "A003",
+        "A008"
+      ]
+    },
+    {
+      "id": "cards-media",
+      "slug": "cards-media",
+      "title": {
+        "ru": "Карточки и медиа",
+        "en": "Cards and Media"
+      },
+      "item_ids": [
+        "A004"
+      ]
+    },
+    {
+      "id": "overlays-menus",
+      "slug": "overlays-menus",
+      "title": {
+        "ru": "Панели и меню",
+        "en": "Overlays and Menus"
+      },
+      "item_ids": [
+        "A005"
+      ]
+    },
+    {
+      "id": "lists-data",
+      "slug": "lists-data",
+      "title": {
+        "ru": "Списки и данные",
+        "en": "Lists and Data"
+      },
+      "item_ids": [
+        "A006"
+      ]
+    },
+    {
+      "id": "backgrounds-pointer",
+      "slug": "backgrounds-pointer",
+      "title": {
+        "ru": "Фоны и pointer",
+        "en": "Backgrounds and Pointer"
+      },
+      "item_ids": [
+        "E003",
+        "E004"
+      ]
+    }
+  ],
+  "animation_item_ids": [
+    "E001",
+    "E002",
+    "A007",
+    "A001",
+    "A002",
+    "A003",
+    "A008",
+    "A004",
+    "A005",
+    "A006",
+    "E003",
+    "E004"
+  ],
+  "previous_offer_snapshots": [
+    {
+      "spec_version": "0.2",
+      "products": [
+        {
+          "id": "FREE-STARTER",
+          "title": {
+            "ru": "Стартовый набор",
+            "en": "Starter"
+          },
+          "access": "free",
+          "item_ids": [
+            "S001",
+            "S002",
+            "S003",
+            "C001",
+            "C002",
+            "E001"
+          ],
+          "price_hypothesis_usd": 0
+        },
+        {
+          "id": "PACK-PRODUCT",
+          "title": {
+            "ru": "Продукт",
+            "en": "Product"
+          },
+          "access": "pro",
+          "item_ids": [
+            "S004",
+            "S005",
+            "S006",
+            "C003",
+            "C004",
+            "E002"
+          ],
+          "price_hypothesis_usd": 29
+        },
+        {
+          "id": "PACK-EDITORIAL",
+          "title": {
+            "ru": "Редакционный",
+            "en": "Editorial"
+          },
+          "access": "pro",
+          "item_ids": [
+            "S007",
+            "S008",
+            "S009",
+            "C005",
+            "C006",
+            "E003"
+          ],
+          "price_hypothesis_usd": 29
+        },
+        {
+          "id": "PACK-PLAYFUL",
+          "title": {
+            "ru": "Экспериментальный",
+            "en": "Playful"
+          },
+          "access": "pro",
+          "item_ids": [
+            "S010",
+            "S011",
+            "S012",
+            "C007",
+            "C008",
+            "E004"
+          ],
+          "price_hypothesis_usd": 29
+        },
+        {
+          "id": "BUNDLE-LAUNCH",
+          "title": {
+            "ru": "Все наборы запуска",
+            "en": "Launch Bundle"
+          },
+          "access": "pro",
+          "includes_product_ids": [
+            "PACK-PRODUCT",
+            "PACK-EDITORIAL",
+            "PACK-PLAYFUL"
+          ],
+          "item_ids": [
+            "S004",
+            "S005",
+            "S006",
+            "S007",
+            "S008",
+            "S009",
+            "S010",
+            "S011",
+            "S012",
+            "C003",
+            "C004",
+            "C005",
+            "C006",
+            "C007",
+            "C008",
+            "E002",
+            "E003",
+            "E004"
+          ],
+          "price_hypothesis_usd": 59
+        }
+      ],
+      "note_ru": "Исторический предложенный состав. Реальных продаж ещё нет; существующие grants в будущем всегда сохраняют свой snapshot."
+    }
+  ],
+  "platform_motion_scenarios": [
+    {
+      "id": "WM01",
+      "implementation_status": "not_started"
+    },
+    {
+      "id": "WM02",
+      "implementation_status": "not_started"
+    },
+    {
+      "id": "WM03",
+      "implementation_status": "not_started"
+    },
+    {
+      "id": "WM04",
+      "implementation_status": "not_started"
+    },
+    {
+      "id": "WM05",
+      "implementation_status": "not_started"
+    },
+    {
+      "id": "WM06",
+      "implementation_status": "not_started"
+    },
+    {
+      "id": "WM07",
+      "implementation_status": "not_started"
+    },
+    {
+      "id": "WM08",
+      "implementation_status": "not_started"
+    },
+    {
+      "id": "WM09",
+      "implementation_status": "not_started"
+    },
+    {
+      "id": "WM10",
+      "implementation_status": "not_started"
+    }
+  ],
+  "decisions": {
+    "working_brand": "Formrift",
+    "brand_status": "working_name_not_domain_or_trademark_clearance",
+    "seller_country": "Vietnam",
+    "seller_entity": null,
+    "commerce_enabled": false,
+    "core_stack": "React + TypeScript + CSS Modules",
+    "production_web": "Next.js App Router",
+    "prototype_web": "Vite",
+    "locales": [
+      "ru",
+      "en"
+    ]
+  },
+  "delivery_phases": [
+    {
+      "id": "P0",
+      "item_ids": [
+        "S001",
+        "S002",
+        "S003",
+        "C001",
+        "C002",
+        "E001"
+      ],
+      "paid_enabled": false
+    },
+    {
+      "id": "P1",
+      "adds": [
+        "A001",
+        "A003",
+        "A006"
+      ],
+      "free_total": 9,
+      "paid_enabled": false
+    },
+    {
+      "id": "P2",
+      "unique_total": 32,
+      "free_total": 9,
+      "pro_total": 23,
+      "paid_enabled": "only_when_merchant_and_acceptance_ready"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "version": "foundations-05",
+  "date": "2026-10-23",
+  "search": [
+    "A001: one result",
+    "unknown string: empty",
+    "reset: six results, search focus",
+    "Effects: one result"
+  ],
+  "select": [
+    "sort End/Enter: Name A-Z",
+    "source file End/Enter: CSS selected",
+    "bounded list scroll: no page scroll close",
+    "320px Vietnamese dropdown inside viewport"
+  ],
+  "preset": [
+    "required error",
+    "save Cà phê",
+    "NFD duplicate rejected",
+    "Escape cancels delete and returns focus",
+    "confirm delete removes row and returns focus",
+    "tooltip Escape while focus in input"
+  ],
+  "motion": [
+    "35ms rejected",
+    "200ms accepted",
+    "Off sets effective duration 0",
+    "Off spinner animation none"
+  ],
+  "consoleWarningsAndErrors": [],
+  "clipboard": "Copied state only; no independent system readback",
+  "downloadEvidence": "download-verification.json",
+  "responsiveEvidence": "responsive.json",
+  "containerPreview": {
+    "windowWidth": 1440,
+    "previewWidth": 320,
+    "visuallyVerified": true
+  }
+}

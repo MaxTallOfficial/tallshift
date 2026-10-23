@@ -1,0 +1,49 @@
+{
+  "offerId": "BUNDLE-LAUNCH",
+  "revision": "1.0.0",
+  "title": {
+    "ru": "Все наборы запуска",
+    "en": "Launch Bundle"
+  },
+  "itemIds": [
+    "S004",
+    "S005",
+    "S006",
+    "S007",
+    "S008",
+    "S009",
+    "S010",
+    "S011",
+    "S012",
+    "C003",
+    "C004",
+    "C005",
+    "C006",
+    "C007",
+    "C008",
+    "E002",
+    "E003",
+    "E004",
+    "A002",
+    "A004",
+    "A005",
+    "A007",
+    "A008"
+  ],
+  "purchaseModel": "one-time",
+  "saleState": "disabled",
+  "currency": "USD",
+  "currencyExponent": 2,
+  "amountMinor": 7900,
+  "merchantRef": null,
+  "paymentProviderRef": null,
+  "termsRevision": null,
+  "licenseRevision": null,
+  "taxPolicyRef": null,
+  "refundPolicyRef": null,
+  "updatePolicy": {
+    "functionalMonths": 12,
+    "securitySupportMonths": 24,
+    "eolNoticeDays": 90
+  }
+}

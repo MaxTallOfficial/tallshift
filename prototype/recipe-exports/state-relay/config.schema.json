@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "A001 selected configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["locale", "motion", "accent"],
+  "properties": {
+    "locale": { "type": "string", "enum": ["en", "ru", "vi"], "default": "en" },
+    "motion": { "type": "string", "enum": ["off", "subtle", "expressive"] },
+    "accent": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+    "duration": { "type": "integer", "minimum": 0, "maximum": 480, "description": "Milliseconds; defaults subtle 120, expressive 180, off 0" }
+  }
+}

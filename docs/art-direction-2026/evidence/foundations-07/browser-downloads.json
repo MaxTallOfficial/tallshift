@@ -1,0 +1,17 @@
+{
+  "scope": "Actual files downloaded through browser controls",
+  "config": {
+    "locale": "ru",
+    "motion": "expressive",
+    "accent": "#777777",
+    "duration": 400
+  },
+  "zipFileCount": 23,
+  "verifiedHashes": 22,
+  "tokenCount": 228,
+  "resolvedCount": 228,
+  "coverage": 44,
+  "partialFamilies": 0,
+  "status": "visual-review",
+  "productionReady": false
+}

@@ -1,0 +1,34 @@
+{
+  "version": "foundations-06",
+  "date": "2026-10-23",
+  "catalog": [
+    "Next 1-2-3; focus remains at disabled endpoint",
+    "Playful selection resets to page1 and E004",
+    "Static loading with aria-busy",
+    "Empty/error restore local results and focus heading"
+  ],
+  "files": [
+    "Select CSS synchronises dropdown/code",
+    "Info reports real path/type/UTF8size7609",
+    "Popover Escape restores trigger focus",
+    "Menu arrows/Home/End/Enter and focus return",
+    "Exact selected CSS downloaded and compared",
+    "Menu copy reports Copied; no system readback"
+  ],
+  "mobile": [
+    "Native sheet accessible and background excluded",
+    "Tab last file -> Close; Shift+Tab Close -> last file",
+    "Escape closes and returns Files focus",
+    "Selecting src/useStateRelay.ts closes sheet and updates dropdown",
+    "Info popup within320: left16,right288,width272"
+  ],
+  "access": "Six radio scenarios; Free available, all5 Pro actions disabled including owner",
+  "consoleWarningsAndErrors": [],
+  "responsiveEvidence": "responsive.json",
+  "downloadEvidence": "download-verification.json",
+  "limitations": [
+    "Not a complete WCAG/device/browser audit",
+    "No server entitlements or payments",
+    "No new independent Next.js/Vite builds"
+  ]
+}

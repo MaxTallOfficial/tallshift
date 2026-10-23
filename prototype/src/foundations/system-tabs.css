@@ -1,0 +1,15 @@
+.system-tabs { min-inline-size: 0; }
+.system-tablist { display: flex; gap: 4px; overflow-x: auto; max-inline-size: 100%; padding: 4px; border: 1px solid var(--f-control-border); border-radius: var(--sy-radius-control, 8px); background: var(--f-inset); }
+.system-tablist > button { flex: 1 0 auto; min-inline-size: 44px; min-block-size: 44px; padding: 10px 16px; border: 1px solid transparent; border-radius: 5px; color: var(--f-secondary); background: transparent; font: 600 14px/1.5 var(--sy-font-ui, inherit); cursor: pointer; }
+.system-tablist > button:hover:not(:disabled) { color: var(--f-text); background: var(--f-surface); }
+.system-tablist > button[aria-selected="true"] { color: var(--f-accent); border-color: var(--f-control-border); background: var(--f-raised); }
+.system-tablist > button:disabled { opacity: .5; cursor: not-allowed; }
+.system-tablist > button:focus-visible, .system-tabpanel:focus-visible { outline: 2px solid var(--f-focus); outline-offset: -3px; }
+.system-tabpanels { display: grid; margin-block-start: 16px; }
+.system-tabpanel { grid-area: 1 / 1; min-inline-size: 0; visibility: hidden; overflow-wrap: anywhere; }
+.system-tabpanel[data-active="true"] { visibility: visible; }
+.system-tabs[data-orientation="vertical"] { display: grid; grid-template-columns: minmax(120px, 1fr) minmax(0, 3fr); gap: 16px; }
+.system-tabs[data-orientation="vertical"] .system-tablist { flex-direction: column; align-self: start; }
+.system-tabs[data-orientation="vertical"] .system-tablist > button { flex: none; white-space: normal; text-align: start; }
+.system-tabs[data-orientation="vertical"] .system-tabpanels { margin-block-start: 0; }
+@media (forced-colors: active) { .system-tablist { border-color: ButtonText; } .system-tablist > button { color: ButtonText; } .system-tablist > button[aria-selected="true"] { color: Highlight; border-color: Highlight; } .system-tablist > button:disabled { color: GrayText; opacity: 1; } .system-tablist > button:focus-visible, .system-tabpanel:focus-visible { outline-color: Highlight; } }

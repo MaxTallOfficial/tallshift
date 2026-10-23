@@ -1,0 +1,16 @@
+.system-switch-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 70px; padding-block: 10px; }
+.system-switch-copy { min-width: 0; color: var(--f-text); font-size: 14px; font-weight: 600; line-height: 1.5; }
+.system-switch-copy p { margin: 4px 0 0; font-size: 12px; font-weight: 400; line-height: 1.65; color: var(--f-muted); }
+.system-switch-copy .system-switch-error { color: var(--f-error); }
+.system-switch { position: relative; width: 52px; height: 44px; min-width: 52px; padding: 0; flex: 0 0 52px; border: 0; border-radius: var(--sy-radius-control, 8px); background: transparent; cursor: pointer; }
+.system-switch::before { position: absolute; content: ''; inset: 10px 2px; border: 1px solid var(--f-control-border); border-radius: 30px; background: var(--f-inset); transition: background-color 160ms ease, border-color 160ms ease; }
+.system-switch > span { position: absolute; width: 16px; height: 16px; top: 14px; left: 6px; border-radius: 50%; background: var(--f-secondary); transition: transform 160ms ease, background-color 160ms ease; }
+.system-switch[aria-checked=true]::before { background: var(--f-accent); border-color: var(--f-accent); }
+.system-switch[aria-checked=true] > span { background: var(--f-on-accent); transform: translateX(24px); }
+.system-switch:focus-visible { outline: 2px solid var(--f-focus); outline-offset: 3px; }
+.system-switch:disabled { opacity: .55; cursor: not-allowed; }
+.system-switch[aria-disabled=true] { cursor: default; }
+.system-switch[aria-invalid=true]::before { border-color: var(--f-error-border); }
+.system-switch[aria-busy=true]::before { border-style: dashed; }
+@media (prefers-reduced-motion: reduce) { .system-switch::before, .system-switch > span { transition: none; } }
+@media (forced-colors: active) { .system-switch::before { border-color: ButtonText; background: Canvas; }.system-switch > span { background: ButtonText; }.system-switch[aria-checked=true]::before { background: Highlight; border-color: Highlight; forced-color-adjust: none; }.system-switch[aria-checked=true] > span { background: HighlightText; forced-color-adjust: none; }.system-switch:focus-visible { outline-color: Highlight; } }

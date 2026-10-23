@@ -1,6 +1,6 @@
 export const systemReview = Object.freeze({
-  version: '07',
-  id: 'foundations-07',
-  tokenFilename: 'tallshift-ui-07.tokens.json',
-  archive: '../foundations-06.html',
+  version: '08',
+  id: 'foundations-08',
+  tokenFilename: 'tallshift-ui-08.tokens.json',
+  archive: '../foundations-07.html',
 });

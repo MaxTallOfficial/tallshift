@@ -16,11 +16,12 @@ export interface SystemSegmentedControlProps<Value extends string = string> {
   onChange: (value: Value) => void;
   disabled?: boolean;
   orientation?: 'horizontal' | 'vertical';
+  hint?: string;
 }
 
 /** Single setting selection, using native radio semantics and keyboard behaviour. */
 export function SystemSegmentedControl<Value extends string>({
-  label, value, options, onChange, disabled = false, orientation = 'horizontal',
+  label, value, options, onChange, disabled = false, orientation = 'horizontal', hint,
 }: SystemSegmentedControlProps<Value>) {
   const id = useId();
   return <fieldset
@@ -28,6 +29,7 @@ export function SystemSegmentedControl<Value extends string>({
     role="radiogroup"
     aria-labelledby={`${id}-label`}
     aria-orientation={orientation}
+    aria-describedby={hint ? `${id}-hint` : undefined}
     aria-disabled={disabled || options.length === 0 || undefined}
     disabled={disabled || options.length === 0}
     data-orientation={orientation}
@@ -49,5 +51,6 @@ export function SystemSegmentedControl<Value extends string>({
         <span className="system-segmented-choice">{option.label}</span>
       </label>)}
     </div>
+    {hint && <p className="system-segmented-hint" id={`${id}-hint`}>{hint}</p>}
   </fieldset>;
 }

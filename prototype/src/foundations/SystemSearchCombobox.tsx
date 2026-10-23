@@ -23,13 +23,14 @@ export interface SystemSearchComboboxProps {
   hint?: string;
   locale?: string;
   disabled?: boolean;
+  readOnly?: boolean;
   inputRef?: RefObject<HTMLInputElement | null>;
 }
 
 interface MenuPlacement { above: boolean; height: number; width: number; left: number }
 
 /** Editable, synchronous local search. Suggestions never filter a second time inside the control. */
-export function SystemSearchCombobox({ label, placeholder, value, onChange, onSelect, options, clearLabel, listLabel, emptyText, hint, locale, disabled = false, inputRef }: SystemSearchComboboxProps) {
+export function SystemSearchCombobox({ label, placeholder, value, onChange, onSelect, options, clearLabel, listLabel, emptyText, hint, locale, disabled = false, readOnly = false, inputRef }: SystemSearchComboboxProps) {
   const id = useId();
   const rootRef = useRef<HTMLDivElement>(null);
   const controlRef = useRef<HTMLDivElement>(null);
@@ -39,7 +40,7 @@ export function SystemSearchCombobox({ label, placeholder, value, onChange, onSe
   const [open, setOpen] = useState(false);
   const [activeValue, setActiveValue] = useState<string | null>(null);
   const [placement, setPlacement] = useState<MenuPlacement>({ above: false, height: 280, width: 0, left: 0 });
-  const expanded = open && !disabled;
+  const expanded = open && !disabled && !readOnly;
   const activeIndex = activeValue === null ? -1 : options.findIndex(option => option.value === activeValue);
   const activeId = expanded && activeIndex >= 0 ? `${id}-option-${activeIndex}` : undefined;
 
@@ -48,19 +49,20 @@ export function SystemSearchCombobox({ label, placeholder, value, onChange, onSe
     setActiveValue(null);
   }
   function show() {
-    if (disabled) return;
+    if (disabled || readOnly) return;
     setOpen(true);
   }
   function select(index: number) {
     const option = options[index];
-    if (!option || disabled) return;
+    if (!option || disabled || readOnly) return;
     onChange(option.label);
     onSelect?.(option);
     close();
     ownInputRef.current?.focus({ preventScroll: true });
   }
 
-  useEffect(() => { if (disabled) { setOpen(false); setActiveValue(null); } }, [disabled]);
+  useEffect(() => { if (disabled || readOnly) { setOpen(false); setActiveValue(null); } }, [disabled, readOnly]);
+  useEffect(() => { setActiveValue(null); }, [value]);
   useEffect(() => {
     if (!expanded) return;
     const outside = (event: PointerEvent) => {
@@ -124,7 +126,7 @@ export function SystemSearchCombobox({ label, placeholder, value, onChange, onSe
   }, [activeIndex, expanded]);
 
   function keyDown(event: KeyboardEvent<HTMLInputElement>) {
-    if (disabled || composing.current || event.nativeEvent.isComposing || event.nativeEvent.keyCode === 229) return;
+    if (disabled || readOnly || composing.current || event.nativeEvent.isComposing || event.nativeEvent.keyCode === 229) return;
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
       event.preventDefault();
       show();
@@ -148,8 +150,8 @@ export function SystemSearchCombobox({ label, placeholder, value, onChange, onSe
     <label htmlFor={`${id}-input`} className="sys-search-label">{label}</label>
     <div ref={controlRef} className="sys-search-control" data-expanded={expanded || undefined}>
       <span className="sys-search-icon"><SystemIcon name="search" size={20} /></span>
-      <input ref={element => { ownInputRef.current = element; if (inputRef) inputRef.current = element; }} id={`${id}-input`} className="sys-search-input" type="text" inputMode="search" role="combobox" autoComplete="off" autoCorrect="off" spellCheck={false} disabled={disabled} value={value} placeholder={placeholder} aria-autocomplete="list" aria-haspopup="listbox" aria-expanded={expanded} aria-controls={expanded ? `${id}-list` : undefined} aria-activedescendant={activeId} aria-describedby={hint ? `${id}-hint` : undefined} onFocus={show} onClick={show} onChange={event => { onChange(event.target.value); setActiveValue(null); show(); }} onKeyDown={keyDown} onCompositionStart={() => { composing.current = true; setActiveValue(null); }} onCompositionEnd={() => { composing.current = false; }} />
-      {value && <button className="sys-search-clear" type="button" disabled={disabled} aria-label={clearLabel} onPointerDown={event => event.preventDefault()} onClick={() => { onChange(''); setActiveValue(null); show(); ownInputRef.current?.focus({ preventScroll: true }); }}><SystemIcon name="close" size={20} /></button>}
+      <input ref={element => { ownInputRef.current = element; if (inputRef) inputRef.current = element; }} id={`${id}-input`} className="sys-search-input" type="text" inputMode="search" role="combobox" autoComplete="off" autoCorrect="off" spellCheck={false} disabled={disabled} readOnly={readOnly} aria-readonly={readOnly || undefined} value={value} placeholder={placeholder} aria-autocomplete="list" aria-haspopup="listbox" aria-expanded={expanded} aria-controls={expanded ? `${id}-list` : undefined} aria-activedescendant={activeId} aria-describedby={hint ? `${id}-hint` : undefined} onFocus={show} onClick={show} onChange={event => { onChange(event.target.value); setActiveValue(null); show(); }} onKeyDown={keyDown} onCompositionStart={() => { composing.current = true; setActiveValue(null); }} onCompositionEnd={() => { composing.current = false; }} />
+      {value && !readOnly && <button className="sys-search-clear" type="button" disabled={disabled} aria-label={clearLabel} onPointerDown={event => event.preventDefault()} onClick={() => { onChange(''); setActiveValue(null); show(); ownInputRef.current?.focus({ preventScroll: true }); }}><SystemIcon name="close" size={20} /></button>}
       {expanded && <div className={`sys-search-menu${placement.above ? ' sys-search-menu-above' : ''}`} style={menuStyle}>
         <ul ref={listRef} id={`${id}-list`} className="sys-search-list" role="listbox" aria-label={listLabel}>
           {options.map((option, index) => <li key={option.value} id={`${id}-option-${index}`} data-search-option-index={index} role="option" aria-selected={activeIndex === index} data-active={activeIndex === index || undefined} onPointerMove={event => { if (event.pointerType !== 'touch') setActiveValue(option.value); }} onMouseDown={event => event.preventDefault()} onClick={() => select(index)}>

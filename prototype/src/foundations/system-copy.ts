@@ -2,7 +2,7 @@ import type { Locale } from './copy';
 
 const en = {
   title: 'Afterlight,', titleSecond: 'in use.', intro: 'A working system for finding, trying and adapting interface materials.',
-  edition: 'INTERFACE SYSTEM / 07', nav: 'System navigation', discovery: 'Discovery', libraryStates: 'Library states', access: 'Free + Pro', workbench: 'Workbench', controls: 'Controls', type: 'Type + layout', roles: 'Roles + motion', handoff: 'Handoff',
+  edition: 'INTERFACE SYSTEM / 08', nav: 'System navigation', discovery: 'Discovery', libraryStates: 'Library states', access: 'Free + Pro', workbench: 'Workbench', controls: 'Controls', actions: 'Actions + tabs', type: 'Type + layout', roles: 'Roles + motion', handoff: 'Handoff',
   approved: 'Chosen color + type', review: 'Components under review', export: 'Export system tokens', exported: 'System tokens downloaded.',
   workTitle: 'One material. Three ways to work.', workIntro: 'Try A001, inspect its source, then take the prompt into your project.',
   target: 'Project', previewWidth: 'Preview width', full: 'Available width', tablet: 'Tablet · 640', mobile: 'Mobile · 320', widthNote: 'Resizes this preview only. Smaller containers use the space available.',
@@ -16,15 +16,15 @@ const en = {
   duration: 'A001 transition duration', durationHelp: '0–400 ms, in steps of 20. Changes A001 only; system controls use 120–180 ms.', durationError: 'Enter a multiple of 20 between 0 and 400.',
   motionOff: 'Turn off motion', systemReduce: 'Your system requests reduced motion.', motionOn: 'Response 120 ms · state 160 ms · panel 180 ms',
   handoffTitle: 'From decisions to reusable rules.', handoffIntro: 'The export includes the alias graph, resolved CSS values, layout and type scales, component coverage and the approved color.',
-  alias: 'Token chain', graph: 'Primitive → semantic → component', coverage: 'Component coverage', family: 'Family', state: 'State', inspect: 'Working specimen', partial: 'Partial specimen', contract: 'Contract',
-  coverageNote: 'Working specimens are ready for visual review. Approval and production checks remain separate. Planned content cards do not count as finished library materials.',
+  alias: 'Token chain', graph: 'Primitive → semantic → component', coverage: 'Component coverage', family: 'Family', state: 'State', implementation: 'Implementation', sharedApi: 'Shared component', composedApi: 'Composed from shared controls', localApi: 'Local specimen', inspect: 'Working specimen', partial: 'Partial specimen', contract: 'Contract',
+  coverageNote: 'Every family has a review specimen. Shared components have a typed API; local specimens still need extraction. Browser, assistive technology and release checks are tracked separately in the review report. Planned cards are not finished library content.',
   approvedNote: 'Saffron Lighter and Manrope are approved. This system study remains under review.',
   archive: 'Previous system study', close: 'Dismiss message', introType: 'Manrope · EN / RU / VI', introColor: 'Saffron Lighter · #EBD183', introBase: 'Dark graphite',
 } as const;
 type Key = keyof typeof en;
 const ru: Record<Key, string> = {
   title: 'Afterlight', titleSecond: 'в работе.', intro: 'Рабочая система для поиска, проверки и адаптации интерфейсных материалов.',
-  edition: 'СИСТЕМА ИНТЕРФЕЙСА / 07', nav: 'Навигация по системе', discovery: 'Поиск', libraryStates: 'Состояния каталога', access: 'Free и Pro', workbench: 'Рабочая область', controls: 'Элементы', type: 'Шрифт и сетка', roles: 'Цвет и движение', handoff: 'Передача',
+  edition: 'СИСТЕМА ИНТЕРФЕЙСА / 08', nav: 'Навигация по системе', discovery: 'Поиск', libraryStates: 'Состояния каталога', access: 'Free и Pro', workbench: 'Рабочая область', controls: 'Элементы', actions: 'Кнопки и вкладки', type: 'Шрифт и сетка', roles: 'Цвет и движение', handoff: 'Передача',
   approved: 'Выбранные цвет и шрифт', review: 'Компоненты на рассмотрении', export: 'Сохранить токены системы', exported: 'Токены системы сохранены.',
   workTitle: 'Один материал. Три способа работы.', workIntro: 'Проверьте A001, изучите исходники и возьмите промпт для своего проекта.',
   target: 'Проект', previewWidth: 'Ширина примера', full: 'Доступная ширина', tablet: 'Планшет · 640', mobile: 'Мобильный · 320', widthNote: 'Меняется только ширина примера. В узком контейнере используется доступное место.',
@@ -38,14 +38,14 @@ const ru: Record<Key, string> = {
   duration: 'Длительность перехода A001', durationHelp: '0–400 мс с шагом 20. Влияет только на A001; системные элементы используют 120–180 мс.', durationError: 'Введите число от 0 до 400, кратное 20.',
   motionOff: 'Отключить движение', systemReduce: 'В системе включено уменьшение движения.', motionOn: 'Отклик 120 мс · состояние 160 мс · панель 180 мс',
   handoffTitle: 'От решений к повторяемым правилам.', handoffIntro: 'В экспорте — связи токенов, рассчитанные CSS-значения, шкалы сетки и шрифта, покрытие компонентов и утверждённый цвет.',
-  alias: 'Цепочка токенов', graph: 'Примитив → роль → компонент', coverage: 'Покрытие компонентов', family: 'Семейство', state: 'Состояние', inspect: 'Рабочий образец', partial: 'Частичный образец', contract: 'Контракт',
-  coverageNote: 'Рабочие образцы готовы к визуальному рассмотрению. Утверждение и проверка для выпуска — отдельные этапы. Карточки плана не означают готовность материалов библиотеки.',
+  alias: 'Цепочка токенов', graph: 'Примитив → роль → компонент', coverage: 'Покрытие компонентов', family: 'Семейство', state: 'Состояние', implementation: 'Реализация', sharedApi: 'Общий компонент', composedApi: 'На общих контролах', localApi: 'Локальный образец', inspect: 'Рабочий образец', partial: 'Частичный образец', contract: 'Контракт',
+  coverageNote: 'У каждого семейства есть образец. Общие компоненты имеют типизированный API; локальные реализации ещё нужно вынести. Браузерные проверки, вспомогательные технологии и готовность к выпуску отмечены отдельно в отчёте. Карточки плана не означают готовность материалов.',
   approvedNote: 'Saffron Lighter и Manrope утверждены. Этот системный стенд ещё на рассмотрении.',
   archive: 'Предыдущий системный стенд', close: 'Закрыть сообщение', introType: 'Manrope · EN / RU / VI', introColor: 'Saffron Lighter · #EBD183', introBase: 'Тёмный графит',
 };
 const vi: Record<Key, string> = {
   title: 'Afterlight', titleSecond: 'trong thực tế.', intro: 'Hệ thống tương tác để tìm, thử và tùy chỉnh các thành phần giao diện.',
-  edition: 'HỆ THỐNG GIAO DIỆN / 07', nav: 'Điều hướng hệ thống', discovery: 'Tìm kiếm', libraryStates: 'Trạng thái thư viện', access: 'Free + Pro', workbench: 'Khu làm việc', controls: 'Điều khiển', type: 'Chữ và lưới', roles: 'Màu và chuyển động', handoff: 'Bàn giao',
+  edition: 'HỆ THỐNG GIAO DIỆN / 08', nav: 'Điều hướng hệ thống', discovery: 'Tìm kiếm', libraryStates: 'Trạng thái thư viện', access: 'Free + Pro', workbench: 'Khu làm việc', controls: 'Điều khiển', actions: 'Nút và thẻ', type: 'Chữ và lưới', roles: 'Màu và chuyển động', handoff: 'Bàn giao',
   approved: 'Màu và phông chữ đã chọn', review: 'Component đang được đánh giá', export: 'Xuất token hệ thống', exported: 'Đã tải token hệ thống.',
   workTitle: 'Một thành phần. Ba cách sử dụng.', workIntro: 'Thử A001, xem mã nguồn rồi dùng prompt cho dự án của bạn.',
   target: 'Dự án', previewWidth: 'Chiều rộng bản xem thử', full: 'Chiều rộng có sẵn', tablet: 'Máy tính bảng · 640', mobile: 'Di động · 320', widthNote: 'Chỉ đổi chiều rộng bản xem thử. Khung hẹp dùng không gian có sẵn.',
@@ -59,8 +59,8 @@ const vi: Record<Key, string> = {
   duration: 'Thời gian chuyển trạng thái A001', durationHelp: '0–400 ms, mỗi bước 20. Chỉ áp dụng cho A001; điều khiển hệ thống dùng 120–180 ms.', durationError: 'Nhập bội số của 20 trong khoảng 0 đến 400.',
   motionOff: 'Tắt chuyển động', systemReduce: 'Hệ thống đang yêu cầu giảm chuyển động.', motionOn: 'Phản hồi 120 ms · trạng thái 160 ms · khung 180 ms',
   handoffTitle: 'Từ quyết định đến quy tắc tái sử dụng.', handoffIntro: 'Bản xuất có quan hệ token, giá trị CSS, thang chữ và lưới, mức độ hoàn thiện component và màu đã duyệt.',
-  alias: 'Chuỗi token', graph: 'Giá trị gốc → vai trò → component', coverage: 'Mức độ hoàn thiện', family: 'Nhóm', state: 'Trạng thái', inspect: 'Mẫu tương tác', partial: 'Mẫu một phần', contract: 'Đặc tả',
-  coverageNote: 'Các mẫu tương tác dùng để đánh giá thiết kế. Việc duyệt và kiểm tra phát hành là các bước riêng. Thẻ đã lên kế hoạch không phải nội dung thư viện đã hoàn thành.',
+  alias: 'Chuỗi token', graph: 'Giá trị gốc → vai trò → component', coverage: 'Mức độ hoàn thiện', family: 'Nhóm', state: 'Trạng thái', implementation: 'Triển khai', sharedApi: 'Component dùng chung', composedApi: 'Kết hợp điều khiển dùng chung', localApi: 'Mẫu cục bộ', inspect: 'Mẫu tương tác', partial: 'Mẫu một phần', contract: 'Đặc tả',
+  coverageNote: 'Mỗi nhóm có một mẫu để đánh giá. Component dùng chung có API định kiểu; mẫu cục bộ vẫn cần được tách riêng. Kiểm tra trình duyệt, công nghệ hỗ trợ và phát hành được ghi riêng trong báo cáo. Thẻ đã lên kế hoạch chưa phải nội dung hoàn chỉnh.',
   approvedNote: 'Saffron Lighter và Manrope đã được duyệt. Bản nghiên cứu hệ thống này vẫn đang được đánh giá.',
   archive: 'Bản nghiên cứu hệ thống trước', close: 'Đóng thông báo', introType: 'Manrope · EN / RU / VI', introColor: 'Saffron Lighter · #EBD183', introBase: 'Than chì tối',
 };

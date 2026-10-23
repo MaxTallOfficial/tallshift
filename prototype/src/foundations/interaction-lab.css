@@ -18,21 +18,9 @@
 .il-ghost { color: var(--f-secondary); }.il-ghost:hover { background: var(--f-raised); color: var(--f-text); }.il-ghost:active { background: var(--f-inset); }
 .il-icon { flex: 0 0 44px; width: 44px; padding: 11px; }.il-icon svg { width: 20px; height: 20px; flex-basis: 20px; }
 .il-primary:disabled { background: var(--f-raised); color: var(--f-muted); border-color: var(--f-line); cursor: not-allowed; }
-.il-field + .il-field { margin-top: 24px; }
-.il-field > label, .il-label-row > label { display: block; color: var(--f-text); font-size: 14px; line-height: 1.5; font-weight: 600; }
-.il-label-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }.il-label-row > span { font-size: 12px; color: var(--f-muted); }
-.il-field :is(input, textarea) { display: block; width: 100%; min-width: 0; min-height: 48px; margin-top: 9px; padding: 12px 14px; background: var(--f-inset); border: 1px solid var(--f-control-border); border-radius: var(--sy-radius-control, 8px); color: var(--f-text); font-size: 16px; line-height: 1.6; transition: border-color var(--il-duration) ease; }
-.il-field textarea { min-height: 108px; resize: vertical; }.il-field :is(input, textarea)::placeholder { color: var(--f-muted); opacity: 1; }.il-field input[aria-invalid=true] { border-color: var(--f-error-border); }
 .il-help { margin-top: 8px; color: var(--f-muted); font-size: 12px; line-height: 1.65; }
-.il-field-error { display: flex; align-items: flex-start; gap: 8px; margin-top: 9px; color: var(--f-error); font-size: 16px; line-height: 1.65; }.il-field-error svg { flex: 0 0 18px; width: 18px; height: 18px; margin-top: 2px; }
-.il-field-footer { display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; }.il-field-footer > span { margin-top: 8px; color: var(--f-muted); font: 12px/1.5 ui-monospace, monospace; white-space: nowrap; }
 .il-options { margin-top: 25px; border-block: 1px solid var(--f-line); padding-block: 8px; }
 .il-checkbox { display: flex; padding-block: 13px; }
-.il-switch-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 70px; padding-block: 10px; }.il-switch-row > div { min-width: 0; }.il-switch-row > div > span { font-size: 14px; font-weight: 600; line-height: 1.5; }.il-switch-row p { margin-top: 4px; font-size: 12px; line-height: 1.65; color: var(--f-muted); }
-.il-switch { position: relative; width: 52px; height: 44px; min-width: 52px; padding: 0; flex: 0 0 52px; border: 0; border-radius: var(--sy-radius-control, 8px); background: transparent; }
-.il-switch::before { position: absolute; content: ''; inset: 10px 2px; border: 1px solid var(--f-control-border); border-radius: 30px; background: var(--f-inset); transition: background-color var(--il-duration) ease, border-color var(--il-duration) ease; }
-.il-switch > span { position: absolute; width: 16px; height: 16px; top: 14px; left: 6px; border-radius: 50%; background: var(--f-secondary); transition: transform var(--il-duration) ease, background-color var(--il-duration) ease; }
-.il-switch[aria-checked=true]::before { background: var(--f-accent); border-color: var(--f-accent); }.il-switch[aria-checked=true] > span { background: var(--f-on-accent); transform: translateX(24px); }
 .il-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
 .il-actions > .il-clear-fields { margin-inline-start: auto; }
 .il-notice-region { min-width: 0; }.il-toast { display: flex; align-items: center; gap: 11px; margin-top: 20px; border: 1px solid var(--f-success-border); border-radius: var(--sy-radius-control, 8px); padding: 7px 7px 7px 13px; background: var(--f-success-bg); color: var(--f-success); animation: il-enter var(--il-duration) ease-out both; }
@@ -83,7 +71,6 @@
   .il-state-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .il-state-choice { padding-inline: 8px; }
   .il-feedback-message { padding: 16px; }
-  .il-field-footer { gap: 8px; }
   .il-toast { gap: 8px; padding-left: 12px; }
   .il-toast > svg { display: none; }
   .il-dialog { padding: 24px; }
@@ -94,3 +81,15 @@
 .il-lab:lang(vi) h3,
 .il-lab:lang(vi) .il-preview h4 { letter-spacing: 0; }
 @media (prefers-reduced-motion: reduce) { .il-lab *, .il-lab *::before, .il-lab *::after { animation: none !important; transition: none !important; } }
+/* Shared primitives own field/switch styling; this layer only arranges the specimen. */
+.il-form > .system-field + .system-field { margin-top: 24px; }
+.il-form .system-field-control:focus-visible { outline-offset: 3px; }
+.il-form-states { margin-top: 24px; padding: 32px; border: 1px solid var(--f-line); border-radius: 12px; background: var(--f-surface); }
+.il-form-states > header > p { margin-top: 8px; color: var(--f-secondary); font-size: 16px; line-height: 1.65; }
+.il-form-state-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; margin-top: 24px; }
+.il-form-state-grid > div { min-width: 0; }
+.il-form-state-grid .system-field + .system-field { margin-top: 24px; }
+.il-form-state-grid .system-checkbox { display: flex; }
+.il-form-state-grid .system-radio-group { margin-block: 16px; }
+@media (max-width: 780px) { .il-form-state-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
+@media (max-width: 500px) { .il-form-states { padding: 24px 16px; } }

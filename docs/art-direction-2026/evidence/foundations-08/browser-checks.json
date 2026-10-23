@@ -1,0 +1,95 @@
+{
+  "review": "foundations-08",
+  "responsive": [
+    {
+      "edgeStatesOpen": true,
+      "lang": "en",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "edgeStatesOpen": true,
+      "lang": "en",
+      "scrollWidth": 768,
+      "width": 768
+    },
+    {
+      "edgeStatesOpen": true,
+      "lang": "en",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "edgeStatesOpen": true,
+      "lang": "ru",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "edgeStatesOpen": true,
+      "lang": "ru",
+      "scrollWidth": 768,
+      "width": 768
+    },
+    {
+      "edgeStatesOpen": true,
+      "lang": "ru",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "edgeStatesOpen": true,
+      "lang": "vi",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "edgeStatesOpen": true,
+      "lang": "vi",
+      "scrollWidth": 768,
+      "width": 768
+    },
+    {
+      "edgeStatesOpen": true,
+      "lang": "vi",
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  ],
+  "workbenchHeightsRu": [
+    {
+      "height": 775.53125
+    },
+    {
+      "height": 775.53125
+    },
+    {
+      "height": 775.53125
+    },
+    {
+      "height": 775.53125
+    }
+  ],
+  "busy": {
+    "before": {
+      "height": 48,
+      "name": "Start local action",
+      "width": 148.28125
+    },
+    "after": {
+      "busy": "true",
+      "focused": true,
+      "height": 48,
+      "name": "Start local action",
+      "width": 148.28125
+    }
+  },
+  "manualTabs": "ArrowRight moved focus without selection; Enter selected Code",
+  "checkbox": "AX mixed value 2; activation value 1",
+  "select": "Arrow navigation skipped disabled option to Vite; readonly remained collapsed",
+  "limits": [
+    "IAB Chromium only",
+    "No real screen reader or touch device tested",
+    "Not a complete keyboard or browser matrix"
+  ]
+}

@@ -1,0 +1,51 @@
+.system-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-sizing: border-box;
+  min-inline-size: 44px;
+  min-block-size: 48px;
+  padding: 11px 16px;
+  border: 1px solid var(--f-control-border, #77756e);
+  border-radius: var(--sy-radius-control, 8px);
+  background: transparent;
+  color: var(--f-text, #eeede7);
+  font: 600 14px/1.5 var(--sy-font-ui, inherit);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.system-button[data-size="small"] { min-block-size: 44px; padding: 9px 16px; }
+.system-button[data-size="large"] { min-block-size: 52px; padding: 13px 20px; font-size: 16px; }
+.system-button[data-variant="primary"] { color: var(--f-on-accent, #17140b); background: var(--f-accent, #ebd183); border-color: var(--f-accent, #ebd183); }
+.system-button[data-variant="quiet"] { border-color: transparent; }
+.system-button[data-variant="destructive"] { color: var(--f-error, #efaaa5); border-color: var(--f-error-border, #8e514c); background: var(--f-error-bg, #281b19); }
+.system-button:not(:disabled):not([aria-disabled="true"]):hover { background: var(--f-raised, #1e1d19); }
+.system-button[data-variant="primary"]:not(:disabled):not([aria-disabled="true"]):hover { background: var(--f-accent-hover, #f0db9b); border-color: var(--f-accent-hover, #f0db9b); }
+.system-button[data-variant="destructive"]:not(:disabled):not([aria-disabled="true"]):hover { border-color: var(--f-error, #efaaa5); background: var(--f-error-bg, #281b19); }
+.system-button:not(:disabled):not([aria-disabled="true"]):active { border-color: var(--f-text); }
+.system-button[data-variant="primary"]:not(:disabled):not([aria-disabled="true"]):active { background: var(--f-accent-pressed, #d8be74); border-color: var(--f-accent-pressed, #d8be74); }
+.system-button:focus-visible { outline: 2px solid var(--f-focus, #b8b8b2); outline-offset: 3px; }
+.system-button:disabled { opacity: .5; cursor: not-allowed; }
+.system-button[aria-disabled="true"] { cursor: default; }
+.system-button[aria-pressed="true"] { border-color: var(--f-accent, #ebd183); background: var(--f-raised, #1e1d19); }
+.system-button-icon { display: inline-flex; flex: 0 0 auto; }
+.system-button-label { min-inline-size: 0; overflow-wrap: anywhere; }
+.system-button[data-loading] .system-button-label, .system-button[data-loading] .system-button-icon { opacity: 0; }
+.system-button-busy { position: absolute; inline-size: 16px; block-size: 16px; border: 2px solid currentColor; border-inline-end-color: transparent; border-radius: 50%; animation: system-button-wait 800ms linear infinite; }
+.system-icon-button { inline-size: 48px; padding-inline: 0; flex-shrink: 0; }
+.system-icon-button[data-size="small"] { inline-size: 44px; padding-inline: 0; }
+.system-icon-button[data-size="large"] { inline-size: 52px; padding-inline: 0; }
+@keyframes system-button-wait { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .system-button { transition: none; } .system-button-busy { animation: none; } }
+[data-motion="off"] .system-button { transition: none; }
+[data-motion="off"] .system-button-busy { animation: none; }
+@media (forced-colors: active) {
+  .system-button, .system-button[data-variant] { background: ButtonFace; color: ButtonText; border-color: ButtonText; }
+  .system-button:disabled { opacity: 1; color: GrayText; border-color: GrayText; }
+  .system-button:focus-visible { outline-color: Highlight; }
+  .system-button[aria-pressed="true"] { border-color: Highlight; outline: 1px solid Highlight; }
+}

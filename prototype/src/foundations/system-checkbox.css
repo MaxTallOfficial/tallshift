@@ -18,3 +18,9 @@
   .system-checkbox > input:focus-visible + .system-checkbox-box { outline-color: Highlight; }
   .system-checkbox > input:disabled + .system-checkbox-box { border-color: GrayText; }
 }
+.system-checkbox[data-mixed=true] > input + .system-checkbox-box { border-color: var(--f-secondary); background: var(--f-raised); }
+.system-checkbox[data-mixed=true] > input + .system-checkbox-box svg { opacity: 1; }
+.system-checkbox > input[aria-invalid=true] + .system-checkbox-box { border-color: var(--f-error-border); }
+.system-checkbox-error { color: var(--f-error); font-size: 12px; line-height: 1.65; }
+.system-checkbox:has(> input[aria-readonly=true]) { cursor: default; }
+@media (prefers-reduced-motion: reduce) { .system-checkbox-box { transition: none; } }

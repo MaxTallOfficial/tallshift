@@ -2,6 +2,9 @@ import { useEffect, useId, useRef, useState } from 'react';
 import type { FormEvent, ReactNode } from 'react';
 import { interactionCopy } from './interaction-copy';
 import { SystemCheckbox } from './SystemCheckbox';
+import { SystemTextInput, SystemTextarea } from './SystemTextField';
+import { SystemSwitch } from './SystemSwitch';
+import { SystemRadioGroup } from './SystemRadioGroup';
 import { validatePresetName } from './preset-validation';
 import type { PresetNameError } from './preset-validation';
 import './interaction-lab.css';
@@ -139,27 +142,11 @@ export function InteractionLab({ locale, motionOff }: { locale: Locale; motionOf
           <div><h3 id={`${id}-form-title`}>{t.formTitle}</h3><p>{t.formNote}</p></div>
           <LocalHint label={t.tooltipLabel} description={t.tooltip} />
         </div>
-        <div className="il-field">
-          <label htmlFor={`${id}-name`}>{t.name}</label>
-          <input ref={inputRef} id={`${id}-name`} name="preset-name" value={name} autoComplete="off"
-            placeholder={t.namePlaceholder} aria-required="true" aria-invalid={Boolean(error)}
-            aria-describedby={`${id}-name-help${error ? ` ${id}-name-error` : ''}`}
-            onChange={(event) => { setName(event.target.value); if (error) setError(null); }} />
-          <p id={`${id}-name-help`} className="il-help">{t.nameHelp}</p>
-          {error && <p id={`${id}-name-error`} className="il-field-error" role="alert"><Symbol kind="alert" />{t[error]}</p>}
-        </div>
-        <div className="il-field">
-          <div className="il-label-row"><label htmlFor={`${id}-notes`}>{t.notes}</label><span>{t.optional}</span></div>
-          <textarea id={`${id}-notes`} name="preset-notes" value={notes} maxLength={160} placeholder={t.notesPlaceholder}
-            aria-describedby={`${id}-notes-help ${id}-notes-count`} onChange={(event) => setNotes(event.target.value)} />
-          <div className="il-field-footer"><p id={`${id}-notes-help`} className="il-help">{t.notesHelp}</p><span id={`${id}-notes-count`}>{t.characterCount.replace('{count}', String(notes.length))}</span></div>
-        </div>
+        <SystemTextInput className="il-field" ref={inputRef} id={`${id}-name`} name="preset-name" label={t.name} description={t.nameHelp} value={name} required autoComplete="off" placeholder={t.namePlaceholder} error={error ? t[error] : undefined} announceError onChange={event => { setName(event.target.value); if (error) setError(null); }} />
+        <SystemTextarea className="il-field" id={`${id}-notes`} name="preset-notes" label={t.notes} requirement={t.optional} description={t.notesHelp} counter={t.characterCount.replace('{count}', String(notes.length))} value={notes} maxLength={160} placeholder={t.notesPlaceholder} onChange={event => setNotes(event.target.value)} />
         <div className="il-options">
           <SystemCheckbox className="il-checkbox" label={t.includePrompt} description={t.includePromptHelp} checked={includePrompt} onChange={setIncludePrompt} />
-          <div className="il-switch-row">
-            <div><span id={`${id}-compact-label`}>{t.compact}</span><p id={`${id}-compact-help`}>{t.compactHelp}</p></div>
-            <button type="button" className="il-switch" role="switch" aria-checked={compact} aria-labelledby={`${id}-compact-label`} aria-describedby={`${id}-compact-help`} onClick={() => setCompact((current) => !current)}><span /></button>
-          </div>
+          <SystemSwitch label={t.compact} description={t.compactHelp} checked={compact} onChange={setCompact} />
         </div>
         <div className="il-actions">
           <button ref={saveRef} type="submit" className="il-button il-primary"><Symbol kind="plus" />{t.save}</button>
@@ -210,10 +197,42 @@ export function InteractionLab({ locale, motionOff }: { locale: Locale; motionOf
       </section>
     </div>
 
+    <FormStateSpecimen locale={locale} />
+
     <dialog ref={dialogRef} className="il-dialog" aria-labelledby={`${id}-dialog-title`} aria-describedby={`${id}-dialog-body`} onCancel={(event) => { event.preventDefault(); dismissDialog(); }} onClose={afterDialogClose}>
       <div className="il-dialog-heading"><span className="il-delete-symbol"><Symbol kind="trash" /></span><button type="button" className="il-button il-icon il-ghost" aria-label={t.closeDialog} onClick={dismissDialog}><Symbol kind="close" /></button></div>
       <h3 id={`${id}-dialog-title`}>{t.dialogTitle}</h3><p id={`${id}-dialog-body`}>{t.dialogBody.replace('{name}', pendingDelete?.name ?? '')}</p>
       <div className="il-dialog-actions"><button type="button" className="il-button il-secondary" autoFocus onClick={dismissDialog}>{t.cancel}</button><button type="button" className="il-button il-danger" onClick={removePreset}>{t.confirmRemove}</button></div>
     </dialog>
+  </section>;
+}
+
+
+const formStateCopy = {
+  en: { title: 'Form controls', note: 'The same controls, with validation and locked states visible.', email: 'Work email', help: 'Example field with email validation.', invalid: 'Enter a complete email address.', required: 'Required', readonly: 'Project ID · read only', disabled: 'Workspace name · unavailable', mixed: 'Select all files', mixedHelp: 'Two of three files selected. Activate to select every file.', consent: 'Accept the licence', consentError: 'Accept the licence before continuing.', delivery: 'Delivery format', react: 'React source', reactHelp: 'Components for Next.js and Vite.', html: 'HTML export', unavailable: 'Not available for this material.', pending: 'Sync settings', pendingHelp: 'A persistence state example; no request is running.', waiting: 'Waiting for confirmation', saveError: 'Sync failed', retryHelp: 'The previous setting is kept. Activate to change it locally.', switchError: 'Could not save this setting. Try again.' },
+  ru: { title: 'Поля и выбор', note: 'Те же компоненты с ошибками валидации и заблокированными состояниями.', email: 'Рабочая почта', help: 'Пример поля с проверкой адреса электронной почты.', invalid: 'Введите полный адрес электронной почты.', required: 'Обязательно', readonly: 'ID проекта · только чтение', disabled: 'Название команды · недоступно', mixed: 'Выбрать все файлы', mixedHelp: 'Выбраны два файла из трёх. Нажмите, чтобы выбрать все.', consent: 'Принять лицензию', consentError: 'Перед продолжением примите лицензию.', delivery: 'Формат файлов', react: 'Исходники React', reactHelp: 'Компоненты для Next.js и Vite.', html: 'Экспорт HTML', unavailable: 'Для этого материала пока недоступно.', pending: 'Синхронизация настроек', pendingHelp: 'Пример ожидания сохранения. Запрос не отправляется.', waiting: 'Ожидание подтверждения', saveError: 'Сбой синхронизации', retryHelp: 'Сохранено прежнее значение. Нажмите, чтобы изменить его локально.', switchError: 'Не удалось сохранить настройку. Попробуйте ещё раз.' },
+  vi: { title: 'Trường nhập và lựa chọn', note: 'Cùng bộ điều khiển, hiển thị lỗi xác thực và trạng thái bị khóa.', email: 'Email công việc', help: 'Trường mẫu kiểm tra định dạng email.', invalid: 'Nhập địa chỉ email đầy đủ.', required: 'Bắt buộc', readonly: 'ID dự án · chỉ đọc', disabled: 'Tên nhóm · không khả dụng', mixed: 'Chọn tất cả tệp', mixedHelp: 'Đã chọn hai trong ba tệp. Nhấn để chọn tất cả.', consent: 'Chấp nhận giấy phép', consentError: 'Chấp nhận giấy phép trước khi tiếp tục.', delivery: 'Định dạng tệp', react: 'Mã nguồn React', reactHelp: 'Thành phần cho Next.js và Vite.', html: 'Xuất HTML', unavailable: 'Chưa có cho tài liệu này.', pending: 'Đồng bộ cài đặt', pendingHelp: 'Ví dụ trạng thái chờ lưu; không gửi yêu cầu.', waiting: 'Đang chờ xác nhận', saveError: 'Đồng bộ thất bại', retryHelp: 'Giữ giá trị trước đó. Nhấn để đổi cài đặt cục bộ.', switchError: 'Không lưu được cài đặt. Hãy thử lại.' },
+};
+function FormStateSpecimen({ locale }: { locale: Locale }) {
+  const t = formStateCopy[locale]; const id = useId();
+  const [mixed, setMixed] = useState(true); const [all, setAll] = useState(false);
+  const [consent, setConsent] = useState(false); const [email, setEmail] = useState('max@');
+  const [sync, setSync] = useState(false);
+  return <section className="il-form-states" aria-labelledby={`${id}-title`}>
+    <header><h3 id={`${id}-title`}>{t.title}</h3><p>{t.note}</p></header>
+    <div className="il-form-state-grid">
+      <div>
+        <SystemTextInput label={t.email} type="email" value={email} onChange={event => setEmail(event.target.value)} description={t.help} requirement={t.required} required error={/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? undefined : t.invalid} />
+        <SystemTextInput label={t.readonly} value="A001" readOnly />
+        <SystemTextInput label={t.disabled} value="Tallshift" disabled />
+      </div>
+      <div>
+        <SystemCheckbox label={t.mixed} description={mixed ? t.mixedHelp : undefined} checked={all} indeterminate={mixed} onChange={checked => { setAll(checked); setMixed(false); }} />
+        <SystemCheckbox label={t.consent} checked={consent} required onChange={setConsent} error={consent ? undefined : t.consentError} />
+        <SystemRadioGroup label={t.delivery} value="react" onChange={() => {}} options={[{ value: 'react', label: t.react, description: t.reactHelp }, { value: 'html', label: t.html, description: t.unavailable, disabled: true }]} />
+        <SystemSwitch label={t.pending} checked pending pendingLabel={t.waiting} description={t.pendingHelp} onChange={() => {}} />
+        <SystemSwitch label={t.saveError} checked={sync} onChange={setSync} description={t.retryHelp} error={sync ? undefined : t.switchError} />
+      </div>
+    </div>
   </section>;
 }

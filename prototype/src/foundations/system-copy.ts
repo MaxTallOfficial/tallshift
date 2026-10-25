@@ -17,7 +17,7 @@ const en = {
   motionOff: 'Turn off motion', systemReduce: 'Your system requests reduced motion.', motionOn: 'Response 120 ms · state 160 ms · panel 180 ms',
   handoffTitle: 'From decisions to reusable rules.', handoffIntro: 'The export includes the alias graph, resolved CSS values, layout and type scales, component coverage and the approved color.',
   alias: 'Token chain', graph: 'Primitive → semantic → component', coverage: 'Component coverage', family: 'Family', state: 'State', implementation: 'Implementation', sharedApi: 'Shared component', composedApi: 'Composed from shared controls', localApi: 'Local specimen', inspect: 'Working specimen', partial: 'Partial specimen', contract: 'Contract',
-  coverageNote: 'Every family has a review specimen. All 44 families use shared APIs. Browser, assistive technology and release checks are tracked separately in the review report. Planned cards are not finished library content.',
+  coverageNote: 'Every family has a review specimen. All 45 families use shared APIs. Browser, assistive technology and release checks are tracked separately in the review report. Planned cards are not finished library content.',
   approvedNote: 'Saffron Lighter and Manrope are approved. This system study remains under review.',
   archive: 'Previous system study', close: 'Dismiss message', introType: 'Manrope · EN / RU / VI', introColor: 'Saffron Lighter · #EBD183', introBase: 'Dark graphite',
 } as const;
@@ -39,7 +39,7 @@ const ru: Record<Key, string> = {
   motionOff: 'Отключить движение', systemReduce: 'В системе включено уменьшение движения.', motionOn: 'Отклик 120 мс · состояние 160 мс · панель 180 мс',
   handoffTitle: 'От решений к повторяемым правилам.', handoffIntro: 'В экспорте — связи токенов, рассчитанные CSS-значения, шкалы сетки и шрифта, покрытие компонентов и утверждённый цвет.',
   alias: 'Цепочка токенов', graph: 'Примитив → роль → компонент', coverage: 'Покрытие компонентов', family: 'Семейство', state: 'Состояние', implementation: 'Реализация', sharedApi: 'Общий компонент', composedApi: 'На общих контролах', localApi: 'Локальный образец', inspect: 'Рабочий образец', partial: 'Частичный образец', contract: 'Контракт',
-  coverageNote: 'У каждого семейства есть образец. Все 44 семейства используют общие API. Браузерные проверки, вспомогательные технологии и готовность к выпуску отмечены отдельно в отчёте. Карточки плана не означают готовность материалов.',
+  coverageNote: 'У каждого семейства есть образец. Все 45 семейства используют общие API. Браузерные проверки, вспомогательные технологии и готовность к выпуску отмечены отдельно в отчёте. Карточки плана не означают готовность материалов.',
   approvedNote: 'Saffron Lighter и Manrope утверждены. Этот системный стенд ещё на рассмотрении.',
   archive: 'Предыдущий системный стенд', close: 'Закрыть сообщение', introType: 'Manrope · EN / RU / VI', introColor: 'Saffron Lighter · #EBD183', introBase: 'Тёмный графит',
 };
@@ -60,7 +60,7 @@ const vi: Record<Key, string> = {
   motionOff: 'Tắt chuyển động', systemReduce: 'Hệ thống đang yêu cầu giảm chuyển động.', motionOn: 'Phản hồi 120 ms · trạng thái 160 ms · khung 180 ms',
   handoffTitle: 'Từ quyết định đến quy tắc tái sử dụng.', handoffIntro: 'Bản xuất có quan hệ token, giá trị CSS, thang chữ và lưới, mức độ hoàn thiện component và màu đã duyệt.',
   alias: 'Chuỗi token', graph: 'Giá trị gốc → vai trò → component', coverage: 'Mức độ hoàn thiện', family: 'Nhóm', state: 'Trạng thái', implementation: 'Triển khai', sharedApi: 'Component dùng chung', composedApi: 'Kết hợp điều khiển dùng chung', localApi: 'Mẫu cục bộ', inspect: 'Mẫu tương tác', partial: 'Mẫu một phần', contract: 'Đặc tả',
-  coverageNote: 'Mỗi nhóm có một mẫu để đánh giá. Cả 44 nhóm đều dùng API chung. Kiểm tra trình duyệt, công nghệ hỗ trợ và phát hành được ghi riêng trong báo cáo. Thẻ đã lên kế hoạch chưa phải nội dung hoàn chỉnh.',
+  coverageNote: 'Mỗi nhóm có một mẫu để đánh giá. Cả 45 nhóm đều dùng API chung. Kiểm tra trình duyệt, công nghệ hỗ trợ và phát hành được ghi riêng trong báo cáo. Thẻ đã lên kế hoạch chưa phải nội dung hoàn chỉnh.',
   approvedNote: 'Saffron Lighter và Manrope đã được duyệt. Bản nghiên cứu hệ thống này vẫn đang được đánh giá.',
   archive: 'Bản nghiên cứu hệ thống trước', close: 'Đóng thông báo', introType: 'Manrope · EN / RU / VI', introColor: 'Saffron Lighter · #EBD183', introBase: 'Than chì tối',
 };

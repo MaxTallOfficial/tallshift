@@ -1,0 +1,60 @@
+{
+  "selectionKeepsOpen": true,
+  "removalKeepsOpen": true,
+  "noNestedButtons": true,
+  "emptyMulti": {
+    "focusedTrigger": true,
+    "open": "true",
+    "placeholder": "Выберите параметры",
+    "selected": 0
+  },
+  "closedMulti": {
+    "closed": true,
+    "focusOnTrigger": true
+  },
+  "removedClosed": {
+    "chips": 0,
+    "closed": true
+  },
+  "mobile": [
+    {
+      "chips": 3,
+      "lang": "en",
+      "open": "true",
+      "overflow": false,
+      "panelInside": true,
+      "removeNames": [
+        "Remove: Wrap source lines",
+        "Remove: Show line numbers",
+        "Remove: Reduce motion"
+      ],
+      "width": 320
+    },
+    {
+      "chips": 3,
+      "lang": "ru",
+      "open": "true",
+      "overflow": false,
+      "panelInside": true,
+      "removeNames": [
+        "Убрать: Переносить строки кода",
+        "Убрать: Номера строк",
+        "Убрать: Меньше движения"
+      ],
+      "width": 320
+    },
+    {
+      "chips": 3,
+      "lang": "vi",
+      "open": "true",
+      "overflow": false,
+      "panelInside": true,
+      "removeNames": [
+        "Bỏ: Ngắt dòng mã",
+        "Bỏ: Hiện số dòng",
+        "Bỏ: Giảm chuyển động"
+      ],
+      "width": 320
+    }
+  ]
+}

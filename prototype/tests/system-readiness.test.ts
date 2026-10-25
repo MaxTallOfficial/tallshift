@@ -4,8 +4,8 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { systemCoverage } from '../src/foundations/system-registry.ts';
 
 test('coverage tracks specimens separately from shared APIs and release approval', () => {
-  assert.equal(systemCoverage.length, 44);
-  assert.equal(new Set(systemCoverage.map(item => item.id)).size, 44);
+  assert.equal(systemCoverage.length, 45);
+  assert.equal(new Set(systemCoverage.map(item => item.id)).size, 45);
   const directory = new URL('../src/foundations/', import.meta.url);
   const entry = readFileSync(new URL('index.ts',directory),'utf8');
   const sources = readdirSync(directory).filter(name => name.endsWith('.tsx'))
@@ -22,5 +22,5 @@ test('coverage tracks specimens separately from shared APIs and release approval
     }
   }
   assert.ok(systemCoverage.every(item => item.implementation === 'shared-api'));
-  assert.equal(new Set(systemCoverage.map(item=>item.api)).size,44);
+  assert.equal(new Set(systemCoverage.map(item=>item.api)).size,45);
 });

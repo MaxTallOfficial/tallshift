@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 // Structural SSR checks only; keyboard, focus and collision require browser checks.
 const server = await createServer({ root: fileURLToPath(new URL('..', import.meta.url)), configFile: false, server: { middlewareMode: true, hmr: false, ws: false } });
 after(async () => { await server.close(); });
+const { SystemMultiSelect } = await server.ssrLoadModule('/src/foundations/SystemMultiSelect.tsx');
 const { SystemButton } = await server.ssrLoadModule('/src/foundations/SystemButton.tsx');
 const { SystemMenu } = await server.ssrLoadModule('/src/foundations/SystemMenu.tsx');
 const { SystemPopover } = await server.ssrLoadModule('/src/foundations/SystemPopover.tsx');
@@ -63,4 +64,16 @@ test('dropdown buttons provide a decorative state-aware chevron without duplicat
   const html = renderToStaticMarkup(createElement(SystemButton, {'aria-haspopup':'menu',trailingIcon:createElement('svg',{'data-custom-icon':true})}, 'Options'));
   assert.doesNotMatch(html,/data-icon="chevron-/);
   assert.match(html,/data-custom-icon="true"/);
+});
+
+test('multi-select renders selected labels and independent removal controls in its trigger field', () => {
+ const html=renderToStaticMarkup(createElement(SystemMultiSelect,{label:'Display options',placeholder:'Choose options',value:['wrap','numbers'],onChange(){},options:[{value:'wrap',label:'Wrap lines'},{value:'numbers',label:'Line numbers'}]}));
+ const button=html.match(/<button[^>]*aria-haspopup="listbox"[\s\S]*?<\/button>/)?.[0]??'';
+ assert.match(button,/aria-haspopup="listbox"/);assert.match(button,/aria-expanded="false"/);
+ assert.match(html,/Wrap lines/);assert.match(html,/Line numbers/);assert.doesNotMatch(html,/role="listbox"/);assert.match(html,/aria-label="Remove Wrap lines"/);
+ assert.equal((html.match(/class="sm-chip"/g)??[]).length,2);
+});
+test('empty multi-select uses a placeholder and supports a disabled trigger', () => {
+ const html=renderToStaticMarkup(createElement(SystemMultiSelect,{label:'Options',placeholder:'Choose options',value:[],onChange(){},disabled:true,options:[{value:'wrap',label:'Wrap lines'}]}));
+ assert.match(html,/Choose options/);assert.match(html,/disabled=""/);assert.doesNotMatch(html,/class="sm-chip"/);
 });

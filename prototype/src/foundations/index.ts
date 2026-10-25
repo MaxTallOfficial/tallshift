@@ -49,3 +49,6 @@ export { SystemDownloadAction } from './SystemDownloadAction';
 export { SystemTheme } from './SystemTheme';
 export { SystemCopyFallback } from './SystemPromptPanel';
 export { SourceNavigator } from './SourceNavigator';
+
+export { SystemMultiSelect } from './SystemMultiSelect';
+export type { SystemMultiSelectProps, SystemMultiSelectOption } from './SystemMultiSelect';

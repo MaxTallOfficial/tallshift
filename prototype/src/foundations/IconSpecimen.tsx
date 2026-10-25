@@ -11,7 +11,7 @@ type Layout = 'stack' | 'split' | 'window';
 const copy = {
   en: {
     title: 'Icons & single-choice controls',
-    intro: 'One outline style at three sizes. Native radio groups keep selection and keyboard focus distinct.',
+    intro: 'Hugeicons Bulk Rounded at three sizes. Native radio groups keep selection and keyboard focus distinct.',
     inventory: 'Icon inventory', size: 'Icon size', icons: 'icons',
     states: 'Try the control states', normal: 'Alignment', start: 'Start', center: 'Center', end: 'End',
     disabled: 'Disabled group', disabledNote: 'This group is a disabled-state specimen.',
@@ -22,7 +22,7 @@ const copy = {
   },
   ru: {
     title: 'Иконки и выбор одной настройки',
-    intro: 'Единый контур в трёх размерах. Нативные radio сохраняют различие между выбором и фокусом клавиатуры.',
+    intro: 'Hugeicons Bulk Rounded в трёх размерах. Нативные radio сохраняют различие между выбором и фокусом клавиатуры.',
     inventory: 'Набор иконок', size: 'Размер иконок', icons: 'иконок',
     states: 'Проверить состояния переключателей', normal: 'Выравнивание', start: 'По левому краю', center: 'По центру', end: 'По правому краю',
     disabled: 'Недоступная группа', disabledNote: 'Эта группа показывает недоступное состояние.',
@@ -33,7 +33,7 @@ const copy = {
   },
   vi: {
     title: 'Biểu tượng và lựa chọn đơn',
-    intro: 'Một kiểu nét ở ba kích thước. Nhóm radio gốc phân biệt lựa chọn hiện tại với tiêu điểm bàn phím.',
+    intro: 'Hugeicons Bulk Rounded ở ba kích thước. Nhóm radio gốc phân biệt lựa chọn hiện tại với tiêu điểm bàn phím.',
     inventory: 'Bộ biểu tượng', size: 'Kích thước biểu tượng', icons: 'biểu tượng',
     states: 'Thử các trạng thái điều khiển', normal: 'Căn chỉnh', start: 'Căn đầu', center: 'Căn giữa', end: 'Căn cuối',
     disabled: 'Nhóm bị vô hiệu hóa', disabledNote: 'Nhóm này minh họa trạng thái bị vô hiệu hóa.',

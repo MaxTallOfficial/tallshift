@@ -18,9 +18,7 @@
 .sm-list { width:320px; padding:6px; }
 .sm-list > button { appearance:none; display:flex; align-items:center; width:100%; min-height:44px; padding:10px 12px; gap:10px; border:0; border-radius:6px; background:transparent; color:inherit; text-align:start; font:inherit; cursor:pointer; }
 .sm-list > button > span:last-child { min-width:0; overflow-wrap:anywhere; }
-.sm-option-check { display:grid; place-items:center; flex:0 0 18px; width:18px; height:18px; border:1px solid var(--f-control-border); border-radius:4px; }
-.sm-list > button[aria-selected=true] .sm-option-check { color:var(--f-accent); border-color:var(--f-selected-border); }
 .sm-list > button:hover:not(:disabled) { background:var(--f-raised); }
 .sm-list > button:focus-visible { outline:2px solid var(--f-focus); outline-offset:-2px; }
 .sm-list > button:disabled { color:var(--f-muted); opacity:.6; cursor:not-allowed; }
-@media(forced-colors:active) { .sm-option-check,.sm-chip { border-color:CanvasText; }.sm-list > button:focus-visible { outline-color:Highlight; } }
+@media(forced-colors:active) { .system-checkmark,.sm-chip { border-color:CanvasText; }.sm-list > button:focus-visible { outline-color:Highlight; } }

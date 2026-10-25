@@ -4,3 +4,5 @@
   vertical-align: -.125em;
   pointer-events: none;
 }
+
+/* Bulk icons keep their authored fills; never add a synthetic stroke to filled paths. */

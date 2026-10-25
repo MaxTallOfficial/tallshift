@@ -1,3 +1,4 @@
+import { SystemIcon } from './SystemIcon';
 import { collectionMembers } from './material-labels';
 import { useId, useState } from 'react';
 import { accessProductOffer, accessStatesCopy, type AccessScenario, type AccessStatesLocale } from './access-states-copy';
@@ -10,22 +11,7 @@ type AccessStatesLabProps = { locale: AccessStatesLocale; onOpenMaterial: () => 
 
 const scenarios: readonly AccessScenario[] = ['free', 'no-access', 'pending', 'owner', 'error', 'closed'];
 
-function AccessMark({ kind }: { kind: 'free' | 'pro' }) {
-  return <svg className="as-mark" viewBox="0 0 88 72" fill="none" aria-hidden="true">
-    {kind === 'free' ? <>
-      <path d="M12 36h18m28 0h18" />
-      <rect x="29" y="21" width="30" height="30" rx="8" />
-      <path d="m38 36 5 5 9-11" />
-      <circle cx="12" cy="36" r="3" /><circle cx="76" cy="36" r="3" />
-    </> : <>
-      <rect x="14" y="11" width="26" height="21" rx="4" />
-      <rect x="48" y="11" width="26" height="21" rx="4" />
-      <rect x="14" y="40" width="26" height="21" rx="4" />
-      <rect x="48" y="40" width="26" height="21" rx="4" />
-      <path d="M23 21h8m25 0h10M24 50h7m26 0h9" />
-    </>}
-  </svg>;
-}
+function AccessMark({kind}:{kind:'free'|'pro'}) { return <SystemIcon name={kind==='free'?'check':'layers'} className="as-mark" size={24}/>; }
 
 export function AccessStatesLab({ locale, onOpenMaterial }: AccessStatesLabProps) {
   const t = accessStatesCopy[locale];

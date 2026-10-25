@@ -36,14 +36,7 @@ function fileHierarchy(files: SourceNavigatorProps['files']): FileNode[] {
   return root;
 }
 
-function Icon({ kind }: { kind: 'folder' | 'file' | 'more' | 'info' | 'close' }) {
-  return <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{
-    kind === 'folder' ? <path d="M2.5 6V4.5h5l2 2h8v9h-15V6Z" /> :
-    kind === 'file' ? <><path d="M5 2.5h6l4 4v11H5Z" /><path d="M11 2.5v4h4M7.5 10h5M7.5 13h5" /></> :
-    kind === 'more' ? <><circle cx="4" cy="10" r=".7" fill="currentColor" /><circle cx="10" cy="10" r=".7" fill="currentColor" /><circle cx="16" cy="10" r=".7" fill="currentColor" /></> :
-    kind === 'info' ? <><circle cx="10" cy="10" r="7" /><path d="M10 9v4M10 6.5h.01" /></> : <path d="m5 5 10 10M15 5 5 15" />
-  }</svg>;
-}
+function Icon({kind}:{kind:'folder'|'file'|'more'|'info'|'close'}) { return <SystemIcon name={kind==='more'?'chevron-down':kind}/>; }
 
 function fileType(path: string) {
   const extension = path.split('.').at(-1)?.toLowerCase();

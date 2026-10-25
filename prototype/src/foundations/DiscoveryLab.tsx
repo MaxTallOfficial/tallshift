@@ -1,3 +1,4 @@
+import { SystemIcon } from './SystemIcon';
 import { MaterialPreview } from './MaterialPreview';
 import { SystemContentTile } from './SystemContentTile';
 import { SystemCatalogToolbar } from './SystemCatalogToolbar';
@@ -15,16 +16,7 @@ import './discovery-lab.css';
 type SortOrder = 'featured' | 'name';
 const categories = ['all', 'animation', 'component', 'section', 'effect'] as const;
 
-function Icon({ name }: { name: 'search' | 'close' | 'chevron' | 'arrow' | 'check' | 'layers' }) {
-  return <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    {name === 'search' && <><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 4.5 4.5" /></>}
-    {name === 'close' && <path d="m6 6 12 12M6 18 18 6" />}
-    {name === 'chevron' && <path d="m7 10 5 5 5-5" />}
-    {name === 'arrow' && <path d="M5 12h14m-5-5 5 5-5 5" />}
-    {name === 'check' && <path d="m5 12 4 4L19 6" />}
-    {name === 'layers' && <><path d="m12 3 9 5-9 5-9-5 9-5Z" /><path d="m3 12 9 5 9-5M3 16l9 5 9-5" /></>}
-  </svg>;
-}
+function Icon({name}:{name:'search'|'close'|'chevron'|'arrow'|'check'|'layers'}) { return <SystemIcon name={name==='chevron'?'chevron-down':name==='arrow'?'arrow-right':name}/>; }
 
 function SortSelect({ locale, value, onChange }: { locale: DiscoveryLocale; value: SortOrder; onChange: (value: SortOrder) => void }) {
   const t = discoveryCopy[locale];
@@ -78,7 +70,7 @@ export function DiscoveryLab({ locale, onOpenMaterial }: { locale: DiscoveryLoca
     <SystemCatalogToolbar label={t.filters} search={<SystemSearchCombobox label={t.search} placeholder={t.placeholder} value={query} onChange={setQuery} inputRef={inputRef} clearLabel={t.clear} listLabel={t.suggestions} emptyText={t.noSuggestions} hint={t.searchHelp} options={filterDiscoveryMaterials(discoveryMaterials, criteria).map(material => ({ value: material.id, label: material.name, detail: t[material.category], meta: material.available ? t.ready : t.planned }))} />} sort={<SortSelect locale={locale} value={sort} onChange={setSort} />}>
     <div className="dl-filter-shell">
       <div className="dl-filterbar"><fieldset className="dl-categories"><legend className="dl-sr-only">{t.category}</legend>{categories.map(item => <label key={item} className={`dl-chip${category === item ? ' dl-chip-selected' : ''}`}><input type="radio" name={`${id}-category`} value={item} checked={category === item} onChange={() => setCategory(item)} /><span>{t[item]}</span></label>)}</fieldset><p className="dl-result-count" role="status" aria-live="polite" aria-atomic="true">{t.count(materialList.length)}</p></div>
-      <details className="dl-extra-filters"><summary ref={filterTrigger}><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M3 5h14M5 10h10M8 15h4" /></svg>{t.filters}<span>{access.length + availability.length || ''}</span><Icon name="chevron" /></summary><div className="dl-filter-options"><fieldset><legend>{t.accessLabel}</legend><SystemCheckbox label={t.free} checked={access.includes('free')} onChange={checked => setAccess(values => checked ? [...values, 'free'] : values.filter(value => value !== 'free'))} /><SystemCheckbox label={t.paid} checked={access.includes('pro')} onChange={checked => setAccess(values => checked ? [...values, 'pro'] : values.filter(value => value !== 'pro'))} /></fieldset><fieldset><legend>{t.availabilityLabel}</legend><SystemCheckbox label={t.ready} checked={availability.includes('ready')} onChange={checked => setAvailability(values => checked ? [...values, 'ready'] : values.filter(value => value !== 'ready'))} /><SystemCheckbox label={t.planned} checked={availability.includes('planned')} onChange={checked => setAvailability(values => checked ? [...values, 'planned'] : values.filter(value => value !== 'planned'))} /></fieldset><p>{t.filterHint}</p></div></details>
+      <details className="dl-extra-filters"><summary ref={filterTrigger}><SystemIcon name="filter"/>{t.filters}<span>{access.length + availability.length || ''}</span><Icon name="chevron" /></summary><div className="dl-filter-options"><fieldset><legend>{t.accessLabel}</legend><SystemCheckbox label={t.free} checked={access.includes('free')} onChange={checked => setAccess(values => checked ? [...values, 'free'] : values.filter(value => value !== 'free'))} /><SystemCheckbox label={t.paid} checked={access.includes('pro')} onChange={checked => setAccess(values => checked ? [...values, 'pro'] : values.filter(value => value !== 'pro'))} /></fieldset><fieldset><legend>{t.availabilityLabel}</legend><SystemCheckbox label={t.ready} checked={availability.includes('ready')} onChange={checked => setAvailability(values => checked ? [...values, 'ready'] : values.filter(value => value !== 'ready'))} /><SystemCheckbox label={t.planned} checked={availability.includes('planned')} onChange={checked => setAvailability(values => checked ? [...values, 'planned'] : values.filter(value => value !== 'planned'))} /></fieldset><p>{t.filterHint}</p></div></details>
       <div className="dl-applied"><div role="group" aria-label={t.activeFilters}>{activeFilters.length ? activeFilters.map((filter, index) => <SystemFilterChip key={filter.key} label={`${filter.group}: ${filter.label}`} removeLabel={t.removeFilter(filter.group, filter.label)} onRemove={() => removeFilter(index)} buttonRef={button => { if (button) chipButtons.current.set(filter.key, button); else chipButtons.current.delete(filter.key); }} />) : <span className="dl-no-filters">{t.noFilters}</span>}</div><button type="button" className="dl-reset-filters" disabled={!query && !activeFilters.length} onClick={resetFilters}>{t.filterReset}</button></div>
     </div>
     </SystemCatalogToolbar>

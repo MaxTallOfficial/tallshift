@@ -98,3 +98,5 @@
   .track li { font-size: 9px; }
   .statusRow { gap: 12px; }
 }
+
+.icon > * { vector-effect:non-scaling-stroke; stroke-width:1.5px; }

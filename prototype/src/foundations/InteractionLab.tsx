@@ -1,5 +1,6 @@
+import { SystemIcon } from './SystemIcon';
 import { useId, useRef, useState } from 'react';
-import type { FormEvent, ReactNode } from 'react';
+import type { FormEvent } from 'react';
 import { interactionCopy } from './interaction-copy';
 import { SystemDialog } from './SystemDialog';
 import { SystemButton } from './SystemButton';
@@ -32,18 +33,7 @@ interface Notice {
   name?: string;
 }
 
-function Symbol({ kind }: { kind: 'plus' | 'check' | 'close' | 'trash' | 'info' | 'alert' | 'arrow' }) {
-  const paths: Record<typeof kind, ReactNode> = {
-    plus: <path d="M12 5v14M5 12h14" />,
-    check: <path d="m5 12 4 4L19 6" />,
-    close: <path d="m6 6 12 12M18 6 6 18" />,
-    trash: <><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 10v7M14 10v7" /></>,
-    info: <><circle cx="12" cy="12" r="9" /><path d="M12 11v6M12 7v.1" /></>,
-    alert: <><path d="m12 3 10 17H2L12 3Z" /><path d="M12 9v5M12 17v.1" /></>,
-    arrow: <path d="M5 12h14m-5-5 5 5-5 5" />,
-  };
-  return <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[kind]}</svg>;
-}
+function Symbol({kind}:{kind:'plus'|'check'|'close'|'trash'|'info'|'alert'|'arrow'}) { return <SystemIcon name={kind==='alert'?'warning':kind==='arrow'?'arrow-right':kind}/>; }
 
 /** Presets deliberately live in component memory: no account, storage or network. */
 export function InteractionLab({ locale, motionOff }: { locale: Locale; motionOff: boolean }) {

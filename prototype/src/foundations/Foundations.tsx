@@ -1,3 +1,4 @@
+import { SystemCheckbox } from './SystemCheckbox';
 import { SystemIcon } from './SystemIcon';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent } from 'react';
 import { AfterlightExample } from '../study/AfterlightExample';
@@ -16,9 +17,7 @@ type CopyResult = { key: string; state: 'idle' | 'busy' | 'done' | 'error'; valu
 const emptyCopy: CopyResult = { key: '', state: 'idle', value: '' };
 const views: View[] = ['demo', 'source', 'prompt'];
 
-function CopyIcon({ done = false }: { done?: boolean }) {
-  return <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">{done ? <path d="m4 10 4 4 8-9" /> : <><rect x="7" y="6" width="9" height="11" rx="2" /><path d="M12 3H5a2 2 0 0 0-2 2v8" /></>}</svg>;
-}
+function CopyIcon({done=false}:{done?:boolean}) { return <SystemIcon name={done?'check':'copy'}/>; }
 function Highlight({ text }: { text: string }) {
   return <code>{text.split(/("[^"\n]*"|'[^'\n]*'|\b(?:import|from|export|default|function|return|const|as|true|false)\b|\b\d+\b)/g).map((part, i) => <span key={i} className={/^['"]/.test(part) ? 'f-string' : /^\d+$/.test(part) ? 'f-number' : /^(import|from|export|default|function|return|const|as|true|false)$/.test(part) ? 'f-keyword' : undefined}>{part}</span>)}</code>;
 }
@@ -134,7 +133,7 @@ export function Foundations() {
       <div className="f-toolbar">
         <fieldset className="f-picker"><legend>{t.paletteLabel}</legend><div>{saffronShades.map(item => <label key={item.id} className="f-palette-option" style={{ '--option-accent': item.accent } as CSSProperties}><input type="radio" name="shade" value={item.id} checked={shadeId === item.id} onChange={() => setShade(item.id)} /><i aria-hidden="true" /><span>{item.name[locale]}</span></label>)}</div></fieldset>
         <div className="f-fixed-type"><span>{t.typeLabel}</span><strong>Manrope</strong><span>{t.typeConfirmed}</span></div>
-        <label className="f-motion"><input type="checkbox" checked={off} disabled={reduced} onChange={event => setForceOff(event.target.checked)} /><span>{t.reducedLabel}</span></label>
+        <div className="f-motion"><SystemCheckbox label={t.reducedLabel} checked={off} disabled={reduced} onChange={setForceOff}/></div>
       </div>
       <section className="f-workbench" id="preview" aria-labelledby="f-preview-title">
         <header className="f-workbench-heading"><div><p className="f-eyebrow">{t.liveLabel}</p><h2 id="f-preview-title">State Relay <span>A001</span></h2><p>{p.materialDescription}</p></div><span className="f-license">{p.free} · MIT</span></header>

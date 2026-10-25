@@ -10,8 +10,8 @@
 .as-offer-name { margin-top: 4px; color: var(--f-text); font-size: 16px; line-height: 1.5; font-weight: 600; }
 .as-offer .as-claim { margin-top: 24px; color: var(--f-text); font-size: 28px; line-height: 1.3; font-weight: 550; letter-spacing: -.015em; }
 .as-claim > span { display: block; color: var(--f-accent); }
-.as-mark { width: 72px; height: 60px; flex: 0 0 72px; stroke: var(--f-muted); stroke-width: 1.25; }
-.as-offer-free .as-mark rect,.as-offer-free .as-mark path:nth-child(3) { stroke: var(--f-accent); }
+.as-mark { width: 72px; height: 60px; flex: 0 0 72px; color: var(--f-muted); }
+.as-offer-free .as-mark { color:var(--f-accent); }
 .as-badge { display: inline-flex; align-self: flex-start; margin-top: 24px; padding: 5px 9px; border: 1px solid var(--f-control-border); border-radius: 4px; color: var(--f-secondary); font-size: 12px; line-height: 1.5; }
 .as-badge-free { color: var(--f-text); }
 .as-description { max-width: 45ch; margin-top: 16px; color: var(--f-secondary); font-size: 16px; line-height: 1.65; }
@@ -73,7 +73,7 @@
   .as-offers { grid-template-columns: minmax(0,1fr); }.as-offer { padding: 24px 20px; border-radius: 12px; }.as-specimen-note { padding: 16px; gap: 8px; }.as-free-footer { padding-top: 32px; }.as-free-footer button { width: 100%; }.as-offer .as-claim { font-size: 24px; }.as-state h3 { font-size: 18px; }.as-offer-facts > div { grid-template-columns: minmax(0,1fr); gap: 4px; }.as-access-panel { border-radius: 12px; }.as-scenarios { padding: 24px 16px; }.as-scenario-options { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }.as-scenario-options label > span { height: 100%; padding-inline: 8px; }.as-state { grid-template-columns: minmax(0,1fr); gap: 24px; padding: 24px 20px; border-radius: 0 0 12px 12px; }
 }
 @media (forced-colors: active) {
-  .as-scenario-options input:checked + span { border: 2px solid Highlight; }.as-scenario-options input:focus-visible + span { outline-color: Highlight; }.as-state-status > span { forced-color-adjust: none; background: CanvasText; }.as-mark { stroke: CanvasText; }.as-button-unavailable { border-color: GrayText; color: GrayText; }
+  .as-scenario-options input:checked + span { border: 2px solid Highlight; }.as-scenario-options input:focus-visible + span { outline-color: Highlight; }.as-state-status > span { forced-color-adjust: none; background: CanvasText; }.as-mark { color: CanvasText; }.as-button-unavailable { border-color: GrayText; color: GrayText; }
 }
 
 .as-offer { background:var(--sy-component-offer-background,var(--f-surface)); border-color:var(--sy-component-offer-border,var(--f-line)); }

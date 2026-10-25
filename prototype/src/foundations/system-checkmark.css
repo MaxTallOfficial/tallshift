@@ -1,0 +1,4 @@
+.system-checkmark { box-sizing:border-box; display:inline-grid; place-items:center; flex:0 0 20px; width:20px; height:20px; border:1.5px solid var(--f-control-border); border-radius:5px; background:var(--f-inset); color:var(--f-accent); }
+.system-checkmark[data-checked] { border-color:var(--f-secondary); background:var(--f-raised); }
+.system-checkmark > .system-icon { display:block; width:16px; height:16px; }
+@media(forced-colors:active) { .system-checkmark { border-color:ButtonText; color:CanvasText; background:Canvas; }.system-checkmark[data-checked] { border-color:Highlight; } }

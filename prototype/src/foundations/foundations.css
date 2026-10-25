@@ -42,7 +42,7 @@ p, h1, h2, h3, h4 { margin: 0; }
 .f-fixed-type > span { color: var(--f-secondary); font-size: 12px; }
 .f-fixed-type strong { font-size: 18px; font-weight: 550; line-height: 1.5; }
 .f-motion { display: flex; align-items: center; gap: 10px; max-width: 175px; min-height: 44px; margin-top: 20px; color: var(--f-secondary); font-size: 12px; cursor: pointer; }
-.f-motion input { width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--f-accent); }
+.f-motion > input { width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--f-accent); }
 .f-workbench { scroll-margin-top: 24px; border: 1px solid var(--f-line); border-radius: 14px; background: var(--f-surface); }
 .f-workbench-heading { padding: 27px 30px; display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
 .f-workbench-heading h2 { margin-top: 8px; font-size: 30px; font-weight: 550; line-height: 1.25; letter-spacing: -.03em; }

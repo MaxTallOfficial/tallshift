@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 // Structural SSR checks only; keyboard, focus and collision require browser checks.
 const server = await createServer({ root: fileURLToPath(new URL('..', import.meta.url)), configFile: false, server: { middlewareMode: true, hmr: false, ws: false } });
 after(async () => { await server.close(); });
+const { SystemIcon, systemIconNames } = await server.ssrLoadModule('/src/foundations/SystemIcon.tsx');
 const { SystemProgress } = await server.ssrLoadModule('/src/foundations/SystemProgress.tsx');
 const { SystemMultiSelect } = await server.ssrLoadModule('/src/foundations/SystemMultiSelect.tsx');
 const { SystemButton } = await server.ssrLoadModule('/src/foundations/SystemButton.tsx');
@@ -87,4 +88,14 @@ test('error progress exposes a localized text status linked to the progressbar',
   assert.equal(described.length,2);for(const id of described)assert.ok(html.includes(`id="${id}"`));
   assert.match(bar,/aria-valuenow="25"/);assert.match(html,/data-icon="error"/);assert.ok(html.includes(label));
  }
+});
+
+test('the whole UI icon inventory resolves to Bulk Rounded in all supported sizes', () => {
+ for(const name of systemIconNames) for(const size of [16,20,24]) {
+  const html=renderToStaticMarkup(createElement(SystemIcon,{name,size}));
+  assert.match(html,/data-icon-library="hugeicons-bulk-rounded"/);assert.ok(html.includes(`width="${size}"`));assert.match(html,/aria-hidden="true"/);
+  assert.doesNotMatch(html.match(/<svg[^>]*>/)?.[0]??'',/stroke-width=/);
+ }
+ const labelled=renderToStaticMarkup(createElement(SystemIcon,{name:'info',label:'Details'}));
+ assert.match(labelled,/role="img"/);assert.match(labelled,/aria-label="Details"/);assert.doesNotMatch(labelled,/aria-hidden="true"/);
 });

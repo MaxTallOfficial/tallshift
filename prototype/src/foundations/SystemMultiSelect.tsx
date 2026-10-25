@@ -1,5 +1,6 @@
 import { useId, useLayoutEffect, useRef, useState } from 'react';
 import { SystemButton } from './SystemButton';
+import { SystemCheckmark } from './SystemCheckmark';
 import { SystemIcon } from './SystemIcon';
 import { FloatingPortal, useFloatingDismiss, useFloatingPosition } from './system-floating';
 import './system-multi-select.css';
@@ -35,7 +36,7 @@ export function SystemMultiSelect({label,placeholder,options,value,onChange,disa
       if(next!==undefined){event.preventDefault();enabled[next]?.focus();}
       if(event.key==='Tab')close('focus-out',true);
     }}>{options.map(option=><button key={option.value} type="button" role="option" aria-selected={value.includes(option.value)} disabled={option.disabled} tabIndex={-1} onClick={()=>onChange(value.includes(option.value)?value.filter(item=>item!==option.value):[...value,option.value])}>
-      <span className="sm-option-check" aria-hidden="true">{value.includes(option.value)&&<SystemIcon name="check" size={16}/>}</span><span>{option.label}</span>
+      <SystemCheckmark checked={value.includes(option.value)}/><span>{option.label}</span>
     </button>)}</div></FloatingPortal>}
   </div>;
 }

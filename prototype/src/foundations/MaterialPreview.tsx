@@ -1,12 +1,9 @@
+import { SystemIcon } from './SystemIcon';
 import type { DiscoveryPreview } from './discovery-data';
 import type { DiscoveryLocale } from './discovery-copy';
 import './material-preview.css';
 
-function Icon({ name }: { name: 'arrow' | 'check' }) {
-  return <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d={name === 'check' ? 'm5 12 4 4L19 6' : 'M5 12h14m-5-5 5 5-5 5'} />
-  </svg>;
-}
+function Icon({name}:{name:'arrow'|'check'}) { return <SystemIcon name={name==='arrow'?'arrow-right':name}/>; }
 
 /** Visual thumbnail; planned materials remain explicitly unavailable on the parent card. */
 export function MaterialPreview({ kind, locale }: { kind: DiscoveryPreview; locale: DiscoveryLocale }) {

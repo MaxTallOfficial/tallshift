@@ -86,3 +86,37 @@
 .as-state[data-scenario=error] .as-state-status { color:var(--sy-component-entitlement-error-foreground,var(--f-error)); }
 
 .as-scope ul { display:grid; gap:8px; padding-inline-start:20px; list-style:disc; }.as-scope li { padding:0; border:0; background:transparent; font-size:14px; line-height:1.6; overflow-wrap:anywhere; }
+
+/* Pricing compares concrete deliveries. Product is the editorial recommendation. */
+.as-offers { grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; margin-top:36px; }
+.as-offer { position:relative; padding:28px 24px; }
+.as-offer-head { gap:8px; }
+.as-offer[data-featured] { border-color:var(--f-accent); box-shadow:inset 0 2px 0 var(--f-accent); background:linear-gradient(160deg,color-mix(in srgb,var(--f-accent) 5%,var(--f-surface)),var(--f-surface) 60%); }
+.as-recommendation { position:absolute; inset-block-start:0; inset-inline-start:24px; transform:translateY(-50%); max-width:calc(100% - 48px); margin:0; padding:5px 10px; border-radius:5px; background:var(--f-accent); color:var(--f-on-accent); font-size:11px; font-weight:650; line-height:1.5; }
+.as-price { display:flex; align-items:baseline; flex-wrap:wrap; gap:4px 10px; margin-top:24px; }
+.as-price > strong { color:var(--f-text); font-size:48px; font-weight:600; line-height:1.1; letter-spacing:-.045em; font-variant-numeric:tabular-nums; }
+.as-offer[data-featured] .as-price > strong { color:var(--f-accent); }
+.as-price > span { color:var(--f-secondary); font-size:12px; }
+.as-offer .as-claim { font-size:24px; min-block-size:3.9em; margin-top:24px; }
+.as-description { font-size:14px; }
+.as-offer .as-free-footer,.as-offer .as-pro-footer { padding-top:24px; }
+.as-offer .as-free-footer > button,.as-offer .as-pro-footer > button { width:100%; margin-top:12px; }
+.as-offer[data-featured] .as-pro-footer > button { border-color:var(--f-accent); color:var(--f-accent); }
+.as-price-note { margin:8px 0 0; color:var(--f-muted); font-size:12px; line-height:1.6; }
+.as-comparison { margin-top:32px; padding:24px; border:1px solid var(--f-line); border-radius:12px; background:var(--f-surface); }
+.as-comparison > h3 { margin:0 0 20px; font-size:18px; font-weight:600; }
+.as-comparison-scroll { max-width:100%; overflow:auto; }
+.as-comparison-scroll:focus-visible { outline:2px solid var(--f-focus); outline-offset:3px; }
+.as-comparison table { width:100%; min-width:620px; border-collapse:collapse; text-align:start; font-size:13px; }
+.as-comparison th,.as-comparison td { padding:12px; border-bottom:1px solid var(--f-line); vertical-align:top; }
+.as-comparison th { text-align:start; font-weight:600; }
+.as-comparison thead th:nth-child(3),.as-comparison td:nth-child(3) { background:color-mix(in srgb,var(--f-accent) 5%,transparent); }
+.as-comparison td { color:var(--f-secondary); }
+.as-comparison > p { margin:16px 0 0; color:var(--f-secondary); font-size:12px; line-height:1.7; }
+@media(max-width:899px) { .as-offers { grid-template-columns:minmax(0,1fr); }.as-offer .as-claim { min-block-size:0; }.as-offer { padding:28px; } }
+@media(max-width:767px) { .as-offer { padding:24px 20px; }.as-price > strong { font-size:42px; }.as-offer .as-claim { font-size:24px; }.as-comparison { padding:20px 16px; } }
+@media(forced-colors:active) { .as-offer[data-featured] { border-color:Highlight; box-shadow:none; background:Canvas; }.as-recommendation { background:Highlight; color:HighlightText; }.as-price > strong,.as-offer[data-featured] .as-price > strong { color:CanvasText; } }
+
+.as-price > span { flex-basis:100%; }
+
+@media(min-width:900px) { .as-offer .as-description { min-block-size:4.95em; } }

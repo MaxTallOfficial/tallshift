@@ -3758,6 +3758,25 @@
       "paid_enabled": false
     },
     {
+      "id": "P1.5",
+      "status": "proposed-product-first",
+      "adds": [
+        "S004",
+        "S005",
+        "S006",
+        "C003",
+        "C004",
+        "E002"
+      ],
+      "unique_total": 15,
+      "free_total": 9,
+      "pro_total": 6,
+      "enabled_offer_ids": [
+        "PACK-PRODUCT"
+      ],
+      "paid_enabled": "only_when_product_merchant_and_acceptance_ready"
+    },
+    {
       "id": "P2",
       "unique_total": 32,
       "free_total": 9,

@@ -1,0 +1,297 @@
+{
+  "matrix": [
+    {
+      "lang": "en",
+      "offers": [
+        {
+          "actionDisabled": null,
+          "availability": "available",
+          "featured": false,
+          "name": "Starter",
+          "price": "$0Free"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": true,
+          "name": "Product",
+          "price": "$29USD · one-time · price hypothesis"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": false,
+          "name": "All packs",
+          "price": "$79USD · one-time · price hypothesis"
+        }
+      ],
+      "overflow": false,
+      "tableColumns": 4,
+      "width": 320
+    },
+    {
+      "lang": "en",
+      "offers": [
+        {
+          "actionDisabled": null,
+          "availability": "available",
+          "featured": false,
+          "name": "Starter",
+          "price": "$0Free"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": true,
+          "name": "Product",
+          "price": "$29USD · one-time · price hypothesis"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": false,
+          "name": "All packs",
+          "price": "$79USD · one-time · price hypothesis"
+        }
+      ],
+      "overflow": false,
+      "tableColumns": 4,
+      "width": 768
+    },
+    {
+      "lang": "en",
+      "offers": [
+        {
+          "actionDisabled": null,
+          "availability": "available",
+          "featured": false,
+          "name": "Starter",
+          "price": "$0Free"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": true,
+          "name": "Product",
+          "price": "$29USD · one-time · price hypothesis"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": false,
+          "name": "All packs",
+          "price": "$79USD · one-time · price hypothesis"
+        }
+      ],
+      "overflow": false,
+      "tableColumns": 4,
+      "width": 1440
+    },
+    {
+      "lang": "ru",
+      "offers": [
+        {
+          "actionDisabled": null,
+          "availability": "available",
+          "featured": false,
+          "name": "Starter",
+          "price": "$0Бесплатно"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": true,
+          "name": "Product",
+          "price": "$29USD · разово · гипотеза цены"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": false,
+          "name": "All packs",
+          "price": "$79USD · разово · гипотеза цены"
+        }
+      ],
+      "overflow": false,
+      "tableColumns": 4,
+      "width": 320
+    },
+    {
+      "lang": "ru",
+      "offers": [
+        {
+          "actionDisabled": null,
+          "availability": "available",
+          "featured": false,
+          "name": "Starter",
+          "price": "$0Бесплатно"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": true,
+          "name": "Product",
+          "price": "$29USD · разово · гипотеза цены"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": false,
+          "name": "All packs",
+          "price": "$79USD · разово · гипотеза цены"
+        }
+      ],
+      "overflow": false,
+      "tableColumns": 4,
+      "width": 768
+    },
+    {
+      "lang": "ru",
+      "offers": [
+        {
+          "actionDisabled": null,
+          "availability": "available",
+          "featured": false,
+          "name": "Starter",
+          "price": "$0Бесплатно"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": true,
+          "name": "Product",
+          "price": "$29USD · разово · гипотеза цены"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": false,
+          "name": "All packs",
+          "price": "$79USD · разово · гипотеза цены"
+        }
+      ],
+      "overflow": false,
+      "tableColumns": 4,
+      "width": 1440
+    },
+    {
+      "lang": "vi",
+      "offers": [
+        {
+          "actionDisabled": null,
+          "availability": "available",
+          "featured": false,
+          "name": "Starter",
+          "price": "$0Miễn phí"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": true,
+          "name": "Product",
+          "price": "$29USD · một lần · giá dự kiến"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": false,
+          "name": "All packs",
+          "price": "$79USD · một lần · giá dự kiến"
+        }
+      ],
+      "overflow": false,
+      "tableColumns": 4,
+      "width": 320
+    },
+    {
+      "lang": "vi",
+      "offers": [
+        {
+          "actionDisabled": null,
+          "availability": "available",
+          "featured": false,
+          "name": "Starter",
+          "price": "$0Miễn phí"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": true,
+          "name": "Product",
+          "price": "$29USD · một lần · giá dự kiến"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": false,
+          "name": "All packs",
+          "price": "$79USD · một lần · giá dự kiến"
+        }
+      ],
+      "overflow": false,
+      "tableColumns": 4,
+      "width": 768
+    },
+    {
+      "lang": "vi",
+      "offers": [
+        {
+          "actionDisabled": null,
+          "availability": "available",
+          "featured": false,
+          "name": "Starter",
+          "price": "$0Miễn phí"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": true,
+          "name": "Product",
+          "price": "$29USD · một lần · giá dự kiến"
+        },
+        {
+          "actionDisabled": true,
+          "availability": "planned",
+          "featured": false,
+          "name": "All packs",
+          "price": "$79USD · một lần · giá dự kiến"
+        }
+      ],
+      "overflow": false,
+      "tableColumns": 4,
+      "width": 1440
+    }
+  ],
+  "finalGrid": [
+    {
+      "columns": "293.328px 293.336px 293.336px",
+      "lang": "en",
+      "overflow": false,
+      "paidButtons": [
+        true,
+        true
+      ],
+      "width": 968
+    },
+    {
+      "columns": "293.328px 293.336px 293.336px",
+      "lang": "ru",
+      "overflow": false,
+      "paidButtons": [
+        true,
+        true
+      ],
+      "width": 968
+    },
+    {
+      "columns": "293.328px 293.336px 293.336px",
+      "lang": "vi",
+      "overflow": false,
+      "paidButtons": [
+        true,
+        true
+      ],
+      "width": 968
+    }
+  ]
+}

@@ -6,13 +6,16 @@ export interface SystemOfferData {
   id: string; name: string; availability: 'available' | 'planned' | 'closed'; badge: string;
   headline: ReactNode; description: string; benefits: readonly string[];
   /** A caller-provided, explicit price or sale-status label; never inferred from a price hypothesis. */
+  priceAmount?: string; billingLabel?: string;
   priceLabel?: string; priceNote?: string; deliveryNote?: string;
 }
-export interface SystemOfferProps { offer: SystemOfferData; action?: SystemOfferAction; illustration?: ReactNode; details?: ReactNode; children?: ReactNode; className?: string }
-export function SystemOffer({ offer, action, illustration, details, children, className = '' }: SystemOfferProps) {
+export interface SystemOfferProps { offer: SystemOfferData; action?: SystemOfferAction; illustration?: ReactNode; details?: ReactNode; children?: ReactNode; className?: string; featuredLabel?: string }
+export function SystemOffer({ offer, action, illustration, details, children, className = '', featuredLabel }: SystemOfferProps) {
   const id = useId(); const blocked = offer.availability !== 'available' || action?.disabled || !action?.onAction;
-  return <article className={`as-offer as-offer-${offer.availability === 'available' ? 'free' : 'pro'} ${className}`.trim()} aria-labelledby={`${id}-title`} data-availability={offer.availability}>
+  return <article className={`as-offer as-offer-${offer.availability === 'available' ? 'free' : 'pro'} ${className}`.trim()} aria-labelledby={`${id}-title`} data-availability={offer.availability} data-featured={featuredLabel ? true : undefined}>
+    {featuredLabel && <p className="as-recommendation">{featuredLabel}</p>}
     <header className="as-offer-head"><div className="as-offer-identity">{illustration && <span className="as-offer-symbol" aria-hidden="true">{illustration}</span>}<p className="as-offer-name">{offer.name}</p></div><span className={`as-badge ${offer.availability === 'available' ? 'as-badge-free' : ''}`}>{offer.badge}</span></header>
+    {offer.priceAmount && <div className="as-price"><strong>{offer.priceAmount}</strong><span>{offer.billingLabel}</span></div>}
     <h3 id={`${id}-title`} className="as-claim">{offer.headline}</h3><p className="as-description">{offer.description}</p>
     <ul className="as-benefits">{offer.benefits.map((benefit,index) => <li key={`${index}-${benefit}`}>{benefit}</li>)}</ul>{details}
     <div className={offer.availability === 'available' ? 'as-free-footer' : 'as-pro-footer'}>

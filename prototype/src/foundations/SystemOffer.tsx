@@ -1,10 +1,11 @@
 import { useId, type ReactNode } from 'react';
 import { SystemButton } from './SystemButton';
 import './access-states-lab.css';
+import { SystemIcon, type SystemIconName } from './SystemIcon';
 export interface SystemOfferAction { label: string; onAction?: () => void; disabled?: boolean; reason?: string }
 export interface SystemOfferData {
   id: string; name: string; availability: 'available' | 'planned' | 'closed'; badge: string;
-  headline: ReactNode; description: string; benefits: readonly string[];
+  headline: ReactNode; description: string; benefits: readonly string[]; benefitIcons?: readonly SystemIconName[];
   /** A caller-provided, explicit price or sale-status label; never inferred from a price hypothesis. */
   priceAmount?: string; billingLabel?: string;
   priceLabel?: string; priceNote?: string; deliveryNote?: string;
@@ -17,7 +18,7 @@ export function SystemOffer({ offer, action, illustration, details, children, cl
     <header className="as-offer-head"><div className="as-offer-identity">{illustration && <span className="as-offer-symbol" aria-hidden="true">{illustration}</span>}<p className="as-offer-name">{offer.name}</p></div><span className={`as-badge ${offer.availability === 'available' ? 'as-badge-free' : ''}`}>{offer.badge}</span></header>
     {offer.priceAmount && <div className="as-price"><strong>{offer.priceAmount}</strong><span>{offer.billingLabel}</span></div>}
     <h3 id={`${id}-title`} className="as-claim">{offer.headline}</h3><p className="as-description">{offer.description}</p>
-    <ul className="as-benefits">{offer.benefits.map((benefit,index) => <li key={`${index}-${benefit}`}>{benefit}</li>)}</ul>{details}
+    <ul className="as-benefits">{offer.benefits.map((benefit,index) => <li key={`${index}-${benefit}`}><SystemIcon name={offer.benefitIcons?.[index] ?? 'layers'} size={20} /><span>{benefit}</span></li>)}</ul>{details}
     <div className={offer.availability === 'available' ? 'as-free-footer' : 'as-pro-footer'}>
       {offer.priceLabel && <p className="as-sale-state">{offer.priceLabel}</p>}{offer.priceNote && <p className="as-price-note">{offer.priceNote}</p>}
       {action && <SystemButton variant={offer.availability === 'available' ? 'primary' : 'secondary'} disabled={blocked} onClick={action.onAction} aria-describedby={action.reason ? `${id}-reason` : undefined}>{action.label}</SystemButton>}

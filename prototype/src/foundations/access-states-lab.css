@@ -17,8 +17,7 @@
 .as-badge-free { color: var(--f-text); }
 .as-description { max-width: 45ch; margin-top: 16px; color: var(--f-secondary); font-size: 16px; line-height: 1.65; }
 .as-benefits { display:grid; gap:0; margin:24px 0 0; padding:0; list-style:none; border-top:1px solid var(--f-line); }
-.as-benefits li { position:relative; padding:12px 0 12px 18px; border-bottom:1px solid var(--f-line); color: var(--f-text); font-size: 14px; line-height: 1.5; }
-.as-benefits li::before { content: ""; position: absolute; left: 0; top:22px; width:6px; height:2px; background: var(--f-muted); }
+.as-benefits li { display:grid; grid-template-columns:20px minmax(0,1fr); align-items:start; gap:10px; padding:12px 0; border-bottom:1px solid var(--f-line); color: var(--f-text); font-size: 14px; line-height: 1.5; }
 .as-free-footer { margin-top: auto; padding-top: 32px; }
 .as-free-footer p { max-width: 45ch; margin-top: 12px; color: var(--f-secondary); font-size: 12px; line-height: 1.65; }
 .as-free-footer button { margin-top: 0; }
@@ -120,3 +119,6 @@
 .as-price > span { flex-basis:100%; }
 
 @media(min-width:900px) { .as-offer .as-description { min-block-size:4.95em; } }
+
+.as-benefits li > .system-icon { color:var(--f-secondary); }
+.as-offer[data-featured] .as-benefits li > .system-icon { color:var(--f-accent); }

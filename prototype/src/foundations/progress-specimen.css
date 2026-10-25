@@ -24,3 +24,7 @@
 @media(max-width:767px) { .ps-lab { margin-top:56px; }.ps-heading h2 { font-size:24px; }.ps-card h3 { font-size:18px; }.ps-card { padding:24px; } }
 @media(max-width:500px) { .ps-card { padding:24px 16px; }.ps-actions { grid-template-columns:minmax(0,1fr); } }
 .ps-lab:lang(vi) :is(h2,h3) { letter-spacing:0; }
+
+.ps-status-stack > .ps-error-message { padding:14px 16px; margin-bottom:24px; border:1px solid var(--f-error-border); border-radius:8px; background:color-mix(in srgb,var(--f-error-bg) 25%,var(--f-surface)); }
+.ps-error-message > strong { display:block; margin-bottom:4px; color:var(--f-text); font-size:14px; font-weight:600; }
+@media(forced-colors:active) { .ps-status-stack > .ps-error-message { border-color:CanvasText; background:Canvas; } }

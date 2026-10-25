@@ -12,3 +12,9 @@
 @media (prefers-reduced-motion:reduce) { .sys-progress[data-indeterminate] .sys-progress-track > span { animation:none; width:36%; margin-inline:auto; } }
 html[data-motion="off"] .sys-progress[data-indeterminate] .sys-progress-track > span,[data-motion="off"] .sys-progress[data-indeterminate] .sys-progress-track > span { animation:none; width:36%; margin-inline:auto; }
 @media (forced-colors:active) { .sys-progress-track { border-color:CanvasText; background:Canvas; }.sys-progress .sys-progress-track > span { background:Highlight; forced-color-adjust:none; } }
+
+.sys-progress-heading { flex-wrap:wrap; row-gap:8px; }
+.sys-progress-meta { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.sys-progress-error { display:inline-flex; align-items:center; gap:6px; color:var(--f-error); font-size:12px; font-weight:600; line-height:1.5; }
+.sys-progress[data-tone=error] .sys-progress-track { border-color:var(--f-error-border); }
+@media(forced-colors:active) { .sys-progress-error { color:CanvasText; }.sys-progress[data-tone=error] .sys-progress-track { border-color:CanvasText; } }

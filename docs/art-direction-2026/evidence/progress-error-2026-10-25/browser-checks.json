@@ -1,0 +1,33 @@
+{
+  "retryProgress": {
+    "errorCleared": true,
+    "nextEnabled": true,
+    "tone": "default"
+  },
+  "mobile": [
+    {
+      "describedBy": "_r_3f_-state",
+      "lang": "en",
+      "message": "The operation could not finish.Stopped after an example error. Try again to start at 25%.",
+      "overflow": false,
+      "status": "Error",
+      "width": 320
+    },
+    {
+      "describedBy": "_r_3f_-state",
+      "lang": "ru",
+      "message": "Не удалось завершить операцию.Пример остановлен с ошибкой. Повтор начнётся с 25%.",
+      "overflow": false,
+      "status": "Ошибка",
+      "width": 320
+    },
+    {
+      "describedBy": "_r_3f_-state",
+      "lang": "vi",
+      "message": "Không thể hoàn tất thao tác.Ví dụ đã dừng do lỗi. Thử lại để bắt đầu từ 25%.",
+      "overflow": false,
+      "status": "Lỗi",
+      "width": 320
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 // Structural SSR checks only; keyboard, focus and collision require browser checks.
 const server = await createServer({ root: fileURLToPath(new URL('..', import.meta.url)), configFile: false, server: { middlewareMode: true, hmr: false, ws: false } });
 after(async () => { await server.close(); });
+const { SystemProgress } = await server.ssrLoadModule('/src/foundations/SystemProgress.tsx');
 const { SystemMultiSelect } = await server.ssrLoadModule('/src/foundations/SystemMultiSelect.tsx');
 const { SystemButton } = await server.ssrLoadModule('/src/foundations/SystemButton.tsx');
 const { SystemMenu } = await server.ssrLoadModule('/src/foundations/SystemMenu.tsx');
@@ -76,4 +77,14 @@ test('multi-select renders selected labels and independent removal controls in i
 test('empty multi-select uses a placeholder and supports a disabled trigger', () => {
  const html=renderToStaticMarkup(createElement(SystemMultiSelect,{label:'Options',placeholder:'Choose options',value:[],onChange(){},disabled:true,options:[{value:'wrap',label:'Wrap lines'}]}));
  assert.match(html,/Choose options/);assert.match(html,/disabled=""/);assert.doesNotMatch(html,/class="sm-chip"/);
+});
+
+test('error progress exposes a localized text status linked to the progressbar', () => {
+ for (const [locale,label] of [['en','Error'],['ru','Ошибка'],['vi','Lỗi']]) {
+  const html=renderToStaticMarkup(createElement(SystemProgress,{label:'Operation',value:25,tone:'error',locale,hint:'Retry'}));
+  const bar=html.match(/<div[^>]*role="progressbar"[^>]*>/)?.[0]??'';
+  const described=attribute(bar,'aria-describedby')?.split(' ')??[];
+  assert.equal(described.length,2);for(const id of described)assert.ok(html.includes(`id="${id}"`));
+  assert.match(bar,/aria-valuenow="25"/);assert.match(html,/data-icon="error"/);assert.ok(html.includes(label));
+ }
 });

@@ -17,3 +17,10 @@
 @media (forced-colors: active) { .system-floating { border-color: CanvasText; box-shadow: none; } .system-menu > button:focus-visible { outline-color: Highlight; } .system-menu > button:disabled { color: GrayText; } }
 
 .system-menu > button { display:flex; align-items:center; justify-content:space-between; gap:16px; }.system-menu-check { min-width:16px; color:var(--f-accent); }
+
+/* A menu button and its surface share a clear, neutral open state. */
+.system-button[aria-haspopup=menu] { justify-content:space-between; gap:16px; }
+.system-button[aria-haspopup=menu][aria-expanded=true] { background:var(--f-raised,#1e1d19); border-color:var(--f-secondary,#b8b6ae); }
+.system-button[aria-haspopup=menu] .system-button-icon { color:var(--f-secondary,#b8b6ae); }
+.system-menu-item-label { display:flex; flex-direction:column; gap:2px; min-width:0; }
+.system-menu-item-label small { font-size:12px; font-weight:400; line-height:1.5; }

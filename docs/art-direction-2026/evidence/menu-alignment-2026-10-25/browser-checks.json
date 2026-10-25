@@ -1,0 +1,59 @@
+{
+  "escapeRestoresFocus": true,
+  "checks": [
+    {
+      "gap": 8,
+      "inside": true,
+      "lang": "en",
+      "leftOffset": 0,
+      "overflow": false,
+      "svg": true,
+      "width": 320
+    },
+    {
+      "gap": 8,
+      "inside": true,
+      "lang": "en",
+      "leftOffset": 0,
+      "overflow": false,
+      "svg": true,
+      "width": 1440
+    },
+    {
+      "gap": 8,
+      "inside": true,
+      "lang": "ru",
+      "leftOffset": 0,
+      "overflow": false,
+      "svg": true,
+      "width": 320
+    },
+    {
+      "gap": 8,
+      "inside": true,
+      "lang": "ru",
+      "leftOffset": 0,
+      "overflow": false,
+      "svg": true,
+      "width": 1440
+    },
+    {
+      "gap": 8,
+      "inside": true,
+      "lang": "vi",
+      "leftOffset": 0,
+      "overflow": false,
+      "svg": true,
+      "width": 320
+    },
+    {
+      "gap": 8,
+      "inside": true,
+      "lang": "vi",
+      "leftOffset": 0,
+      "overflow": false,
+      "svg": true,
+      "width": 1440
+    }
+  ]
+}

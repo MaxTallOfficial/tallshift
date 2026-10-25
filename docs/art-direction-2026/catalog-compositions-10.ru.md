@@ -12,7 +12,7 @@
 
 ## SystemCollectionTile
 
-Одна native button с `selected` / `aria-pressed`, `disabled`, `onSelect`. Поля `name`, `title`, `accessLabel`, `countLabel`, `membersLabel`, `memberIds`, `actionLabel` — текстовые. Нельзя передать вложенную кнопку. Состав и плановые числа предоставляет канонический каталог, компонент не пересчитывает обещанный продукт по шести демонстрационным записям. LibraryStatesLab передаёт отдельно плановый состав и число совпавших локальных образцов.
+Карточка содержит native button с `selected` / `aria-pressed`, `disabled`, `onSelect` и отдельный native details «Что входит». Это соседние элементы, без вложенных интерактивных контролов. Поля `name`, `title`, `accessLabel`, `countLabel`, `membersLabel`, `actionLabel` — текстовые; `members` — массив `{id,label}`, где id используется только как ключ, а label отображается человеку. Поле memberIds заменено: внутренние коды не служат пользовательским названием. Состав и плановые числа предоставляет канонический каталог, компонент не пересчитывает обещанный продукт по шести демонстрационным записям. LibraryStatesLab передаёт отдельно плановый состав и число совпавших локальных образцов.
 
 ## SystemCatalogToolbar
 

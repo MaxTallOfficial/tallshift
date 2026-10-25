@@ -101,3 +101,5 @@ html[data-motion=off] :is(.ls-button,.ls-collection,.ls-state-option),.system-st
 .ls-materials .system-content-tile { flex:1; }
 .ls-pagination-frame { grid-area:1/1; align-self:start; min-width:0; }
 .ls-pagination-frame[data-active=false] { visibility:hidden; pointer-events:none; }
+
+.ls-collections { align-items:start; }

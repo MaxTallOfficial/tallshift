@@ -1,3 +1,4 @@
+import { collectionMembers } from './material-labels';
 import { useId, useState } from 'react';
 import { accessProductOffer, accessStatesCopy, type AccessScenario, type AccessStatesLocale } from './access-states-copy';
 import { SystemOffer } from './SystemOffer';
@@ -51,9 +52,8 @@ export function AccessStatesLab({ locale, onOpenMaterial }: AccessStatesLabProps
         headline: <>{t.proClaim} <span>{t.proClaimAccent}</span></>, description: t.proDescription,
         benefits: t.proBenefits, priceLabel: t.notOnSale, priceNote: t.priceNote, deliveryNote: t.packNote }} illustration={<AccessMark kind="pro" />} details={
         <SystemAccordion className="as-offer-details" headingLevel={4} items={[{ id: 'offer-scope', title: t.details, content: <>
-        <div className="as-scope"><p>{t.scope}</p><ul aria-label={t.scope}>{accessProductOffer.itemIds.map(itemId => <li key={itemId}><code>{itemId}</code></li>)}</ul></div>
+        <div className="as-scope"><p>{t.scope}</p><ul aria-label={t.scope}>{collectionMembers(accessProductOffer.itemIds,locale).map(item => <li key={item.id}>{item.label}</li>)}</ul></div>
         <dl className="as-offer-facts">
-          <div><dt>{t.version}</dt><dd>{t.versionValue}</dd></div>
           <div><dt>{t.license}</dt><dd>{t.licenseValue}</dd></div>
           <div><dt>{t.updates}</dt><dd>{t.updatesValue}</dd></div>
         </dl>
@@ -77,7 +77,7 @@ export function AccessStatesLab({ locale, onOpenMaterial }: AccessStatesLabProps
           const state = t.scenarios[value];
           const isFree = value === 'free';
           return <SystemEntitlementState key={value} active={active} announce state={{ kind: value,
-            simulationLabel: t.simulated, itemLabel: isFree ? 'A001 · State Relay' : 'PACK-PRODUCT · Product',
+            simulationLabel: t.simulated, itemLabel: isFree ? 'State Relay' : 'Product',
             status: state.status, title: state.title, body: state.body,
             action: { label: state.action, reason: state.reason, disabled: !isFree, onAction: isFree ? onOpenMaterial : undefined },
           }} />;

@@ -12,7 +12,7 @@ export interface SystemOfferProps { offer: SystemOfferData; action?: SystemOffer
 export function SystemOffer({ offer, action, illustration, details, children, className = '' }: SystemOfferProps) {
   const id = useId(); const blocked = offer.availability !== 'available' || action?.disabled || !action?.onAction;
   return <article className={`as-offer as-offer-${offer.availability === 'available' ? 'free' : 'pro'} ${className}`.trim()} aria-labelledby={`${id}-title`} data-availability={offer.availability}>
-    <header className="as-offer-head"><div><span className="as-id">{offer.id}</span><p className="as-offer-name">{offer.name}</p></div>{illustration}</header>
+    <header className="as-offer-head"><div><p className="as-offer-name">{offer.name}</p></div>{illustration}</header>
     <span className={`as-badge ${offer.availability === 'available' ? 'as-badge-free' : ''}`}>{offer.badge}</span>
     <h3 id={`${id}-title`} className="as-claim">{offer.headline}</h3><p className="as-description">{offer.description}</p>
     <ul className="as-benefits">{offer.benefits.map((benefit,index) => <li key={`${index}-${benefit}`}>{benefit}</li>)}</ul>{details}

@@ -83,3 +83,5 @@
 .as-state[data-scenario=pending] .as-state-status { color:var(--sy-component-entitlement-pending-foreground,var(--f-warning)); }
 .as-state[data-scenario=pending] .as-state-status > span { background:currentColor; }
 .as-state[data-scenario=error] .as-state-status { color:var(--sy-component-entitlement-error-foreground,var(--f-error)); }
+
+.as-scope ul { display:grid; gap:8px; padding-inline-start:20px; list-style:disc; }.as-scope li { padding:0; border:0; background:transparent; font-size:14px; line-height:1.6; overflow-wrap:anywhere; }

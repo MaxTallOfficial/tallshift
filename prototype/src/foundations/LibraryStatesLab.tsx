@@ -1,3 +1,4 @@
+import { collectionMembers } from './material-labels';
 import { SystemContentTile } from './SystemContentTile';
 import { SystemCollectionTile } from './SystemCollectionTile';
 import { SystemPagination } from './SystemPagination';
@@ -71,7 +72,7 @@ export function LibraryStatesLab({ locale, onOpenMaterial }: { locale: LibrarySt
   const renderMaterials = (items: readonly DiscoveryMaterial[]) => <ul className="ls-materials">
     {items.map((material) => <li key={material.id}><SystemContentTile density="compact" headingLevel={4}
       name={material.name} title={material.pitch[locale]} description={material.description[locale]}
-      metadata={<><span>{material.id} · {t.categories[material.category]}</span><span>{material.access === 'free' ? t.free : t.pro}</span></>}
+      metadata={<><span>{t.categories[material.category]}</span><span>{material.access === 'free' ? t.free : t.pro}</span></>}
       status={<span className={material.available ? 'ls-readiness ls-readiness-ready' : 'ls-readiness'}>{material.available ? t.ready : t.notBuilt}</span>}
       action={material.available ? { state: 'ready', label: t.open, onOpen: onOpenMaterial } : { state: 'planned', label: t.planned, reason: t.notBuilt }}
     /></li>)}
@@ -95,7 +96,7 @@ export function LibraryStatesLab({ locale, onOpenMaterial }: { locale: LibrarySt
         return <SystemCollectionTile key={entry.id} name={entry.name} title={collectionPitches[locale][entry.id]}
           accessLabel={`${entry.access === 'free' ? t.free : t.pro} · ${t.planned}`}
           countLabel={libraryText(t.plannedItems, { count: entry.ids.length })}
-          membersLabel={t.members} memberIds={entry.ids}
+          membersLabel={t.members} members={collectionMembers(entry.ids,locale)}
           actionLabel={libraryText(t.sampleMatches, { count })}
           selected={entry.id === collectionId} onSelect={() => selectCollection(entry.id)} />;
       })}

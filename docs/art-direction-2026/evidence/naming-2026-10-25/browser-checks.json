@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-25",
+  "checks": [
+    {
+      "collectionCount": 9,
+      "factRows": 2,
+      "lang": "en",
+      "overflow": false,
+      "rawCodes": [],
+      "scope": [
+        "Product Demo Hero",
+        "Product Feature Steps",
+        "Product Pricing Compare",
+        "Segmented Navigation",
+        "Metric Switcher",
+        "Stagger Group"
+      ],
+      "width": 320
+    },
+    {
+      "collectionCount": 9,
+      "factRows": 2,
+      "lang": "en",
+      "overflow": false,
+      "rawCodes": [],
+      "scope": [
+        "Product Demo Hero",
+        "Product Feature Steps",
+        "Product Pricing Compare",
+        "Segmented Navigation",
+        "Metric Switcher",
+        "Stagger Group"
+      ],
+      "width": 1440
+    },
+    {
+      "collectionCount": 9,
+      "factRows": 2,
+      "lang": "ru",
+      "overflow": false,
+      "rawCodes": [],
+      "scope": [
+        "Первый экран с интерактивным демо",
+        "Возможности продукта по шагам",
+        "Сравнение тарифов",
+        "Навигация с переключением разделов",
+        "Переключатель показателей",
+        "Появление элементов по очереди"
+      ],
+      "width": 320
+    },
+    {
+      "collectionCount": 9,
+      "factRows": 2,
+      "lang": "ru",
+      "overflow": false,
+      "rawCodes": [],
+      "scope": [
+        "Первый экран с интерактивным демо",
+        "Возможности продукта по шагам",
+        "Сравнение тарифов",
+        "Навигация с переключением разделов",
+        "Переключатель показателей",
+        "Появление элементов по очереди"
+      ],
+      "width": 1440
+    },
+    {
+      "collectionCount": 9,
+      "factRows": 2,
+      "lang": "vi",
+      "overflow": false,
+      "rawCodes": [],
+      "scope": [
+        "Phần mở đầu với demo tương tác",
+        "Giới thiệu tính năng từng bước",
+        "So sánh gói dịch vụ",
+        "Điều hướng theo nhóm",
+        "Bộ chuyển chỉ số",
+        "Hiện lần lượt các phần tử"
+      ],
+      "width": 320
+    },
+    {
+      "collectionCount": 9,
+      "factRows": 2,
+      "lang": "vi",
+      "overflow": false,
+      "rawCodes": [],
+      "scope": [
+        "Phần mở đầu với demo tương tác",
+        "Giới thiệu tính năng từng bước",
+        "So sánh gói dịch vụ",
+        "Điều hướng theo nhóm",
+        "Bộ chuyển chỉ số",
+        "Hiện lần lượt các phần tử"
+      ],
+      "width": 1440
+    }
+  ],
+  "disclosureDoesNotChangeSelection": true,
+  "technicalSourceAndPromptExcluded": true
+}

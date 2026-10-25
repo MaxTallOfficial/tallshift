@@ -1,0 +1,35 @@
+{
+  "marks": [
+    {
+      "border": "1.5px",
+      "dx": 0,
+      "dy": 0,
+      "frame": [
+        20,
+        20
+      ],
+      "icon": [
+        20,
+        20
+      ]
+    },
+    {
+      "border": "1.5px",
+      "dx": 0,
+      "dy": 0,
+      "frame": [
+        20,
+        20
+      ],
+      "icon": [
+        20,
+        20
+      ]
+    }
+  ],
+  "mobile": {
+    "overflow": false,
+    "width": 320
+  },
+  "duotoneInstalled": false
+}

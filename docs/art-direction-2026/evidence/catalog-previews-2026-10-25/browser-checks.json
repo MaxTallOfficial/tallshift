@@ -1,0 +1,26 @@
+[
+  {
+    "frames": true,
+    "locale": "en",
+    "overflow": false,
+    "previewHeight": 140,
+    "text": "Copied",
+    "width": 320
+  },
+  {
+    "frames": true,
+    "locale": "ru",
+    "overflow": false,
+    "previewHeight": 140,
+    "text": "Скопировано",
+    "width": 320
+  },
+  {
+    "frames": true,
+    "locale": "vi",
+    "overflow": false,
+    "previewHeight": 140,
+    "text": "Đã sao chép",
+    "width": 320
+  }
+]

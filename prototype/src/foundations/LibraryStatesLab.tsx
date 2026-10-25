@@ -1,4 +1,5 @@
 import { collectionMembers } from './material-labels';
+import { MaterialPreview } from './MaterialPreview';
 import { SystemContentTile } from './SystemContentTile';
 import { SystemCollectionTile } from './SystemCollectionTile';
 import { SystemPagination } from './SystemPagination';
@@ -72,6 +73,7 @@ export function LibraryStatesLab({ locale, onOpenMaterial }: { locale: LibrarySt
   const renderMaterials = (items: readonly DiscoveryMaterial[]) => <ul className="ls-materials">
     {items.map((material) => <li key={material.id}><SystemContentTile density="compact" headingLevel={4}
       name={material.name} title={material.pitch[locale]} description={material.description[locale]}
+      preview={<MaterialPreview kind={material.preview} locale={locale} />}
       metadata={<><span>{t.categories[material.category]}</span><span>{material.access === 'free' ? t.free : t.pro}</span></>}
       status={<span className={material.available ? 'ls-readiness ls-readiness-ready' : 'ls-readiness'}>{material.available ? t.ready : t.notBuilt}</span>}
       action={material.available ? { state: 'ready', label: t.open, onOpen: onOpenMaterial } : { state: 'planned', label: t.planned, reason: t.notBuilt }}

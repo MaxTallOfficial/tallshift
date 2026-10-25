@@ -1,9 +1,10 @@
+import { MaterialPreview } from './MaterialPreview';
 import { SystemContentTile } from './SystemContentTile';
 import { SystemCatalogToolbar } from './SystemCatalogToolbar';
 import { SystemBadge } from './SystemBadge';
 import { useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { discoveryCopy, type DiscoveryLocale } from './discovery-copy';
-import { discoveryMaterials, type DiscoveryCategory, type DiscoveryPreview } from './discovery-data';
+import { discoveryMaterials, type DiscoveryCategory } from './discovery-data';
 import { filterDiscoveryMaterials } from './discovery-filter';
 import { SystemSelect } from './SystemSelect';
 import { SystemSearchCombobox } from './SystemSearchCombobox';
@@ -30,17 +31,6 @@ function SortSelect({ locale, value, onChange }: { locale: DiscoveryLocale; valu
   return <SystemSelect label={t.sort} value={value} options={[{ value: 'featured', label: t.recommended }, { value: 'name', label: t.alphabetical }]} onChange={next => onChange(next as SortOrder)} />;
 }
 
-function Preview({ kind }: { kind: DiscoveryPreview }) {
-  return <div className={`dl-preview dl-preview-${kind}`} aria-hidden="true">
-    <div className="dl-preview-grid" />
-    {kind === 'relay' && <div className="dl-relay-sample"><div className="dl-relay-action"><Icon name="check" /><span>Copied</span></div><div className="dl-relay-track"><i /><span /><i /><span /><i className="dl-dot-current" /></div></div>}
-    {kind === 'lines' && <div className="dl-lines-sample"><span>One line.</span><span>Then another.</span><i /></div>}
-    {kind === 'hero' && <div className="dl-hero-sample"><div><i /><b /><b /><span /></div><div className="dl-hero-object"><span /><span /><span /></div></div>}
-    {kind === 'button' && <div className="dl-button-sample"><span>Get started<Icon name="arrow" /></span><div className="dl-pointer" /></div>}
-    {kind === 'bridge' && <div className="dl-bridge-sample"><div><i /><span /><span /><b /></div><Icon name="arrow" /><div><i /><span /><span /><b /></div></div>}
-    {kind === 'spotlight' && <div className="dl-spotlight-sample"><i /><div><span /><span /><span /></div></div>}
-  </div>;
-}
 
 export function DiscoveryLab({ locale, onOpenMaterial }: { locale: DiscoveryLocale; onOpenMaterial: () => void }) {
   const t = discoveryCopy[locale];
@@ -95,7 +85,7 @@ export function DiscoveryLab({ locale, onOpenMaterial }: { locale: DiscoveryLoca
     <p id={`${id}-hint`} className="dl-search-hint">{t.hint}</p>
     {materialList.length > 0 ? <div className="dl-material-grid">{materialList.map(material => <SystemContentTile density="compact" key={material.id}
       name={material.name} title={material.pitch[locale]} description={material.description[locale]}
-      preview={<Preview kind={material.preview} />}
+      preview={<MaterialPreview kind={material.preview} locale={locale} />}
       metadata={<><span>{t[material.category]}</span><SystemBadge>{material.access === 'free' ? t.free : t.pro}</SystemBadge></>}
       status={<><span className={material.available ? 'dl-status-ready' : 'dl-status-planned'}>{material.available ? t.available : t.planned}</span><span>{material.available ? t.license : t.licensePending}</span></>}
       action={material.available ? { state: 'ready', label: t.open, onOpen: onOpenMaterial } : { state: 'planned', label: t.unavailable, reason: t.plannedNote }}

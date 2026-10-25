@@ -32,6 +32,9 @@
 .system-button:focus-visible { outline: 2px solid var(--f-focus, #b8b8b2); outline-offset: 3px; }
 .system-button:disabled { opacity: .5; cursor: not-allowed; }
 .system-button[aria-disabled="true"] { cursor: default; }
+/* Icon-only actions keep a visible footprint even without a fill. */
+.system-button.system-icon-button:where([data-variant="secondary"],[data-variant="quiet"]) { border-color:var(--f-line,#45443e); }
+.system-button.system-icon-button:where([data-variant="secondary"],[data-variant="quiet"]):not(:disabled):not([aria-disabled="true"]):hover { border-color:var(--f-control-border,#77756e); }
 .system-button[aria-pressed="true"] { border-color: var(--f-accent, #ebd183); background: var(--f-raised, #1e1d19); }
 .system-button-icon { display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; }
 .system-button-icon > svg { display:block; vertical-align:0; }

@@ -99,7 +99,7 @@ export function InteractionLab({ locale, motionOff }: { locale: Locale; motionOf
       <form className="il-form" noValidate onSubmit={save} aria-labelledby={`${id}-form-title`}>
         <div className="il-card-heading">
           <div><h3 id={`${id}-form-title`}>{t.formTitle}</h3><p>{t.formNote}</p></div>
-          <SystemTooltip content={t.tooltip} trigger={props => <SystemIconButton {...props} density="compact" icon="info" label={t.tooltipLabel} variant="quiet" />} />
+          <SystemTooltip content={t.tooltip} trigger={props => <SystemIconButton {...props} density="inline" icon="info" label={t.tooltipLabel} variant="quiet" />} />
         </div>
         <SystemTextInput className="il-field" ref={inputRef} id={`${id}-name`} name="preset-name" label={t.name} description={t.nameHelp} value={name} required autoComplete="off" placeholder={t.namePlaceholder} error={error ? t[error] : undefined} announceError onChange={event => { setName(event.target.value); if (error) setError(null); }} />
         <SystemTextarea className="il-field" id={`${id}-notes`} name="preset-notes" label={t.notes} requirement={t.optional} description={t.notesHelp} counter={t.characterCount.replace('{count}', String(notes.length))} value={notes} maxLength={160} placeholder={t.notesPlaceholder} onChange={event => setNotes(event.target.value)} />

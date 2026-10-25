@@ -14,3 +14,9 @@
 @media(max-width:767px),(pointer:coarse) {
  .system-icon-button,.sn-navigation,.sf-toast { --sy-icon-compact-size:44px; }
 }
+
+/* Bare information affordances do not draw a button container. */
+.system-icon-button,.sn-navigation { --sy-info-target-size:24px; }
+@media(max-width:767px),(pointer:coarse) {
+ .system-icon-button,.sn-navigation { --sy-info-target-size:44px; }
+}

@@ -106,7 +106,7 @@ export function SourceNavigator({ locale, files, selectedPath, onSelect, onCopy,
         ]} />
       </div>
       <div className="sn-info-wrap">
-        <SystemPopover title={t.about} closeLabel={t.close} open={infoOpen} onOpenChange={next => { setInfoOpen(next); if (next) setMenuOpen(false); }} trigger={props => <button {...props} type="button" className="sn-control sn-icon-control" aria-label={t.about} title={t.about} disabled={!selected}><Icon kind="info" /></button>}>
+        <SystemPopover title={t.about} closeLabel={t.close} open={infoOpen} onOpenChange={next => { setInfoOpen(next); if (next) setMenuOpen(false); }} trigger={props => <button {...props} type="button" className="sn-control sn-icon-control sn-info-trigger" data-density="inline" aria-label={t.about} title={t.about} disabled={!selected}><Icon kind="info" /></button>}>
           {selected && <dl><div><dt>{t.path}</dt><dd>{selected.path}</dd></div><div><dt>{t.type}</dt><dd>{fileType(selected.path)}</dd></div><div><dt>{t.bytes}</dt><dd>{new Intl.NumberFormat(locale).format(new TextEncoder().encode(selected.content).byteLength)} {t.byteUnit}</dd></div></dl>}
         </SystemPopover>
       </div>

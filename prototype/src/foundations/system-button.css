@@ -57,3 +57,6 @@
 
 /* Opt in by role; never infer density from DOM neighbours. */
 .system-icon-button[data-density="compact"] { min-inline-size:var(--sy-icon-compact-size,36px); min-block-size:var(--sy-icon-compact-size,36px); inline-size:var(--sy-icon-compact-size,36px); block-size:var(--sy-icon-compact-size,36px); padding:0; }
+
+.system-button.system-icon-button[data-density="inline"] { inline-size:var(--sy-info-target-size,24px); block-size:var(--sy-info-target-size,24px); min-inline-size:var(--sy-info-target-size,24px); min-block-size:var(--sy-info-target-size,24px); padding:0; border:0; background:transparent; color:var(--f-secondary); border-radius:4px; }
+.system-button.system-icon-button[data-density="inline"]:not(:disabled):not([aria-disabled="true"]):hover { background:transparent; color:var(--f-text); }

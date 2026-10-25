@@ -94,3 +94,19 @@
 .il-form-state-grid .system-radio-group { margin-block: 16px; }
 @media (max-width: 780px) { .il-form-state-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
 @media (max-width: 500px) { .il-form-states { padding: 24px 16px; } }
+
+/* Reserve the reset slot instead of wrapping a text action onto an orphan row. */
+.il-form { container-type:inline-size; container-name:preset-form; }
+.il-actions { display:grid; grid-template-columns:max-content max-content minmax(0,1fr); }
+.il-clear-action { justify-self:end; min-width:0; }
+.il-actions .il-clear-fields { margin:0; width:auto; border-color:var(--f-line); }
+@container preset-form (max-width:600px) {
+ .il-actions .il-clear-fields { inline-size:var(--sy-control-size,52px); block-size:var(--sy-control-size,52px); padding:0; }
+ .il-clear-fields .system-button-label { display:none; }
+}
+@container preset-form (max-width:420px) {
+ .il-actions { grid-template-columns:minmax(0,1fr) auto; }
+ .il-actions > button:first-child { grid-column:1 / -1; width:100%; }
+ .il-actions > button:nth-child(2) { grid-column:1; width:100%; }
+ .il-clear-action { grid-column:2; }
+}

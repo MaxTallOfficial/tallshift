@@ -32,13 +32,14 @@
 .system-button:disabled { opacity: .5; cursor: not-allowed; }
 .system-button[aria-disabled="true"] { cursor: default; }
 .system-button[aria-pressed="true"] { border-color: var(--f-accent, #ebd183); background: var(--f-raised, #1e1d19); }
-.system-button-icon { display: inline-flex; flex: 0 0 auto; }
+.system-button-icon { display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; }
+.system-button-icon > svg { display:block; vertical-align:0; }
 .system-button-label { min-inline-size: 0; overflow-wrap: anywhere; }
 .system-button[data-loading] .system-button-label, .system-button[data-loading] .system-button-icon { opacity: 0; }
 .system-button-busy { position: absolute; inline-size: 16px; block-size: 16px; border: 2px solid currentColor; border-inline-end-color: transparent; border-radius: 50%; animation: system-button-wait 800ms linear infinite; }
-.system-icon-button { inline-size: 48px; padding-inline: 0; flex-shrink: 0; }
-.system-icon-button[data-size="small"] { inline-size: 44px; padding-inline: 0; }
-.system-icon-button[data-size="large"] { inline-size: 52px; padding-inline: 0; }
+.system-icon-button { inline-size:48px; block-size:48px; padding:0; flex-shrink:0; }
+.system-icon-button[data-size="small"] { inline-size:44px; block-size:44px; padding:0; }
+.system-icon-button[data-size="large"] { inline-size:52px; block-size:52px; padding:0; }
 @keyframes system-button-wait { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .system-button { transition: none; } .system-button-busy { animation: none; } }
 [data-motion="off"] .system-button { transition: none; }

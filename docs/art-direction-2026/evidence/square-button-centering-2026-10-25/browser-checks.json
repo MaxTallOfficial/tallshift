@@ -1,0 +1,372 @@
+{
+  "before": [
+    {
+      "class": "system-button system-icon-button",
+      "dx": 0,
+      "dy": -1.625,
+      "height": 48,
+      "label": "О локальных пресетах",
+      "width": 48
+    },
+    {
+      "class": "system-button system-icon-button",
+      "dx": 0,
+      "dy": -1.625,
+      "height": 48,
+      "label": "Сохранить пример",
+      "width": 48
+    },
+    {
+      "class": "system-button system-icon-button",
+      "dx": 0,
+      "dy": -1.625,
+      "height": 48,
+      "label": "Повторить пример",
+      "width": 48
+    },
+    {
+      "class": "system-button system-icon-button",
+      "dx": 0,
+      "dy": -1.625,
+      "height": 48,
+      "label": "О составе пакета",
+      "width": 48
+    },
+    {
+      "class": "sm-remove",
+      "dx": 0,
+      "dy": 0,
+      "height": 32,
+      "label": "Убрать: Меньше движения",
+      "width": 32
+    },
+    {
+      "class": "system-button sm-trigger",
+      "dx": 0,
+      "dy": 0,
+      "height": 44,
+      "label": "Параметры отображения: Меньше движения",
+      "width": 44
+    }
+  ],
+  "after": [
+    {
+      "scenario": "page",
+      "buttons": [
+        {
+          "class": "system-button system-icon-button",
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "О локальных пресетах",
+          "width": 48
+        },
+        {
+          "class": "system-button system-icon-button",
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "Сохранить пример",
+          "width": 48
+        },
+        {
+          "class": "system-button system-icon-button",
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "Повторить пример",
+          "width": 48
+        },
+        {
+          "class": "system-button system-icon-button",
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "О составе пакета",
+          "width": 48
+        },
+        {
+          "class": "sm-remove",
+          "dx": 0,
+          "dy": 0,
+          "height": 32,
+          "label": "Убрать: Меньше движения",
+          "width": 32
+        },
+        {
+          "class": "system-button sm-trigger",
+          "dx": 0,
+          "dy": 0,
+          "height": 44,
+          "label": "Параметры отображения: Меньше движения",
+          "width": 44
+        }
+      ]
+    },
+    {
+      "scenario": "popover",
+      "buttons": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "Закрыть сведения",
+          "width": 48
+        }
+      ]
+    },
+    {
+      "scenario": "toasts",
+      "buttons": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 44,
+          "label": "Закрыть уведомление",
+          "width": 44
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 44,
+          "label": "Закрыть уведомление",
+          "width": 44
+        }
+      ]
+    },
+    {
+      "scenario": "dialog",
+      "buttons": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "Закрыть диалог",
+          "width": 48
+        }
+      ]
+    },
+    {
+      "scenario": "sheet",
+      "buttons": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "Закрыть диалог",
+          "width": 48
+        }
+      ]
+    },
+    {
+      "scenario": "source-controls",
+      "buttons": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 44,
+          "icons": 1,
+          "label": "Действия с файлом",
+          "width": 44
+        },
+        {
+          "height": 44,
+          "icons": 2,
+          "label": "Об этом файле",
+          "width": 64
+        }
+      ]
+    }
+  ],
+  "mobile": [
+    {
+      "buttons": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 44,
+          "label": "Clear search",
+          "width": 44
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 44,
+          "label": "File actions",
+          "width": 44
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "About local presets",
+          "width": 48
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "Save example",
+          "width": 48
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "Replay example",
+          "width": 48
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "About package details",
+          "width": 48
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 32,
+          "label": "Remove: Reduce motion",
+          "width": 32
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 44,
+          "label": "Display options: Reduce motion",
+          "width": 44
+        }
+      ],
+      "lang": "en",
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "buttons": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 44,
+          "label": "Очистить поиск",
+          "width": 44
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 44,
+          "label": "Действия с файлом",
+          "width": 44
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "О локальных пресетах",
+          "width": 48
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "Сохранить пример",
+          "width": 48
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "Повторить пример",
+          "width": 48
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "О составе пакета",
+          "width": 48
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 32,
+          "label": "Убрать: Меньше движения",
+          "width": 32
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 44,
+          "label": "Параметры отображения: Меньше движения",
+          "width": 44
+        }
+      ],
+      "lang": "ru",
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "buttons": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 44,
+          "label": "Xóa tìm kiếm",
+          "width": 44
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 44,
+          "label": "Thao tác với tệp",
+          "width": 44
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "Về bộ thiết lập cục bộ",
+          "width": 48
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "Lưu ví dụ",
+          "width": 48
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "Phát lại ví dụ",
+          "width": 48
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 48,
+          "label": "Về nội dung gói",
+          "width": 48
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 32,
+          "label": "Bỏ: Giảm chuyển động",
+          "width": 32
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "height": 44,
+          "label": "Tùy chọn hiển thị: Giảm chuyển động",
+          "width": 44
+        }
+      ],
+      "lang": "vi",
+      "overflow": false,
+      "width": 320
+    }
+  ]
+}

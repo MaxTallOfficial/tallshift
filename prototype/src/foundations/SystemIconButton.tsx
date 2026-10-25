@@ -10,5 +10,5 @@ export interface SystemIconButtonProps extends Omit<SystemButtonProps, 'children
 }
 /** Toggle callers supply aria-pressed; a tooltip is never the only accessible name. */
 export function SystemIconButton({ label, icon, iconSize = 20, className = '', ...props }: SystemIconButtonProps) {
-  return <SystemButton {...props} aria-label={label} className={`system-icon-button ${className}`.trim()}><SystemIcon name={icon} size={iconSize} /></SystemButton>;
+  return <SystemButton {...props} aria-label={label} className={`system-icon-button ${className}`.trim()} leadingIcon={<SystemIcon name={icon} size={iconSize}/>} />;
 }

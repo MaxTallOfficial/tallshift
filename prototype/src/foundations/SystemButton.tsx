@@ -19,7 +19,7 @@ export function SystemButton({ variant = 'secondary', size = 'medium', loading =
     onClick?.(event);
   }}>
     {leadingIcon && <span className="system-button-icon" aria-hidden="true">{leadingIcon}</span>}
-    <span className="system-button-label">{children}</span>
+    {children !== undefined && children !== null && <span className="system-button-label">{children}</span>}
     {endIcon && <span className="system-button-icon" aria-hidden="true">{endIcon}</span>}
     {loading && <span className="system-button-busy" aria-hidden="true" />}
   </button>;

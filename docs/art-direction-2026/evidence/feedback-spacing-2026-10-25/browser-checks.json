@@ -1,0 +1,25 @@
+{
+  "desktop": [
+    {
+      "gap": 16,
+      "state": "Успех"
+    },
+    {
+      "gap": 16,
+      "state": "Ошибка"
+    },
+    {
+      "gap": 16,
+      "state": "Уведомление"
+    },
+    {
+      "gap": 16,
+      "state": "Загрузка"
+    }
+  ],
+  "mobile": {
+    "gap": 16,
+    "overflow": false,
+    "width": 320
+  }
+}

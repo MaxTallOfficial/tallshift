@@ -106,7 +106,7 @@ export function SourceNavigator({ locale, files, selectedPath, onSelect, onCopy,
       <button type="button" className="sn-control sn-files-trigger" ref={filesTrigger} aria-haspopup="dialog" aria-controls={`${id}-sheet`} aria-expanded={sheetOpen} onClick={openSheet}><Icon kind="folder" /><span>{t.files}</span><span className="sn-count">{files.length}</span></button>
       <span className="sn-desktop-title">{t.files}<span className="sn-count">{files.length}</span></span>
       <div className="sn-menu-wrap">
-        <SystemMenu label={t.actions} open={menuOpen} onOpenChange={next => { setMenuOpen(next); if (next) setInfoOpen(false); }} trigger={props => <button {...props} ref={node => { props.ref.current = node; menuTrigger.current = node; }} type="button" className="sn-control sn-icon-control" aria-label={t.actions} disabled={!selected}><Icon kind="more" /></button>} items={[
+        <SystemMenu label={t.actions} align="end" open={menuOpen} onOpenChange={next => { setMenuOpen(next); if (next) setInfoOpen(false); }} trigger={props => <button {...props} ref={node => { props.ref.current = node; menuTrigger.current = node; }} type="button" className="sn-control sn-icon-control" aria-label={t.actions} disabled={!selected}><Icon kind="more" /></button>} items={[
           { id: 'copy', label: copyBusy ? t.copying : t.copy, disabled: copyBusy, onSelect: onCopy },
           { id: 'download', label: t.download, onSelect: download },
         ]} />

@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from 'react';
 import { createPortal } from 'react-dom';
 import './system-floating.css';
+import { floatingLeft } from './floating-alignment';
 
 export type FloatingReason = 'trigger' | 'escape' | 'outside' | 'focus-out' | 'action' | 'close';
 export interface FloatingTriggerProps {
@@ -40,8 +41,8 @@ export function useFloatingPosition(open: boolean, trigger: RefObject<HTMLElemen
       const maxHeight = Math.max(44, below ? availableBelow : availableAbove);
       const panelHeight = Math.min(naturalHeight, maxHeight);
       const panelWidth = Math.min(panel.current.getBoundingClientRect().width, width - 24);
-      const requestedLeft = align === 'end' ? anchor.right - panelWidth : anchor.left;
-      setPosition({ position: 'fixed', left: Math.max(leftBound + 12, Math.min(requestedLeft, leftBound + width - panelWidth - 12)), top: Math.max(topBound + 12, below ? anchor.bottom + 8 : anchor.top - panelHeight - 8), maxWidth: width - 24, maxHeight, visibility: 'visible' });
+      const left = floatingLeft(anchor, panelWidth, { left: leftBound, width }, align);
+      setPosition({ position: 'fixed', left, top: Math.max(topBound + 12, below ? anchor.bottom + 8 : anchor.top - panelHeight - 8), maxWidth: width - 24, maxHeight, visibility: 'visible' });
     };
     update();
     const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(update);

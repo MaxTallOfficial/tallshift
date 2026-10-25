@@ -68,4 +68,11 @@
 .sn-info { background:var(--sy-component-popover-background,var(--f-raised)); border-color:var(--sy-component-popover-border,var(--f-control-border)); }
 .sn-sheet { background:var(--sy-component-sheet-background,var(--f-surface)); border-color:var(--sy-component-sheet-border,var(--f-control-border)); }
 
-.sn-navigation .sn-dropdown-control { width:auto; min-width:calc(var(--sy-control-size,52px) + 12px); display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:11px 10px; }
+
+/* File actions need a visible label; information remains a square icon control. */
+.sn-toolbar { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:8px; }
+.sn-desktop-title,.sn-files-trigger { grid-column:1; grid-row:1; }
+.sn-info-wrap { grid-column:2; grid-row:1; }
+.sn-menu-wrap { grid-column:1 / -1; grid-row:2; min-width:0; }
+.sn-navigation .sn-actions-control { width:100%; justify-content:space-between; gap:10px; border-color:var(--f-control-border); }
+.sn-actions-control > span { min-width:0; }

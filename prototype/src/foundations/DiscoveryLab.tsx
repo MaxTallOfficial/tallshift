@@ -93,7 +93,7 @@ export function DiscoveryLab({ locale, onOpenMaterial }: { locale: DiscoveryLoca
     </div>
     </SystemCatalogToolbar>
     <p id={`${id}-hint`} className="dl-search-hint">{t.hint}</p>
-    {materialList.length > 0 ? <div className="dl-material-grid">{materialList.map(material => <SystemContentTile key={material.id}
+    {materialList.length > 0 ? <div className="dl-material-grid">{materialList.map(material => <SystemContentTile density="compact" key={material.id}
       name={material.name} title={material.pitch[locale]} description={material.description[locale]}
       preview={<Preview kind={material.preview} />}
       metadata={<><span>{material.id} / {t[material.category]}</span><SystemBadge>{material.access === 'free' ? t.free : t.pro}</SystemBadge></>}

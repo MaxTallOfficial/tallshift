@@ -98,7 +98,7 @@
 .sy-toast { position: fixed; z-index: var(--sy-layer-toast); right: 24px; bottom: 24px; display: flex; align-items: center; gap: 20px; max-width: min(440px,calc(100% - 32px)); padding: 10px 10px 10px 18px; border: 1px solid var(--f-control-border); border-radius: 12px; background: var(--f-raised); color: var(--f-text); box-shadow: 0 12px 32px #0006; }.sy-toast p { font-size: 14px; }.sy-toast button { flex: 0 0 44px; min-width: 44px; min-height: 44px; border: 0; background: transparent; color: var(--f-secondary); font-size: 24px; }
 .system-study:lang(vi) :is(h1,h2,h3,.sy-kicker) { letter-spacing: normal; }
 .system-study[data-motion=off] *,.system-study[data-motion=off] *::before,.system-study[data-motion=off] *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-@media (max-width: 1023px) { .sy-width { width: calc(100% - 48px); }.sy-intro { grid-template-columns: minmax(0,1fr) 300px; gap: 32px; }.sy-header nav { gap: 24px; }.sy-work-body { grid-template-columns: minmax(0,1fr); }.sy-work-settings { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); border-left: 0; border-top: 1px solid var(--f-line); border-radius: 0 0 16px 16px; }.sy-work-settings .sy-context { grid-row: span 2; }.sy-work-identity { grid-column: 1/-1; }.sy-motion-panel { gap: 24px; padding: 24px; }.sy-handoff-panel { align-items: flex-start; flex-direction: column; } }
+@media (max-width: 1023px) { .sy-width { width: calc(100% - 48px); }.sy-intro { grid-template-columns: minmax(0,1fr) 300px; gap: 32px; }.sy-header nav { gap: 24px; }.sy-work-body { grid-template-columns: minmax(0,1fr); }.sy-work-settings { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); border-left: 0; border-top: 1px solid var(--f-line); border-radius: 0 0 16px 16px; }.sy-motion-panel { gap: 24px; padding: 24px; }.sy-handoff-panel { align-items: flex-start; flex-direction: column; } }
 @media (max-width: 767px) { .sy-width { width: calc(100% - 32px); }.sy-header-main { min-height: 80px; gap: 12px; }.sy-brand { font-size: 26px; }.sy-edition { display: none; }.sy-header nav { gap: 24px; }.sy-intro { grid-template-columns: minmax(0,1fr); padding-block: 40px; gap: 28px; }.sy-intro h1 { font-size: var(--sy-display-mobile); letter-spacing: -.02em; }.sy-lead { margin-top: 20px; }.sy-decisions { padding: 0 0 0 20px; }.sy-decisions > span:first-child { margin-bottom: 12px; }.sy-review { margin-top: 14px; }.sy-section,.sy-foundations { margin-top: 56px; }.sy-section-heading h2 { font-size: 24px; }.sy-section-heading p { font-size: 16px; }.sy-work-header { padding: 24px 20px; }.sy-work-header h3 { font-size: 24px; }.sy-workbar { padding: 16px; flex-wrap: wrap; }.sy-tabs { width: 100%; }.sy-tabs button { min-width: 0; flex: 1; padding-inline: 10px; }.sy-workbar > .sy-button { width: 100%; }.sy-representations { padding: 24px 16px; }.sy-work-settings { grid-template-columns: minmax(0,1fr); padding: 24px 20px; gap: 24px; }.sy-work-settings .sy-context { grid-row: auto; }.sy-preview-frame { padding-top: 20px; }.sy-width-picker > div { display: grid; grid-template-columns: minmax(0,1fr); }.sy-width-picker button { width: 100%; }.sy-source { padding: 16px; font-size: 12px; }.sy-prompt { padding: 16px; font-size: 14px; }.sy-color-layers { grid-template-columns: repeat(2,minmax(0,1fr)); }.sy-color-layers > div { min-height: 120px; padding: 20px; }.sy-color-layers > div:nth-child(3) { border-left: 0; border-top: 1px solid var(--f-control-border); }.sy-color-layers > div:nth-child(4) { border-top: 1px solid var(--f-control-border); }.sy-role-row { grid-template-columns: minmax(0,1fr); gap: 12px; }.sy-motion-panel { grid-template-columns: minmax(0,1fr); gap: 28px; padding: 24px 20px; }.sy-handoff-panel { padding: 24px 20px; }.sy-handoff-panel .sy-button { width: 100%; }.sy-table-scroll { padding-inline: 16px; }.sy-footer { flex-direction: column; gap: 4px; margin-top: 56px; }.sy-footer span { align-self: flex-start; }.sy-toast { right: 16px; bottom: 16px; } }
 @media (forced-colors: active) { .sy-tabs button[aria-selected=true],.sy-locales button[aria-pressed=true] { outline: 1px solid Highlight; }.sy-brand span,.sy-decisions i { background: Highlight; } }
 @media (forced-colors: active) { .system-study :is(input:not([type=checkbox],[type=radio],[type=range]),textarea):focus-visible { outline: 2px solid Highlight; outline-offset: 2px; box-shadow: none; } }
@@ -110,3 +110,22 @@
 
 .sy-toast-host { position: fixed; inset-inline-end: 24px; bottom: 24px; z-index: 20; width: min(420px, calc(100% - 32px)); pointer-events: none; }.sy-toast-host .sf-toast { pointer-events: auto; box-shadow: 0 12px 40px #0005; }.sy-toast-host .sf-toast-region:focus-visible { outline: 2px solid var(--f-focus); outline-offset: 3px; }
 @media (max-width:767px) { .sy-toast-host { inset-inline-end:16px; bottom:16px; } }
+
+/* Settings have explicit groups; archive actions never stretch into an auto grid row. */
+.sy-configuration { display:grid; align-content:start; gap:20px; min-width:0; }
+.sy-export-footer { display:flex; flex-direction:column; align-items:flex-start; gap:16px; min-width:0; padding-top:20px; border-top:1px solid var(--f-line); }
+.sy-export-footer .system-download-action { align-self:flex-start; width:100%; }
+.sy-export-footer .system-download-action > .system-button { width:100%; min-height:48px; }
+.sy-work-settings { align-content:start; }
+@media(min-width:768px) and (max-width:1023px) {
+  .sy-work-settings { align-items:start; }
+  .sy-configuration .sc-hex-row { grid-template-columns:44px minmax(90px,1fr) auto; }
+  .sy-configuration .sc-hex-row > .sc-button { grid-column:auto; }
+  .sy-export-footer { grid-column:1/-1; flex-direction:row; flex-wrap:wrap; align-items:center; justify-content:space-between; }
+  .sy-export-footer .system-download-action { width:auto; }
+}
+@media(max-width:767px) { .sy-export-footer { width:100%; }.sy-export-footer .system-download-action { width:100%; } }
+
+.sy-configuration .sc-button-primary { color:var(--f-text); background:var(--f-surface); border-color:var(--f-control-border); }
+.sy-configuration .sc-button-primary:hover:not(:disabled) { background:var(--f-raised); border-color:var(--f-secondary); }
+.sy-export-footer .sy-work-identity { font-size:12px; }

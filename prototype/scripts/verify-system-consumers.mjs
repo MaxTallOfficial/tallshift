@@ -19,7 +19,9 @@ await run('npm',['install','--no-audit','--no-fund','--force',path.join(root,'pa
 const hash=async p=>createHash('sha256').update(await readFile(p)).digest('hex');
 const bundleHash=await hash(path.join(root,'packages/tallshift-ui/dist/index.js'));
 if(bundleHash!==await hash(path.join(fixture,'node_modules/@tallshift/ui/dist/index.js')))throw new Error('Installed package differs from current library bundle');
+const stylesHash=await hash(path.join(root,'packages/tallshift-ui/dist/styles.css'));
+if(stylesHash!==await hash(path.join(fixture,'node_modules/@tallshift/ui/dist/styles.css')))throw new Error('Installed CSS differs from current library styles');
 await run(path.join(fixture,'node_modules/.bin/next'),['build','--webpack'],fixture);
 await run(path.join(prototype,'node_modules/.bin/vite'),['build',fixture,'--outDir','dist-vite','--emptyOutDir']);
 await mkdir(evidence,{recursive:true});
-await writeFile(path.join(evidence,'consumer-builds.json'),JSON.stringify({scope:'Installed local tgz in independent Next.js and Vite consumer, type checking and production builds; runtime browser checks recorded separately',node:process.version,next:'16.4.3',react:'19.3.1',bundleHash,tarballHash:await hash(path.join(root,'packages/tallshift-ui/tallshift-ui-0.1.0.tgz')),results},null,2)+'\n');
+await writeFile(path.join(evidence,'consumer-builds.json'),JSON.stringify({scope:'Installed local tgz in independent Next.js and Vite consumer, type checking and production builds; runtime browser checks recorded separately',node:process.version,next:'16.4.3',react:'19.3.1',bundleHash,stylesHash,tarballHash:await hash(path.join(root,'packages/tallshift-ui/tallshift-ui-0.1.0.tgz')),results},null,2)+'\n');

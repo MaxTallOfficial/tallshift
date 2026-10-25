@@ -1,0 +1,99 @@
+{
+  "baseline968": {
+    "cardHeight": 693,
+    "settingsHeight": 538.328125
+  },
+  "after968": {
+    "cardHeight": 473,
+    "settingsHeight": 377.59375
+  },
+  "responsive": [
+    {
+      "cardHeight": 501,
+      "lang": "en",
+      "overlap": false,
+      "scrollWidth": 320,
+      "width": 320,
+      "zipHeight": 48,
+      "zipWidth": 246
+    },
+    {
+      "cardHeight": 473,
+      "lang": "en",
+      "overlap": false,
+      "scrollWidth": 768,
+      "width": 768,
+      "zipHeight": 48,
+      "zipWidth": 190.5703125
+    },
+    {
+      "cardHeight": 449,
+      "lang": "en",
+      "overlap": false,
+      "scrollWidth": 1440,
+      "width": 1440,
+      "zipHeight": 48,
+      "zipWidth": 239
+    },
+    {
+      "cardHeight": 527,
+      "lang": "ru",
+      "overlap": false,
+      "scrollWidth": 320,
+      "width": 320,
+      "zipHeight": 48,
+      "zipWidth": 246
+    },
+    {
+      "cardHeight": 500,
+      "lang": "ru",
+      "overlap": false,
+      "scrollWidth": 768,
+      "width": 768,
+      "zipHeight": 48,
+      "zipWidth": 180.7890625
+    },
+    {
+      "cardHeight": 500,
+      "lang": "ru",
+      "overlap": false,
+      "scrollWidth": 1440,
+      "width": 1440,
+      "zipHeight": 48,
+      "zipWidth": 239
+    },
+    {
+      "cardHeight": 527,
+      "lang": "vi",
+      "overlap": false,
+      "scrollWidth": 320,
+      "width": 320,
+      "zipHeight": 48,
+      "zipWidth": 246
+    },
+    {
+      "cardHeight": 473,
+      "lang": "vi",
+      "overlap": false,
+      "scrollWidth": 768,
+      "width": 768,
+      "zipHeight": 48,
+      "zipWidth": 143.390625
+    },
+    {
+      "cardHeight": 473,
+      "lang": "vi",
+      "overlap": false,
+      "scrollWidth": 1440,
+      "width": 1440,
+      "zipHeight": 48,
+      "zipWidth": 239
+    }
+  ],
+  "stablePanels": [
+    748.3984375,
+    748.3984375,
+    748.3984375,
+    748.3984375
+  ]
+}

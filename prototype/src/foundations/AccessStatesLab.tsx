@@ -1,4 +1,3 @@
-import { SystemIcon } from './SystemIcon';
 import { collectionMembers } from './material-labels';
 import { useId, useState } from 'react';
 import { accessProductOffer, accessStatesCopy, type AccessScenario, type AccessStatesLocale } from './access-states-copy';
@@ -11,7 +10,6 @@ type AccessStatesLabProps = { locale: AccessStatesLocale; onOpenMaterial: () => 
 
 const scenarios: readonly AccessScenario[] = ['free', 'no-access', 'pending', 'owner', 'error', 'closed'];
 
-function AccessMark({kind}:{kind:'free'|'pro'}) { return <SystemIcon name={kind==='free'?'check':'layers'} className="as-mark" size={24}/>; }
 
 export function AccessStatesLab({ locale, onOpenMaterial }: AccessStatesLabProps) {
   const t = accessStatesCopy[locale];
@@ -33,10 +31,10 @@ export function AccessStatesLab({ locale, onOpenMaterial }: AccessStatesLabProps
     <div className="as-offers">
       <SystemOffer offer={{ id: 'A001', name: 'State Relay', availability: 'available', badge: t.freeAccess,
         headline: <>{t.freeClaim} <span>{t.freeClaimAccent}</span></>, description: t.freeDescription,
-        benefits: t.freeBenefits, deliveryNote: t.freeDelivery }} illustration={<AccessMark kind="free" />} action={{ label: t.open, onAction: onOpenMaterial }} />
+        benefits: t.freeBenefits, deliveryNote: t.freeDelivery }} action={{ label: t.open, onAction: onOpenMaterial }} />
       <SystemOffer offer={{ id: accessProductOffer.offerId, name: accessProductOffer.name, availability: 'planned', badge: t.planned,
         headline: <>{t.proClaim} <span>{t.proClaimAccent}</span></>, description: t.proDescription,
-        benefits: t.proBenefits, priceLabel: t.notOnSale, priceNote: t.priceNote, deliveryNote: t.packNote }} illustration={<AccessMark kind="pro" />} details={
+        benefits: t.proBenefits, priceLabel: t.notOnSale, priceNote: t.priceNote, deliveryNote: t.packNote }} details={
         <SystemAccordion className="as-offer-details" headingLevel={4} items={[{ id: 'offer-scope', title: t.details, content: <>
         <div className="as-scope"><p>{t.scope}</p><ul aria-label={t.scope}>{collectionMembers(accessProductOffer.itemIds,locale).map(item => <li key={item.id}>{item.label}</li>)}</ul></div>
         <dl className="as-offer-facts">

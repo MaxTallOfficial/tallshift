@@ -8,3 +8,9 @@
   --sy-control-size:var(--sy-control-height-mobile,48px);
  }
 }
+
+/* Explicit context exception: standalone utility icons, not primary action rows. */
+.system-icon-button,.sn-navigation,.sf-toast { --sy-icon-compact-size:36px; }
+@media(max-width:767px),(pointer:coarse) {
+ .system-icon-button,.sn-navigation,.sf-toast { --sy-icon-compact-size:44px; }
+}

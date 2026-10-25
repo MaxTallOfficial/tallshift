@@ -1,5 +1,7 @@
 # Tallshift
 
+Актуальное правило: [размеры основных и служебных кнопок, KB-UI-001](docs/knowledge-base/button-sizing.ru.md).
+
 **by Max Tall** · [Naming and brand conventions (RU)](docs/branding.ru.md)
 
 Repository: [MaxTallOfficial/tallshift](https://github.com/MaxTallOfficial/tallshift).

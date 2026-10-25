@@ -30,6 +30,6 @@ export function SystemPopover({ title, closeLabel, children, trigger, open, defa
         const following = outside[outside.indexOf(anchor) + 1];
         close('focus-out'); (following ?? anchor).focus({ preventScroll: true });
       }
-    }}><header><h4 id={`${id}-title`}>{title}</h4><SystemIconButton icon="close" label={closeLabel} variant="quiet" onClick={() => close('close', true)} /></header>{children}</div></FloatingPortal>}
+    }}><header><h4 id={`${id}-title`}>{title}</h4><SystemIconButton density="compact" icon="close" label={closeLabel} variant="quiet" onClick={() => close('close', true)} /></header>{children}</div></FloatingPortal>}
   </>;
 }

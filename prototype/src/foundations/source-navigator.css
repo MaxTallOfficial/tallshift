@@ -3,7 +3,7 @@
 .sn-desktop-title { display:flex; align-items:center; gap:8px; flex:1; min-width:0; padding-inline:4px; white-space:nowrap; font-size:14px; font-weight:600; }
 .sn-count { color:var(--f-muted); font-size:12px; font-weight:400; font-variant-numeric:tabular-nums; }
 .sn-navigation .sn-control { display:inline-flex; align-items:center; justify-content:center; min-width:var(--sy-control-size,52px); min-height:var(--sy-control-size,52px); gap:8px; padding:9px 12px; border:1px solid transparent; border-radius:8px; background:transparent; color:var(--f-secondary); font:600 14px/1.5 var(--sy-font-ui,var(--f-font,Manrope,sans-serif)); cursor:pointer; transition:background 120ms ease,border-color 120ms ease; }
-.sn-navigation .sn-icon-control { border-color:var(--f-line); width:var(--sy-control-size,52px); height:var(--sy-control-size,52px); padding:0; }
+.sn-navigation .sn-icon-control { border-color:var(--f-line); width:var(--sy-icon-compact-size,36px); height:var(--sy-icon-compact-size,36px); min-width:var(--sy-icon-compact-size,36px); min-height:var(--sy-icon-compact-size,36px); padding:0; }
 .sn-navigation .sn-control:hover { color:var(--f-text); background:var(--f-raised); }
 .sn-navigation .sn-control[aria-expanded=true] { border-color:var(--f-control-border); color:var(--f-text); background:var(--f-inset); }
 .sn-navigation .sn-control:disabled { opacity:.45; cursor:not-allowed; }

@@ -87,7 +87,7 @@ export function SystemDialog({ id: dialogId, open, onOpenChange, title, descript
     onClose={event => { if (event.currentTarget.open) return; if (current.current.open) current.current.onOpenChange(false, 'native'); restoreFocus(); }}>
     <header className="system-dialog-heading">
       <div><h2 ref={titleRef} tabIndex={-1} id={`${id}-title`}>{title}</h2>{description && <p id={`${id}-description`}>{description}</p>}</div>
-      <SystemIconButton icon="close" label={closeLabel} variant="quiet" onClick={() => onOpenChange(false, 'close-button')} />
+      <SystemIconButton density="compact" icon="close" label={closeLabel} variant="quiet" onClick={() => onOpenChange(false, 'close-button')} />
     </header>
     <div className="system-dialog-content">{children}</div>
     {footer && <footer className="system-dialog-footer">{footer}</footer>}

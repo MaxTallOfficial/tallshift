@@ -54,3 +54,6 @@
   .system-button:focus-visible { outline-color: Highlight; }
   .system-button[aria-pressed="true"] { border-color: Highlight; outline: 1px solid Highlight; }
 }
+
+/* Opt in by role; never infer density from DOM neighbours. */
+.system-icon-button[data-density="compact"] { min-inline-size:var(--sy-icon-compact-size,36px); min-block-size:var(--sy-icon-compact-size,36px); inline-size:var(--sy-icon-compact-size,36px); block-size:var(--sy-icon-compact-size,36px); padding:0; }

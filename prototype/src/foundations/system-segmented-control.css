@@ -1,3 +1,4 @@
+@import './system-control-metrics.css';
 .system-segmented {
   min-inline-size: 0;
   max-inline-size: 100%;
@@ -20,7 +21,9 @@
   align-items: stretch;
   gap: 4px;
   min-inline-size: 0;
-  padding: 3px;
+  box-sizing:border-box;
+  min-block-size:var(--sy-control-size,52px);
+  padding:1px;
   border: 1px solid var(--sy-component-segmented-border);
   border-radius: var(--sy-radius-control, 8px);
   background: var(--sy-component-segmented-background);
@@ -50,8 +53,8 @@
   align-items: center;
   justify-content: center;
   min-inline-size: 0;
-  min-block-size: 44px;
-  padding: 10px 12px;
+  min-block-size:var(--sy-control-inner-size,48px);
+  padding:8px 12px;
   border: 1px solid transparent;
   border-radius: max(4px, calc(var(--sy-radius-control, 8px) - 4px));
   color: var(--f-secondary);

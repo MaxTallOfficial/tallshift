@@ -1,6 +1,7 @@
+@import './system-control-metrics.css';
 .system-tabs { min-inline-size: 0; }
-.system-tablist { display: flex; gap: 4px; overflow-x: auto; max-inline-size: 100%; padding: 4px; border: 1px solid var(--f-control-border); border-radius: var(--sy-radius-control, 8px); background: var(--f-inset); }
-.system-tablist > button { flex: 1 0 auto; min-inline-size: 44px; min-block-size: 44px; padding: 10px 16px; border: 1px solid transparent; border-radius: 5px; color: var(--f-secondary); background: transparent; font: 600 14px/1.5 var(--sy-font-ui, inherit); cursor: pointer; }
+.system-tablist { display: flex; gap: 4px; overflow-x: auto; max-inline-size: 100%; box-sizing:border-box; min-block-size:var(--sy-control-size,52px); padding:1px; border: 1px solid var(--f-control-border); border-radius: var(--sy-radius-control, 8px); background: var(--f-inset); }
+.system-tablist > button { flex: 1 0 auto; min-inline-size: 44px; min-block-size:var(--sy-control-inner-size,48px); padding:8px 16px; border: 1px solid transparent; border-radius: 5px; color: var(--f-secondary); background: transparent; font: 600 14px/1.5 var(--sy-font-ui, inherit); cursor: pointer; }
 .system-tablist > button:hover:not(:disabled) { color: var(--f-text); background: var(--f-surface); }
 .system-tablist > button[aria-selected="true"] { color: var(--f-accent); border-color: var(--f-control-border); background: var(--f-raised); }
 .system-tablist > button:disabled { opacity: .5; cursor: not-allowed; }

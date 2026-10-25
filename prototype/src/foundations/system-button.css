@@ -1,3 +1,4 @@
+@import './system-control-metrics.css';
 .system-button {
   position: relative;
   display: inline-flex;
@@ -6,7 +7,7 @@
   gap: 10px;
   box-sizing: border-box;
   min-inline-size: 44px;
-  min-block-size: 48px;
+  min-block-size:var(--sy-control-size,52px);
   padding: 11px 16px;
   border: 1px solid var(--f-control-border, #77756e);
   border-radius: var(--sy-radius-control, 8px);
@@ -37,7 +38,7 @@
 .system-button-label { min-inline-size: 0; overflow-wrap: anywhere; }
 .system-button[data-loading] .system-button-label, .system-button[data-loading] .system-button-icon { opacity: 0; }
 .system-button-busy { position: absolute; inline-size: 16px; block-size: 16px; border: 2px solid currentColor; border-inline-end-color: transparent; border-radius: 50%; animation: system-button-wait 800ms linear infinite; }
-.system-icon-button { inline-size:48px; block-size:48px; padding:0; flex-shrink:0; }
+.system-icon-button { inline-size:var(--sy-control-size,52px); block-size:var(--sy-control-size,52px); padding:0; flex-shrink:0; }
 .system-icon-button[data-size="small"] { inline-size:44px; block-size:44px; padding:0; }
 .system-icon-button[data-size="large"] { inline-size:52px; block-size:52px; padding:0; }
 @keyframes system-button-wait { to { transform: rotate(360deg); } }

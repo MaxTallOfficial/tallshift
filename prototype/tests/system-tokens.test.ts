@@ -6,7 +6,9 @@ test('system aliases resolve to the approved color and consistent component role
   assert.equal(resolvedSystemTokens['component.button.primary.background'].value, '#EBD183');
   assert.equal(resolvedSystemTokens['component.button.primary.foreground'].value, '#171C1A');
   assert.equal(resolvedSystemTokens['semantic.surface.canvas'].value, '#0D0C09');
-  assert.equal(resolvedSystemTokens['component.input.height'].value, '44px');
+  assert.equal(resolvedSystemTokens['component.input.height'].value, '52px');
+  assert.equal(resolvedSystemTokens['semantic.control.height.mobile'].value, '48px');
+  assert.equal(systemCssVariables['--sy-control-height-mobile'], '48px');
   assert.equal(Object.keys(systemTokenGraph).length, Object.keys(resolvedSystemTokens).length);
   assert.ok(Object.keys(systemTokenGraph).some(key => key.startsWith('primitive.')));
   assert.ok(Object.keys(systemTokenGraph).some(key => key.startsWith('semantic.')));

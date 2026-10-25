@@ -42,7 +42,7 @@ for (const [key, value] of Object.entries(current)) {
 raw('primitive.color.scrim', 'color', '#000000B3', 'Dark backdrop; use behind modal content, never as text foreground.');
 raw('primitive.font.ui', 'fontFamily', 'Manrope, Arial, sans-serif', 'Approved family for English, Russian and Vietnamese.');
 raw('primitive.font.code', 'fontFamily', 'ui-monospace, SFMono-Regular, Consolas, monospace', 'Local system monospace; no extra web font.');
-for (const value of [0, 2, 4, 8, 12, 16, 24, 32, 44, 48, 64, 80]) raw(`primitive.space.${value}`, 'dimension', `${value}px`, 'Spacing scale in CSS pixels.');
+for (const value of [0, 2, 4, 8, 12, 16, 24, 32, 44, 48, 52, 64, 80]) raw(`primitive.space.${value}`, 'dimension', `${value}px`, 'Spacing scale in CSS pixels.');
 for (const value of [4, 8, 12, 16]) raw(`primitive.radius.${value}`, 'dimension', `${value}px`, 'Corner scale in CSS pixels.');
 for (const [name, value] of Object.entries({ response: 120, state: 160, panel: 180, off: 0 })) raw(`primitive.duration.${name}`, 'duration', `${value}ms`, 'Motion duration; state does not wait for an animation.');
 raw('primitive.ease.standard', 'cubicBezier', 'cubic-bezier(.2,.8,.2,1)', 'Fast start and quiet finish for local state changes.');
@@ -75,7 +75,7 @@ Object.assign(colors, { 'status.info.foreground': 'text', 'status.info.icon': 's
 for (const [name, target] of Object.entries(colors)) alias(`semantic.${name}`, 'color', `primitive.color.${target}`, `Interface role: ${name}.`);
 
 const dimensions: Record<string, string> = {
-  'control.height': '44', 'control.iconGap': '8', 'control.inlinePadding': '16', 'control.stackGap': '12',
+  'control.height': '52', 'control.height.mobile': '48', 'control.iconGap': '8', 'control.inlinePadding': '16', 'control.stackGap': '12',
   'field.helpGap': '8', 'group.gap': '24', 'card.padding': '24', 'panel.padding': '32',
   'section.gap': '80', 'page.gutter': '32', 'focus.width': '2', 'focus.offset': '4',
 };

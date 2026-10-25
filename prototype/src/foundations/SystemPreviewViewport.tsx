@@ -1,6 +1,7 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { SystemSegmentedControl } from './SystemSegmentedControl';
+import { SystemButton } from './SystemButton';
 import { SystemIcon } from './SystemIcon';
 import type { Locale } from './copy';
 import './system-preview-viewport.css';
@@ -17,9 +18,9 @@ export interface SystemPreviewViewportProps {
 }
 
 const copy = {
-  en: { width: 'Preview width', full: 'Full width', tablet: 'Tablet · 640', mobile: 'Mobile · 320', reset: 'Reset preview', note: 'The preview has its own document and viewport. Preset widths shrink to fit the available space.', actual: 'Actual viewport', scope: 'Trusted local React example. This frame does not run uploaded HTML or scripts.' },
-  ru: { width: 'Ширина превью', full: 'По ширине', tablet: 'Планшет · 640', mobile: 'Телефон · 320', reset: 'Сбросить превью', note: 'Превью открыто в отдельном документе со своей областью просмотра. Выбранная ширина уменьшается, если места меньше.', actual: 'Фактическая область', scope: 'Доверенный локальный пример React. Этот фрейм не запускает загруженный HTML и скрипты.' },
-  vi: { width: 'Chiều rộng bản xem thử', full: 'Toàn chiều rộng', tablet: 'Máy tính bảng · 640', mobile: 'Điện thoại · 320', reset: 'Đặt lại bản xem', note: 'Bản xem thử có tài liệu và vùng xem riêng. Chiều rộng sẽ thu nhỏ để vừa không gian có sẵn.', actual: 'Vùng xem thực tế', scope: 'Ví dụ React cục bộ đáng tin cậy. Khung này không chạy HTML hay mã lệnh được tải lên.' },
+  en: { width: 'Preview width', full: 'Full width',compact:'Auto', tablet: 'Tablet · 640', mobile: 'Mobile · 320', reset: 'Reset preview', note: 'The preview has its own document and viewport. Preset widths shrink to fit the available space.', actual: 'Actual viewport', scope: 'Trusted local React example. This frame does not run uploaded HTML or scripts.' },
+  ru: { width: 'Ширина превью', full: 'По ширине',compact:'Авто', tablet: 'Планшет · 640', mobile: 'Телефон · 320', reset: 'Сбросить превью', note: 'Превью открыто в отдельном документе со своей областью просмотра. Выбранная ширина уменьшается, если места меньше.', actual: 'Фактическая область', scope: 'Доверенный локальный пример React. Этот фрейм не запускает загруженный HTML и скрипты.' },
+  vi: { width: 'Chiều rộng bản xem thử', full: 'Toàn chiều rộng',compact:'Auto', tablet: 'Máy tính bảng · 640', mobile: 'Điện thoại · 320', reset: 'Đặt lại bản xem', note: 'Bản xem thử có tài liệu và vùng xem riêng. Chiều rộng sẽ thu nhỏ để vừa không gian có sẵn.', actual: 'Vùng xem thực tế', scope: 'Ví dụ React cục bộ đáng tin cậy. Khung này không chạy HTML hay mã lệnh được tải lên.' },
 } satisfies Record<Locale, Record<string, string>>;
 
 // Only a fixed empty document is parsed. Trusted React children are rendered by the parent.
@@ -100,7 +101,7 @@ export function SystemPreviewViewport({ locale, label, children, width, onWidthC
   useEffect(() => () => { heights.current.clear(); }, []);
 
   return <div ref={rootRef} className="sv-viewport" data-motion={motionOff ? 'off' : 'on'}>
-    <div className="sv-toolbar"><SystemSegmentedControl label={t.width} value={width} onChange={onWidthChange} options={[{ value: 'full', label: t.full }, { value: 'tablet', label: t.tablet }, { value: 'mobile', label: t.mobile }]} /><button type="button" className="sv-reset" onClick={() => { setRevision(previous => previous + 1); onReset?.(); }}><SystemIcon name="replay" size={20} />{t.reset}</button></div>
+    <div className="sv-toolbar"><SystemSegmentedControl label={t.width} value={width} onChange={onWidthChange} options={[{ value:'full',ariaLabel:t.full,label:<><span className="sv-wide-label">{t.full}</span><span className="sv-compact-label">{t.compact}</span></> }, { value:'tablet',ariaLabel:t.tablet,label:<><span className="sv-wide-label">{t.tablet}</span><span className="sv-compact-label">640</span></> }, { value:'mobile',ariaLabel:t.mobile,label:<><span className="sv-wide-label">{t.mobile}</span><span className="sv-compact-label">320</span></> }]} /><SystemButton className="sv-reset" leadingIcon={<SystemIcon name="replay" size={20}/>} onClick={() => { setRevision(previous => previous + 1); onReset?.(); }}>{t.reset}</SystemButton></div>
     <p className="sv-note" id={`${id}-note`}>{t.note}</p>
     <div className="sv-stage"><div className="sv-screen" style={{ maxWidth: width === 'mobile' ? 320 : width === 'tablet' ? 640 : '100%' }}><iframe ref={frameRef} className="sv-frame" title={label} aria-describedby={`${id}-note`} srcDoc={frameDocument} sandbox="allow-same-origin" onLoad={ready} style={{ height }} />{target && createPortal(<div key={revision} className="sv-frame-content">{children}</div>, target)}</div></div>
     <p className="sv-dimensions"><span>{t.actual}</span><span>{actualWidth || '—'} × {height} px</span></p>

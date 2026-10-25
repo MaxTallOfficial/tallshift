@@ -1,0 +1,173 @@
+{
+  "initialMatrix": [
+    {
+      "inputs": [
+        48,
+        46
+      ],
+      "lang": "en",
+      "overflow": false,
+      "previewGroup": 48,
+      "previewTopDelta": 64,
+      "reset": 48,
+      "selects": [
+        48
+      ],
+      "width": 320,
+      "workButton": 48,
+      "workTabs": 48
+    },
+    {
+      "inputs": [
+        52,
+        50
+      ],
+      "lang": "en",
+      "overflow": false,
+      "previewGroup": 52,
+      "previewTopDelta": 0,
+      "reset": 52,
+      "selects": [
+        52
+      ],
+      "width": 768,
+      "workButton": 52,
+      "workTabs": 52
+    },
+    {
+      "inputs": [
+        52,
+        50
+      ],
+      "lang": "en",
+      "overflow": false,
+      "previewGroup": 52,
+      "previewTopDelta": 0,
+      "reset": 52,
+      "selects": [
+        52
+      ],
+      "width": 1440,
+      "workButton": 52,
+      "workTabs": 52
+    },
+    {
+      "inputs": [
+        48,
+        46
+      ],
+      "lang": "ru",
+      "overflow": false,
+      "previewGroup": 48,
+      "previewTopDelta": 64,
+      "reset": 48,
+      "selects": [
+        48
+      ],
+      "width": 320,
+      "workButton": 48,
+      "workTabs": 48
+    },
+    {
+      "inputs": [
+        52,
+        50
+      ],
+      "lang": "ru",
+      "overflow": false,
+      "previewGroup": 52,
+      "previewTopDelta": 0,
+      "reset": 52,
+      "selects": [
+        52
+      ],
+      "width": 768,
+      "workButton": 52,
+      "workTabs": 52
+    },
+    {
+      "inputs": [
+        52,
+        50
+      ],
+      "lang": "ru",
+      "overflow": false,
+      "previewGroup": 52,
+      "previewTopDelta": 0,
+      "reset": 52,
+      "selects": [
+        52
+      ],
+      "width": 1440,
+      "workButton": 52,
+      "workTabs": 52
+    },
+    {
+      "inputs": [
+        48,
+        46
+      ],
+      "lang": "vi",
+      "overflow": false,
+      "previewGroup": 48,
+      "previewTopDelta": 64,
+      "reset": 48,
+      "selects": [
+        48
+      ],
+      "width": 320,
+      "workButton": 48,
+      "workTabs": 64
+    },
+    {
+      "inputs": [
+        52,
+        50
+      ],
+      "lang": "vi",
+      "overflow": false,
+      "previewGroup": 64,
+      "previewTopDelta": 12,
+      "reset": 52,
+      "selects": [
+        52
+      ],
+      "width": 768,
+      "workButton": 52,
+      "workTabs": 52
+    },
+    {
+      "inputs": [
+        52,
+        50
+      ],
+      "lang": "vi",
+      "overflow": false,
+      "previewGroup": 52,
+      "previewTopDelta": 0,
+      "reset": 52,
+      "selects": [
+        52
+      ],
+      "width": 1440,
+      "workButton": 52,
+      "workTabs": 52
+    }
+  ],
+  "vietnameseAfterFix": [
+    {
+      "group": 48,
+      "overflow": false,
+      "reset": 48,
+      "tabs": 48,
+      "width": 320
+    },
+    {
+      "group": 52,
+      "overflow": false,
+      "reset": 52,
+      "tabs": 52,
+      "width": 768
+    }
+  ]
+}

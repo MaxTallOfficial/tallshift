@@ -1,0 +1,10 @@
+/* One responsive outer height for controls that share a toolbar. */
+.system-study,[data-tallshift-theme],.system-button,.system-segmented,.system-tablist,.sys-select,.sys-search,.system-field,.sv-viewport,.system-multi-select,.sf-toast,.sn-navigation,.ps-lab,.ls-lab,.dl-lab,.sys-filter-chip {
+ --sy-control-size:var(--sy-control-height,52px);
+ --sy-control-inner-size:calc(var(--sy-control-size) - 4px);
+}
+@media(max-width:767px) {
+ .system-study,[data-tallshift-theme],.system-button,.system-segmented,.system-tablist,.sys-select,.sys-search,.system-field,.sv-viewport,.system-multi-select,.sf-toast,.sn-navigation,.ps-lab,.ls-lab,.dl-lab,.sys-filter-chip {
+  --sy-control-size:var(--sy-control-height-mobile,48px);
+ }
+}

@@ -11,7 +11,7 @@
 .ps-status-stack > p { grid-area:1 / 1; min-width:0; margin:0; padding:0 0 24px; visibility:hidden; color:var(--f-secondary); font-size:14px; line-height:1.65; overflow-wrap:anywhere; }
 .ps-status-stack > p[data-active="true"] { visibility:visible; }
 .ps-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
-.ps-button { display:inline-flex; align-items:center; justify-content:center; box-sizing:border-box; min-width:44px; min-height:44px; padding:11px 16px; border:1px solid var(--f-control-border); border-radius:var(--sy-radius-control,8px); background:transparent; color:var(--f-text); font:600 14px/1.5 var(--f-font,Manrope,Arial,sans-serif); text-align:center; cursor:pointer; }
+.ps-button { display:inline-flex; align-items:center; justify-content:center; box-sizing:border-box; min-width:44px; min-height:var(--sy-control-size,52px); padding:11px 16px; border:1px solid var(--f-control-border); border-radius:var(--sy-radius-control,8px); background:transparent; color:var(--f-text); font:600 14px/1.5 var(--f-font,Manrope,Arial,sans-serif); text-align:center; cursor:pointer; }
 .ps-button:hover:not(:disabled) { background:var(--f-raised); }
 .ps-button:focus-visible { outline:2px solid var(--f-focus,#B8B8B2); outline-offset:3px; }
 .ps-primary { border-color:transparent; background:var(--f-accent); color:var(--f-on-accent); }

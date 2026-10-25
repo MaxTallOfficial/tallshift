@@ -1,10 +1,11 @@
+@import './system-control-metrics.css';
 .sys-search { position:relative; min-width:0; color:var(--f-text); font-family:var(--f-font,Manrope,Arial,sans-serif); }
 .sys-search-label { display:block; margin:0 0 10px; color:var(--f-secondary); font-size:12px; font-weight:600; line-height:1.5; }
-.sys-search-control { position:relative; display:flex; align-items:center; min-width:0; min-height:48px; border:1px solid var(--f-control-border); border-radius:var(--sy-radius-control,8px); background:var(--f-inset); transition:border-color 150ms ease; }
+.sys-search-control { position:relative; display:flex; align-items:center; min-width:0; min-height:var(--sy-control-size,52px); border:1px solid var(--f-control-border); border-radius:var(--sy-radius-control,8px); background:var(--f-inset); transition:border-color 150ms ease; }
 .sys-search-control:focus-within { border-color:var(--f-focus,#B8B8B2); box-shadow:inset 0 0 0 1px var(--f-focus,#B8B8B2); }
 .sys-search-icon { display:flex; flex:0 0 20px; width:20px; margin-inline-start:14px; color:var(--f-secondary); pointer-events:none; }
 .sys-search svg { display:block; width:20px; height:20px; }
-.sys-search .sys-search-input { display:block; box-sizing:border-box; flex:1 1 auto; width:100%; min-width:0; min-height:46px; margin:0; padding:11px 14px 11px 12px; border:0; border-radius:inherit; background:transparent; color:var(--f-text); font:400 16px/1.5 var(--f-font,Manrope,Arial,sans-serif); }
+.sys-search .sys-search-input { display:block; box-sizing:border-box; flex:1 1 auto; width:100%; min-width:0; min-height:calc(var(--sy-control-size,52px) - 2px); margin:0; padding:11px 14px 11px 12px; border:0; border-radius:inherit; background:transparent; color:var(--f-text); font:400 16px/1.5 var(--f-font,Manrope,Arial,sans-serif); }
 .sys-search .sys-search-input::placeholder { color:var(--f-muted); opacity:1; }
 .sys-search .sys-search-control .sys-search-input:focus,.sys-search .sys-search-control .sys-search-input:focus-visible { border:0; outline:none; box-shadow:none; }
 .sys-search .sys-search-clear { display:inline-flex; align-items:center; justify-content:center; flex:0 0 44px; width:44px; height:44px; min-width:44px; margin:0 1px 0 0; padding:12px; border:1px solid transparent; border-radius:6px; background:transparent; color:var(--f-secondary); cursor:pointer; }

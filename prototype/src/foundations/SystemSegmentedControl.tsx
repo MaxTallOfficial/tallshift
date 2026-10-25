@@ -1,9 +1,9 @@
-import { useId, type CSSProperties } from 'react';
+import { useId, type CSSProperties, type ReactNode } from 'react';
 import './system-segmented-control.css';
 
 export interface SystemSegmentedOption<Value extends string = string> {
   value: Value;
-  label: string;
+  label: ReactNode;
   ariaLabel?: string;
   lang?: string;
   disabled?: boolean;

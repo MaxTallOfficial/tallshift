@@ -1,5 +1,5 @@
 import { SystemButton } from './SystemButton';
-import { SystemIcon } from './SystemIcon';
+import { SystemIconButton } from './SystemIconButton';
 import { paginationItems, paginationRange } from './pagination';
 import './system-catalog.css';
 export interface SystemPaginationProps {
@@ -12,8 +12,8 @@ export function SystemPagination({ total, pageSize, page, onPageChange, label, p
   const { current, pages } = paginationRange(total, pageSize, page);
   const blocked = disabled || loading || total <= 0;
   return <nav className={`system-pagination ${className}`} aria-label={label} aria-busy={loading || undefined}>
-    <SystemButton aria-label={previousLabel} aria-disabled={blocked || current === 1} onClick={() => onPageChange(current - 1)}><SystemIcon name="arrow-left" /></SystemButton>
+    <SystemIconButton icon="arrow-left" label={previousLabel} aria-disabled={blocked || current === 1} onClick={() => onPageChange(current - 1)} />
     <div>{paginationItems(current, pages).map(item => typeof item === 'number' ? <SystemButton key={item} aria-label={pageLabel(item, pages)} aria-current={item === current ? 'page' : undefined} aria-disabled={blocked || item === current} onClick={() => onPageChange(item)}>{item}</SystemButton> : <span key={item} aria-hidden="true">…</span>)}</div>
-    <SystemButton aria-label={nextLabel} aria-disabled={blocked || current === pages} onClick={() => onPageChange(current + 1)}><SystemIcon name="arrow-right" /></SystemButton>
+    <SystemIconButton icon="arrow-right" label={nextLabel} aria-disabled={blocked || current === pages} onClick={() => onPageChange(current + 1)} />
   </nav>;
 }

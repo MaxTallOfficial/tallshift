@@ -46,7 +46,8 @@ test('collection separates selected button from named membership disclosure',()=
 test('pagination exposes current page and focusable guarded boundaries',()=>{
  const html=renderToStaticMarkup(createElement(SystemPagination,{total:6,pageSize:2,page:1,onPageChange:()=>{},label:'Pages',previousLabel:'Previous',nextLabel:'Next',pageLabel:(p:number,n:number)=>`Page ${p} of ${n}`}));
  assert.match(html,/<nav[^>]*aria-label="Pages"/); assert.equal((html.match(/aria-current="page"/g)??[]).length,1);
- assert.match(html,/<button[^>]*aria-label="Previous"[^>]*aria-disabled="true"/);
+ const previous=(html.match(/<button\b[^>]*>/g)??[]).find(tag=>tag.includes('aria-label="Previous"'));
+ assert.ok(previous); assert.match(previous,/aria-disabled="true"/);
  assert.doesNotMatch(html,/<button[^>]* disabled=/);
 });
 test('catalog form grouping does not promise toolbar arrow navigation',()=>{

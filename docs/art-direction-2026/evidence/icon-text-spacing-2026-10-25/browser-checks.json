@@ -1,0 +1,198 @@
+{
+  "workbench": [
+    {
+      "gap": 10,
+      "iconInText": 0,
+      "label": "Забрать файлы"
+    },
+    {
+      "gap": 10,
+      "iconInText": 0,
+      "label": "Скопировать файл"
+    },
+    {
+      "gap": 10,
+      "iconInText": 0,
+      "label": "Скопировать промпт"
+    }
+  ],
+  "audit": {
+    "buttons": [
+      {
+        "display": "flex",
+        "gap": "14px",
+        "label": "Рекомендуемые",
+        "measured": 99.359375
+      },
+      {
+        "display": "flex",
+        "gap": "10px",
+        "label": "Забрать файлы",
+        "measured": 10
+      },
+      {
+        "display": "flex",
+        "gap": "8px",
+        "label": "Сбросить превью",
+        "measured": null
+      },
+      {
+        "display": "inline-flex",
+        "gap": "10px",
+        "label": "Скачать ZIP",
+        "measured": 10
+      },
+      {
+        "display": "flex",
+        "gap": "10px",
+        "label": "Сохранить пресет",
+        "measured": 10
+      },
+      {
+        "display": "inline-flex",
+        "gap": "10px",
+        "label": "Сохранить пресет",
+        "measured": 10
+      },
+      {
+        "display": "flex",
+        "gap": "10px",
+        "label": "Взять компонент",
+        "measured": 10
+      },
+      {
+        "display": "flex",
+        "gap": "16px",
+        "label": "Действия с файлом",
+        "measured": 16
+      },
+      {
+        "display": "flex",
+        "gap": "10px",
+        "label": "Состав пакета",
+        "measured": 10
+      },
+      {
+        "display": "flex",
+        "gap": "14px",
+        "label": "Next.js",
+        "measured": 328.1171875
+      },
+      {
+        "display": "flex",
+        "gap": "14px",
+        "label": "Next.js",
+        "measured": 328.1171875
+      },
+      {
+        "display": "flex",
+        "gap": "14px",
+        "label": "—",
+        "measured": 364.078125
+      },
+      {
+        "display": "flex",
+        "gap": "14px",
+        "label": "Next.js",
+        "measured": 328.1171875
+      },
+      {
+        "display": "flex",
+        "gap": "14px",
+        "label": "Next.js",
+        "measured": 326.1171875
+      }
+    ],
+    "embeddedIcons": 0,
+    "pagination": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "height": 48,
+        "label": "Предыдущая страница",
+        "width": 48
+      },
+      {
+        "dx": 0,
+        "dy": 0,
+        "height": 48,
+        "label": "Следующая страница",
+        "width": 48
+      }
+    ]
+  },
+  "mobile": [
+    {
+      "embeddedIcons": 0,
+      "gap": 10,
+      "label": "Get free files",
+      "lang": "en",
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "embeddedIcons": 0,
+      "gap": 10,
+      "label": "Copy this file",
+      "lang": "en",
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "embeddedIcons": 0,
+      "gap": 10,
+      "label": "Copy prompt",
+      "lang": "en",
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "embeddedIcons": 0,
+      "gap": 10,
+      "label": "Забрать файлы",
+      "lang": "ru",
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "embeddedIcons": 0,
+      "gap": 10,
+      "label": "Скопировать файл",
+      "lang": "ru",
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "embeddedIcons": 0,
+      "gap": 10,
+      "label": "Скопировать промпт",
+      "lang": "ru",
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "embeddedIcons": 0,
+      "gap": 10,
+      "label": "Lấy tệp miễn phí",
+      "lang": "vi",
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "embeddedIcons": 0,
+      "gap": 10,
+      "label": "Sao chép tệp này",
+      "lang": "vi",
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "embeddedIcons": 0,
+      "gap": 10,
+      "label": "Sao chép prompt",
+      "lang": "vi",
+      "overflow": false,
+      "width": 320
+    }
+  ]
+}

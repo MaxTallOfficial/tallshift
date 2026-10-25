@@ -1,0 +1,103 @@
+{
+  "desktop": {
+    "customSvgs": 0,
+    "libraries": [
+      "hugeicons-duotone-rounded"
+    ],
+    "marks": [
+      {
+        "cssBorder": "0px",
+        "icon": "checkbox-checked",
+        "nativeStrokes": [
+          "1.5",
+          "1.5"
+        ],
+        "size": [
+          24,
+          24
+        ]
+      },
+      {
+        "cssBorder": "0px",
+        "icon": "checkbox-unchecked",
+        "nativeStrokes": [
+          "1.5"
+        ],
+        "size": [
+          24,
+          24
+        ]
+      },
+      {
+        "cssBorder": "0px",
+        "icon": "checkbox-checked",
+        "nativeStrokes": [
+          "1.5",
+          "1.5"
+        ],
+        "size": [
+          24,
+          24
+        ]
+      },
+      {
+        "cssBorder": "0px",
+        "icon": "checkbox-unchecked",
+        "nativeStrokes": [
+          "1.5"
+        ],
+        "size": [
+          24,
+          24
+        ]
+      }
+    ],
+    "mixed": [
+      "checkbox-mixed"
+    ]
+  },
+  "mobile": [
+    {
+      "customSvgs": 0,
+      "icons": [
+        "checkbox-checked",
+        "checkbox-unchecked",
+        "checkbox-checked",
+        "checkbox-unchecked"
+      ],
+      "lang": "en",
+      "overflow": false,
+      "panelInside": true,
+      "selected": 2,
+      "width": 320
+    },
+    {
+      "customSvgs": 0,
+      "icons": [
+        "checkbox-checked",
+        "checkbox-unchecked",
+        "checkbox-checked",
+        "checkbox-unchecked"
+      ],
+      "lang": "ru",
+      "overflow": false,
+      "panelInside": true,
+      "selected": 2,
+      "width": 320
+    },
+    {
+      "customSvgs": 0,
+      "icons": [
+        "checkbox-checked",
+        "checkbox-unchecked",
+        "checkbox-checked",
+        "checkbox-unchecked"
+      ],
+      "lang": "vi",
+      "overflow": false,
+      "panelInside": true,
+      "selected": 2,
+      "width": 320
+    }
+  ]
+}

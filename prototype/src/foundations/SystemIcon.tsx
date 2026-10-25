@@ -4,15 +4,15 @@ import {
  ArrowLeft02Icon, ArrowRight02Icon, Tick02Icon, Copy01Icon, Download01Icon, CodeIcon, Message01Icon,
  PlayIcon, PauseIcon, ReloadIcon, Settings01Icon, FilterHorizontalIcon, GridViewIcon, ComputerIcon,
  Tablet01Icon, SmartPhone01Icon, InformationCircleIcon, Alert02Icon, CancelCircleIcon, Add01Icon,
- MinusSignIcon, ArrowUpRight01Icon, Folder01Icon, File01Icon, Layers01Icon, Delete02Icon,
-} from '@hugeicons-pro/core-bulk-rounded';
+ MinusSignIcon, ArrowUpRight01Icon, Folder01Icon, File01Icon, Layers01Icon, Delete02Icon, CheckmarkSquare02Icon, SquareIcon, MinusSignSquareIcon,
+} from '@hugeicons-pro/core-duotone-rounded';
 import './system-icons.css';
 
 export const systemIconNames = [
   'search', 'close', 'chevron-down', 'chevron-up', 'chevron-right', 'chevron-left',
   'arrow-left', 'arrow-right', 'check', 'copy', 'download', 'code', 'prompt',
   'play', 'pause', 'replay', 'settings', 'filter', 'grid', 'desktop', 'tablet',
-  'mobile', 'info', 'warning', 'error', 'plus', 'minus', 'external', 'folder', 'file', 'layers', 'trash',
+  'mobile', 'info', 'warning', 'error', 'plus', 'minus', 'external', 'folder', 'file', 'layers', 'trash', 'checkbox-checked', 'checkbox-unchecked', 'checkbox-mixed',
 ] as const;
 
 export type SystemIconName = typeof systemIconNames[number];
@@ -31,9 +31,10 @@ const icons:Record<SystemIconName,IconSvgElement> = {
  replay:ReloadIcon,settings:Settings01Icon,filter:FilterHorizontalIcon,grid:GridViewIcon,desktop:ComputerIcon,tablet:Tablet01Icon,
  mobile:SmartPhone01Icon,info:InformationCircleIcon,warning:Alert02Icon,error:CancelCircleIcon,plus:Add01Icon,minus:MinusSignIcon,
  external:ArrowUpRight01Icon,folder:Folder01Icon,file:File01Icon,layers:Layers01Icon,trash:Delete02Icon,
+ 'checkbox-checked':CheckmarkSquare02Icon,'checkbox-unchecked':SquareIcon,'checkbox-mixed':MinusSignSquareIcon,
 };
-/** Bulk Rounded artwork preserves its native fills and secondary opacity. */
+/** Duotone Rounded artwork preserves its native fills and secondary opacity. */
 export function SystemIcon({name,size=20,label,className=''}:SystemIconProps) {
  const accessibleLabel=label?.trim();
- return <HugeiconsIcon icon={icons[name]} size={size} color="currentColor" className={`system-icon ${className}`.trim()} data-icon={name} data-size={size} data-icon-library="hugeicons-bulk-rounded" role={accessibleLabel?'img':undefined} aria-label={accessibleLabel||undefined} aria-hidden={accessibleLabel?undefined:true} focusable="false"/>;
+ return <HugeiconsIcon icon={icons[name]} size={size} color="currentColor" className={`system-icon ${className}`.trim()} data-icon={name} data-size={size} data-icon-library="hugeicons-duotone-rounded" role={accessibleLabel?'img':undefined} aria-label={accessibleLabel||undefined} aria-hidden={accessibleLabel?undefined:true} focusable="false"/>;
 }

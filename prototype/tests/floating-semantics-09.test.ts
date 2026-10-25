@@ -90,10 +90,10 @@ test('error progress exposes a localized text status linked to the progressbar',
  }
 });
 
-test('the whole UI icon inventory resolves to Bulk Rounded in all supported sizes', () => {
+test('the whole UI icon inventory resolves to Duotone Rounded in all supported sizes', () => {
  for(const name of systemIconNames) for(const size of [16,20,24]) {
   const html=renderToStaticMarkup(createElement(SystemIcon,{name,size}));
-  assert.match(html,/data-icon-library="hugeicons-bulk-rounded"/);assert.ok(html.includes(`width="${size}"`));assert.match(html,/aria-hidden="true"/);
+  assert.match(html,/data-icon-library="hugeicons-duotone-rounded"/);assert.ok(html.includes(`width="${size}"`));assert.match(html,/aria-hidden="true"/);
   assert.doesNotMatch(html.match(/<svg[^>]*>/)?.[0]??'',/stroke-width=/);
  }
  const labelled=renderToStaticMarkup(createElement(SystemIcon,{name:'info',label:'Details'}));

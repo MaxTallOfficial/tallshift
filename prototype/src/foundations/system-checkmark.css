@@ -1,8 +1,4 @@
-.system-checkmark { box-sizing:border-box; display:inline-grid; grid-template:minmax(0,1fr)/minmax(0,1fr); place-items:center; flex:0 0 20px; width:20px; height:20px; border:1.5px solid var(--f-control-border); border-radius:5px; background:var(--f-inset); color:var(--f-accent); }
-.system-checkmark[data-checked] { border-color:var(--f-accent); background:color-mix(in srgb,var(--f-accent) 12%,var(--f-inset)); }
-.system-checkmark > .system-icon { display:block; width:20px; height:20px; }
-@media(forced-colors:active) { .system-checkmark { border-color:ButtonText; color:CanvasText; background:Canvas; }.system-checkmark[data-checked] { border-color:Highlight; } }
-
-/* A selected form value must stay legible even with two-tone decorative artwork. */
-.system-checkmark .system-icon [opacity] { opacity:1; }
-.system-checkmark .system-icon [stroke] { vector-effect:non-scaling-stroke; stroke-width:1.5px; }
+.system-checkmark { display:inline-flex; align-items:center; justify-content:center; flex:0 0 24px; width:24px; height:24px; color:var(--f-secondary); }
+.system-checkmark[data-checked] { color:var(--f-accent); }
+.system-checkmark > .system-icon { display:block; width:24px; height:24px; }
+@media(forced-colors:active) { .system-checkmark { color:ButtonText; }.system-checkmark[data-checked] { color:Highlight; } }

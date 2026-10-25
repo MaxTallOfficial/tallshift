@@ -5,4 +5,5 @@
   pointer-events: none;
 }
 
-/* Bulk icons keep their authored fills; never add a synthetic stroke to filled paths. */
+/* Duotone icons keep their authored fills; never add a synthetic stroke to filled paths. */
+.system-icon[data-icon-library="hugeicons-duotone-rounded"] [stroke]:not([stroke="none"]) { vector-effect:non-scaling-stroke; stroke-width:1.5px; }

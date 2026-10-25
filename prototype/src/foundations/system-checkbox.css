@@ -1,6 +1,6 @@
 .system-checkbox { position: relative; display: inline-flex; align-items: flex-start; gap: 10px; min-height: 44px; padding-block: 11px; cursor: pointer; }
 .system-checkbox > input { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.system-checkbox:hover > input:not(:disabled) + .system-checkbox-box { border-color: var(--f-secondary); }
+.system-checkbox:hover > input:not(:disabled) + .system-checkbox-box { color: var(--f-text); }
 .system-checkbox > input:focus-visible + .system-checkbox-box { outline: 2px solid var(--f-focus); outline-offset: 3px; }
 .system-checkbox-copy { display: flex; min-width: 0; flex-direction: column; gap: 4px; }
 .system-checkbox-label { color: var(--f-text); font-size: 14px; font-weight: 600; line-height: 1.5; }
@@ -9,11 +9,11 @@
 .system-checkbox > input:disabled ~ span { opacity: .55; }
 @media (forced-colors: active) {
   .system-checkbox > input:focus-visible + .system-checkbox-box { outline-color: Highlight; }
-  .system-checkbox > input:disabled + .system-checkbox-box { border-color: GrayText; }
+  .system-checkbox > input:disabled + .system-checkbox-box { color: GrayText; }
 }
-.system-checkbox > input[aria-invalid=true] + .system-checkbox-box { border-color: var(--f-error-border); }
+.system-checkbox > input[aria-invalid=true] + .system-checkbox-box { color: var(--f-error); }
 .system-checkbox-error { color: var(--f-error); font-size: 12px; line-height: 1.65; }
 .system-checkbox:has(> input[aria-readonly=true]) { cursor: default; }
 @media (prefers-reduced-motion: reduce) { .system-checkbox-box { transition: none; } }
 
-.system-checkbox > .system-checkbox-box { margin-top:.5px; }
+.system-checkbox > .system-checkbox-box { margin-top:-1.5px; }

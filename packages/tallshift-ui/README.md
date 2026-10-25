@@ -27,6 +27,14 @@ Component contracts and verification limits: `docs/art-direction-2026/foundation
 
 ### Icons
 
-The internal design system uses Hugeicons Pro Bulk Rounded. The React renderer is a dependency; the Pro pack is a peer dependency requiring your own licensed installation. The UI tarball keeps these imports external and does not bundle Pro vectors. Set `HUGEICONS_LICENSE_KEY` in your environment and configure the `@hugeicons-pro` registry as shown in `prototype/.npmrc` before installing the internal package. Never commit the key.
+The internal design system uses Hugeicons Pro Duotone Rounded. The React renderer is a dependency; the Pro pack is a peer dependency requiring your own licensed installation. The UI tarball keeps these imports external and does not bundle Pro vectors. Set `HUGEICONS_LICENSE_KEY` in your environment and configure the `@hugeicons-pro` registry as shown in `prototype/.npmrc` before installing the internal package. Never commit the key.
 
 The source ZIP for the separate State Relay material does not include Hugeicons Pro source assets.
+
+On macOS, the npm helper can read the saved `npm.hugeicons.com` / `HUGEICONS_LICENSE_KEY` Keychain item without saving the key to disk:
+
+```sh
+python3 prototype/scripts/npm-with-hugeicons-keychain.py --prefix prototype run test:consumers
+```
+
+CI may supply `HUGEICONS_LICENSE_KEY` through its secret environment instead.

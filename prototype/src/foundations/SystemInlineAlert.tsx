@@ -10,6 +10,6 @@ export interface SystemInlineAlertProps {
 export function SystemInlineAlert({ title, children, tone = 'neutral', action, announce = 'off', className = '' }: SystemInlineAlertProps) {
   return <div className={`sf-alert ${className}`.trim()} data-tone={tone} role={announce === 'polite' ? 'status' : announce === 'assertive' ? 'alert' : undefined} aria-atomic={announce === 'off' ? undefined : true}>
     <SystemIcon name={tone === 'success' ? 'check' : tone === 'warning' ? 'warning' : tone === 'error' ? 'error' : 'info'} />
-    <div className="sf-message"><strong>{title}</strong>{children && <div className="sf-description">{children}</div>}{action && <div className="sf-action">{action}</div>}</div>
+    <div className="sf-message"><strong>{title}</strong>{children && <div className="sf-description">{children}</div>}</div>{action && <div className="sf-action">{action}</div>}
   </div>;
 }

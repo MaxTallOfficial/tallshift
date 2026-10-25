@@ -1,0 +1,46 @@
+{
+  "desktop": {
+    "buttons": [
+      {
+        "actionOutsideMessage": true,
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "actionOutsideMessage": true,
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    ],
+    "closeButtons": [
+      {
+        "height": 44,
+        "iconSize": "16",
+        "variant": "quiet",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "iconSize": "16",
+        "variant": "quiet",
+        "width": 44
+      }
+    ],
+    "countGap": 16,
+    "hoverRules": [
+      ":where(.sf-alert, .sf-toast)[data-tone=\"error\"] .sf-action > .system-button[data-variant=\"secondary\"]:hover:not(:disabled) { border-color: var(--f-text,#eeede7); background: 0px 0px; }"
+    ]
+  },
+  "mobile": {
+    "actions": [
+      {
+        "buttonWidth": 212,
+        "width": 212
+      },
+      {
+        "buttonWidth": 212,
+        "width": 212
+      }
+    ],
+    "overflow": false,
+    "width": 320
+  }
+}

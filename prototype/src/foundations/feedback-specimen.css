@@ -14,3 +14,5 @@
 .fs-loading-layer>h4 { font-size:18px; margin:0; }
 .fs-loading-layer>.fs-note { margin:0; }
 @media(max-width:760px) { .fs-grid { grid-template-columns:minmax(0,1fr); } .fs-wide { grid-column:auto; } }
+
+.fs-card > .fs-toast-count { margin:0 0 16px; }

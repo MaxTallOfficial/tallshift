@@ -25,8 +25,9 @@ export function SystemToastRegion({ label, dismissLabel, items, onDismiss, annou
     <div className="sf-live" role={announcementPriority === 'assertive' ? 'alert' : announcementPriority === 'polite' ? 'status' : undefined} aria-live={announcementPriority === 'off' ? 'off' : undefined} aria-atomic="true"><span key={announcementKey}>{announcement}</span></div>
     {items.length ? <ul className="sf-toast-list">{items.map(item => <li key={item.id} className="sf-toast" data-toast-id={item.id} data-tone={item.tone ?? 'neutral'}>
       <SystemIcon name={item.tone === 'success' ? 'check' : item.tone === 'error' ? 'error' : item.tone === 'warning' ? 'warning' : 'info'} />
-      <div className="sf-message"><strong>{item.title}</strong>{item.description && <div className="sf-description">{item.description}</div>}{item.action && <div className="sf-action">{item.action}</div>}</div>
-      <SystemIconButton icon="close" label={dismissLabel} size="small" data-toast-dismiss={item.id} onClick={() => dismiss(item.id)} />
+      <div className="sf-message"><strong>{item.title}</strong>{item.description && <div className="sf-description">{item.description}</div>}</div>
+      <SystemIconButton icon="close" iconSize={16} variant="quiet" label={dismissLabel} size="small" data-toast-dismiss={item.id} onClick={() => dismiss(item.id)} />
+      {item.action && <div className="sf-action">{item.action}</div>}
     </li>)}</ul> : emptyContent}
   </div>;
 }

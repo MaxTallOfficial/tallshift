@@ -1,6 +1,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { sourceNavigationWords } from './source-navigation-copy';
 import './source-navigator.css';
+import { SystemIcon } from './SystemIcon';
 import { SystemMenu } from './SystemMenu';
 import { SystemPopover } from './SystemPopover';
 import { SystemSheet } from './SystemSheet';
@@ -106,13 +107,13 @@ export function SourceNavigator({ locale, files, selectedPath, onSelect, onCopy,
       <button type="button" className="sn-control sn-files-trigger" ref={filesTrigger} aria-haspopup="dialog" aria-controls={`${id}-sheet`} aria-expanded={sheetOpen} onClick={openSheet}><Icon kind="folder" /><span>{t.files}</span><span className="sn-count">{files.length}</span></button>
       <span className="sn-desktop-title">{t.files}<span className="sn-count">{files.length}</span></span>
       <div className="sn-menu-wrap">
-        <SystemMenu label={t.actions} align="end" open={menuOpen} onOpenChange={next => { setMenuOpen(next); if (next) setInfoOpen(false); }} trigger={props => <button {...props} ref={node => { props.ref.current = node; menuTrigger.current = node; }} type="button" className="sn-control sn-icon-control" aria-label={t.actions} disabled={!selected}><Icon kind="more" /></button>} items={[
+        <SystemMenu label={t.actions} align="end" open={menuOpen} onOpenChange={next => { setMenuOpen(next); if (next) setInfoOpen(false); }} trigger={props => <button {...props} ref={node => { props.ref.current = node; menuTrigger.current = node; }} type="button" className="sn-control sn-icon-control" aria-label={t.actions} disabled={!selected}><SystemIcon name={props['aria-expanded'] ? 'chevron-up' : 'chevron-down'} size={16} /></button>} items={[
           { id: 'copy', label: copyBusy ? t.copying : t.copy, disabled: copyBusy, onSelect: onCopy },
           { id: 'download', label: t.download, onSelect: download },
         ]} />
       </div>
       <div className="sn-info-wrap">
-        <SystemPopover title={t.about} closeLabel={t.close} open={infoOpen} onOpenChange={next => { setInfoOpen(next); if (next) setMenuOpen(false); }} trigger={props => <button {...props} type="button" className="sn-control sn-icon-control" aria-label={t.about} disabled={!selected}><Icon kind="info" /></button>}>
+        <SystemPopover title={t.about} closeLabel={t.close} open={infoOpen} onOpenChange={next => { setInfoOpen(next); if (next) setMenuOpen(false); }} trigger={props => <button {...props} type="button" className="sn-control sn-icon-control sn-dropdown-control" aria-label={t.about} disabled={!selected}><Icon kind="info" /><SystemIcon name={props['aria-expanded'] ? 'chevron-up' : 'chevron-down'} size={16} /></button>}>
           {selected && <dl><div><dt>{t.path}</dt><dd>{selected.path}</dd></div><div><dt>{t.type}</dt><dd>{fileType(selected.path)}</dd></div><div><dt>{t.bytes}</dt><dd>{new Intl.NumberFormat(locale).format(new TextEncoder().encode(selected.content).byteLength)} {t.byteUnit}</dd></div></dl>}
         </SystemPopover>
       </div>

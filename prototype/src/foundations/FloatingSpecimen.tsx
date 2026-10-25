@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { SystemButton } from './SystemButton';
-import { SystemIcon } from './SystemIcon';
 import { SystemIconButton } from './SystemIconButton';
 import { SystemMenu } from './SystemMenu';
 import { SystemPopover } from './SystemPopover';
@@ -14,7 +13,7 @@ const words = {
 export function FloatingSpecimen({ locale }: { locale: keyof typeof words }) {
   const t = words[locale], [selectedFile, setSelectedFile] = useState<string | null>('AfterlightExample.tsx');
   return <section className="floating-specimen" id="floating" aria-labelledby="floating-title"><header><p className="sy-eyebrow">20 · 21 · 22 / Floating surfaces</p><h2 id="floating-title">{t.title}</h2><p>{t.intro}</p></header><div className="floating-specimen-actions">
-    <SystemMenu label={t.menu} align="start" trigger={props => <SystemButton {...props} trailingIcon={<SystemIcon name={props['aria-expanded'] ? 'chevron-up' : 'chevron-down'} size={16} />}>{t.menu}</SystemButton>} items={[{ id: 'copy', label: t.copy, onSelect: () => setSelectedFile('AfterlightExample.tsx') }, { id: 'rename', label: <span className="system-menu-item-label">{t.rename}<small>{t.unavailable}</small></span>, disabled: true, onSelect: () => {} }, { id: 'remove', label: t.remove, destructive: true, onSelect: () => setSelectedFile(null) }]} />
+    <SystemMenu label={t.menu} align="start" trigger={props => <SystemButton {...props}>{t.menu}</SystemButton>} items={[{ id: 'copy', label: t.copy, onSelect: () => setSelectedFile('AfterlightExample.tsx') }, { id: 'rename', label: <span className="system-menu-item-label">{t.rename}<small>{t.unavailable}</small></span>, disabled: true, onSelect: () => {} }, { id: 'remove', label: t.remove, destructive: true, onSelect: () => setSelectedFile(null) }]} />
     <SystemPopover title={t.info} closeLabel={t.close} trigger={props => <SystemButton {...props}>{t.info}</SystemButton>}><p>{t.body}</p></SystemPopover>
     <SystemTooltip content={t.tip} trigger={props => <SystemIconButton {...props} icon="info" label={t.help} variant="quiet" />} />
   </div><p className="floating-specimen-note">{t.note}</p><p className="floating-specimen-status" role="status">{t.notice} <strong>{selectedFile ?? t.cleared}</strong></p></section>;

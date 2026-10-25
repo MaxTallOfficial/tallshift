@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 // Structural SSR checks only; keyboard, focus and collision require browser checks.
 const server = await createServer({ root: fileURLToPath(new URL('..', import.meta.url)), configFile: false, server: { middlewareMode: true, hmr: false, ws: false } });
 after(async () => { await server.close(); });
+const { SystemButton } = await server.ssrLoadModule('/src/foundations/SystemButton.tsx');
 const { SystemMenu } = await server.ssrLoadModule('/src/foundations/SystemMenu.tsx');
 const { SystemPopover } = await server.ssrLoadModule('/src/foundations/SystemPopover.tsx');
 const { SystemTooltip } = await server.ssrLoadModule('/src/foundations/SystemTooltip.tsx');
@@ -50,4 +51,16 @@ test('floating specimen renders all three locales without duplicate IDs or unava
     const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
     assert.equal(ids.length, new Set(ids).size);
   }
+});
+
+test('dropdown buttons provide a decorative state-aware chevron without duplicating explicit icons', () => {
+  for (const popup of ['menu', 'listbox', 'dialog']) for (const expanded of [false, true]) {
+    const html = renderToStaticMarkup(createElement(SystemButton, {'aria-haspopup':popup,'aria-expanded':expanded}, 'Options'));
+    assert.match(html, new RegExp(`data-icon="chevron-${expanded?'up':'down'}"`));
+    assert.equal((html.match(/data-icon="chevron-/g)??[]).length,1);
+    assert.match(html,/aria-hidden="true"/);
+  }
+  const html = renderToStaticMarkup(createElement(SystemButton, {'aria-haspopup':'menu',trailingIcon:createElement('svg',{'data-custom-icon':true})}, 'Options'));
+  assert.doesNotMatch(html,/data-icon="chevron-/);
+  assert.match(html,/data-custom-icon="true"/);
 });

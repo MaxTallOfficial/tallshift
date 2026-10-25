@@ -67,3 +67,5 @@
 .sn-navigation .sn-menu button:hover,.sn-navigation .sn-menu button:focus-visible { background:var(--sy-component-menu-item-active-background,var(--f-inset)); }
 .sn-info { background:var(--sy-component-popover-background,var(--f-raised)); border-color:var(--sy-component-popover-border,var(--f-control-border)); }
 .sn-sheet { background:var(--sy-component-sheet-background,var(--f-surface)); border-color:var(--sy-component-sheet-border,var(--f-control-border)); }
+
+.sn-navigation .sn-dropdown-control { width:auto; min-width:64px; display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:11px 10px; }

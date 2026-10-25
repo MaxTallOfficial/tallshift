@@ -1,0 +1,11 @@
+{
+  "desktop": {
+    "closedIcon": "chevron-down",
+    "missing": [],
+    "textCheckmarks": 0
+  },
+  "mobile": {
+    "overflow": false,
+    "width": 320
+  }
+}

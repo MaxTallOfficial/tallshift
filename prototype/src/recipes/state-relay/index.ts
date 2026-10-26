@@ -1,3 +1,4 @@
+import { stateRelayDuration } from './config-limits';
 import controllerSource from '../../../recipe-exports/state-relay/src/createStateRelay.ts?raw';
 import hookSource from '../../../recipe-exports/state-relay/src/useStateRelay.ts?raw';
 import cssSource from '../../../recipe-exports/state-relay/src/StateRelay.module.css?raw';
@@ -43,7 +44,7 @@ export function validateRecipeConfig(value: Partial<RecipeConfiguration> = {}): 
   if (!['off', 'subtle', 'expressive'].includes(motion)) throw new TypeError('Unsupported motion');
   if (!['next', 'vite'].includes(target)) throw new TypeError('Unsupported target');
   if (!/^#[\da-f]{6}$/i.test(accent)) throw new TypeError('Accent must be #RRGGBB');
-  if (!Number.isInteger(duration) || duration < 0 || duration > 480) throw new TypeError('Duration must be 0–480 integer milliseconds');
+  if (!Number.isInteger(duration) || duration < stateRelayDuration.min || duration > stateRelayDuration.max) throw new TypeError('Duration must be 0–480 integer milliseconds');
   return { locale, motion, accent, duration: motion === 'off' ? 0 : duration, target };
 }
 
@@ -65,7 +66,7 @@ const configSchema = {
     locale: { type: 'string', enum: ['en', 'ru', 'vi'], default: 'en' },
     motion: { type: 'string', enum: ['off', 'subtle', 'expressive'] },
     accent: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$' },
-    duration: { type: 'integer', minimum: 0, maximum: 480, description: 'Milliseconds; defaults subtle 120, expressive 180, off 0' },
+    duration: { type: 'integer', minimum: stateRelayDuration.min, maximum: stateRelayDuration.max, description: 'Milliseconds; defaults subtle 120, expressive 180, off 0' },
   },
 };
 

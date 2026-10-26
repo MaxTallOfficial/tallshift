@@ -1,6 +1,7 @@
+import { stateRelayDuration } from '../recipes/state-relay/config-limits.ts';
 import { contrastRatio } from './tokens.ts';
 
-export const MOTION_DURATION = Object.freeze({ min: 0, max: 400, step: 20, default: 160 });
+export const MOTION_DURATION = stateRelayDuration;
 export const APPROVED_PREVIEW_ACCENT = '#EBD183';
 
 export type DurationError = 'required' | 'number' | 'range' | 'step';
@@ -39,7 +40,7 @@ export function previewColorContrast(value: string) {
 /** User Off wins; an OS reduction request can never be overridden by controls. */
 export function resolveMotionState(duration: number, forceOff: boolean, reduced: boolean) {
   const result = validateDurationDraft(String(duration));
-  if (result.error) throw new RangeError('Motion duration must be 0–400 ms in 20 ms steps');
+  if (result.error) throw new RangeError('Motion duration must be an integer from 0–480 ms');
   const reason = forceOff ? 'off' : reduced ? 'reduced' : duration === 0 ? 'instant' : 'active';
   return { reason, effectiveDuration: forceOff || reduced ? 0 : duration, controlsDisabled: forceOff || reduced } as const;
 }

@@ -2,7 +2,7 @@ import type { Locale } from './copy';
 
 const en = {
   title: 'Afterlight,', titleSecond: 'in use.', intro: 'A working system for finding, trying and adapting interface materials.',
-  edition: 'INTERFACE SYSTEM / 10', nav: 'System navigation', discovery: 'Discovery', libraryStates: 'Library states', access: 'Free + Pro', workbench: 'Workbench', controls: 'Controls', actions: 'Actions + tabs', modals: 'Dialogs + sheets', floating: 'Menus + hints', feedback: 'Feedback', notifications: 'Notifications', type: 'Type + layout', roles: 'Roles + motion', handoff: 'Handoff',
+  edition: 'INTERFACE SYSTEM / 10', nav: 'System navigation', discovery: 'Discovery', libraryStates: 'Library states', access: 'Packs + access', workbench: 'Workbench', controls: 'Controls', actions: 'Actions + tabs', modals: 'Dialogs + sheets', floating: 'Menus + hints', feedback: 'Feedback', notifications: 'Notifications', type: 'Type + layout', roles: 'Roles + motion', handoff: 'Handoff',
   approved: 'Chosen color + type', review: 'Components under review', export: 'Export system tokens', exported: 'System tokens downloaded.',
   workTitle: 'One material. Three ways to work.', workIntro: 'Try State Relay, inspect its source, then take the prompt into your project.',
   target: 'Project', previewWidth: 'Preview width', full: 'Available width', tablet: 'Tablet · 640', mobile: 'Mobile · 320', widthNote: 'Resizes this preview only. Smaller containers use the space available.',
@@ -24,7 +24,7 @@ const en = {
 type Key = keyof typeof en;
 const ru: Record<Key, string> = {
   title: 'Afterlight', titleSecond: 'в работе.', intro: 'Рабочая система для поиска, проверки и адаптации интерфейсных материалов.',
-  edition: 'СИСТЕМА ИНТЕРФЕЙСА / 10', nav: 'Навигация по системе', discovery: 'Поиск', libraryStates: 'Состояния каталога', access: 'Free и Pro', workbench: 'Рабочая область', controls: 'Элементы', actions: 'Кнопки и вкладки', modals: 'Диалоги и панели', floating: 'Меню и подсказки', feedback: 'Обратная связь', notifications: 'Уведомления', type: 'Шрифт и сетка', roles: 'Цвет и движение', handoff: 'Передача',
+  edition: 'СИСТЕМА ИНТЕРФЕЙСА / 10', nav: 'Навигация по системе', discovery: 'Поиск', libraryStates: 'Состояния каталога', access: 'Наборы и доступ', workbench: 'Рабочая область', controls: 'Элементы', actions: 'Кнопки и вкладки', modals: 'Диалоги и панели', floating: 'Меню и подсказки', feedback: 'Обратная связь', notifications: 'Уведомления', type: 'Шрифт и сетка', roles: 'Цвет и движение', handoff: 'Передача',
   approved: 'Выбранные цвет и шрифт', review: 'Компоненты на рассмотрении', export: 'Сохранить токены системы', exported: 'Токены системы сохранены.',
   workTitle: 'Один материал. Три способа работы.', workIntro: 'Проверьте State Relay, изучите исходники и возьмите промпт для своего проекта.',
   target: 'Проект', previewWidth: 'Ширина примера', full: 'Доступная ширина', tablet: 'Планшет · 640', mobile: 'Мобильный · 320', widthNote: 'Меняется только ширина примера. В узком контейнере используется доступное место.',
@@ -45,7 +45,7 @@ const ru: Record<Key, string> = {
 };
 const vi: Record<Key, string> = {
   title: 'Afterlight', titleSecond: 'trong thực tế.', intro: 'Hệ thống tương tác để tìm, thử và tùy chỉnh các thành phần giao diện.',
-  edition: 'HỆ THỐNG GIAO DIỆN / 10', nav: 'Điều hướng hệ thống', discovery: 'Tìm kiếm', libraryStates: 'Trạng thái thư viện', access: 'Free + Pro', workbench: 'Khu làm việc', controls: 'Điều khiển', actions: 'Nút và thẻ', modals: 'Hộp thoại và bảng', floating: 'Menu và gợi ý', feedback: 'Phản hồi', notifications: 'Thông báo', type: 'Chữ và lưới', roles: 'Màu và chuyển động', handoff: 'Bàn giao',
+  edition: 'HỆ THỐNG GIAO DIỆN / 10', nav: 'Điều hướng hệ thống', discovery: 'Tìm kiếm', libraryStates: 'Trạng thái thư viện', access: 'Bộ và quyền truy cập', workbench: 'Khu làm việc', controls: 'Điều khiển', actions: 'Nút và thẻ', modals: 'Hộp thoại và bảng', floating: 'Menu và gợi ý', feedback: 'Phản hồi', notifications: 'Thông báo', type: 'Chữ và lưới', roles: 'Màu và chuyển động', handoff: 'Bàn giao',
   approved: 'Màu và phông chữ đã chọn', review: 'Component đang được đánh giá', export: 'Xuất token hệ thống', exported: 'Đã tải token hệ thống.',
   workTitle: 'Một thành phần. Ba cách sử dụng.', workIntro: 'Thử State Relay, xem mã nguồn rồi dùng prompt cho dự án của bạn.',
   target: 'Dự án', previewWidth: 'Chiều rộng bản xem thử', full: 'Chiều rộng có sẵn', tablet: 'Máy tính bảng · 640', mobile: 'Di động · 320', widthNote: 'Chỉ đổi chiều rộng bản xem thử. Khung hẹp dùng không gian có sẵn.',

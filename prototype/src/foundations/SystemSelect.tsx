@@ -46,7 +46,18 @@ export function SystemSelect({ label, value, options, onChange, disabled = false
       if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
     };
     const viewport = (event: Event) => {
-      if (!(event.target instanceof Node) || !rootRef.current?.contains(event.target)) setOpen(false);
+      if (event.target instanceof Node && rootRef.current?.contains(event.target)) return;
+      const rect = triggerRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      const visual = window.visualViewport;
+      const top = visual?.offsetTop ?? 0;
+      const height = visual?.height ?? window.innerHeight;
+      if (rect.bottom < top || rect.top > top + height) { setOpen(false); return; }
+      const below = top + height - rect.bottom;
+      const above = rect.top - top;
+      const useAbove = below < Math.min(options.length * 44 + 12, 240) + 12 && above > below;
+      setUp(useAbove);
+      setRoom(Math.max(0, Math.min(240, (useAbove ? above : below) - 12)));
     };
     document.addEventListener('pointerdown', outside);
     window.addEventListener('resize', viewport);
@@ -60,7 +71,7 @@ export function SystemSelect({ label, value, options, onChange, disabled = false
       window.visualViewport?.removeEventListener('resize', viewport);
       window.visualViewport?.removeEventListener('scroll', viewport);
     };
-  }, [expanded]);
+  }, [expanded, options.length]);
   useEffect(() => { if (unavailable || readOnly) setOpen(false); }, [unavailable, readOnly]);
   useLayoutEffect(() => {
     if (!expanded) return;

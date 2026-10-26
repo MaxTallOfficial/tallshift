@@ -2,10 +2,11 @@
   "planning_catalog_schema_version": 2,
   "spec_version": "1.0",
   "status": "baseline_for_local_prototype_and_staged_delivery",
-  "date": "2026-10-21",
+  "date": "2026-10-26",
   "locales": [
+    "en",
     "ru",
-    "en"
+    "vi"
   ],
   "canonical_unique_item_count": 32,
   "free_count": 9,
@@ -105,7 +106,8 @@
       "id": "FREE-STARTER",
       "title": {
         "ru": "Starter",
-        "en": "Starter"
+        "en": "Starter",
+        "vi": "Starter"
       },
       "access": "free",
       "item_ids": [
@@ -127,7 +129,8 @@
       "id": "PACK-PRODUCT",
       "title": {
         "ru": "Product",
-        "en": "Product"
+        "en": "Product",
+        "vi": "Product"
       },
       "access": "pro",
       "item_ids": [
@@ -146,7 +149,8 @@
       "id": "PACK-EDITORIAL",
       "title": {
         "ru": "Editorial",
-        "en": "Editorial"
+        "en": "Editorial",
+        "vi": "Editorial"
       },
       "access": "pro",
       "item_ids": [
@@ -165,7 +169,8 @@
       "id": "PACK-PLAYFUL",
       "title": {
         "ru": "Playful",
-        "en": "Playful"
+        "en": "Playful",
+        "vi": "Playful"
       },
       "access": "pro",
       "item_ids": [
@@ -184,7 +189,8 @@
       "id": "PACK-MOTION",
       "title": {
         "ru": "UI Motion",
-        "en": "UI Motion"
+        "en": "UI Motion",
+        "vi": "UI Motion"
       },
       "access": "pro",
       "item_ids": [
@@ -206,7 +212,8 @@
       "id": "BUNDLE-LAUNCH",
       "title": {
         "ru": "All packs",
-        "en": "All packs"
+        "en": "All packs",
+        "vi": "All packs"
       },
       "access": "pro",
       "includes_product_ids": [
@@ -253,7 +260,8 @@
       "slug": "starter-split-hero",
       "title": {
         "ru": "Стартовый hero с двумя колонками",
-        "en": "Starter Split Hero"
+        "en": "Starter Split Hero",
+        "vi": "Phần mở đầu hai cột"
       },
       "access": "free",
       "pack": "FREE-STARTER",
@@ -362,7 +370,8 @@
       "slug": "starter-feature-grid",
       "title": {
         "ru": "Стартовая сетка преимуществ",
-        "en": "Starter Feature Grid"
+        "en": "Starter Feature Grid",
+        "vi": "Lưới tính năng"
       },
       "access": "free",
       "pack": "FREE-STARTER",
@@ -460,7 +469,8 @@
       "slug": "starter-action-band",
       "title": {
         "ru": "Стартовый блок действия",
-        "en": "Starter Action Band"
+        "en": "Starter Action Band",
+        "vi": "Khối kêu gọi hành động"
       },
       "access": "free",
       "pack": "FREE-STARTER",
@@ -551,7 +561,8 @@
       "slug": "product-demo-hero",
       "title": {
         "ru": "Hero с интерактивным демо",
-        "en": "Product Demo Hero"
+        "en": "Product Demo Hero",
+        "vi": "Phần mở đầu với demo tương tác"
       },
       "access": "pro",
       "pack": "PACK-PRODUCT",
@@ -651,7 +662,8 @@
       "slug": "product-feature-steps",
       "title": {
         "ru": "История возможностей по шагам",
-        "en": "Product Feature Steps"
+        "en": "Product Feature Steps",
+        "vi": "Giới thiệu tính năng từng bước"
       },
       "access": "pro",
       "pack": "PACK-PRODUCT",
@@ -742,7 +754,8 @@
       "slug": "product-pricing-compare",
       "title": {
         "ru": "Сравнение тарифов",
-        "en": "Product Pricing Compare"
+        "en": "Product Pricing Compare",
+        "vi": "So sánh gói dịch vụ"
       },
       "access": "pro",
       "pack": "PACK-PRODUCT",
@@ -839,7 +852,8 @@
       "slug": "editorial-title-hero",
       "title": {
         "ru": "Редакционный типографический hero",
-        "en": "Editorial Title Hero"
+        "en": "Editorial Title Hero",
+        "vi": "Phần mở đầu tập trung vào chữ"
       },
       "access": "pro",
       "pack": "PACK-EDITORIAL",
@@ -930,7 +944,8 @@
       "slug": "editorial-project-index",
       "title": {
         "ru": "Редакционный список проектов",
-        "en": "Editorial Project Index"
+        "en": "Editorial Project Index",
+        "vi": "Danh sách dự án"
       },
       "access": "pro",
       "pack": "PACK-EDITORIAL",
@@ -1020,7 +1035,8 @@
       "slug": "editorial-contact-footer",
       "title": {
         "ru": "Редакционный контактный footer",
-        "en": "Editorial Contact Footer"
+        "en": "Editorial Contact Footer",
+        "vi": "Phần liên hệ cuối trang"
       },
       "access": "pro",
       "pack": "PACK-EDITORIAL",
@@ -1112,7 +1128,8 @@
       "slug": "playful-sticker-hero",
       "title": {
         "ru": "Hero с графическими стикерами",
-        "en": "Playful Sticker Hero"
+        "en": "Playful Sticker Hero",
+        "vi": "Phần mở đầu với nhãn dán"
       },
       "access": "pro",
       "pack": "PACK-PLAYFUL",
@@ -1204,7 +1221,8 @@
       "slug": "playful-question-cards",
       "title": {
         "ru": "FAQ в карточках",
-        "en": "Playful Question Cards"
+        "en": "Playful Question Cards",
+        "vi": "Thẻ câu hỏi thường gặp"
       },
       "access": "pro",
       "pack": "PACK-PLAYFUL",
@@ -1295,7 +1313,8 @@
       "slug": "playful-orbit-cta",
       "title": {
         "ru": "CTA с орбитальной графикой",
-        "en": "Playful Orbit CTA"
+        "en": "Playful Orbit CTA",
+        "vi": "Khối kêu gọi hành động với đồ họa quỹ đạo"
       },
       "access": "pro",
       "pack": "PACK-PLAYFUL",
@@ -1401,7 +1420,8 @@
       "slug": "press-button",
       "title": {
         "ru": "Кнопка с откликом",
-        "en": "Press Button"
+        "en": "Press Button",
+        "vi": "Nút có phản hồi"
       },
       "access": "free",
       "pack": "FREE-STARTER",
@@ -1498,7 +1518,8 @@
       "slug": "content-tabs",
       "title": {
         "ru": "Контентные вкладки",
-        "en": "Content Tabs"
+        "en": "Content Tabs",
+        "vi": "Thẻ nội dung"
       },
       "access": "free",
       "pack": "FREE-STARTER",
@@ -1573,7 +1594,8 @@
       "slug": "segmented-navigation",
       "title": {
         "ru": "Сегментированная навигация",
-        "en": "Segmented Navigation"
+        "en": "Segmented Navigation",
+        "vi": "Điều hướng theo nhóm"
       },
       "access": "pro",
       "pack": "PACK-PRODUCT",
@@ -1662,7 +1684,8 @@
       "slug": "metric-switcher",
       "title": {
         "ru": "Переключатель метрик",
-        "en": "Metric Switcher"
+        "en": "Metric Switcher",
+        "vi": "Bộ chuyển chỉ số"
       },
       "access": "pro",
       "pack": "PACK-PRODUCT",
@@ -1732,7 +1755,8 @@
       "slug": "project-card",
       "title": {
         "ru": "Карточка проекта",
-        "en": "Project Card"
+        "en": "Project Card",
+        "vi": "Thẻ dự án"
       },
       "access": "pro",
       "pack": "PACK-EDITORIAL",
@@ -1831,7 +1855,8 @@
       "slug": "media-gallery",
       "title": {
         "ru": "Галерея с просмотром",
-        "en": "Media Gallery"
+        "en": "Media Gallery",
+        "vi": "Thư viện ảnh có xem trước"
       },
       "access": "pro",
       "pack": "PACK-EDITORIAL",
@@ -1915,7 +1940,8 @@
       "slug": "magnetic-button",
       "title": {
         "ru": "Кнопка с магнитным откликом",
-        "en": "Magnetic Button"
+        "en": "Magnetic Button",
+        "vi": "Nút tương tác theo con trỏ"
       },
       "access": "pro",
       "pack": "PACK-PLAYFUL",
@@ -1996,7 +2022,8 @@
       "slug": "testimonial-switcher",
       "title": {
         "ru": "Переключатель отзывов",
-        "en": "Testimonial Switcher"
+        "en": "Testimonial Switcher",
+        "vi": "Bộ chuyển lời nhận xét"
       },
       "access": "pro",
       "pack": "PACK-PLAYFUL",
@@ -2070,7 +2097,8 @@
       "slug": "content-reveal",
       "title": {
         "ru": "Появление контента",
-        "en": "Content Reveal"
+        "en": "Content Reveal",
+        "vi": "Hiện nội dung"
       },
       "access": "free",
       "pack": "FREE-STARTER",
@@ -2167,7 +2195,8 @@
       "slug": "stagger-group",
       "title": {
         "ru": "Последовательное появление группы",
-        "en": "Stagger Group"
+        "en": "Stagger Group",
+        "vi": "Hiện lần lượt các phần tử"
       },
       "access": "pro",
       "pack": "PACK-PRODUCT",
@@ -2268,7 +2297,8 @@
       "slug": "soft-mesh-background",
       "title": {
         "ru": "Мягкий градиентный фон",
-        "en": "Soft Mesh Background"
+        "en": "Soft Mesh Background",
+        "vi": "Nền chuyển màu mềm"
       },
       "access": "pro",
       "pack": "PACK-EDITORIAL",
@@ -2375,7 +2405,8 @@
       "slug": "pointer-spotlight",
       "title": {
         "ru": "Локальная подсветка",
-        "en": "Pointer Spotlight"
+        "en": "Pointer Spotlight",
+        "vi": "Làm nổi bật theo con trỏ"
       },
       "access": "pro",
       "pack": "PACK-PLAYFUL",
@@ -2470,7 +2501,8 @@
       "slug": "state-relay",
       "title": {
         "ru": "Отклик состояний",
-        "en": "State Relay"
+        "en": "State Relay",
+        "vi": "Phản hồi trạng thái"
       },
       "access": "free",
       "pack": "FREE-STARTER",
@@ -2583,7 +2615,8 @@
       "slug": "context-bridge",
       "title": {
         "ru": "Связанный переход контента",
-        "en": "Context Bridge"
+        "en": "Context Bridge",
+        "vi": "Chuyển nội dung liền mạch"
       },
       "access": "pro",
       "pack": "PACK-MOTION",
@@ -2690,7 +2723,8 @@
       "slug": "line-assemble",
       "title": {
         "ru": "Сборка строк заголовка",
-        "en": "Line Assemble"
+        "en": "Line Assemble",
+        "vi": "Hiện tiêu đề theo dòng"
       },
       "access": "free",
       "pack": "FREE-STARTER",
@@ -2797,7 +2831,8 @@
       "slug": "focus-plane",
       "title": {
         "ru": "Переход общего кадра",
-        "en": "Focus Plane"
+        "en": "Focus Plane",
+        "vi": "Chuyển từ ảnh nhỏ sang chi tiết"
       },
       "access": "pro",
       "pack": "PACK-MOTION",
@@ -2887,7 +2922,8 @@
       "slug": "edge-unfold",
       "title": {
         "ru": "Раскрытие от края",
-        "en": "Edge Unfold"
+        "en": "Edge Unfold",
+        "vi": "Mở nội dung từ mép"
       },
       "access": "pro",
       "pack": "PACK-MOTION",
@@ -3000,7 +3036,8 @@
       "slug": "ledger-reflow",
       "title": {
         "ru": "Перестроение списка",
-        "en": "Ledger Reflow"
+        "en": "Ledger Reflow",
+        "vi": "Sắp xếp lại danh sách"
       },
       "access": "free",
       "pack": "FREE-STARTER",
@@ -3096,7 +3133,8 @@
       "slug": "scroll-chapters",
       "title": {
         "ru": "Прогресс глав при скролле",
-        "en": "Scroll Chapters"
+        "en": "Scroll Chapters",
+        "vi": "Tiến trình chương khi cuộn"
       },
       "access": "pro",
       "pack": "PACK-MOTION",
@@ -3192,7 +3230,8 @@
       "slug": "metric-roll",
       "title": {
         "ru": "Лента изменения чисел",
-        "en": "Metric Roll"
+        "en": "Metric Roll",
+        "vi": "Chuyển số mượt mà"
       },
       "access": "pro",
       "pack": "PACK-MOTION",
@@ -3466,7 +3505,8 @@
       "slug": "entrances-scroll",
       "title": {
         "ru": "Появление и скролл",
-        "en": "Entrances and Scroll"
+        "en": "Entrances and Scroll",
+        "vi": "Xuất hiện và cuộn"
       },
       "item_ids": [
         "E001",
@@ -3479,7 +3519,8 @@
       "slug": "controls-feedback",
       "title": {
         "ru": "Отклик контролов",
-        "en": "Control Feedback"
+        "en": "Control Feedback",
+        "vi": "Phản hồi điều khiển"
       },
       "item_ids": [
         "A001"
@@ -3490,7 +3531,8 @@
       "slug": "navigation-transitions",
       "title": {
         "ru": "Навигация и переходы",
-        "en": "Navigation and Transitions"
+        "en": "Navigation and Transitions",
+        "vi": "Điều hướng và chuyển cảnh"
       },
       "item_ids": [
         "A002"
@@ -3501,7 +3543,8 @@
       "slug": "text-numbers",
       "title": {
         "ru": "Текст и числа",
-        "en": "Text and Numbers"
+        "en": "Text and Numbers",
+        "vi": "Văn bản và số"
       },
       "item_ids": [
         "A003",
@@ -3513,7 +3556,8 @@
       "slug": "cards-media",
       "title": {
         "ru": "Карточки и медиа",
-        "en": "Cards and Media"
+        "en": "Cards and Media",
+        "vi": "Thẻ và nội dung đa phương tiện"
       },
       "item_ids": [
         "A004"
@@ -3524,7 +3568,8 @@
       "slug": "overlays-menus",
       "title": {
         "ru": "Панели и меню",
-        "en": "Overlays and Menus"
+        "en": "Overlays and Menus",
+        "vi": "Bảng nổi và menu"
       },
       "item_ids": [
         "A005"
@@ -3535,7 +3580,8 @@
       "slug": "lists-data",
       "title": {
         "ru": "Списки и данные",
-        "en": "Lists and Data"
+        "en": "Lists and Data",
+        "vi": "Danh sách và dữ liệu"
       },
       "item_ids": [
         "A006"
@@ -3546,7 +3592,8 @@
       "slug": "backgrounds-pointer",
       "title": {
         "ru": "Фоны и pointer",
-        "en": "Backgrounds and Pointer"
+        "en": "Backgrounds and Pointer",
+        "vi": "Nền và con trỏ"
       },
       "item_ids": [
         "E003",

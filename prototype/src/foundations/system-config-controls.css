@@ -127,3 +127,5 @@
 .sc-color-apply[data-dirty=false] { color:var(--f-secondary); background:transparent; }
 
 .sc-panel { padding-inline:var(--sy-panel-inline,32px); }
+
+.sc-discard{margin-block:8px;padding:4px 0;border:0;background:transparent;color:var(--f-text);text-decoration:underline;text-underline-offset:4px;cursor:pointer;font:inherit;font-size:14px}

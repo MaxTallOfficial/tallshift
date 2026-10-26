@@ -10,7 +10,7 @@ import {
 import { contrastRatio } from '../src/foundations/tokens.ts';
 
 test('duration accepts both endpoints and every supported step without clamping', () => {
-  for (let duration = 0; duration <= 400; duration += 20) {
+  for (let duration = 0; duration <= 480; duration += 1) {
     assert.deepEqual(validateDurationDraft(String(duration)), { value: duration, error: null });
   }
   assert.deepEqual(validateDurationDraft(' 160 '), { value: 160, error: null });
@@ -20,7 +20,7 @@ test('duration accepts both endpoints and every supported step without clamping'
 test('invalid number drafts never yield an applied value', () => {
   for (const [draft, error] of [
     ['', 'required'], ['   ', 'required'], ['oops', 'number'], ['Infinity', 'number'], ['NaN', 'number'],
-    ['0x14', 'number'], ['-20', 'range'], ['420', 'range'], ['35', 'step'], ['160.5', 'step'], ['0.1', 'step'],
+    ['0x14', 'number'], ['-20', 'range'], ['481', 'range'], ['35.5', 'step'], ['160.5', 'step'], ['0.1', 'step'],
   ] as const) assert.deepEqual(validateDurationDraft(draft), { value: null, error }, draft);
 });
 
@@ -30,7 +30,7 @@ test('motion Off takes precedence, then system reduction, without discarding dur
   assert.deepEqual(resolveMotionState(240, false, true), { reason: 'reduced', effectiveDuration: 0, controlsDisabled: true });
   assert.deepEqual(resolveMotionState(240, true, true), { reason: 'off', effectiveDuration: 0, controlsDisabled: true });
   assert.deepEqual(resolveMotionState(0, false, false), { reason: 'instant', effectiveDuration: 0, controlsDisabled: false });
-  assert.throws(() => resolveMotionState(35, false, false), RangeError);
+  assert.throws(() => resolveMotionState(480.5, false, false), RangeError);
   assert.throws(() => resolveMotionState(Number.NaN, true, true), RangeError);
 });
 

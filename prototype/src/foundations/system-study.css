@@ -136,3 +136,13 @@
 .sy-workbench > .sy-work-body { grid-template-columns:minmax(0,1fr) 320px; }
 @media(max-width:1023px) { .sy-workbench > .sy-work-body { grid-template-columns:minmax(0,1fr); } }
 .sy-handoff-panel,.sy-motion-panel { padding-inline:var(--sy-panel-inline); }
+
+.sy-integration-guide{line-height:1.7;color:var(--f-secondary);overflow-wrap:anywhere}.sy-integration-guide p{margin-block:16px}.sy-integration-guide pre{white-space:pre-wrap;padding:16px;background:var(--f-inset);border:1px solid var(--f-line);border-radius:8px}.sy-integration-guide code{font-size:13px}
+
+@media(min-width:768px) and (max-width:1023px){.sy-work-settings>.sy-configuration{grid-column:1;grid-row:1 / span 2}.sy-work-settings>.system-checkbox{grid-column:2;grid-row:1}.sy-work-settings>div:not(.sy-configuration):not(.sy-export-footer){grid-column:2;grid-row:2}.sy-work-settings>.sy-export-footer{grid-column:1 / -1}}
+
+.sy-workbar-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;max-width:100%}
+.sy-export-hint{min-block-size:4.5em;margin:12px 0 0;color:var(--f-secondary);font-size:12px;line-height:1.5}
+@media(max-width:767px){.sy-workbar-actions{width:100%;display:grid;grid-template-columns:minmax(0,1fr)}.sy-workbar-actions>.system-button{width:100%}}
+
+.system-study .system-dialog-heading h2:focus-visible{outline:none}

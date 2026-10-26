@@ -3,7 +3,8 @@
   "revision": "1.0.0",
   "title": {
     "ru": "All packs",
-    "en": "All packs"
+    "en": "All packs",
+    "vi": "All packs"
   },
   "itemIds": [
     "S004",

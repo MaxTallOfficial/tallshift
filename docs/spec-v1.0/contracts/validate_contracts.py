@@ -53,6 +53,8 @@ for schema_name, filename in fixtures:
     checks += 1
 
 config = read('A001.config.example.json')
+check('A001.config.schema.json', {**config, 'locale':'vi','duration':480}, True)
+checks += 1
 for field, value in [('state', 'success'), ('context', 'secret'), ('html', '<script>'),
                      ('locale', 'de'), ('duration', -1), ('duration', 481),
                      ('duration', 1.2), ('motion', 'fast'), ('accent', 'url(evil)'),
@@ -109,12 +111,14 @@ checks += 1
 
 public = {'schemaVersion':'1.0.0','itemId':'A001','itemVersion':'0.1.0-prototype',
           'slug':'state-relay','kind':'animation','access':'free',
-          'title':{'ru':'Отклик состояний','en':'State Relay'},
-          'description':{'ru':'Демо, не готовый релиз','en':'Demo, not a ready release'},
+          'title':{'ru':'Отклик состояний','en':'State Relay','vi':'Phản hồi trạng thái'},
+          'description':{'ru':'Демо, не готовый релиз','en':'Demo, not a ready release','vi':'Bản thử, chưa phải bản phát hành'},
           'categorySlugs':['controls-feedback'],'posterPath':'posters/A001.webp',
           'lifecycle':'planned','verificationStatus':'planned',
-          'targets':['vite-react-ts','next-app-router'],'locales':['ru','en'],'limitations':[]}
+          'targets':['vite-react-ts','next-app-router'],'locales':['en','ru','vi'],'limitations':[]}
 check('public-item.schema.json', public, True)
+checks += 1
+check('public-item.schema.json', {**public, 'lifecycle':'published', 'locales':['ru','en']}, False)
 checks += 1
 for field in ('files', 'objectKey', 'source', 'promptBody', 'userId', 'grants'):
     check('public-item.schema.json', {**public, field: 'sensitive'}, False)

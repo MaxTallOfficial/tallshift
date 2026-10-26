@@ -48,7 +48,8 @@ try {
     assert.equal(prompt, studyPrompt(config));
     assert.ok(prompt.includes(`"locale": "${locale}"`));
     assert.ok(prompt.includes(`"target": "${target}"`));
-    assert.ok(prompt.includes(mode));
+    const modeLabels = {en:{preserve:'Keep the design',adapt:'Adapt to my project'},ru:{preserve:'Сохранить дизайн',adapt:'Адаптировать под проект'},vi:{preserve:'Giữ nguyên thiết kế',adapt:'Điều chỉnh cho dự án'}};
+    assert.ok(prompt.includes(modeLabels[locale][mode]), 'prompt names the selected mode in its language');
     for (const source of studyFiles(config).filter(file => /\.(tsx?|css)$/.test(file.path))) assert.ok(prompt.includes(source.content), `prompt includes ${source.path}`);
     assert.ok(!prompt.includes('FILE: Example.tsx'));
     assert.ok(prompt.includes(text(`INTEGRATE.${locale}.md`)), 'prompt includes the guide in the selected language');
@@ -57,6 +58,10 @@ try {
       assert.notEqual(text('INTEGRATE.vi.md'), text('INTEGRATE.en.md'), 'Vietnamese is translated, not an English fallback');
     }
     cases += 1;
+  }
+  for (const duration of [35,470,480]) {
+    const files=studyFiles({locale:'vi',duration});
+    assert.equal(JSON.parse(files.find(file=>file.path==='config.json').content).duration,duration);
   }
   const offFiles = studyFiles({ motion: 'off', duration: 200 });
   assert.equal(JSON.parse(offFiles.find(file => file.path === 'config.json').content).duration, 0);

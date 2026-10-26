@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-26",
+  "scope": "Local design-system and reference product logic; no live commerce verification",
+  "checks": {
+    "unit_and_semantic_tests": {
+      "passed": 126,
+      "failed": 0
+    },
+    "export_combinations": 12,
+    "contract_schemas": 8,
+    "contract_checks": 61,
+    "typescript": "passed",
+    "stand_build": "passed",
+    "packed_library_consumers": {
+      "next": "passed",
+      "vite": "passed"
+    }
+  },
+  "browser": {
+    "color_invalid_blocks_copy_and_zip": true,
+    "color_pending_blocks_export": true,
+    "color_apply_updates_source": true,
+    "color_draft_shared_across_controls": true,
+    "single_file_actions_disabled_with_invalid_config": true,
+    "discard_restores_export": true,
+    "duration_valid_values": [
+      35,
+      480
+    ],
+    "duration_invalid_value": 480.5,
+    "prompt_adapt_changes_instructions": true,
+    "context_opt_in_included_and_excluded": true,
+    "guide_ru_vi_opens": true,
+    "upgrade_from_product_usd": 23,
+    "upgrade_new_materials": 17,
+    "old_materials": 6,
+    "old_update_date_preserved": true,
+    "expired_updates_visible": true
+  },
+  "responsive_samples": [
+    {
+      "locale": "en",
+      "width": 320,
+      "page_overflow": false
+    },
+    {
+      "locale": "ru",
+      "width": 390,
+      "page_overflow": false,
+      "workbench_panel_inline_padding": 16
+    },
+    {
+      "locale": "vi",
+      "width": 768,
+      "page_overflow": false
+    }
+  ],
+  "limitations": [
+    "Only A001 has a transferable implementation.",
+    "Buyer histories are explicit local review fixtures.",
+    "No production auth, payments, grants ledger or private Pro delivery.",
+    "Review stand JS exceeds the 500 kB chunk warning threshold."
+  ]
+}

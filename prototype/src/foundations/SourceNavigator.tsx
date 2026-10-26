@@ -13,6 +13,7 @@ export interface SourceNavigatorProps {
   onSelect: (path: string) => void;
   onCopy: () => void;
   copyBusy: boolean;
+  exportBlocked?: boolean;
 }
 
 type FileNode = { name: string; path: string; children?: FileNode[] };
@@ -51,7 +52,7 @@ function fileType(path: string) {
 }
 
 /** Native disclosure lists deliberately avoid pretending to implement an ARIA tree widget. */
-export function SourceNavigator({ locale, files, selectedPath, onSelect, onCopy, copyBusy }: SourceNavigatorProps) {
+export function SourceNavigator({ locale, files, selectedPath, onSelect, onCopy, copyBusy, exportBlocked = false }: SourceNavigatorProps) {
   const t = sourceNavigationWords[locale];
   const id = useId();
   const rootRef = useRef<HTMLDivElement>(null);
@@ -73,7 +74,7 @@ export function SourceNavigator({ locale, files, selectedPath, onSelect, onCopy,
   useEffect(() => { setNotice(''); }, [selectedPath, locale]);
 
   function download() {
-    if (!selected) return;
+    if (!selected || exportBlocked) return;
     try {
       const url = URL.createObjectURL(new Blob([selected.content], { type: 'text/plain;charset=utf-8' }));
       const anchor = document.createElement('a');
@@ -108,8 +109,8 @@ export function SourceNavigator({ locale, files, selectedPath, onSelect, onCopy,
       <span className="sn-desktop-title">{t.files}<span className="sn-count">{files.length}</span></span>
       <div className="sn-menu-wrap">
         <SystemMenu label={t.actions} align="end" open={menuOpen} onOpenChange={next => { setMenuOpen(next); if (next) setInfoOpen(false); }} trigger={props => <button {...props} ref={node => { props.ref.current = node; menuTrigger.current = node; }} type="button" className="sn-control sn-actions-control" aria-label={t.actions} title={t.actions} disabled={!selected}><span>{t.actions}</span><SystemIcon name={props['aria-expanded'] ? 'chevron-up' : 'chevron-down'} size={16} /></button>} items={[
-          { id: 'copy', label: copyBusy ? t.copying : t.copy, disabled: copyBusy, onSelect: onCopy },
-          { id: 'download', label: t.download, onSelect: download },
+          { id: 'copy', label: copyBusy ? t.copying : t.copy, disabled: copyBusy || exportBlocked, onSelect: onCopy },
+          { id: 'download', label: t.download, disabled: exportBlocked, onSelect: download },
         ]} />
       </div>
       <div className="sn-info-wrap">

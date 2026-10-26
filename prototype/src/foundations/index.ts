@@ -52,3 +52,7 @@ export { SourceNavigator } from './SourceNavigator';
 
 export { SystemMultiSelect } from './SystemMultiSelect';
 export type { SystemMultiSelectProps, SystemMultiSelectOption } from './SystemMultiSelect';
+
+export { deriveAccessState, summarizeCoverage } from './access-model';
+export type { AccessSnapshot, AccessKind, FunctionalCoverage } from './access-model';
+export type { SystemEntitlementKind, SystemEntitlementData } from './SystemEntitlementState';

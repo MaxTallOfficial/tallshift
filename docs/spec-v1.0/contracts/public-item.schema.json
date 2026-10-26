@@ -108,5 +108,42 @@
     "targets",
     "locales",
     "limitations"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "lifecycle": {
+            "const": "published"
+          }
+        },
+        "required": [
+          "lifecycle"
+        ]
+      },
+      "then": {
+        "properties": {
+          "locales": {
+            "contains": {
+              "const": "vi"
+            }
+          },
+          "title": {
+            "required": [
+              "en",
+              "ru",
+              "vi"
+            ]
+          },
+          "description": {
+            "required": [
+              "en",
+              "ru",
+              "vi"
+            ]
+          }
+        }
+      }
+    }
   ]
 }

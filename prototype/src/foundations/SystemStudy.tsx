@@ -1,3 +1,7 @@
+import { IntegrationGuide } from './IntegrationGuide';
+import { SystemDialog } from './SystemDialog';
+import { workbenchCopy } from './workbench-copy';
+import { canExportConfiguration, type DraftState } from './workbench-state';
 import { SystemNavigationShell } from './SystemNavigationShell';
 import { SystemBrandMark } from './SystemBrandMark';
 import { SystemLocaleControl } from './SystemLocaleControl';
@@ -68,6 +72,13 @@ export function SystemStudy() {
   const [width, setWidth] = useState<'full' | 'tablet' | 'mobile'>('full');
   const [filePath, setFilePath] = useState('SelectedExample.tsx');
   const [context, setContext] = useState('');
+  const [includeContext, setIncludeContext] = useState(false);
+  const [promptMode, setPromptMode] = useState<'preserve' | 'adapt'>('preserve');
+  const [guideOpen, setGuideOpen] = useState(false);
+  const [colorInput, setColorInput] = useState(theme['--f-accent']);
+  const [colorDraft, setColorDraft] = useState<DraftState>('applied');
+  const [foundationColorDraft, setFoundationColorDraft] = useState<DraftState>('applied');
+  const [durationDraft, setDurationDraft] = useState<DraftState>('applied');
   const [wrap, setWrap] = useState(false);
   const [duration, setDuration] = useState(160);
   const [previewAccent, setPreviewAccent] = useState(theme['--f-accent']);
@@ -91,11 +102,15 @@ export function SystemStudy() {
   const off = forceOff || reduced;
   const t = systemWords[locale];
   const b = baseWords[locale];
+  const w = workbenchCopy[locale];
+  const exportBlocked = !canExportConfiguration([colorDraft, foundationColorDraft, ...(off ? [] : [durationDraft])]);
+  const exportAllowed = useRef(true); exportAllowed.current = !exportBlocked;
+  const includedContext = includeContext ? context : '';
   const config = useMemo(() => ({ locale, target, accent: previewAccent, motion: off ? 'off' as const : motionProfile, duration: off ? 0 : duration }), [locale, target, previewAccent, off, motionProfile, duration]);
   const files = useMemo(() => studyFiles(config), [config]);
   const sourceFiles = files.filter(file => /\.(tsx?|css)$/.test(file.path));
   const selectedFile = sourceFiles.find(file => file.path === filePath) ?? sourceFiles[0];
-  const prompt = useMemo(() => studyPrompt({ ...config, context, mode: 'preserve' }), [config, context]);
+  const prompt = useMemo(() => studyPrompt({ ...config, context: includedContext, mode: promptMode }), [config, includedContext, promptMode]);
   const style = { ...theme, ...systemCssVariables, '--sy-display': `${typographyScale.display.desktopSize}px`, '--sy-display-mobile': `${typographyScale.display.mobileSize}px` } as CSSProperties;
   const navLabels = [t.discovery, t.libraryStates, t.workbench, t.access, t.controls, t.actions, t.modals, t.floating, t.feedback, t.type, t.roles, t.handoff];
 
@@ -121,7 +136,7 @@ export function SystemStudy() {
     for (const [key, value] of Object.entries({ lang: locale, view, target, accent: 'saffron', shade: 'light', font: 'manrope' })) url.searchParams.set(key, value);
     try { history.replaceState({}, '', url); } catch { /* File previews can restrict history. */ }
   }, [locale, view, target]);
-  useLayoutEffect(() => { revision.current++; setCopy(emptyCopy); }, [locale, view, target, duration, previewAccent, off, motionProfile, filePath, context]);
+  useLayoutEffect(() => { revision.current++; setCopy(emptyCopy); }, [locale, view, target, duration, previewAccent, off, motionProfile, filePath, context, includeContext, promptMode, exportBlocked]);
   useEffect(() => {
     let frame = 0;
     const update = () => {
@@ -147,7 +162,7 @@ export function SystemStudy() {
   }, []);
 
   async function copyText(value: string) {
-    if (copying.current) return;
+    if (copying.current || !exportAllowed.current) return;
     const ticket = ++revision.current;
     copying.current = true; setCopyPending(true); setCopy({ key: 'work', state: 'busy', value });
     try {
@@ -158,9 +173,9 @@ export function SystemStudy() {
     finally { copying.current = false; if (alive.current) setCopyPending(false); }
   }
   async function downloadArchive() {
-    if (archiveBusy.current) return;
+    if (archiveBusy.current || !exportAllowed.current) return;
     archiveBusy.current = true; setZipBusy(true); setZipError('');
-    const captured = { ...config, context, mode: 'preserve' as const };
+    const captured = { ...config, context: includedContext, mode: promptMode };
     try {
       const bytes = await studyArchive(captured);
       saveFile(new Uint8Array(bytes).buffer, 'application/zip', `A001-${captured.target}-${captured.locale}-${captured.accent === theme['--f-accent'] ? 'saffron-lighter' : captured.accent.slice(1).toLowerCase()}.zip`);
@@ -169,6 +184,7 @@ export function SystemStudy() {
     finally { archiveBusy.current = false; if (alive.current) setZipBusy(false); }
   }
   function exportSystem() {
+    if (!exportAllowed.current) return;
     saveFile(JSON.stringify({
       schemaVersion: 1, format: 'tallshift-system-token-graph', reviewVersion: systemReview.id, status: 'visual-review', productionReady: false,
       approved: { direction: 'afterlight', typeface: 'Manrope', color: { family: 'saffron', shade: 'light', value: '#EBD183' } },
@@ -192,12 +208,12 @@ export function SystemStudy() {
       <section id="workbench" className="sy-section" aria-labelledby="sy-work-title"><header className="sy-section-heading"><span className="sy-kicker">{t.workbench}</span><h2 id="sy-work-title" tabIndex={-1} ref={workHeading}>{t.workTitle}</h2><p>{t.workIntro}</p></header>
         <div className="sy-workbench">
           <header className="sy-work-header"><div><span className="sy-kicker">{t.workTitle}</span><h3>State Relay</h3></div><span className="sy-license">Free · MIT</span></header>
-          <div className="sy-workbar"><SystemTabList className="sy-tabs" label={b.viewLabel} value={view} onChange={setView} options={views.map(item => ({ value: item, label: b[item], tabId: `sy-tab-${item}`, panelId: `sy-panel-${item}` }))} /><SystemButton variant="primary" className="sy-button sy-button-primary" loading={view === 'demo' ? zipBusy : copyPending} leadingIcon={view === 'demo' ? <SystemIcon name="download"/> : <CopyIcon done={copy.state === 'done'} />} onClick={() => { if (view === 'demo') void downloadArchive(); else void copyText(view === 'source' ? selectedFile.content : prompt); }}>{view === 'demo' ? t.getFiles : copy.state === 'done' ? b.copied : view === 'source' ? t.copySource : b.copyPrompt}</SystemButton></div>
+          <div className="sy-workbar"><SystemTabList className="sy-tabs" label={b.viewLabel} value={view} onChange={setView} options={views.map(item => ({ value: item, label: b[item], tabId: `sy-tab-${item}`, panelId: `sy-panel-${item}` }))} /><div className="sy-workbar-actions"><SystemButton onClick={() => setGuideOpen(true)}>{w.instructions}</SystemButton><SystemButton variant="primary" className="sy-button sy-button-primary" disabled={exportBlocked} aria-describedby={exportBlocked ? "sy-export-blocked" : undefined} loading={view === 'demo' ? zipBusy : copyPending} leadingIcon={view === 'demo' ? <SystemIcon name="download"/> : <CopyIcon done={copy.state === 'done'} />} onClick={() => { if (view === 'demo') void downloadArchive(); else void copyText(view === 'source' ? selectedFile.content : prompt); }}>{view === 'demo' ? t.getFiles : copy.state === 'done' ? b.copied : view === 'source' ? t.copySource : b.copyPrompt}</SystemButton></div></div>
           <div className="sy-work-body"><div className="sy-representations">
             <div id="sy-panel-demo" role="tabpanel" aria-labelledby="sy-tab-demo" inert={view !== 'demo'} aria-hidden={view !== 'demo'}><SystemPreviewViewport locale={locale} label="State Relay" width={width} onWidthChange={setWidth} motionOff={off}><AfterlightExample key={previewRevision} {...config} /></SystemPreviewViewport></div>
-            <div id="sy-panel-source" role="tabpanel" aria-labelledby="sy-tab-source" inert={view !== 'source'} aria-hidden={view !== 'source'}><SystemCodePanel label={t.file} source={selectedFile.content} filePath={selectedFile.path} wrap={wrap} toolbar={<div className="sy-filebar"><SystemSelect label={t.file} value={selectedFile.path} options={sourceFiles.map(file=>({value:file.path,label:file.path}))} onChange={setFilePath}/><SystemCheckbox className="sy-check" label={t.wrap} checked={wrap} onChange={setWrap}/></div>} navigation={<SourceNavigator locale={locale} files={sourceFiles} selectedPath={selectedFile.path} onSelect={setFilePath} onCopy={()=>void copyText(selectedFile.content)} copyBusy={copyPending}/>} description={t.fileNote}/></div>
-            <div id="sy-panel-prompt" role="tabpanel" aria-labelledby="sy-tab-prompt" inert={view !== 'prompt'} aria-hidden={view !== 'prompt'}><SystemPromptPanel label={b.copyPrompt} prompt={prompt}><PromptDocument locale={locale} files={files} prompt={prompt} /></SystemPromptPanel></div>
-          </div><aside className="sy-work-settings"><div className="sy-configuration"><SystemRadioGroup layout="inline" label={t.target} value={target} onChange={setTarget} options={[{value:'next',label:'Next.js'},{value:'vite',label:'Vite'}]} /><SystemHexColorField locale={locale} value={previewAccent} onChange={setPreviewAccent} /></div><SystemTextarea className="sy-context" label={t.context} description={t.contextNote} maxLength={4000} value={context} onChange={event => setContext(event.target.value)} placeholder={t.contextPlaceholder} /><div className="sy-export-footer"><SystemDownloadAction variant="primary" label={t.zip} onDownload={downloadArchive} loading={zipBusy} error={zipError} failureMessage={t.zipError}/><span className="sy-work-identity"><i aria-hidden="true" style={{ background: previewAccent }} />{previewAccent === theme['--f-accent'] ? 'Saffron Lighter' : previewAccent} / Manrope</span></div></aside></div>
+            <div id="sy-panel-source" role="tabpanel" aria-labelledby="sy-tab-source" inert={view !== 'source'} aria-hidden={view !== 'source'}><SystemCodePanel label={t.file} source={selectedFile.content} filePath={selectedFile.path} wrap={wrap} toolbar={<div className="sy-filebar"><SystemSelect label={t.file} value={selectedFile.path} options={sourceFiles.map(file=>({value:file.path,label:file.path}))} onChange={setFilePath}/><SystemCheckbox className="sy-check" label={t.wrap} checked={wrap} onChange={setWrap}/></div>} navigation={<SourceNavigator locale={locale} files={sourceFiles} selectedPath={selectedFile.path} onSelect={setFilePath} onCopy={()=>void copyText(selectedFile.content)} copyBusy={copyPending} exportBlocked={exportBlocked}/>} description={t.fileNote}/></div>
+            <div id="sy-panel-prompt" role="tabpanel" aria-labelledby="sy-tab-prompt" inert={view !== 'prompt'} aria-hidden={view !== 'prompt'}><SystemRadioGroup label={w.mode} value={promptMode} onChange={setPromptMode} options={[{value:"preserve",label:w.preserve},{value:"adapt",label:w.adapt}]} /><p className="sy-help">{w.modeHelp}</p><SystemPromptPanel label={b.copyPrompt} prompt={prompt}><PromptDocument locale={locale} files={files} prompt={prompt} /></SystemPromptPanel></div>
+          </div><aside className="sy-work-settings"><div className="sy-configuration"><SystemRadioGroup layout="inline" label={t.target} value={target} onChange={setTarget} options={[{value:'next',label:'Next.js'},{value:'vite',label:'Vite'}]} /><SystemHexColorField locale={locale} value={previewAccent} onChange={setPreviewAccent} onDraftStateChange={setColorDraft} draftValue={colorInput} onDraftChange={setColorInput} /><p id="sy-export-blocked" className="sy-export-hint" role="status">{exportBlocked ? w.blocked : w.appliedHelp}{!off && durationDraft === "invalid" && <> <SystemTextLink href="#roles">{w.reviewMotion}</SystemTextLink></>}</p></div><SystemCheckbox label={w.includeContext} description={w.contextHelp} checked={includeContext} onChange={setIncludeContext}/><div hidden={!includeContext}><SystemTextarea className="sy-context" label={t.context} description={t.contextNote} maxLength={4000} value={context} onChange={event => setContext(event.target.value)} placeholder={t.contextPlaceholder} /></div><div className="sy-export-footer"><SystemDownloadAction variant="primary" label={t.zip} onDownload={downloadArchive} disabled={exportBlocked} loading={zipBusy} error={zipError} failureMessage={t.zipError}/><span className="sy-work-identity"><i aria-hidden="true" style={{ background: previewAccent }} />{previewAccent === theme['--f-accent'] ? 'Saffron Lighter' : previewAccent} / Manrope</span></div></aside></div>
         </div>
         {copy.state === 'error' && <SystemCopyFallback title={b.copyError} label={b.manualCopy} value={copy.value}/>}
       </section>
@@ -215,13 +231,14 @@ export function SystemStudy() {
       <section id="roles" className="sy-section" aria-labelledby="sy-roles-title"><header className="sy-section-heading"><span className="sy-kicker">FOUNDATIONS / COLOR + MOTION</span><h2 id="sy-roles-title">{t.rolesTitle}</h2><p>{t.rolesIntro}</p></header>
         <div className="sy-color-layers">{(['canvas', 'panel', 'raised', 'inset'] as const).map(role => <div key={role} style={{ background: theme[`--f-${role === 'panel' ? 'surface' : role}`] }}><span>{t[role]}</span><code>{theme[`--f-${role === 'panel' ? 'surface' : role}`]}</code></div>)}</div>
         <div className="sy-role-row">{(['default', 'hover', 'pressed'] as const).map((role, index) => <div key={role} className="sy-action-sample" style={{ background: theme[['--f-accent', '--f-accent-hover', '--f-accent-pressed'][index]] }}><span>{t[role]}</span><code>{theme[['--f-accent', '--f-accent-hover', '--f-accent-pressed'][index]]}</code></div>)}</div><p className="sy-help">{t.sampleNote}</p>
-        <SystemColorControl locale={locale} value={previewAccent} onChange={setPreviewAccent} />
-        <SystemMotionControls locale={locale} duration={duration} onDurationChange={setDuration} forceOff={forceOff} onForceOffChange={setForceOff} reduced={reduced} profile={motionProfile} onProfileChange={setMotionProfile} onReplay={() => setPreviewRevision(value => value + 1)} />
+        <SystemColorControl locale={locale} value={previewAccent} onChange={setPreviewAccent} onDraftStateChange={setFoundationColorDraft} draftValue={colorInput} onDraftChange={setColorInput} />
+        <SystemMotionControls locale={locale} duration={duration} onDraftStateChange={setDurationDraft} onDurationChange={setDuration} forceOff={forceOff} onForceOffChange={setForceOff} reduced={reduced} profile={motionProfile} onProfileChange={setMotionProfile} onReplay={() => setPreviewRevision(value => value + 1)} />
         <details className="sy-contrast"><summary>{b.contrastTitle} · {checks.filter(check => check.passes).length}/{checks.length}</summary><p>{b.contrastNote}</p><div className="sy-table-scroll" tabIndex={0}><table><thead><tr><th>{b.pair}</th><th>{b.ratio}</th><th>{b.required}</th></tr></thead><tbody>{checks.map(check => <tr key={check.label}><td>{check.label}</td><td>{check.ratio.toFixed(2)}:1</td><td>{check.minimum}:1 <SystemIcon name={check.passes ? 'check' : 'close'} size={16} label={check.passes ? 'Pass' : 'Fail'} /></td></tr>)}</tbody></table></div></details>
       </section>
-      <section id="handoff" className="sy-section" aria-labelledby="sy-handoff-title"><header className="sy-section-heading"><span className="sy-kicker">SYSTEM / HANDOFF</span><h2 id="sy-handoff-title">{t.handoffTitle}</h2><p>{t.handoffIntro}</p></header><div className="sy-handoff-panel"><div><span className="sy-kicker">{t.alias}</span><p>{t.graph}</p><code>primitive.color.accent<br />→ semantic.action.primary.default<br />→ component.button.primary.background</code><span className="sy-help">{Object.keys(systemTokenGraph).length} tokens · {t.approvedNote}</span></div><SystemButton variant="primary" className="sy-button sy-button-primary" onClick={exportSystem}>{t.export}</SystemButton></div><details className="sy-coverage"><summary>{t.coverage} · {systemCoverage.length}</summary><p>{t.coverageNote}</p><div className="sy-table-scroll" tabIndex={0}><table><thead><tr><th>ID</th><th>{t.family}</th><th>{t.implementation}</th><th>{t.state}</th></tr></thead><tbody>{systemCoverage.map(item => <tr key={item.id}><td>{item.id}</td><td><SystemTextLink href={`#${item.specimen}`} onClick={() => { if (item.view) setView(item.view); }}>{item.name}</SystemTextLink></td><td>{item.implementation === 'shared-api' ? t.sharedApi : item.implementation === 'composed-api' ? t.composedApi : t.localApi}{item.api && <small className="sy-api-name">{item.api}</small>}</td><td>{item.status === 'review-specimen' ? t.inspect : item.status === 'partial-specimen' ? t.partial : t.contract}</td></tr>)}</tbody></table></div></details></section>
+      <section id="handoff" className="sy-section" aria-labelledby="sy-handoff-title"><header className="sy-section-heading"><span className="sy-kicker">SYSTEM / HANDOFF</span><h2 id="sy-handoff-title">{t.handoffTitle}</h2><p>{t.handoffIntro}</p></header><div className="sy-handoff-panel"><div><span className="sy-kicker">{t.alias}</span><p>{t.graph}</p><code>primitive.color.accent<br />→ semantic.action.primary.default<br />→ component.button.primary.background</code><span className="sy-help">{Object.keys(systemTokenGraph).length} tokens · {t.approvedNote}</span></div><SystemButton variant="primary" className="sy-button sy-button-primary" onClick={exportSystem} disabled={exportBlocked}>{t.export}</SystemButton></div><details className="sy-coverage"><summary>{t.coverage} · {systemCoverage.length}</summary><p>{t.coverageNote}</p><div className="sy-table-scroll" tabIndex={0}><table><thead><tr><th>ID</th><th>{t.family}</th><th>{t.implementation}</th><th>{t.state}</th></tr></thead><tbody>{systemCoverage.map(item => <tr key={item.id}><td>{item.id}</td><td><SystemTextLink href={`#${item.specimen}`} onClick={() => { if (item.view) setView(item.view); }}>{item.name}</SystemTextLink></td><td>{item.implementation === 'shared-api' ? t.sharedApi : item.implementation === 'composed-api' ? t.composedApi : t.localApi}{item.api && <small className="sy-api-name">{item.api}</small>}</td><td>{item.status === 'review-specimen' ? t.inspect : item.status === 'partial-specimen' ? t.partial : t.contract}</td></tr>)}</tbody></table></div></details></section>
     </main>
     <footer className="sy-footer sy-width"><span>Tallshift UI / Afterlight / System {systemReview.version} · by Max Tall</span><SystemTextLink href={`${systemReview.archive}?lang=${locale}&shade=light`}>{t.archive}</SystemTextLink></footer>
+    <SystemDialog open={guideOpen} onOpenChange={setGuideOpen} title={w.guideTitle} closeLabel={w.close}><ol className="sy-guide-steps">{w.steps.map(step => <li key={step}>{step}</li>)}</ol><IntegrationGuide source={files.find(file => file.path === `INTEGRATE.${locale}.md`)?.content ?? ""}/></SystemDialog>
     <span className="sy-announcement" role="status" aria-live="polite">{copy.state === 'done' ? b.copied : ''}</span>
     <div><SystemToastRegion placement="viewport" label={t.notifications} dismissLabel={t.close} items={notice ? [{id:'system-notice',title:notice}] : []} announcement={notice} announcementKey={noticeKey} onDismiss={() => setNotice('')} /></div>
   </div>;

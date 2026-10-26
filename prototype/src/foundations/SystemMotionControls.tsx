@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useId, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
 import type { Locale } from './copy.ts';
 import { SystemCheckbox } from './SystemCheckbox.tsx';
@@ -15,16 +15,18 @@ export interface SystemDurationControlProps {
   readOnly?: boolean;
   /** Used only by an editable validation specimen; not an applied value. */
   initialDraft?: string;
+  onDraftStateChange?: (state: 'applied' | 'invalid') => void;
 }
 
 /** A native range and number input share one applied value, never an invalid draft. */
-export function SystemDurationControl({ locale, value, onChange, disabled = false, readOnly = false, initialDraft }: SystemDurationControlProps) {
+export function SystemDurationControl({ locale, value, onChange, disabled = false, readOnly = false, initialDraft, onDraftStateChange }: SystemDurationControlProps) {
   const id = useId();
   const t = configControlWords[locale];
   const [draft, setDraft] = useState(initialDraft ?? String(value));
   const previousValue = useRef(value);
   useEffect(() => { if (previousValue.current !== value) { setDraft(String(value)); previousValue.current = value; } }, [value]);
   const result = validateDurationDraft(draft);
+  useLayoutEffect(() => { onDraftStateChange?.(result.error ? 'invalid' : 'applied'); }, [result.error, onDraftStateChange]);
   const feedback = {
     help: t.durationHelp,
     required: t.durationRequired,
@@ -59,9 +61,10 @@ export interface SystemMotionControlsProps {
   onForceOffChange: (value: boolean) => void;
   reduced: boolean;
   onReplay?: () => void;
+  onDraftStateChange?: (state: 'applied' | 'invalid') => void;
 }
 
-export function SystemMotionControls({ locale, duration, onDurationChange, profile, onProfileChange, forceOff, onForceOffChange, reduced, onReplay }: SystemMotionControlsProps) {
+export function SystemMotionControls({ locale, duration, onDurationChange, profile, onProfileChange, forceOff, onForceOffChange, reduced, onReplay, onDraftStateChange }: SystemMotionControlsProps) {
   const t = configControlWords[locale];
   const id = useId();
   const motion = resolveMotionState(duration, forceOff, reduced);
@@ -100,7 +103,7 @@ export function SystemMotionControls({ locale, duration, onDurationChange, profi
       <div className="sc-motion-settings">
         <SystemSegmentedControl label={t.motionProfile} value={profile} options={[{ value: 'subtle', label: t.subtle }, { value: 'expressive', label: t.expressive }]} onChange={onProfileChange} disabled={motion.controlsDisabled} />
         <div className="sc-feedback sc-profile-feedback"><span aria-hidden={profile !== 'subtle'}>{t.subtleHelp}</span><span aria-hidden={profile !== 'expressive'}>{t.expressiveHelp}</span></div>
-        <SystemDurationControl key={draftRevision} locale={locale} value={duration} onChange={onDurationChange} disabled={motion.controlsDisabled} />
+        <SystemDurationControl key={draftRevision} locale={locale} value={duration} onChange={onDurationChange} disabled={motion.controlsDisabled} onDraftStateChange={onDraftStateChange} />
         <fieldset className="sc-profiles" disabled={motion.controlsDisabled}><legend>{t.profiles}</legend><div>{profiles.map(profile => <button type="button" key={profile.value} aria-pressed={duration === profile.value} onClick={() => { onDurationChange(profile.value); setDraftRevision(value => value + 1); }}><span>{profile.label}</span><small>{profile.value} ms</small></button>)}</div></fieldset>
         <SystemCheckbox label={t.motionOff} description={t.motionOffHelp} checked={forceOff || reduced} disabled={reduced} onChange={onForceOffChange} />
         <div className="sc-system-note"><p aria-hidden={!reduced}>{t.reduced}</p></div>
@@ -112,7 +115,7 @@ export function SystemMotionControls({ locale, duration, onDurationChange, profi
       </div>
     </div>
     <details className="sc-states"><summary>{t.motionStates}</summary><div className="sc-state-grid">
-      <section><h4>{t.errorState}</h4><p>{t.errorStateHelp}</p><SystemDurationControl key="invalid-duration-specimen" locale={locale} value={invalidSpecimen} onChange={setInvalidSpecimen} initialDraft="35" /></section>
+      <section><h4>{t.errorState}</h4><p>{t.errorStateHelp}</p><SystemDurationControl key="invalid-duration-specimen" locale={locale} value={invalidSpecimen} onChange={setInvalidSpecimen} initialDraft="480.5" /></section>
       <section><h4>{t.disabledState}</h4><p>{t.disabledStateHelp}</p><SystemDurationControl locale={locale} value={160} onChange={() => {}} disabled /></section>
       <section><h4>{t.readOnlyState}</h4><p>{t.readOnlyStateHelp}</p><SystemDurationControl locale={locale} value={160} onChange={() => {}} readOnly /></section>
     </div><p className="sc-review-note">{t.review}</p></details>

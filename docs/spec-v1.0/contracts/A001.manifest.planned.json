@@ -14,8 +14,9 @@
   "renderProfile": "client-motion",
   "styles": "css-modules",
   "locales": [
+    "en",
     "ru",
-    "en"
+    "vi"
   ],
   "targets": [
     "vite-react-ts",
@@ -187,6 +188,51 @@
       "kind": "license",
       "encoding": "utf8",
       "mimeType": "text/plain",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "README.vi.md",
+      "kind": "documentation",
+      "encoding": "utf8",
+      "mimeType": "text/markdown",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "INSTALL.vi.md",
+      "kind": "documentation",
+      "encoding": "utf8",
+      "mimeType": "text/markdown",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "INTEGRATE.vi.md",
+      "kind": "documentation",
+      "encoding": "utf8",
+      "mimeType": "text/markdown",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "prompts/preserve.vi.md",
+      "kind": "prompt",
+      "encoding": "utf8",
+      "mimeType": "text/markdown",
+      "byteLength": null,
+      "sha256": null,
+      "licenseRef": "planned-author-license"
+    },
+    {
+      "path": "prompts/adapt.vi.md",
+      "kind": "prompt",
+      "encoding": "utf8",
+      "mimeType": "text/markdown",
       "byteLength": null,
       "sha256": null,
       "licenseRef": "planned-author-license"

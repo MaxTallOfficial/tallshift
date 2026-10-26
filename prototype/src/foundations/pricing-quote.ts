@@ -1,7 +1,8 @@
+import type { FunctionalCoverage } from './access-model.ts';
 import { pricingPlanScopes, pricingPlanTerms } from './pricing-plans.ts';
 export type PricingPlan = keyof typeof pricingPlanTerms;
 /** Inputs must come from eligible server-side grants/receipts in production. */
-export interface PricingOwnership { itemIds: readonly string[]; productNetPaidMinor?: number }
+export interface PricingOwnership { itemIds: readonly string[]; productNetPaidMinor?: number; coverage?: readonly FunctionalCoverage[] }
 export function quotePricingPlan(plan:PricingPlan, ownership:PricingOwnership={itemIds:[]}) {
  const price=pricingPlanTerms[plan].priceMinor;
  const paid=ownership.productNetPaidMinor ?? 0;

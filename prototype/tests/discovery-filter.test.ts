@@ -30,8 +30,8 @@ test('readiness is independent of free or paid access', () => {
 });
 
 test('category and filter groups intersect without reordering matches', () => {
-  assert.deepEqual(ids({ category: 'animation' }), ['A001', 'A003', 'A002']);
-  assert.deepEqual(ids({ category: 'animation', access: ['pro'], availability: ['planned'] }), ['A002']);
+  assert.deepEqual(ids({ category: 'animation' }), ['A001', 'A003', 'A002', 'E004']);
+  assert.deepEqual(ids({ category: 'animation', access: ['pro'], availability: ['planned'] }), ['A002', 'E004']);
   assert.deepEqual(ids({ category: 'animation', access: ['free'], availability: ['planned'] }), ['A003']);
 });
 
@@ -85,10 +85,16 @@ test('filtering preserves frozen inputs and returns a fresh array of original re
   });
   const snapshot = JSON.stringify({ materials, filters });
   const result = filterDiscoveryMaterials(materials, filters);
-  assert.deepEqual(result.map(material => material.id), ['A001', 'A003', 'A002']);
+  assert.deepEqual(result.map(material => material.id), ['A001', 'A003', 'A002', 'E004']);
   assert.notEqual(result, materials);
   assert.equal(result[0], materials[0]);
   assert.equal(result[1], materials[1]);
   assert.equal(result[2], materials[4]);
   assert.equal(JSON.stringify({ materials, filters }), snapshot);
+});
+
+test('effects and recipes are subtypes of the same public animations group', () => {
+ assert.deepEqual(ids({category:'animation',motionType:'effect'}),['E004']);
+ assert.deepEqual(ids({category:'animation',motionType:'recipe'}),['A001','A003','A002']);
+ assert.deepEqual(ids({category:'section',motionType:'effect'}),['S001']);
 });

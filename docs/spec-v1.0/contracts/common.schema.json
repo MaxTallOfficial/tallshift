@@ -15,7 +15,8 @@
     "locale": {
       "enum": [
         "ru",
-        "en"
+        "en",
+        "vi"
       ]
     },
     "target": {
@@ -56,17 +57,24 @@
     },
     "locales": {
       "type": "array",
-      "prefixItems": [
+      "items": {
+        "$ref": "#/$defs/locale"
+      },
+      "uniqueItems": true,
+      "minItems": 2,
+      "maxItems": 3,
+      "allOf": [
         {
-          "const": "ru"
+          "contains": {
+            "const": "en"
+          }
         },
         {
-          "const": "en"
+          "contains": {
+            "const": "ru"
+          }
         }
-      ],
-      "items": false,
-      "minItems": 2,
-      "maxItems": 2
+      ]
     },
     "localizedText": {
       "type": "object",
@@ -78,6 +86,11 @@
           "maxLength": 1000
         },
         "en": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "vi": {
           "type": "string",
           "minLength": 1,
           "maxLength": 1000

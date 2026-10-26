@@ -9,7 +9,8 @@
     "locale": {
       "enum": [
         "ru",
-        "en"
+        "en",
+        "vi"
       ]
     },
     "motion": {

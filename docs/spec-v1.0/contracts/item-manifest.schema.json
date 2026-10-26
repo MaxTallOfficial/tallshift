@@ -433,6 +433,27 @@
           }
         }
       }
+    },
+    {
+      "if": {
+        "properties": {
+          "artifactState": {
+            "const": "built"
+          }
+        },
+        "required": [
+          "artifactState"
+        ]
+      },
+      "then": {
+        "properties": {
+          "locales": {
+            "contains": {
+              "const": "vi"
+            }
+          }
+        }
+      }
     }
   ]
 }

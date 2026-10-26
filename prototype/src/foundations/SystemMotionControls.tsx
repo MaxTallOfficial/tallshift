@@ -1,3 +1,4 @@
+import { SystemDisclosureIcon } from './SystemDisclosureIcon';
 import { useEffect, useLayoutEffect, useId, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
 import type { Locale } from './copy.ts';
@@ -114,7 +115,7 @@ export function SystemMotionControls({ locale, duration, onDurationChange, profi
         <div className="sc-actions"><button type="button" className="sc-button sc-button-primary" onClick={replay}>{t.replay}</button><button type="button" className="sc-button sc-button-secondary" onClick={() => { animation.current?.cancel(); animation.current = null; onDurationChange(MOTION_DURATION.default); onProfileChange('subtle'); onForceOffChange(false); setReplayed(false); setDraftRevision(value => value + 1); }}>{t.reset}</button></div>
       </div>
     </div>
-    <details className="sc-states"><summary>{t.motionStates}</summary><div className="sc-state-grid">
+    <details className="sc-states"><summary><SystemDisclosureIcon/>{t.motionStates}</summary><div className="sc-state-grid">
       <section><h4>{t.errorState}</h4><p>{t.errorStateHelp}</p><SystemDurationControl key="invalid-duration-specimen" locale={locale} value={invalidSpecimen} onChange={setInvalidSpecimen} initialDraft="480.5" /></section>
       <section><h4>{t.disabledState}</h4><p>{t.disabledStateHelp}</p><SystemDurationControl locale={locale} value={160} onChange={() => {}} disabled /></section>
       <section><h4>{t.readOnlyState}</h4><p>{t.readOnlyStateHelp}</p><SystemDurationControl locale={locale} value={160} onChange={() => {}} readOnly /></section>

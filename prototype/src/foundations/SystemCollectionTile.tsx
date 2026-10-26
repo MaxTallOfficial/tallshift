@@ -1,3 +1,4 @@
+import { SystemDisclosureIcon } from './SystemDisclosureIcon';
 import { useId } from 'react';
 import './system-catalog.css';
 export interface SystemCollectionMember { id: string; label: string }
@@ -14,6 +15,6 @@ export function SystemCollectionTile({ name, title, accessLabel, countLabel, mem
       <span className="system-collection-title">{title}</span><span className="system-collection-count">{countLabel}</span>
       <span className="system-collection-action">{actionLabel}</span>
     </button>
-    <details className="system-collection-members"><summary>{membersLabel}</summary><ul>{members.map(member=><li key={member.id}>{member.label}</li>)}</ul></details>
+    <details className="system-collection-members"><summary><SystemDisclosureIcon/>{membersLabel}</summary><ul>{members.map(member=><li key={member.id}>{member.label}</li>)}</ul></details>
   </article>;
 }

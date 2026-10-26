@@ -24,7 +24,7 @@
 .dl-button-sample { position:relative; }
 .dl-button-sample > span { display:flex; align-items:center; justify-content:center; gap:20px; min-height:46px; padding:12px 20px; border:1px solid var(--f-accent); border-radius:var(--sy-radius-control,8px); box-shadow:0 4px 0 var(--f-selected-border); background:var(--sy-component-button-primary-background,var(--f-accent)); color:var(--sy-component-button-primary-foreground,var(--f-on-accent)); font-size:14px; font-weight:600; }
 .dl-button-sample svg { width:17px; height:17px; }
-.dl-pointer { position:absolute; width:16px; height:21px; right:22px; bottom:-10px; transform:rotate(-20deg); clip-path:polygon(0 0,100% 68%,59% 71%,42% 100%); background:var(--f-text); filter:drop-shadow(0 1px 1px #000); }
+.dl-pointer {position:absolute;right:22px;bottom:-10px;transform:rotate(-20deg);color:var(--f-text);filter:drop-shadow(0 1px 1px #000)}
 .dl-bridge-sample { display:flex; align-items:center; justify-content:center; gap:15px; width:77%; }
 .dl-bridge-sample > div { display:flex; flex-direction:column; align-items:flex-start; gap:7px; flex:1; padding:13px; border:1px solid var(--f-line); border-radius:var(--sy-radius-control,8px); background:var(--f-raised); }
 .dl-bridge-sample > div:last-child { border-color:var(--f-selected-border); background:var(--f-selected-bg); }

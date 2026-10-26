@@ -10,6 +10,10 @@ export interface AfterlightExampleProps {
   motion?: 'off' | 'subtle' | 'expressive';
   accent?: string;
   duration?: number;
+  /** Optional host icons. No private icon paths or dependency are shipped. */
+  renderStateIcon?: (state: RelayState) => ReactNode;
+  actionIcon?: ReactNode;
+  resetIcon?: ReactNode;
 }
 
 const words = {
@@ -55,14 +59,9 @@ const words = {
 };
 
 const states: RelayState[] = ['idle', 'pending', 'success', 'error'];
-const glyphs: Record<RelayState, ReactNode> = {
-  idle: <><rect x="8" y="7" width="11" height="13" rx="2" /><path d="M5 16V5a2 2 0 0 1 2-2h9" /></>,
-  pending: <><circle cx="12" cy="12" r="8" opacity=".25" /><path d="M12 4a8 8 0 0 1 8 8" /></>,
-  success: <path d="m5 12 4 4L19 6" />,
-  error: <><circle cx="12" cy="12" r="9" opacity=".35" /><path d="m8 8 8 8m0-8-8 8" /></>,
-};
 
-export function AfterlightExample({ locale = 'en', motion = 'subtle', accent = '#C4DB9B', duration }: AfterlightExampleProps) {
+
+export function AfterlightExample({ locale = 'en', motion = 'subtle', accent = '#C4DB9B', duration, renderStateIcon, actionIcon, resetIcon }: AfterlightExampleProps) {
   const t = words[locale];
   const statusId = useId();
   const [scenario, setScenario] = useState<'clipboard' | 'error'>('clipboard');
@@ -119,11 +118,11 @@ export function AfterlightExample({ locale = 'en', motion = 'subtle', accent = '
       </header>
       <div className={styles.actionSurface}>
         <button type="button" className={styles.action} aria-label={labels[state]} aria-describedby={statusId} aria-busy={state === 'pending'} aria-disabled={state === 'pending'} onClick={activate}>
-          <span className={styles.buttonMeta} aria-hidden="true">{scenario === 'clipboard' ? t.copyHint : t.simulationHint}<span>↗</span></span>
+          <span className={styles.buttonMeta} aria-hidden="true">{scenario === 'clipboard' ? t.copyHint : t.simulationHint}<span>{actionIcon}</span></span>
           <span className={styles.buttonContent} aria-hidden="true">
-            <span className={styles.iconStack}>
-              {states.map(key => <svg key={key} className={`${styles.icon} ${state === key ? styles.visibleIcon : ''} ${key === 'pending' ? styles.pendingIcon : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">{glyphs[key]}</svg>)}
-            </span>
+            {renderStateIcon && <span className={styles.iconStack}>
+              {states.map(key => <span key={key} className={`${styles.icon} ${state === key ? styles.visibleIcon : ''} ${key === 'pending' ? styles.pendingIcon : ''}`}>{renderStateIcon(key)}</span>)}
+            </span>}
             <span className={styles.labelStack}>{states.map(key => <span key={key} className={state === key ? styles.visibleLabel : ''}>{labels[key]}</span>)}</span>
           </span>
           <span className={styles.stateEdge} aria-hidden="true" />
@@ -139,7 +138,7 @@ export function AfterlightExample({ locale = 'en', motion = 'subtle', accent = '
       </ol>
       <footer className={styles.statusRow}>
         <p className={styles.status} id={statusId} role="status" aria-live="polite" aria-atomic="true">{message}</p>
-        <button type="button" className={styles.reset} onClick={() => controller.reset()}>{t.reset}<span aria-hidden="true">↺</span></button>
+        <button type="button" className={styles.reset} onClick={() => controller.reset()}>{t.reset}<span aria-hidden="true">{resetIcon}</span></button>
       </footer>
     </section>
     </div>

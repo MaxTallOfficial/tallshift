@@ -62,7 +62,8 @@ function instructions(config: RecipeConfiguration, locale: RecipeLocale) {
       'Bộ mã chứa ví dụ Afterlight hiện tại. Thiết kế vẫn đang chờ đánh giá; đây chưa phải bản phát hành thương mại hoàn chỉnh.',
     ],
   };
-  return copy[locale].join('\n\n') + '\n';
+  const iconNote = {en:'Site icons use Hugeicons Duotone Rounded. The source includes optional renderStateIcon(state) and actionIcon/resetIcon host slots; supply icons from your project library if needed. No private icon paths or icon package are included. Text and operation states work without icons.',ru:'На сайте используются Hugeicons Duotone Rounded. В исходнике есть необязательные host slots renderStateIcon(state) и actionIcon/resetIcon: при необходимости передайте иконки из библиотеки своего проекта. Приватные paths и пакет иконок не включены. Текстовые состояния и действия работают без иконок.',vi:'Biểu tượng trên trang dùng Hugeicons Duotone Rounded. Mã nguồn có host slot tùy chọn renderStateIcon(state) và actionIcon/resetIcon; có thể truyền biểu tượng từ thư viện của dự án. Không kèm đường nét riêng tư hoặc gói biểu tượng. Văn bản và trạng thái thao tác vẫn hoạt động khi không có biểu tượng.'};
+  return copy[locale].join('\n\n') + '\n\n' + iconNote[locale] + '\n';
 }
 
 /** The file list matches the currently mounted study, with no alternate old UI. */

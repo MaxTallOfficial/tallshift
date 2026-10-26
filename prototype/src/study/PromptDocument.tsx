@@ -1,3 +1,4 @@
+import { SystemDisclosureIcon } from '../foundations/SystemDisclosureIcon';
 import type { RecipeFile, RecipeLocale } from '../recipes/state-relay';
 
 type PromptDocumentProps = {
@@ -78,14 +79,14 @@ export function PromptDocument({ prompt, locale = 'en', files }: PromptDocumentP
     </section>}
     <p className="pd-note">{t.included}</p>
     <details className="pd-sources">
-      <summary>{t.sources} <span>({sources.length})</span></summary>
+      <summary><SystemDisclosureIcon/>{t.sources} <span>({sources.length})</span></summary>
       {sources.map(file => <details className="pd-file" key={file.path}>
-        <summary>{file.path}</summary>
+        <summary><SystemDisclosureIcon/>{file.path}</summary>
         <pre tabIndex={0}><code>{file.content}</code></pre>
       </details>)}
     </details>
     {guide && <details className="pd-sources">
-      <summary>{t.guide}</summary>
+      <summary><SystemDisclosureIcon/>{t.guide}</summary>
       <div className="pd-prose">{guide.split(/(```[\s\S]*?```)/g).map((part, partIndex) => {
         const fenced = part.match(/^```[^\n]*\n([\s\S]*?)\n```$/);
         if (fenced) return <pre className="pd-config" tabIndex={0} key={partIndex}><code>{fenced[1]}</code></pre>;
@@ -95,7 +96,7 @@ export function PromptDocument({ prompt, locale = 'en', files }: PromptDocumentP
       })}</div>
     </details>}
     <details className="pd-full">
-      <summary>{t.full}</summary>
+      <summary><SystemDisclosureIcon/>{t.full}</summary>
       <p className="pd-note">{t.fullNote}</p>
       <pre tabIndex={0}>{prompt}</pre>
     </details>

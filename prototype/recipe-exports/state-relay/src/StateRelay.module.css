@@ -69,3 +69,5 @@
   .footer { margin-inline: 18px; }
   .footnote { padding-inline: 18px; }
 }
+
+.icon{display:grid;place-items:center}.icon > svg{width:24px;height:24px;display:block}

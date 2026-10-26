@@ -1,3 +1,4 @@
+import { SystemIcon } from '../foundations/SystemIcon';
 import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import type { CSSProperties, KeyboardEvent } from 'react';
 import { createPortal } from 'react-dom';
@@ -185,9 +186,7 @@ export function FileSelect({ label, value, options, onChange, accent = '#cfd98b'
       onKeyDown={onKeyDown}
     >
       <span id={valueId} className="file-select__value">{selected?.label ?? value}</span>
-      <svg className="file-select__chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none">
-        <path d="m6 8 4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
+      <SystemIcon className="file-select__chevron" name={open ? "chevron-up" : "chevron-down"}/>
     </button>
     {open && createPortal(<ul
       ref={listRef}
@@ -209,9 +208,7 @@ export function FileSelect({ label, value, options, onChange, accent = '#cfd98b'
         onClick={() => choose(index)}
       >
         <span className="file-select__path">{option.label}</span>
-        <svg className="file-select__check" aria-hidden="true" viewBox="0 0 20 20" fill="none">
-          <path d="m5 10 3.2 3.2L15 6.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <SystemIcon className="file-select__check" name="check"/>
       </li>)}
     </ul>, document.body)}
   </div>;

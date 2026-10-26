@@ -1,3 +1,4 @@
+import { SystemDisclosureIcon } from './SystemDisclosureIcon';
 import { useId, useState } from 'react';
 import { SystemIcon, systemIconNames } from './SystemIcon';
 import { SystemSegmentedControl } from './SystemSegmentedControl';
@@ -60,7 +61,7 @@ export function IconSpecimen({ locale }: { locale: Locale }) {
       <p>{t.intro}</p>
     </header>
     <details className="icon-specimen-details" open>
-      <summary><span>{t.inventory}<small>{systemIconNames.length} {t.icons} · 16 / 20 / 24 px</small></span><SystemIcon name="chevron-down" /></summary>
+      <summary><SystemDisclosureIcon/><span>{t.inventory}<small>{systemIconNames.length} {t.icons} · 16 / 20 / 24 px</small></span></summary>
       <div className="icon-specimen-content">
         <div className="icon-specimen-size">
           <SystemSegmentedControl<IconSize> label={t.size} value={size} onChange={setSize} options={(['16', '20', '24'] as const).map(value => ({ value, label: `${value} px` }))} />
@@ -74,7 +75,7 @@ export function IconSpecimen({ locale }: { locale: Locale }) {
       </div>
     </details>
     <details className="icon-specimen-details">
-      <summary><span>{t.states}</span><SystemIcon name="chevron-down" /></summary>
+      <summary><SystemDisclosureIcon/><span>{t.states}</span></summary>
       <div className="icon-specimen-state-grid">
         <div className="icon-specimen-state">
           <SystemSegmentedControl<Alignment> label={t.normal} value={alignment} options={alignments} onChange={setAlignment} />

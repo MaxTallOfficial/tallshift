@@ -1,3 +1,4 @@
+import { SystemDisclosureIcon } from './SystemDisclosureIcon';
 import { useId, useState } from 'react';
 import type { Locale } from './copy';
 import { SystemTextInput } from './SystemTextField';
@@ -13,7 +14,7 @@ const copy = {
 };
 export function CompletionStatesSpecimen({locale}:{locale:Locale}) {
  const t=copy[locale],id=useId(); const [address,setAddress]=useState('tallshift.dev'),[duration,setDuration]=useState('160'),[target,setTarget]=useState('next'),[query,setQuery]=useState(''),[status,setStatus]=useState<'ready'|'loading'|'error'>('ready'),[settings,setSettings]=useState<string[]>(['reduced-motion']);
- return <section id="completion-states" className="cs-lab" aria-labelledby={`${id}-title`}><details><summary id={`${id}-title`}>{t.title}</summary><p>{t.note}</p><div className="cs-grid">
+ return <section id="completion-states" className="cs-lab" aria-labelledby={`${id}-title`}><details><summary id={`${id}-title`}><SystemDisclosureIcon/>{t.title}</summary><p>{t.note}</p><div className="cs-grid">
  <div><SystemTextInput label={t.project} prefix="https://" value={address} onChange={e=>setAddress(e.target.value)}/><SystemTextInput label={t.duration} suffix="ms" inputMode="numeric" value={duration} onChange={e=>setDuration(e.target.value)}/><SystemSelect label={t.select} value={target} onChange={setTarget} options={[{value:'react',label:'React + TypeScript',group:t.library},{value:'next',label:'Next.js',group:t.framework},{value:'vite',label:'Vite',group:t.framework}]}/></div>
  <div><SystemSegmentedControl label={t.state} value={status} onChange={setStatus} options={[{value:'ready',label:t.ready},{value:'loading',label:t.waiting},{value:'error',label:t.failed}]}/><SystemSearchCombobox label={t.search} placeholder={t.query} value={query} onChange={setQuery} options={'State Relay A001'.toLowerCase().includes(query.toLowerCase())?[{value:'A001',label:'State Relay',detail:'React + TypeScript'}]:[]} clearLabel={t.clear} listLabel={t.list} emptyText={t.empty} status={status} loadingText={t.loading} errorText={t.error} retryLabel={t.retry} onRetry={()=>setStatus('ready')}/><SystemMultiSelect label={t.menu} placeholder={t.placeholder} value={settings} onChange={setSettings} removeLabel={name=>locale==='ru'?`Убрать: ${name}`:locale==='vi'?`Bỏ: ${name}`:`Remove: ${name}`} options={[{value:'wrap',label:t.wrap},{value:'line-numbers',label:t.lineNumbers},{value:'reduced-motion',label:t.subtle},{value:'blocked',label:t.blocked,disabled:true}]}/></div>
  </div></details></section>;

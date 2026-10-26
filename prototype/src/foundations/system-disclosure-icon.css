@@ -1,0 +1,9 @@
+.system-disclosure-icon{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;flex:0 0 16px;inline-size:16px;block-size:16px;margin-inline-end:8px;line-height:0;pointer-events:none}
+.system-disclosure-open{display:none}
+details[open]>summary .system-disclosure-closed{display:none}
+details[open]>summary .system-disclosure-open{display:inline-flex}
+summary:has(>.system-disclosure-icon){list-style:none}
+summary:has(>.system-disclosure-icon)::-webkit-details-marker{display:none}
+summary:has(>.system-disclosure-icon)::marker{content:''}
+
+:is(.sn-navigation,.system-accordion,.ca-details,.icon-specimen-details) summary>.system-disclosure-icon{margin-inline-end:0}

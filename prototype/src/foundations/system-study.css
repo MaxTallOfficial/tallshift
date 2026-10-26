@@ -146,3 +146,5 @@
 @media(max-width:767px){.sy-workbar-actions{width:100%;display:grid;grid-template-columns:minmax(0,1fr)}.sy-workbar-actions>.system-button{width:100%}}
 
 .system-study .system-dialog-heading h2:focus-visible{outline:none}
+
+.sy-license-group,.as-free-license{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.sy-license-group{justify-content:flex-end}.as-free-license{margin-block:20px}

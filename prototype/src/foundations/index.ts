@@ -56,3 +56,5 @@ export type { SystemMultiSelectProps, SystemMultiSelectOption } from './SystemMu
 export { deriveAccessState, summarizeCoverage } from './access-model';
 export type { AccessSnapshot, AccessKind, FunctionalCoverage } from './access-model';
 export type { SystemEntitlementKind, SystemEntitlementData } from './SystemEntitlementState';
+
+export { SystemDisclosureIcon } from './SystemDisclosureIcon';

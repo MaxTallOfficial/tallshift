@@ -40,7 +40,7 @@
 .system-button-icon > svg { display:block; vertical-align:0; }
 .system-button-label { min-inline-size: 0; overflow-wrap: anywhere; }
 .system-button[data-loading] .system-button-label, .system-button[data-loading] .system-button-icon { opacity: 0; }
-.system-button-busy { position: absolute; inline-size: 16px; block-size: 16px; border: 2px solid currentColor; border-inline-end-color: transparent; border-radius: 50%; animation: system-button-wait 800ms linear infinite; }
+.system-button-busy { position: absolute; inline-size: 16px; block-size: 16px; display:inline-flex; align-items:center; justify-content:center; animation: system-button-wait 800ms linear infinite; }
 .system-icon-button { inline-size:var(--sy-control-size,52px); block-size:var(--sy-control-size,52px); padding:0; flex-shrink:0; }
 .system-icon-button[data-size="small"] { inline-size:44px; block-size:44px; padding:0; }
 .system-icon-button[data-size="large"] { inline-size:52px; block-size:52px; padding:0; }

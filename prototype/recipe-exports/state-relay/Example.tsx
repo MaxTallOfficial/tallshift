@@ -11,6 +11,10 @@ export interface StateRelayDemoProps {
   accent?: string;
   /** Milliseconds. Defaults to 120 (subtle) / 180 (expressive). */
   duration?: number;
+  /** Optional host icons. No private icon paths or dependency are shipped. */
+  renderStateIcon?: (state: RelayState) => ReactNode;
+  actionIcon?: ReactNode;
+  resetIcon?: ReactNode;
 }
 
 const words = {
@@ -64,14 +68,9 @@ const words = {
   },
 };
 
-const glyphs: Record<RelayState, ReactNode> = {
-  idle: <><rect x="8" y="7" width="10" height="12" rx="2" /><path d="M6 15V5a2 2 0 0 1 2-2h7" /></>,
-  pending: <><circle cx="12" cy="12" r="7" opacity=".25" /><path d="M12 5a7 7 0 0 1 7 7" /></>,
-  success: <path d="m6 12 4 4 8-9" />,
-  error: <><path d="m8 8 8 8m0-8-8 8" /><circle cx="12" cy="12" r="10" opacity=".25" /></>,
-};
 
-export function StateRelayDemo({ locale = 'en', motion = 'subtle', accent = '#3569ed', duration }: StateRelayDemoProps) {
+
+export function StateRelayDemo({ locale = 'en', motion = 'subtle', accent = '#3569ed', duration, renderStateIcon, actionIcon, resetIcon }: StateRelayDemoProps) {
   const t = words[locale];
   const [scenario, setScenario] = useState<'clipboard' | 'error'>('clipboard');
   const { state, statusMessage, controller } = useStateRelay();
@@ -130,20 +129,20 @@ export function StateRelayDemo({ locale = 'en', motion = 'subtle', accent = '#35
       <div className={styles.stage}>
         <div className={styles.orbit} aria-hidden="true"><i /><i /><i /></div>
         <button type="button" className={styles.action} onClick={activate} aria-label={labels[state]} aria-describedby={statusId} aria-busy={state === 'pending'} aria-disabled={state === 'pending'}>
-          <span className={styles.iconStack} aria-hidden="true">
-            {(Object.keys(glyphs) as RelayState[]).map(key => <svg key={key} className={`${styles.icon} ${state === key ? styles.currentIcon : ''} ${key === 'pending' ? styles.spinner : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{glyphs[key]}</svg>)}
-          </span>
+          {renderStateIcon && <span className={styles.iconStack} aria-hidden="true">
+            {(['idle','pending','success','error'] as RelayState[]).map(key => <span key={key} className={`${styles.icon} ${state === key ? styles.currentIcon : ''} ${key === 'pending' ? styles.spinner : ''}`}>{renderStateIcon(key)}</span>)}
+          </span>}
           <span className={styles.labelStack} aria-hidden="true">
             {(Object.keys(labels) as RelayState[]).map(key => <span key={key} className={state === key ? styles.currentLabel : ''}>{labels[key]}</span>)}
           </span>
-          <span className={styles.actionArrow} aria-hidden="true">↗</span>
+          <span className={styles.actionArrow} aria-hidden="true">{actionIcon}</span>
         </button>
         <div className={styles.track} aria-hidden="true">
           {(['idle', 'pending', 'success', 'error'] as RelayState[]).map((key, index) => <span className={state === key ? styles.activeStep : ''} key={key}><i /><small>0{index + 1} {t.states[key]}</small></span>)}
         </div>
       </div>
       <p id={statusId} className={styles.status} role="status" aria-live="polite" aria-atomic="true">{message}</p>
-      <footer className={styles.footer}><span>{t.stateLabel}: <strong>{t.states[state]}</strong></span><button type="button" onClick={() => controller.reset()}>{t.reset} ↻</button></footer>
+      <footer className={styles.footer}><span>{t.stateLabel}: <strong>{t.states[state]}</strong></span><button type="button" onClick={() => controller.reset()}>{t.reset}{resetIcon}</button></footer>
       <p className={styles.footnote}>{effectiveDuration} ms · {t.note}</p>
     </section>
   );

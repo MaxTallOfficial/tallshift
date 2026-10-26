@@ -99,4 +99,6 @@
   .statusRow { gap: 12px; }
 }
 
-.icon > * { vector-effect:non-scaling-stroke; stroke-width:1.5px; }
+
+
+.icon{display:grid;place-items:center}.icon > svg{width:24px;height:24px;display:block}

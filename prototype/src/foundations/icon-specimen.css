@@ -45,3 +45,5 @@
   .icon-specimen-grid > li, .icon-specimen-alignment, .icon-specimen-arrangement, .icon-specimen-arrangement span { border-color: CanvasText; }
   .icon-specimen-alignment i { background: CanvasText; opacity: 1; }
 }
+
+.icon-specimen-details>summary{justify-content:flex-start}.icon-specimen-details>summary>span:not(.system-disclosure-icon){flex:1}

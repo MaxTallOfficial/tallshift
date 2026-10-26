@@ -1,3 +1,4 @@
+import { SystemDisclosureIcon } from './SystemDisclosureIcon';
 import { useId, useState } from 'react';
 import type { ReactNode } from 'react';
 import './system-accordion.css';
@@ -20,7 +21,7 @@ function AccordionItem({ item, headingLevel, onToggle }: { item: SystemAccordion
   const [open, setOpen] = useState(Boolean(item.defaultOpen));
   const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   return <details open={open || undefined} onToggle={event => { const next = event.currentTarget.open; setOpen(next); onToggle?.(item.id, next); }}>
-    <summary><Heading id={titleId}>{item.title}</Heading><span aria-hidden="true" className="system-accordion-mark" /></summary>
+    <summary><SystemDisclosureIcon/><Heading id={titleId}>{item.title}</Heading></summary>
     <div className="system-accordion-content" aria-labelledby={titleId}>{item.content}</div>
   </details>;
 }

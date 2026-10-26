@@ -1,3 +1,5 @@
+import { renderRelayIcon } from './relay-icon-renderer';
+import { SystemDisclosureIcon } from './SystemDisclosureIcon';
 import { SystemCheckbox } from './SystemCheckbox';
 import { SystemIcon } from './SystemIcon';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent } from 'react';
@@ -129,18 +131,18 @@ export function Foundations() {
       <div className="f-languages" role="group" aria-label={t.languageLabel}>{languages.map(language => <button type="button" key={language.id} lang={language.id} aria-label={language.label} title={language.label} aria-pressed={locale === language.id} onClick={() => setLocale(language.id)}>{language.short}</button>)}</div>
     </header>
     <main className="f-width">
-      <section className="f-intro"><div><p className="f-eyebrow">FOUNDATIONS / SAFFRON</p><h1>{t.title}</h1><p>{t.intro}</p><div className="f-approved-color" style={{ '--approved-accent': approvedShade.accent } as CSSProperties}><i aria-hidden="true" /><span>{t.approvedColor}: <strong>Saffron Lighter</strong></span><code>{approvedShade.accent}</code></div></div><a className="f-back" href={`../foundations-03.html?lang=${locale}&accent=saffron`}>← {t.back}</a></section>
+      <section className="f-intro"><div><p className="f-eyebrow">FOUNDATIONS / SAFFRON</p><h1>{t.title}</h1><p>{t.intro}</p><div className="f-approved-color" style={{ '--approved-accent': approvedShade.accent } as CSSProperties}><i aria-hidden="true" /><span>{t.approvedColor}: <strong>Saffron Lighter</strong></span><code>{approvedShade.accent}</code></div></div><a className="f-back" href={`../foundations-03.html?lang=${locale}&accent=saffron`}><SystemIcon name="arrow-left"/>{t.back}</a></section>
       <div className="f-toolbar">
         <fieldset className="f-picker"><legend>{t.paletteLabel}</legend><div>{saffronShades.map(item => <label key={item.id} className="f-palette-option" style={{ '--option-accent': item.accent } as CSSProperties}><input type="radio" name="shade" value={item.id} checked={shadeId === item.id} onChange={() => setShade(item.id)} /><i aria-hidden="true" /><span>{item.name[locale]}</span></label>)}</div></fieldset>
         <div className="f-fixed-type"><span>{t.typeLabel}</span><strong>Manrope</strong><span>{t.typeConfirmed}</span></div>
         <div className="f-motion"><SystemCheckbox label={t.reducedLabel} checked={off} disabled={reduced} onChange={setForceOff}/></div>
       </div>
       <section className="f-workbench" id="preview" aria-labelledby="f-preview-title">
-        <header className="f-workbench-heading"><div><p className="f-eyebrow">{t.liveLabel}</p><h2 id="f-preview-title">State Relay <span>A001</span></h2><p>{p.materialDescription}</p></div><span className="f-license">{p.free} · MIT</span></header>
+        <header className="f-workbench-heading"><div><p className="f-eyebrow">{t.liveLabel}</p><h2 id="f-preview-title">State Relay <span>A001</span></h2><p>{p.materialDescription}</p></div><span className="f-license">{p.free}</span></header>
         <div className="f-viewbar"><div className="f-tabs" role="tablist" aria-label={t.viewLabel}>{views.map((item, i) => <button type="button" key={item} id={`f-tab-${item}`} role="tab" aria-selected={view === item} aria-controls={`f-panel-${item}`} tabIndex={view === item ? 0 : -1} ref={el => { tabRefs.current[i] = el; }} onClick={() => setView(item)} onKeyDown={event => tabKey(event, i)}>{t[item]}</button>)}</div>{view !== 'demo' && <button type="button" className="f-primary" aria-disabled={copy.state === 'busy'} aria-busy={copy.key === 'workspace' && copy.state === 'busy'} onClick={() => void copyText(view === 'source' ? source : prompt, 'workspace')}><CopyIcon done={copy.key === 'workspace' && copy.state === 'done'} />{copyLabel('workspace', view === 'source' ? t.copyCode : t.copyPrompt)}</button>}</div>
         <div className="f-workbench-body">
           <div className="f-representations">
-            <div id="f-panel-demo" role="tabpanel" aria-labelledby="f-tab-demo" hidden={view !== 'demo'} className="f-demo"><AfterlightExample {...config} /></div>
+            <div id="f-panel-demo" role="tabpanel" aria-labelledby="f-tab-demo" hidden={view !== 'demo'} className="f-demo"><AfterlightExample renderStateIcon={renderRelayIcon} resetIcon={<SystemIcon name="replay"/>} actionIcon={<SystemIcon name="external"/>} {...config} /></div>
             <div id="f-panel-source" role="tabpanel" aria-labelledby="f-tab-source" hidden={view !== 'source'} className="f-code-panel"><h3>SelectedExample.tsx</h3><p>{t.sourceNote}</p><pre className="f-source" tabIndex={0}><Highlight text={source} /></pre></div>
             <div id="f-panel-prompt" role="tabpanel" aria-labelledby="f-tab-prompt" hidden={view !== 'prompt'} className="f-prompt-panel"><h3>{t.promptTitle}</h3><p>{t.promptNote}</p><div className="f-document"><PromptDocument locale={locale} files={files} prompt={prompt} /></div></div>
           </div>
@@ -148,7 +150,7 @@ export function Foundations() {
             <div className="f-current-accent"><i aria-hidden="true" /><div><span>Saffron · {t.activePalette}</span><strong>{shade.name[locale]}</strong><code>{shade.accent}</code></div></div>
             <div className="f-current-type"><span>{t.typeLabel}</span><strong>Manrope</strong><p>{t.previewNote}</p></div>
             <label className="f-project-note">{t.inputLabel}<textarea maxLength={4000} value={context} onChange={event => setContext(event.target.value)} placeholder={t.inputPlaceholder} /></label>
-            <div className="f-export"><button type="button" className="f-secondary" onClick={downloadChoice}>{t.downloadChoice}<span aria-hidden="true">↓</span></button><p>{t.choiceNote}</p></div>
+            <div className="f-export"><button type="button" className="f-secondary" onClick={downloadChoice}>{t.downloadChoice}<SystemIcon name="download"/></button><p>{t.choiceNote}</p></div>
           </aside>
         </div>
       </section>
@@ -161,7 +163,7 @@ export function Foundations() {
           <div className="f-shade-swatch"><span aria-hidden="true">0{index + 1}</span>{item.id === approvedShade.id && <span>{t.approved}</span>}</div>
           <header><h3>{item.name[locale]}</h3><code>{item.accent}</code></header>
           <p className="f-shade-note">{item.note[locale]}</p>
-          <div className="f-card-preview"><div><span>A001</span><span>{p.free} · MIT</span></div><h4>State Relay</h4><p>{p.materialDescription}</p><button type="button" className="f-primary" aria-label={`${t.copyCode} · ${item.name[locale]}`} aria-disabled={copy.state === 'busy'} onClick={() => void copyText(code, key)}><CopyIcon done={copy.key === key && copy.state === 'done'} />{copyLabel(key, t.copyCode)}</button><code className="f-card-code"><span className="f-keyword">accent</span> <span className="f-string">'{item.accent}'</span></code></div>
+          <div className="f-card-preview"><div><span>A001</span><span>{p.free}</span></div><h4>State Relay</h4><p>{p.materialDescription}</p><button type="button" className="f-primary" aria-label={`${t.copyCode} · ${item.name[locale]}`} aria-disabled={copy.state === 'busy'} onClick={() => void copyText(code, key)}><CopyIcon done={copy.key === key && copy.state === 'done'} />{copyLabel(key, t.copyCode)}</button><code className="f-card-code"><span className="f-keyword">accent</span> <span className="f-string">'{item.accent}'</span></code></div>
           <button type="button" className="f-choose" aria-pressed={shadeId === item.id} onClick={() => setShade(item.id)}><span>{shadeId === item.id ? t.activePalette : t.usePalette}</span><span aria-hidden="true"><SystemIcon name={shadeId === item.id ? 'check' : 'plus'} size={16} /></span></button>
         </article>;
       })}</div></section>
@@ -169,10 +171,10 @@ export function Foundations() {
       <section className="f-section" aria-labelledby="f-role-title"><header className="f-section-heading"><p className="f-eyebrow">03 / ROLES</p><h2 id="f-role-title">{t.surfacesTitle}</h2><p>{t.surfacesNote}</p></header><div className="f-surfaces">{(['canvas', 'surface', 'raised', 'inset'] as const).map(role => <div key={role} style={{ background: theme[`--f-${role}`] }}><span>{t[role]}</span><code>{theme[`--f-${role}`]}</code></div>)}</div>
         <div className="f-status-section"><header><h3>{t.statusTitle}</h3><p>{t.statusNote}</p></header><div className="f-status-examples">{(['success', 'error', 'warning'] as const).map(status => <div className={`f-status f-status-${status}`} key={status}><span aria-hidden="true"><SystemIcon name={status === 'success' ? 'check' : status === 'error' ? 'error' : 'warning'} size={20} /></span>{t[status]}</div>)}<button type="button" className="f-focus-sample" onClick={event => event.currentTarget.focus()}>{t.focus}</button><button type="button" className="f-secondary" disabled>{t.disabled}</button></div></div>
       </section>
-      <section className="f-section f-audit" aria-labelledby="f-audit-title"><header className="f-section-heading"><p className="f-eyebrow">04 / CONTRAST</p><h2 id="f-audit-title">{t.contrastTitle}<span>{passed}/{checks.length}</span></h2><p>{t.contrastNote}</p></header><details><summary>Saffron · {shade.name[locale]} · {passed}/{checks.length} <span aria-hidden="true">+</span></summary><div className="f-audit-table"><table><thead><tr><th>{t.pair}</th><th>{t.ratio}</th><th>{t.required}</th></tr></thead><tbody>{checks.map(check => <tr key={check.label}><td><i aria-hidden="true" style={{ background: check.foreground }} />{check.label}</td><td>{check.ratio.toFixed(2)}:1</td><td>{check.minimum}:1 <span aria-label={check.passes ? 'Pass' : 'Fail'}><SystemIcon name={check.passes ? 'check' : 'close'} size={16} /></span></td></tr>)}</tbody></table></div></details></section>
+      <section className="f-section f-audit" aria-labelledby="f-audit-title"><header className="f-section-heading"><p className="f-eyebrow">04 / CONTRAST</p><h2 id="f-audit-title">{t.contrastTitle}<span>{passed}/{checks.length}</span></h2><p>{t.contrastNote}</p></header><details><summary><SystemDisclosureIcon/>Saffron · {shade.name[locale]} · {passed}/{checks.length} </summary><div className="f-audit-table"><table><thead><tr><th>{t.pair}</th><th>{t.ratio}</th><th>{t.required}</th></tr></thead><tbody>{checks.map(check => <tr key={check.label}><td><i aria-hidden="true" style={{ background: check.foreground }} />{check.label}</td><td>{check.ratio.toFixed(2)}:1</td><td>{check.minimum}:1 <span aria-label={check.passes ? 'Pass' : 'Fail'}><SystemIcon name={check.passes ? 'check' : 'close'} size={16} /></span></td></tr>)}</tbody></table></div></details></section>
     </main>
     <p className="f-announcement" role="status" aria-live="polite">{copy.state === 'done' ? t.copied : ''}</p>
-    {notice && <div className="f-toast"><p role="status">{notice}</p><button type="button" aria-label={t.dismiss} onClick={() => setNotice('')}>×</button></div>}
+    {notice && <div className="f-toast"><p role="status">{notice}</p><button type="button" aria-label={t.dismiss} onClick={() => setNotice('')}><SystemIcon name="close"/></button></div>}
     <footer className="f-footer f-width"><span>{t.footer}</span><span>EN / RU / VI · sRGB · Saffron Lighter</span></footer>
   </div>;
 }

@@ -1,6 +1,6 @@
 import { HugeiconsIcon, type IconSvgElement } from '@hugeicons/react';
 import {
- Search01Icon, Cancel01Icon, ArrowDown01Icon, ArrowUp01Icon, ArrowRight01Icon, ArrowLeft01Icon,
+ Loading03Icon, StarIcon, Cursor01Icon, Bookmark01Icon, Search01Icon, Cancel01Icon, ArrowDown01Icon, ArrowUp01Icon, ArrowRight01Icon, ArrowLeft01Icon,
  ArrowLeft02Icon, ArrowRight02Icon, Tick02Icon, Copy01Icon, Download01Icon, CodeIcon, Message01Icon,
  PlayIcon, PauseIcon, ReloadIcon, Settings01Icon, FilterHorizontalIcon, GridViewIcon, ComputerIcon,
  Tablet01Icon, SmartPhone01Icon, InformationCircleIcon, Alert02Icon, CancelCircleIcon, Add01Icon,
@@ -9,7 +9,7 @@ import {
 import './system-icons.css';
 
 export const systemIconNames = [
-  'search', 'close', 'chevron-down', 'chevron-up', 'chevron-right', 'chevron-left',
+  'loading', 'star', 'cursor', 'bookmark', 'search', 'close', 'chevron-down', 'chevron-up', 'chevron-right', 'chevron-left',
   'arrow-left', 'arrow-right', 'check', 'copy', 'download', 'code', 'prompt',
   'play', 'pause', 'replay', 'settings', 'filter', 'grid', 'desktop', 'tablet',
   'mobile', 'info', 'warning', 'error', 'plus', 'minus', 'external', 'folder', 'file', 'layers', 'trash', 'checkbox-checked', 'checkbox-unchecked', 'checkbox-mixed',
@@ -25,7 +25,7 @@ export interface SystemIconProps {
 }
 
 const icons:Record<SystemIconName,IconSvgElement> = {
- search:Search01Icon,close:Cancel01Icon,'chevron-down':ArrowDown01Icon,'chevron-up':ArrowUp01Icon,
+ loading:Loading03Icon,star:StarIcon,cursor:Cursor01Icon,bookmark:Bookmark01Icon,search:Search01Icon,close:Cancel01Icon,'chevron-down':ArrowDown01Icon,'chevron-up':ArrowUp01Icon,
  'chevron-right':ArrowRight01Icon,'chevron-left':ArrowLeft01Icon,'arrow-left':ArrowLeft02Icon,'arrow-right':ArrowRight02Icon,
  check:Tick02Icon,copy:Copy01Icon,download:Download01Icon,code:CodeIcon,prompt:Message01Icon,play:PlayIcon,pause:PauseIcon,
  replay:ReloadIcon,settings:Settings01Icon,filter:FilterHorizontalIcon,grid:GridViewIcon,desktop:ComputerIcon,tablet:Tablet01Icon,

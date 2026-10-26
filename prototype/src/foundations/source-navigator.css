@@ -16,8 +16,6 @@
 .sn-source-group > .sn-file-list { margin-top:4px; }
 .sn-navigation details > summary { display:flex; align-items:center; min-height:44px; gap:8px; padding:9px 8px; border-radius:8px; color:var(--f-secondary); font:600 14px/1.5 var(--sy-font-ui,var(--f-font,Manrope,sans-serif)); list-style:none; cursor:pointer; }
 .sn-navigation details > summary::-webkit-details-marker { display:none; }
-.sn-navigation details > summary::before { content:'›'; flex:0 0 8px; color:var(--f-muted); font-size:18px; line-height:1; transform-origin:50% 50%; }
-.sn-navigation details[open] > summary::before { transform:rotate(90deg); }
 .sn-navigation details > summary:hover { background:var(--f-raised); color:var(--f-text); }
 .sn-navigation summary > span:not(.sn-count) { min-width:0; overflow-wrap:anywhere; }
 .sn-navigation summary .sn-count { margin-left:auto; }

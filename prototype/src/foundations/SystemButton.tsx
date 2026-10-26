@@ -21,6 +21,6 @@ export function SystemButton({ variant = 'secondary', size = 'medium', loading =
     {leadingIcon && <span className="system-button-icon" aria-hidden="true">{leadingIcon}</span>}
     {children !== undefined && children !== null && <span className="system-button-label">{children}</span>}
     {endIcon && <span className="system-button-icon" aria-hidden="true">{endIcon}</span>}
-    {loading && <span className="system-button-busy" aria-hidden="true" />}
+    {loading && <span className="system-button-busy" aria-hidden="true"><SystemIcon name="loading" size={16}/></span>}
   </button>;
 }

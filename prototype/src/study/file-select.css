@@ -38,7 +38,7 @@
   font: 450 12px/1.65 ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 .file-select__chevron { width: 20px; height: 20px; flex: 0 0 20px; color: #aab9b0; }
-.file-select__trigger[aria-expanded=true] .file-select__chevron { transform: rotate(180deg); }
+
 .file-select__list {
   --file-accent: #cfd98b;
   position: fixed;

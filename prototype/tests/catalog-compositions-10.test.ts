@@ -40,7 +40,7 @@ test('planned content requires visible reason associated with disabled action',(
 });
 test('collection separates selected button from named membership disclosure',()=>{
  const html=renderToStaticMarkup(createElement(SystemCollectionTile,{name:'Starter',title:'Start with a working component',accessLabel:'Free · Planned',countLabel:'9 items in plan',membersLabel:'What’s included',members:[{id:'A001',label:'State Relay'},{id:'S001',label:'Starter Split Hero'}],actionLabel:'View samples · 2',selected:true,onSelect:()=>{}}));
- assert.equal((html.match(/<button /g)??[]).length,1); assert.match(html,/aria-pressed="true"/); assert.match(html,/<summary>What’s included<\/summary>/);assert.match(html,/<li>State Relay<\/li>/);assert.doesNotMatch(html,/>A001<|>S001</);assert.doesNotMatch(html,/<button[^>]*>[\s\S]*<details[\s\S]*<\/button>/);
+ assert.equal((html.match(/<button /g)??[]).length,1); assert.match(html,/aria-pressed="true"/); assert.match(html,/<summary>[\s\S]*What’s included<\/summary>/);assert.match(html,/<li>State Relay<\/li>/);assert.doesNotMatch(html,/>A001<|>S001</);assert.doesNotMatch(html,/<button[^>]*>[\s\S]*<details[\s\S]*<\/button>/);
  assert.doesNotMatch(html,/role="link"|<a /);
 });
 test('pagination exposes current page and focusable guarded boundaries',()=>{

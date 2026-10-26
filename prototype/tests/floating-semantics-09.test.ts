@@ -99,3 +99,9 @@ test('the whole UI icon inventory resolves to Duotone Rounded in all supported s
  const labelled=renderToStaticMarkup(createElement(SystemIcon,{name:'info',label:'Details'}));
  assert.match(labelled,/role="img"/);assert.match(labelled,/aria-label="Details"/);assert.doesNotMatch(labelled,/aria-hidden="true"/);
 });
+
+test('icon-only information buttons do not add a dropdown chevron', async () => {
+ const {SystemIconButton}=await server.ssrLoadModule('/src/foundations/SystemIconButton.tsx');
+ const html=renderToStaticMarkup(createElement(SystemIconButton,{icon:'info',label:'Usage terms',density:'inline','aria-haspopup':'dialog','aria-expanded':false}));
+ assert.match(html,/data-icon="info"/); assert.doesNotMatch(html,/data-icon="chevron-/);
+});

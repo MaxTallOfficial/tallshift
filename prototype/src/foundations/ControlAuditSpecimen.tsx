@@ -1,3 +1,4 @@
+import { SystemDisclosureIcon } from './SystemDisclosureIcon';
 import { useId, useState } from 'react';
 import { SystemSelect } from './SystemSelect';
 import { SystemSearchCombobox } from './SystemSearchCombobox';
@@ -53,7 +54,7 @@ export function ControlAuditSpecimen({ locale }: { locale: Locale }) {
   ];
   return <section className="ca-lab" id="control-edge-states" lang={locale} aria-labelledby={`${id}-title`}>
     <details className="ca-details">
-      <summary><span id={`${id}-title`}>{t.title}</span><span className="ca-summary-note">{t.intro}</span></summary>
+      <summary><SystemDisclosureIcon/><span id={`${id}-title`}>{t.title}</span><span className="ca-summary-note">{t.intro}</span></summary>
       <div className="ca-grid">
         <SystemSelect label={t.selection} value={value} options={options} onChange={setValue} hint={t.keys} />
         <SystemSelect label={t.readonly} value="next" options={options} onChange={noop} readOnly hint={t.readonlyHint} />

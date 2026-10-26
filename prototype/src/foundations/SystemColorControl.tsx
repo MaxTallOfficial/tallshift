@@ -1,3 +1,4 @@
+import { SystemDisclosureIcon } from './SystemDisclosureIcon';
 import { useEffect, useLayoutEffect, useId, useRef, useState } from 'react';
 import type { Locale } from './copy.ts';
 import { APPROVED_PREVIEW_ACCENT, normalizeHexColor, previewColorContrast } from './config-control-validation.ts';
@@ -74,7 +75,7 @@ export function SystemColorControl({ locale, value, onChange, onDraftStateChange
       <dl><div><dt>{t.applied}</dt><dd role="status" aria-live="polite" aria-atomic="true">{contrast.background}</dd></div><div><dt>{t[contrast.label]}</dt><dd>{contrast.foreground}</dd></div><div><dt>{t.contrast}</dt><dd>{contrast.ratio.toFixed(2)}:1</dd></div></dl>
       <div className="sc-feedback sc-contrast-feedback" data-passes={contrast.passes}><span aria-hidden={!contrast.passes}>{t.contrastPass}</span><span aria-hidden={contrast.passes}>{t.contrastFail}</span></div>
     </div></div>
-    <details className="sc-states"><summary>{t.colorStates}</summary><div className="sc-state-grid">
+    <details className="sc-states"><summary><SystemDisclosureIcon/>{t.colorStates}</summary><div className="sc-state-grid">
       <section><h4>{t.invalidColorState}</h4><p>{t.invalidColorStateHelp}</p><SystemHexColorField key="invalid-color-specimen" locale={locale} value={invalidSpecimen} onChange={setInvalidSpecimen} initialDraft="#EB" /></section>
       <section><h4>{t.disabledState}</h4><SystemHexColorField locale={locale} value={APPROVED_PREVIEW_ACCENT} onChange={() => {}} disabled /></section>
       <section><h4>{t.readOnlyState}</h4><p>{t.readOnlyStateHelp}</p><SystemHexColorField locale={locale} value={APPROVED_PREVIEW_ACCENT} onChange={() => {}} readOnly /></section>

@@ -1,3 +1,4 @@
+@import './system-layout-metrics.css';
 .as-lab { min-width: 0; }
 .as-specimen-note { display: flex; align-items: baseline; gap: 12px 20px; flex-wrap: wrap; padding: 16px 20px; border: 1px solid var(--f-line); border-radius: 8px; background: var(--f-inset); }
 .as-specimen-label { flex: 0 0 auto; color: var(--f-text); font-size: 12px; font-weight: 600; }
@@ -122,3 +123,15 @@
 
 .as-benefits li > .system-icon { color:var(--f-secondary); }
 .as-offer[data-featured] .as-benefits li > .system-icon { color:var(--f-accent); }
+
+.as-offer,.as-comparison { padding-inline:var(--sy-card-inline); }
+.as-scenarios,.as-state { padding-inline:var(--sy-panel-inline); }
+
+.as-order-summary { color:var(--f-secondary); font-size:14px; line-height:1.65; }
+.as-order-total { display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:16px; border-block:1px solid var(--f-line); }
+.as-order-total strong { color:var(--f-accent); font-size:28px; }
+.as-order-summary dl { display:grid; gap:16px; margin-block:24px; }.as-order-summary dt,.as-order-summary h3 { color:var(--f-text); font-weight:600; }.as-order-summary dd { margin:4px 0 0; }
+.as-order-summary ul { padding-inline-start:20px; }.as-order-review { padding:12px; border:1px solid var(--f-line); border-radius:8px; }
+.as-offer[data-featured] .as-pro-footer > .system-button[data-variant="primary"] { color:var(--f-on-accent); }
+/* Footer copy reserves two lines so CTA baselines match across plans. */
+.as-offer .as-pack-note { min-block-size:3.3em; margin-block-start:12px; }

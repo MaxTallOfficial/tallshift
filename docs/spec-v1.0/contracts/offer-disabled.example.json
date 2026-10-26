@@ -34,7 +34,7 @@
   "saleState": "disabled",
   "currency": "USD",
   "currencyExponent": 2,
-  "amountMinor": 5600,
+  "amountMinor": 3900,
   "merchantRef": null,
   "paymentProviderRef": null,
   "termsRevision": null,

@@ -1,3 +1,4 @@
+@import './system-layout-metrics.css';
 .fs-lab { padding-block:clamp(40px,6vw,88px); scroll-margin-top:100px; }
 .fs-heading { max-inline-size:760px; margin-block-end:28px; }
 .fs-heading>span { color:var(--f-secondary,#c4c3bf); font-size:11px; letter-spacing:.12em; font-weight:600; }
@@ -16,3 +17,5 @@
 @media(max-width:760px) { .fs-grid { grid-template-columns:minmax(0,1fr); } .fs-wide { grid-column:auto; } }
 
 .fs-card > .fs-toast-count { margin:0 0 16px; }
+
+.fs-card { padding-inline:var(--sy-panel-inline,32px); }

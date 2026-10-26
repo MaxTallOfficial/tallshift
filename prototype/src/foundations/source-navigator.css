@@ -93,3 +93,7 @@
 .sn-file-extension { flex:0 0 auto; }
 .sn-selected-dot { margin:0 0 0 4px; }
 .sn-sheet nav { padding:8px; border:1px solid var(--f-line); border-radius:12px; background:var(--f-inset); }
+
+/* Toolbar and file container share the same outer rails. */
+.sn-toolbar { padding-inline:0; }
+.sn-desktop-title { padding-inline:0; }

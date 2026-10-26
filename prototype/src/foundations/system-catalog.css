@@ -1,3 +1,4 @@
+@import './system-layout-metrics.css';
 .system-content-tile { display:flex; flex-direction:column; min-width:0; overflow:hidden; border:1px solid var(--f-line); border-radius:12px; background:var(--f-surface); color:var(--f-text); }
 .system-content-tile[data-state=ready] { border-color:var(--f-selected-border); }
 .system-content-preview { min-width:0; }
@@ -48,3 +49,5 @@
 @media(max-width:600px) { .system-content-tile .system-content-note { min-height:0; } }
 
 @media(max-width:767px) { .system-content-tile[data-density=compact] .system-content-body { padding:16px; }.system-content-tile[data-density=compact] .system-content-description { font-size:16px; } }
+
+.system-catalog-search-row { padding-inline:var(--sy-panel-inline,32px); }

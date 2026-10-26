@@ -1,3 +1,4 @@
+@import './system-layout-metrics.css';
 .modal-specimen { margin-block: 48px; padding: 32px; border: 1px solid var(--f-line, #45433c); border-radius: 16px; background: var(--f-surface, #161512); }
 .modal-specimen h2 { margin: 0; font-size: 28px; line-height: 1.3; font-weight: 600; letter-spacing: -.025em; }
 .modal-specimen header > p, .modal-specimen-note { color: var(--f-muted, #b4b2aa); line-height: 1.6; max-inline-size: 70ch; }
@@ -11,3 +12,5 @@
 .modal-specimen-guide h3 { margin: 10px 0; font-size: 18px; line-height: 1.4; font-weight: 600; }
 .modal-specimen-guide p { margin: 0; color: var(--f-muted, #b4b2aa); font-size: 15px; line-height: 1.7; }
 @media (max-width: 600px) { .modal-specimen { padding: 20px; } .modal-specimen h2 { font-size: 24px; } }
+
+.modal-specimen { padding-inline:var(--sy-panel-inline,32px); }

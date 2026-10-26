@@ -1,3 +1,4 @@
+@import './system-layout-metrics.css';
 .system-study { min-height: 100vh; color: var(--sy-content-primary); background: var(--sy-surface-canvas); font: 400 16px/1.65 var(--sy-font-ui); }
 .system-study * { box-sizing: border-box; }
 .system-study :is(p,h1,h2,h3,span,a,label) { overflow-wrap: anywhere; }
@@ -129,3 +130,9 @@
 .sy-configuration .sc-button-primary { color:var(--f-text); background:var(--f-surface); border-color:var(--f-control-border); }
 .sy-configuration .sc-button-primary:hover:not(:disabled) { background:var(--f-raised); border-color:var(--f-secondary); }
 .sy-export-footer .sy-work-identity { font-size:12px; }
+
+/* Header, tabs, contents and settings use one responsive vertical rail. */
+.sy-workbench > .sy-work-header,.sy-workbench > .sy-workbar,.sy-workbench .sy-representations,.sy-workbench .sy-work-settings { padding-inline:var(--sy-panel-inline); }
+.sy-workbench > .sy-work-body { grid-template-columns:minmax(0,1fr) 320px; }
+@media(max-width:1023px) { .sy-workbench > .sy-work-body { grid-template-columns:minmax(0,1fr); } }
+.sy-handoff-panel,.sy-motion-panel { padding-inline:var(--sy-panel-inline); }

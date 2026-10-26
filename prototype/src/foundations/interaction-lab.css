@@ -1,3 +1,4 @@
+@import './system-layout-metrics.css';
 .il-lab { --il-duration: 160ms; margin-top: 80px; scroll-margin-top: 32px; color: var(--f-text); }
 .il-lab :is(button, input, textarea) { font-family: inherit; }
 .il-lab :is(button, input, textarea):focus-visible { outline: 2px solid var(--f-focus); outline-offset: 4px; }
@@ -110,3 +111,5 @@
  .il-actions > button:nth-child(2) { grid-column:1; width:100%; }
  .il-clear-action { grid-column:2; }
 }
+
+.il-form,.il-side,.il-feedback,.il-disabled-card { padding-inline:var(--sy-panel-inline); }

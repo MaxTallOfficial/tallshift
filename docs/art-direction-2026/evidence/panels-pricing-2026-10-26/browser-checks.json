@@ -1,0 +1,299 @@
+{
+  "panels": [
+    {
+      "clearIcon": "trash",
+      "fileActionOffset": null,
+      "overflow": false,
+      "rails": [
+        {
+          "padding": "16px",
+          "selector": ".sy-work-header"
+        },
+        {
+          "padding": "16px",
+          "selector": ".sy-workbar"
+        },
+        {
+          "padding": "16px",
+          "selector": ".sy-representations"
+        },
+        {
+          "padding": "16px",
+          "selector": ".sy-work-settings"
+        },
+        {
+          "padding": "16px",
+          "selector": ".il-form"
+        },
+        {
+          "padding": "16px",
+          "selector": ".il-side"
+        },
+        {
+          "padding": "16px",
+          "selector": ".act-card"
+        },
+        {
+          "padding": "16px",
+          "selector": ".fs-card"
+        },
+        {
+          "padding": "16px",
+          "selector": ".floating-specimen"
+        }
+      ],
+      "width": 320
+    },
+    {
+      "clearIcon": "trash",
+      "fileActionOffset": 0,
+      "overflow": false,
+      "rails": [
+        {
+          "padding": "24px",
+          "selector": ".sy-work-header"
+        },
+        {
+          "padding": "24px",
+          "selector": ".sy-workbar"
+        },
+        {
+          "padding": "24px",
+          "selector": ".sy-representations"
+        },
+        {
+          "padding": "24px",
+          "selector": ".sy-work-settings"
+        },
+        {
+          "padding": "24px",
+          "selector": ".il-form"
+        },
+        {
+          "padding": "24px",
+          "selector": ".il-side"
+        },
+        {
+          "padding": "24px",
+          "selector": ".act-card"
+        },
+        {
+          "padding": "24px",
+          "selector": ".fs-card"
+        },
+        {
+          "padding": "24px",
+          "selector": ".floating-specimen"
+        }
+      ],
+      "width": 768
+    },
+    {
+      "clearIcon": "trash",
+      "fileActionOffset": 0,
+      "overflow": false,
+      "rails": [
+        {
+          "padding": "24px",
+          "selector": ".sy-work-header"
+        },
+        {
+          "padding": "24px",
+          "selector": ".sy-workbar"
+        },
+        {
+          "padding": "24px",
+          "selector": ".sy-representations"
+        },
+        {
+          "padding": "24px",
+          "selector": ".sy-work-settings"
+        },
+        {
+          "padding": "24px",
+          "selector": ".il-form"
+        },
+        {
+          "padding": "24px",
+          "selector": ".il-side"
+        },
+        {
+          "padding": "24px",
+          "selector": ".act-card"
+        },
+        {
+          "padding": "24px",
+          "selector": ".fs-card"
+        },
+        {
+          "padding": "24px",
+          "selector": ".floating-specimen"
+        }
+      ],
+      "width": 968
+    },
+    {
+      "clearIcon": "trash",
+      "fileActionOffset": 0,
+      "overflow": false,
+      "rails": [
+        {
+          "padding": "32px",
+          "selector": ".sy-work-header"
+        },
+        {
+          "padding": "32px",
+          "selector": ".sy-workbar"
+        },
+        {
+          "padding": "32px",
+          "selector": ".sy-representations"
+        },
+        {
+          "padding": "32px",
+          "selector": ".sy-work-settings"
+        },
+        {
+          "padding": "32px",
+          "selector": ".il-form"
+        },
+        {
+          "padding": "32px",
+          "selector": ".il-side"
+        },
+        {
+          "padding": "32px",
+          "selector": ".act-card"
+        },
+        {
+          "padding": "32px",
+          "selector": ".fs-card"
+        },
+        {
+          "padding": "32px",
+          "selector": ".floating-specimen"
+        }
+      ],
+      "width": 1440
+    }
+  ],
+  "pricing": [
+    {
+      "items": 6,
+      "lang": "en",
+      "overflow": false,
+      "paddings": [
+        "16px",
+        "16px",
+        "16px"
+      ],
+      "paymentDisabled": true,
+      "total": "$16.00",
+      "width": 320
+    },
+    {
+      "items": 6,
+      "lang": "en",
+      "overflow": false,
+      "paddings": [
+        "24px",
+        "24px",
+        "24px"
+      ],
+      "paymentDisabled": true,
+      "total": "$16.00",
+      "width": 768
+    },
+    {
+      "items": 6,
+      "lang": "en",
+      "overflow": false,
+      "paddings": [
+        "32px",
+        "32px",
+        "32px"
+      ],
+      "paymentDisabled": true,
+      "total": "$16.00",
+      "width": 1440
+    },
+    {
+      "items": 6,
+      "lang": "ru",
+      "overflow": false,
+      "paddings": [
+        "16px",
+        "16px",
+        "16px"
+      ],
+      "paymentDisabled": true,
+      "total": "16,00 $",
+      "width": 320
+    },
+    {
+      "items": 6,
+      "lang": "ru",
+      "overflow": false,
+      "paddings": [
+        "24px",
+        "24px",
+        "24px"
+      ],
+      "paymentDisabled": true,
+      "total": "16,00 $",
+      "width": 768
+    },
+    {
+      "items": 6,
+      "lang": "ru",
+      "overflow": false,
+      "paddings": [
+        "32px",
+        "32px",
+        "32px"
+      ],
+      "paymentDisabled": true,
+      "total": "16,00 $",
+      "width": 1440
+    },
+    {
+      "items": 6,
+      "lang": "vi",
+      "overflow": false,
+      "paddings": [
+        "16px",
+        "16px",
+        "16px"
+      ],
+      "paymentDisabled": true,
+      "total": "16,00 US$",
+      "width": 320
+    },
+    {
+      "items": 6,
+      "lang": "vi",
+      "overflow": false,
+      "paddings": [
+        "24px",
+        "24px",
+        "24px"
+      ],
+      "paymentDisabled": true,
+      "total": "16,00 US$",
+      "width": 768
+    },
+    {
+      "items": 6,
+      "lang": "vi",
+      "overflow": false,
+      "paddings": [
+        "32px",
+        "32px",
+        "32px"
+      ],
+      "paymentDisabled": true,
+      "total": "16,00 US$",
+      "width": 1440
+    }
+  ]
+}

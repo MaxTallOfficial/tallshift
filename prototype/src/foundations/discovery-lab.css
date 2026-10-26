@@ -1,3 +1,4 @@
+@import './system-layout-metrics.css';
 .dl-lab { margin-top:0; scroll-margin-top:28px; color:var(--f-text); font-family:var(--f-font,Manrope,Arial,sans-serif); }
 .dl-lab *, .dl-lab *::before, .dl-lab *::after { box-sizing:border-box; }
 .dl-heading { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:24px; }
@@ -90,3 +91,5 @@ html[data-motion="off"] :is(.dl-chip,.dl-card-footer .dl-open,.dl-lab .dl-reset)
 @media(max-width:767px) { .dl-filter-shell { padding:0 20px 20px; }.dl-filter-options { grid-template-columns:minmax(0,1fr); gap:20px; }.dl-applied { flex-wrap:wrap; gap:8px; }.dl-applied > [role="group"] { flex-basis:100%; }.dl-reset-filters { margin-inline-start:auto; } }
 
 .dl-material-grid { gap:20px; }.system-content-tile[data-density=compact] .dl-preview { min-height:140px; height:140px; aspect-ratio:auto; }
+
+.dl-controls,.dl-filterbar { padding-inline:var(--sy-panel-inline,32px); }

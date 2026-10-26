@@ -240,7 +240,7 @@
         "A007",
         "A008"
       ],
-      "price_hypothesis_usd": 56,
+      "price_hypothesis_usd": 39,
       "offer_revision": "1.0-draft",
       "notes_ru": "Новый предлагаемый snapshot23 Pro. Старый snapshot 18 не меняется, новые A не включаются автоматически в прежние grants. Цена прежнего scope59 не переносится.",
       "sale_state": "disabled"

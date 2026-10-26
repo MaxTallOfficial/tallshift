@@ -1,3 +1,7 @@
+import { pricingPresentation } from './pricing-presentation';
+import { quotePricingPlan, type PricingPlan, type PricingOwnership } from './pricing-quote';
+import { SystemDialog } from './SystemDialog';
+import { SystemButton } from './SystemButton';
 import { pricingPlansCopy, pricingPlanScopes, pricingPlanTerms } from './pricing-plans';
 import { collectionMembers } from './material-labels';
 import { useId, useState } from 'react';
@@ -7,14 +11,17 @@ import { SystemEntitlementState } from './SystemEntitlementState';
 import { SystemAccordion } from './SystemAccordion';
 import './access-states-lab.css';
 
-type AccessStatesLabProps = { locale: AccessStatesLocale; onOpenMaterial: () => void };
+type AccessStatesLabProps = { locale: AccessStatesLocale; onOpenMaterial: () => void; ownership?: PricingOwnership; onOpenDownloads?: () => void };
 
 const scenarios: readonly AccessScenario[] = ['free', 'no-access', 'pending', 'owner', 'error', 'closed'];
 
 
-export function AccessStatesLab({ locale, onOpenMaterial }: AccessStatesLabProps) {
+export function AccessStatesLab({ locale, onOpenMaterial, ownership, onOpenDownloads }: AccessStatesLabProps) {
   const t = accessStatesCopy[locale];
   const pricing = pricingPlansCopy[locale];
+  const presentation = pricingPresentation[locale];
+  const [selectedPlan, setSelectedPlan] = useState<PricingPlan | null>(null);
+  const selectionQuote = selectedPlan ? quotePricingPlan(selectedPlan, ownership) : null;
   const id = useId();
   const [scenario, setScenario] = useState<AccessScenario>('free');
 
@@ -33,23 +40,34 @@ export function AccessStatesLab({ locale, onOpenMaterial }: AccessStatesLabProps
     <div className="as-offers">
       <SystemOffer offer={{ id: pricingPlanTerms.starter.offerId, name: 'Starter', availability: 'available', badge: t.freeAccess,
         priceAmount: `$${pricingPlanTerms.starter.priceMinor / 100}`, billingLabel: pricing.free, headline: <>{pricing.starterClaim} <span>{pricing.starterAccent}</span></>, description: pricing.starterDescription,
-        benefits: pricing.starterBenefits, benefitIcons:['layers','code','file'], deliveryNote: pricing.starterStatus }} details={<SystemAccordion headingLevel={4} className="as-offer-details" items={[{id:"starter-scope", title:t.details, content:<div className="as-scope"><p>{pricing.starterScope}</p><ul>{collectionMembers(pricingPlanScopes.starter,locale).map(item=><li key={item.id}>{item.label}</li>)}</ul></div>}]} />} action={{ label: t.open, onAction: onOpenMaterial }} />
-      <SystemOffer offer={{ id: accessProductOffer.offerId, name: accessProductOffer.name, availability: 'planned', badge: t.planned,
-        priceAmount: `$${pricingPlanTerms.product.priceMinor / 100}`, billingLabel: pricing.once, headline: <>{t.proClaim} <span>{t.proClaimAccent}</span></>, description: t.proDescription,
-        benefits: t.proBenefits, benefitIcons:['grid','settings','play'], priceLabel: t.notOnSale, priceNote: pricing.hypothesis, deliveryNote: t.packNote }} featuredLabel={pricing.recommendation} action={{label:pricing.closed,disabled:true}} details={
+        benefits: pricing.starterBenefits, benefitIcons:['layers','code','file'], deliveryNote: pricing.starterStatus }} details={<SystemAccordion headingLevel={4} className="as-offer-details" items={[{id:"starter-scope", title:t.details, content:<div className="as-scope"><p>{pricing.starterScope}</p><ul>{collectionMembers(pricingPlanScopes.starter,locale).map(item=><li key={item.id}>{item.label}</li>)}</ul></div>}]} />} selectionAction={{label:presentation.freeAction,onSelect:()=>setSelectedPlan('starter')}} />
+      <SystemOffer offer={{ id: accessProductOffer.offerId, name: accessProductOffer.name, availability: 'planned', badge: presentation.pro,
+        priceAmount: `$${pricingPlanTerms.product.priceMinor / 100}`, billingLabel: pricing.once, headline: <>{t.proClaim} <span>{t.proClaimAccent}</span></>, description: presentation.productDescription,
+        benefits: t.proBenefits, benefitIcons:['grid','settings','play'], priceNote: presentation.tax, deliveryNote: presentation.note }} featuredLabel={pricing.recommendation} selectionAction={{label:presentation.chooseProduct,onSelect:()=>setSelectedPlan('product')}} details={
         <SystemAccordion className="as-offer-details" headingLevel={4} items={[{ id: 'offer-scope', title: t.details, content: <>
-        <div className="as-scope"><p>{t.scope}</p><ul aria-label={t.scope}>{collectionMembers(accessProductOffer.itemIds,locale).map(item => <li key={item.id}>{item.label}</li>)}</ul></div>
+        <div className="as-scope"><p>{presentation.scope}</p><ul aria-label={presentation.scope}>{collectionMembers(accessProductOffer.itemIds,locale).map(item => <li key={item.id}>{item.label}</li>)}</ul></div>
         <dl className="as-offer-facts">
-          <div><dt>{t.license}</dt><dd>{t.licenseValue}</dd></div>
-          <div><dt>{t.updates}</dt><dd>{t.updatesValue}</dd></div>
+          <div><dt>{presentation.license}</dt><dd>{presentation.licenseValue}</dd></div>
+          <div><dt>{presentation.updates}</dt><dd>{presentation.updatesValue}</dd></div>
         </dl>
         </> }]} />
       } />
-      <SystemOffer offer={{id:pricingPlanTerms.bundle.offerId,name:'All packs',availability:'planned',badge:t.planned,priceAmount:`$${pricingPlanTerms.bundle.priceMinor / 100}`,billingLabel:pricing.once,
-        headline:<>{pricing.bundleClaim} <span>{pricing.bundleAccent}</span></>,description:pricing.bundleDescription,benefits:pricing.bundleBenefits,benefitIcons:['layers','grid','code'],priceLabel:t.notOnSale,priceNote:pricing.hypothesis,deliveryNote:t.packNote}}
-        action={{label:pricing.closed,disabled:true}} details={<SystemAccordion headingLevel={4} className="as-offer-details" items={[{id:'bundle-scope',title:t.details,content:<div className="as-scope"><p>{pricing.bundleScope}</p><ul>{collectionMembers(pricingPlanScopes.bundle,locale).map(item=><li key={item.id}>{item.label}</li>)}</ul></div>}]} />} />
+      <SystemOffer offer={{id:pricingPlanTerms.bundle.offerId,name:'All packs',availability:'planned',badge:presentation.pro,priceAmount:`$${pricingPlanTerms.bundle.priceMinor / 100}`,billingLabel:pricing.once,
+        headline:<>{pricing.bundleClaim} <span>{pricing.bundleAccent}</span></>,description:pricing.bundleDescription,benefits:pricing.bundleBenefits,benefitIcons:['layers','grid','code'],priceNote:presentation.tax,deliveryNote:presentation.note}}
+        selectionAction={{label:presentation.chooseBundle,onSelect:()=>setSelectedPlan('bundle')}} details={<SystemAccordion headingLevel={4} className="as-offer-details" items={[{id:'bundle-scope',title:t.details,content:<div className="as-scope"><p>{pricing.bundleScope}</p><ul>{collectionMembers(pricingPlanScopes.bundle,locale).map(item=><li key={item.id}>{item.label}</li>)}</ul></div>}]} />} />
     </div>
     <div className="as-comparison"><h3>{pricing.compareTitle}</h3><div className="as-comparison-scroll" role="region" aria-label={pricing.compareTitle} tabIndex={0}><table><thead><tr><th scope="col">{locale==='ru'?'Условия':locale==='vi'?'Điều kiện':'Terms'}</th><th scope="col">Starter</th><th scope="col">Product</th><th scope="col">All packs</th></tr></thead><tbody>{pricing.rows.map(([label,...values])=><tr key={label}><th scope="row">{label}</th>{values.map((value,index)=><td key={index}>{value}</td>)}</tr>)}</tbody></table></div><p>{pricing.shared}</p><p>{pricing.upgrades}</p><p>{pricing.other}</p></div>
+
+    <SystemDialog open={selectedPlan !== null} onOpenChange={open=>{if(!open)setSelectedPlan(null);}} title={presentation.title} closeLabel={presentation.close}
+      description={selectedPlan ? `${selectedPlan==='starter'?'Starter':selectedPlan==='product'?'Product':'All packs'} · ${selectedPlan==='starter'?pricing.free:presentation.billing}` : undefined}
+      footer={selectedPlan==='starter' ? <SystemButton variant="primary" onClick={()=>{setSelectedPlan(null);onOpenMaterial();}}>{presentation.demo}</SystemButton> : selectionQuote?.kind==='owned' ? <SystemButton disabled={!onOpenDownloads} onClick={onOpenDownloads}>{presentation.downloads}</SystemButton> : <SystemButton disabled aria-describedby={`${id}-order-note`}>{presentation.continue}</SystemButton>}>
+      {selectedPlan && selectionQuote && <div className="as-order-summary">
+        <p className="as-order-total"><span>{selectionQuote.kind==='owned'?presentation.owned:selectionQuote.kind==='upgrade'?presentation.due:presentation.subtotal}</span><strong>{new Intl.NumberFormat(locale,{style:'currency',currency:'USD',maximumFractionDigits:2}).format(selectionQuote.amountMinor/100)}</strong></p>
+        <p>{presentation.tax}</p><dl><div><dt>{presentation.license}</dt><dd>{selectedPlan==='starter'?'MIT':presentation.licenseValue}</dd></div><div><dt>{presentation.updates}</dt><dd>{selectedPlan==='starter'?pricing.rows[4][1]:presentation.updatesValue}</dd></div></dl>
+        <h3>{selectionQuote.kind==='upgrade'||selectionQuote.kind==='partial'?presentation.newItems:presentation.contents} · {selectionQuote.kind==='upgrade'||selectionQuote.kind==='partial'?selectionQuote.missingItemIds.length:pricingPlanScopes[selectedPlan].length}</h3><ul>{collectionMembers(selectionQuote.kind==='upgrade'||selectionQuote.kind==='partial'?selectionQuote.missingItemIds:pricingPlanScopes[selectedPlan],locale).map(item=><li key={item.id}>{item.label}</li>)}</ul>
+        <p id={`${id}-order-note`} className="as-order-review">{presentation.review}</p>
+      </div>}
+    </SystemDialog>
 
     <div className="as-access-panel">
       <fieldset className="as-scenarios" aria-describedby={`${id}-preview-hint`}>

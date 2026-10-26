@@ -1,3 +1,4 @@
+@import './system-layout-metrics.css';
 .act-lab { min-inline-size: 0; margin-block: 80px; scroll-margin-block-start: 24px; }
 .act-heading { max-inline-size: 780px; margin-block-end: 28px; }
 .act-heading > span { color: var(--f-secondary); font-size: 11px; letter-spacing: .1em; }
@@ -14,3 +15,5 @@
 @media (max-width: 760px) { .act-grid { grid-template-columns: minmax(0, 1fr); } }
 
 @media (max-width: 767px) { .act-lab { margin-block: 56px; }.act-heading h2 { font-size: 24px; } }
+
+.act-card { padding-inline:var(--sy-panel-inline,32px); }

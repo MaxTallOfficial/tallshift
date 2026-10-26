@@ -1,3 +1,4 @@
+@import './system-layout-metrics.css';
 .sc-panel { min-width: 0; margin-top: 32px; padding: 32px; border: 1px solid var(--f-line); border-radius: 12px; background: var(--f-surface); color: var(--f-text); font-family: var(--sy-font-ui, Manrope, Arial, sans-serif); }
 .sc-panel *, .sc-panel *::before, .sc-panel *::after { box-sizing: border-box; }
 .sc-panel-heading { max-width: 660px; }
@@ -124,3 +125,5 @@
 .sc-hex-row .sc-color-apply { width:var(--sy-control-size,52px); }
 .sc-color-field[data-readonly] .sc-hex-row { grid-template-columns:44px minmax(0,1fr); }
 .sc-color-apply[data-dirty=false] { color:var(--f-secondary); background:transparent; }
+
+.sc-panel { padding-inline:var(--sy-panel-inline,32px); }

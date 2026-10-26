@@ -10,8 +10,8 @@ export interface SystemOfferData {
   priceAmount?: string; billingLabel?: string;
   priceLabel?: string; priceNote?: string; deliveryNote?: string;
 }
-export interface SystemOfferProps { offer: SystemOfferData; action?: SystemOfferAction; illustration?: ReactNode; details?: ReactNode; children?: ReactNode; className?: string; featuredLabel?: string }
-export function SystemOffer({ offer, action, illustration, details, children, className = '', featuredLabel }: SystemOfferProps) {
+export interface SystemOfferProps { offer: SystemOfferData; action?: SystemOfferAction; illustration?: ReactNode; details?: ReactNode; children?: ReactNode; className?: string; featuredLabel?: string; selectionAction?: { label:string; onSelect:()=>void } }
+export function SystemOffer({ offer, action, illustration, details, children, className = '', featuredLabel, selectionAction }: SystemOfferProps) {
   const id = useId(); const blocked = offer.availability !== 'available' || action?.disabled || !action?.onAction;
   return <article className={`as-offer as-offer-${offer.availability === 'available' ? 'free' : 'pro'} ${className}`.trim()} aria-labelledby={`${id}-title`} data-availability={offer.availability} data-featured={featuredLabel ? true : undefined}>
     {featuredLabel && <p className="as-recommendation">{featuredLabel}</p>}
@@ -21,7 +21,8 @@ export function SystemOffer({ offer, action, illustration, details, children, cl
     <ul className="as-benefits">{offer.benefits.map((benefit,index) => <li key={`${index}-${benefit}`}><SystemIcon name={offer.benefitIcons?.[index] ?? 'layers'} size={20} /><span>{benefit}</span></li>)}</ul>{details}
     <div className={offer.availability === 'available' ? 'as-free-footer' : 'as-pro-footer'}>
       {offer.priceLabel && <p className="as-sale-state">{offer.priceLabel}</p>}{offer.priceNote && <p className="as-price-note">{offer.priceNote}</p>}
-      {action && <SystemButton variant={offer.availability === 'available' ? 'primary' : 'secondary'} disabled={blocked} onClick={action.onAction} aria-describedby={action.reason ? `${id}-reason` : undefined}>{action.label}</SystemButton>}
+      {selectionAction && <SystemButton variant={featuredLabel ? 'primary' : 'secondary'} onClick={selectionAction.onSelect}>{selectionAction.label}</SystemButton>}
+      {!selectionAction && action && <SystemButton variant={offer.availability === 'available' ? 'primary' : 'secondary'} disabled={blocked} onClick={action.onAction} aria-describedby={action.reason ? `${id}-reason` : undefined}>{action.label}</SystemButton>}
       {action?.reason && <p id={`${id}-reason`}>{action.reason}</p>}{offer.deliveryNote && <p className="as-pack-note">{offer.deliveryNote}</p>}{children}
     </div>
   </article>;

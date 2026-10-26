@@ -54,3 +54,9 @@ test('inactive stable-height state is inert and hidden; announcements are explic
   assert.match(html, /inert=""/); assert.match(html, /aria-hidden="true"/); assert.doesNotMatch(html, /role="status"/);
   assert.doesNotMatch(render(SystemEntitlementState, { state }), /role="status"/); assert.match(render(SystemEntitlementState, { state, announce: true }), /role="status"/);
 });
+
+test('a planned offer may expose selection review without exposing a purchase action',()=>{
+ const html=render(SystemOffer,{offer,selectionAction:{label:'View Product details',onSelect:noop}});
+ assert.match(html,/View Product details/);assert.doesNotMatch(html,/ disabled=""/);
+ assert.match(html,/data-availability="planned"/);assert.doesNotMatch(html,/href=.*checkout/);
+});

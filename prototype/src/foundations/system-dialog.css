@@ -1,3 +1,4 @@
+@import './system-layout-metrics.css';
 .system-dialog { box-sizing: border-box; inline-size: min(560px, calc(100% - 32px)); max-inline-size: none; max-block-size: calc(100dvh - 48px); padding: 0; border: 1px solid var(--f-line, #45433c); border-radius: 16px; background: var(--f-surface, #161512); color: var(--f-text, #eeede7); font-family: var(--sy-font-ui, inherit); box-shadow: 0 24px 80px #0008; overflow: hidden; }
 .system-dialog[open] { display: flex; flex-direction: column; }
 .system-dialog::backdrop { background: rgb(0 0 0 / .74); }
@@ -12,3 +13,7 @@
 .system-dialog-footer { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px; padding: 20px 28px; border-block-start: 1px solid var(--f-line, #45433c); background: var(--f-surface, #161512); flex-shrink: 0; }
 @media (max-width: 480px) { .system-dialog { max-block-size: calc(100dvh - 24px); inline-size: calc(100% - 24px); border-radius: 12px; } .system-dialog-heading { padding: 20px 20px 16px; gap: 12px; } .system-dialog-content { padding: 0 20px 20px; } .system-dialog-footer { padding: 16px 20px; gap: 8px; } }
 @media (forced-colors: active) { .system-dialog { background: Canvas; color: CanvasText; border-color: CanvasText; box-shadow: none; } .system-dialog-heading p { color: CanvasText; } .system-dialog::backdrop { background: rgb(0 0 0 / .8); } }
+
+.system-dialog-heading,.system-dialog-content,.system-dialog-footer { padding-inline:var(--sy-panel-inline); }
+
+.system-dialog-heading .system-icon-button { margin:0; }

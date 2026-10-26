@@ -1,3 +1,4 @@
+@import './system-layout-metrics.css';
 .ls-lab { min-width:0; margin-top:64px; scroll-margin-top:24px; color:var(--f-text); font-family:var(--f-font,Manrope,Arial,sans-serif); }
 .ls-lab *, .ls-lab *::before, .ls-lab *::after { box-sizing:border-box; }
 .ls-lab :is(h2,h3,h4,p) { margin:0; }
@@ -103,3 +104,5 @@ html[data-motion=off] :is(.ls-button,.ls-collection,.ls-state-option),.system-st
 .ls-pagination-frame[data-active=false] { visibility:hidden; pointer-events:none; }
 
 .ls-collections { align-items:start; }
+
+.ls-results-panel { padding-inline:var(--sy-panel-inline,32px); }

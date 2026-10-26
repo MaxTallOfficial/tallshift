@@ -137,3 +137,5 @@
 .as-offer .as-pack-note { min-block-size:3.3em; margin-block-start:12px; }
 
 .as-order-items{margin-block:20px;border-block:1px solid var(--f-line);padding-block:16px}.as-order-summary summary{cursor:pointer;font-weight:600;color:var(--f-text);line-height:1.6}.as-existing-coverage{margin-block:20px}.as-existing-coverage h3{margin-bottom:8px}.as-existing-coverage details{margin-block:12px}
+
+.as-price{min-block-size:88px}.as-offer[data-price-state="owned"] .as-price>strong,.as-offer[data-price-state="unknown"] .as-price>strong{font-size:24px;line-height:1.4}.as-offer[data-price-state="owned"] .as-badge{color:var(--f-success,var(--f-text))}

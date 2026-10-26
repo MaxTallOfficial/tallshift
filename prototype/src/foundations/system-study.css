@@ -148,3 +148,5 @@
 .system-study .system-dialog-heading h2:focus-visible{outline:none}
 
 .sy-license-group,.as-free-license{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.sy-license-group{justify-content:flex-end}.as-free-license{margin-block:20px}
+
+.system-license-inline{margin:0;max-inline-size:34ch;font-size:12px;line-height:1.65;color:var(--f-secondary)}.system-license-inline>span{display:block}.sy-license-group{max-inline-size:32ch;align-items:flex-start}.sy-license-group .system-license-inline{flex-basis:100%;text-align:end}

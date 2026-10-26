@@ -7,13 +7,13 @@ export interface SystemOfferData {
   id: string; name: string; availability: 'available' | 'planned' | 'closed'; badge: string;
   headline: ReactNode; description: string; benefits: readonly string[]; benefitIcons?: readonly SystemIconName[];
   /** A caller-provided, explicit price or sale-status label; never inferred from a price hypothesis. */
-  priceAmount?: string; billingLabel?: string;
+  priceAmount?: string; billingLabel?: string; priceState?: 'purchase'|'owned'|'upgrade'|'unknown';
   priceLabel?: string; priceNote?: string; deliveryNote?: string;
 }
 export interface SystemOfferProps { offer: SystemOfferData; action?: SystemOfferAction; illustration?: ReactNode; details?: ReactNode; children?: ReactNode; className?: string; featuredLabel?: string; selectionAction?: { label:string; onSelect:()=>void } }
 export function SystemOffer({ offer, action, illustration, details, children, className = '', featuredLabel, selectionAction }: SystemOfferProps) {
   const id = useId(); const blocked = offer.availability !== 'available' || action?.disabled || !action?.onAction;
-  return <article className={`as-offer as-offer-${offer.availability === 'available' ? 'free' : 'pro'} ${className}`.trim()} aria-labelledby={`${id}-title`} data-availability={offer.availability} data-featured={featuredLabel ? true : undefined}>
+  return <article className={`as-offer as-offer-${offer.availability === 'available' ? 'free' : 'pro'} ${className}`.trim()} aria-labelledby={`${id}-title`} data-price-state={offer.priceState} data-availability={offer.availability} data-featured={featuredLabel ? true : undefined}>
     {featuredLabel && <p className="as-recommendation">{featuredLabel}</p>}
     <header className="as-offer-head"><div className="as-offer-identity">{illustration && <span className="as-offer-symbol" aria-hidden="true">{illustration}</span>}<p className="as-offer-name">{offer.name}</p></div><span className={`as-badge ${offer.availability === 'available' ? 'as-badge-free' : ''}`}>{offer.badge}</span></header>
     {offer.priceAmount && <div className="as-price"><strong>{offer.priceAmount}</strong><span>{offer.billingLabel}</span></div>}

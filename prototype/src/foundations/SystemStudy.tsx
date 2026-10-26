@@ -1,3 +1,4 @@
+import {useInputModality} from './system-input-modality';
 import { SystemLicenseInfo } from './SystemLicenseInfo';
 import { licenseCopy } from './license-copy';
 import { renderRelayIcon } from './relay-icon-renderer';
@@ -69,6 +70,8 @@ function saveFile(bytes: BlobPart, type: string, name: string) {
 }
 
 export function SystemStudy() {
+  const studyRoot=useRef<HTMLDivElement>(null);
+  useInputModality(studyRoot);
   const query = new URLSearchParams(location.search);
   const [locale, setLocale] = useState<Locale>(() => query.get('lang') === 'ru' ? 'ru' : query.get('lang') === 'vi' ? 'vi' : 'en');
   const [view, setView] = useState<View>(() => query.get('view') === 'source' ? 'source' : query.get('view') === 'prompt' ? 'prompt' : 'demo');
@@ -203,7 +206,7 @@ export function SystemStudy() {
     setView('demo'); document.getElementById('workbench')?.scrollIntoView({ behavior: off ? 'auto' : 'smooth' }); workHeading.current?.focus({ preventScroll: true });
   }
 
-  return <div id="top" className="system-study" style={style} data-motion={off ? 'off' : 'on'}>
+  return <div ref={studyRoot} id="top" className="system-study" style={style} data-motion={off ? 'off' : 'on'}>
     <SystemNavigationShell className="sy-width" brand={<SystemBrandMark aria-label={locale === 'ru' ? 'Tallshift — на главную' : locale === 'vi' ? 'Tallshift — trang chủ' : 'Tallshift — home'} />} edition={t.edition} localeControl={<SystemLocaleControl locale={locale} onChange={setLocale} label={b.languageLabel} />} label={t.nav} items={navIds.map((id,i)=>({id,href:`#${id}`,label:navLabels[i]}))} activeId={active} skipLink={{href:'#discovery',label:t.discovery}} menuLabels={{open:locale==='ru'?'Навигация':locale==='vi'?'Điều hướng':'Navigation',close:locale==='ru'?'Закрыть навигацию':locale==='vi'?'Đóng điều hướng':'Close navigation'}} />
     <main className="sy-width">
       <section className="sy-intro"><div><p className="sy-kicker">AFTERLIGHT / SYSTEM STUDY</p><SystemTypography as="h1" textRole="display">{t.title}<span>{t.titleSecond}</span></SystemTypography><p className="sy-lead">{t.intro}</p></div><aside className="sy-decisions" aria-label={t.approved}><span>{t.approved}</span><strong><i aria-hidden="true" />{t.introColor}</strong><p>{t.introType}</p><p>{t.introBase}</p><span className="sy-review">{t.review}</span></aside></section>

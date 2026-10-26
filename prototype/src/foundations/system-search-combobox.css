@@ -2,7 +2,7 @@
 .sys-search { position:relative; min-width:0; color:var(--f-text); font-family:var(--f-font,Manrope,Arial,sans-serif); }
 .sys-search-label { display:block; margin:0 0 10px; color:var(--f-secondary); font-size:12px; font-weight:600; line-height:1.5; }
 .sys-search-control { position:relative; display:flex; align-items:center; min-width:0; min-height:var(--sy-control-size,52px); border:1px solid var(--f-control-border); border-radius:var(--sy-radius-control,8px); background:var(--f-inset); transition:border-color 150ms ease; }
-.sys-search-control:focus-within { border-color:var(--f-focus,#B8B8B2); box-shadow:inset 0 0 0 1px var(--f-focus,#B8B8B2); }
+.sys-search-control:has(.sys-search-input:focus-visible) { border-color:var(--f-focus,#B8B8B2); box-shadow:inset 0 0 0 1px var(--f-focus,#B8B8B2); }
 .sys-search-icon { display:flex; flex:0 0 20px; width:20px; margin-inline-start:14px; color:var(--f-secondary); pointer-events:none; }
 .sys-search svg { display:block; width:20px; height:20px; }
 .sys-search .sys-search-input { display:block; box-sizing:border-box; flex:1 1 auto; width:100%; min-width:0; min-height:calc(var(--sy-control-size,52px) - 2px); margin:0; padding:11px 14px 11px 12px; border:0; border-radius:inherit; background:transparent; color:var(--f-text); font:400 16px/1.5 var(--f-font,Manrope,Arial,sans-serif); }
@@ -27,6 +27,6 @@
 .sys-search-hint { margin:8px 0 0; color:var(--f-muted); font-size:12px; line-height:1.65; }
 @media (prefers-reduced-motion:reduce) { .sys-search-control { transition:none; } }
 html[data-motion="off"] .sys-search-control { transition:none; }
-@media (forced-colors:active) { .sys-search-control:focus-within,.sys-search .sys-search-clear:focus-visible { outline:2px solid Highlight; outline-offset:0; box-shadow:none; }.sys-search-list > li[data-active] { border-color:Highlight; }.sys-search[data-disabled] .sys-search-control { opacity:1; color:GrayText; } }
+@media (forced-colors:active) { .sys-search-control:has(.sys-search-input:focus-visible),.sys-search .sys-search-clear:focus-visible { outline:2px solid Highlight; outline-offset:0; box-shadow:none; }.sys-search-list > li[data-active] { border-color:Highlight; }.sys-search[data-disabled] .sys-search-control { opacity:1; color:GrayText; } }
 
 .sys-search-retry { min-height:44px; margin-top:8px; padding:8px 14px; border:1px solid var(--f-control-border); border-radius:8px; color:var(--f-text); background:var(--f-surface); font:600 14px/1.5 var(--sy-font-ui); }.sys-search-retry:focus-visible { outline:2px solid var(--f-focus); outline-offset:2px; }

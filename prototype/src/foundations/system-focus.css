@@ -1,0 +1,18 @@
+/* Pointer focus remains functional; only the keyboard focus decoration is hidden. */
+[data-input-modality="pointer"] :is(button,input,textarea,a,summary,pre,[tabindex]):focus{
+ outline:none!important;box-shadow:none!important;
+}
+[data-input-modality="pointer"] :is(.system-checkbox-box,.system-radio-mark,.system-segmented-choice){outline:none!important;box-shadow:none!important}
+[data-input-modality="pointer"] :is(.sm-control,.sys-search-control):focus-within{outline:none!important;box-shadow:none!important}
+[data-input-modality="pointer"] .sys-search-control:focus-within{border-color:var(--f-control-border)}
+[data-input-modality="pointer"] :is(input:not([type="checkbox"],[type="radio"],[type="range"]),textarea):focus:not([aria-invalid="true"]){border-color:var(--f-control-border)}
+[data-input-modality="pointer"] .sys-select-trigger:focus-visible:not([aria-expanded="true"]){border-color:var(--f-control-border)}
+/* One keyboard ring, rather than an inset ring combined with a global outline. */
+[data-input-modality="keyboard"] .sys-select .sys-select-trigger:focus-visible{
+ outline:2px solid var(--f-focus);outline-offset:3px;box-shadow:none;border-color:var(--f-control-border);
+}
+@media(forced-colors:active){[data-input-modality="keyboard"] .sys-select .sys-select-trigger:focus-visible{outline-color:Highlight}}
+
+[data-input-modality="keyboard"] .sm-control .sm-trigger:focus-visible{outline:none;box-shadow:none}
+[data-input-modality="keyboard"] .sys-search .sys-search-clear:focus-visible{outline:2px solid var(--f-focus);outline-offset:-2px;box-shadow:none}
+@media(forced-colors:active){[data-input-modality="keyboard"] .sys-search .sys-search-clear:focus-visible{outline-color:Highlight}}

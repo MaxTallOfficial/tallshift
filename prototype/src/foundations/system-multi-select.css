@@ -2,7 +2,7 @@
 .system-multi-select { min-width:0; }
 .sm-label { display:block; margin-bottom:10px; color:var(--f-secondary); font-size:12px; font-weight:600; line-height:1.5; }
 .sm-control { display:flex; align-items:center; min-width:0; gap:8px; min-height:var(--sy-control-size,52px); padding:1px 4px 1px 8px; border:1px solid var(--f-control-border); border-radius:8px; background:var(--f-inset); }
-.sm-control:focus-within { outline:2px solid var(--f-focus); outline-offset:3px; }
+.sm-control:has(.sm-trigger:focus-visible) { outline:2px solid var(--f-focus); outline-offset:3px; }
 .sm-control[data-disabled] { opacity:.55; }
 .system-multi-select .sm-trigger { flex:0 0 44px; min-height:var(--sy-control-inner-size,48px); block-size:var(--sy-control-inner-size,48px); padding:0; justify-content:center; border:0; background:transparent; }
 .sm-trigger .system-button-label:empty { display:none; }

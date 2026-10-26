@@ -1,3 +1,4 @@
+import {registerInputModality} from './system-input-modality';
 import { useEffect, useId, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { SystemSegmentedControl } from './SystemSegmentedControl';
@@ -60,6 +61,8 @@ export function SystemPreviewViewport({ locale, label, children, width, onWidthC
     doc.head.append(reset);
     setTarget(container);
   }
+
+  useLayoutEffect(()=>target?registerInputModality(target):undefined,[target]);
 
   useLayoutEffect(() => {
     if (!target || !rootRef.current) return;

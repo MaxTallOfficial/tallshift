@@ -24,7 +24,7 @@ export function FloatingPortal({ children, anchor }: { children: ReactNode; anch
   const modal = anchor?.closest('dialog[open]') ?? document.activeElement?.closest('dialog[open]');
   return createPortal(children, modal ?? anchor?.closest('[data-tallshift-theme], .system-study') ?? document.body);
 }
-export function useFloatingPosition(open: boolean, trigger: RefObject<HTMLElement | null>, panel: RefObject<HTMLElement | null>, align: 'start' | 'end' = 'start') {
+export function useFloatingPosition(open: boolean, trigger: RefObject<HTMLElement | null>, panel: RefObject<HTMLElement | null>, align: 'start' | 'end' = 'start', widthLimit?: number) {
   const [position, setPosition] = useState<CSSProperties>({ position: 'fixed', visibility: 'hidden' });
   useLayoutEffect(() => {
     if (!open) return;
@@ -40,9 +40,10 @@ export function useFloatingPosition(open: boolean, trigger: RefObject<HTMLElemen
       const below = naturalHeight <= availableBelow || availableBelow >= availableAbove;
       const maxHeight = Math.max(44, below ? availableBelow : availableAbove);
       const panelHeight = Math.min(naturalHeight, maxHeight);
-      const panelWidth = Math.min(panel.current.getBoundingClientRect().width, width - 24);
+      const maximumWidth = Math.min(width - 24, widthLimit ?? Infinity);
+      const panelWidth = Math.min(panel.current.getBoundingClientRect().width, maximumWidth);
       const left = floatingLeft(anchor, panelWidth, { left: leftBound, width }, align);
-      setPosition({ position: 'fixed', left, top: Math.max(topBound + 12, below ? anchor.bottom + 8 : anchor.top - panelHeight - 8), maxWidth: width - 24, maxHeight, visibility: 'visible' });
+      setPosition({ position: 'fixed', left, top: Math.max(topBound + 12, below ? anchor.bottom + 8 : anchor.top - panelHeight - 8), maxWidth: maximumWidth, maxHeight, visibility: 'visible' });
     };
     update();
     const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(update);
@@ -53,7 +54,7 @@ export function useFloatingPosition(open: boolean, trigger: RefObject<HTMLElemen
     window.visualViewport?.addEventListener('resize', update);
     window.visualViewport?.addEventListener('scroll', update);
     return () => { observer?.disconnect(); window.removeEventListener('resize', update); window.removeEventListener('scroll', update, true); window.visualViewport?.removeEventListener('resize', update); window.visualViewport?.removeEventListener('scroll', update); };
-  }, [open, trigger, panel, align]);
+  }, [open, trigger, panel, align, widthLimit]);
   return position;
 }
 export function useFloatingDismiss(open: boolean, trigger: RefObject<HTMLElement | null>, panel: RefObject<HTMLElement | null>, close: (reason: FloatingReason, returnFocus?: boolean) => void) {

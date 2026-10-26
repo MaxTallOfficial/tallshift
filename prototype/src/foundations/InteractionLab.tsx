@@ -112,7 +112,7 @@ export function InteractionLab({ locale, motionOff }: { locale: Locale; motionOf
           <SystemButton onClick={loadExample}>{t.sample}</SystemButton>
           <div className="il-clear-action"><SystemTooltip content={t.reset} trigger={props => <SystemButton {...props} variant="quiet" className="il-clear-fields" aria-label={t.reset} leadingIcon={<SystemIcon name="replay" />} onClick={clearFields}>{t.reset}</SystemButton>} /></div>
         </div>
-        <SystemToastRegion label={locale === 'ru' ? 'Результаты действий' : locale === 'vi' ? 'Kết quả thao tác' : 'Action results'} dismissLabel={t.dismiss} items={notice ? [{id: String(notice.key), title: noticeText, tone: notice.message === 'saved' || notice.message === 'removed' ? 'success' : 'neutral'}] : []} announcement={noticeText} announcementKey={notice?.key} onDismiss={() => setNotice(null)} />
+        <SystemToastRegion placement="viewport" label={locale === 'ru' ? 'Результаты действий' : locale === 'vi' ? 'Kết quả thao tác' : 'Action results'} dismissLabel={t.dismiss} items={notice ? [{id: String(notice.key), title: noticeText, tone: notice.message === 'saved' || notice.message === 'removed' ? 'success' : 'neutral'}] : []} announcement={noticeText} announcementKey={notice?.key} onDismiss={() => setNotice(null)} />
       </form>
 
       <aside className="il-side" aria-labelledby={`${id}-preview-title`}>

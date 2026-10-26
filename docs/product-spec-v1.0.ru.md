@@ -39,13 +39,13 @@
 | Offer | Состав | Доступ / начальная гипотеза |
 | --- | --- | --- |
 | FREE-STARTER — Starter | S001–S003, C001–C002, E001, A001, A003, A006: **9 уникальных** | Free, $0 |
-| PACK-PRODUCT — Product | S004–S006, C003–C004, E002: **6** | Pro, $29 |
-| PACK-EDITORIAL — Editorial | S007–S009, C005–C006, E003: **6** | Pro, $29 |
-| PACK-PLAYFUL — Playful | S010–S012, C007–C008, E004: **6** | Pro, $29 |
-| PACK-MOTION — UI Motion | E002–E004, A002, A004, A005, A007, A008: **8** | Pro, $29 |
-| BUNDLE-LAUNCH — Launch Bundle | Объединение четырёх Pro packs: **23 уникальных** | Pro, $79 |
+| PACK-PRODUCT — Product | S004–S006, C003–C004, E002: **6** | Pro, $16 |
+| PACK-EDITORIAL — Editorial | S007–S009, C005–C006, E003: **6** | Pro, $16 |
+| PACK-PLAYFUL — Playful | S010–S012, C007–C008, E004: **6** | Pro, $16 |
+| PACK-MOTION — UI Motion | E002–E004, A002, A004, A005, A007, A008: **8** | Pro, $16 |
+| BUNDLE-LAUNCH — Launch Bundle | Объединение четырёх Pro packs: **23 уникальных** | Pro, $56 |
 
-Итого один Free offer и пять платных offers: четыре packs и один bundle. Пересекающиеся E002–E004 не считаются повторно: `18 + 8 − 3 = 23 Pro`; вместе с 9 Free — 32. **$29/$79 — launch-гипотезы до применимых налогов, а не включённые живые цены.**
+Итого один Free offer и пять платных offers: четыре packs и один bundle. Пересекающиеся E002–E004 не считаются повторно: `18 + 8 − 3 = 23 Pro`; вместе с 9 Free — 32. **$16/$56 — launch-гипотезы до применимых налогов, а не включённые живые цены.**
 
 Для любого pack и Bundle цена frozen offer распределяется в целых minor units между отсортированными уникальными IDs; quote включает только отсутствующие eligible IDs. Новый grant содержит только оплаченные missing IDs; полный offer snapshot сохраняется отдельно. Денежный зачёт исторических покупок и выдача новых A за нулевой cash-credit в launch не входят. Точные правила, примеры, окно обновлений и refund приведены в коммерческом и инженерном документах.
 

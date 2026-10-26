@@ -3,9 +3,9 @@
   "node": "v24.19.0",
   "next": "16.4.3",
   "react": "19.3.1",
-  "bundleHash": "a18f4b38300fb0a70794a98ad89f8736d1e2f07c63f253476846a8d89f0e7ef1",
-  "stylesHash": "d05401419715431982bf0b478c33c3fbe92973c8a0f0bc9b391cc043fca914c8",
-  "tarballHash": "a6ddb09b08a146676642e8671e6e38c8427f27913c314bf99efc19554d40b48e",
+  "bundleHash": "9f123369a5488bca820023aa3b1e1c1585c3d8349991be15a5a06a45dccfc42f",
+  "stylesHash": "3785559c3764517f1f7d630f51e1d5438fb79b8a49b9c51f0fb8a4b013dbe108",
+  "tarballHash": "e77618d2ee4db24d63e6c1d017b6d0de7fd1ae7416ddc2ec4ab3ab4d00da83c8",
   "results": [
     {
       "command": "npm",
@@ -15,7 +15,7 @@
       ],
       "cwd": "prototype",
       "passed": true,
-      "durationMs": 1269
+      "durationMs": 2125
     },
     {
       "command": "npm",
@@ -27,7 +27,7 @@
       ],
       "cwd": "prototype",
       "passed": true,
-      "durationMs": 503
+      "durationMs": 1160
     },
     {
       "command": "npm",
@@ -40,7 +40,7 @@
       ],
       "cwd": "prototype/.qa/system-consumer",
       "passed": true,
-      "durationMs": 2297
+      "durationMs": 3300
     },
     {
       "command": "/Users/maxtall/Documents/ChatGPT/Vibelock (временное название) 2/prototype/.qa/system-consumer/node_modules/.bin/next",
@@ -50,7 +50,7 @@
       ],
       "cwd": "prototype/.qa/system-consumer",
       "passed": true,
-      "durationMs": 7639
+      "durationMs": 11872
     },
     {
       "command": "/Users/maxtall/Documents/ChatGPT/Vibelock (временное название) 2/prototype/node_modules/.bin/vite",
@@ -63,7 +63,7 @@
       ],
       "cwd": "prototype",
       "passed": true,
-      "durationMs": 832
+      "durationMs": 1422
     }
   ]
 }

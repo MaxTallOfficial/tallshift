@@ -117,3 +117,10 @@
   .sc-color-swatch { outline: 1px solid ButtonText; }
   .sc-range:focus-visible, .sc-number > input:focus-visible, .sc-hex-row > input:focus-visible { outline: 2px solid Highlight; outline-offset: -2px; }
 }
+
+/* Apply belongs to the color row; only a valid unapplied draft is accented. */
+.sc-hex-row { grid-template-columns:44px minmax(0,1fr) var(--sy-control-size,52px); }
+.sc-hex-row > input { min-height:var(--sy-control-size,52px); }
+.sc-hex-row .sc-color-apply { width:var(--sy-control-size,52px); }
+.sc-color-field[data-readonly] .sc-hex-row { grid-template-columns:44px minmax(0,1fr); }
+.sc-color-apply[data-dirty=false] { color:var(--f-secondary); background:transparent; }

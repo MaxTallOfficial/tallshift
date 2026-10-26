@@ -8,8 +8,8 @@ export const pricingPlanScopes = {
 } as const;
 export const pricingPlanTerms = {
  starter:{offerId:'FREE-STARTER',priceMinor:0},
- product:{offerId:'PACK-PRODUCT',priceMinor:2900},
- bundle:{offerId:'BUNDLE-LAUNCH',priceMinor:7900},
+ product:{offerId:'PACK-PRODUCT',priceMinor:1600},
+ bundle:{offerId:'BUNDLE-LAUNCH',priceMinor:5600},
 } as const;
 const en = {
  title:'Start free. Pick what your next project needs.',
@@ -28,7 +28,7 @@ const en = {
  rows:[['Payment','Free','One-time','One-time'],['Planned materials','9 Free','6 Pro','23 Pro'],['Source + prompt + guide','Included','Included','Included'],['Use in client projects','MIT terms','One creator','One creator'],['Functional updates','Published Free releases','12 months · purchased materials','12 months · purchased materials']],
  shared:'Keep using the code after the update window. New materials and future packs are separate. Free materials are available to everyone.',
  upgrades:'Already own a pack? Checkout will exclude materials you already own using a server quote; it is not simply the difference between the two sticker prices.',
- other:'Need a different style? Editorial, Playful and UI Motion are planned as separate $29 packs. All prices are assumptions, before tax.',
+ other:'Need a different style? Editorial, Playful and UI Motion are planned as separate $16 packs. All prices are assumptions, before tax.',
 };
 const ru:typeof en = {
  title:'Начните бесплатно. Выберите набор под свой проект.',
@@ -47,7 +47,7 @@ const ru:typeof en = {
  rows:[['Оплата','Бесплатно','Разово','Разово'],['Плановый состав','9 Free','6 Pro','23 Pro'],['Код + промпт + инструкция','Включены','Включены','Включены'],['Клиентские проекты','По условиям MIT','Один автор','Один автор'],['Функциональные обновления','Публикуемые Free-релизы','12 месяцев · купленные материалы','12 месяцев · купленные материалы']],
  shared:'Полученный код можно использовать и после окна обновлений. Новые материалы и будущие наборы приобретаются отдельно. Бесплатные материалы доступны всем.',
  upgrades:'Уже есть набор? Сервер исключит из расчёта купленные материалы. Доплата рассчитывается по составу, а не как простая разница цен на карточках.',
- other:'Нужен другой стиль? Editorial, Playful и UI Motion планируются отдельно по $29. Все цены — гипотезы до налогов.',
+ other:'Нужен другой стиль? Editorial, Playful и UI Motion планируются отдельно по $16. Все цены — гипотезы до налогов.',
 };
 const vi:typeof en = {
  title:'Bắt đầu miễn phí. Chọn bộ phù hợp với dự án.',
@@ -66,6 +66,6 @@ const vi:typeof en = {
  rows:[['Thanh toán','Miễn phí','Một lần','Một lần'],['Nội dung dự kiến','9 Free','6 Pro','23 Pro'],['Mã + prompt + hướng dẫn','Có','Có','Có'],['Dự án khách hàng','Theo MIT','Một người tạo','Một người tạo'],['Cập nhật chức năng','Bản Free được công bố','12 tháng · mục đã mua','12 tháng · mục đã mua']],
  shared:'Tiếp tục sử dụng mã sau thời hạn cập nhật. Mục mới và bộ tương lai được bán riêng. Mọi người đều có thể dùng các mục Free.',
  upgrades:'Đã sở hữu một bộ? Máy chủ sẽ loại các mục đã mua khỏi báo giá. Khoản thanh toán không chỉ là hiệu số giữa hai mức giá niêm yết.',
- other:'Cần phong cách khác? Editorial, Playful và UI Motion dự kiến được bán riêng với giá $29. Mọi mức giá đều là dự kiến, chưa gồm thuế.',
+ other:'Cần phong cách khác? Editorial, Playful và UI Motion dự kiến được bán riêng với giá $16. Mọi mức giá đều là dự kiến, chưa gồm thuế.',
 };
 export const pricingPlansCopy:Record<AccessStatesLocale,typeof en>={en,ru,vi};

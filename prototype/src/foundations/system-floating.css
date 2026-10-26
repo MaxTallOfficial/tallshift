@@ -24,3 +24,5 @@
 .system-button[aria-haspopup=menu] .system-button-icon { color:var(--f-secondary,#b8b6ae); }
 .system-menu-item-label { display:flex; flex-direction:column; gap:2px; min-width:0; }
 .system-menu-item-label small { font-size:12px; font-weight:400; line-height:1.5; }
+
+.system-tooltip { max-inline-size:min(280px,calc(100vw - 24px)); white-space:normal; overflow-wrap:anywhere; line-height:1.55; }

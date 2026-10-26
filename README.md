@@ -24,6 +24,8 @@ This repository preserves the current project snapshot: product specifications, 
 | --- | --- |
 | Latest design-system review | [Foundations / 10](art-direction/foundations/review.html) |
 | Latest implementation and verification report | [Foundations / 10 report (RU)](docs/art-direction-2026/foundations-10.ru.md) |
+| Design-system knowledge base | [Decisions and exceptions (RU)](docs/knowledge-base/README.ru.md) |
+| Latest UI fixes | [Six fixes · 26 October (RU)](docs/art-direction-2026/six-fixes-2026-10-26.ru.md) |
 | Design-system contract | [Contract (RU)](docs/art-direction-2026/design-system-contract.ru.md) |
 | New component APIs | [Catalog](docs/art-direction-2026/catalog-compositions-10.ru.md), [shell + offers](docs/art-direction-2026/shell-offer-compositions-10.ru.md), [workbench](docs/art-direction-2026/workbench-compositions-10.ru.md), [Modals](docs/art-direction-2026/modal-primitives-09.ru.md), [floating surfaces](docs/art-direction-2026/floating-primitives-09.ru.md), [feedback](docs/art-direction-2026/feedback-primitives-09.ru.md), [Forms](docs/art-direction-2026/form-primitives-08.ru.md), [actions + tabs](docs/art-direction-2026/action-primitives-08.ru.md), [existing /07 APIs](docs/art-direction-2026/component-api-07.ru.md) |
 | Sales strategy and pricing | [Starter / Product / All packs (RU)](docs/spec-v1.0/sales-and-pricing-strategy.ru.md) |

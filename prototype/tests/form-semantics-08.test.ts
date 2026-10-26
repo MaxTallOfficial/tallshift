@@ -77,3 +77,15 @@ test('pending switch keeps the confirmed checked state and a focusable busy cont
   assert.match(html, /role="status">Waiting for confirmation/);
   for (const id of descriptionIds(html, 'button')) assert.ok(html.includes(`id="${id}"`));
 });
+
+test('color apply is enabled only for a valid changed canonical color', async () => {
+  const { SystemHexColorField } = await server.ssrLoadModule('/src/foundations/SystemColorControl.tsx');
+  const render = (initialDraft: string) => renderToStaticMarkup(createElement(SystemHexColorField, { locale:'en', value:'#AABBCC', initialDraft, onChange:noop }));
+  const same = render('#abc');
+  assert.match(same, /data-dirty="false"/); assert.match(tag(same,'button'), /disabled=""/);
+  const invalid = render('#ZZZZZZ');
+  assert.match(tag(invalid,'input'), /aria-invalid="true"/); assert.match(tag(invalid,'button'), /disabled=""/);
+  const changed = render('#778899');
+  assert.match(changed, /data-dirty="true"/); assert.doesNotMatch(tag(changed,'button'), /disabled=""/);
+  assert.match(tag(changed,'button'), /aria-label="[^"]+"/); assert.match(changed, /data-variant="primary"/);
+});

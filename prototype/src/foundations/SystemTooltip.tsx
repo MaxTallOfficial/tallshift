@@ -5,7 +5,7 @@ export interface SystemTooltipProps { content: string; trigger: (props: { 'aria-
 export function SystemTooltip({ content, trigger: renderTrigger }: SystemTooltipProps) {
   const id = useId(), trigger = useRef<HTMLSpanElement>(null), panel = useRef<HTMLDivElement>(null), timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const [open, setOpen] = useState(false), dismissed = useRef(false);
-  const position = useFloatingPosition(open, trigger, panel);
+  const position = useFloatingPosition(open, trigger, panel, 'start', 280);
   const clear = () => { clearTimeout(timer.current); };
   const show = () => { clear(); if (!dismissed.current) setOpen(true); };
   const leave = () => { clear(); timer.current = setTimeout(() => { if (!trigger.current?.contains(document.activeElement)) { setOpen(false); dismissed.current = false; } }, 120); };

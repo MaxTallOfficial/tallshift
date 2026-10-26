@@ -25,13 +25,13 @@ test('queue updates in place, preserves order and does not evict older messages'
  assert.equal(toastQueueReducer(queue,{type:'upsert',item:{id:' ',title:'Invalid'}}),queue);
 });
 test('toast region uses one announcer and passive cards with named dismiss controls',()=>{
- const html=renderToStaticMarkup(createElement(SystemToastRegion,{label:'Notifications',dismissLabel:'Dismiss notification',items:[{id:'one',title:'Saved'},{id:'two',title:'Retry needed',tone:'error'}],onDismiss:()=>{},announcement:'Retry needed'}));
+ const html=renderToStaticMarkup(createElement(SystemToastRegion,{placement:'inline',label:'Notifications',dismissLabel:'Dismiss notification',items:[{id:'one',title:'Saved'},{id:'two',title:'Retry needed',tone:'error'}],onDismiss:()=>{},announcement:'Retry needed'}));
  assert.equal((html.match(/role="status"/g)??[]).length,1);
  assert.equal((html.match(/role="alert"/g)??[]).length,0);
  assert.match(html,/role="region" aria-label="Notifications" tabindex="-1"/);
  assert.equal((html.match(/aria-label="Dismiss notification"/g)??[]).length,2);
  assert.equal((html.match(/data-toast-id=/g)??[]).length,2);
- const off=renderToStaticMarkup(createElement(SystemToastRegion,{label:'Notifications',dismissLabel:'Dismiss',items:[],onDismiss:()=>{},announcementPriority:'off'}));
+ const off=renderToStaticMarkup(createElement(SystemToastRegion,{placement:'inline',label:'Notifications',dismissLabel:'Dismiss',items:[],onDismiss:()=>{},announcementPriority:'off'}));
  assert.doesNotMatch(off,/role="(?:alert|status)"/); assert.match(off,/aria-live="off"/);
 });
 test('inline alerts are static by default and announce only when requested',()=>{
@@ -47,4 +47,10 @@ test('badge is passive, skeleton decorative, empty state has a named heading',()
  assert.match(skeleton,/aria-hidden="true"/); assert.match(skeleton,/height:160px/); assert.doesNotMatch(skeleton,/status|animation/);
  const empty=renderToStaticMarkup(createElement(SystemEmptyState,{title:'No results',headingLevel:4},'Reset filters'));
  const labelled=empty.match(/aria-labelledby="([^"]+)"/)?.[1]; assert.ok(labelled); assert.ok(empty.includes(`<h4 id="${labelled}">No results</h4>`));
+});
+
+test('operational toast default defers to a client viewport portal rather than inline cards',()=>{
+ const html=renderToStaticMarkup(createElement(SystemToastRegion,{label:'Notifications',dismissLabel:'Dismiss',items:[{id:'one',title:'Saved'}],onDismiss:()=>{}}));
+ assert.doesNotMatch(html,/class="sf-toast"/);
+ assert.match(html,/<span hidden=""><\/span>/);
 });

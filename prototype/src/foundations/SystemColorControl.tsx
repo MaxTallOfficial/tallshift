@@ -3,6 +3,7 @@ import type { Locale } from './copy.ts';
 import { APPROVED_PREVIEW_ACCENT, normalizeHexColor, previewColorContrast } from './config-control-validation.ts';
 import { configControlWords } from './system-config-controls-copy.ts';
 import './system-config-controls.css';
+import { SystemIconButton } from './SystemIconButton';
 
 export interface SystemHexColorFieldProps {
   locale: Locale;
@@ -24,15 +25,16 @@ export function SystemHexColorField({ locale, value, onChange, disabled = false,
   useEffect(() => { if (previousValue.current !== value) { setDraft(value); setEdited(false); previousValue.current = value; } }, [value]);
   const normalized = normalizeHexColor(draft);
   const error = edited && normalized === null;
+  const dirty = normalized !== null && normalized !== normalizeHexColor(value);
   const apply = () => {
-    if (disabled || readOnly) return;
+    if (disabled || readOnly || !dirty) return;
     setEdited(true);
     if (normalized !== null) { setDraft(normalized); onChange(normalized); }
   };
 
   return <div className="sc-color-field" data-disabled={disabled || undefined} data-readonly={readOnly || undefined}>
     <label className="sc-field-label" htmlFor={`${id}-hex`}>{t.colorLabel}</label>
-    <div className="sc-hex-row"><span className="sc-color-swatch" aria-hidden="true" style={{ backgroundColor: normalizeHexColor(value) ?? 'transparent' }} /><input id={`${id}-hex`} type="text" value={draft} placeholder="#EBD183" autoCapitalize="characters" autoComplete="off" spellCheck={false} maxLength={32} disabled={disabled} readOnly={readOnly} aria-invalid={error} aria-describedby={`${id}-help`} onChange={event => { setDraft(event.target.value); setEdited(true); }} onKeyDown={event => { if (event.key === 'Enter' && !readOnly) { event.preventDefault(); apply(); } }} />{!readOnly && <button type="button" className="sc-button sc-button-primary" onClick={apply} disabled={disabled}>{t.apply}</button>}</div>
+    <div className="sc-hex-row"><span className="sc-color-swatch" aria-hidden="true" style={{ backgroundColor: normalizeHexColor(value) ?? 'transparent' }} /><input id={`${id}-hex`} type="text" value={draft} placeholder="#EBD183" autoCapitalize="characters" autoComplete="off" spellCheck={false} maxLength={32} disabled={disabled} readOnly={readOnly} aria-invalid={error} aria-describedby={`${id}-help`} onChange={event => { setDraft(event.target.value); setEdited(true); }} onKeyDown={event => { if (event.key === 'Enter' && !readOnly) { event.preventDefault(); apply(); } }} />{!readOnly && <SystemIconButton className="sc-color-apply" icon="check" label={t.apply} title={t.apply} variant={dirty ? 'primary' : 'quiet'} data-dirty={dirty} onClick={apply} disabled={disabled || !dirty} />}</div>
     <div className="sc-feedback" id={`${id}-help`} aria-live="polite"><span aria-hidden={error}>{t.colorHelp}</span><span className="sc-field-error" aria-hidden={!error || draft.trim() !== ''}>{t.colorRequired}</span><span className="sc-field-error" aria-hidden={!error || draft.trim() === ''}>{t.colorInvalid}</span></div>
   </div>;
 }

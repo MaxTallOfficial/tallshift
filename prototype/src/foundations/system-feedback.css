@@ -43,3 +43,10 @@
  .sf-toast > .sf-action { grid-column:1/-1; }
  .sf-action > .system-button { width:100%; }
 }
+
+/* Operational messages share a corner stack outside every form/grid. */
+.sf-toast-viewport { position:fixed; z-index:200; inset-inline-end:max(20px,env(safe-area-inset-right)); inset-block-end:max(20px,env(safe-area-inset-bottom)); width:min(400px,calc(100vw - 32px)); max-height:calc(100dvh - 40px); overflow:auto; display:flex; flex-direction:column; gap:12px; pointer-events:none; }
+.sf-toast-region[data-placement="viewport"] { min-width:0; flex:0 0 auto; }
+.sf-toast-region[data-placement="viewport"]:not(:has(.sf-toast-list)) { position:absolute; width:1px; height:1px; overflow:hidden; }
+.sf-toast-region[data-placement="viewport"] .sf-toast { pointer-events:auto; box-shadow:0 12px 40px #0006; }
+@media(max-width:767px) { .sf-toast-viewport { inset-inline-end:16px; inset-block-end:max(16px,env(safe-area-inset-bottom)); } }

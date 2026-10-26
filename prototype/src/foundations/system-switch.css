@@ -14,3 +14,10 @@
 .system-switch[aria-busy=true]::before { border-style: dashed; }
 @media (prefers-reduced-motion: reduce) { .system-switch::before, .system-switch > span { transition: none; } }
 @media (forced-colors: active) { .system-switch::before { border-color: ButtonText; background: Canvas; }.system-switch > span { background: ButtonText; }.system-switch[aria-checked=true]::before { background: Highlight; border-color: Highlight; forced-color-adjust: none; }.system-switch[aria-checked=true] > span { background: HighlightText; forced-color-adjust: none; }.system-switch:focus-visible { outline-color: Highlight; } }
+
+/* The switch tracks the label row, never the combined height of help/error text. */
+.system-switch-row { display:grid; grid-template-columns:minmax(0,1fr) 52px; column-gap:18px; row-gap:4px; }
+.system-switch-copy { display:contents; }
+.system-switch-copy > span { grid-column:1; grid-row:1; align-self:center; }
+.system-switch-copy > p { grid-column:1 / -1; margin:0; }
+.system-switch-row > .system-switch { grid-column:2; grid-row:1; align-self:center; }

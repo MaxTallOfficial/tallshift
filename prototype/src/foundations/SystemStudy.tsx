@@ -223,6 +223,6 @@ export function SystemStudy() {
     </main>
     <footer className="sy-footer sy-width"><span>Tallshift UI / Afterlight / System {systemReview.version} · by Max Tall</span><SystemTextLink href={`${systemReview.archive}?lang=${locale}&shade=light`}>{t.archive}</SystemTextLink></footer>
     <span className="sy-announcement" role="status" aria-live="polite">{copy.state === 'done' ? b.copied : ''}</span>
-    <div className="sy-toast-host"><SystemToastRegion label={t.notifications} dismissLabel={t.close} items={notice ? [{id:'system-notice',title:notice}] : []} announcement={notice} announcementKey={noticeKey} onDismiss={() => setNotice('')} /></div>
+    <div><SystemToastRegion placement="viewport" label={t.notifications} dismissLabel={t.close} items={notice ? [{id:'system-notice',title:notice}] : []} announcement={notice} announcementKey={noticeKey} onDismiss={() => setNotice('')} /></div>
   </div>;
 }

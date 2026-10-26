@@ -36,6 +36,13 @@ function fileHierarchy(files: SourceNavigatorProps['files']): FileNode[] {
   return root;
 }
 
+function FileName({name}:{name:string}) {
+ const compound=name.match(/\.module\.(?:css|scss|sass)$/i)?.[0];
+ const split=compound ? name.length-compound.length : name.lastIndexOf('.');
+ const stem=split>0 ? name.slice(0,split) : name, extension=split>0 ? name.slice(split) : '';
+ return <span className="sn-file-label"><span className="sn-file-base">{stem}</span><span className="sn-file-extension">{extension}</span></span>;
+}
+
 function Icon({kind}:{kind:'folder'|'file'|'more'|'info'|'close'}) { return <SystemIcon name={kind==='more'?'chevron-down':kind}/>; }
 
 function fileType(path: string) {
@@ -89,7 +96,7 @@ export function SourceNavigator({ locale, files, selectedPath, onSelect, onCopy,
     if (inSheet) setSheetOpen(false);
   }
   function list(nodes: FileNode[], inSheet: boolean) {
-    return <ul className="sn-file-list">{nodes.map(node => <li key={node.path}>{node.children ? <details open><summary><Icon kind="folder" /><span>{node.name}</span></summary>{list(node.children, inSheet)}</details> : <button type="button" className="sn-file" title={node.path} aria-current={selected?.path === node.path ? 'true' : undefined} onClick={() => select(node.path, inSheet)}><Icon kind="file" /><span>{node.name}</span>{selected?.path === node.path && <span className="sn-selected-dot" aria-hidden="true" />}</button>}</li>)}</ul>;
+    return <ul className="sn-file-list">{nodes.map(node => <li key={node.path}>{node.children ? <details open><summary><Icon kind="folder" /><span>{node.name}</span></summary>{list(node.children, inSheet)}</details> : <button type="button" className="sn-file" title={node.path} aria-current={selected?.path === node.path ? 'true' : undefined} onClick={() => select(node.path, inSheet)}><Icon kind="file" /><FileName name={node.name} />{selected?.path === node.path && <span className="sn-selected-dot" aria-hidden="true" />}</button>}</li>)}</ul>;
   }
   function fileList(inSheet: boolean) {
     return files.length ? <details className="sn-source-group" open><summary><Icon kind="folder" /><span>{t.sourceFiles}</span><span className="sn-count">{files.length}</span></summary>{list(hierarchy, inSheet)}</details> : <p className="sn-empty">{t.empty}</p>;

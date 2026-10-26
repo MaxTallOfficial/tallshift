@@ -2,8 +2,8 @@
   "offerId": "BUNDLE-LAUNCH",
   "revision": "1.0.0",
   "title": {
-    "ru": "Все наборы запуска",
-    "en": "Launch Bundle"
+    "ru": "All packs",
+    "en": "All packs"
   },
   "itemIds": [
     "S004",

@@ -104,7 +104,7 @@
     {
       "id": "FREE-STARTER",
       "title": {
-        "ru": "Стартовый набор",
+        "ru": "Starter",
         "en": "Starter"
       },
       "access": "free",
@@ -126,7 +126,7 @@
     {
       "id": "PACK-PRODUCT",
       "title": {
-        "ru": "Продукт",
+        "ru": "Product",
         "en": "Product"
       },
       "access": "pro",
@@ -145,7 +145,7 @@
     {
       "id": "PACK-EDITORIAL",
       "title": {
-        "ru": "Редакционный",
+        "ru": "Editorial",
         "en": "Editorial"
       },
       "access": "pro",
@@ -164,7 +164,7 @@
     {
       "id": "PACK-PLAYFUL",
       "title": {
-        "ru": "Экспериментальный",
+        "ru": "Playful",
         "en": "Playful"
       },
       "access": "pro",
@@ -183,7 +183,7 @@
     {
       "id": "PACK-MOTION",
       "title": {
-        "ru": "Анимации интерфейса",
+        "ru": "UI Motion",
         "en": "UI Motion"
       },
       "access": "pro",
@@ -205,8 +205,8 @@
     {
       "id": "BUNDLE-LAUNCH",
       "title": {
-        "ru": "Все наборы запуска",
-        "en": "Launch Bundle"
+        "ru": "All packs",
+        "en": "All packs"
       },
       "access": "pro",
       "includes_product_ids": [

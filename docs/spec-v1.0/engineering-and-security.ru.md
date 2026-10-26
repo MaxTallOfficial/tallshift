@@ -1,5 +1,7 @@
 # Инженерные решения, контракты и ИБ v1.0
 
+Дополнение 26.10.2026: [единый словарь и сценарные правила](product-language-and-scenarios.ru.md), [аудит расхождений с реализацией](product-logic-audit-2026-10-26.ru.md). Уточнения терминов и структуры рабочей области имеют приоритет над прежними соответствующими формулировками этого документа.
+
 **Актуальная модель для дизайна:** [тарифы, выбор и доплата](pricing-final-contract.ru.md) — Product $16 / All packs $39; best-eligible quote. Этот контракт заменяет прежний расчёт доплаты только по долям ID.
 
 **Обновление языковой политики:** EN — основной, RU и VI — дополнительные. [Требования от 22 октября 2026](locale-and-copy-update.ru.md) заменяют прежний срез RU/EN ниже; прежние отчёты и planned fixtures не означают готовность трёхъязычного выпуска.
@@ -80,7 +82,7 @@ A001 proof требует: полный исходник/стили, полны�
 
 Share: `/{locale}/library/{slug}?version={itemVersion}#config={base64url}`. Envelope содержит только schema/item/config versions, shareMode и конкретную projection. Appearance A001 разрешает только duration/motion/accent, без locale/label/statusMessage/state. Текста в A001 config нет, режим content-and-appearance для него не нужен. Для текстовых items отдельная projection schema и явная опция «Включить текст» с объяснением публичности разрешают content-and-appearance. Share не передаёт лицензию; Pro source отдельно требует прав. После decoding ≤16 KiB, URL для copy ≤6 KiB; более длинный config скачивается файлом. Перед iframe — валидация, проверка версии, merge projection с immutable locale defaults и повторная полная валидация. Некорректный fragment → ошибка/сброс, не guessed migration. Старый revoked release → notice/replacement с явным переходом пользователя.
 
-Контекст проекта для AI — opt-in текстовое поле, по умолчанию пусто и свернуто. Запись только в память; перед добавлением в clipboard/ZIP пользователь видит, что включит его. Никогда не попадает в share, URL, server requests, аналитику, localStorage и auto-save. Нет доступа к clipboard на чтение, repo, env или модельным ключам. User context и исходники отделены от авторских инструкций как данные; это не гарантия защиты внешнего агента от prompt injection. Авторские шаблоны не требуют upload проекта/секретов и не обновляют пакеты до latest.
+Контекст проекта для AI — отдельный текст до 4 000 символов (не поле экспортируемого RecipeConfig с лимитом 2 000); opt-in поле, по умолчанию пусто и свернуто. Запись только в память; перед добавлением в clipboard/ZIP пользователь видит, что включит его. Никогда не попадает в share, URL, server requests, аналитику, localStorage и auto-save. Нет доступа к clipboard на чтение, repo, env или модельным ключам. User context и исходники отделены от авторских инструкций как данные; это не гарантия защиты внешнего агента от prompt injection. Авторские шаблоны не требуют upload проекта/секретов и не обновляют пакеты до latest.
 
 ### 4.1. Самодостаточный ZIP
 

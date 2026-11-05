@@ -1,13 +1,13 @@
 .system-accordion { min-width: 0; }
 .system-accordion > details { border-block-end: 1px solid var(--f-line); }
 .system-accordion > details:last-child { border-block-end: 0; }
-.system-accordion > details > summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 48px; padding-block: 14px; cursor: pointer; list-style: none; color: var(--f-secondary); }
+.system-accordion > details > summary { display: flex; align-items: center; justify-content: space-between; gap:var(--sy-space-16); min-height: 48px; padding-block:var(--sy-space-16); cursor: pointer; list-style: none; color: var(--f-secondary); }
 .system-accordion summary::-webkit-details-marker { display: none; }
-.system-accordion summary > :is(h2,h3,h4,h5,h6) { margin: 0; font: 600 14px/1.5 var(--sy-font-ui, Manrope, sans-serif); }
+.system-accordion summary > :is(h2,h3,h4,h5,h6) { margin:0; font: 600 14px/1.5 var(--sy-font-ui, var(--sy-font-ui)); }
 .system-accordion summary:hover { color: var(--f-text); }
 .system-accordion summary:focus-visible { outline: 2px solid var(--f-focus); outline-offset: 3px; border-radius: 4px; }
 .system-accordion-mark { position: relative; width: 16px; height: 16px; flex: 0 0 16px; }
-.system-accordion-content { min-width: 0; padding-block: 0 20px; overflow-wrap: anywhere; }
+.system-accordion-content { min-width: 0; padding-block:0 var(--sy-space-20); overflow-wrap: anywhere; }
 @media (forced-colors: active) { .system-accordion > details { border-color: CanvasText; }.system-accordion summary { color: CanvasText; }.system-accordion summary:focus-visible { outline-color: Highlight; } }
 
 .system-accordion > details > summary{justify-content:flex-start}.system-accordion summary > :is(h2,h3,h4,h5,h6){flex:1}

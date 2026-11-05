@@ -1,0 +1,18 @@
+[
+  {
+    "date": "2026-11-05",
+    "mode": "redesign",
+    "depth": "restyle",
+    "scope": "app",
+    "theme": "Tallshift Afterlight (brand)",
+    "shape": "design-system reference",
+    "signature": "real material between preview, code and prompt",
+    "files": "prototype/src/foundations",
+    "preserved": "Saffron palette, Manrope, Hugeicons, functional contracts",
+    "static": "0 FAIL / 0 REFLEX after refinement",
+    "render": "1 FAIL / 2 REFLEX, contextual evidence in docs/art-direction-2026/hallmark-refinement-2026-11-05.ru.md; not represented as a clean automated render pass",
+    "finish-review": "subagent: recapture, then ship after section captures",
+    "waived": [],
+    "prompt": "Refine the Tallshift design system with Hallmark, preserve colours."
+  }
+]

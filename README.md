@@ -12,6 +12,9 @@ This repository preserves the current project snapshot: product specifications, 
 
 ## Current status
 
+- The first product increment is implemented: the catalog and material pages use the current design system. Run `npm --prefix prototype run dev` and open `/en/library`, `/ru/library`, or `/vi/library`; the State Relay page is `/en/library/state-relay`.
+- Catalog search, filters, saved materials and browser history work locally. State Relay connects the preview, settings, code, prompt, instructions and a real ZIP export. The other 31 records remain clearly marked as planned.
+- [Product-screen verification (RU)](docs/product-screens-2026-10-30.ru.md) · [Delivery plan through 13 November (RU)](docs/product-delivery-plan-2026-10-30.ru.md).
 - **Afterlight Instrument**, **Manrope**, and **Saffron Lighter `#EBD183`** form the chosen visual foundation.
 - **Foundations / 10** completes the v1 implementation: 45 shared API families, 230 tokens, a local typed package and passing Next.js/Vite consumer builds. Visual approval and broader browser/assistive-technology release acceptance remain pending.
 - English is the default language; Russian and Vietnamese are supported.
@@ -84,6 +87,7 @@ art-direction/                 Standalone review pages, assets, historical studi
 docs/                          Product specifications, contracts, research, reports
 docs/art-direction-2026/        Design-system documentation, screenshots, evidence
 prototype/src/                 React + TypeScript application and design-system source
+prototype/src/product/         Catalog, material pages, routing and localized product content
 prototype/recipe-exports/      State Relay recipe implementation
 prototype/scripts/             Packaging and verification helpers
 prototype/tests/               Automated checks

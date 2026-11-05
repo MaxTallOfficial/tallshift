@@ -16,14 +16,19 @@ export interface SystemDurationControlProps {
   readOnly?: boolean;
   /** Used only by an editable validation specimen; not an applied value. */
   initialDraft?: string;
+  /** Optional host-owned draft survives responsive relocation of the settings panel. */
+  draftValue?: string;
+  onDraftChange?: (value: string) => void;
   onDraftStateChange?: (state: 'applied' | 'invalid') => void;
 }
 
 /** A native range and number input share one applied value, never an invalid draft. */
-export function SystemDurationControl({ locale, value, onChange, disabled = false, readOnly = false, initialDraft, onDraftStateChange }: SystemDurationControlProps) {
+export function SystemDurationControl({ locale, value, onChange, disabled = false, readOnly = false, initialDraft, draftValue, onDraftChange, onDraftStateChange }: SystemDurationControlProps) {
   const id = useId();
   const t = configControlWords[locale];
-  const [draft, setDraft] = useState(initialDraft ?? String(value));
+  const [localDraft, setLocalDraft] = useState(initialDraft ?? String(value));
+  const draft = draftValue ?? localDraft;
+  const setDraft = (next: string) => { setLocalDraft(next); onDraftChange?.(next); };
   const previousValue = useRef(value);
   useEffect(() => { if (previousValue.current !== value) { setDraft(String(value)); previousValue.current = value; } }, [value]);
   const result = validateDurationDraft(draft);

@@ -1,9 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import '@fontsource-variable/inter';
-import App from './App';
-import './styles.css';
+import ProductApp from './product/ProductApp';
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode><App /></StrictMode>,
+  <StrictMode><ProductApp /></StrictMode>,
 );

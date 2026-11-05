@@ -2,14 +2,14 @@
 .system-segmented {
   min-inline-size: 0;
   max-inline-size: 100%;
-  margin: 0;
-  padding: 0;
+  margin:0;
+  padding:0;
   border: 0;
 }
 .system-segmented-label {
   max-inline-size: 100%;
-  margin-block-end: 8px;
-  padding: 0;
+  margin-block-end:var(--sy-space-8);
+  padding:0;
   color: var(--f-secondary);
   font-size: 12px;
   line-height: 1.6;
@@ -19,7 +19,7 @@
   display: grid;
   grid-template-columns: repeat(var(--system-segmented-count), minmax(0, 1fr));
   align-items: stretch;
-  gap: 4px;
+  gap:var(--sy-space-4);
   min-inline-size: 0;
   box-sizing:border-box;
   min-block-size:var(--sy-control-size,52px);
@@ -42,8 +42,8 @@
   position: absolute;
   inline-size: 1px;
   block-size: 1px;
-  margin: -1px;
-  padding: 0;
+  margin:-1px;
+  padding:0;
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
@@ -54,7 +54,7 @@
   justify-content: center;
   min-inline-size: 0;
   min-block-size:var(--sy-control-inner-size,48px);
-  padding:8px 12px;
+  padding:var(--sy-space-8) var(--sy-space-12);
   border: 1px solid transparent;
   border-radius: max(4px, calc(var(--sy-radius-control, 8px) - 4px));
   color: var(--f-secondary);
@@ -90,7 +90,7 @@
 }
 .system-segmented-option > input:disabled + .system-segmented-choice {
   opacity: .55;
-}
+ color:var(--f-muted); cursor:not-allowed;}
 @media (prefers-reduced-motion: reduce) {
   .system-segmented-choice { transition: none; }
 }
@@ -100,7 +100,7 @@
   .system-segmented-choice { color: ButtonText; }
   .system-segmented-option > input:checked + .system-segmented-choice { border-color: Highlight; color: HighlightText; background: Highlight; }
   .system-segmented-option > input:focus-visible + .system-segmented-choice { outline-color: Highlight; }
-  .system-segmented-option > input:disabled + .system-segmented-choice { color: GrayText; opacity: 1; }
+  .system-segmented-option > input:disabled + .system-segmented-choice { color: GrayText; opacity: 1;  cursor:not-allowed;}
 }
 
-.system-segmented-hint { margin:8px 0 0; color:var(--f-muted); font-size:12px; line-height:1.65; overflow-wrap:anywhere; }
+.system-segmented-hint { margin:var(--sy-space-8) 0 0; color:var(--f-muted); font-size:12px; line-height:1.65; overflow-wrap:anywhere; }

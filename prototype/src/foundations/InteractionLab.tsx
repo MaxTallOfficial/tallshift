@@ -90,7 +90,7 @@ export function InteractionLab({ locale, motionOff }: { locale: Locale; motionOf
 
   return <section className="il-lab" id="controls" data-motion={motionOff ? 'off' : 'on'} aria-labelledby={`${id}-title`}>
     <header className="il-section-heading">
-      <p className="il-eyebrow">{t.eyebrow}</p>
+
       <h2 id={`${id}-title`}>{t.title}</h2>
       <p>{t.intro}</p>
     </header>

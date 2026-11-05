@@ -40,7 +40,7 @@ export function SystemPreviewViewport({ locale, label, children, width, onWidthC
   const [actualWidth, setActualWidth] = useState(0);
   const t = copy[locale];
 
-  function ready() {
+  async function ready() {
     const doc = frameRef.current?.contentDocument;
     const host = rootRef.current?.ownerDocument;
     const container = doc?.getElementById('system-preview-root');
@@ -49,17 +49,25 @@ export function SystemPreviewViewport({ locale, label, children, width, onWidthC
     const base = doc.createElement('base');
     base.href = host.baseURI;
     doc.head.append(base);
+    const styles: Promise<void>[] = [];
     host.querySelectorAll<HTMLStyleElement | HTMLLinkElement>('style,link[rel="stylesheet"]').forEach(node => {
       if (node.tagName === 'LINK') {
         const url = new URL((node as HTMLLinkElement).href, host.baseURI);
         if (url.origin !== host.location.origin && url.protocol !== 'data:' && url.protocol !== 'blob:') return;
       }
-      doc.head.append(node.cloneNode(true));
+      const clone = node.cloneNode(true) as HTMLStyleElement | HTMLLinkElement;
+      if (clone instanceof HTMLLinkElement) styles.push(new Promise(resolve => {
+        clone.addEventListener('load', () => resolve(), { once: true });
+        clone.addEventListener('error', () => resolve(), { once: true });
+      }));
+      doc.head.append(clone);
     });
     const reset = doc.createElement('style');
     reset.textContent = frameReset;
     doc.head.append(reset);
-    setTarget(container);
+    // Mount after the copied stylesheets arrive, avoiding an unstyled flash in lazy product routes.
+    await Promise.all(styles);
+    if (frameRef.current?.contentDocument === doc && container.isConnected) setTarget(container);
   }
 
   useLayoutEffect(()=>target?registerInputModality(target):undefined,[target]);
@@ -76,6 +84,7 @@ export function SystemPreviewViewport({ locale, label, children, width, onWidthC
     target.style.color = computed.color;
     target.dataset.motion = motionOff ? 'off' : 'on';
     doc.documentElement.lang = locale;
+    doc.documentElement.style.colorScheme = computed.colorScheme;
     doc.documentElement.dataset.motion = motionOff ? 'off' : 'on';
     doc.title = label;
   }, [target, locale, label, motionOff, children]);

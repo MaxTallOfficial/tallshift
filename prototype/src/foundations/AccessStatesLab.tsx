@@ -61,7 +61,7 @@ export function AccessStatesLab({ locale, onOpenMaterial, ownership, ownershipSt
 
   return <section id="access-states" className="as-lab sy-section" aria-labelledby={`${id}-title`}>
     <div className="sy-section-heading">
-      <span className="sy-kicker">{t.kicker}</span>
+
       <h2 id={`${id}-title`}>{pricing.title}</h2>
       <p>{pricing.intro}</p>
     </div>
@@ -97,7 +97,7 @@ export function AccessStatesLab({ locale, onOpenMaterial, ownership, ownershipSt
         headline:<>{pricing.bundleClaim} <span>{pricing.bundleAccent}</span></>,description:pricing.bundleDescription,benefits:pricing.bundleBenefits,benefitIcons:['layers','grid','code'],priceNote:presentation.tax,deliveryNote:bundleCard.note}}
         selectionAction={{label:bundleCard.label,onSelect:()=>setSelectedPlan('bundle')}} details={<SystemAccordion headingLevel={4} className="as-offer-details" items={[{id:'bundle-scope',title:t.details,content:<div className="as-scope"><p>{pricing.bundleScope}</p><ul>{collectionMembers(pricingPlanScopes.bundle,locale).map(item=><li key={item.id}>{item.label}</li>)}</ul></div>}]} />} />
     </div>
-    <div className="as-comparison"><h3>{pricing.compareTitle}</h3><div className="as-comparison-scroll" role="region" aria-label={pricing.compareTitle} tabIndex={0}><table><thead><tr><th scope="col">{locale==='ru'?'Условия':locale==='vi'?'Điều kiện':'Terms'}</th><th scope="col">Starter</th><th scope="col">Product</th><th scope="col">All packs</th></tr></thead><tbody>{pricing.rows.map(([label,...values])=><tr key={label}><th scope="row">{label}</th>{values.map((value,index)=><td key={index}>{value}</td>)}</tr>)}</tbody></table></div><p>{pricing.shared}</p><p>{pricing.upgrades}</p><p>{pricing.other}</p></div>
+    <div className="as-comparison"><h3>{pricing.compareTitle}</h3><div className="as-comparison-scroll" role="region" aria-label={pricing.compareTitle} tabIndex={0}><table><thead><tr><th scope="col">{locale==='ru'?'Условия':locale==='vi'?'Điều kiện':'Terms'}</th><th scope="col">Starter</th><th scope="col">Product</th><th scope="col">All packs</th></tr></thead><tbody>{pricing.rows.map(([label,...values])=><tr key={label}><th scope="row">{label}</th>{values.map((value,index)=><td key={index}><span className="as-mobile-plan" aria-hidden="true">{["Starter","Product","All packs"][index]}</span>{value}</td>)}</tr>)}</tbody></table></div><p>{pricing.shared}</p><p>{pricing.upgrades}</p><p>{pricing.other}</p></div>
 
     <SystemDialog open={selectedPlan !== null} onOpenChange={open=>{if(!open)setSelectedPlan(null);}} title={presentation.title} closeLabel={presentation.close}
       description={selectedPlan ? `${selectedPlan==='starter'?'Starter':selectedPlan==='product'?'Product':'All packs'} · ${selectedPlan==='starter'?pricing.free:presentation.billing}` : undefined}

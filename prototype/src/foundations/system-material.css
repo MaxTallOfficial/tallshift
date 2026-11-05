@@ -1,0 +1,186 @@
+/* Hallmark · checked: 2026-11-05 · genre: modern-minimal · shape: app screen · theme: Tallshift Afterlight (brand) · built: the project · redesign: restyle · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H3 E4 S4 R3 V3 · weakest: restraint; remove repeated framing and redundant section labels. */
+/* Hallmark · reworded "Afterlight, in use." to "Tallshift design system" and "One material. Three ways to work." to "Workbench" · gate 54 calls for plain subject headings. */
+/* User constraint: approved Saffron palette stays; controls in shared desktop toolbars stay 52px. */
+:root {
+ --sy-font-ui: Manrope, Arial, sans-serif;
+ --sy-font-code: ui-monospace, SFMono-Regular, Consolas, monospace;
+ --sy-menu-hover: #ffffff0c;
+ --sy-scrim-dialog: rgb(0 0 0 / .74);
+ --sy-scrim-dialog-strong: rgb(0 0 0 / .8);
+ --sy-mask-opaque: #000;
+ --sy-shadow-soft: #0005;
+ --sy-shadow-overlay: #0006;
+ --sy-shadow-dialog: #0008;
+ --sy-shadow-menu: #0009;
+ --sy-scrim-heavy: #000a;
+ --sy-scrim-modal: #000b;
+ --sy-default-surface: #161512;
+ --sy-default-rule: #45433b;
+ --sy-default-secondary: #b8b6ae;
+ --sy-default-foreground: #edece8;
+ --sy-space-4: 4px;
+ --sy-space-8: 8px;
+ --sy-space-12: 12px;
+ --sy-space-16: 16px;
+ --sy-space-20: 20px;
+ --sy-space-24: 24px;
+ --sy-space-28: 28px;
+ --sy-space-32: 32px;
+ --sy-space-36: 36px;
+ --sy-space-40: 40px;
+ --sy-space-44: 44px;
+ --sy-space-48: 48px;
+ --sy-space-52: 52px;
+ --sy-space-56: 56px;
+ --sy-space-60: 60px;
+ --sy-space-64: 64px;
+ --sy-space-80: 80px;
+ --sy-space-88: 88px;
+ --sy-space-100: 100px;
+}
+/* The working surface, the specimen and the control have different visual weights. */
+:where(.system-study,[data-tallshift-theme]) {
+ --sy-section-gap:80px;
+ --sy-detail-gap:24px;
+ --sy-label-size:13px;
+ --sy-body-measure:64ch;
+ caret-color:var(--f-accent);
+ scrollbar-color:var(--f-control-border) var(--f-canvas);
+}
+:where(.system-study,[data-tallshift-theme]) :is(h1,h2,h3,h4) {
+ min-inline-size:0;
+ overflow-wrap:break-word;
+ text-wrap:balance;
+}
+:where(.system-study,[data-tallshift-theme]) p { text-wrap:pretty; }
+:where(.system-study,[data-tallshift-theme]) :is(.system-button,.sys-select-trigger,.system-field-control,.sm-control) {
+ border-radius:var(--sy-radius-control,8px);
+}
+:where(.system-study,[data-tallshift-theme]) .system-button { gap:12px; font-weight:600; }
+:where(.system-study,[data-tallshift-theme]) .system-button-label { overflow-wrap:normal; white-space:nowrap; }
+:where(.system-study,[data-tallshift-theme]) .system-button:not([data-variant=primary]):not([data-variant=destructive]):not([data-variant=quiet]) { border-color:var(--f-control-border); }
+:where(.system-study,[data-tallshift-theme]) :is(button,input,textarea):disabled {
+ color:var(--f-muted);
+ cursor:not-allowed;
+}
+:where(.system-study,[data-tallshift-theme]) .system-button:disabled:not([data-variant=primary]) { background:var(--f-inset); }
+:where(.system-study,[data-tallshift-theme]) :is(.sys-select-label,.system-field-heading label,.system-segmented-label,.system-radio-group > legend) {
+ color:var(--f-secondary); font-family:var(--sy-font-ui); font-size:var(--sy-label-size); font-weight:500; letter-spacing:0;
+}
+:where(.system-study,[data-tallshift-theme]) :is(.sys-select-hint,.system-field-footer,.system-panel-note,.sv-scope) { min-block-size:1lh; font-size:12px; }
+:where(.system-study,[data-tallshift-theme]) .system-button-icon > .system-icon { display:block; }
+:where(.system-study,[data-tallshift-theme]) .system-floating {
+ color:var(--f-text); background:var(--f-raised); border-color:var(--f-control-border);
+ font-family:var(--sy-font-ui); border-radius:var(--sy-radius-card,12px);
+}
+:where(.system-study,[data-tallshift-theme]) .system-menu { padding:8px; }
+:where(.system-study,[data-tallshift-theme]) .system-menu > button { gap:16px; padding:12px; border-radius:var(--sy-radius-compact,4px); }
+:where(.system-study,[data-tallshift-theme]) .system-tablist > button { white-space:nowrap; }
+:where(.system-study,[data-tallshift-theme]) .system-tablist > button[aria-selected=true] {
+ color:var(--f-text); border-color:var(--f-control-border); background:var(--f-raised);
+}
+:where(.system-study,[data-tallshift-theme]) .system-field-control { margin-block-start:8px; }
+/* A catalog item is a visual sample followed by its identity, not an offer-shaped text block. */
+:where(.system-study,[data-tallshift-theme]) .system-content-tile {
+ border-color:var(--f-line); border-radius:var(--sy-radius-card,12px); background:var(--f-surface);
+}
+:where(.system-study,[data-tallshift-theme]) .system-content-tile[data-state=ready] { border-color:var(--f-control-border); }
+:where(.system-study,[data-tallshift-theme]) .system-content-body { padding:24px; }
+:where(.system-study,[data-tallshift-theme]) .system-content-tile .system-content-name { margin-block:16px 0; font-size:13px; font-weight:500; color:var(--f-muted); }
+:where(.system-study,[data-tallshift-theme]) .system-content-tile :is(h3,h4) { color:var(--f-text); letter-spacing:-.015em; }
+:where(.system-study,[data-tallshift-theme]) .system-content-tile[data-density=compact] .system-content-body { padding:20px; }
+:where(.system-study,[data-tallshift-theme]) .system-content-tile[data-density=compact] :is(h3,h4) { font-size:22px; margin-block:8px 12px; }
+:where(.system-study,[data-tallshift-theme]) .system-content-tile .system-content-description { font-size:16px; }
+:where(.system-study,[data-tallshift-theme]) .system-content-status { margin-block:16px 20px; }
+/* Offers share one canvas. Product is distinguished by its edge, price and purchase action. */
+:where(.system-study,[data-tallshift-theme]) .as-offer { background:var(--f-surface); box-shadow:none; border-radius:var(--sy-radius-card,12px); }
+:where(.system-study,[data-tallshift-theme]) .as-offer[data-featured] { background:var(--f-surface); border-color:var(--f-accent); box-shadow:none; }
+:where(.system-study,[data-tallshift-theme]) .as-recommendation { position:static; transform:none; align-self:flex-start; padding:0; background:transparent; color:var(--f-accent); font-size:13px; }
+:where(.system-study,[data-tallshift-theme]) .as-price { font-variant-numeric:tabular-nums; }
+:where(.system-study,[data-tallshift-theme]) .as-offer .as-claim { color:var(--f-text); }
+:where(.system-study,[data-tallshift-theme]) .as-claim span { color:inherit; }
+:where(.system-study,[data-tallshift-theme]) .as-comparison { border:0; border-radius:0; background:transparent; padding-inline:0; }
+/* Review chrome reads like a reference manual, while live components retain their own surfaces. */
+.system-study .sy-intro { grid-template-columns:minmax(0,1fr) minmax(240px,300px); align-items:start; padding-block:64px 48px; gap:48px; }
+.system-study .sy-intro h1 { max-inline-size:18ch; margin:0; font-size:48px; line-height:1.12; letter-spacing:-.035em; font-weight:550; color:var(--f-text); }
+.system-study .sy-lead { margin-block-start:24px; max-inline-size:var(--sy-body-measure); }
+.system-study .sy-decisions { border:0; padding:0 0 0 24px; border-inline-start:1px solid var(--f-line); }
+.system-study .sy-decisions strong { flex-wrap:wrap; font-size:14px; }
+.system-study .sy-decisions i { border-radius:4px; inline-size:16px; block-size:16px; flex-basis:16px; }
+.system-study .sy-review { border:0; padding:0; font-size:12px; }
+.system-study :is(.sy-section-heading,.dl-heading,.ls-heading,.act-heading,.fs-heading,.ps-heading,.il-heading,.icon-specimen-heading) { max-inline-size:none; margin-block-end:32px; }
+.system-study :is(.sy-section-heading,.dl-heading,.ls-heading,.act-heading,.fs-heading,.ps-heading,.il-heading,.icon-specimen-heading) h2 {
+ margin-block:0 12px; max-inline-size:30ch; font-size:32px; font-weight:550; line-height:1.22; letter-spacing:-.025em; color:var(--f-text);
+}
+.system-study :is(.sy-section-heading,.dl-heading,.ls-heading,.act-heading,.fs-heading,.ps-heading,.il-heading,.icon-specimen-heading) p { max-inline-size:var(--sy-body-measure); }
+.system-study .dl-heading { align-items:start; gap:32px; }
+.system-study .dl-scope { max-inline-size:26ch; text-align:end; font-size:13px; }
+.system-study .system-catalog-search-row { padding-block:24px; }
+.system-study .dl-filter-shell { border:0; }
+.system-study .sy-work-header { align-items:center; }
+.system-study .sy-work-header h3 { margin:0; font-size:28px; }
+.system-study .sy-workbar { gap:24px; }
+.system-study .sy-workbar-actions { flex-wrap:wrap; }
+.system-study .sy-work-settings { background:var(--f-surface); }
+.system-study :is(.act-grid,.fs-grid) { gap:0 32px; }
+.system-study :is(.act-card,.fs-card) {
+ border:0; border-block-start:1px solid var(--f-line); border-radius:0; background:transparent;
+ padding:32px 0; color:var(--f-text);
+}
+.system-study :is(.act-card,.fs-card) > h3 { font-size:20px; margin-block:0 24px; }
+.system-study .fs-loading-sample { border:0; border-radius:8px; background:var(--f-surface); padding:24px; }
+.system-study .fs-card .sf-empty { border:0; padding:24px; background:var(--f-surface); }
+.system-study .sy-table-scroll { max-inline-size:100%; }
+.system-study .sy-coverage :is(th,td):first-child { white-space:nowrap; }
+.system-study .sy-coverage td { min-inline-size:9rem; }
+.system-study .sy-coverage td:nth-child(2) { min-inline-size:12rem; }
+.system-study .sy-coverage .system-text-link { overflow-wrap:normal; }
+.system-study :is(.sy-api-name,.sy-panel-note) { overflow-wrap:anywhere; }
+@media (max-width:1023px) {
+ .system-study .sy-intro { grid-template-columns:minmax(0,1fr); gap:32px; }
+ .system-study .sy-decisions { display:flex; flex-wrap:wrap; align-items:center; gap:12px 24px; padding:16px 0 0; border-inline-start:0; border-block-start:1px solid var(--f-line); }
+ .system-study .sy-decisions > * { margin:0; }
+ .system-study .sy-decisions > span:first-child { flex-basis:100%; margin:0; }
+}
+@media (max-width:767px) {
+ .system-study .sy-intro { padding-block:40px; }
+ .system-study .sy-intro h1 { font-size:36px; }
+ .system-study :is(.sy-section-heading,.dl-heading,.ls-heading,.act-heading,.fs-heading,.ps-heading,.il-heading,.icon-specimen-heading) h2 { font-size:28px; max-inline-size:100%; }
+ .system-study .dl-heading { flex-direction:column; gap:16px; }
+ .system-study .dl-scope { text-align:start; max-inline-size:100%; }
+ .system-study :is(.act-grid,.fs-grid) { gap:0; }
+ .system-study :is(.act-card,.fs-card) { padding-block:24px; }
+ :where(.system-study,[data-tallshift-theme]) .system-content-tile[data-density=compact] .system-content-body { padding:16px; }
+}
+@media (prefers-reduced-motion:reduce) {
+ :where(.system-study,[data-tallshift-theme]) :is(.system-button,.sys-select-trigger,.system-field-control) { transition:none; }
+}
+@media (forced-colors:active) {
+ :where(.system-study,[data-tallshift-theme]) .as-offer[data-featured] { border-color:Highlight; background:Canvas; }
+ :where(.system-study,[data-tallshift-theme]) .as-recommendation { color:Highlight; }
+}
+
+:where(.system-study,[data-tallshift-theme]) .system-button:disabled[data-variant=primary] { color:var(--f-on-accent); }
+
+/* Inactive panes must not size the workbench. The desktop canvas stays stable between tabs. */
+.system-study .sy-representations { align-self:start; }
+.system-study .sy-representations > [role=tabpanel][aria-hidden=true] { display:none; }
+@media(min-width:1024px) {
+ .system-study .sy-representations > [role=tabpanel][aria-hidden=false] { block-size:740px; overflow:auto; scrollbar-gutter:stable; }
+ .system-study .sy-work-body { align-items:start; }
+ .system-study .sy-work-settings { border-bottom-right-radius:var(--sy-radius-panel); }
+}
+
+/* Comparison keeps every plan readable on phones, rather than opening off-screen. */
+.as-mobile-plan { display:none; }
+@media(max-width:767px) {
+ .as-comparison table { min-inline-size:0; min-width:0; }
+ .as-comparison thead { position:absolute; inline-size:1px; block-size:1px; overflow:hidden; clip-path:inset(50%); }
+ .as-comparison tbody,.as-comparison tr { display:block; }
+ .as-comparison tr { padding-block:var(--sy-space-16); border-block-end:1px solid var(--f-line); }
+ .as-comparison th[scope=row] { display:block; padding:0 0 var(--sy-space-12); border:0; }
+ .as-comparison td { display:grid; grid-template-columns:88px minmax(0,1fr); gap:var(--sy-space-12); padding:var(--sy-space-8) 0; border:0; }
+ .as-comparison .as-mobile-plan { display:block; color:var(--f-text); font-weight:600; }
+ .as-comparison tbody td:nth-child(3) { background:transparent; }
+}

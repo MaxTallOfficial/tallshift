@@ -34,7 +34,7 @@ export function ProgressSpecimen({ locale, motionOff = false }: { locale: Locale
     setAnnouncement(`${nextValue === 100 ? t.complete : t.running} ${nextValue}%.`);
   }
   return <section id="progress" className="ps-lab" lang={locale} data-motion={motionOff ? 'off' : undefined} aria-labelledby={`${id}-title`}>
-    <header className="ps-heading"><span className="ps-eyebrow">{t.eyebrow}</span><h2 id={`${id}-title`}>{t.title}</h2><p>{t.intro}</p></header>
+    <header className="ps-heading"><h2 id={`${id}-title`}>{t.title}</h2><p>{t.intro}</p></header>
     <div className="ps-grid">
       <article className="ps-card"><h3>{t.manual}</h3><p className="ps-card-note">{t.manualHint}</p>
         <SystemProgress label={t.operation} value={value} tone={state === 'complete' ? 'success' : state === 'failed' ? 'error' : 'default'} locale={locale} />

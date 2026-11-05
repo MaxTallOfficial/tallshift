@@ -82,7 +82,7 @@ export function LibraryStatesLab({ locale, onOpenMaterial }: { locale: LibrarySt
 
   return <section id="library-states" className="ls-lab" aria-labelledby={`${id}-title`} lang={locale}>
     <header className="ls-heading">
-      <span className="ls-eyebrow">{t.eyebrow}</span>
+
       <h2 id={`${id}-title`}>{t.title}</h2>
       <p>{t.intro}</p>
     </header>

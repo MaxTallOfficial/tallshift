@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-05",
+  "mode": "refine existing system",
+  "scope": "app",
+  "genre": "modern-minimal",
+  "locked": "design.md",
+  "preserved": [
+    "getSaffronTheme light palette",
+    "Manrope EN/RU/VI",
+    "Hugeicons Duotone Rounded",
+    "routes, IDs, field and handler contracts",
+    "Product $16, All packs $39"
+  ],
+  "sources": [
+    "prototype/src/foundations/tokens.ts:88",
+    "prototype/src/foundations/system-scale.ts:2",
+    "prototype/src/foundations/SystemIcon.tsx:1",
+    "AGENTS.md:1"
+  ],
+  "material": "Actual local components, one working State Relay recipe, existing review states. No invented proof, new stock images or testimonials.",
+  "introduced": [
+    "shared spacing tokens",
+    "semantic colour usage instead of divergent fallback copies",
+    "quieter specimen frames",
+    "single-colour headings",
+    "catalog and offer hierarchy"
+  ],
+  "working_tree": "Pre-existing changes retained. Binary diff saved outside repository at /tmp/tallshift-before-hallmark-2026-11-05.patch; no stash/reset/commit of existing work. User authorised corrections without another approval."
+}

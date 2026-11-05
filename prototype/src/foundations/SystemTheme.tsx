@@ -4,6 +4,7 @@ import type { CSSProperties, ReactNode } from 'react';
 import { getSaffronTheme } from './tokens';
 import { systemCssVariables } from './system-tokens';
 import './system-theme.css';
+import './system-material.css';
 export interface SystemThemeProps { children: ReactNode; locale?: 'en' | 'ru' | 'vi'; className?: string; style?: CSSProperties }
 /** Scoped approved theme; no document/body mutation. Floating surfaces remain within this theme root. */
 export function SystemTheme({children,locale='en',className='',style}:SystemThemeProps) {

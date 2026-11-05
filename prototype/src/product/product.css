@@ -1,0 +1,22 @@
+html { background:#0D0C09; }
+body { margin:0; }
+.tp-app { min-height:100dvh; }
+.tp-app :where(button,input,textarea,select) { font-family:inherit; }
+.tp-app :where(a,button,pre,[tabindex]):focus-visible { outline:2px solid var(--f-focus);outline-offset:4px; }
+.tp-shell-wrap { width:min(1240px,calc(100% - 64px));margin-inline:auto; }
+.tp-shell .system-shell-main { min-height:88px; }
+.tp-shell nav { gap:32px; }
+.tp-shell .system-shell-edition { border-left:1px solid var(--f-line);padding-left:24px; }
+.tp-eyebrow { display:flex;align-items:center;gap:12px;flex-wrap:wrap;color:var(--f-muted);font-size:12px;font-weight:500;line-height:1.5;letter-spacing:.04em; }
+.tp-footer { width:min(1240px,calc(100% - 64px));margin-inline:auto;padding-block:32px;display:flex;justify-content:space-between;gap:32px;border-top:1px solid var(--f-line); }
+.tp-footer p { color:var(--f-muted);font-size:12px;line-height:1.7; }
+.tp-footer > div:last-child { align-self:center;text-align:right; }
+.tp-footer > div:last-child p + p { margin-top:8px; }
+.tp-storage-note { max-width:1240px;padding:24px 32px 0;margin-inline:auto; }
+.tp-not-found { max-width:800px;margin:64px auto 96px;padding:32px; }
+.tp-not-found h1 { font-size:40px;line-height:1.2;font-weight:550;letter-spacing:-.02em;margin:24px 0; }
+.tp-not-found > p:not(.tp-eyebrow) { color:var(--f-secondary);margin-bottom:32px; }
+.tp-app :is(h1,h2):lang(vi) { letter-spacing:0; }
+.tp-loading { max-width:1240px;min-height:60vh;margin:auto;padding:64px 32px;color:var(--f-muted); }
+@media(max-width:1023px) { .tp-shell-wrap,.tp-footer { width:calc(100% - 48px); } }
+@media(max-width:767px) { .tp-shell-wrap,.tp-footer { width:calc(100% - 32px); }.tp-shell .system-shell-main { min-height:80px;gap:12px; }.tp-shell .system-shell-toggle { margin-top:4px; }.tp-footer { padding-block:24px;flex-direction:column;gap:16px; }.tp-footer > div:last-child { align-self:flex-start;text-align:left; }.tp-storage-note { padding:16px 16px 0; }.tp-not-found { padding:16px;margin-top:40px; }.tp-not-found h1 { font-size:30px; } }

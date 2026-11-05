@@ -1,42 +1,42 @@
-.icon-specimen { min-inline-size: 0; margin-block-start: 80px; }
-.icon-specimen-heading { max-inline-size: 760px; margin-block-end: 28px; }
-.icon-specimen-kicker { display: block; color: var(--f-muted); font: 11px/1.5 var(--sy-font-code); letter-spacing: .06em; }
-.icon-specimen-heading h2 { margin-block-start: 12px; color: var(--f-text); font-size: 28px; font-weight: 550; line-height: 1.3; letter-spacing: -.015em; }
-.icon-specimen-heading p { margin-block-start: 14px; color: var(--f-secondary); font-size: 16px; line-height: 1.65; }
+.icon-specimen { min-inline-size: 0; margin-block-start:var(--sy-space-80); }
+.icon-specimen-heading { max-inline-size: 760px; margin-block-end:var(--sy-space-28); }
+.icon-specimen-kicker { display: block; color: var(--f-muted); font: 11px/1.5 var(--sy-font-ui); letter-spacing:0; }
+.icon-specimen-heading h2 { margin-block-start:var(--sy-space-12); color: var(--f-text); font-size: 28px; font-weight: 550; line-height: 1.3; letter-spacing: -.015em; }
+.icon-specimen-heading p { margin-block-start:var(--sy-space-16); color: var(--f-secondary); font-size: 16px; line-height: 1.65; }
 .icon-specimen-details { min-inline-size: 0; border: 1px solid var(--f-line); border-radius: var(--sy-radius-panel, 12px); background: var(--f-surface); }
-.icon-specimen-details + .icon-specimen-details { margin-block-start: 16px; }
-.icon-specimen-details > summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-block-size: 64px; padding: 18px 24px; color: var(--f-text); font-size: 16px; font-weight: 600; line-height: 1.5; cursor: pointer; list-style: none; }
+.icon-specimen-details + .icon-specimen-details { margin-block-start:var(--sy-space-16); }
+.icon-specimen-details > summary { display: flex; align-items: center; justify-content: space-between; gap:var(--sy-space-16); min-block-size: 64px; padding:var(--sy-space-20) var(--sy-space-24); color: var(--f-text); font-size: 16px; font-weight: 600; line-height: 1.5; cursor: pointer; list-style: none; }
 .icon-specimen-details > summary::-webkit-details-marker { display: none; }
-.icon-specimen-details > summary small { display: block; margin-block-start: 3px; color: var(--f-muted); font: 400 12px/1.6 var(--sy-font-ui); }
+.icon-specimen-details > summary small { display: block; margin-block-start:var(--sy-space-4); color: var(--f-muted); font: 400 12px/1.6 var(--sy-font-ui); }
 .icon-specimen-details[open] > summary > .system-icon { transform: rotate(180deg); }
-.icon-specimen-content { min-inline-size: 0; padding: 0 24px 24px; }
-.icon-specimen-size { inline-size: min(100%, 300px); margin-block: 4px 24px; }
-.icon-specimen-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; min-inline-size: 0; margin: 0; padding: 0; list-style: none; }
-.icon-specimen-grid > li { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 8px; min-inline-size: 0; padding: 12px 8px; border: 1px solid var(--f-line); border-radius: var(--sy-radius-control, 8px); background: var(--f-inset); }
+.icon-specimen-content { min-inline-size: 0; padding:0 var(--sy-space-24) var(--sy-space-24); }
+.icon-specimen-size { inline-size: min(100%, 300px); margin-block:var(--sy-space-4) var(--sy-space-24); }
+.icon-specimen-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap:var(--sy-space-12); min-inline-size: 0; margin:0; padding:0; list-style: none; }
+.icon-specimen-grid > li { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap:var(--sy-space-8); min-inline-size: 0; padding:var(--sy-space-12) var(--sy-space-8); border: 1px solid var(--f-line); border-radius: var(--sy-radius-control, 8px); background: var(--f-inset); }
 .icon-specimen-slot { display: grid; place-items: center; inline-size: 44px; block-size: 44px; color: var(--f-text); }
 .icon-specimen-grid code { max-inline-size: 100%; color: var(--f-secondary); font: 11px/1.6 var(--sy-font-code); text-align: center; overflow-wrap: anywhere; }
-.icon-specimen-state-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; padding: 4px 24px 24px; }
-.icon-specimen-state { display: flex; flex-direction: column; gap: 14px; min-inline-size: 0; }
-.icon-specimen-state h3 { margin: 0; color: var(--f-text); font-size: 16px; font-weight: 600; line-height: 1.5; }
-.icon-specimen-note { margin: 0; color: var(--f-muted); font-size: 12px; line-height: 1.65; overflow-wrap: anywhere; }
+.icon-specimen-state-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:var(--sy-space-28); padding:var(--sy-space-4) var(--sy-space-24) var(--sy-space-24); }
+.icon-specimen-state { display: flex; flex-direction: column; gap:var(--sy-space-16); min-inline-size: 0; }
+.icon-specimen-state h3 { margin:0; color: var(--f-text); font-size: 16px; font-weight: 600; line-height: 1.5; }
+.icon-specimen-note { margin:0; color: var(--f-muted); font-size: 12px; line-height: 1.65; overflow-wrap: anywhere; }
 .icon-specimen-note strong { color: var(--f-secondary); font-weight: 500; }
-.icon-specimen-alignment { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8px; block-size: 112px; padding: 18px; border: 1px solid var(--f-line); border-radius: var(--sy-radius-control, 8px); background: var(--f-inset); }
+.icon-specimen-alignment { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap:var(--sy-space-8); block-size: 112px; padding:var(--sy-space-20); border: 1px solid var(--f-line); border-radius: var(--sy-radius-control, 8px); background: var(--f-inset); }
 .icon-specimen-alignment[data-alignment="center"] { align-items: center; }
 .icon-specimen-alignment[data-alignment="end"] { align-items: flex-end; }
 .icon-specimen-alignment i { display: block; inline-size: 48%; block-size: 5px; border-radius: 2px; background: var(--f-accent); }
 .icon-specimen-alignment i:nth-child(2) { inline-size: 68%; opacity: .6; }
 .icon-specimen-alignment i:nth-child(3) { inline-size: 34%; opacity: .35; }
-.icon-specimen-arrangement { display: grid; grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 8px; block-size: 112px; padding: 10px; border: 1px solid var(--f-line); border-radius: var(--sy-radius-control, 8px); background: var(--f-inset); }
+.icon-specimen-arrangement { display: grid; grid-template-rows: repeat(2, minmax(0, 1fr)); gap:var(--sy-space-8); block-size: 112px; padding:var(--sy-space-12); border: 1px solid var(--f-line); border-radius: var(--sy-radius-control, 8px); background: var(--f-inset); }
 .icon-specimen-arrangement[data-layout="split"] { grid-template-rows: minmax(0, 1fr); grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.icon-specimen-arrangement span { display: grid; place-items: center; min-inline-size: 0; padding: 4px; border: 1px solid var(--f-control-border); border-radius: 4px; background: var(--f-raised); color: var(--f-secondary); font-size: 12px; line-height: 1.4; overflow-wrap: anywhere; }
+.icon-specimen-arrangement span { display: grid; place-items: center; min-inline-size: 0; padding:var(--sy-space-4); border: 1px solid var(--f-control-border); border-radius: 4px; background: var(--f-raised); color: var(--f-secondary); font-size: 12px; line-height: 1.4; overflow-wrap: anywhere; }
 @media (max-width: 767px) {
-  .icon-specimen { margin-block-start: 56px; }
+  .icon-specimen { margin-block-start:var(--sy-space-56); }
   .icon-specimen-heading h2 { font-size: 24px; }
   .icon-specimen-heading p { font-size: 16px; }
-  .icon-specimen-details > summary { padding-inline: 16px; }
-  .icon-specimen-content { padding-inline: 16px; }
-  .icon-specimen-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-  .icon-specimen-state-grid { grid-template-columns: minmax(0, 1fr); padding-inline: 16px; }
+  .icon-specimen-details > summary { padding-inline:var(--sy-space-16); }
+  .icon-specimen-content { padding-inline:var(--sy-space-16); }
+  .icon-specimen-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap:var(--sy-space-8); }
+  .icon-specimen-state-grid { grid-template-columns: minmax(0, 1fr); padding-inline:var(--sy-space-16); }
 }
 @media (max-width: 479px) {
   .icon-specimen-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

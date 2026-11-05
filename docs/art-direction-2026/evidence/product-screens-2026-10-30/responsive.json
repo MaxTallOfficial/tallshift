@@ -1,0 +1,128 @@
+[
+  {
+    "lang": "en",
+    "screen": "library",
+    "language": "en",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "lang": "en",
+    "screen": "library/state-relay",
+    "language": "en",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "lang": "ru",
+    "screen": "library",
+    "language": "ru",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "lang": "ru",
+    "screen": "library/state-relay",
+    "language": "ru",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "lang": "vi",
+    "screen": "library",
+    "language": "vi",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "lang": "vi",
+    "screen": "library/state-relay",
+    "language": "vi",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "lang": "en",
+    "screen": "library",
+    "language": "en",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "lang": "en",
+    "screen": "library/state-relay",
+    "language": "en",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "lang": "ru",
+    "screen": "library",
+    "language": "ru",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "lang": "ru",
+    "screen": "library/state-relay",
+    "language": "ru",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "lang": "vi",
+    "screen": "library",
+    "language": "vi",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "lang": "vi",
+    "screen": "library/state-relay",
+    "language": "vi",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "lang": "en",
+    "screen": "library",
+    "language": "en",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "lang": "en",
+    "screen": "library/state-relay",
+    "language": "en",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "lang": "ru",
+    "screen": "library",
+    "language": "ru",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "lang": "ru",
+    "screen": "library/state-relay",
+    "language": "ru",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "lang": "vi",
+    "screen": "library",
+    "language": "vi",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "lang": "vi",
+    "screen": "library/state-relay",
+    "language": "vi",
+    "scrollWidth": 1440,
+    "width": 1440
+  }
+]

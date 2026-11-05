@@ -56,7 +56,7 @@ export function IconSpecimen({ locale }: { locale: Locale }) {
   const layouts = (['stack', 'split', 'window'] as const).map(value => ({ value, label: t[value], disabled: value === 'window' }));
   return <section id="icons" className="icon-specimen" aria-labelledby={`${id}-title`}>
     <header className="icon-specimen-heading">
-      <span className="icon-specimen-kicker">SYSTEM / 03 + 16</span>
+
       <h2 id={`${id}-title`}>{t.title}</h2>
       <p>{t.intro}</p>
     </header>

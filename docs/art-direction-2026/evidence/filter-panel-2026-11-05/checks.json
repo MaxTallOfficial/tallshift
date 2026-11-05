@@ -1,0 +1,68 @@
+[
+  {
+    "locale": "ru",
+    "width": 1440,
+    "open": true,
+    "scroll": 1440,
+    "footerHeight": 57,
+    "resetInside": true,
+    "emptyCounter": "none",
+    "groups": 2,
+    "selectionAndReset": "passed"
+  },
+  {
+    "locale": "ru",
+    "width": 768,
+    "open": true,
+    "scroll": 768,
+    "footerHeight": 57,
+    "resetInside": true,
+    "emptyCounter": "none",
+    "groups": 2,
+    "selectionAndReset": "passed"
+  },
+  {
+    "locale": "ru",
+    "width": 390,
+    "open": true,
+    "scroll": 390,
+    "footerHeight": 57,
+    "resetInside": true,
+    "emptyCounter": "none",
+    "groups": 2,
+    "selectionAndReset": "passed"
+  },
+  {
+    "locale": "ru",
+    "width": 320,
+    "open": true,
+    "scroll": 320,
+    "footerHeight": 57,
+    "resetInside": true,
+    "emptyCounter": "none",
+    "groups": 2,
+    "selectionAndReset": "passed"
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "open": true,
+    "scroll": 390,
+    "footerHeight": 57,
+    "resetInside": true,
+    "emptyCounter": "none",
+    "groups": 2,
+    "selectionAndReset": "passed"
+  },
+  {
+    "locale": "vi",
+    "width": 390,
+    "open": true,
+    "scroll": 390,
+    "footerHeight": 57,
+    "resetInside": true,
+    "emptyCounter": "none",
+    "groups": 2,
+    "selectionAndReset": "passed"
+  }
+]

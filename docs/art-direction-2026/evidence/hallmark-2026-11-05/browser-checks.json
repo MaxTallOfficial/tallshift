@@ -1,0 +1,193 @@
+{
+  "date": "2026-11-05",
+  "checks": [
+    {
+      "locale": "en",
+      "width": 320,
+      "scroll": 320,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 790.78125,
+      "status": "passed"
+    },
+    {
+      "locale": "en",
+      "width": 375,
+      "scroll": 375,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 790.78125,
+      "status": "passed"
+    },
+    {
+      "locale": "en",
+      "width": 768,
+      "scroll": 768,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 699.890625,
+      "status": "passed"
+    },
+    {
+      "locale": "en",
+      "width": 1024,
+      "scroll": 1024,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 740,
+      "status": "passed"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "scroll": 1440,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 740,
+      "status": "passed"
+    },
+    {
+      "locale": "en",
+      "width": 1920,
+      "scroll": 1920,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 740,
+      "status": "passed"
+    },
+    {
+      "locale": "ru",
+      "width": 320,
+      "scroll": 320,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 811.171875,
+      "status": "passed"
+    },
+    {
+      "locale": "ru",
+      "width": 375,
+      "scroll": 375,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 790.78125,
+      "status": "passed"
+    },
+    {
+      "locale": "ru",
+      "width": 768,
+      "scroll": 768,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 699.890625,
+      "status": "passed"
+    },
+    {
+      "locale": "ru",
+      "width": 1024,
+      "scroll": 1024,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 740,
+      "status": "passed"
+    },
+    {
+      "locale": "ru",
+      "width": 1440,
+      "scroll": 1440,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 740,
+      "status": "passed"
+    },
+    {
+      "locale": "ru",
+      "width": 1920,
+      "scroll": 1920,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 740,
+      "status": "passed"
+    },
+    {
+      "locale": "vi",
+      "width": 320,
+      "scroll": 320,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 790.78125,
+      "status": "passed"
+    },
+    {
+      "locale": "vi",
+      "width": 375,
+      "scroll": 375,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 790.78125,
+      "status": "passed"
+    },
+    {
+      "locale": "vi",
+      "width": 768,
+      "scroll": 768,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 699.890625,
+      "status": "passed"
+    },
+    {
+      "locale": "vi",
+      "width": 1024,
+      "scroll": 1024,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 740,
+      "status": "passed"
+    },
+    {
+      "locale": "vi",
+      "width": 1440,
+      "scroll": 1440,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 740,
+      "status": "passed"
+    },
+    {
+      "locale": "vi",
+      "width": 1920,
+      "scroll": 1920,
+      "accent": "#EBD183",
+      "font": "Manrope, Arial, sans-serif",
+      "hidden": "none",
+      "activeHeight": 740,
+      "status": "passed"
+    }
+  ],
+  "keyboard": {
+    "input": true,
+    "outline": "solid",
+    "width": "2px",
+    "mode": "keyboard"
+  },
+  "pointer": "pointer",
+  "scope": "local review UI, no commerce/backend verification"
+}

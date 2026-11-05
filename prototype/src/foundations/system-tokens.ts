@@ -42,7 +42,7 @@ for (const [key, value] of Object.entries(current)) {
 raw('primitive.color.scrim', 'color', '#000000B3', 'Dark backdrop; use behind modal content, never as text foreground.');
 raw('primitive.font.ui', 'fontFamily', 'Manrope, Arial, sans-serif', 'Approved family for English, Russian and Vietnamese.');
 raw('primitive.font.code', 'fontFamily', 'ui-monospace, SFMono-Regular, Consolas, monospace', 'Local system monospace; no extra web font.');
-for (const value of [0, 2, 4, 8, 12, 16, 24, 32, 44, 48, 52, 64, 80]) raw(`primitive.space.${value}`, 'dimension', `${value}px`, 'Spacing scale in CSS pixels.');
+for (const value of [0, 2, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 80, 88, 100]) raw(`primitive.space.${value}`, 'dimension', `${value}px`, 'Spacing scale in CSS pixels.');
 for (const value of [4, 8, 12, 16]) raw(`primitive.radius.${value}`, 'dimension', `${value}px`, 'Corner scale in CSS pixels.');
 for (const [name, value] of Object.entries({ response: 120, state: 160, panel: 180, off: 0 })) raw(`primitive.duration.${name}`, 'duration', `${value}ms`, 'Motion duration; state does not wait for an animation.');
 raw('primitive.ease.standard', 'cubicBezier', 'cubic-bezier(.2,.8,.2,1)', 'Fast start and quiet finish for local state changes.');
@@ -80,6 +80,7 @@ const dimensions: Record<string, string> = {
   'section.gap': '80', 'page.gutter': '32', 'focus.width': '2', 'focus.offset': '4',
 };
 for (const [name, value] of Object.entries(dimensions)) alias(`semantic.${name}`, 'dimension', `primitive.space.${value}`, `Layout role: ${name}.`);
+for (const value of [4,8,12,16,20,24,28,32,36,40,44,48,52,56,60,64,80,88,100]) alias(`semantic.space.${value}`, 'dimension', `primitive.space.${value}`, 'Shared spacing rhythm; border compensation is a separate optical adjustment.');
 for (const [name, value] of Object.entries({ control: 8, card: 12, panel: 16, overlay: 16, small: 4 })) alias(`semantic.radius.${name}`, 'dimension', `primitive.radius.${value}`, `Corner role: ${name}.`);
 for (const name of ['ui', 'code']) alias(`semantic.font.${name}`, 'fontFamily', `primitive.font.${name}`, `Font role: ${name}.`);
 for (const [name, target] of Object.entries({ response: 'response', state: 'state', panel: 'panel', off: 'off' })) alias(`semantic.motion.${name}`, 'duration', `primitive.duration.${target}`, `Motion role: ${name}.`);

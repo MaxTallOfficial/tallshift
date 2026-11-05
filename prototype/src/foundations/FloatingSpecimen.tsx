@@ -9,7 +9,7 @@ const words = {
 };
 export function FloatingSpecimen({ locale }: { locale: keyof typeof words }) {
   const t = words[locale], [selectedFile, setSelectedFile] = useState<string | null>('AfterlightExample.tsx');
-  return <section className="floating-specimen" id="floating" aria-labelledby="floating-title"><header><p className="sy-eyebrow">22 / File actions</p><h2 id="floating-title">{t.title}</h2><p>{t.intro}</p></header><div className="floating-specimen-actions">
+  return <section className="floating-specimen" id="floating" aria-labelledby="floating-title"><header><h2 id="floating-title">{t.title}</h2><p>{t.intro}</p></header><div className="floating-specimen-actions">
     <SystemMenu label={t.menu} align="start" trigger={props => <SystemButton {...props}>{t.menu}</SystemButton>} items={[{ id: 'copy', label: t.copy, onSelect: () => setSelectedFile('AfterlightExample.tsx') }, { id: 'rename', label: <span className="system-menu-item-label">{t.rename}<small>{t.unavailable}</small></span>, disabled: true, onSelect: () => {} }, { id: 'remove', label: t.remove, destructive: true, onSelect: () => setSelectedFile(null) }]} />
   </div><p className="floating-specimen-note">{t.body}</p><p className="floating-specimen-note">{t.note}</p><p className="floating-specimen-status" role="status">{t.notice} <strong>{selectedFile ?? t.cleared}</strong></p></section>;
 }

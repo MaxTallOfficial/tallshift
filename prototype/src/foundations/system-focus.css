@@ -5,7 +5,8 @@
 [data-input-modality="pointer"] :is(.system-checkbox-box,.system-radio-mark,.system-segmented-choice){outline:none!important;box-shadow:none!important}
 [data-input-modality="pointer"] :is(.sm-control,.sys-search-control):focus-within{outline:none!important;box-shadow:none!important}
 [data-input-modality="pointer"] .sys-search-control:focus-within{border-color:var(--f-control-border)}
-[data-input-modality="pointer"] :is(input:not([type="checkbox"],[type="radio"],[type="range"]),textarea):focus:not([aria-invalid="true"]){border-color:var(--f-control-border)}
+[data-input-modality="pointer"] .system-field-affixed:focus-within{outline:none;box-shadow:none}
+[data-input-modality="pointer"] .system-field-affixed:not([data-invalid]):focus-within{border-color:var(--f-control-border)}
 [data-input-modality="pointer"] .sys-select-trigger:focus-visible:not([aria-expanded="true"]){border-color:var(--f-control-border)}
 /* One keyboard ring, rather than an inset ring combined with a global outline. */
 [data-input-modality="keyboard"] .sys-select .sys-select-trigger:focus-visible{

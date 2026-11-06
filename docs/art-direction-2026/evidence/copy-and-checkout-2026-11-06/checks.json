@@ -1,0 +1,2070 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "url": "http://127.0.0.1:4173/ru",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library",
+      "width": 320,
+      "tag": "expanded-filters",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/pricing",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=saved",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=purchases",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=orders",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=updates",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=product",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=bundle",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/missing-page",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/pricing",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=saved",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=purchases",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=orders",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=updates",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=product",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=bundle",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/missing-page",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/pricing",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=saved",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=purchases",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=orders",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=updates",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=product",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=bundle",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/missing-page",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/pricing",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=saved",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=purchases",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=orders",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=updates",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=product",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=bundle",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/missing-page",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/pricing",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=saved",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=purchases",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=orders",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/account?tab=updates",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=product",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=bundle",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/missing-page",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library",
+      "width": 320,
+      "tag": "expanded-filters",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/pricing",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=saved",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=purchases",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=orders",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=updates",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=product",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=bundle",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/missing-page",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/pricing",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=saved",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=purchases",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=orders",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=updates",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=product",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=bundle",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/missing-page",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/pricing",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=saved",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=purchases",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=orders",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=updates",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=product",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=bundle",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/missing-page",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/pricing",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=saved",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=purchases",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=orders",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=updates",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=product",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=bundle",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/missing-page",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/pricing",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=saved",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=purchases",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=orders",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/account?tab=updates",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=product",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=bundle",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/missing-page",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library",
+      "width": 320,
+      "tag": "expanded-filters",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/pricing",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=saved",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=purchases",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=orders",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=updates",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=product",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=bundle",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/missing-page",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/pricing",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=saved",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=purchases",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=orders",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=updates",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=product",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=bundle",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/missing-page",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/pricing",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=saved",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=purchases",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=orders",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=updates",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=product",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=bundle",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/missing-page",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/pricing",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=saved",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=purchases",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=orders",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=updates",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=product",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=bundle",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/missing-page",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/pricing",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=saved",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=purchases",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=orders",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/account?tab=updates",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=product",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=bundle",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/missing-page",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-split-hero",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-feature-grid",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/product-demo-hero",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/product-feature-steps",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/product-pricing-compare",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/editorial-title-hero",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/editorial-project-index",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/editorial-contact-footer",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/playful-sticker-hero",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/playful-question-cards",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/playful-orbit-cta",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/press-button",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-tabs",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/segmented-navigation",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/metric-switcher",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/project-card",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/media-gallery",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/magnetic-button",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/testimonial-switcher",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/stagger-group",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/soft-mesh-background",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/pointer-spotlight",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/context-bridge",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/line-assemble",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/focus-plane",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/edge-unfold",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/ledger-reflow",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/scroll-chapters",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/metric-roll",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-split-hero",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-feature-grid",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/product-demo-hero",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/product-feature-steps",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/product-pricing-compare",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/editorial-title-hero",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/editorial-project-index",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/editorial-contact-footer",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/playful-sticker-hero",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/playful-question-cards",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/playful-orbit-cta",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/press-button",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-tabs",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/segmented-navigation",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/metric-switcher",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/project-card",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/media-gallery",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/magnetic-button",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/testimonial-switcher",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/stagger-group",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/soft-mesh-background",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/pointer-spotlight",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/context-bridge",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/line-assemble",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/focus-plane",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/edge-unfold",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/ledger-reflow",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/scroll-chapters",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/metric-roll",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-split-hero",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-feature-grid",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/product-demo-hero",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/product-feature-steps",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/product-pricing-compare",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/editorial-title-hero",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/editorial-project-index",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/editorial-contact-footer",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/playful-sticker-hero",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/playful-question-cards",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/playful-orbit-cta",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/press-button",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-tabs",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/segmented-navigation",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/metric-switcher",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/project-card",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/media-gallery",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/magnetic-button",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/testimonial-switcher",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/stagger-group",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/soft-mesh-background",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/pointer-spotlight",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/context-bridge",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/line-assemble",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/focus-plane",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/edge-unfold",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/ledger-reflow",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/scroll-chapters",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/metric-roll",
+      "width": 320,
+      "tag": "every-title",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay?view=prompt",
+      "width": 320,
+      "tag": "AI-request",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay?view=prompt",
+      "width": 320,
+      "tag": "project-context",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay?view=prompt",
+      "width": 320,
+      "tag": "installation-guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay?view=code",
+      "width": 320,
+      "tag": "source",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay?view=code",
+      "width": 320,
+      "tag": "settings-sheet",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay?view=prompt",
+      "width": 1440,
+      "tag": "AI-request",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay?view=prompt",
+      "width": 1440,
+      "tag": "project-context",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay?view=prompt",
+      "width": 1440,
+      "tag": "installation-guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay?view=code",
+      "width": 1440,
+      "tag": "source",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay?view=prompt",
+      "width": 320,
+      "tag": "AI-request",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay?view=prompt",
+      "width": 320,
+      "tag": "project-context",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay?view=prompt",
+      "width": 320,
+      "tag": "installation-guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay?view=code",
+      "width": 320,
+      "tag": "source",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay?view=code",
+      "width": 320,
+      "tag": "settings-sheet",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay?view=prompt",
+      "width": 1440,
+      "tag": "AI-request",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay?view=prompt",
+      "width": 1440,
+      "tag": "project-context",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay?view=prompt",
+      "width": 1440,
+      "tag": "installation-guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay?view=code",
+      "width": 1440,
+      "tag": "source",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay?view=prompt",
+      "width": 320,
+      "tag": "AI-request",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay?view=prompt",
+      "width": 320,
+      "tag": "project-context",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay?view=prompt",
+      "width": 320,
+      "tag": "installation-guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay?view=code",
+      "width": 320,
+      "tag": "source",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay?view=code",
+      "width": 320,
+      "tag": "settings-sheet",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay?view=prompt",
+      "width": 1440,
+      "tag": "AI-request",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay?view=prompt",
+      "width": 1440,
+      "tag": "project-context",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay?view=prompt",
+      "width": 1440,
+      "tag": "installation-guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay?view=code",
+      "width": 1440,
+      "tag": "source",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=product&example=new",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=bundle&example=new",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=product&example=product",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=bundle&example=product",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=product&example=expired",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=bundle&example=expired",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=product&example=partial",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=bundle&example=partial",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=product&example=new",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=bundle&example=new",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=product&example=product",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=bundle&example=product",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=product&example=expired",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=bundle&example=expired",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=product&example=partial",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=bundle&example=partial",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=product&example=new",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=bundle&example=new",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=product&example=product",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=bundle&example=product",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=product&example=expired",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=bundle&example=expired",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=product&example=partial",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=bundle&example=partial",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=product&example=new",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=bundle&example=new",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=product&example=product",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=bundle&example=product",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=product&example=expired",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=bundle&example=expired",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=product&example=partial",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/checkout?plan=bundle&example=partial",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=product&example=new",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=bundle&example=new",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=product&example=product",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=bundle&example=product",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=product&example=expired",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=bundle&example=expired",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=product&example=partial",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=bundle&example=partial",
+      "width": 320,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=product&example=new",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=bundle&example=new",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=product&example=product",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=bundle&example=product",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=product&example=expired",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=bundle&example=expired",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=product&example=partial",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/checkout?plan=bundle&example=partial",
+      "width": 1440,
+      "tag": "checkout-examples",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=starter",
+      "width": 390,
+      "tag": "invalid-selection",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=unknown",
+      "width": 390,
+      "tag": "invalid-selection",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/checkout?plan=",
+      "width": 390,
+      "tag": "invalid-selection",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/pricing?example=product",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    }
+  ],
+  "flows": [
+    "All 32 functional titles, complete catalogue and every material route in RU/EN/VI; old canonical identities preserved",
+    "AI explanation, optional project context, step-by-step guide and responsive settings available in all locales",
+    "Checkout: 48 canonical price/ownership examples, repeat payment guard, mobile summary order, invalid selections and pricing roundtrip"
+  ],
+  "errors": [],
+  "blockedRequests": []
+}

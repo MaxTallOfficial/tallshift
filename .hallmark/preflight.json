@@ -1,9 +1,11 @@
 {
-  "date": "2026-11-05",
-  "mode": "refine existing system",
-  "scope": "app",
+  "date": "2026-11-06",
+  "mode": "product layout audit, next pages and first-customer copy rewrite",
+  "scope": "site with app screens",
   "genre": "modern-minimal",
   "locked": "design.md",
+  "latest_task": "Plain-language product copy for first-time visitors aged 16–45; parallel continuation of purchase pages",
+  "continuation": "Functional localized titles for all 32 examples, complete RU/EN/VI copy review and checkout example-calculation screen. Existing identities, prices, entitlements and unavailable commerce preserved.",
   "preserved": [
     "getSaffronTheme light palette",
     "Manrope EN/RU/VI",
@@ -17,13 +19,17 @@
     "prototype/src/foundations/SystemIcon.tsx:1",
     "AGENTS.md:1"
   ],
-  "material": "Actual local components, one working State Relay recipe, existing review states. No invented proof, new stock images or testimonials.",
+  "material": "32 canonical descriptions, one working State Relay, existing source/prompt/ZIP; no invented facts.",
   "introduced": [
-    "shared spacing tokens",
-    "semantic colour usage instead of divergent fallback copies",
-    "quieter specimen frames",
-    "single-colour headings",
-    "catalog and offer hierarchy"
+    "compact catalogue heading and search-first composition",
+    "disclosed filter controls",
+    "preview-first material hierarchy",
+    "inline kit explanations",
+    "Hallmark knowledge-base rule",
+    "home, pricing and local account pages",
+    "shared material card and explicit preview host width",
+    "dedicated copywriter and first-customer comprehension ledger"
   ],
-  "working_tree": "Pre-existing changes retained. Binary diff saved outside repository at /tmp/tallshift-before-hallmark-2026-11-05.patch; no stash/reset/commit of existing work. User authorised corrections without another approval."
+  "working_tree": "Clean at start. No routes or component trees deleted.",
+  "upstream": "e34ccaed6438e3edb5bc9a62ee16685a24d0ecb4, origin/main already matches HEAD"
 }

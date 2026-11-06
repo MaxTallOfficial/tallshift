@@ -1,0 +1,188 @@
+
+> tallshift-local-prototype@0.1.0 test
+> node --test tests/*.test.ts
+
+9:19:18 AM [vite] (client) Re-optimizing dependencies because vite config has changed
+9:19:19 AM [vite] (client) [optimizer] scanning dependencies...
+9:20:32 AM [vite] (client) [optimizer] bundling dependencies...
+✔ button defaults to a non-submitting native button and permits explicit submit (792.758625ms)
+✔ busy button emits busy and unavailable state while retaining the original label (122.562958ms)
+✔ icon action has an explicit accessible name and exposes toggle state (27.828542ms)
+✔ tablist emits one tab stop, unique IDs and links to caller-owned panels (73.254541ms)
+✔ tablist fallback never selects a disabled option and empty groups have no tab stops (40.390709ms)
+✔ composed tabs retain all panels and hide inactive panels from interaction semantics (68.300833ms)
+9:19:18 AM [vite] (client) Re-optimizing dependencies because vite config has changed
+9:19:19 AM [vite] (client) [optimizer] scanning dependencies...
+9:19:26 AM [vite] (client) [optimizer] bundling dependencies...
+✔ buyer ownership changes prices, badges and actions on the cards themselves (3447.043167ms)
+✔ expired updates and a partial refund show distinct visible card states (421.69675ms)
+✔ short explanatory hints remain visible without opening a popup (751.229375ms)
+9:19:18 AM [vite] (client) Re-optimizing dependencies because vite config has changed
+9:19:19 AM [vite] (client) [optimizer] scanning dependencies...
+9:19:26 AM [vite] (client) [optimizer] bundling dependencies...
+✔ pagination clamps invalid input and reports exact first/last item including empty results (60.266458ms)
+✔ page window remains bounded with endpoints and selected page for every position (2047.375834ms)
+✔ content card labels its heading and separates open/favorite actions (858.148417ms)
+✔ planned content requires visible reason associated with disabled action (1.685625ms)
+✔ collection separates selected button from named membership disclosure (124.255292ms)
+✔ pagination exposes current page and focusable guarded boundaries (9.54675ms)
+✔ catalog form grouping does not promise toolbar arrow navigation (52.342917ms)
+9:19:17 AM [vite] (client) Re-optimizing dependencies because vite config has changed
+9:19:19 AM [vite] (client) [optimizer] scanning dependencies...
+9:20:33 AM [vite] (client) [optimizer] bundling dependencies...
+✔ field affixes are described, escape text and never rewrite the submitted value (464.941458ms)
+✔ search signals explicit loading/error without stale active descendant (131.040833ms)
+✔ menus distinguish checkbox and radio checked state from simple actions (49.780125ms)
+✔ standalone theme scopes all approved variables and locale without body mutation (25.124375ms)
+✔ duration accepts both endpoints and every supported step without clamping (17.989417ms)
+✔ invalid number drafts never yield an applied value (0.328583ms)
+✔ motion Off takes precedence, then system reduction, without discarding duration (10.208958ms)
+✔ HEX accepts opaque six- or three-digit colors and returns canonical uppercase (0.929ms)
+✔ HEX rejects incomplete colors, alpha, names and CSS expressions (2.858834ms)
+✔ preview label mirrors the material foreground and reports its actual ratio (1.009792ms)
+✔ normal-text contrast remains valid throughout a representative RGB lattice (160.641459ms)
+9:19:17 AM [vite] (client) Re-optimizing dependencies because vite config has changed
+9:19:19 AM [vite] (client) [optimizer] scanning dependencies...
+9:19:26 AM [vite] (client) [optimizer] bundling dependencies...
+✔ select never presents the first option as an unknown controlled value (688.77375ms)
+✔ select readOnly stays focusable and labelled; empty select is disabled (31.4015ms)
+✔ readOnly search exposes text without offering a clear mutation (50.761042ms)
+✔ separate segmented instances have independent native radio groups and linked descriptions (17.289375ms)
+9:19:17 AM [vite] (client) Re-optimizing dependencies because vite config has changed
+9:19:19 AM [vite] (client) [optimizer] scanning dependencies...
+9:19:25 AM [vite] (client) [optimizer] bundling dependencies...
+✔ links preserve native destination/target and merge opener protection with caller rel (671.941583ms)
+✔ disclosures emit independent native details, headings and labelled mounted content (101.114667ms)
+✔ empty filter groups preserve every sample in canonical order (18.308709ms)
+✔ access choices use OR within their group (4.151125ms)
+✔ readiness is independent of free or paid access (0.991834ms)
+✔ category and filter groups intersect without reordering matches (0.82025ms)
+✔ query terms combine with AND and can match different fields (1.15875ms)
+✔ search covers canonical name, ID, category, pitch and description (2.421375ms)
+✔ Vietnamese accented, unaccented and NFD queries find the same sample (6.363958ms)
+✔ Russian and Vietnamese aliases remain searchable across locale (1.199ms)
+✔ query and cross-group filters intersect, including empty matches (0.496208ms)
+✔ filtering preserves frozen inputs and returns a fresh array of original records (2.50225ms)
+✔ effects and recipes are subtypes of the same public animations group (0.540458ms)
+9:19:25 AM [vite] (client) [optimizer] scanning dependencies...
+9:19:35 AM [vite] (client) [optimizer] bundling dependencies...
+✔ queue updates in place, preserves order and does not evict older messages (39.997667ms)
+✔ toast region uses one announcer and passive cards with named dismiss controls (808.224375ms)
+✔ inline alerts are static by default and announce only when requested (77.763375ms)
+✔ badge is passive, skeleton decorative, empty state has a named heading (565.08975ms)
+✔ operational toast default defers to a client viewport portal rather than inline cards (99.715125ms)
+✔ right-edge dropdown flips to the trigger right edge before viewport clamping (4.671958ms)
+✔ left-edge dropdown flips to the trigger left edge when end alignment cannot fit (0.52175ms)
+✔ requested alignment is retained when it fits; viewport offsets and gutters are respected (0.484125ms)
+9:21:55 AM [vite] (client) [optimizer] scanning dependencies...
+9:21:59 AM [vite] (client) [optimizer] bundling dependencies...
+✔ closed menu keeps a named trigger and omits hidden menu relationships (654.321167ms)
+✔ open menu links trigger to menu and exposes disabled and destructive item states (59.858833ms)
+✔ controlled closed overrides defaultOpen (3.555125ms)
+✔ popover is explicitly nonmodal, named by heading and contains named close action (45.436875ms)
+✔ tooltip has no dangling description or essential content in initial closed markup (14.193666ms)
+✔ floating specimen renders all three locales without duplicate IDs or unavailable action execution claims (52.949458ms)
+✔ dropdown buttons provide a decorative state-aware chevron without duplicating explicit icons (37.107ms)
+✔ multi-select renders selected labels and independent removal controls in its trigger field (79.637083ms)
+✔ empty multi-select uses a placeholder and supports a disabled trigger (34.750375ms)
+✔ error progress exposes a localized text status linked to the progressbar (1074.4675ms)
+✔ the whole UI icon inventory resolves to Duotone Rounded in all supported sizes (710.152875ms)
+✔ icon-only information buttons do not add a dropdown chevron (61.683583ms)
+9:21:22 AM [vite] (client) [optimizer] scanning dependencies...
+9:21:27 AM [vite] (client) [optimizer] bundling dependencies...
+✔ text input links label, helper and error while retaining external descriptions (564.521416ms)
+✔ read-only input and disabled textarea keep native restrictions and accessible messages (10.716625ms)
+✔ checkbox carries native form attributes, error and read-only semantics (41.470208ms)
+✔ radio instances generate independent names and preserve disabled option semantics (49.628459ms)
+✔ pending switch keeps the confirmed checked state and a focusable busy control (4.630167ms)
+✔ color apply is enabled only for a valid changed canonical color (2766.736083ms)
+✔ candidate palettes have the requested accents; the default is Berry (16.158875ms)
+✔ every intended text, control and focus pairing meets its actual contrast threshold (19.469167ms)
+✔ each palette changes the whole neutral base while keeping the surface hierarchy (0.788625ms)
+✔ palette choice keeps status, focus, syntax and on-accent semantics stable (0.710375ms)
+✔ theme objects are independent and unknown/prototype-like palette IDs are rejected (0.94025ms)
+✔ contrast uses linearized sRGB and rejects colors needing compositing or guessing (1.100541ms)
+✔ Saffron shades preserve the original and provide immutable localized comparison choices (1.131084ms)
+✔ every Saffron shade passes the same 49 contrast pairings (16.809875ms)
+✔ Saffron shade changes keep a single neutral base, semantic colors and syntax (1.111916ms)
+✔ Saffron shade lookup, themes and checks reject unknown and prototype-like IDs (3.898958ms)
+✔ UI and transferable examples contain no hand-authored SVG icon geometry (259.134417ms)
+✔ every native disclosure uses a library indicator instead of a browser glyph (21.48125ms)
+✔ disclosure CSS never paints a symbol or line icon (12.765ms)
+9:21:22 AM [vite] (client) [optimizer] scanning dependencies...
+✔ pointer focus stays pointer while typing; Tab and navigation restore keyboard mode (8.457375ms)
+✔ theme scopes share modality across the trusted preview document and clean up separately (0.541375ms)
+✔ every canonical material has human labels in all three interface languages (131.353083ms)
+✔ translated membership preserves canonical IDs, order and counts without raw ID fallback (8.023875ms)
+✔ public interface copy does not expose catalog IDs, release tags or internal membership terminology (4.196917ms)
+9:21:25 AM [vite] (client) [optimizer] scanning dependencies...
+9:21:28 AM [vite] (client) [optimizer] bundling dependencies...
+✔ dialog renders a named native dialog and localized close action; never opens non-modally during SSR (1084.458ms)
+✔ sheet shares modal semantics, optional description has no dangling reference (19.933833ms)
+✔ localized specimens have unique modal labels and real form ownership without nested dialogs (87.995333ms)
+✔ validation returns the NFC-normalized, trimmed name used for storage (4.191959ms)
+✔ duplicate detection treats NFC, NFD and case variations as the same name (0.325292ms)
+✔ the minimum length counts visible graphemes, including stacked Vietnamese marks (0.460416ms)
+✔ the 40-grapheme limit accepts combining marks and joined emoji without a UTF-16 cutoff (2.291ms)
+✔ new selections have exact minor-unit prices; ownership never manufactures paid checkout (5.6875ms)
+✔ Product upgrade chooses best eligible condition without stacking credits (1.136791ms)
+✔ adding owned materials cannot increase a quote or create a zero-cost grant for missing paid IDs (1.645166ms)
+✔ pricing routes preserve canonical offer IDs, unique contents and price hypotheses (72.094209ms)
+✔ localized comparisons describe the same three routes with no missing columns (85.687625ms)
+✔ Product-first milestone proposes only the complete Product scope, without enabling current commerce (5.916417ms)
+✔ product catalog preserves every canonical identity and accurately exposes one working material (17.427584ms)
+✔ catalog URL roundtrip preserves combined criteria and removes default noise (1.186833ms)
+✔ combined filters handle ready, planned, free and empty saved states without granting access (23.605291ms)
+✔ collection filters honor overlapping grants and accent-insensitive multilingual search (419.476542ms)
+✔ the animation category combines motion recipes and effects without losing any material (10.736959ms)
+✔ export rejects an invalid or unapplied draft and permits an equivalent short HEX (1.642208ms)
+✔ unverified ownership cannot permit buying again or downloading (2.279792ms)
+✔ payment received but access pending is distinct from pending payment, with no second purchase (0.746292ms)
+✔ refund after upgrade preserves exactly the 17 separately bought materials (0.805667ms)
+✔ expired updates and failed delivery do not revoke ownership or create a buy-again action (8.019417ms)
+✔ coverage is per owned material, takes the latest valid grant and never renews on upgrade (260.6825ms)
+✔ entry URLs default to the localized home without changing catalog URLs (7.334584ms)
+✔ new product pages preserve locale, account tab and fragments (0.666792ms)
+✔ localized catalog and material routes retain filter, view and appearance parameters (1.408542ms)
+✔ malformed encodings, unsupported route structures and escaping traversal are rejected (2.114959ms)
+✔ switching languages preserves catalog criteria and complete material links, including planned material (0.579833ms)
+✔ appearance roundtrip fixes recipe version and excludes private context (114.459958ms)
+✔ unknown, runtime, invalid, oversized and mismatched-version shares are rejected (2.695625ms)
+9:21:32 AM [vite] (client) [optimizer] scanning dependencies...
+9:21:35 AM [vite] (client) [optimizer] bundling dependencies...
+✔ wordmark and compact mark remain named native home links (727.696083ms)
+✔ navigation keeps current location and skip destination distinct from its disclosure state (262.227875ms)
+✔ locale choice has three language names, language hints and exactly one current native radio (76.067375ms)
+✔ visual type role does not override requested semantic heading level (50.084125ms)
+✔ planned offers cannot expose enabled purchase actions even if a callback was supplied (38.050833ms)
+✔ available offers can invoke a real action and retain an accessible article title (31.749166ms)
+✔ pending/error/no-access states cannot enable file actions; owner needs a callback and file readiness (49.123375ms)
+✔ inactive stable-height state is inert and hidden; announcements are explicitly opt-in (27.320125ms)
+✔ a planned offer may expose selection review without exposing a purchase action (22.6335ms)
+✔ pending is synchronous; success follows the real Promise, without timers (9.474584ms)
+✔ a late success cannot overwrite a newer host error (0.505916ms)
+✔ operation rejection is handled and cleanup invalidates pending work (0.66125ms)
+✔ subscribers are removed, instances are isolated, destroy is final (0.629333ms)
+✔ synchronous host exceptions publish an error and allow retry (0.2785ms)
+✔ an abort handler cannot settle the replaced request (0.256917ms)
+✔ collection specimens preserve canonical membership, access and titles (45.118583ms)
+✔ the paid specimen matches the planned offer and cannot advertise live delivery (1.842709ms)
+✔ sample availability is derived from canonical implementation status (1.065625ms)
+✔ coverage tracks specimens separately from shared APIs and release approval (360.305125ms)
+✔ system aliases resolve to the approved color and consistent component roles (155.116542ms)
+✔ token handoff rejects missing references, cycles, mixed types and partial aliases (8.749833ms)
+9:21:37 AM [vite] (client) [optimizer] scanning dependencies...
+9:21:59 AM [vite] (client) [optimizer] bundling dependencies...
+✔ code panel preserves source whitespace and escapes hostile markup (190.645958ms)
+✔ code panel supports host navigation and toolbar without wrapping interactive descendants (43.79825ms)
+✔ prompt panel has an exact safely escaped raw fallback and host readable projection (21.19625ms)
+✔ copy failure keeps the failed payload selectable, labelled and read only (8.102208ms)
+✔ download distinguishes unavailable, pending and visible error without claiming completion (23.345916ms)
+ℹ tests 145
+ℹ suites 0
+ℹ pass 145
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 200903.435125

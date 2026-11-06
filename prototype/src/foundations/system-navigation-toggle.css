@@ -1,0 +1,7 @@
+/* Hallmark · component: navigation disclosure · genre: modern-minimal · theme: Tallshift Afterlight (brand) · built: the project · v2.0.0 */
+/* Hallmark · pre-emit critique: a visible name and explicit expanded state replace an anonymous icon square. */
+.system-navigation-toggle.system-button { width:auto;flex:none;gap:var(--sy-space-8);padding-inline:var(--sy-space-12);background:var(--f-inset);border-color:var(--f-control-border); }
+.system-navigation-toggle.system-button[aria-expanded=true] { color:var(--f-accent);border-color:var(--f-selected-border);background:var(--f-selected-bg); }
+.system-navigation-toggle.system-button:focus-visible { outline:2px solid var(--f-focus);outline-offset:3px; }
+@media(max-width:599px) { .system-navigation-toggle.system-button { padding-inline:var(--sy-space-8); } }
+@media(forced-colors:active) { .system-navigation-toggle.system-button { border-color:ButtonText;background:Canvas;color:ButtonText; }.system-navigation-toggle.system-button[aria-expanded=true] { border-color:Highlight;color:LinkText; } }

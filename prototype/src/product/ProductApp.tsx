@@ -3,18 +3,25 @@ import { SystemBrandMark } from '../foundations/SystemBrandMark';
 import { SystemButton } from '../foundations/SystemButton';
 import { SystemIcon } from '../foundations/SystemIcon';
 import { SystemInlineAlert } from '../foundations/SystemInlineAlert';
-import { SystemLocaleControl } from '../foundations/SystemLocaleControl';
-import { SystemNavigationShell } from '../foundations/SystemNavigationShell';
 import { SystemTheme } from '../foundations/SystemTheme';
 import { CatalogPage } from './CatalogPage';
 import { materials } from './catalog-data';
 import { localizedProductHref, productRoute, type ProductLocale } from './routes';
 import { productCopy } from './product-copy';
+import { pageCopy } from './page-copy';
+import { checkoutCopy } from './checkout-copy';
+import {ProductHeader} from './ProductHeader';
+import {materialDisplayName} from './material-presentation';
 import '../foundations/system-focus.css';
 import './product.css';
+import './tokens.css';
 
 const current = () => productRoute(new URL(location.href));
 const MaterialPage = lazy(() => import('./MaterialPage').then(module => ({ default: module.MaterialPage })));
+const HomePage = lazy(() => import('./HomePage').then(module => ({ default: module.HomePage })));
+const PricingPage = lazy(() => import('./PricingPage').then(module => ({ default: module.PricingPage })));
+const AccountPage = lazy(() => import('./AccountPage').then(module => ({ default: module.AccountPage })));
+const CheckoutPage = lazy(() => import('./CheckoutPage').then(module => ({ default: module.CheckoutPage })));
 const savedKey = 'tallshift:saved:v1';
 function readSaved() {
   try {
@@ -28,11 +35,12 @@ export default function ProductApp() {
   const [favorites, setFavorites] = useState(readSaved);
   const [navigationTick, setNavigationTick] = useState(0);
   const main = useRef<HTMLElement>(null);
-  const catalogSearch = useRef(!route.slug ? route.search : '');
+  const catalogSearch = useRef(!route.page && !route.slug ? route.search : '');
   const nextScroll = useRef(0);
   const t = productCopy[route.locale];
+  const pages = pageCopy[route.locale];
   const material = materials.find(item => item.slug === route.slug);
-  if (!route.slug) catalogSearch.current = route.search;
+  if (!route.page && !route.slug) catalogSearch.current = route.search;
 
   useEffect(() => {
     const previousRestoration = history.scrollRestoration; history.scrollRestoration = 'manual';
@@ -53,7 +61,7 @@ export default function ProductApp() {
   }, []);
   useEffect(() => {
     document.documentElement.lang = route.locale;
-    document.title = `${route.notFound || (route.slug && !material) ? '404' : material?.name ?? t.materials} — Tallshift`;
+    document.title = `${route.notFound || (route.slug && !material) ? '404' : route.page === 'checkout' ? checkoutCopy[route.locale].title : route.page ? pages[route.page] : material ? materialDisplayName(material,route.locale) : t.materials} — Tallshift`;
   }, [route, material, t]);
   useLayoutEffect(() => {
     if (navigationTick === 0) return;
@@ -83,7 +91,7 @@ export default function ProductApp() {
     const anchor = (event.target as Element).closest<HTMLAnchorElement>('a[href]');
     if (!anchor || anchor.target || anchor.download || anchor.getAttribute('href')?.startsWith('#')) return;
     const url = new URL(anchor.href, location.href);
-    if (url.origin !== location.origin || !/^\/(en|ru|vi)\/library(?:\/|$)/.test(url.pathname)) return;
+    if (url.origin !== location.origin || !/^\/(en|ru|vi)(?:\/|$)/.test(url.pathname)) return;
     event.preventDefault(); navigate(anchor.href);
   }
   function toggleFavorite(id: string) {
@@ -94,11 +102,13 @@ export default function ProductApp() {
   }
 
   return <SystemTheme locale={route.locale} className="tp-app"><div onClick={intercept}>
-    <div className="tp-shell-wrap"><SystemNavigationShell className="tp-shell" brand={<SystemBrandMark href={`/${route.locale}/library`} aria-label="Tallshift" />} edition={t.preview} label={t.nav} localeControl={<SystemLocaleControl locale={route.locale} onChange={localeChanged} />} items={[{ id: 'library', href: `/${route.locale}/library${catalogSearch.current}`, label: t.materials }, { id: 'relay', href: `/${route.locale}/library/state-relay`, label: t.try }]} activeId={route.slug === 'state-relay' ? 'relay' : 'library'} skipLink={{ href: '#product-main', label: t.skip }} menuLabels={{ open: t.menu, close: t.close }} /></div>
+    <ProductHeader route={route} catalogSearch={catalogSearch.current} savedCount={favorites.ids.length} onLocaleChange={localeChanged}/>
     <main id="product-main" ref={main} tabIndex={-1}>
       {favorites.unavailable && <div className="tp-storage-note"><SystemInlineAlert tone="warning" title={t.storage}>{t.storageBody}</SystemInlineAlert></div>}
-      {route.notFound || (route.slug && !material) ? <section className="tp-not-found"><p className="tp-eyebrow">404 / TALLSHIFT</p><h1>{t.notFound}</h1><p>{t.notFoundBody}</p><SystemButton leadingIcon={<SystemIcon name="arrow-left" />} onClick={() => navigate(`/${route.locale}/library`)}>{t.back}</SystemButton></section> : material ? <Suspense fallback={<p className="tp-loading" role="status">Tallshift…</p>}><MaterialPage key={material.id} material={material} locale={route.locale} search={route.search} catalogSearch={catalogSearch.current} onSearchChange={searchChanged} saved={favorites.ids.includes(material.id)} onToggleFavorite={() => toggleFavorite(material.id)} /></Suspense> : <CatalogPage locale={route.locale} search={route.search} onSearchChange={searchChanged} onNavigate={navigate} favorites={favorites.ids} onToggleFavorite={toggleFavorite} />}
+      <Suspense fallback={<p className="tp-loading" role="status">{t.loading}</p>}>
+      {route.notFound || (route.slug && !material) ? <section className="tp-not-found"><h1>{t.notFound}</h1><p>{t.notFoundBody}</p><SystemButton leadingIcon={<SystemIcon name="arrow-left" />} onClick={() => navigate(`/${route.locale}/library`)}>{t.back}</SystemButton></section> : route.page==='home'?<HomePage locale={route.locale} favorites={favorites.ids} onToggleFavorite={toggleFavorite}/>:route.page==='pricing'?<PricingPage locale={route.locale} search={route.search} onSearchChange={searchChanged}/>:route.page==='checkout'?<CheckoutPage locale={route.locale} search={route.search}/>:route.page==='account'?<AccountPage locale={route.locale} search={route.search} onSearchChange={searchChanged} favorites={favorites.ids} onToggleFavorite={toggleFavorite}/>:material ? <MaterialPage key={material.id} material={material} locale={route.locale} search={route.search} catalogSearch={catalogSearch.current} onSearchChange={searchChanged} saved={favorites.ids.includes(material.id)} onToggleFavorite={() => toggleFavorite(material.id)} /> : <CatalogPage locale={route.locale} search={route.search} onSearchChange={searchChanged} onNavigate={navigate} favorites={favorites.ids} onToggleFavorite={toggleFavorite} />}
+      </Suspense>
     </main>
-    <footer className="tp-footer"><div><SystemBrandMark href={`/${route.locale}/library`} aria-label="Tallshift" /><p>{t.footer}</p></div><div><p>{t.by}</p><p>React + TypeScript · EN / RU / VI</p></div></footer>
+    <footer className="tp-footer"><div><SystemBrandMark href={`/${route.locale}`} aria-label="Tallshift" /><p>{t.footer}</p></div><div><p>{t.by}</p><p>React + TypeScript / EN / RU / VI</p></div></footer>
   </div></SystemTheme>;
 }

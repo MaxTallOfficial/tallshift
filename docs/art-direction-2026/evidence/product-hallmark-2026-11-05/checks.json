@@ -1,0 +1,338 @@
+{
+  "checks": [
+    {
+      "locale": "en",
+      "slug": "",
+      "width": 320,
+      "scroll": 320,
+      "lang": "en",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "en",
+      "slug": "/state-relay",
+      "width": 320,
+      "scroll": 320,
+      "lang": "en",
+      "accent": "#EBD183",
+      "tabs": 3
+    },
+    {
+      "locale": "en",
+      "slug": "/starter-split-hero",
+      "width": 320,
+      "scroll": 320,
+      "lang": "en",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "en",
+      "slug": "",
+      "width": 390,
+      "scroll": 390,
+      "lang": "en",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "en",
+      "slug": "/state-relay",
+      "width": 390,
+      "scroll": 390,
+      "lang": "en",
+      "accent": "#EBD183",
+      "tabs": 3
+    },
+    {
+      "locale": "en",
+      "slug": "/starter-split-hero",
+      "width": 390,
+      "scroll": 390,
+      "lang": "en",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "en",
+      "slug": "",
+      "width": 768,
+      "scroll": 768,
+      "lang": "en",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "en",
+      "slug": "/state-relay",
+      "width": 768,
+      "scroll": 768,
+      "lang": "en",
+      "accent": "#EBD183",
+      "tabs": 3
+    },
+    {
+      "locale": "en",
+      "slug": "/starter-split-hero",
+      "width": 768,
+      "scroll": 768,
+      "lang": "en",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "en",
+      "slug": "",
+      "width": 1440,
+      "scroll": 1440,
+      "lang": "en",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "en",
+      "slug": "/state-relay",
+      "width": 1440,
+      "scroll": 1440,
+      "lang": "en",
+      "accent": "#EBD183",
+      "tabs": 3
+    },
+    {
+      "locale": "en",
+      "slug": "/starter-split-hero",
+      "width": 1440,
+      "scroll": 1440,
+      "lang": "en",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "ru",
+      "slug": "",
+      "width": 320,
+      "scroll": 320,
+      "lang": "ru",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "ru",
+      "slug": "/state-relay",
+      "width": 320,
+      "scroll": 320,
+      "lang": "ru",
+      "accent": "#EBD183",
+      "tabs": 3
+    },
+    {
+      "locale": "ru",
+      "slug": "/starter-split-hero",
+      "width": 320,
+      "scroll": 320,
+      "lang": "ru",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "ru",
+      "slug": "",
+      "width": 390,
+      "scroll": 390,
+      "lang": "ru",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "ru",
+      "slug": "/state-relay",
+      "width": 390,
+      "scroll": 390,
+      "lang": "ru",
+      "accent": "#EBD183",
+      "tabs": 3
+    },
+    {
+      "locale": "ru",
+      "slug": "/starter-split-hero",
+      "width": 390,
+      "scroll": 390,
+      "lang": "ru",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "ru",
+      "slug": "",
+      "width": 768,
+      "scroll": 768,
+      "lang": "ru",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "ru",
+      "slug": "/state-relay",
+      "width": 768,
+      "scroll": 768,
+      "lang": "ru",
+      "accent": "#EBD183",
+      "tabs": 3
+    },
+    {
+      "locale": "ru",
+      "slug": "/starter-split-hero",
+      "width": 768,
+      "scroll": 768,
+      "lang": "ru",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "ru",
+      "slug": "",
+      "width": 1440,
+      "scroll": 1440,
+      "lang": "ru",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "ru",
+      "slug": "/state-relay",
+      "width": 1440,
+      "scroll": 1440,
+      "lang": "ru",
+      "accent": "#EBD183",
+      "tabs": 3
+    },
+    {
+      "locale": "ru",
+      "slug": "/starter-split-hero",
+      "width": 1440,
+      "scroll": 1440,
+      "lang": "ru",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "vi",
+      "slug": "",
+      "width": 320,
+      "scroll": 320,
+      "lang": "vi",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "vi",
+      "slug": "/state-relay",
+      "width": 320,
+      "scroll": 320,
+      "lang": "vi",
+      "accent": "#EBD183",
+      "tabs": 3
+    },
+    {
+      "locale": "vi",
+      "slug": "/starter-split-hero",
+      "width": 320,
+      "scroll": 320,
+      "lang": "vi",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "vi",
+      "slug": "",
+      "width": 390,
+      "scroll": 390,
+      "lang": "vi",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "vi",
+      "slug": "/state-relay",
+      "width": 390,
+      "scroll": 390,
+      "lang": "vi",
+      "accent": "#EBD183",
+      "tabs": 3
+    },
+    {
+      "locale": "vi",
+      "slug": "/starter-split-hero",
+      "width": 390,
+      "scroll": 390,
+      "lang": "vi",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "vi",
+      "slug": "",
+      "width": 768,
+      "scroll": 768,
+      "lang": "vi",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "vi",
+      "slug": "/state-relay",
+      "width": 768,
+      "scroll": 768,
+      "lang": "vi",
+      "accent": "#EBD183",
+      "tabs": 3
+    },
+    {
+      "locale": "vi",
+      "slug": "/starter-split-hero",
+      "width": 768,
+      "scroll": 768,
+      "lang": "vi",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "vi",
+      "slug": "",
+      "width": 1440,
+      "scroll": 1440,
+      "lang": "vi",
+      "accent": "#EBD183",
+      "tabs": 0
+    },
+    {
+      "locale": "vi",
+      "slug": "/state-relay",
+      "width": 1440,
+      "scroll": 1440,
+      "lang": "vi",
+      "accent": "#EBD183",
+      "tabs": 3
+    },
+    {
+      "locale": "vi",
+      "slug": "/starter-split-hero",
+      "width": 1440,
+      "scroll": 1440,
+      "lang": "vi",
+      "accent": "#EBD183",
+      "tabs": 0
+    }
+  ],
+  "keyboard": {
+    "mode": "keyboard",
+    "languageControl": true,
+    "ring": "solid"
+  },
+  "checkboxRing": "none",
+  "errors": [],
+  "blockedRequests": [],
+  "requestPolicy": "Only http://127.0.0.1:4173, data, blob and about; remote requests aborted",
+  "interactionChecks": "filter disclosure, empty favorites, pointer/keyboard rings, draft blocking and responsive persistence, Escape"
+}

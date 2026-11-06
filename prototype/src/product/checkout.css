@@ -1,0 +1,69 @@
+/* Hallmark · checked: 2026-11-06 static · genre: modern-minimal · shape: app screen · theme: Tallshift Afterlight (brand) · nav: existing product shell · footer: shared author credit · built: the project · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: unavailable checkout; the exact example calculation is reviewable and no payment or account state is fabricated. */
+.cp-page { max-width:1120px; }
+.cp-back { display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-bottom:24px;color:var(--f-secondary);font-size:14px;text-decoration:none; }
+.cp-back:hover,.cp-free:hover { color:var(--f-accent); }
+.cp-preview { padding:24px;background:var(--f-inset);color:var(--f-secondary);margin-bottom:40px; }
+.cp-preview h2 { font-size:16px;line-height:1.5;letter-spacing:0; }
+.cp-preview > p { max-width:72ch;margin-top:8px;font-size:14px;line-height:1.7; }
+.cp-preview dl { margin-top:16px;font-size:14px;line-height:1.7; }
+.cp-preview dt { color:var(--f-muted); }
+.cp-preview dd { color:var(--f-text);margin-top:4px; }
+.cp-layout { display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);grid-template-areas:"details order";gap:48px;align-items:start; }
+.cp-details { grid-area:details;min-width:0; }
+.cp-details > section + section,.cp-details > .sf-alert,.cp-existing,.cp-existing + section { margin-top:40px; }
+.cp-details h2 { font-size:24px;line-height:1.4;letter-spacing:-.015em; }
+.cp-selection h2 { margin-top:8px;font-size:32px; }
+.cp-label { color:var(--f-muted);font-size:14px; }
+.cp-selection > p:last-of-type { margin-top:16px;color:var(--f-secondary);font-size:16px;line-height:1.7; }
+.cp-counts { display:grid;gap:16px;margin-top:24px; }
+.cp-counts > div,.cp-price-lines > div { display:flex;align-items:baseline;justify-content:space-between;gap:20px; }
+.cp-counts dt { color:var(--f-secondary);font-size:14px;line-height:1.6; }
+.cp-counts dd { color:var(--f-text);font-size:16px;font-variant-numeric:tabular-nums; }
+.cp-items > p,.cp-existing .system-accordion-content > p,.cp-coverage p,.cp-terms p { color:var(--f-secondary);font-size:16px;line-height:1.7;margin-top:16px; }
+.cp-material-list { list-style:none;margin-top:24px;padding:0; }
+.cp-material-list li { display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:16px;border-top:1px solid var(--f-line); }
+.cp-material-list li > div { min-width:0; }
+.cp-material-list a { display:inline-block;max-width:100%;min-height:32px;color:var(--f-text);font-size:16px;line-height:1.5;text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere; }
+.cp-material-list a:hover { color:var(--f-accent); }
+.cp-material-list li > div > span { display:block;color:var(--f-muted);font-size:13px;line-height:1.6;margin-top:4px; }
+.cp-material-list .sf-badge { flex-shrink:0; }
+.cp-existing .system-accordion-content { padding-inline:0; }
+.cp-existing h2 { font-size:20px; }
+.cp-coverage,.cp-terms { padding-top:32px;border-top:1px solid var(--f-line); }
+.cp-coverage > div + div { margin-top:24px; }
+.cp-coverage strong { color:var(--f-text);font-weight:550;font-variant-numeric:tabular-nums; }
+.cp-order { grid-area:order;position:sticky;top:104px;min-width:0;padding:32px;border:1px solid var(--f-line);border-radius:12px;background:var(--f-surface); }
+.cp-order h2 { font-size:24px;line-height:1.4;letter-spacing:-.015em; }
+.cp-total-label { margin-top:16px;color:var(--f-secondary);font-size:14px;line-height:1.6; }
+.cp-amount { margin-top:16px;color:var(--f-text);font-size:44px;font-weight:550;line-height:1.2;letter-spacing:-.025em;font-variant-numeric:tabular-nums; }
+.cp-billing { color:var(--f-secondary);font-size:14px;line-height:1.6;margin-top:8px; }
+.cp-price-lines { display:grid;gap:16px;padding-top:24px;margin-top:24px;border-top:1px solid var(--f-line);font-size:14px;line-height:1.6; }
+.cp-price-lines dt { color:var(--f-secondary); }
+.cp-price-lines dd { flex-shrink:0;color:var(--f-text);font-variant-numeric:tabular-nums; }
+.cp-tax,.cp-payment-reason { color:var(--f-muted);font-size:13px;line-height:1.7;margin-top:20px; }
+.cp-order > .sf-alert { margin-top:24px;padding:0;border:0;background:transparent; }
+.cp-order > .sf-alert .sf-message { min-width:0; }
+.cp-order > .system-button { margin-top:24px;width:100%;white-space:normal; }
+.cp-order > .system-button .system-button-label { white-space:normal; }
+.cp-free { display:inline-flex;min-height:44px;align-items:center;gap:12px;margin-top:20px;color:var(--f-secondary);font-size:14px;line-height:1.5;text-decoration:underline;text-underline-offset:4px; }
+.cp-free .system-icon { flex-shrink:0; }
+.cp-page :is(a,button):focus-visible { outline:2px solid var(--f-focus);outline-offset:4px; }
+@media(max-width:1023px) {
+ .cp-layout { grid-template-columns:minmax(0,1fr) minmax(0,320px);gap:32px; }
+ .cp-order { padding:24px; }
+}
+@media(max-width:767px) {
+ .cp-layout { grid-template-columns:minmax(0,1fr);grid-template-areas:"order" "details";gap:40px; }
+ .cp-preview { padding:16px;margin-bottom:32px; }
+ .cp-preview > p,.cp-preview dl { font-size:16px; }
+ .cp-order { position:static;padding:24px 16px; }
+ .cp-details h2 { font-size:24px; }
+ .cp-selection h2 { font-size:30px; }
+ .cp-counts dt,.cp-label,.cp-total-label,.cp-billing,.cp-price-lines,.cp-tax,.cp-payment-reason,.cp-free,.cp-back { font-size:16px; }
+ .cp-material-list li { align-items:flex-start; }
+ .cp-material-list a { min-height:44px; }
+ .cp-material-list li > div > span { font-size:14px; }
+}
+@media(prefers-reduced-motion:reduce) { .cp-page { scroll-behavior:auto; } }
+@media(forced-colors:active) { .cp-preview,.cp-order { outline:1px solid CanvasText; } }

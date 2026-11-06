@@ -1,0 +1,5 @@
+
+> tallshift-local-prototype@0.1.0 check:design
+> node scripts/hallmark-offline.mjs
+
+sloplint: clean. 0 FAIL, 0 REFLEX, 0 WARN across 15 file(s).

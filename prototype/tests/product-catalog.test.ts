@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import canonical from '../src/data/catalog.json' with { type: 'json' };
 import { catalogPacks, materials } from '../src/product/catalog-data.ts';
 import { catalogDefaults, filterCatalog, readCatalogFilters, writeCatalogFilters } from '../src/product/catalog-model.ts';
+import {productCopy} from '../src/product/product-copy.ts';
 
 test('product catalog preserves every canonical identity and accurately exposes one working material', () => {
   assert.equal(materials.length, 32);
@@ -45,6 +46,8 @@ test('collection filters honor overlapping grants and accent-insensitive multili
   assert.ok(filterCatalog({ ...catalogDefaults, q: 'phan hoi trang thai' }, [], 'vi').some(material => material.id === 'A001'));
   assert.deepEqual(filterCatalog({ ...catalogDefaults, q: 'A001' }, [], 'en').map(material => material.id), ['A001']);
   assert.deepEqual(filterCatalog({ ...catalogDefaults, q: 'контентные вкладки' }, [], 'ru').map(material => material.id), ['C002']);
+  for(const locale of ['en','ru','vi'] as const)assert.ok(filterCatalog({...catalogDefaults,q:productCopy[locale].buttonTitle},[],'en').some(material=>material.id==='A001'));
+  assert.deepEqual(filterCatalog({...catalogDefaults,q:'State Relay'},[],'ru').map(material=>material.id),['A001']);
 });
 
 test('the animation category combines motion recipes and effects without losing any material', () => {

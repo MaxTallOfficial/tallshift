@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "checks": [],
+  "flows": [
+    "Mobile menu: all destinations and demo available, Escape closes and restores focus",
+    "Demo CTA describes function, opens actual material and closes menu",
+    "Language menu: native names, keyboard choice, route and focus preserved",
+    "Language switching preserves material, view, target and hash",
+    "Catalogue criteria survive header navigation through saved materials",
+    "Saved current location is not falsely applied to orders or purchases",
+    "Outside dismissal and responsive switch keep focus visible",
+    "Skip link works; pointer route navigation leaves no focus halo",
+    "Forced colors: language text and selected option visible; Escape recovery",
+    "Reduced motion: creative demo affordance remains still",
+    "Language popup: opaque surface above content, clamped within viewport in 9 cases"
+  ],
+  "errors": [],
+  "blockedRequests": []
+}

@@ -1,0 +1,35 @@
+
+> tallshift-local-prototype@0.1.0 build
+> tsc -b && vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 6179 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                   1.23 kB │ gzip:   0.58 kB
+dist/assets/Manrope-DIRNzeTG.ttf                164.70 kB
+dist/assets/pricing-quote-MvtVm0H-.css            1.18 kB │ gzip:   0.49 kB
+dist/assets/SystemTabs-dbuq7t7Q.css               2.99 kB │ gzip:   0.92 kB
+dist/assets/SystemDialog-Dm4C_VUL.css             3.30 kB │ gzip:   0.97 kB
+dist/assets/CheckoutPage-DTt_OjQX.css             4.86 kB │ gzip:   1.35 kB
+dist/assets/material-presentation-DuJsYsN8.css    5.56 kB │ gzip:   1.37 kB
+dist/assets/pages-CWovl-3I.css                    7.56 kB │ gzip:   2.06 kB
+dist/assets/IntegrationGuide-C4kBwdHS.css        10.44 kB │ gzip:   2.71 kB
+dist/assets/PricingPage-0BDUqTo5.css             15.33 kB │ gzip:   3.08 kB
+dist/assets/MaterialPage-C0rSretd.css            37.69 kB │ gzip:   6.87 kB
+dist/assets/index-BJql8Oxw.css                   69.49 kB │ gzip:  12.07 kB
+dist/assets/pages-DD9Hcp05.js                     0.35 kB │ gzip:   0.25 kB
+dist/assets/SystemTabs-DUhFbCH3.js                2.01 kB │ gzip:   0.90 kB
+dist/assets/AccountPage-DEZo2Nnz.js               2.01 kB │ gzip:   0.99 kB
+dist/assets/SystemDialog-BP9XuwD2.js              3.00 kB │ gzip:   1.29 kB
+dist/assets/HomePage-y2lbEgxB.js                  3.77 kB │ gzip:   1.32 kB
+dist/assets/CheckoutPage-8FBJIsOy.js              5.57 kB │ gzip:   1.73 kB
+dist/assets/pricing-quote-C6osUsSd.js            10.96 kB │ gzip:   4.72 kB
+dist/assets/PricingPage-ChuUjO26.js              15.28 kB │ gzip:   6.01 kB
+dist/assets/MaterialPage-9F-NENUP.js             51.17 kB │ gzip:  17.24 kB
+dist/assets/material-presentation-BPS3JhGZ.js    75.52 kB │ gzip:  22.42 kB
+dist/assets/IntegrationGuide-BdCRiqXy.js        126.74 kB │ gzip:  39.81 kB
+dist/assets/index-BKrkEaiZ.js                   417.44 kB │ gzip: 122.11 kB
+
+✓ built in 648ms

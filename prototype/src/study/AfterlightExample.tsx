@@ -18,43 +18,43 @@ export interface AfterlightExampleProps {
 
 const words = {
   ru: {
-    instrument: 'Кнопка с обратной связью', scenario: 'Сценарий', clipboard: 'Копирование', simulated: 'Ошибка · симуляция',
+    instrument: 'Кнопка с индикатором выполнения', scenario: 'Сценарий', clipboard: 'Копирование', simulated: 'Пример ошибки',
     copy: 'Скопировать текст', working: 'Копируем…', copied: 'Текст скопирован', retry: 'Повторить', simulate: 'Показать ошибку',
     idle: 'Готово', pending: 'Копируем', success: 'Скопировано', error: 'Ошибка', reset: 'Сбросить',
     idleMessage: 'Нажмите кнопку, чтобы скопировать короткий пример.',
-    simulationMessage: 'Посмотрите, как кнопка сообщает об ошибке. Это локальная симуляция.',
+    simulationMessage: 'Нажмите кнопку, чтобы увидеть пример ошибки. Этот режим не копирует текст.',
     pendingMessage: 'Копируем текст в буфер обмена…',
     successMessage: 'Текст скопирован. Вставьте его в любое текстовое поле, чтобы проверить.',
-    errorMessage: 'Не удалось скопировать. Разрешите доступ к буферу и откройте страницу по HTTPS или на localhost.',
-    simulatedError: 'Пример ошибки. Ничего не отправлено на сервер.',
-    stateTrack: 'Состояния кнопки', copyHint: 'Короткий пример', simulationHint: 'Локальная симуляция',
-    clipboardText: 'State Relay — A001\nReact + TypeScript. Кнопка с обратной связью.',
+    errorMessage: 'Не удалось скопировать. Разрешите копирование в настройках браузера и попробуйте ещё раз.',
+    simulatedError: 'Так выглядит ошибка. Чтобы проверить копирование, выберите режим «Копирование».',
+    stateTrack: 'Состояния кнопки', copyHint: 'Короткий пример', simulationHint: 'Пример ошибки',
+    clipboardText: 'State Relay — A001\nReact + TypeScript. Кнопка с индикатором выполнения.',
   },
   en: {
-    instrument: 'Button feedback', scenario: 'Scenario', clipboard: 'Copy text', simulated: 'Error · simulation',
+    instrument: 'Button with a progress indicator', scenario: 'Scenario', clipboard: 'Copy text', simulated: 'Example error',
     copy: 'Copy text', working: 'Copying…', copied: 'Text copied', retry: 'Try again', simulate: 'Show an error',
     idle: 'Ready', pending: 'Copying', success: 'Copied', error: 'Error', reset: 'Reset',
     idleMessage: 'Press the button to copy a short example.',
-    simulationMessage: 'See how the button reports an error. This is a local simulation.',
+    simulationMessage: 'Press the button to see an example error. This mode does not copy text.',
     pendingMessage: 'Copying the text to your clipboard…',
     successMessage: 'Copied. Paste it into any text field to check.',
-    errorMessage: 'Could not copy. Allow clipboard access and open this page over HTTPS or on localhost.',
-    simulatedError: 'Example error. Nothing was sent to a server.',
-    stateTrack: 'Button states', copyHint: 'A short example', simulationHint: 'Local simulation',
-    clipboardText: 'State Relay — A001\nReact + TypeScript. A button with feedback.',
+    errorMessage: 'Could not copy. Allow copying in your browser settings and try again.',
+    simulatedError: 'This is what an error looks like. Choose Copy text to try copying.',
+    stateTrack: 'Button states', copyHint: 'A short example', simulationHint: 'Example error',
+    clipboardText: 'State Relay — A001\nReact + TypeScript. A button with a progress indicator.',
   },
   vi: {
-    instrument: 'Phản hồi của nút', scenario: 'Tình huống', clipboard: 'Sao chép', simulated: 'Lỗi · mô phỏng',
+    instrument: 'Nút có chỉ báo tiến trình', scenario: 'Tình huống', clipboard: 'Sao chép', simulated: 'Ví dụ lỗi',
     copy: 'Sao chép văn bản', working: 'Đang sao chép…', copied: 'Đã sao chép', retry: 'Thử lại', simulate: 'Hiển thị lỗi',
     idle: 'Sẵn sàng', pending: 'Đang sao chép', success: 'Đã sao chép', error: 'Lỗi', reset: 'Đặt lại',
     idleMessage: 'Nhấn nút để sao chép một đoạn văn bản mẫu.',
-    simulationMessage: 'Xem cách nút báo lỗi. Đây là mô phỏng cục bộ.',
+    simulationMessage: 'Nhấn nút để xem ví dụ lỗi. Chế độ này không sao chép văn bản.',
     pendingMessage: 'Đang sao chép văn bản vào bộ nhớ tạm…',
     successMessage: 'Đã sao chép. Dán vào một ô văn bản để kiểm tra.',
-    errorMessage: 'Không sao chép được. Hãy cho phép truy cập bộ nhớ tạm và mở trang qua HTTPS hoặc localhost.',
-    simulatedError: 'Lỗi minh họa. Không có dữ liệu nào được gửi đến máy chủ.',
-    stateTrack: 'Trạng thái của nút', copyHint: 'Văn bản mẫu', simulationHint: 'Mô phỏng cục bộ',
-    clipboardText: 'State Relay — A001\nReact + TypeScript. Nút có phản hồi trạng thái.',
+    errorMessage: 'Không sao chép được. Hãy cho phép sao chép trong cài đặt trình duyệt rồi thử lại.',
+    simulatedError: 'Đây là ví dụ lỗi. Chọn Sao chép để thử sao chép văn bản.',
+    stateTrack: 'Trạng thái của nút', copyHint: 'Văn bản mẫu', simulationHint: 'Ví dụ lỗi',
+    clipboardText: 'State Relay — A001\nReact + TypeScript. Nút có chỉ báo tiến trình.',
   },
 };
 
@@ -114,7 +114,7 @@ export function AfterlightExample({ locale = 'en', motion = 'subtle', accent = '
     <section className={styles.instrument} data-state={state} data-motion={motion} aria-label={`State Relay — ${t.instrument}`} style={{ '--relay-accent': safeAccent, '--relay-on-accent': onAccent, '--relay-duration': `${effectiveDuration}ms` } as CSSProperties}>
       <header className={styles.metadata}>
         <span className={styles.identifier}>A001 <span>/</span> STATE RELAY</span>
-        <span className={styles.currentState}><i aria-hidden="true" />{state}</span>
+        <span className={styles.currentState}><i aria-hidden="true" />{stateLabels[state]}</span>
       </header>
       <div className={styles.actionSurface}>
         <button type="button" className={styles.action} aria-label={labels[state]} aria-describedby={statusId} aria-busy={state === 'pending'} aria-disabled={state === 'pending'} onClick={activate}>

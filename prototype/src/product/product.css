@@ -1,13 +1,15 @@
-html { background:#0D0C09; }
-body { margin:0; }
+/* Hallmark · checked: 2026-11-05 · genre: modern-minimal · shape: app screen · theme: Tallshift Afterlight (brand) · nav: existing product shell · footer: author credit · built: the project · redesign: full · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: variety; catalogue uses a compact search index, material uses the live workbench. */
+html { background:var(--sy-page-canvas);overflow-x:clip; }
+body { margin:0;overflow-x:clip; }
 .tp-app { min-height:100dvh; }
-.tp-app :where(button,input,textarea,select) { font-family:inherit; }
+.tp-app :where(button,input,textarea,select) { font-family:var(--sy-font-ui); }
 .tp-app :where(a,button,pre,[tabindex]):focus-visible { outline:2px solid var(--f-focus);outline-offset:4px; }
 .tp-shell-wrap { width:min(1240px,calc(100% - 64px));margin-inline:auto; }
 .tp-shell .system-shell-main { min-height:88px; }
 .tp-shell nav { gap:32px; }
 .tp-shell .system-shell-edition { border-left:1px solid var(--f-line);padding-left:24px; }
-.tp-eyebrow { display:flex;align-items:center;gap:12px;flex-wrap:wrap;color:var(--f-muted);font-size:12px;font-weight:500;line-height:1.5;letter-spacing:.04em; }
+.tp-eyebrow { display:flex;align-items:center;gap:12px;flex-wrap:wrap;color:var(--f-muted);font-size:12px;font-weight:500;line-height:1.5;letter-spacing:0; }
 .tp-footer { width:min(1240px,calc(100% - 64px));margin-inline:auto;padding-block:32px;display:flex;justify-content:space-between;gap:32px;border-top:1px solid var(--f-line); }
 .tp-footer p { color:var(--f-muted);font-size:12px;line-height:1.7; }
 .tp-footer > div:last-child { align-self:center;text-align:right; }

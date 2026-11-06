@@ -47,3 +47,6 @@
  .system-content-tile:is(:hover,:focus-within) .dl-relay-action { animation:material-enter 320ms both; }
 }
 html[data-motion=off] .system-content-tile .dl-preview *, .system-study[data-motion=off] .system-content-tile .dl-preview * { animation:none; }
+
+/* Explicit host width keeps a fixed thumbnail height from deriving its width from aspect-ratio. */
+.dl-preview { box-sizing:border-box;width:100%;min-width:0;max-width:100%; }

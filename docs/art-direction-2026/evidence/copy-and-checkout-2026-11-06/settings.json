@@ -1,0 +1,82 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay",
+      "width": 320,
+      "tag": "color-description",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay",
+      "width": 320,
+      "tag": "color-description-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay",
+      "width": 1440,
+      "tag": "color-description",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay",
+      "width": 1440,
+      "tag": "color-description-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay",
+      "width": 320,
+      "tag": "color-description",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay",
+      "width": 320,
+      "tag": "color-description-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay",
+      "width": 1440,
+      "tag": "color-description",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/state-relay",
+      "width": 1440,
+      "tag": "color-description-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay",
+      "width": 320,
+      "tag": "color-description",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay",
+      "width": 320,
+      "tag": "color-description-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay",
+      "width": 1440,
+      "tag": "color-description",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/state-relay",
+      "width": 1440,
+      "tag": "color-description-applied",
+      "issues": []
+    }
+  ],
+  "flows": [
+    "Color field: accurate role label, linked explanation and applied indicator color, RU/EN/VI at 320 and 1440"
+  ],
+  "errors": [],
+  "blockedRequests": []
+}

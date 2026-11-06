@@ -1,0 +1,572 @@
+[
+  {
+    "locale": "ru",
+    "path": "",
+    "headings": [
+      "Блоки и анимации для сайтов на React.",
+      "Код, запрос для ИИ и инструкция.",
+      "Что делает этот пример",
+      "1. Добавьте файлы",
+      "2. Покажите кнопку на странице",
+      "3. Подключите своё действие",
+      "Сохраните поведение и доступность",
+      "Если текст не копируется",
+      "4. Проверьте перед публикацией",
+      "Текущая версия",
+      "Запланированные блоки и анимации",
+      "Первый экран с демо продукта",
+      "Кнопка с эффектами наведения и нажатия",
+      "Появление заголовка по строкам",
+      "Как добавить пример в свой проект",
+      "Откройте пример",
+      "Настройте",
+      "Скачайте файлы",
+      "Проверьте пример перед установкой."
+    ],
+    "text": "Блоки и анимации для сайтов на React.\n\nВыберите блок или анимацию. Скачайте код для своего React-проекта вместе с инструкцией и готовым запросом для ИИ.\n\nОткрыть каталог\nПосмотреть бесплатный пример\n\nСейчас можно скачать один бесплатный пример: кнопку с индикатором выполнения. Без регистрации.\n\nA001 / STATE RELAY\nГотово\nКороткий пример\nСкопировать текст\nКопируем…\nТекст скопирован\nПовторить\nСценарий\nКопирование\nПример ошибки\n01\nГотово\n02\nКопируем\n03\nСкопировано\n04\nОшибка\n\nНажмите кнопку, чтобы скопировать короткий пример.\n\nСбросить\nКнопка с индикатором выполнения (State Relay)\n\nНажмите «Скопировать текст». Кнопка покажет, выполняется ли действие, завершилось ли оно или произошла ошибка.\n\nОткрыть пример и настройки\nКод, запрос для ИИ и инструкция.\n\nПосмотрите файлы перед скачиванием. Запрос для ИИ содержит код и настройки, чтобы помощник мог добавить пример в ваш проект.\n\nОткрыть полный комплект\nКод\nЗапрос для ИИ\nИнструкция\n'use client';\n\nimport { AfterlightExample } from './AfterlightExample';\n\nconst selectedConfig = {\n  \"locale\": \"ru\",\n  \"motion\": \"expressive\",\n  \"accent\": \"#EBD183\",\n  \"duration\": 180\n} as const;\n\nexport default function SelectedExample() {\n  return <AfterlightExample {...selectedConfig} />;\n}\n\nЗапланированные блоки и анимации\n\nНиже — иллюстрации идей. Рабочие примеры и код для них пока недоступны.\n\nМожно использовать: 1 / В плане: 31\n\nS004 / Иллюстрация концепции\nПервый экран с демо продукта\n\nProduct Demo Hero\n\nПервый экран с интерактивным примером, чтобы посетитель мог сразу попробовать ваш продукт.\n\nБлоки страницы\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nНачать\nC001 / Иллюстрация концепции\nКнопка с эффектами наведения и нажатия\n\nPress Button\n\nКнопка или ссылка меняет вид при наведении курсора, нажатии или выборе с клавиатуры.\n\nЭлементы интерфейса\nБесплатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nСначала строка.\nЗатем — ещё.\nA003 / Иллюстрация концепции\nПоявление заголовка по строкам\n\nLine Assemble\n\nЗаголовок плавно появляется строка за строкой.\n\nАнимации\nБесплатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nКак добавить пример в свой проект\n01\nОткройте пример\n\nПосмотрите, как работает блок или анимация, перед подключением к своему сайту.\n\n02\nНастройте\n\nВыберите цвет и анимацию. Укажите тип своего React-проекта: Next.js или Vite.\n\n03\nСкачайте файлы\n\nПолучите архив с кодом, запросом для ИИ и инструкцией по установке.\n\nПроверьте пример перед установкой.\n\nОткройте кнопку с индикатором выполнения. Настройте её и получите код для своего сайта.\n\nПосмотреть бесплатный пример"
+  },
+  {
+    "locale": "ru",
+    "path": "/library",
+    "headings": [
+      "Блоки и анимации для React",
+      "Кнопка с индикатором выполнения",
+      "Кнопка с индикатором выполнения",
+      "Первый экран в две колонки",
+      "Сетка преимуществ",
+      "Завершающий блок с действием",
+      "Первый экран с демо продукта",
+      "Возможности продукта по шагам",
+      "Сравнение тарифов",
+      "Первый экран с крупным текстом",
+      "Список проектов",
+      "Контакты и ссылки внизу страницы",
+      "Первый экран с графическими стикерами",
+      "Ответы на вопросы в карточках",
+      "Блок с кнопкой и графикой вокруг",
+      "Кнопка с эффектами наведения и нажатия",
+      "Вкладки для переключения содержимого",
+      "Навигация по разделам",
+      "Переключение показателей",
+      "Карточка проекта",
+      "Галерея с увеличением изображений",
+      "Кнопка, которая следует за курсором",
+      "Отзывы с ручным переключением",
+      "Плавное появление содержимого",
+      "Поочерёдное появление элементов",
+      "Мягкий градиентный фон",
+      "Подсветка вслед за указателем",
+      "Плавная смена содержимого",
+      "Появление заголовка по строкам",
+      "Переход от миниатюры к подробностям",
+      "Выдвижная панель или меню",
+      "Анимация изменений в списке",
+      "Прогресс чтения по разделам",
+      "Плавная смена чисел"
+    ],
+    "text": "Блоки и анимации для React\n\nБлоки страницы, кнопки и другие элементы интерфейса, а также анимации. Готовые примеры можно настроить и скачать с кодом, запросом для ИИ и инструкцией.\n\nМожно использовать: 1 / В плане: 31\n\nСейчас готов только пример кнопки с индикатором выполнения. Остальные элементы каталога запланированы.\n\nКнопка с индикатором выполнения\n\nПоказывает, идёт ли действие, завершилось ли оно или возникла ошибка. Проверьте это на копировании текста, затем скачайте код для своего проекта.\n\nОткрыть пример\nПоиск по каталогу\nСортировка\nСначала готовые\nФильтры\nТолько избранное (0)\nСбросить фильтры\n\nНайдено: 32Можно использовать: 1 / В плане: 31\n\nReact + TypeScript\nСкопировано\nState Relay\nКнопка с индикатором выполнения\n\nState Relay\n\nКнопка показывает выполнение, успех или ошибку и позволяет повторить действие. Рабочий пример и файлы для скачивания уже доступны.\n\nАнимации\nБесплатно\nОткрыть пример и код\nМожно использовать\n\nReact + TypeScript\n\nS001 / Иллюстрация концепции\nПервый экран в две колонки\n\nStarter Split Hero\n\nПервый экран небольшого сайта с кратким описанием продукта и основным действием.\n\nБлоки страницы\nБесплатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nS002 / Иллюстрация концепции\nСетка преимуществ\n\nStarter Feature Grid\n\nСетка для 3–6 преимуществ: краткие заголовки, пояснения и понятный порядок чтения.\n\nБлоки страницы\nБесплатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nS003 / Иллюстрация концепции\nЗавершающий блок с действием\n\nStarter Action Band\n\nКороткий завершающий блок с одним главным действием, например переходом к форме или регистрации.\n\nБлоки страницы\nБесплатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nS004 / Иллюстрация концепции\nПервый экран с демо продукта\n\nProduct Demo Hero\n\nПервый экран с интерактивным примером, чтобы посетитель мог сразу попробовать ваш продукт.\n\nБлоки страницы\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nS005 / Иллюстрация концепции\nВозможности продукта по шагам\n\nProduct Feature Steps\n\nБлок для 3–5 возможностей продукта. Каждый пункт сопровождается объяснением и визуальным примером.\n\nБлоки страницы\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nS006 / Иллюстрация концепции\nСравнение тарифов\n\nProduct Pricing Compare\n\nСравнение тарифов вашего сайта по цене и возможностям. Блок помогает выбрать тариф, но не содержит оплату.\n\nБлоки страницы\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nСначала строка.\nЗатем — ещё.\nS007 / Иллюстрация концепции\nПервый экран с крупным текстом\n\nEditorial Title Hero\n\nКрупный текст как основа первого экрана портфолио или сайта студии.\n\nБлоки страницы\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nСначала строка.\nЗатем — ещё.\nS008 / Иллюстрация концепции\nСписок проектов\n\nEditorial Project Index\n\nСписок для 3–8 проектов с вашими изображениями, описаниями и ссылками.\n\nБлоки страницы\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nСначала строка.\nЗатем — ещё.\nS009 / Иллюстрация концепции\nКонтакты и ссылки внизу страницы\n\nEditorial Contact Footer\n\nНижняя часть страницы с контактами и ссылками на остальные разделы сайта.\n\nБлоки страницы\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nS010 / Иллюстрация концепции\nПервый экран с графическими стикерами\n\nPlayful Sticker Hero\n\nПервый экран с собственными формами и стикерами, которые подчёркивают характер сайта.\n\nБлоки страницы\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nS011 / Иллюстрация концепции\nОтветы на вопросы в карточках\n\nPlayful Question Cards\n\nКарточки с ответами на 4–8 частых вопросов о вашем продукте или сервисе.\n\nБлоки страницы\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nS012 / Иллюстрация концепции\nБлок с кнопкой и графикой вокруг\n\nPlayful Orbit CTA\n\nЗавершающий блок с действием в центре и графическими элементами вокруг него.\n\nБлоки страницы\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nНачать\nC001 / Иллюстрация концепции\nКнопка с эффектами наведения и нажатия\n\nPress Button\n\nКнопка или ссылка меняет вид при наведении курсора, нажатии или выборе с клавиатуры.\n\nЭлементы интерфейса\nБесплатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nНачать\nC002 / Иллюстрация концепции\nВкладки для переключения содержимого\n\nContent Tabs\n\nВкладки для переключения описания, характеристик или инструкции внутри одной области.\n\nЭлементы интерфейса\nБесплатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nНачать\nC003 / Иллюстрация концепции\nНавигация по разделам\n\nSegmented Navigation\n\nКомпактное меню для перехода между страницами или разделами текущей страницы.\n\nЭлементы интерфейса\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nНачать\nC004 / Иллюстрация концепции\nПереключение показателей\n\nMetric Switcher\n\nПереключатель между группами показателей, например для разных периодов или категорий.\n\nЭлементы интерфейса\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nСначала строка.\nЗатем — ещё.\nC005 / Иллюстрация концепции\nКарточка проекта\n\nProject Card\n\nКарточка с изображением работы, кратким описанием роли автора и ссылкой на проект.\n\nЭлементы интерфейса\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nСначала строка.\nЗатем — ещё.\nC006 / Иллюстрация концепции\nГалерея с увеличением изображений\n\nMedia Gallery\n\nГалерея для 3–12 изображений. Выбранное изображение можно открыть крупнее.\n\nЭлементы интерфейса\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nНачать\nC007 / Иллюстрация концепции\nКнопка, которая следует за курсором\n\nMagnetic Button\n\nКнопка слегка следует за указателем при наведении. Обычное нажатие и работа с клавиатурой сохраняются.\n\nЭлементы интерфейса\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nНачать\nC008 / Иллюстрация концепции\nОтзывы с ручным переключением\n\nTestimonial Switcher\n\nПереключатель для нескольких отзывов. Посетитель сам выбирает, какой отзыв прочитать.\n\nЭлементы интерфейса\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nСначала строка.\nЗатем — ещё.\nE001 / Иллюстрация концепции\nПлавное появление содержимого\n\nContent Reveal\n\nЭлемент плавно появляется один раз. Если анимация отключена, содержимое остаётся видимым.\n\nЭффекты\nБесплатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nСначала строка.\nЗатем — ещё.\nE002 / Иллюстрация концепции\nПоочерёдное появление элементов\n\nStagger Group\n\nЭлементы группы появляются один за другим с небольшой задержкой между ними.\n\nЭффекты\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nСначала строка.\nЗатем — ещё.\nE003 / Иллюстрация концепции\nМягкий градиентный фон\n\nSoft Mesh Background\n\nМягкий градиент для фона отдельного блока, созданный средствами CSS.\n\nЭффекты\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nE004 / Иллюстрация концепции\nПодсветка вслед за указателем\n\nPointer Spotlight\n\nПодсветка фона следует за указателем внутри блока. Текст и содержимое не меняются.\n\nЭффекты\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nA002 / Иллюстрация концепции\nПлавная смена содержимого\n\nContext Bridge\n\nСодержимое плавно меняется между двумя подготовленными представлениями внутри одной области страницы.\n\nАнимации\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nСначала строка.\nЗатем — ещё.\nA003 / Иллюстрация концепции\nПоявление заголовка по строкам\n\nLine Assemble\n\nЗаголовок плавно появляется строка за строкой.\n\nАнимации\nБесплатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nA004 / Иллюстрация концепции\nПереход от миниатюры к подробностям\n\nFocus Plane\n\nМиниатюра переходит в подробный просмотр с плавной сменой размера и положения.\n\nАнимации\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nA005 / Иллюстрация концепции\nВыдвижная панель или меню\n\nEdge Unfold\n\nПанель или меню выдвигается с выбранного края и задвигается при закрытии.\n\nАнимации\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nСначала строка.\nЗатем — ещё.\nA006 / Иллюстрация концепции\nАнимация изменений в списке\n\nLedger Reflow\n\nЭлементы списка плавно перемещаются при добавлении, удалении, фильтрации или смене порядка.\n\nАнимации\nБесплатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nСначала строка.\nЗатем — ещё.\nA007 / Иллюстрация концепции\nПрогресс чтения по разделам\n\nScroll Chapters\n\nПри прокрутке индикатор показывает текущий раздел и общий прогресс чтения страницы.\n\nАнимации\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы.\n\nСначала строка.\nЗатем — ещё.\nA008 / Иллюстрация концепции\nПлавная смена чисел\n\nMetric Roll\n\nЧисло плавно сменяется новым значением с учётом формата чисел выбранного языка.\n\nАнимации\nПлатно\nПосмотреть описание\nВ плане\n\nПример и код пока не готовы."
+  },
+  {
+    "locale": "ru",
+    "path": "/library/state-relay",
+    "headings": [
+      "Кнопка с индикатором выполнения",
+      "Файлы",
+      "Что должен сделать ИИ",
+      "Требования к внедрению",
+      "Настройки примера",
+      "Что делает этот пример",
+      "1. Добавьте файлы",
+      "2. Покажите кнопку на странице",
+      "3. Подключите своё действие",
+      "Сохраните поведение и доступность",
+      "Если текст не копируется",
+      "4. Проверьте перед публикацией",
+      "Текущая версия",
+      "Настроить",
+      "Что вы скачаете",
+      "Код для React",
+      "Готовый запрос для ИИ",
+      "Пошаговая инструкция",
+      "Где пригодится",
+      "Требования и возможности",
+      "Инструкция",
+      "Что делает этот пример",
+      "1. Добавьте файлы",
+      "2. Покажите кнопку на странице",
+      "3. Подключите своё действие",
+      "Сохраните поведение и доступность",
+      "Если текст не копируется",
+      "4. Проверьте перед публикацией",
+      "Текущая версия",
+      "Условия использования кода кнопки"
+    ],
+    "text": "В каталог\nКнопка с индикатором выполнения\n\nКнопка сообщает, что действие выполняется, завершилось или не удалось. Проверьте это на копировании текста, затем настройте пример и скачайте код.\n\nA001\nState Relay\nАнимация\nМожно использовать\nБесплатно\nПример\nКод\nЗапрос для ИИ\nИнструкция\n\nНажмите кнопку, чтобы скопировать пример текста. Переключитесь на пример ошибки, чтобы увидеть неудачный результат. Данные не отправляются на сервер.\n\nШирина примера\nПо ширине\nПланшет · 640\nТелефон · 320\nЗапустить заново\n\nРазмер примера\n896 × 440 px\n\nНастроить\n\nЦвет и анимация меняются сразу в примере и в файлах для скачивания.\n\nТип React-проекта\n\nНужен существующий React-проект. Выберите Next.js или Vite, чтобы получить нужную инструкцию. Если не уверены, спросите разработчика или ИИ-помощника, который работает с вашим проектом.\n\nNext.js\nVite\nОсновной цвет\nКод цвета: # и 3 или 6 символов (0–9, A–F). Например, #EBD183.\nАнимация\nМягкая\nЗаметная\nВыкл.\nДлительность анимации\nПрименено: 160 ms\nms\nОт 0 до 480 мс — до 0,48 секунды. Введите целое число. При нуле состояние меняется сразу.\n\nТекущие настройки добавлены в код и файлы для скачивания.\n\nСкачать комплект\n\nАрхив ZIP: код, запрос для ИИ и инструкция по установке. Бесплатно, без регистрации.\n\nСкопировать ссылку на настройки\nЧто вы скачаете\nКод для React\n\nФайлы на React и TypeScript с отдельными стилями. Их можно читать, менять и использовать в своих проектах.\n\nГотовый запрос для ИИ\n\nТекст с полным кодом и настройками. Вставьте его в ИИ-помощника, в котором работаете над своим проектом, чтобы добавить кнопку.\n\nПошаговая инструкция\n\nКуда положить файлы, как подключить кнопку к своему действию и проверить, что всё работает.\n\nГде пригодится\n\nКогда посетитель копирует текст, отправляет форму или сохраняет изменения, ему важно видеть, что происходит и чем всё закончилось.\n\nТребования и возможности\nReact + TypeScript\nБез новых библиотек для работы примера\nМожно пользоваться клавиатурой и отключить анимацию\nРабочий пример · v0.1.0\n\nБесплатный код можно менять и использовать в своих и коммерческих проектах. Условия использования"
+  },
+  {
+    "locale": "ru",
+    "path": "/pricing",
+    "headings": [
+      "Наборы блоков и анимаций для React.",
+      "Выберите набор",
+      "Познакомьтесь с библиотекой",
+      "Для страницы вашего продукта",
+      "Все четыре платных набора",
+      "Как можно использовать код",
+      "Что происходит после покупки",
+      "Как считается доплата",
+      "Выбранный набор"
+    ],
+    "text": "Наборы блоков и анимаций для React.\n\nStarter бесплатный. Product и All packs оплачиваются один раз, без подписки.\n\nСейчас доступен один бесплатный пример. Остальные элементы набора в плане. Продажи и вход в аккаунт ещё не открыты; состав и цены наборов можно посмотреть.\n\nКак учитываются прежние покупки\nВыберите набор\n\nStarter\n\nБесплатно\n0 $\nБесплатно\nПознакомьтесь с библиотекой\n\nНабор из 9 бесплатных элементов для знакомства с библиотекой. Сейчас готов один пример; остальные запланированы.\n\n9 бесплатных элементов: 3 блока страницы, 2 элемента интерфейса, 1 эффект и 3 анимации\nКод для React, запрос для ИИ и инструкция по установке\nДля своих сайтов и проектов клиентов. Без регистрации.\nЧто входит в набор / 9\nПосмотреть состав\n\nБесплатный пример можно скачать без аккаунта.\n\nДля запуска продукта\n\nProduct\n\nПлатный\n16 $\nUSD · разовый платёж\nДля страницы вашего продукта\n\n6 элементов для сайта продукта: блок с рабочим примером, описание возможностей, сравнение тарифов и элементы управления.\n\n6 элементов: 3 блока страницы, 2 элемента интерфейса и 1 эффект\nКод для React, запрос для ИИ и инструкция по установке\nДля одного человека. Свои и клиентские проекты. Обновления 12 месяцев.\nЧто входит в набор / 6\nПосмотреть состав\n\nРазовая покупка. Без подписки и автоматического продления.\n\nAll packs\n\nПлатный\n39 $\nUSD · разовый платёж\nВсе четыре платных набора\n\nProduct — для сайта продукта, Editorial — для портфолио, Playful — для страниц с графикой и стикерами, UI Motion — для анимации интерфейса.\n\n23 разных элемента из четырёх наборов\nКод для React, запрос для ИИ и инструкция по установке\nДля одного человека. Свои и клиентские проекты. Обновления 12 месяцев.\nЧто входит в набор / 23\nПосмотреть состав\n\nРазовая покупка. Без подписки и автоматического продления.\n\nКак можно использовать код\n\nПокупка для одного человека. Код можно использовать в любом числе своих сайтов и проектов клиентов. Нельзя перепродавать библиотеку исходников или передавать аккаунт команде.\n\nЧто происходит после покупки\n\nПлатный набор включает 12 месяцев обновлений функций купленных элементов. После этого код можно использовать дальше. Новые элементы и будущие наборы приобретаются отдельно.\n\nКак считается доплата\n\nEditorial, Playful и UI Motion будут доступны и отдельно — по $16 за набор до налогов."
+  },
+  {
+    "locale": "ru",
+    "path": "/account?tab=saved",
+    "headings": [
+      "Сохранённое и покупки.",
+      "Вы пока ничего не сохранили."
+    ],
+    "text": "Сохранённое и покупки.\n\nЗдесь можно вернуться к избранному. После запуска покупок здесь же появятся файлы купленных наборов, заказы и обновления.\n\nИзбранное хранится в этом браузере. Вход, покупки и платные загрузки пока недоступны.\n\nИзбранное (0)\nПокупки\nЗаказы\nОбновления\nВы пока ничего не сохранили.\n\nОткройте каталог и нажмите закладку у нужного блока или анимации. Они появятся здесь.\n\nОткрыть каталог"
+  },
+  {
+    "locale": "ru",
+    "path": "/account?tab=purchases",
+    "headings": [
+      "Сохранённое и покупки.",
+      "Покупки ещё не открыты."
+    ],
+    "text": "Сохранённое и покупки.\n\nЗдесь можно вернуться к избранному. После запуска покупок здесь же появятся файлы купленных наборов, заказы и обновления.\n\nИзбранное хранится в этом браузере. Вход, покупки и платные загрузки пока недоступны.\n\nИзбранное (0)\nПокупки\nЗаказы\nОбновления\nПокупки ещё не открыты.\n\nПосле запуска здесь можно будет скачать купленные наборы. Пока можно открыть и скачать бесплатный пример без аккаунта.\n\nПосмотреть бесплатный пример"
+  },
+  {
+    "locale": "ru",
+    "path": "/account?tab=orders",
+    "headings": [
+      "Сохранённое и покупки.",
+      "Заказы пока недоступны."
+    ],
+    "text": "Сохранённое и покупки.\n\nЗдесь можно вернуться к избранному. После запуска покупок здесь же появятся файлы купленных наборов, заказы и обновления.\n\nИзбранное хранится в этом браузере. Вход, покупки и платные загрузки пока недоступны.\n\nИзбранное (0)\nПокупки\nЗаказы\nОбновления\nЗаказы пока недоступны.\n\nКогда покупки заработают, здесь будут ваши заказы, подтверждённые оплаты и чеки.\n\nПосмотреть наборы"
+  },
+  {
+    "locale": "ru",
+    "path": "/account?tab=updates",
+    "headings": [
+      "Сохранённое и покупки.",
+      "Обновлений пока нет."
+    ],
+    "text": "Сохранённое и покупки.\n\nЗдесь можно вернуться к избранному. После запуска покупок здесь же появятся файлы купленных наборов, заказы и обновления.\n\nИзбранное хранится в этом браузере. Вход, покупки и платные загрузки пока недоступны.\n\nИзбранное (0)\nПокупки\nЗаказы\nОбновления\nОбновлений пока нет.\n\nПосле запуска покупок здесь будут новые версии купленных элементов и даты окончания обновлений. Сейчас история покупок недоступна.\n\nПосмотреть наборы"
+  },
+  {
+    "locale": "ru",
+    "path": "/checkout?plan=product",
+    "headings": [
+      "Состав и расчёт цены",
+      "Продажи пока закрыты",
+      "Product",
+      "Product",
+      "Войдут в новую покупку (6)",
+      "Использование кода и обновления"
+    ],
+    "text": "К тарифам\nСостав и расчёт цены\n\nПосмотрите, какие элементы войдут в покупку, сколько они стоят и какие обновления предусмотрены.\n\nПродажи пока закрыты\n\nЗдесь можно посмотреть состав и расчёт цены. Заказ не создаётся, деньги не списываются.\n\nДля расчёта взят пример, не ваш аккаунт\nРаньше ничего не куплено\nProduct\n\nСумма до налогов\n\n16 $\n\nРазовый платёж в долларах США\n\nВ наборе есть запланированные элементы. Пока их нельзя купить или скачать.\n\nЦена всего набора\n16 $\nНужно добавить\n6\n\nНалоги в этот расчёт не включены. Окончательная сумма будет показана перед оплатой.\n\nОплата пока недоступна\nПосмотреть бесплатный пример\n\nВыбранный набор\n\nProduct\n\n3 блока страницы, 2 элемента интерфейса и 1 эффект для сайта продукта.\n\nВсего в наборе\n6\nНужно добавить\n6\nУже есть в этом примере\n0\nВойдут в новую покупку (6)\n\nВ пример расчёта входят только перечисленные ниже элементы.\n\nНавигация по разделам\nЭлемент интерфейса\nВ плане\nПереключение показателей\nЭлемент интерфейса\nВ плане\nПоочерёдное появление элементов\nЭффект\nВ плане\nПервый экран с демо продукта\nБлок страницы\nВ плане\nВозможности продукта по шагам\nБлок страницы\nВ плане\nСравнение тарифов\nБлок страницы\nВ плане\nИспользование кода и обновления\n\nПокупка для одного человека. Код можно использовать в любом числе своих сайтов и проектов клиентов. Нельзя перепродавать библиотеку исходников или передавать аккаунт команде.\n\nОбновления функций для новых купленных элементов доступны 12 месяцев после подтверждения покупки. После этого код можно использовать дальше.\n\nНовые элементы и будущие наборы не входят в эту покупку."
+  },
+  {
+    "locale": "ru",
+    "path": "/checkout?plan=bundle",
+    "headings": [
+      "Состав и расчёт цены",
+      "Продажи пока закрыты",
+      "All packs",
+      "All packs",
+      "Войдут в новую покупку (23)",
+      "Использование кода и обновления"
+    ],
+    "text": "К тарифам\nСостав и расчёт цены\n\nПосмотрите, какие элементы войдут в покупку, сколько они стоят и какие обновления предусмотрены.\n\nПродажи пока закрыты\n\nЗдесь можно посмотреть состав и расчёт цены. Заказ не создаётся, деньги не списываются.\n\nДля расчёта взят пример, не ваш аккаунт\nРаньше ничего не куплено\nAll packs\n\nСумма до налогов\n\n39 $\n\nРазовый платёж в долларах США\n\nВ наборе есть запланированные элементы. Пока их нельзя купить или скачать.\n\nЦена всего набора\n39 $\nНужно добавить\n23\n\nНалоги в этот расчёт не включены. Окончательная сумма будет показана перед оплатой.\n\nОплата пока недоступна\nПосмотреть бесплатный пример\n\nВыбранный набор\n\nAll packs\n\nВсе 23 элемента из четырёх платных наборов: Product, Editorial, Playful и UI Motion.\n\nВсего в наборе\n23\nНужно добавить\n23\nУже есть в этом примере\n0\nВойдут в новую покупку (23)\n\nВ пример расчёта входят только перечисленные ниже элементы.\n\nПлавная смена содержимого\nАнимация\nВ плане\nПереход от миниатюры к подробностям\nАнимация\nВ плане\nВыдвижная панель или меню\nАнимация\nВ плане\nПрогресс чтения по разделам\nАнимация\nВ плане\nПлавная смена чисел\nАнимация\nВ плане\nНавигация по разделам\nЭлемент интерфейса\nВ плане\nПереключение показателей\nЭлемент интерфейса\nВ плане\nКарточка проекта\nЭлемент интерфейса\nВ плане\nГалерея с увеличением изображений\nЭлемент интерфейса\nВ плане\nКнопка, которая следует за курсором\nЭлемент интерфейса\nВ плане\nОтзывы с ручным переключением\nЭлемент интерфейса\nВ плане\nПоочерёдное появление элементов\nЭффект\nВ плане\nМягкий градиентный фон\nЭффект\nВ плане\nПодсветка вслед за указателем\nЭффект\nВ плане\nПервый экран с демо продукта\nБлок страницы\nВ плане\nВозможности продукта по шагам\nБлок страницы\nВ плане\nСравнение тарифов\nБлок страницы\nВ плане\nПервый экран с крупным текстом\nБлок страницы\nВ плане\nСписок проектов\nБлок страницы\nВ плане\nКонтакты и ссылки внизу страницы\nБлок страницы\nВ плане\nПервый экран с графическими стикерами\nБлок страницы\nВ плане\nОтветы на вопросы в карточках\nБлок страницы\nВ плане\nБлок с кнопкой и графикой вокруг\nБлок страницы\nВ плане\nИспользование кода и обновления\n\nПокупка для одного человека. Код можно использовать в любом числе своих сайтов и проектов клиентов. Нельзя перепродавать библиотеку исходников или передавать аккаунт команде.\n\nОбновления функций для новых купленных элементов доступны 12 месяцев после подтверждения покупки. После этого код можно использовать дальше.\n\nНовые элементы и будущие наборы не входят в эту покупку."
+  },
+  {
+    "locale": "ru",
+    "path": "/missing-page",
+    "headings": [
+      "Страница не найдена."
+    ],
+    "text": "Страница не найдена.\n\nПроверьте адрес или откройте каталог блоков и анимаций.\n\nВ каталог"
+  },
+  {
+    "locale": "en",
+    "path": "",
+    "headings": [
+      "Blocks and animations for React sites.",
+      "Source, AI request and setup guide.",
+      "What this example does",
+      "1. Add the files",
+      "2. Display the button",
+      "3. Connect your action",
+      "Keep the button usable",
+      "If copying does not work",
+      "4. Check before publishing",
+      "Current version",
+      "Planned blocks and animations",
+      "Opening section with a live demo",
+      "Button with hover and press effects",
+      "Headline appearing line by line",
+      "How to add an example to your project",
+      "Open an example",
+      "Customize",
+      "Download the files",
+      "Explore the example before installing."
+    ],
+    "text": "Blocks and animations for React sites.\n\nChoose a block or animation. Get the source for your React project, with setup instructions and a ready-to-use request for an AI assistant.\n\nOpen catalog\nView free example\n\nOne free example is ready to download: a button with a progress indicator. No account required.\n\nA001 / STATE RELAY\nReady\nA short example\nCopy text\nCopying…\nText copied\nTry again\nScenario\nCopy text\nExample error\n01\nReady\n02\nCopying\n03\nCopied\n04\nError\n\nPress the button to copy a short example.\n\nReset\nButton with a progress indicator (State Relay)\n\nPress “Copy text”. The button shows whether the action is running, finished or has failed.\n\nOpen example and settings\nSource, AI request and setup guide.\n\nExplore the files before downloading. The AI request includes the source and settings so an assistant can add the example to your project.\n\nOpen the complete kit\nSource\nAI request\nGuide\n'use client';\n\nimport { AfterlightExample } from './AfterlightExample';\n\nconst selectedConfig = {\n  \"locale\": \"en\",\n  \"motion\": \"expressive\",\n  \"accent\": \"#EBD183\",\n  \"duration\": 180\n} as const;\n\nexport default function SelectedExample() {\n  return <AfterlightExample {...selectedConfig} />;\n}\n\nPlanned blocks and animations\n\nThese images show ideas. Working examples and source files are not available yet.\n\nReady to use: 1 / Planned: 31\n\nS004 / Concept illustration\nOpening section with a live demo\n\nProduct Demo Hero\n\nAn opening section with an interactive example that lets visitors try your product.\n\nPage blocks\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nGet started\nC001 / Concept illustration\nButton with hover and press effects\n\nPress Button\n\nA button or link with clear feedback on hover, press and keyboard focus.\n\nInterface elements\nFree\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nOne line.\nThen another.\nA003 / Concept illustration\nHeadline appearing line by line\n\nLine Assemble\n\nA headline appears smoothly, one visual line at a time.\n\nAnimations\nFree\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nHow to add an example to your project\n01\nOpen an example\n\nSee how the block or animation works before adding it to your site.\n\n02\nCustomize\n\nChoose the colour and animation. Select your React project type: Next.js or Vite.\n\n03\nDownload the files\n\nGet an archive with source, a request for an AI assistant and setup instructions.\n\nExplore the example before installing.\n\nOpen the button with a progress indicator. Customize it and get the source for your site.\n\nView free example"
+  },
+  {
+    "locale": "en",
+    "path": "/library",
+    "headings": [
+      "Blocks and animations for React",
+      "Button with a progress indicator",
+      "Button with a progress indicator",
+      "Two-column opening section",
+      "Benefits grid",
+      "Closing call to action",
+      "Opening section with a live demo",
+      "Product feature walkthrough",
+      "Pricing comparison",
+      "Opening section with large type",
+      "Project index",
+      "Contact footer",
+      "Opening section with stickers",
+      "Frequently asked questions",
+      "Call to action with orbiting graphics",
+      "Button with hover and press effects",
+      "Content tabs",
+      "Section navigation",
+      "Metric switcher",
+      "Project card",
+      "Image gallery with enlargement",
+      "Button that follows the pointer",
+      "Testimonials with manual navigation",
+      "Content fade-in",
+      "Elements appearing in sequence",
+      "Soft gradient background",
+      "Background highlight following the pointer",
+      "Smooth content switching",
+      "Headline appearing line by line",
+      "Thumbnail-to-detail transition",
+      "Panel sliding in from an edge",
+      "Animated list changes",
+      "Reading progress by section",
+      "Animated number changes"
+    ],
+    "text": "Blocks and animations for React\n\nPage blocks, buttons and other interface elements, plus animations. Ready examples can be customized and downloaded with source, a request for an AI assistant and setup instructions.\n\nReady to use: 1 / Planned: 31\n\nOnly the button with a progress indicator is ready now. The other catalog items are planned.\n\nButton with a progress indicator\n\nShows whether an action is running, finished or has failed. Check it by copying text, then download the source for your project.\n\nOpen example\nSearch the catalog\nSort by\nReady items first\nFilters\nSaved only (0)\nReset filters\n\nResults: 32Ready to use: 1 / Planned: 31\n\nReact + TypeScript\nCopied\nState Relay\nButton with a progress indicator\n\nState Relay\n\nA button that shows progress, success or an error and lets users retry. The demo and download are ready.\n\nAnimations\nFree\nOpen example and source\nReady to use\n\nReact + TypeScript\n\nS001 / Concept illustration\nTwo-column opening section\n\nStarter Split Hero\n\nA two-column opening for a small product site, with a short introduction and one main action.\n\nPage blocks\nFree\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nS002 / Concept illustration\nBenefits grid\n\nStarter Feature Grid\n\nA grid for three to six benefits, each with a short heading and explanation.\n\nPage blocks\nFree\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nS003 / Concept illustration\nClosing call to action\n\nStarter Action Band\n\nA closing section with one main action, such as opening a form or signing up.\n\nPage blocks\nFree\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nS004 / Concept illustration\nOpening section with a live demo\n\nProduct Demo Hero\n\nAn opening section with an interactive example that lets visitors try your product.\n\nPage blocks\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nS005 / Concept illustration\nProduct feature walkthrough\n\nProduct Feature Steps\n\nPresent three to five product features, each with an explanation and a visual example.\n\nPage blocks\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nS006 / Concept illustration\nPricing comparison\n\nProduct Pricing Compare\n\nCompare the prices and features of plans on your site. Payment processing is not included.\n\nPage blocks\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nOne line.\nThen another.\nS007 / Concept illustration\nOpening section with large type\n\nEditorial Title Hero\n\nAn opening section built around large text for a portfolio or studio site.\n\nPage blocks\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nOne line.\nThen another.\nS008 / Concept illustration\nProject index\n\nEditorial Project Index\n\nAn index for three to eight projects, with your images, descriptions and links.\n\nPage blocks\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nOne line.\nThen another.\nS009 / Concept illustration\nContact footer\n\nEditorial Contact Footer\n\nA page footer with contact details and links to the rest of the site.\n\nPage blocks\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nS010 / Concept illustration\nOpening section with stickers\n\nPlayful Sticker Hero\n\nAn opening section using original shapes and stickers to give a site its own character.\n\nPage blocks\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nS011 / Concept illustration\nFrequently asked questions\n\nPlayful Question Cards\n\nCards with answers to four to eight common questions about your product or service.\n\nPage blocks\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nS012 / Concept illustration\nCall to action with orbiting graphics\n\nPlayful Orbit CTA\n\nA closing action at the centre of a composition, with graphic elements arranged around it.\n\nPage blocks\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nGet started\nC001 / Concept illustration\nButton with hover and press effects\n\nPress Button\n\nA button or link with clear feedback on hover, press and keyboard focus.\n\nInterface elements\nFree\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nGet started\nC002 / Concept illustration\nContent tabs\n\nContent Tabs\n\nTabs for switching between related content, such as a description, specifications and instructions.\n\nInterface elements\nFree\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nGet started\nC003 / Concept illustration\nSection navigation\n\nSegmented Navigation\n\nA compact menu for moving between pages or sections of the current page.\n\nInterface elements\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nGet started\nC004 / Concept illustration\nMetric switcher\n\nMetric Switcher\n\nSwitch between groups of figures, for example for different periods or categories.\n\nInterface elements\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nOne line.\nThen another.\nC005 / Concept illustration\nProject card\n\nProject Card\n\nA card with a project image, a short description of your role and a link to the project.\n\nInterface elements\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nOne line.\nThen another.\nC006 / Concept illustration\nImage gallery with enlargement\n\nMedia Gallery\n\nA gallery for three to twelve images. Visitors can open a selected image at a larger size.\n\nInterface elements\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nGet started\nC007 / Concept illustration\nButton that follows the pointer\n\nMagnetic Button\n\nA button that moves slightly towards the pointer on hover while keeping normal click and keyboard behaviour.\n\nInterface elements\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nGet started\nC008 / Concept illustration\nTestimonials with manual navigation\n\nTestimonial Switcher\n\nA set of testimonials that visitors can switch through manually.\n\nInterface elements\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nOne line.\nThen another.\nE001 / Concept illustration\nContent fade-in\n\nContent Reveal\n\nContent fades into view once. It stays visible when animation is turned off.\n\nEffects\nFree\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nOne line.\nThen another.\nE002 / Concept illustration\nElements appearing in sequence\n\nStagger Group\n\nA group of elements appears one after another, with a short delay between them.\n\nEffects\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nOne line.\nThen another.\nE003 / Concept illustration\nSoft gradient background\n\nSoft Mesh Background\n\nA soft gradient for the background of one section, created with CSS.\n\nEffects\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nE004 / Concept illustration\nBackground highlight following the pointer\n\nPointer Spotlight\n\nA background highlight follows the pointer inside a section without changing its text or content.\n\nEffects\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nA002 / Concept illustration\nSmooth content switching\n\nContext Bridge\n\nContent changes smoothly between two prepared views inside one area of the page.\n\nAnimations\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nOne line.\nThen another.\nA003 / Concept illustration\nHeadline appearing line by line\n\nLine Assemble\n\nA headline appears smoothly, one visual line at a time.\n\nAnimations\nFree\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nA004 / Concept illustration\nThumbnail-to-detail transition\n\nFocus Plane\n\nA thumbnail changes into a detail view with a smooth change of size and position.\n\nAnimations\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nA005 / Concept illustration\nPanel sliding in from an edge\n\nEdge Unfold\n\nA panel or menu slides in from a chosen edge and slides back when closed.\n\nAnimations\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nOne line.\nThen another.\nA006 / Concept illustration\nAnimated list changes\n\nLedger Reflow\n\nList items move smoothly when items are added, removed, filtered or reordered.\n\nAnimations\nFree\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nOne line.\nThen another.\nA007 / Concept illustration\nReading progress by section\n\nScroll Chapters\n\nAn indicator shows the current section and reading progress as visitors scroll down the page.\n\nAnimations\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet.\n\nOne line.\nThen another.\nA008 / Concept illustration\nAnimated number changes\n\nMetric Roll\n\nA number changes smoothly to its new value using the number format of the selected language.\n\nAnimations\nPaid\nView description\nPlanned\n\nThe example and source are not ready yet."
+  },
+  {
+    "locale": "en",
+    "path": "/library/state-relay",
+    "headings": [
+      "Button with a progress indicator",
+      "Files",
+      "What the AI should do",
+      "Integration requirements",
+      "Example settings",
+      "What this example does",
+      "1. Add the files",
+      "2. Display the button",
+      "3. Connect your action",
+      "Keep the button usable",
+      "If copying does not work",
+      "4. Check before publishing",
+      "Current version",
+      "Customize",
+      "What you will download",
+      "React source files",
+      "A ready-to-use request for AI",
+      "Step-by-step setup guide",
+      "Where to use it",
+      "At a glance",
+      "Instructions",
+      "What this example does",
+      "1. Add the files",
+      "2. Display the button",
+      "3. Connect your action",
+      "Keep the button usable",
+      "If copying does not work",
+      "4. Check before publishing",
+      "Current version",
+      "Button source usage terms"
+    ],
+    "text": "Back to catalog\nButton with a progress indicator\n\nThe button shows whether an action is running, finished or has failed. Check this by copying text, then customize the example and download the source.\n\nA001\nState Relay\nAnimation\nReady to use\nFree\nExample\nCode\nAI request\nInstructions\n\nPress the button to copy sample text. Switch to the error example to see an unsuccessful result. No data is sent to a server.\n\nExample width\nFit to width\nTablet · 640\nMobile · 320\nRestart example\n\nExample size\n896 × 440 px\n\nCustomize\n\nColour and animation changes appear immediately in the example and the download files.\n\nReact project type\n\nYou need an existing React project. Choose Next.js or Vite for the matching setup instructions. If you are unsure, ask the developer or AI assistant working on your project.\n\nNext.js\nVite\nMain color\nColor code: # and 3 or 6 characters (0–9, A–F). For example, #EBD183.\nAnimation\nSubtle\nExpressive\nOff\nAnimation duration\nApplied: 160 ms\nms\n0–480 ms, up to 0.48 seconds. Use a whole number. At zero, the state changes instantly.\n\nThe current settings are included in the source and download files.\n\nDownload kit\n\nA ZIP archive with source, a request for an AI assistant and setup instructions. Free, no account required.\n\nCopy settings link\nWhat you will download\nReact source files\n\nReact and TypeScript files with separate styles. You can read, change and use them in your projects.\n\nA ready-to-use request for AI\n\nText with the complete source and settings. Paste it into the AI assistant you use to work on your project to add the button.\n\nStep-by-step setup guide\n\nWhere to put the files, how to connect the button to your action and how to check the result.\n\nWhere to use it\n\nWhen someone copies text, submits a form or saves changes, they need to see what is happening and how it ended.\n\nAt a glance\nReact + TypeScript\nNo new libraries needed to run the example\nSupports keyboard use and turning animation off\nWorking example · v0.1.0\n\nYou can modify this free source and use it in personal and commercial projects. Usage terms"
+  },
+  {
+    "locale": "en",
+    "path": "/pricing",
+    "headings": [
+      "Block and animation packs for React.",
+      "Choose your pack",
+      "Explore the library",
+      "For your product page",
+      "All four paid packs",
+      "How you can use the code",
+      "What happens after purchase",
+      "How an upgrade is calculated",
+      "Selected pack"
+    ],
+    "text": "Block and animation packs for React.\n\nStarter is free. Product and All packs require a one-time payment, with no subscription.\n\nOne free example is ready. The other pack items are planned. Sales and sign-in are not open yet; you can review pack contents and prices.\n\nHow previous purchases are counted\nChoose your pack\n\nStarter\n\nFree\n$0\nFree\nExplore the library\n\nA pack of 9 free items for exploring the library. One example is ready now; the others are planned.\n\n9 free items: 3 page blocks, 2 interface elements, 1 effect and 3 animations\nReact source, a request for an AI assistant and setup instructions\nPersonal and client sites. No account required.\nWhat the pack includes / 9\nView pack\n\nDownload the free example without an account.\n\nFor a product launch\n\nProduct\n\nPaid\n$16\nUSD · one-time\nFor your product page\n\n6 items for a product site: an opening example, feature explanations, a pricing comparison and interface controls.\n\n6 items: 3 page blocks, 2 interface elements and 1 effect\nReact source, a request for an AI assistant and setup instructions\nFor one person. Personal and client projects. 12 months of updates.\nWhat the pack includes / 6\nView pack\n\nOne-time purchase. No subscription or automatic renewal.\n\nAll packs\n\nPaid\n$39\nUSD · one-time\nAll four paid packs\n\nProduct for product sites, Editorial for portfolios, Playful for pages with graphics and stickers, and UI Motion for interface animation.\n\n23 different items from four packs\nReact source, a request for an AI assistant and setup instructions\nFor one person. Personal and client projects. 12 months of updates.\nWhat the pack includes / 23\nView pack\n\nOne-time purchase. No subscription or automatic renewal.\n\nHow you can use the code\n\nFor one person. Use the code in unlimited personal sites and client projects. Do not resell the source library or share the account with a team.\n\nWhat happens after purchase\n\nA paid pack includes 12 months of feature updates for the items you buy. You can keep using the code afterwards. New items and future packs are sold separately.\n\nHow an upgrade is calculated\n\nEditorial, Playful and UI Motion will also be available separately for $16 per pack before tax."
+  },
+  {
+    "locale": "en",
+    "path": "/account?tab=saved",
+    "headings": [
+      "Saved items and purchases.",
+      "You have not saved anything yet."
+    ],
+    "text": "Saved items and purchases.\n\nReturn to your saved items here. After purchases launch, this is also where you will find purchased files, orders and updates.\n\nSaved items stay in this browser. Sign-in, purchases and paid downloads are not available yet.\n\nSaved (0)\nPurchases\nOrders\nUpdates\nYou have not saved anything yet.\n\nOpen the catalog and use the bookmark next to a block or animation. It will appear here.\n\nOpen catalog"
+  },
+  {
+    "locale": "en",
+    "path": "/account?tab=purchases",
+    "headings": [
+      "Saved items and purchases.",
+      "Purchases are not open yet."
+    ],
+    "text": "Saved items and purchases.\n\nReturn to your saved items here. After purchases launch, this is also where you will find purchased files, orders and updates.\n\nSaved items stay in this browser. Sign-in, purchases and paid downloads are not available yet.\n\nSaved (0)\nPurchases\nOrders\nUpdates\nPurchases are not open yet.\n\nOnce purchases launch, you will be able to download your paid packs here. You can already open and download the free example without an account.\n\nView free example"
+  },
+  {
+    "locale": "en",
+    "path": "/account?tab=orders",
+    "headings": [
+      "Saved items and purchases.",
+      "Orders are not available yet."
+    ],
+    "text": "Saved items and purchases.\n\nReturn to your saved items here. After purchases launch, this is also where you will find purchased files, orders and updates.\n\nSaved items stay in this browser. Sign-in, purchases and paid downloads are not available yet.\n\nSaved (0)\nPurchases\nOrders\nUpdates\nOrders are not available yet.\n\nOnce purchases are available, your orders, confirmed payments and receipts will appear here.\n\nExplore packs"
+  },
+  {
+    "locale": "en",
+    "path": "/account?tab=updates",
+    "headings": [
+      "Saved items and purchases.",
+      "No updates yet."
+    ],
+    "text": "Saved items and purchases.\n\nReturn to your saved items here. After purchases launch, this is also where you will find purchased files, orders and updates.\n\nSaved items stay in this browser. Sign-in, purchases and paid downloads are not available yet.\n\nSaved (0)\nPurchases\nOrders\nUpdates\nNo updates yet.\n\nAfter purchases launch, this is where you will find new versions of purchased items and their update end dates. Purchase history is not available now.\n\nExplore packs"
+  },
+  {
+    "locale": "en",
+    "path": "/checkout?plan=product",
+    "headings": [
+      "Contents and price calculation",
+      "Sales are not open yet",
+      "Product",
+      "Product",
+      "Included in the new purchase (6)",
+      "Code use and updates"
+    ],
+    "text": "Back to pricing\nContents and price calculation\n\nSee which items the purchase would include, what they cost and which updates are covered.\n\nSales are not open yet\n\nYou can review the contents and price calculation here. No order is created and no money is charged.\n\nThe calculation uses an example, not your account\nNo previous purchases\nProduct\n\nAmount before tax\n\n$16\n\nOne-time payment in USD\n\nThe pack contains planned items. They cannot be purchased or downloaded yet.\n\nPrice of the full pack\n$16\nItems to add\n6\n\nTaxes are not included in this calculation. The final amount will be shown before payment.\n\nPayment is not available yet\nView free example\n\nSelected pack\n\nProduct\n\n3 page blocks, 2 interface elements and 1 effect for a product site.\n\nTotal items in the pack\n6\nItems to add\n6\nAlready owned in this example\n0\nIncluded in the new purchase (6)\n\nOnly the items listed below are included in this example calculation.\n\nSection navigation\nInterface element\nPlanned\nMetric switcher\nInterface element\nPlanned\nElements appearing in sequence\nEffect\nPlanned\nOpening section with a live demo\nPage block\nPlanned\nProduct feature walkthrough\nPage block\nPlanned\nPricing comparison\nPage block\nPlanned\nCode use and updates\n\nFor one person. Use the code in unlimited personal sites and client projects. Do not resell the source library or share the account with a team.\n\nNewly purchased items include feature updates for 12 months after purchase confirmation. You may keep using the code afterwards.\n\nNew items and future packs are not included in this purchase."
+  },
+  {
+    "locale": "en",
+    "path": "/checkout?plan=bundle",
+    "headings": [
+      "Contents and price calculation",
+      "Sales are not open yet",
+      "All packs",
+      "All packs",
+      "Included in the new purchase (23)",
+      "Code use and updates"
+    ],
+    "text": "Back to pricing\nContents and price calculation\n\nSee which items the purchase would include, what they cost and which updates are covered.\n\nSales are not open yet\n\nYou can review the contents and price calculation here. No order is created and no money is charged.\n\nThe calculation uses an example, not your account\nNo previous purchases\nAll packs\n\nAmount before tax\n\n$39\n\nOne-time payment in USD\n\nThe pack contains planned items. They cannot be purchased or downloaded yet.\n\nPrice of the full pack\n$39\nItems to add\n23\n\nTaxes are not included in this calculation. The final amount will be shown before payment.\n\nPayment is not available yet\nView free example\n\nSelected pack\n\nAll packs\n\nAll 23 items from the four paid packs: Product, Editorial, Playful and UI Motion.\n\nTotal items in the pack\n23\nItems to add\n23\nAlready owned in this example\n0\nIncluded in the new purchase (23)\n\nOnly the items listed below are included in this example calculation.\n\nSmooth content switching\nAnimation\nPlanned\nThumbnail-to-detail transition\nAnimation\nPlanned\nPanel sliding in from an edge\nAnimation\nPlanned\nReading progress by section\nAnimation\nPlanned\nAnimated number changes\nAnimation\nPlanned\nSection navigation\nInterface element\nPlanned\nMetric switcher\nInterface element\nPlanned\nProject card\nInterface element\nPlanned\nImage gallery with enlargement\nInterface element\nPlanned\nButton that follows the pointer\nInterface element\nPlanned\nTestimonials with manual navigation\nInterface element\nPlanned\nElements appearing in sequence\nEffect\nPlanned\nSoft gradient background\nEffect\nPlanned\nBackground highlight following the pointer\nEffect\nPlanned\nOpening section with a live demo\nPage block\nPlanned\nProduct feature walkthrough\nPage block\nPlanned\nPricing comparison\nPage block\nPlanned\nOpening section with large type\nPage block\nPlanned\nProject index\nPage block\nPlanned\nContact footer\nPage block\nPlanned\nOpening section with stickers\nPage block\nPlanned\nFrequently asked questions\nPage block\nPlanned\nCall to action with orbiting graphics\nPage block\nPlanned\nCode use and updates\n\nFor one person. Use the code in unlimited personal sites and client projects. Do not resell the source library or share the account with a team.\n\nNewly purchased items include feature updates for 12 months after purchase confirmation. You may keep using the code afterwards.\n\nNew items and future packs are not included in this purchase."
+  },
+  {
+    "locale": "en",
+    "path": "/missing-page",
+    "headings": [
+      "Page not found."
+    ],
+    "text": "Page not found.\n\nCheck the address or open the catalog of blocks and animations.\n\nBack to catalog"
+  },
+  {
+    "locale": "vi",
+    "path": "",
+    "headings": [
+      "Khối giao diện và hoạt ảnh cho website React.",
+      "Mã nguồn, yêu cầu cho AI và hướng dẫn.",
+      "Ví dụ này làm gì",
+      "1. Thêm các tệp",
+      "2. Hiển thị nút trên trang",
+      "3. Kết nối thao tác của bạn",
+      "Giữ nút dễ sử dụng",
+      "Nếu không sao chép được",
+      "4. Kiểm tra trước khi xuất bản",
+      "Phiên bản hiện tại",
+      "Khối giao diện và hoạt ảnh dự kiến",
+      "Phần mở đầu với bản thử",
+      "Nút có hiệu ứng khi di chuột và nhấn",
+      "Tiêu đề hiện theo dòng",
+      "Cách thêm ví dụ vào dự án",
+      "Mở ví dụ",
+      "Tùy chỉnh",
+      "Tải các tệp",
+      "Xem ví dụ trước khi cài đặt."
+    ],
+    "text": "Khối giao diện và hoạt ảnh cho website React.\n\nChọn một khối giao diện hoặc hoạt ảnh. Tải mã nguồn cho dự án React, kèm hướng dẫn cài đặt và yêu cầu soạn sẵn cho trợ lý AI.\n\nKhám phá thư viện\nXem ví dụ miễn phí\n\nHiện có một ví dụ miễn phí để tải: nút có chỉ báo tiến trình. Không cần tài khoản.\n\nA001 / STATE RELAY\nSẵn sàng\nVăn bản mẫu\nSao chép văn bản\nĐang sao chép…\nĐã sao chép\nThử lại\nTình huống\nSao chép\nVí dụ lỗi\n01\nSẵn sàng\n02\nĐang sao chép\n03\nĐã sao chép\n04\nLỗi\n\nNhấn nút để sao chép một đoạn văn bản mẫu.\n\nĐặt lại\nNút có chỉ báo tiến trình (State Relay)\n\nNhấn “Sao chép văn bản”. Nút cho biết thao tác đang chạy, đã xong hay gặp lỗi.\n\nMở ví dụ và cài đặt\nMã nguồn, yêu cầu cho AI và hướng dẫn.\n\nXem các tệp trước khi tải. Yêu cầu cho AI có mã nguồn và cài đặt để trợ lý thêm ví dụ vào dự án của bạn.\n\nMở toàn bộ tệp\nMã nguồn\nYêu cầu cho AI\nHướng dẫn\n'use client';\n\nimport { AfterlightExample } from './AfterlightExample';\n\nconst selectedConfig = {\n  \"locale\": \"vi\",\n  \"motion\": \"expressive\",\n  \"accent\": \"#EBD183\",\n  \"duration\": 180\n} as const;\n\nexport default function SelectedExample() {\n  return <AfterlightExample {...selectedConfig} />;\n}\n\nKhối giao diện và hoạt ảnh dự kiến\n\nCác hình ảnh này minh họa ý tưởng. Ví dụ hoạt động và mã nguồn chưa có sẵn.\n\nCó thể sử dụng: 1 / Dự kiến: 31\n\nS004 / Minh họa ý tưởng\nPhần mở đầu với bản thử\n\nProduct Demo Hero\n\nPhần đầu trang có ví dụ tương tác để khách truy cập thử sản phẩm của bạn.\n\nKhối trang\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nBắt đầu\nC001 / Minh họa ý tưởng\nNút có hiệu ứng khi di chuột và nhấn\n\nPress Button\n\nNút hoặc liên kết phản hồi rõ khi di chuột, nhấn và dùng bàn phím.\n\nPhần tử giao diện\nMiễn phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nTừng dòng.\nNối tiếp nhau.\nA003 / Minh họa ý tưởng\nTiêu đề hiện theo dòng\n\nLine Assemble\n\nTiêu đề xuất hiện nhẹ theo từng dòng chữ.\n\nHoạt ảnh\nMiễn phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nCách thêm ví dụ vào dự án\n01\nMở ví dụ\n\nXem khối hoặc hoạt ảnh hoạt động thế nào trước khi thêm vào website.\n\n02\nTùy chỉnh\n\nChọn màu và hoạt ảnh. Chọn loại dự án React: Next.js hoặc Vite.\n\n03\nTải các tệp\n\nNhận tệp nén gồm mã nguồn, yêu cầu cho trợ lý AI và hướng dẫn cài đặt.\n\nXem ví dụ trước khi cài đặt.\n\nMở nút có chỉ báo tiến trình. Tùy chỉnh rồi lấy mã nguồn cho website của bạn.\n\nXem ví dụ miễn phí"
+  },
+  {
+    "locale": "vi",
+    "path": "/library",
+    "headings": [
+      "Khối giao diện và hoạt ảnh React",
+      "Nút có chỉ báo tiến trình",
+      "Nút có chỉ báo tiến trình",
+      "Phần mở đầu hai cột",
+      "Lưới lợi ích",
+      "Khối hành động cuối trang",
+      "Phần mở đầu với bản thử",
+      "Tính năng theo từng bước",
+      "So sánh gói dịch vụ",
+      "Phần mở đầu với chữ lớn",
+      "Danh mục dự án",
+      "Chân trang liên hệ",
+      "Phần mở đầu với sticker",
+      "Câu hỏi thường gặp dạng thẻ",
+      "Lời mời với đồ họa quỹ đạo",
+      "Nút có hiệu ứng khi di chuột và nhấn",
+      "Tab nội dung",
+      "Điều hướng theo mục",
+      "Bộ chuyển chỉ số",
+      "Thẻ dự án",
+      "Thư viện ảnh",
+      "Nút có hiệu ứng hút",
+      "Bộ chuyển đánh giá",
+      "Hiện nội dung",
+      "Hiện nhóm tuần tự",
+      "Nền gradient mềm",
+      "Vùng sáng theo con trỏ",
+      "Chuyển nội dung mượt mà",
+      "Tiêu đề hiện theo dòng",
+      "Chuyển từ ảnh nhỏ đến chi tiết",
+      "Bảng trượt từ cạnh",
+      "Chuyển động trong danh sách",
+      "Tiến trình đọc theo mục",
+      "Chuyển động giá trị số"
+    ],
+    "text": "Khối giao diện và hoạt ảnh React\n\nCác khối trang, nút, phần tử giao diện khác và hoạt ảnh. Ví dụ đã sẵn sàng có thể tùy chỉnh rồi tải cùng mã nguồn, yêu cầu cho trợ lý AI và hướng dẫn cài đặt.\n\nCó thể sử dụng: 1 / Dự kiến: 31\n\nHiện chỉ có nút với chỉ báo tiến trình đã sẵn sàng. Các mục khác trong thư viện đang được lên kế hoạch.\n\nNút có chỉ báo tiến trình\n\nCho biết thao tác đang chạy, đã xong hay gặp lỗi. Thử bằng cách sao chép văn bản rồi tải mã nguồn cho dự án.\n\nMở ví dụ\nTìm trong thư viện\nSắp xếp\nMục sẵn sàng trước\nBộ lọc\nChỉ mục đã lưu (0)\nĐặt lại bộ lọc\n\nKết quả: 32Có thể sử dụng: 1 / Dự kiến: 31\n\nReact + TypeScript\nĐã sao chép\nState Relay\nNút có chỉ báo tiến trình\n\nState Relay\n\nNút hiển thị tiến trình, thành công hoặc lỗi và cho phép thử lại. Bản thử và bộ tải xuống đã sẵn sàng.\n\nHoạt ảnh\nMiễn phí\nMở ví dụ và mã nguồn\nSẵn sàng sử dụng\n\nReact + TypeScript\n\nS001 / Minh họa ý tưởng\nPhần mở đầu hai cột\n\nStarter Split Hero\n\nPhần đầu của website sản phẩm, gồm hai cột, giới thiệu ngắn và một hành động chính.\n\nKhối trang\nMiễn phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nS002 / Minh họa ý tưởng\nLưới lợi ích\n\nStarter Feature Grid\n\nLưới trình bày từ ba đến sáu lợi ích, mỗi mục có tiêu đề ngắn và phần giải thích.\n\nKhối trang\nMiễn phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nS003 / Minh họa ý tưởng\nKhối hành động cuối trang\n\nStarter Action Band\n\nKhối cuối trang với một hành động chính, chẳng hạn mở biểu mẫu hoặc đăng ký.\n\nKhối trang\nMiễn phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nS004 / Minh họa ý tưởng\nPhần mở đầu với bản thử\n\nProduct Demo Hero\n\nPhần đầu trang có ví dụ tương tác để khách truy cập thử sản phẩm của bạn.\n\nKhối trang\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nS005 / Minh họa ý tưởng\nTính năng theo từng bước\n\nProduct Feature Steps\n\nTrình bày từ ba đến năm tính năng, mỗi mục có giải thích và ví dụ trực quan.\n\nKhối trang\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nS006 / Minh họa ý tưởng\nSo sánh gói dịch vụ\n\nProduct Pricing Compare\n\nSo sánh giá và tính năng các gói trên website của bạn. Không bao gồm xử lý thanh toán.\n\nKhối trang\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nTừng dòng.\nNối tiếp nhau.\nS007 / Minh họa ý tưởng\nPhần mở đầu với chữ lớn\n\nEditorial Title Hero\n\nPhần đầu trang portfolio hoặc studio, lấy chữ lớn làm yếu tố chính.\n\nKhối trang\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nTừng dòng.\nNối tiếp nhau.\nS008 / Minh họa ý tưởng\nDanh mục dự án\n\nEditorial Project Index\n\nDanh mục từ ba đến tám dự án, kèm hình ảnh, mô tả và liên kết của bạn.\n\nKhối trang\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nTừng dòng.\nNối tiếp nhau.\nS009 / Minh họa ý tưởng\nChân trang liên hệ\n\nEditorial Contact Footer\n\nPhần cuối trang với thông tin liên hệ và liên kết đến các phần của website.\n\nKhối trang\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nS010 / Minh họa ý tưởng\nPhần mở đầu với sticker\n\nPlayful Sticker Hero\n\nPhần đầu trang dùng hình khối và sticker riêng để thể hiện phong cách của website.\n\nKhối trang\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nS011 / Minh họa ý tưởng\nCâu hỏi thường gặp dạng thẻ\n\nPlayful Question Cards\n\nCác thẻ trả lời từ bốn đến tám câu hỏi thường gặp về sản phẩm hoặc dịch vụ của bạn.\n\nKhối trang\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nS012 / Minh họa ý tưởng\nLời mời với đồ họa quỹ đạo\n\nPlayful Orbit CTA\n\nHành động cuối trang nằm ở trung tâm, với các yếu tố đồ họa bố trí xung quanh.\n\nKhối trang\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nBắt đầu\nC001 / Minh họa ý tưởng\nNút có hiệu ứng khi di chuột và nhấn\n\nPress Button\n\nNút hoặc liên kết phản hồi rõ khi di chuột, nhấn và dùng bàn phím.\n\nPhần tử giao diện\nMiễn phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nBắt đầu\nC002 / Minh họa ý tưởng\nTab nội dung\n\nContent Tabs\n\nCác tab chuyển giữa nội dung liên quan, chẳng hạn mô tả, thông số và hướng dẫn.\n\nPhần tử giao diện\nMiễn phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nBắt đầu\nC003 / Minh họa ý tưởng\nĐiều hướng theo mục\n\nSegmented Navigation\n\nMenu gọn để chuyển giữa các trang hoặc các mục trên trang hiện tại.\n\nPhần tử giao diện\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nBắt đầu\nC004 / Minh họa ý tưởng\nBộ chuyển chỉ số\n\nMetric Switcher\n\nChuyển giữa các nhóm số liệu, chẳng hạn theo khoảng thời gian hoặc danh mục.\n\nPhần tử giao diện\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nTừng dòng.\nNối tiếp nhau.\nC005 / Minh họa ý tưởng\nThẻ dự án\n\nProject Card\n\nThẻ gồm hình ảnh dự án, mô tả ngắn về vai trò của bạn và liên kết đến dự án.\n\nPhần tử giao diện\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nTừng dòng.\nNối tiếp nhau.\nC006 / Minh họa ý tưởng\nThư viện ảnh\n\nMedia Gallery\n\nThư viện từ ba đến mười hai ảnh. Khách truy cập có thể mở ảnh đã chọn ở kích thước lớn hơn.\n\nPhần tử giao diện\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nBắt đầu\nC007 / Minh họa ý tưởng\nNút có hiệu ứng hút\n\nMagnetic Button\n\nNút dịch chuyển nhẹ về phía con trỏ khi di chuột, đồng thời giữ thao tác nhấn và bàn phím thông thường.\n\nPhần tử giao diện\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nBắt đầu\nC008 / Minh họa ý tưởng\nBộ chuyển đánh giá\n\nTestimonial Switcher\n\nBộ đánh giá để khách truy cập tự chọn và chuyển nội dung muốn đọc.\n\nPhần tử giao diện\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nTừng dòng.\nNối tiếp nhau.\nE001 / Minh họa ý tưởng\nHiện nội dung\n\nContent Reveal\n\nNội dung xuất hiện nhẹ một lần. Khi tắt hoạt ảnh, nội dung vẫn hiển thị.\n\nHiệu ứng\nMiễn phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nTừng dòng.\nNối tiếp nhau.\nE002 / Minh họa ý tưởng\nHiện nhóm tuần tự\n\nStagger Group\n\nCác phần tử trong một nhóm xuất hiện lần lượt, với khoảng trễ ngắn giữa các phần tử.\n\nHiệu ứng\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nTừng dòng.\nNối tiếp nhau.\nE003 / Minh họa ý tưởng\nNền gradient mềm\n\nSoft Mesh Background\n\nNền gradient mềm cho một khối trên trang, được tạo bằng CSS.\n\nHiệu ứng\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nE004 / Minh họa ý tưởng\nVùng sáng theo con trỏ\n\nPointer Spotlight\n\nVùng sáng trên nền đi theo con trỏ trong một khối mà không thay đổi chữ hoặc nội dung.\n\nHiệu ứng\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nA002 / Minh họa ý tưởng\nChuyển nội dung mượt mà\n\nContext Bridge\n\nNội dung chuyển mượt giữa hai chế độ xem đã chuẩn bị trong cùng một vùng trên trang.\n\nHoạt ảnh\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nTừng dòng.\nNối tiếp nhau.\nA003 / Minh họa ý tưởng\nTiêu đề hiện theo dòng\n\nLine Assemble\n\nTiêu đề xuất hiện nhẹ theo từng dòng chữ.\n\nHoạt ảnh\nMiễn phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nA004 / Minh họa ý tưởng\nChuyển từ ảnh nhỏ đến chi tiết\n\nFocus Plane\n\nẢnh thu nhỏ chuyển sang chế độ xem chi tiết bằng thay đổi mượt về kích thước và vị trí.\n\nHoạt ảnh\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nA005 / Minh họa ý tưởng\nBảng trượt từ cạnh\n\nEdge Unfold\n\nBảng hoặc menu trượt vào từ cạnh đã chọn và trượt trở lại khi đóng.\n\nHoạt ảnh\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nTừng dòng.\nNối tiếp nhau.\nA006 / Minh họa ý tưởng\nChuyển động trong danh sách\n\nLedger Reflow\n\nCác mục trong danh sách di chuyển mượt khi thêm, xóa, lọc hoặc đổi thứ tự.\n\nHoạt ảnh\nMiễn phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nTừng dòng.\nNối tiếp nhau.\nA007 / Minh họa ý tưởng\nTiến trình đọc theo mục\n\nScroll Chapters\n\nChỉ báo hiển thị mục hiện tại và tiến trình đọc khi khách truy cập cuộn trang.\n\nHoạt ảnh\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng.\n\nTừng dòng.\nNối tiếp nhau.\nA008 / Minh họa ý tưởng\nChuyển động giá trị số\n\nMetric Roll\n\nSố chuyển mượt sang giá trị mới theo định dạng số của ngôn ngữ đã chọn.\n\nHoạt ảnh\nTrả phí\nXem mô tả\nDự kiến\n\nVí dụ và mã nguồn chưa sẵn sàng."
+  },
+  {
+    "locale": "vi",
+    "path": "/library/state-relay",
+    "headings": [
+      "Nút có chỉ báo tiến trình",
+      "Tệp",
+      "AI cần làm gì",
+      "Yêu cầu khi tích hợp",
+      "Thiết lập ví dụ",
+      "Ví dụ này làm gì",
+      "1. Thêm các tệp",
+      "2. Hiển thị nút trên trang",
+      "3. Kết nối thao tác của bạn",
+      "Giữ nút dễ sử dụng",
+      "Nếu không sao chép được",
+      "4. Kiểm tra trước khi xuất bản",
+      "Phiên bản hiện tại",
+      "Tùy chỉnh",
+      "Bạn sẽ tải được gì",
+      "Mã nguồn React",
+      "Yêu cầu soạn sẵn cho AI",
+      "Hướng dẫn cài đặt từng bước",
+      "Dùng cho",
+      "Thông tin nhanh",
+      "Hướng dẫn",
+      "Ví dụ này làm gì",
+      "1. Thêm các tệp",
+      "2. Hiển thị nút trên trang",
+      "3. Kết nối thao tác của bạn",
+      "Giữ nút dễ sử dụng",
+      "Nếu không sao chép được",
+      "4. Kiểm tra trước khi xuất bản",
+      "Phiên bản hiện tại",
+      "Điều khoản sử dụng mã nguồn của nút"
+    ],
+    "text": "Về thư viện\nNút có chỉ báo tiến trình\n\nNút cho biết thao tác đang chạy, đã xong hay thất bại. Thử bằng cách sao chép văn bản, sau đó tùy chỉnh ví dụ và tải mã nguồn.\n\nA001\nState Relay\nHoạt ảnh\nSẵn sàng sử dụng\nMiễn phí\nVí dụ\nMã nguồn\nYêu cầu cho AI\nHướng dẫn\n\nNhấn nút để sao chép văn bản mẫu. Chuyển sang ví dụ lỗi để xem kết quả không thành công. Không gửi dữ liệu đến máy chủ.\n\nChiều rộng ví dụ\nToàn chiều rộng\nMáy tính bảng · 640\nĐiện thoại · 320\nChạy lại ví dụ\n\nKích thước ví dụ\n896 × 440 px\n\nTùy chỉnh\n\nThay đổi màu và hoạt ảnh xuất hiện ngay trong ví dụ và các tệp tải xuống.\n\nLoại dự án React\n\nCần có dự án React sẵn có. Chọn Next.js hoặc Vite để nhận hướng dẫn phù hợp. Nếu chưa rõ, hỏi người phát triển hoặc trợ lý AI đang làm việc với dự án.\n\nNext.js\nVite\nMàu chính\nMã màu: # và 3 hoặc 6 ký tự (0–9, A–F). Ví dụ: #EBD183.\nHoạt ảnh\nNhẹ nhàng\nNổi bật\nTắt\nThời lượng chuyển động\nĐã áp dụng: 160 ms\nms\n0–480 ms, tối đa 0,48 giây. Nhập số nguyên. Giá trị 0 đổi trạng thái ngay lập tức.\n\nCác cài đặt hiện tại đã có trong mã nguồn và tệp tải xuống.\n\nTải bộ mã\n\nTệp ZIP gồm mã nguồn, yêu cầu cho trợ lý AI và hướng dẫn cài đặt. Miễn phí, không cần tài khoản.\n\nSao chép liên kết cấu hình\nBạn sẽ tải được gì\nMã nguồn React\n\nCác tệp React và TypeScript với phần kiểu dáng riêng. Bạn có thể đọc, sửa và dùng trong dự án.\n\nYêu cầu soạn sẵn cho AI\n\nVăn bản chứa toàn bộ mã nguồn và cài đặt. Dán vào trợ lý AI đang dùng cho dự án để thêm nút.\n\nHướng dẫn cài đặt từng bước\n\nĐặt tệp ở đâu, nối nút với thao tác của bạn và kiểm tra kết quả thế nào.\n\nDùng cho\n\nKhi sao chép văn bản, gửi biểu mẫu hoặc lưu thay đổi, người dùng cần biết việc gì đang xảy ra và kết quả ra sao.\n\nThông tin nhanh\nReact + TypeScript\nKhông cần thêm thư viện để chạy ví dụ\nDùng được bằng bàn phím và có thể tắt hoạt ảnh\nVí dụ hoạt động · v0.1.0\n\nCó thể sửa mã nguồn miễn phí này và dùng trong dự án cá nhân hoặc thương mại. Điều khoản sử dụng"
+  },
+  {
+    "locale": "vi",
+    "path": "/pricing",
+    "headings": [
+      "Bộ khối giao diện và hoạt ảnh React.",
+      "Chọn bộ của bạn",
+      "Khám phá thư viện",
+      "Cho trang sản phẩm của bạn",
+      "Cả bốn bộ trả phí",
+      "Cách sử dụng mã nguồn",
+      "Sau khi mua sẽ có gì",
+      "Cách tính phí nâng cấp",
+      "Bộ đã chọn"
+    ],
+    "text": "Bộ khối giao diện và hoạt ảnh React.\n\nStarter miễn phí. Product và All packs thanh toán một lần, không đăng ký định kỳ.\n\nHiện có một ví dụ miễn phí đã sẵn sàng. Các mục khác trong bộ đang được lên kế hoạch. Chưa mở bán hoặc đăng nhập; bạn có thể xem nội dung và giá các bộ.\n\nCách tính các giao dịch đã mua\nChọn bộ của bạn\n\nStarter\n\nMiễn phí\n0 US$\nMiễn phí\nKhám phá thư viện\n\nBộ gồm 9 mục miễn phí để tìm hiểu thư viện. Hiện có một ví dụ đã sẵn sàng; các mục khác đang được lên kế hoạch.\n\n9 mục miễn phí: 3 khối trang, 2 phần tử giao diện, 1 hiệu ứng và 3 hoạt ảnh\nMã nguồn React, yêu cầu cho trợ lý AI và hướng dẫn cài đặt\nWebsite cá nhân và dự án khách hàng. Không cần tài khoản.\nNội dung trong bộ / 9\nXem nội dung\n\nTải ví dụ miễn phí mà không cần tài khoản.\n\nDành cho ra mắt sản phẩm\n\nProduct\n\nTrả phí\n16 US$\nUSD · thanh toán một lần\nCho trang sản phẩm của bạn\n\n6 mục cho website sản phẩm: ví dụ ở đầu trang, giới thiệu tính năng, so sánh giá và các điều khiển giao diện.\n\n6 mục: 3 khối trang, 2 phần tử giao diện và 1 hiệu ứng\nMã nguồn React, yêu cầu cho trợ lý AI và hướng dẫn cài đặt\nCho một người. Dự án cá nhân và khách hàng. Cập nhật 12 tháng.\nNội dung trong bộ / 6\nXem nội dung\n\nMua một lần. Không đăng ký định kỳ hoặc tự động gia hạn.\n\nAll packs\n\nTrả phí\n39 US$\nUSD · thanh toán một lần\nCả bốn bộ trả phí\n\nProduct cho website sản phẩm, Editorial cho portfolio, Playful cho trang có đồ họa và sticker, UI Motion cho hoạt ảnh giao diện.\n\n23 mục khác nhau từ bốn bộ\nMã nguồn React, yêu cầu cho trợ lý AI và hướng dẫn cài đặt\nCho một người. Dự án cá nhân và khách hàng. Cập nhật 12 tháng.\nNội dung trong bộ / 23\nXem nội dung\n\nMua một lần. Không đăng ký định kỳ hoặc tự động gia hạn.\n\nCách sử dụng mã nguồn\n\nCho một người. Có thể dùng mã trong số lượng website cá nhân và dự án khách hàng không giới hạn. Không bán lại thư viện mã nguồn hoặc chia sẻ tài khoản cho nhóm.\n\nSau khi mua sẽ có gì\n\nBộ trả phí gồm 12 tháng cập nhật tính năng cho các mục đã mua. Bạn vẫn có thể dùng mã sau đó. Mục mới và bộ tương lai được bán riêng.\n\nCách tính phí nâng cấp\n\nEditorial, Playful và UI Motion cũng sẽ được bán riêng với giá $16 mỗi bộ, chưa gồm thuế."
+  },
+  {
+    "locale": "vi",
+    "path": "/account?tab=saved",
+    "headings": [
+      "Mục đã lưu và giao dịch.",
+      "Bạn chưa lưu mục nào."
+    ],
+    "text": "Mục đã lưu và giao dịch.\n\nQuay lại các mục đã lưu tại đây. Sau khi mở bán, bạn cũng sẽ tìm thấy tệp đã mua, đơn hàng và bản cập nhật.\n\nMục đã lưu được giữ trong trình duyệt này. Chưa có đăng nhập, mua hàng hoặc tải tệp trả phí.\n\nĐã lưu (0)\nĐã mua\nĐơn hàng\nCập nhật\nBạn chưa lưu mục nào.\n\nMở thư viện rồi nhấn dấu trang bên cạnh khối giao diện hoặc hoạt ảnh. Mục đó sẽ xuất hiện tại đây.\n\nKhám phá thư viện"
+  },
+  {
+    "locale": "vi",
+    "path": "/account?tab=purchases",
+    "headings": [
+      "Mục đã lưu và giao dịch.",
+      "Chưa mở bán."
+    ],
+    "text": "Mục đã lưu và giao dịch.\n\nQuay lại các mục đã lưu tại đây. Sau khi mở bán, bạn cũng sẽ tìm thấy tệp đã mua, đơn hàng và bản cập nhật.\n\nMục đã lưu được giữ trong trình duyệt này. Chưa có đăng nhập, mua hàng hoặc tải tệp trả phí.\n\nĐã lưu (0)\nĐã mua\nĐơn hàng\nCập nhật\nChưa mở bán.\n\nKhi mở bán, bạn có thể tải các bộ đã mua tại đây. Hiện bạn đã có thể mở và tải ví dụ miễn phí mà không cần tài khoản.\n\nXem ví dụ miễn phí"
+  },
+  {
+    "locale": "vi",
+    "path": "/account?tab=orders",
+    "headings": [
+      "Mục đã lưu và giao dịch.",
+      "Chưa có chức năng đơn hàng."
+    ],
+    "text": "Mục đã lưu và giao dịch.\n\nQuay lại các mục đã lưu tại đây. Sau khi mở bán, bạn cũng sẽ tìm thấy tệp đã mua, đơn hàng và bản cập nhật.\n\nMục đã lưu được giữ trong trình duyệt này. Chưa có đăng nhập, mua hàng hoặc tải tệp trả phí.\n\nĐã lưu (0)\nĐã mua\nĐơn hàng\nCập nhật\nChưa có chức năng đơn hàng.\n\nKhi có mua hàng, đơn hàng, thanh toán đã xác nhận và biên nhận sẽ xuất hiện tại đây.\n\nKhám phá các bộ"
+  },
+  {
+    "locale": "vi",
+    "path": "/account?tab=updates",
+    "headings": [
+      "Mục đã lưu và giao dịch.",
+      "Chưa có bản cập nhật."
+    ],
+    "text": "Mục đã lưu và giao dịch.\n\nQuay lại các mục đã lưu tại đây. Sau khi mở bán, bạn cũng sẽ tìm thấy tệp đã mua, đơn hàng và bản cập nhật.\n\nMục đã lưu được giữ trong trình duyệt này. Chưa có đăng nhập, mua hàng hoặc tải tệp trả phí.\n\nĐã lưu (0)\nĐã mua\nĐơn hàng\nCập nhật\nChưa có bản cập nhật.\n\nSau khi mở bán, bạn sẽ tìm thấy phiên bản mới của các mục đã mua và ngày hết hạn cập nhật. Hiện chưa có lịch sử mua hàng.\n\nKhám phá các bộ"
+  },
+  {
+    "locale": "vi",
+    "path": "/checkout?plan=product",
+    "headings": [
+      "Nội dung và cách tính giá",
+      "Chưa mở bán",
+      "Product",
+      "Product",
+      "Nội dung của giao dịch mới (6)",
+      "Sử dụng mã và cập nhật"
+    ],
+    "text": "Về bảng giá\nNội dung và cách tính giá\n\nXem giao dịch sẽ gồm những mục nào, giá bao nhiêu và có các bản cập nhật nào.\n\nChưa mở bán\n\nBạn có thể xem nội dung và cách tính giá tại đây. Không tạo đơn hàng và không trừ tiền.\n\nPhép tính dùng ví dụ, không phải tài khoản của bạn\nChưa mua trước đây\nProduct\n\nTổng trước thuế\n\n16 US$\n\nThanh toán một lần bằng USD\n\nBộ có các mục đang được lên kế hoạch. Chưa thể mua hoặc tải các mục đó.\n\nGiá toàn bộ bộ mã\n16 US$\nMục cần thêm\n6\n\nPhép tính chưa gồm thuế. Tổng cuối cùng sẽ được hiển thị trước khi thanh toán.\n\nChưa thể thanh toán\nXem ví dụ miễn phí\n\nBộ đã chọn\n\nProduct\n\n3 khối trang, 2 phần tử giao diện và 1 hiệu ứng cho website sản phẩm.\n\nTổng số mục trong bộ\n6\nMục cần thêm\n6\nĐã có trong ví dụ này\n0\nNội dung của giao dịch mới (6)\n\nChỉ các mục bên dưới được đưa vào phép tính minh họa này.\n\nĐiều hướng theo mục\nPhần tử giao diện\nDự kiến\nBộ chuyển chỉ số\nPhần tử giao diện\nDự kiến\nHiện nhóm tuần tự\nHiệu ứng\nDự kiến\nPhần mở đầu với bản thử\nKhối trang\nDự kiến\nTính năng theo từng bước\nKhối trang\nDự kiến\nSo sánh gói dịch vụ\nKhối trang\nDự kiến\nSử dụng mã và cập nhật\n\nCho một người. Có thể dùng mã trong số lượng website cá nhân và dự án khách hàng không giới hạn. Không bán lại thư viện mã nguồn hoặc chia sẻ tài khoản cho nhóm.\n\nCác mục mới đã mua có cập nhật tính năng trong 12 tháng kể từ khi xác nhận giao dịch. Bạn vẫn có thể dùng mã sau đó.\n\nMục mới và bộ tương lai không nằm trong giao dịch này."
+  },
+  {
+    "locale": "vi",
+    "path": "/checkout?plan=bundle",
+    "headings": [
+      "Nội dung và cách tính giá",
+      "Chưa mở bán",
+      "All packs",
+      "All packs",
+      "Nội dung của giao dịch mới (23)",
+      "Sử dụng mã và cập nhật"
+    ],
+    "text": "Về bảng giá\nNội dung và cách tính giá\n\nXem giao dịch sẽ gồm những mục nào, giá bao nhiêu và có các bản cập nhật nào.\n\nChưa mở bán\n\nBạn có thể xem nội dung và cách tính giá tại đây. Không tạo đơn hàng và không trừ tiền.\n\nPhép tính dùng ví dụ, không phải tài khoản của bạn\nChưa mua trước đây\nAll packs\n\nTổng trước thuế\n\n39 US$\n\nThanh toán một lần bằng USD\n\nBộ có các mục đang được lên kế hoạch. Chưa thể mua hoặc tải các mục đó.\n\nGiá toàn bộ bộ mã\n39 US$\nMục cần thêm\n23\n\nPhép tính chưa gồm thuế. Tổng cuối cùng sẽ được hiển thị trước khi thanh toán.\n\nChưa thể thanh toán\nXem ví dụ miễn phí\n\nBộ đã chọn\n\nAll packs\n\nCả 23 mục từ bốn bộ trả phí: Product, Editorial, Playful và UI Motion.\n\nTổng số mục trong bộ\n23\nMục cần thêm\n23\nĐã có trong ví dụ này\n0\nNội dung của giao dịch mới (23)\n\nChỉ các mục bên dưới được đưa vào phép tính minh họa này.\n\nChuyển nội dung mượt mà\nHoạt ảnh\nDự kiến\nChuyển từ ảnh nhỏ đến chi tiết\nHoạt ảnh\nDự kiến\nBảng trượt từ cạnh\nHoạt ảnh\nDự kiến\nTiến trình đọc theo mục\nHoạt ảnh\nDự kiến\nChuyển động giá trị số\nHoạt ảnh\nDự kiến\nĐiều hướng theo mục\nPhần tử giao diện\nDự kiến\nBộ chuyển chỉ số\nPhần tử giao diện\nDự kiến\nThẻ dự án\nPhần tử giao diện\nDự kiến\nThư viện ảnh\nPhần tử giao diện\nDự kiến\nNút có hiệu ứng hút\nPhần tử giao diện\nDự kiến\nBộ chuyển đánh giá\nPhần tử giao diện\nDự kiến\nHiện nhóm tuần tự\nHiệu ứng\nDự kiến\nNền gradient mềm\nHiệu ứng\nDự kiến\nVùng sáng theo con trỏ\nHiệu ứng\nDự kiến\nPhần mở đầu với bản thử\nKhối trang\nDự kiến\nTính năng theo từng bước\nKhối trang\nDự kiến\nSo sánh gói dịch vụ\nKhối trang\nDự kiến\nPhần mở đầu với chữ lớn\nKhối trang\nDự kiến\nDanh mục dự án\nKhối trang\nDự kiến\nChân trang liên hệ\nKhối trang\nDự kiến\nPhần mở đầu với sticker\nKhối trang\nDự kiến\nCâu hỏi thường gặp dạng thẻ\nKhối trang\nDự kiến\nLời mời với đồ họa quỹ đạo\nKhối trang\nDự kiến\nSử dụng mã và cập nhật\n\nCho một người. Có thể dùng mã trong số lượng website cá nhân và dự án khách hàng không giới hạn. Không bán lại thư viện mã nguồn hoặc chia sẻ tài khoản cho nhóm.\n\nCác mục mới đã mua có cập nhật tính năng trong 12 tháng kể từ khi xác nhận giao dịch. Bạn vẫn có thể dùng mã sau đó.\n\nMục mới và bộ tương lai không nằm trong giao dịch này."
+  },
+  {
+    "locale": "vi",
+    "path": "/missing-page",
+    "headings": [
+      "Không tìm thấy trang."
+    ],
+    "text": "Không tìm thấy trang.\n\nKiểm tra địa chỉ hoặc mở thư viện khối giao diện và hoạt ảnh.\n\nVề thư viện"
+  }
+]

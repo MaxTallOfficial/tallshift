@@ -1,3 +1,4 @@
+import { IntegrationGuide } from '../foundations/IntegrationGuide';
 import { SystemDisclosureIcon } from '../foundations/SystemDisclosureIcon';
 import type { RecipeFile, RecipeLocale } from '../recipes/state-relay';
 
@@ -9,30 +10,30 @@ type PromptDocumentProps = {
 
 const labels = {
   ru: {
-    kicker: 'Промпт адаптации', task: 'Задача', rules: 'Требования к внедрению',
-    configuration: 'Выбранная конфигурация', context: 'Контекст вашего проекта',
-    contextNote: 'Включено в промпт для копирования.',
-    included: 'В копируемый промпт включены полные исходники и инструкция.',
-    sources: 'Включённые исходники', guide: 'Инструкция подключения',
-    full: 'Полный текст промпта', fullNote: 'Этот текст копирует кнопка «Скопировать промпт». Его также можно выделить вручную.',
+    kicker: 'Запрос для ИИ', task: 'Что должен сделать ИИ', rules: 'Требования к внедрению',
+    configuration: 'Настройки примера', context: 'Информация о проекте',
+    contextNote: 'Включено в текст запроса при копировании.',
+    included: 'В запрос включены все файлы кода и инструкция.',
+    sources: 'Файлы кода в запросе', guide: 'Инструкция подключения',
+    full: 'Полный текст запроса', fullNote: 'При копировании в буфер обмена попадает весь этот текст. Его также можно выделить вручную.',
     configMarker: 'Выбранная конфигурация:', sourceMarker: 'Полные локальные исходники',
   },
   en: {
-    kicker: 'Adaptation prompt', task: 'Task', rules: 'Integration requirements',
-    configuration: 'Selected configuration', context: 'Your project context',
-    contextNote: 'Included in the prompt you copy.',
-    included: 'The copied prompt includes the complete source and installation guide.',
+    kicker: 'AI request', task: 'What the AI should do', rules: 'Integration requirements',
+    configuration: 'Example settings', context: 'Your project details',
+    contextNote: 'Included in the request you copy.',
+    included: 'The request includes all source files and the setup guide.',
     sources: 'Included source files', guide: 'Installation guide',
-    full: 'Complete prompt text', fullNote: 'This is the exact text copied by “Copy prompt”. You can also select it manually.',
+    full: 'Full request text', fullNote: 'This is the full text copied to the clipboard. You can also select it manually.',
     configMarker: 'Selected configuration:', sourceMarker: 'Complete local source',
   },
   vi: {
-    kicker: 'Prompt tùy chỉnh', task: 'Yêu cầu', rules: 'Yêu cầu khi tích hợp',
-    configuration: 'Cấu hình đã chọn', context: 'Ngữ cảnh dự án của bạn',
-    contextNote: 'Được thêm vào prompt khi sao chép.',
-    included: 'Prompt được sao chép bao gồm toàn bộ mã nguồn và hướng dẫn cài đặt.',
+    kicker: 'Yêu cầu cho AI', task: 'AI cần làm gì', rules: 'Yêu cầu khi tích hợp',
+    configuration: 'Thiết lập ví dụ', context: 'Thông tin dự án của bạn',
+    contextNote: 'Được thêm vào yêu cầu khi sao chép.',
+    included: 'Yêu cầu gồm toàn bộ tệp mã nguồn và hướng dẫn cài đặt.',
     sources: 'Mã nguồn đi kèm', guide: 'Hướng dẫn tích hợp',
-    full: 'Toàn bộ prompt', fullNote: 'Đây là nội dung nút «Sao chép prompt» sẽ sao chép. Bạn cũng có thể chọn văn bản để sao chép thủ công.',
+    full: 'Toàn bộ yêu cầu', fullNote: 'Đây là toàn bộ nội dung được sao chép vào bộ nhớ tạm. Bạn cũng có thể chọn văn bản để sao chép thủ công.',
     configMarker: 'Cấu hình đã chọn:', sourceMarker: 'Toàn bộ mã nguồn cục bộ',
   },
 };
@@ -87,13 +88,7 @@ export function PromptDocument({ prompt, locale = 'en', files }: PromptDocumentP
     </details>
     {guide && <details className="pd-sources">
       <summary><SystemDisclosureIcon/>{t.guide}</summary>
-      <div className="pd-prose">{guide.split(/(```[\s\S]*?```)/g).map((part, partIndex) => {
-        const fenced = part.match(/^```[^\n]*\n([\s\S]*?)\n```$/);
-        if (fenced) return <pre className="pd-config" tabIndex={0} key={partIndex}><code>{fenced[1]}</code></pre>;
-        return part.split(/\n\s*\n/).filter(Boolean).map((paragraph, paragraphIndex) => paragraph.startsWith('# ')
-          ? <h4 key={`${partIndex}-${paragraphIndex}`}>{paragraph.slice(2)}</h4>
-          : <p key={`${partIndex}-${paragraphIndex}`}>{paragraph}</p>);
-      })}</div>
+      <div className="pd-prose"><IntegrationGuide source={guide}/></div>
     </details>}
     <details className="pd-full">
       <summary><SystemDisclosureIcon/>{t.full}</summary>

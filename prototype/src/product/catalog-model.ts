@@ -1,4 +1,5 @@
 import { materials, catalogPacks, type Locale, type Material, type MaterialType } from './catalog-data.ts';
+import {materialDisplayName} from './material-presentation.ts';
 
 export interface CatalogFilters {
   q: string;
@@ -48,7 +49,8 @@ export function filterCatalog(filters: CatalogFilters, favorites: readonly strin
     if (filters.access !== 'all' && material.access !== filters.access) return false;
     if (filters.availability === 'ready' && !material.available || filters.availability === 'planned' && material.available) return false;
     if (filters.saved && !favorites.includes(material.id)) return false;
-    const text = catalogSearchText([material.id, material.slug, material.name, ...Object.values(material.title), ...Object.values(material.description)].join(' '));
+    const displayNames=(['en','ru','vi'] as const).map(language=>materialDisplayName(material,language));
+    const text = catalogSearchText([material.id, material.slug, material.name, ...displayNames, ...Object.values(material.title), ...Object.values(material.description), ...(material.searchAliases ?? [])].join(' '));
     return words.every(word => text.includes(word));
   });
   if (filters.sort === 'name') return matches.sort((left, right) => left.title[locale].localeCompare(right.title[locale], locale));

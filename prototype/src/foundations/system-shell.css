@@ -1,3 +1,5 @@
+/* Hallmark · component: responsive navigation shell · genre: modern-minimal · theme: Tallshift Afterlight (brand) · built: the project · v2.0.0 */
+/* Hallmark · pre-emit critique: tablet product links remain visible; the larger system index uses the same labelled disclosure as the phone shell. */
 .system-brand { display:inline-flex; min-height:44px; align-items:center; font:650 29px/1 var(--sy-font-ui); letter-spacing:-.055em; color:var(--f-text); text-decoration:none; }
 .system-brand > span { display:inline-flex; align-items:center; gap:var(--sy-space-8); }.system-brand i { width:6px; height:6px; margin-top:-20px; border-radius:50%; background:var(--f-accent); }
 .system-brand[data-compact] { min-width:44px; justify-content:center; }.system-brand[data-inverse] { color:var(--f-on-accent); }.system-brand[data-inverse] i { background:currentColor; }
@@ -10,3 +12,66 @@
 .system-shell-skip:not(:focus) { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }.system-shell-skip:focus { position:fixed; top:12px; left:12px; z-index:70; padding:var(--sy-space-12) var(--sy-space-16); border-radius:8px; color:var(--f-on-accent); background:var(--f-accent); }
 @media(max-width:767px) { .system-shell-main { gap:var(--sy-space-12); min-height:80px; }.system-brand { font-size:26px; }.system-shell-edition { display:none; }.system-shell-toggle.system-button { display:inline-flex; width:100%; }.system-shell nav { display:none; }.system-shell[data-mobile-open=true] nav { display:grid; grid-template-columns:minmax(0,1fr); gap:0; overflow:visible; padding-block:var(--sy-space-8); }.system-shell nav a { padding-inline:var(--sy-space-12); border-bottom:0; border-left:2px solid transparent; min-height:44px; overflow-wrap:anywhere; }.system-shell nav a[aria-current] { border-left-color:currentColor; background:var(--f-inset); } }
 @media(forced-colors:active) { .system-brand i { background:CanvasText; }.system-shell nav a[aria-current] { color:LinkText; border-color:Highlight; } }
+
+/* Inline shell keeps one navigation tree and one primary action across breakpoints. */
+.system-shell[data-layout=inline] .system-shell-main { display:grid;grid-template-columns:auto minmax(0,1fr) auto auto auto;column-gap:24px;min-height:88px;flex-wrap:nowrap; }
+.system-shell[data-layout=inline] .system-shell-main > .system-brand { margin-right:16px; }
+.system-shell[data-layout=inline] nav { display:flex;align-items:center;gap:8px;min-width:0;min-height:0;border:0;overflow:visible; }
+.system-shell[data-layout=inline] nav a { min-height:44px;padding:12px 16px;border:1px solid transparent;border-radius:8px;font-size:14px;white-space:nowrap; }
+.system-shell[data-layout=inline] nav a:hover { background:var(--f-surface); }
+.system-shell[data-layout=inline] nav a[aria-current] { color:var(--f-accent);border-color:var(--f-selected-border);background:var(--f-inset); }
+.system-shell[data-layout=inline] nav a[data-mobile-only] { display:none; }
+.system-shell[data-layout=inline] .system-shell-locale { margin-left:0;min-width:0; }
+.system-shell[data-layout=inline] .system-shell-toggle { display:none; }
+.system-shell[data-layout=inline] .system-shell-primary,.system-shell[data-layout=inline] .system-shell-utility { min-width:0; }
+@media(max-width:1100px) { .system-shell[data-layout=inline] .system-shell-main { column-gap:16px; }.system-shell[data-layout=inline] .system-shell-main > .system-brand { margin-right:0; } }
+@media(max-width:1023px) {
+ .system-shell[data-layout=inline] .system-shell-main { grid-template-columns:minmax(0,1fr) auto auto;gap:0 12px;min-height:76px; }
+ .system-shell[data-layout=inline] .system-shell-main > .system-brand { grid-column:1;grid-row:1;justify-self:start; }
+ .system-shell[data-layout=inline] .system-shell-locale { grid-column:2;grid-row:1; }
+ .system-shell[data-layout=inline] .system-shell-toggle { display:inline-flex;grid-column:3;grid-row:1;width:48px;min-width:48px;height:48px;padding:0;margin:0; }
+ .system-shell[data-layout=inline] nav { display:none;grid-column:1/-1;grid-row:2; }
+ .system-shell[data-layout=inline][data-mobile-open=true] nav { display:grid;grid-template-columns:minmax(0,1fr);gap:4px;padding-block:16px 8px;border-top:1px solid var(--f-line); }
+ .system-shell[data-layout=inline] nav a { min-height:48px;white-space:normal; }
+ .system-shell[data-layout=inline][data-mobile-open=true] nav a[data-mobile-only] { display:flex; }
+ .system-shell[data-layout=inline] .system-shell-utility { display:none; }
+ .system-shell[data-layout=inline] .system-shell-primary { display:none;grid-column:1/-1;grid-row:3;padding-block:8px 16px; }
+ .system-shell[data-layout=inline][data-mobile-open=true] .system-shell-primary { display:block; }
+ .system-shell[data-layout=inline] .system-shell-primary > a { width:100%; }
+}
+@media(forced-colors:active) { .system-shell[data-layout=inline] nav a[aria-current] { border-color:Highlight;color:LinkText; } }
+
+/* Shared labelled disclosure. Product links stay visible on tablet; the larger
+   design-system index collapses independently at 1024px. */
+.system-brand > span { white-space:nowrap; }
+@media(min-width:768px) and (max-width:1023px) {
+ .system-shell[data-layout=inline] .system-shell-main { grid-template-columns:auto minmax(0,1fr) auto auto auto;column-gap:16px; }
+ .system-shell[data-layout=inline] nav { display:flex;grid-column:auto;grid-row:auto; }
+ .system-shell[data-layout=inline] .system-shell-locale { grid-column:auto;grid-row:auto; }
+ .system-shell[data-layout=inline] .system-shell-toggle { display:none; }
+ .system-shell[data-layout=inline] .system-shell-utility,.system-shell[data-layout=inline] .system-shell-primary { display:block;grid-column:auto;grid-row:auto;padding:0; }
+ .system-shell[data-layout=inline] .system-shell-primary > a { width:auto; }
+}
+@media(max-width:1023px) {
+ .system-shell[data-layout=stacked] .system-shell-main { display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;min-height:76px; }
+ .system-shell[data-layout=stacked] .system-shell-edition { display:none; }
+ .system-shell[data-layout=stacked] .system-shell-locale { margin-left:0; }
+ .system-shell[data-layout=stacked] .system-shell-toggle.system-button { display:inline-flex;width:auto; }
+ .system-shell[data-layout=stacked] nav { display:none; }
+ .system-shell[data-layout=stacked][data-mobile-open=true] nav { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;max-height:min(70dvh,480px);overflow:auto;padding:8px;margin-bottom:12px;border:1px solid var(--f-line);border-radius:12px;background:var(--f-inset); }
+ .system-shell[data-layout=stacked] nav a { min-width:0;min-height:48px;padding:12px;border:1px solid transparent;border-radius:8px;overflow-wrap:anywhere; }
+ .system-shell[data-layout=stacked] nav a[aria-current] { border-color:var(--f-selected-border);background:var(--f-selected-bg); }
+}
+@media(max-width:767px) {
+ .system-shell[data-layout=inline] .system-shell-toggle.system-button { width:auto;min-width:0;height:var(--sy-control-size,48px);padding-inline:12px; }
+ .system-shell[data-layout=inline][data-mobile-open=true] nav { padding:8px;margin-top:8px;border:1px solid var(--f-line);border-radius:12px;background:var(--f-inset); }
+}
+@media(max-width:599px) {
+ .system-shell[data-layout] .system-shell-main { gap:8px; }
+ .system-shell .system-brand { font-size:24px; }
+ .system-shell[data-layout=inline] .system-shell-toggle.system-button { padding-inline:8px; }
+ .system-shell[data-layout=stacked][data-mobile-open=true] nav { grid-template-columns:minmax(0,1fr); }
+}
+@media(forced-colors:active) {
+ .system-shell[data-layout=stacked] nav a[aria-current] { border-color:Highlight;color:LinkText; }
+}

@@ -5,11 +5,23 @@ import { localizedProductHref, productRoute } from '../src/product/routes.ts';
 const origin = 'https://tallshift.example';
 const route = (path: string) => productRoute(new URL(path, origin));
 
-test('entry URLs default to English and can be canonicalized to the material catalog', () => {
+test('entry URLs default to the localized home without changing catalog URLs', () => {
   for (const path of ['/', '/en']) {
-    assert.deepEqual(route(path), { locale: 'en', slug: undefined, search: '', hash: '', notFound: false });
-    assert.equal(localizedProductHref(path, 'en'), '/en/library');
+    assert.deepEqual(route(path), { locale: 'en', page:'home', slug: undefined, search: '', hash: '', notFound: false });
+    assert.equal(localizedProductHref(path, 'en'), '/en');
   }
+});
+
+test('new product pages preserve locale, account tab and fragments',()=>{
+ for(const page of ['pricing','account','checkout'] as const){
+  assert.equal(route(`/ru/${page}`).page,page);
+  assert.equal(localizedProductHref(`/ru/${page}?tab=orders#details`,'vi'),`/vi/${page}?tab=orders#details`);
+ }
+ assert.equal(localizedProductHref('/ru','en'),'/en');
+ assert.equal(route('/ru/pricing/unexpected').notFound,true);
+ assert.equal(route('/ru/account/unexpected').notFound,true);
+ assert.equal(route('/ru/checkout/unexpected').notFound,true);
+ assert.equal(localizedProductHref('/ru/checkout?plan=bundle&example=expired#terms','vi'),'/vi/checkout?plan=bundle&example=expired#terms');
 });
 
 test('localized catalog and material routes retain filter, view and appearance parameters', () => {

@@ -27,3 +27,13 @@ Focus uses the scoped input-modality tracker. Pointer activation does not leave 
 Preserve existing routes, field IDs, handlers, exports, pricing and access logic. The system review includes intentional local demonstrations; those do not imply server persistence or payment readiness. Existing product-screen work is outside this refinement's feature scope.
 
 Use tokens for fonts and colours; no custom SVG or text-symbol icons. Honour reduced motion and forced colours. Verify real rendering on narrow screens and all three locales before claiming a release.
+
+## Exports
+
+Product pages live in `prototype/src/product`: home (`/{locale}`), catalogue (`/{locale}/library`), material (`/{locale}/library/{slug}`), pricing (`/{locale}/pricing`) and account (`/{locale}/account`). They share ProductMaterialCard, ProductLink and SystemNavigationShell. Pricing uses the canonical quote model; commerce and sign-in remain unavailable in this local preview. Saved materials are actual browser-local state.
+
+ProductHeader composes the inline SystemNavigationShell: catalogue/pricing, compact language menu, saved materials and an explicit Open demo action. Product links stay visible from 768px; below that, SystemNavigationToggle shows a visible Menu label, library grid icon and disclosure state. The stacked shell remains the default for other consumers; the larger design-system index collapses below 1024px into two columns (one below 600px). Both shells use the same toggle and compact SystemLocaleControl variant; the locale control's segmented default remains compatible. A001's public title explains the button feedback; State Relay remains its canonical source/URL identity. Current implementation and review evidence: docs/knowledge-base/header-navigation.ru.md.
+
+Run Hallmark only through the pinned offline checker. The product geometry audit also checks the preview's own bounds and long control labels; document width alone is insufficient. Every new page receives a copywriter review from a first customer's perspective, recorded in `docs/knowledge-base/copy-review.ru.md`, then a fresh layout check after copy changes.
+
+Copy reviewed 2026-11-06: use functional localized names for all 32 examples, with canonical names secondary. Explain the AI request and existing React-project requirement at the relevant action. Checkout now lives at `/{locale}/checkout`; it is an explicit example calculation with no order creation or payment. New text and checkout evidence: `docs/art-direction-2026/copy-and-checkout-2026-11-06.ru.md`.

@@ -1,0 +1,11 @@
+
+> tallshift-local-prototype@0.1.0 test:study
+> node tests/study-export.mjs
+
+{
+  "scope": "Afterlight exact preview/source/prompt/ZIP fidelity; not target builds or browser QA",
+  "cases": 12,
+  "deterministic": true,
+  "hashes": "all files except checksum file itself",
+  "result": "passed"
+}

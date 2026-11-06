@@ -9,6 +9,8 @@ import { SystemIconButton } from './SystemIconButton';
 
 export interface SystemHexColorFieldProps {
   locale: Locale;
+  label?: string;
+  description?: string;
   value: string;
   onChange: (canonicalHex: string) => void;
   disabled?: boolean;
@@ -21,7 +23,7 @@ export interface SystemHexColorFieldProps {
 }
 
 /** Only Apply or Enter emits a canonical opaque color. Invalid edits stay local. */
-export function SystemHexColorField({ locale, value, onChange, disabled = false, readOnly = false, initialDraft, onDraftStateChange, draftValue, onDraftChange }: SystemHexColorFieldProps) {
+export function SystemHexColorField({ locale, label, description, value, onChange, disabled = false, readOnly = false, initialDraft, onDraftStateChange, draftValue, onDraftChange }: SystemHexColorFieldProps) {
   const t = configControlWords[locale];
   const id = useId();
   const [localDraft, setLocalDraft] = useState(initialDraft ?? value);
@@ -42,8 +44,9 @@ export function SystemHexColorField({ locale, value, onChange, disabled = false,
   };
 
   return <div className="sc-color-field" data-disabled={disabled || undefined} data-readonly={readOnly || undefined}>
-    <label className="sc-field-label" htmlFor={`${id}-hex`}>{t.colorLabel}</label>
-    <div className="sc-hex-row"><span className="sc-color-swatch" aria-hidden="true" style={{ backgroundColor: normalizeHexColor(value) ?? 'transparent' }} /><input id={`${id}-hex`} type="text" value={draft} placeholder="#EBD183" autoCapitalize="characters" autoComplete="off" spellCheck={false} maxLength={32} disabled={disabled} readOnly={readOnly} aria-invalid={error} aria-describedby={`${id}-help`} onChange={event => { setDraft(event.target.value); setEdited(true); }} onKeyDown={event => { if (event.key === 'Enter' && !readOnly) { event.preventDefault(); apply(); } }} />{!readOnly && <SystemIconButton className="sc-color-apply" icon="check" label={t.apply} title={t.apply} variant={dirty ? 'primary' : 'quiet'} data-dirty={dirty} onClick={apply} disabled={disabled || !dirty} />}</div>
+    <label className="sc-field-label" htmlFor={`${id}-hex`}>{label??t.colorLabel}</label>
+    {description&&<p className="sc-color-description" id={`${id}-description`}>{description}</p>}
+    <div className="sc-hex-row"><span className="sc-color-swatch" aria-hidden="true" style={{ backgroundColor: normalizeHexColor(value) ?? 'transparent' }} /><input id={`${id}-hex`} type="text" value={draft} placeholder="#EBD183" autoCapitalize="characters" autoComplete="off" spellCheck={false} maxLength={32} disabled={disabled} readOnly={readOnly} aria-invalid={error} aria-describedby={`${description?`${id}-description `:''}${id}-help`} onChange={event => { setDraft(event.target.value); setEdited(true); }} onKeyDown={event => { if (event.key === 'Enter' && !readOnly) { event.preventDefault(); apply(); } }} />{!readOnly && <SystemIconButton className="sc-color-apply" icon="check" label={t.apply} title={t.apply} variant={dirty ? 'primary' : 'quiet'} data-dirty={dirty} onClick={apply} disabled={disabled || !dirty} />}</div>
     {state !== 'applied' && <button type="button" className="sc-discard" onClick={() => { setDraft(value); setEdited(false); }} disabled={disabled || readOnly}>{t.discard}</button>}
     <div className="sc-feedback" id={`${id}-help`} aria-live="polite"><span aria-hidden={error}>{t.colorHelp}</span><span className="sc-field-error" aria-hidden={!error || draft.trim() !== ''}>{t.colorRequired}</span><span className="sc-field-error" aria-hidden={!error || draft.trim() === ''}>{t.colorInvalid}</span></div>
   </div>;

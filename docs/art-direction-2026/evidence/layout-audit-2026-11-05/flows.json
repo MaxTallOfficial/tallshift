@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "checks": [
+    "Home: primary action visible at 1280 x 800 in all three languages",
+    "Home: actual clipboard success and explicit local error scenario",
+    "Home: actual source/prompt/guide, arrow-key tabs and inert inactive panels",
+    "Pricing: 4 ownership states x 3 summaries, closed payment, focus return / en 320",
+    "Pricing: 4 ownership states x 3 summaries, closed payment, focus return / en 1440",
+    "Pricing: 4 ownership states x 3 summaries, closed payment, focus return / ru 320",
+    "Pricing: 4 ownership states x 3 summaries, closed payment, focus return / ru 1440",
+    "Pricing: 4 ownership states x 3 summaries, closed payment, focus return / vi 320",
+    "Pricing: 4 ownership states x 3 summaries, closed payment, focus return / vi 1440",
+    "Account: save -> navigation -> persistent saved material -> remove -> focus recovery; purchase/order/update empty states",
+    "Locale preserves account section",
+    "Embedded State Relay: viewport width and height fit at 5 sizes",
+    "Reduced motion: interactive example transitions disabled",
+    "Forced colors: account selection and keyboard focus remain visible",
+    "Shared design-system consumer: all thumbnail widths match hosts at 390 and 1440"
+  ],
+  "errors": [],
+  "blockedRequests": []
+}

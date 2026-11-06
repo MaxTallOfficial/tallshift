@@ -1,0 +1,65 @@
+[
+  {
+    "locale": "ru",
+    "width": 320,
+    "labels": [
+      {
+        "text": "Мягкая",
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "text": "Заметная",
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "text": "Выкл.",
+        "lines": 1,
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 320,
+    "labels": [
+      {
+        "text": "Subtle",
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "text": "Expressive",
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "text": "Off",
+        "lines": 1,
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "locale": "vi",
+    "width": 320,
+    "labels": [
+      {
+        "text": "Nhẹ nhàng",
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "text": "Nổi bật",
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "text": "Tắt",
+        "lines": 1,
+        "overflow": false
+      }
+    ]
+  }
+]

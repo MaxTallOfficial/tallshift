@@ -1,4 +1,4 @@
-.system-floating { z-index: 120; box-sizing: border-box; overflow: auto; overscroll-behavior: contain; color: var(--sy-text); background: var(--sy-raised); border: 1px solid var(--sy-border); border-radius: 12px; box-shadow: 0 14px 42px var(--sy-shadow-overlay); font: 400 14px/1.5 var(--sy-font-ui); }
+.system-floating { z-index: 120; box-sizing: border-box; overflow: auto; overscroll-behavior: contain; color: var(--f-text,var(--sy-text)); background: var(--f-raised,var(--sy-raised)); border: 1px solid var(--f-control-border,var(--sy-border)); border-radius: 12px; box-shadow: 0 14px 42px var(--sy-shadow-overlay); font: 400 14px/1.5 var(--sy-font-ui); }
 .system-menu { width: 252px; padding:var(--sy-space-8); }
 .system-menu > button { appearance: none; display: block; width: 100%; min-height: 44px; padding:var(--sy-space-12) var(--sy-space-12); border: 0; border-radius: 7px; background: transparent; color: inherit; text-align: start; font: inherit; cursor: pointer; }
 .system-menu > button:hover:not(:disabled), .system-menu > button:focus-visible { background: var(--sy-menu-hover); }
@@ -15,6 +15,7 @@
 .system-tooltip-anchor { display: inline-flex; }
 .system-tooltip { width: max-content; max-width: 280px; padding:var(--sy-space-8) var(--sy-space-12); font-size: 12px; }
 @media (forced-colors: active) { .system-floating { border-color: CanvasText; box-shadow: none; } .system-menu > button:focus-visible { outline-color: Highlight; } .system-menu > button:disabled { color: GrayText; } }
+@media (forced-colors: active) { .system-floating { background:Canvas;color:CanvasText; } }
 
 .system-menu > button { display:flex; align-items:center; justify-content:space-between; gap:var(--sy-space-16); }.system-menu-check { min-width:16px; color:var(--f-accent); }
 

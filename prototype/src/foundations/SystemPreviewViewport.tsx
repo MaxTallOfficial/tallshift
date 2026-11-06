@@ -19,9 +19,9 @@ export interface SystemPreviewViewportProps {
 }
 
 const copy = {
-  en: { width: 'Preview width', full: 'Full width',compact:'Auto', tablet: 'Tablet · 640', mobile: 'Mobile · 320', reset: 'Reset preview', note: 'The preview has its own document and viewport. Preset widths shrink to fit the available space.', actual: 'Actual viewport', scope: 'Trusted local React example. This frame does not run uploaded HTML or scripts.' },
-  ru: { width: 'Ширина превью', full: 'По ширине',compact:'Авто', tablet: 'Планшет · 640', mobile: 'Телефон · 320', reset: 'Сбросить превью', note: 'Превью открыто в отдельном документе со своей областью просмотра. Выбранная ширина уменьшается, если места меньше.', actual: 'Фактическая область', scope: 'Доверенный локальный пример React. Этот фрейм не запускает загруженный HTML и скрипты.' },
-  vi: { width: 'Chiều rộng bản xem thử', full: 'Toàn chiều rộng',compact:'Auto', tablet: 'Máy tính bảng · 640', mobile: 'Điện thoại · 320', reset: 'Đặt lại bản xem', note: 'Bản xem thử có tài liệu và vùng xem riêng. Chiều rộng sẽ thu nhỏ để vừa không gian có sẵn.', actual: 'Vùng xem thực tế', scope: 'Ví dụ React cục bộ đáng tin cậy. Khung này không chạy HTML hay mã lệnh được tải lên.' },
+  en: { width: 'Example width', full: 'Fit to width',compact:'Auto', tablet: 'Tablet · 640', mobile: 'Mobile · 320', reset: 'Restart example', note: 'Switch widths to see the example on different screens. It shrinks to fit when space is limited.', actual: 'Example size' },
+  ru: { width: 'Ширина примера', full: 'По ширине',compact:'Авто', tablet: 'Планшет · 640', mobile: 'Телефон · 320', reset: 'Запустить заново', note: 'Переключайте ширину, чтобы посмотреть пример на разных экранах. Если места мало, он уменьшится.', actual: 'Размер примера' },
+  vi: { width: 'Chiều rộng ví dụ', full: 'Toàn chiều rộng',compact:'Auto', tablet: 'Máy tính bảng · 640', mobile: 'Điện thoại · 320', reset: 'Chạy lại ví dụ', note: 'Đổi chiều rộng để xem ví dụ trên các màn hình khác nhau. Ví dụ tự thu nhỏ khi không đủ chỗ.', actual: 'Kích thước ví dụ' },
 } satisfies Record<Locale, Record<string, string>>;
 
 // Only a fixed empty document is parsed. Trusted React children are rendered by the parent.
@@ -117,6 +117,5 @@ export function SystemPreviewViewport({ locale, label, children, width, onWidthC
     <p className="sv-note" id={`${id}-note`}>{t.note}</p>
     <div className="sv-stage"><div className="sv-screen" style={{ maxWidth: width === 'mobile' ? 320 : width === 'tablet' ? 640 : '100%' }}><iframe ref={frameRef} className="sv-frame" title={label} aria-describedby={`${id}-note`} srcDoc={frameDocument} sandbox="allow-same-origin" onLoad={ready} style={{ height }} />{target && createPortal(<div key={revision} className="sv-frame-content">{children}</div>, target)}</div></div>
     <p className="sv-dimensions"><span>{t.actual}</span><span>{actualWidth || '—'} × {height} px</span></p>
-    <p className="sv-scope">{t.scope}</p>
   </div>;
 }

@@ -1,0 +1,1021 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "surface": "design-system",
+      "locale": "ru",
+      "width": 320,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 16,
+          "right": 116.421875,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 124.421875,
+          "right": 185.53125,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 193.53125,
+          "right": 304,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 24,
+      "menu": true,
+      "label": "Меню",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "ru",
+      "width": 390,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 16,
+          "right": 186.421875,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 194.421875,
+          "right": 255.53125,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 263.53125,
+          "right": 374,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 24,
+      "menu": true,
+      "label": "Меню",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "ru",
+      "width": 600,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 16,
+          "right": 380.421875,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 392.421875,
+          "right": 453.53125,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 465.53125,
+          "right": 584,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 26,
+      "menu": true,
+      "label": "Меню",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "ru",
+      "width": 767,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 16,
+          "right": 547.421875,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 559.421875,
+          "right": 620.53125,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 632.53125,
+          "right": 751,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 26,
+      "menu": true,
+      "label": "Меню",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "ru",
+      "width": 768,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 24,
+          "right": 540.421875,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 552.421875,
+          "right": 613.53125,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 625.53125,
+          "right": 744,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 29,
+      "menu": true,
+      "label": "Меню",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "ru",
+      "width": 834,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 24,
+          "right": 606.421875,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 618.421875,
+          "right": 679.53125,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 691.53125,
+          "right": 810,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 29,
+      "menu": true,
+      "label": "Меню",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "ru",
+      "width": 1023,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 24,
+          "right": 795.421875,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 807.421875,
+          "right": 868.53125,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 880.53125,
+          "right": 999,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 29,
+      "menu": true,
+      "label": "Меню",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "ru",
+      "width": 1024,
+      "rowHeight": 88,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 32,
+          "right": 141.25,
+          "top": 22,
+          "bottom": 66,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-edition",
+          "left": 165.25,
+          "right": 323.375,
+          "top": 35,
+          "bottom": 53,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 930.890625,
+          "right": 992,
+          "top": 18,
+          "bottom": 70,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 29,
+      "menu": false,
+      "label": "Меню",
+      "links": 12
+    },
+    {
+      "surface": "design-system",
+      "locale": "ru",
+      "width": 1280,
+      "rowHeight": 88,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 32,
+          "right": 141.25,
+          "top": 22,
+          "bottom": 66,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-edition",
+          "left": 165.25,
+          "right": 323.375,
+          "top": 35,
+          "bottom": 53,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 1186.890625,
+          "right": 1248,
+          "top": 18,
+          "bottom": 70,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 29,
+      "menu": false,
+      "label": "Меню",
+      "links": 12
+    },
+    {
+      "surface": "design-system",
+      "locale": "en",
+      "width": 320,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 16,
+          "right": 120.71875,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 128.71875,
+          "right": 188.734375,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 196.734375,
+          "right": 304,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 24,
+      "menu": true,
+      "label": "Menu",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "en",
+      "width": 390,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 16,
+          "right": 190.71875,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 198.71875,
+          "right": 258.734375,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 266.734375,
+          "right": 374,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 24,
+      "menu": true,
+      "label": "Menu",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "en",
+      "width": 600,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 16,
+          "right": 384.71875,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 396.71875,
+          "right": 456.734375,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 468.734375,
+          "right": 584,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 26,
+      "menu": true,
+      "label": "Menu",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "en",
+      "width": 767,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 16,
+          "right": 551.71875,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 563.71875,
+          "right": 623.734375,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 635.734375,
+          "right": 751,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 26,
+      "menu": true,
+      "label": "Menu",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "en",
+      "width": 768,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 24,
+          "right": 544.71875,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 556.71875,
+          "right": 616.734375,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 628.734375,
+          "right": 744,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 29,
+      "menu": true,
+      "label": "Menu",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "en",
+      "width": 834,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 24,
+          "right": 610.71875,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 622.71875,
+          "right": 682.734375,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 694.734375,
+          "right": 810,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 29,
+      "menu": true,
+      "label": "Menu",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "en",
+      "width": 1023,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 24,
+          "right": 799.71875,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 811.71875,
+          "right": 871.734375,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 883.734375,
+          "right": 999,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 29,
+      "menu": true,
+      "label": "Menu",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "en",
+      "width": 1024,
+      "rowHeight": 88,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 32,
+          "right": 141.25,
+          "top": 22,
+          "bottom": 66,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-edition",
+          "left": 165.25,
+          "right": 295.21875,
+          "top": 35,
+          "bottom": 53,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 931.984375,
+          "right": 992,
+          "top": 18,
+          "bottom": 70,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 29,
+      "menu": false,
+      "label": "Menu",
+      "links": 12
+    },
+    {
+      "surface": "design-system",
+      "locale": "en",
+      "width": 1280,
+      "rowHeight": 88,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 32,
+          "right": 141.25,
+          "top": 22,
+          "bottom": 66,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-edition",
+          "left": 165.25,
+          "right": 295.21875,
+          "top": 35,
+          "bottom": 53,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 1187.984375,
+          "right": 1248,
+          "top": 18,
+          "bottom": 70,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 29,
+      "menu": false,
+      "label": "Menu",
+      "links": 12
+    },
+    {
+      "surface": "design-system",
+      "locale": "vi",
+      "width": 320,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 16,
+          "right": 120.734375,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 128.734375,
+          "right": 188.734375,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 196.734375,
+          "right": 304,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 24,
+      "menu": true,
+      "label": "Menu",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "vi",
+      "width": 390,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 16,
+          "right": 190.734375,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 198.734375,
+          "right": 258.734375,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 266.734375,
+          "right": 374,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 24,
+      "menu": true,
+      "label": "Menu",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "vi",
+      "width": 600,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 16,
+          "right": 384.734375,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 396.734375,
+          "right": 456.734375,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 468.734375,
+          "right": 584,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 26,
+      "menu": true,
+      "label": "Menu",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "vi",
+      "width": 767,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 16,
+          "right": 551.734375,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 563.734375,
+          "right": 623.734375,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 635.734375,
+          "right": 751,
+          "top": 14,
+          "bottom": 62,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 26,
+      "menu": true,
+      "label": "Menu",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "vi",
+      "width": 768,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 24,
+          "right": 544.734375,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 556.734375,
+          "right": 616.734375,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 628.734375,
+          "right": 744,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 29,
+      "menu": true,
+      "label": "Menu",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "vi",
+      "width": 834,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 24,
+          "right": 610.734375,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 622.734375,
+          "right": 682.734375,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 694.734375,
+          "right": 810,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 29,
+      "menu": true,
+      "label": "Menu",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "vi",
+      "width": 1023,
+      "rowHeight": 76,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 24,
+          "right": 799.734375,
+          "top": 16,
+          "bottom": 60,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 811.734375,
+          "right": 871.734375,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        },
+        {
+          "class": "system-button system-navigation-toggle system-shell-toggle",
+          "left": 883.734375,
+          "right": 999,
+          "top": 12,
+          "bottom": 64,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 29,
+      "menu": true,
+      "label": "Menu",
+      "links": 0
+    },
+    {
+      "surface": "design-system",
+      "locale": "vi",
+      "width": 1024,
+      "rowHeight": 88,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 32,
+          "right": 141.25,
+          "top": 22,
+          "bottom": 66,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-edition",
+          "left": 165.25,
+          "right": 302.90625,
+          "top": 35,
+          "bottom": 53,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 932,
+          "right": 992,
+          "top": 18,
+          "bottom": 70,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 29,
+      "menu": false,
+      "label": "Menu",
+      "links": 12
+    },
+    {
+      "surface": "design-system",
+      "locale": "vi",
+      "width": 1280,
+      "rowHeight": 88,
+      "children": [
+        {
+          "class": "system-brand",
+          "left": 32,
+          "right": 141.25,
+          "top": 22,
+          "bottom": 66,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-edition",
+          "left": 165.25,
+          "right": 302.90625,
+          "top": 35,
+          "bottom": 53,
+          "overflow": false
+        },
+        {
+          "class": "system-shell-locale",
+          "left": 1188,
+          "right": 1248,
+          "top": 18,
+          "bottom": 70,
+          "overflow": false
+        }
+      ],
+      "brandLines": 2,
+      "brandHeight": 29,
+      "menu": false,
+      "label": "Menu",
+      "links": 12
+    }
+  ],
+  "flows": [
+    "Mobile menu: all destinations and demo available, Escape closes and restores focus",
+    "Demo CTA describes function, opens actual material and closes menu",
+    "Language menu: native names, keyboard choice, route and focus preserved",
+    "Language switching preserves material, view, target and hash",
+    "Catalogue criteria survive header navigation through saved materials",
+    "Saved current location is not falsely applied to orders or purchases",
+    "Outside dismissal and responsive switch keep focus visible",
+    "Shrinking to phone moves focus from a hidden destination to the visible menu control",
+    "Skip link works; pointer route navigation leaves no focus halo",
+    "Forced colors: language text and selected option visible; Escape recovery",
+    "Reduced motion: creative demo affordance remains still",
+    "Language popup: opaque surface above content, clamped within viewport in 9 cases",
+    "Design-system: 27 layout cases; shared labelled menu, scrollable links, anchor focus, Escape/outside/resize recovery"
+  ],
+  "errors": [],
+  "blockedRequests": []
+}

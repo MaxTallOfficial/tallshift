@@ -18,7 +18,6 @@ import { SystemTextarea } from '../foundations/SystemTextField';
 import { SystemToastRegion } from '../foundations/SystemToastRegion';
 import { SystemPreviewViewport } from '../foundations/SystemPreviewViewport';
 import { SourceNavigator } from '../foundations/SourceNavigator';
-import { SystemInlineAlert } from '../foundations/SystemInlineAlert';
 import { IntegrationGuide } from '../foundations/IntegrationGuide';
 import { MaterialPreview } from '../foundations/MaterialPreview';
 import { renderRelayIcon } from '../foundations/relay-icon-renderer';
@@ -31,6 +30,8 @@ import { parseShare, shareEnvelope } from '../share';
 import type { Material } from './catalog-data';
 import type { ProductLocale } from './routes';
 import { productCopy } from './product-copy';
+import { catalogCopy } from './catalog-copy';
+import {materialDisplayName} from './material-presentation';
 import './material.css';
 
 type View = 'demo' | 'code' | 'prompt';
@@ -41,6 +42,7 @@ interface MaterialPageProps {
 
 export function MaterialPage({ material, locale, search, catalogSearch, onSearchChange, saved, onToggleFavorite }: MaterialPageProps) {
   const t = productCopy[locale];
+  const displayName=materialDisplayName(material,locale);
   const query = new URLSearchParams(search);
   const view = (['demo', 'code', 'prompt'] as const).find(value => value === query.get('view')) ?? 'demo';
   const target: 'next' | 'vite' = query.get('target') === 'vite' ? 'vite' : 'next';
@@ -135,8 +137,8 @@ export function MaterialPage({ material, locale, search, catalogSearch, onSearch
     void copyText(url.href, t.shared);
   }
   const settings = <div className="tp-settings-content">
-    <SystemRadioGroup layout="inline" label={t.target} value={target} onChange={value => changeQuery('target', value)} options={[{ value: 'next', label: 'Next.js' }, { value: 'vite', label: 'Vite' }]} />
-    <SystemHexColorField locale={locale} value={accent} onChange={setAccent} draftValue={accentDraft} onDraftChange={setAccentDraft} />
+    <SystemRadioGroup layout="inline" label={t.target} description={t.targetHelp} value={target} onChange={value => changeQuery('target', value)} options={[{ value: 'next', label: 'Next.js' }, { value: 'vite', label: 'Vite' }]} />
+    <SystemHexColorField locale={locale} label={t.accent} description={t.accentHelp} value={accent} onChange={setAccent} draftValue={accentDraft} onDraftChange={setAccentDraft} />
     <SystemSegmentedControl label={t.motion} value={motion} onChange={setMotion} disabled={reduced} options={[{ value: 'subtle', label: t.subtle }, { value: 'expressive', label: t.expressive }, { value: 'off', label: t.off }]} />
     {reduced && <p className="tp-help">{t.reduced}</p>}
     <SystemDurationControl locale={locale} value={duration} onChange={setDuration} draftValue={durationDraft} onDraftChange={setDurationDraft} disabled={off} />
@@ -149,19 +151,20 @@ export function MaterialPage({ material, locale, search, catalogSearch, onSearch
   return <div className="tp-material">
     <a className="tp-back" href={`/${locale}/library${catalogSearch}`}><SystemIcon name="arrow-left" size={16} />{t.back}</a>
     <header className="tp-material-heading">
-      <div><div className="tp-eyebrow"><span>{material.id}</span><span>{t[material.type === 'animation' || material.type === 'effect' ? 'animation' : material.type]}</span><SystemBadge tone={material.available ? 'success' : 'neutral'}>{material.available ? t.available : t.planned}</SystemBadge></div>
-      <h1 lang="en">{material.name}</h1><p>{material.available ? t.lead : material.description[locale]}</p></div>
+      <div><h1 lang={locale}>{displayName}</h1><p>{material.available ? t.lead : material.description[locale]}</p>
+      <div className="tp-material-metadata"><span>{material.id}</span><span lang="en">{material.name}</span><span>{t[material.type]}</span><SystemBadge tone={material.available ? 'success' : 'neutral'}>{material.available ? t.available : t.planned}</SystemBadge></div></div>
       <div className="tp-material-heading-actions"><SystemBadge>{material.access === 'free' ? t.free : t.paid}</SystemBadge><SystemIconButton icon="bookmark" label={saved ? t.unsave : t.save} aria-pressed={saved} onClick={onToggleFavorite} /></div>
     </header>
     {material.available ? <>
       <div className="tp-workbench">
-        <section className="tp-workspace" aria-label={material.name}>
-          <div className="tp-workbar"><SystemTabList label={material.name} value={view} onChange={(next: View) => changeQuery('view', next)} options={(['demo', 'code', 'prompt'] as const).map(value => ({ value, label: t[value], tabId: `material-tab-${value}`, panelId: `material-panel-${value}` }))} />
+        <section className="tp-workspace" aria-label={displayName}>
+          <div className="tp-workbar"><SystemTabList label={displayName} value={view} onChange={(next: View) => changeQuery('view', next)} options={(['demo', 'code', 'prompt'] as const).map(value => ({ value, label: t[value], tabId: `material-tab-${value}`, panelId: `material-panel-${value}` }))} />
           <SystemButton variant="quiet" ref={guideTrigger} leadingIcon={<SystemIcon name="book" />} aria-haspopup="dialog" aria-expanded={guideOpen} onClick={() => setGuideOpen(true)}>{t.instructions}</SystemButton></div>
           {compact && <div className="tp-mobile-settings"><SystemButton ref={settingsTrigger} leadingIcon={<SystemIcon name="settings" />} aria-haspopup="dialog" aria-expanded={settingsOpen} onClick={() => setSettingsOpen(true)}>{t.settings}</SystemButton><SystemDownloadAction variant="primary" label={t.download} onDownload={download} disabled={blocked} loading={archivePending} error={archiveError} failureMessage={t.zipFailure} /></div>}
           {blocked && <p className="tp-blocked-note" role="status">{blockedReason}</p>}
           <div className="tp-panel" id="material-panel-demo" role="tabpanel" aria-labelledby="material-tab-demo" hidden={view !== 'demo'}>
-            <SystemPreviewViewport locale={locale} label="State Relay" width={width} onWidthChange={setWidth} motionOff={off}>
+            <p className="tp-panel-explanation">{t.demoHelp}</p>
+            <SystemPreviewViewport locale={locale} label={displayName} width={width} onWidthChange={setWidth} motionOff={off}>
               <AfterlightExample {...config} renderStateIcon={renderRelayIcon} actionIcon={<SystemIcon name="external" />} resetIcon={<SystemIcon name="replay" />} />
             </SystemPreviewViewport>
           </div>
@@ -170,6 +173,7 @@ export function MaterialPage({ material, locale, search, catalogSearch, onSearch
             <SystemCodePanel label={t.file} source={selected.content} filePath={selected.path} wrap={wrap} description={t.sourceNote} navigation={<SourceNavigator locale={locale} files={sources} selectedPath={selected.path} onSelect={setPath} onCopy={() => void copyText(selected.content)} copyBusy={copy.state === 'pending'} exportBlocked={blocked} />} toolbar={<div className="tp-file-select"><SystemSelect label={t.file} value={selected.path} onChange={setPath} options={sources.map(file => ({ value: file.path, label: file.path }))} /></div>} />
           </div>
           <div className="tp-panel tp-prompt" id="material-panel-prompt" role="tabpanel" aria-labelledby="material-tab-prompt" hidden={view !== 'prompt'}>
+            <p className="tp-panel-explanation tp-prompt-help">{t.promptHelp}</p>
             <SystemRadioGroup label={t.mode} layout="cards" value={mode} onChange={setMode} description={t.modeHelp} options={[{ value: 'preserve', label: t.preserve }, { value: 'adapt', label: t.adapt }]} />
             <SystemCheckbox label={t.includeContext} checked={includeContext} onChange={setIncludeContext} />
             {includeContext && <SystemTextarea label={t.context} description={t.contextHint} value={context} maxLength={4000} counter={`${context.length} / 4000`} onChange={event => setContext(event.target.value)} placeholder={t.contextPlaceholder} />}
@@ -178,9 +182,9 @@ export function MaterialPage({ material, locale, search, catalogSearch, onSearch
           </div>
           {copy.state === 'error' && <SystemCopyFallback title={t.copyFailure} label={t.manual} value={copy.payload} />}
         </section>
-        {!compact && <aside className="tp-settings" aria-labelledby="material-settings"><header><p className="tp-eyebrow">01 / {t.settings}</p><h2 id="material-settings">{t.settings}</h2><p className="tp-help">{t.settingsHelp}</p></header>{settings}</aside>}
+        {!compact && <aside className="tp-settings" aria-labelledby="material-settings"><header><h2 id="material-settings">{t.settings}</h2><p className="tp-help">{t.settingsHelp}</p></header>{settings}</aside>}
       </div>
-      <section className="tp-material-info" aria-labelledby="material-kit"><header><p className="tp-eyebrow">CODE / PROMPT / GUIDE</p><h2 id="material-kit">{t.kit}</h2></header><div className="tp-kit-grid">{[
+      <section className="tp-material-info" aria-labelledby="material-kit"><header><h2 id="material-kit">{t.kit}</h2></header><div className="tp-kit-grid">{[
         { icon: 'code' as const, title: t.sourceTitle, body: t.sourceBody }, { icon: 'sparkles' as const, title: t.promptTitle, body: t.promptBody }, { icon: 'book' as const, title: t.guideTitle, body: t.guideBody },
       ].map(item => <div key={item.title}><SystemIcon name={item.icon} size={24} /><h3>{item.title}</h3><p>{item.body}</p></div>)}</div>
       <div className="tp-material-notes"><div><h3>{t.use}</h3><p>{t.useBody}</p></div><div><h3>{t.facts}</h3><ul>{[t.framework, t.dependencies, t.keyboard, t.version].map(value => <li key={value}><SystemIcon name="check" size={16} />{value}</li>)}</ul></div></div>
@@ -189,6 +193,6 @@ export function MaterialPage({ material, locale, search, catalogSearch, onSearch
       <SystemSheet open={guideOpen} onOpenChange={setGuideOpen} title={t.instructions} description={t.instructionsHelp} closeLabel={t.close} returnFocusRef={guideTrigger}><div className="tp-guide"><IntegrationGuide source={guide} /></div></SystemSheet>
       <SystemSheet open={licenseOpen} onOpenChange={setLicenseOpen} title={t.licenseTitle} description={t.permission} closeLabel={t.close} returnFocusRef={licenseTrigger}><pre className="tp-license-text">{license}</pre></SystemSheet>
       <SystemToastRegion label={t.notifications} dismissLabel={t.close} items={notice ? [{ id: 'material', title: notice, tone: 'success' }] : []} announcement={notice} announcementKey={noticeKey} onDismiss={() => setNotice('')} />
-    </> : <section className="tp-planned"><div className="tp-planned-preview"><MaterialPreview kind={material.preview} locale={locale} /><span>{t.planned}</span></div><div><SystemBadge>{t.planned}</SystemBadge><h2>{t.plannedTitle}</h2><p>{t.plannedBody}</p><SystemInlineAlert title={t.plannedNote} /><a className="tp-action-link" href={`/${locale}/library/state-relay`}>{t.plannedAction}<SystemIcon name="arrow-right" /></a></div></section>}
+    </> : <section className="tp-planned"><div className="tp-planned-preview"><MaterialPreview kind={material.preview} locale={locale} /><span>{catalogCopy[locale].illustration}</span></div><div><h2>{t.plannedTitle}</h2><p>{t.plannedBody}</p><a className="tp-action-link" href={`/${locale}/library/state-relay`}>{t.plannedAction}<SystemIcon name="arrow-right" /></a></div></section>}
   </div>;
 }

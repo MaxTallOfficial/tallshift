@@ -1,3 +1,5 @@
+/* Hallmark · checked: 2026-11-05 · genre: modern-minimal · shape: app screen · theme: Tallshift Afterlight (brand) · nav: existing product shell · footer: author credit · built: the project · redesign: full · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: variety; catalogue uses a compact search index, material uses the live workbench. */
 .tp-material { width:min(1240px,calc(100% - 64px));padding:32px 0 80px;margin-inline:auto; }
 .tp-back { display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--f-muted);font-size:13px;text-decoration:none; }
 .tp-back:hover { color:var(--f-accent); }
@@ -79,3 +81,35 @@
 .tp-action-link { display:inline-flex;min-height:52px;align-items:center;justify-content:center;gap:12px;padding:12px 20px;margin-top:24px;border-radius:8px;background:var(--f-accent);color:var(--f-on-accent);font-size:14px;line-height:1.5;font-weight:600;text-decoration:none; }
 @media(max-width:1023px) { .tp-material { width:calc(100% - 48px); }.tp-workbench { grid-template-columns:minmax(0,1fr); }.tp-material-heading h1 { font-size:40px; }.tp-settings { position:static; }.tp-planned { gap:32px; } }
 @media(max-width:767px) { .tp-material { width:calc(100% - 32px);padding:24px 0 64px; }.tp-material-heading { padding:24px 0 32px;gap:16px; }.tp-material-heading h1 { font-size:32px; }.tp-material-heading-actions { flex-direction:column;gap:12px; }.tp-material-heading > div:first-child > p { font-size:14px; }.tp-workbar { padding:12px 16px;gap:8px;flex-wrap:wrap; }.tp-workbar > .system-button { margin-left:auto; }.tp-mobile-settings { padding:16px; }.tp-panel { padding:16px; }.tp-code .system-code-with-navigation { grid-template-columns:minmax(0,1fr); }.tp-panel .sv-toolbar > .system-segmented { flex-basis:100%; }.tp-kit-grid { grid-template-columns:minmax(0,1fr);gap:32px; }.tp-material-info { padding-top:48px; }.tp-material-info h2 { font-size:24px; }.tp-material-notes { grid-template-columns:minmax(0,1fr);gap:16px; }.tp-prompt .system-radio-group[data-layout=cards] .system-radio-options { grid-template-columns:minmax(0,1fr); }.tp-planned { grid-template-columns:minmax(0,1fr); }.tp-planned-preview .dl-preview { height:280px; }.tp-workspace > .system-copy-fallback { margin:0 16px 16px; }.tp-blocked-note { padding-inline:16px; } }
+
+.tp-material-heading { padding:16px 0 24px; }
+.tp-material-heading > div:first-child { display:flex;flex-direction:column; }
+.tp-material-heading h1 { order:-1;margin-top:0;font-size:40px; }
+.tp-material-heading > div:first-child > p { margin-top:12px; }
+.tp-material-metadata { display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:16px;color:var(--f-muted);font-size:12px; }
+.tp-panel-explanation { max-width:72ch;margin-bottom:20px;color:var(--f-secondary);font-size:16px;line-height:1.7; }
+.tp-settings-content > .system-button .system-button-label { white-space:normal;overflow-wrap:anywhere; }
+.tp-workspace { border:0;border-radius:0;background:transparent;overflow:visible; }
+.tp-workbar { padding:0 0 16px; }
+.tp-panel { padding:24px 0; }
+.tp-kit-grid { grid-template-columns:minmax(0,1fr);gap:0; }
+.tp-kit-grid > div { display:grid;grid-template-columns:24px minmax(160px,.5fr) minmax(0,1fr);gap:24px;align-items:start;padding:24px 0;border-top:1px solid var(--f-line); }
+.tp-kit-grid h3,.tp-kit-grid p { margin:0; }
+.tp-planned-preview { border:0;border-radius:0; }
+.tp-action-link { max-width:100%; }
+@media(min-width:1024px) { .tp-panel { min-height:640px; }.tp-panel.tp-code,.tp-panel.tp-prompt { max-height:780px;overflow:auto;scrollbar-gutter:stable; } }
+@media(max-width:767px) {
+ .tp-material-heading { display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px; }
+ .tp-material-heading > div:first-child { display:contents; }
+ .tp-material-heading h1 { grid-column:1/-1;grid-row:1;font-size:30px; }
+ .tp-material-heading > div:first-child > p { grid-column:1/-1;margin:0; }
+ .tp-material-metadata { grid-column:1;grid-row:3;margin:0;gap:8px; }
+ .tp-material-heading-actions { grid-column:2;grid-row:3;flex-direction:row;gap:8px;padding:0; }
+ .tp-material-heading-actions > .system-icon-button { min-width:44px;width:44px; }
+ .tp-panel { padding:16px 0; }
+ .tp-mobile-settings { padding-inline:0; }
+ .tp-kit-grid > div { grid-template-columns:24px minmax(0,1fr);gap:12px; }
+ .tp-kit-grid p { grid-column:2; }
+ .tp-action-link { font-size:13px;padding-inline:12px; }
+}
+@media(max-width:359px) { .tp-settings-content .system-segmented-choice { padding-inline:4px;overflow-wrap:normal; } }

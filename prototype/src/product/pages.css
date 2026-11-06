@@ -1,0 +1,123 @@
+/* Hallmark · checked: 2026-11-05 · genre: modern-minimal · shape: working product showcase and app screens · theme: Tallshift Afterlight (brand) · nav: shared product shell · footer: author credit · built: the project · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: proof; one real State Relay leads, planned work and unavailable commerce are explicit. */
+.product-page { width:min(1240px,calc(100% - 64px));margin-inline:auto;padding-block:48px 96px;min-width:0; }
+.product-page :is(h1,h2,h3) { min-width:0;overflow-wrap:break-word;font-weight:550;color:var(--f-text);letter-spacing:-.025em;line-height:1.2; }
+.product-page h1 { font-size:40px;max-width:22ch; }
+.product-page h2 { font-size:32px; }
+.product-page-heading { margin-bottom:32px; }
+.product-page-heading > p { margin-top:20px;max-width:640px;font-size:16px;color:var(--f-secondary); }
+.product-link { max-width:100%;gap:16px; }
+.product-link .system-button-label { white-space:normal; }
+.product-preview-note { padding:20px 24px;margin-block:24px;color:var(--f-secondary);background:var(--f-inset);font-size:14px;line-height:1.65; }
+.product-preview-note p { max-width:760px; }
+.product-preview-note .sys-select { margin-top:20px;max-width:480px; }
+.pp-review-controls { margin-top:12px; }
+.pp-review-controls > summary { display:flex;align-items:center;gap:8px;min-height:44px;list-style:none;cursor:pointer;color:var(--f-accent);font-size:14px; }
+.pp-review-controls > summary::-webkit-details-marker { display:none; }
+.product-section-title { margin-block:40px 32px!important;font-size:24px!important; }
+.hp-hero { display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:64px;align-items:center;min-height:min(720px,calc(100svh - 190px));padding-block:16px 64px; }
+.hp-hero h1 { font-size:clamp(42px,4.6vw,68px);max-width:12ch;line-height:1.06;letter-spacing:-.045em; }
+.hp-lead { max-width:470px;margin-top:24px!important;font-size:18px;line-height:1.65;color:var(--f-secondary); }
+.hp-actions { display:flex;align-items:center;gap:20px 24px;flex-wrap:wrap;margin-top:32px; }
+.hp-free { margin-top:16px!important;font-size:13px;color:var(--f-muted); }
+.hp-text-link { display:inline-flex;align-items:center;gap:12px;min-height:44px;color:var(--f-accent);font-size:14px;text-decoration:underline;text-underline-offset:4px; }
+.hp-demo { min-width:0;margin:0;background:var(--f-inset);padding:32px;border-radius:12px; }
+.hp-demo figcaption { margin-top:24px;padding-top:24px;border-top:1px solid var(--f-line);font-size:14px;color:var(--f-secondary); }
+.hp-demo figcaption strong { color:var(--f-text);font-weight:550; }
+.hp-demo figcaption p { margin-top:8px; }
+.hp-demo figcaption a { display:inline-flex;align-items:center;gap:12px;min-height:44px;margin-top:8px;color:var(--f-accent); }
+.hp-kit { display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start;margin-top:96px; }
+.hp-section-heading p { margin-top:20px;max-width:580px;color:var(--f-secondary);font-size:16px; }
+.hp-section-heading > .hp-text-link { margin-top:16px; }
+.hp-kit .system-code-source,.hp-kit .system-prompt-document,.hp-guide { height:360px; }
+.hp-kit .system-code-layout { margin-top:0; }
+.hp-guide { overflow:auto;padding:24px;background:var(--f-inset);border-radius:8px;font-size:14px;color:var(--f-secondary); }
+.hp-guide :is(p,h3,pre) { margin-bottom:20px; }
+.hp-guide h3 { font-size:20px; }
+.hp-guide pre { white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.8 var(--sy-font-code); }
+.hp-guide:focus-visible { outline:2px solid var(--f-focus);outline-offset:3px; }
+.hp-collection { margin-top:128px; }
+.hp-collection .pc-material-grid { margin-top:40px; }
+.hp-count { font-size:13px!important;color:var(--f-muted)!important; }
+.pc-material :is(h2,h3) { margin-top:0;font-size:20px;line-height:1.4;font-weight:600;letter-spacing:-.005em;overflow-wrap:anywhere; }
+.hp-flow { display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;margin-top:128px; }
+.hp-flow ol { padding:0;list-style:none; }
+.hp-flow li { display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px 24px;padding-block:24px;border-top:1px solid var(--f-line); }
+.hp-flow li:first-child { padding-top:0;border-top:0; }
+.hp-step-number { grid-row:1/3;color:var(--f-muted);font-size:14px;font-variant-numeric:tabular-nums; }
+.hp-flow h3 { font-size:22px; }
+.hp-flow li p { color:var(--f-secondary);font-size:16px; }
+.hp-closing { display:flex;gap:48px;align-items:center;justify-content:space-between;margin-top:96px;padding-block:48px;border-top:1px solid var(--f-line); }
+.hp-closing > div { max-width:700px; }
+.hp-closing p { margin-top:20px;color:var(--f-secondary);font-size:16px; }
+.hp-closing > a { flex-shrink:0; }
+.pp-page .as-offers { margin-top:0; }
+.pp-page .as-offer[data-featured] { background:var(--f-surface);box-shadow:none; }
+.pp-page .as-offer .as-claim { font-size:24px;min-block-size:2.6em; }
+.pp-page .as-pack-note { min-block-size:5em; }
+.pp-card-details { margin-block:24px; }
+.pp-card-details .system-accordion-content { padding-inline:0; }
+.pp-contents { padding-left:20px;display:grid;gap:8px;font-size:14px; }
+.pp-contents a { color:var(--f-secondary);text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere; }
+.pp-terms { margin-top:80px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 64px; }
+.pp-terms h2 { font-size:24px; }
+.pp-terms p { color:var(--f-secondary);margin-top:16px;font-size:16px; }
+.pp-terms > .system-accordion,.pp-tax { grid-column:1/-1; }
+.pp-tax { font-size:13px!important; }
+.pp-summary { color:var(--f-secondary);font-size:14px; }
+.pp-summary dl { display:grid;gap:24px; }
+.pp-summary dt { color:var(--f-text);font-weight:600; }
+.pp-summary dd { margin-top:8px; }
+.pp-summary .pp-total { font-size:36px;font-weight:600;color:var(--f-text); }
+.pp-summary > p,.pp-summary > .system-accordion { margin-top:24px; }
+.ap-page { min-height:70svh; }
+.ap-page > .system-tablist { margin-top:32px; }
+.ap-panel { padding-top:32px;min-height:400px; }
+.ap-panel > .sf-empty { padding:48px 24px;border-top:1px solid var(--f-line); }
+.ap-page > .system-tablist { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible; }
+.ap-panel > .sf-empty { border:0;background:transparent; }
+.ap-panel .sf-empty h2 { font-size:24px; }
+.pp-existing { margin-top:24px;padding-top:24px;border-top:1px solid var(--f-line); }
+.pp-existing h3 { font-size:18px; }
+.ap-panel:focus-visible { outline:2px solid var(--f-focus);outline-offset:4px; }
+.product-page a:active { opacity:.85; }
+@media(max-width:1100px) {
+ .hp-hero { gap:32px; }.hp-demo { padding:24px; }.hp-kit,.hp-flow { gap:40px; }
+}
+@media(max-width:1023px) {
+ .product-page { width:calc(100% - 48px); }
+ .hp-hero { grid-template-columns:minmax(0,1fr);min-height:0;gap:40px; }
+ .hp-hero h1 { max-width:16ch;font-size:56px; }
+ .hp-hero-copy { max-width:740px; }
+ .hp-demo { max-width:740px;width:100%; }
+ .hp-kit { grid-template-columns:minmax(0,1fr);margin-top:48px; }
+ .hp-collection,.hp-flow { margin-top:80px; }
+ .hp-closing { align-items:flex-start;flex-direction:column;gap:32px; }
+ .hp-collection .pc-material-grid { grid-template-columns:minmax(0,1fr); }
+}
+@media(max-width:767px) {
+ .product-page { width:calc(100% - 32px);padding-block:32px 64px; }
+ .product-page h1 { font-size:30px; }.product-page h2 { font-size:28px; }
+ .product-preview-note { padding:16px; }
+ .hp-hero { padding:8px 0 0;gap:32px; }
+ .hp-hero h1 { font-size:40px;max-width:13ch; }
+ .hp-lead { font-size:16px;margin-top:20px!important; }
+ .hp-demo { padding:20px 16px; }
+ .hp-demo figcaption { font-size:13px; }
+ .hp-actions { gap:8px 20px;margin-top:24px; }
+ .hp-kit,.hp-collection,.hp-flow,.hp-closing { margin-top:64px; }
+ .hp-collection .pc-material-grid { margin-top:24px; }
+ .hp-flow { grid-template-columns:minmax(0,1fr);gap:32px; }
+ .hp-flow li { column-gap:12px; }.hp-flow h3 { font-size:20px; }
+ .hp-closing { padding-block:32px; }
+ .pp-terms { grid-template-columns:minmax(0,1fr);gap:32px;margin-top:48px; }
+ .pp-page .as-offer .as-claim { min-block-size:0; }
+ .pp-page .as-price { min-block-size:64px; }
+ .pp-page .as-pack-note { min-block-size:0; }
+ .ap-panel { padding-top:24px; }
+ .ap-page > .system-tablist { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .ap-panel > .sf-empty { padding:32px 0; }
+ .pc-material :is(h2,h3) { font-size:20px; }
+}
+@media(prefers-reduced-motion:reduce) { .product-page * { scroll-behavior:auto; } }
+@media(forced-colors:active) { .pp-page .as-offer[data-featured] { border-color:Highlight; }.hp-demo,.product-preview-note { outline:1px solid CanvasText; } }

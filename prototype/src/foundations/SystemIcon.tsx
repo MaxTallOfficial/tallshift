@@ -5,7 +5,7 @@ import {
  PlayIcon, PauseIcon, ReloadIcon, Settings01Icon, FilterHorizontalIcon, GridViewIcon, ComputerIcon,
  Tablet01Icon, SmartPhone01Icon, InformationCircleIcon, Alert02Icon, CancelCircleIcon, Add01Icon,
  MinusSignIcon, ArrowUpRight01Icon, Folder01Icon, File01Icon, Layers01Icon, Delete02Icon, CheckmarkSquare02Icon, SquareIcon, MinusSignSquareIcon,
- BookOpen01Icon, Link01Icon, SparklesIcon,
+ BookOpen01Icon, Link01Icon, SparklesIcon, Menu01Icon,
 } from '@hugeicons-pro/core-duotone-rounded';
 import './system-icons.css';
 
@@ -14,7 +14,7 @@ export const systemIconNames = [
   'arrow-left', 'arrow-right', 'check', 'copy', 'download', 'code', 'prompt',
   'play', 'pause', 'replay', 'settings', 'filter', 'grid', 'desktop', 'tablet',
   'mobile', 'info', 'warning', 'error', 'plus', 'minus', 'external', 'folder', 'file', 'layers', 'trash', 'checkbox-checked', 'checkbox-unchecked', 'checkbox-mixed',
-  'book', 'link', 'sparkles',
+  'book', 'link', 'sparkles', 'menu',
 ] as const;
 
 export type SystemIconName = typeof systemIconNames[number];
@@ -34,7 +34,7 @@ const icons:Record<SystemIconName,IconSvgElement> = {
  mobile:SmartPhone01Icon,info:InformationCircleIcon,warning:Alert02Icon,error:CancelCircleIcon,plus:Add01Icon,minus:MinusSignIcon,
  external:ArrowUpRight01Icon,folder:Folder01Icon,file:File01Icon,layers:Layers01Icon,trash:Delete02Icon,
  'checkbox-checked':CheckmarkSquare02Icon,'checkbox-unchecked':SquareIcon,'checkbox-mixed':MinusSignSquareIcon,
- book:BookOpen01Icon,link:Link01Icon,sparkles:SparklesIcon,
+ book:BookOpen01Icon,link:Link01Icon,sparkles:SparklesIcon,menu:Menu01Icon,
 };
 /** Duotone Rounded artwork preserves its native fills and secondary opacity. */
 export function SystemIcon({name,size=20,label,className=''}:SystemIconProps) {

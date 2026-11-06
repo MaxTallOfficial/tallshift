@@ -1,0 +1,827 @@
+{
+  "checks": [
+    {
+      "path": "/ru",
+      "width": 320,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/ru/pricing",
+      "width": 320,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru/account",
+      "width": 320,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru",
+      "width": 360,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/ru/pricing",
+      "width": 360,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru/account",
+      "width": 360,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru",
+      "width": 390,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/ru/pricing",
+      "width": 390,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru/account",
+      "width": 390,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru",
+      "width": 560,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/ru/pricing",
+      "width": 560,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru/account",
+      "width": 560,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru",
+      "width": 561,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/ru/pricing",
+      "width": 561,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru/account",
+      "width": 561,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru",
+      "width": 767,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/ru/pricing",
+      "width": 767,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru/account",
+      "width": 767,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru",
+      "width": 768,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/ru/pricing",
+      "width": 768,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru/account",
+      "width": 768,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru",
+      "width": 1023,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/ru/pricing",
+      "width": 1023,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru/account",
+      "width": 1023,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru",
+      "width": 1024,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/ru/pricing",
+      "width": 1024,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru/account",
+      "width": 1024,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru",
+      "width": 1100,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/ru/pricing",
+      "width": 1100,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru/account",
+      "width": 1100,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru",
+      "width": 1280,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/ru/pricing",
+      "width": 1280,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru/account",
+      "width": 1280,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru",
+      "width": 1440,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/ru/pricing",
+      "width": 1440,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru/account",
+      "width": 1440,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru",
+      "width": 1920,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/ru/pricing",
+      "width": 1920,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/ru/account",
+      "width": 1920,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en",
+      "width": 320,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/en/pricing",
+      "width": 320,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en/account",
+      "width": 320,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en",
+      "width": 360,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/en/pricing",
+      "width": 360,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en/account",
+      "width": 360,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en",
+      "width": 390,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/en/pricing",
+      "width": 390,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en/account",
+      "width": 390,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en",
+      "width": 560,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/en/pricing",
+      "width": 560,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en/account",
+      "width": 560,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en",
+      "width": 561,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/en/pricing",
+      "width": 561,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en/account",
+      "width": 561,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en",
+      "width": 767,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/en/pricing",
+      "width": 767,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en/account",
+      "width": 767,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en",
+      "width": 768,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/en/pricing",
+      "width": 768,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en/account",
+      "width": 768,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en",
+      "width": 1023,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/en/pricing",
+      "width": 1023,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en/account",
+      "width": 1023,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en",
+      "width": 1024,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/en/pricing",
+      "width": 1024,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en/account",
+      "width": 1024,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en",
+      "width": 1100,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/en/pricing",
+      "width": 1100,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en/account",
+      "width": 1100,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en",
+      "width": 1280,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/en/pricing",
+      "width": 1280,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en/account",
+      "width": 1280,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en",
+      "width": 1440,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/en/pricing",
+      "width": 1440,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en/account",
+      "width": 1440,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en",
+      "width": 1920,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/en/pricing",
+      "width": 1920,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/en/account",
+      "width": 1920,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi",
+      "width": 320,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/vi/pricing",
+      "width": 320,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi/account",
+      "width": 320,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi",
+      "width": 360,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/vi/pricing",
+      "width": 360,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi/account",
+      "width": 360,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi",
+      "width": 390,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/vi/pricing",
+      "width": 390,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi/account",
+      "width": 390,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi",
+      "width": 560,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/vi/pricing",
+      "width": 560,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi/account",
+      "width": 560,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi",
+      "width": 561,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/vi/pricing",
+      "width": 561,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi/account",
+      "width": 561,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi",
+      "width": 767,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/vi/pricing",
+      "width": 767,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi/account",
+      "width": 767,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi",
+      "width": 768,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/vi/pricing",
+      "width": 768,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi/account",
+      "width": 768,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi",
+      "width": 1023,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/vi/pricing",
+      "width": 1023,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi/account",
+      "width": 1023,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi",
+      "width": 1024,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/vi/pricing",
+      "width": 1024,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi/account",
+      "width": 1024,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi",
+      "width": 1100,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/vi/pricing",
+      "width": 1100,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi/account",
+      "width": 1100,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi",
+      "width": 1280,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/vi/pricing",
+      "width": 1280,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi/account",
+      "width": 1280,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi",
+      "width": 1440,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/vi/pricing",
+      "width": 1440,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi/account",
+      "width": 1440,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi",
+      "width": 1920,
+      "tag": "new-pages",
+      "previews": 3,
+      "issues": []
+    },
+    {
+      "path": "/vi/pricing",
+      "width": 1920,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    },
+    {
+      "path": "/vi/account",
+      "width": 1920,
+      "tag": "new-pages",
+      "previews": 0,
+      "issues": []
+    }
+  ],
+  "failures": [],
+  "errors": [],
+  "blockedRequests": [],
+  "policy": "Local page resources only; external requests aborted"
+}

@@ -42,6 +42,8 @@ export { SystemPagination } from './SystemPagination';
 export { SystemOffer } from './SystemOffer';
 export { SystemEntitlementState } from './SystemEntitlementState';
 export { SystemNavigationShell } from './SystemNavigationShell';
+export { SystemNavigationToggle } from './SystemNavigationToggle';
+export type { SystemNavigationToggleProps } from './SystemNavigationToggle';
 export { SystemLocaleControl } from './SystemLocaleControl';
 export { SystemCodePanel } from './SystemCodePanel';
 export { SystemPromptPanel } from './SystemPromptPanel';

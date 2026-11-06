@@ -104,3 +104,8 @@
 }
 
 .system-segmented-hint { margin:var(--sy-space-8) 0 0; color:var(--f-muted); font-size:12px; line-height:1.65; overflow-wrap:anywhere; }
+
+@media (forced-colors: active) {
+ /* Keep the user's Highlight/HighlightText pair without a Canvas backplate obscuring the text. */
+ .system-segmented-option > input:checked + .system-segmented-choice { forced-color-adjust:none;transition:none; }
+}

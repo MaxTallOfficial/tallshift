@@ -20,18 +20,17 @@ import { SystemPreviewViewport } from '../foundations/SystemPreviewViewport';
 import { SourceNavigator } from '../foundations/SourceNavigator';
 import { IntegrationGuide } from '../foundations/IntegrationGuide';
 import { MaterialPreview } from '../foundations/MaterialPreview';
-import { renderRelayIcon } from '../foundations/relay-icon-renderer';
 import { colorDraftState } from '../foundations/workbench-state';
 import { validateDurationDraft } from '../foundations/config-control-validation';
-import { AfterlightExample } from '../study/AfterlightExample';
-import { studyArchive, studyFiles, studyPrompt } from '../study/recipe';
 import { PromptDocument } from '../study/PromptDocument';
-import { parseShare, shareEnvelope } from '../share';
+import { parseShare, shareEnvelope, type ShareItemId } from '../share';
 import type { Material } from './catalog-data';
 import type { ProductLocale } from './routes';
 import { productCopy } from './product-copy';
 import { catalogCopy } from './catalog-copy';
 import {materialDisplayName} from './material-presentation';
+import { materialRecipe } from './material-recipes';
+import { exampleCopy } from './example-copy';
 import './material.css';
 
 type View = 'demo' | 'code' | 'prompt';
@@ -41,12 +40,20 @@ interface MaterialPageProps {
 }
 
 export function MaterialPage({ material, locale, search, catalogSearch, onSearchChange, saved, onToggleFavorite }: MaterialPageProps) {
-  const t = productCopy[locale];
+  const baseCopy = productCopy[locale];
+  const specificCopy = Object.hasOwn(exampleCopy[locale], material.id) ? exampleCopy[locale][material.id as keyof typeof exampleCopy[typeof locale]] : undefined;
+  const t = { ...baseCopy, ...specificCopy, accent: specificCopy?.accentLabel ?? baseCopy.accent };
+  const recipe = materialRecipe(material.id);
+  const ready = material.available && Boolean(recipe);
+  const Demo = recipe?.Demo;
+  const shareItemId: ShareItemId = ready ? material.id as ShareItemId : 'A001';
+  const showAccent = recipe?.colorControl !== false;
+  const durationMax = recipe?.durationMax ?? 480;
   const displayName=materialDisplayName(material,locale);
   const query = new URLSearchParams(search);
   const view = (['demo', 'code', 'prompt'] as const).find(value => value === query.get('view')) ?? 'demo';
   const target: 'next' | 'vite' = query.get('target') === 'vite' ? 'vite' : 'next';
-  const [initial] = useState(() => parseShare(location.hash));
+  const [initial] = useState(() => parseShare(location.hash, shareItemId));
   const [accent, setAccent] = useState(initial?.accent ?? '#EBD183');
   const [accentDraft, setAccentDraft] = useState(accent);
   const [duration, setDuration] = useState(initial?.duration ?? 160);
@@ -77,14 +84,14 @@ export function MaterialPage({ material, locale, search, catalogSearch, onSearch
   const revision = useRef(0);
   const off = motion === 'off' || reduced;
   const colorState = colorDraftState(accentDraft, accent);
-  const blockedReason = colorState !== 'applied' ? t.blocked : !off && validateDurationDraft(durationDraft).error ? t.durationBlocked : '';
+  const blockedReason = showAccent && colorState !== 'applied' ? t.blocked : !off && validateDurationDraft(durationDraft, durationMax).error ? t.durationBlocked : '';
   const blocked = Boolean(blockedReason);
   const exportAllowed = useRef(!blocked); exportAllowed.current = !blocked;
   const config = useMemo(() => ({ locale, target, accent, duration: off ? 0 : duration, motion: off ? 'off' as const : motion }), [locale, target, accent, off, duration, motion]);
-  const files = useMemo(() => material.available ? studyFiles(config) : [], [material.available, config]);
+  const files = useMemo(() => ready ? recipe!.files(config) : [], [ready, recipe, config]);
   const sources = files.filter(file => /\.(tsx?|css)$/.test(file.path));
   const selected = sources.find(file => file.path === path) ?? sources[0];
-  const prompt = useMemo(() => material.available ? studyPrompt({ ...config, mode, context: includeContext ? context : '' }) : '', [material.available, config, mode, includeContext, context]);
+  const prompt = useMemo(() => ready ? recipe!.prompt({ ...config, mode, context: includeContext ? context : '' }) : '', [ready, recipe, config, mode, includeContext, context]);
   const guide = files.find(file => file.path === `INSTALL.${locale}.md`)?.content ?? files.find(file => file.path === `README.${locale}.md`)?.content ?? '';
   const license = files.find(file => file.path === 'LICENSE.txt')?.content ?? '';
 
@@ -121,10 +128,11 @@ export function MaterialPage({ material, locale, search, catalogSearch, onSearch
     try {
     const captured = { ...config, mode, context: includeContext ? context : '' };
     const ticket = revision.current;
-    const bytes = await studyArchive(captured);
+    const bytes = await recipe!.archive(captured);
+    if (!mounted.current || ticket !== revision.current || !exportAllowed.current) return;
     const url = URL.createObjectURL(new Blob([new Uint8Array(bytes).buffer], { type: 'application/zip' }));
     const anchor = document.createElement('a'); anchor.href = url;
-    anchor.download = `A001-state-relay-${captured.target}-${captured.locale}.zip`;
+    anchor.download = `${material.id}-${material.slug}-${captured.target}-${captured.locale}.zip`;
     document.body.append(anchor); anchor.click(); anchor.remove();
     setTimeout(() => URL.revokeObjectURL(url), 2000);
     if (mounted.current && ticket === revision.current) { setNotice(t.zipDone); setNoticeKey(value => value + 1); }
@@ -132,16 +140,16 @@ export function MaterialPage({ material, locale, search, catalogSearch, onSearch
     finally { archiveBusy.current = false; if (mounted.current) setArchivePending(false); }
   }
   function share() {
-    const url = new URL(`/${locale}/library/state-relay`, location.origin);
-    url.hash = new URLSearchParams({ share: JSON.stringify(shareEnvelope({ accent, motion: config.motion, duration: config.duration })) }).toString();
+    const url = new URL(`/${locale}/library/${material.slug}`, location.origin);
+    url.hash = new URLSearchParams({ share: JSON.stringify(shareEnvelope({ accent, motion: config.motion, duration: config.duration }, shareItemId)) }).toString();
     void copyText(url.href, t.shared);
   }
   const settings = <div className="tp-settings-content">
     <SystemRadioGroup layout="inline" label={t.target} description={t.targetHelp} value={target} onChange={value => changeQuery('target', value)} options={[{ value: 'next', label: 'Next.js' }, { value: 'vite', label: 'Vite' }]} />
-    <SystemHexColorField locale={locale} label={t.accent} description={t.accentHelp} value={accent} onChange={setAccent} draftValue={accentDraft} onDraftChange={setAccentDraft} />
+    {showAccent && <SystemHexColorField locale={locale} label={t.accent} description={t.accentHelp} value={accent} onChange={setAccent} draftValue={accentDraft} onDraftChange={setAccentDraft} />}
     <SystemSegmentedControl label={t.motion} value={motion} onChange={setMotion} disabled={reduced} options={[{ value: 'subtle', label: t.subtle }, { value: 'expressive', label: t.expressive }, { value: 'off', label: t.off }]} />
     {reduced && <p className="tp-help">{t.reduced}</p>}
-    <SystemDurationControl locale={locale} value={duration} onChange={setDuration} draftValue={durationDraft} onDraftChange={setDurationDraft} disabled={off} />
+    <SystemDurationControl locale={locale} max={durationMax} value={duration} onChange={setDuration} draftValue={durationDraft} onDraftChange={setDurationDraft} disabled={off} />
     <p className="tp-settings-status" data-blocked={blocked} role="status">{blockedReason || t.applied}</p>
     <SystemDownloadAction variant="primary" label={t.download} onDownload={download} disabled={blocked} loading={archivePending} error={archiveError} failureMessage={t.zipFailure} />
     <p className="tp-help">{t.downloadHelp}</p>
@@ -151,11 +159,11 @@ export function MaterialPage({ material, locale, search, catalogSearch, onSearch
   return <div className="tp-material">
     <a className="tp-back" href={`/${locale}/library${catalogSearch}`}><SystemIcon name="arrow-left" size={16} />{t.back}</a>
     <header className="tp-material-heading">
-      <div><h1 lang={locale}>{displayName}</h1><p>{material.available ? t.lead : material.description[locale]}</p>
-      <div className="tp-material-metadata"><span>{material.id}</span><span lang="en">{material.name}</span><span>{t[material.type]}</span><SystemBadge tone={material.available ? 'success' : 'neutral'}>{material.available ? t.available : t.planned}</SystemBadge></div></div>
+      <div><h1 lang={locale}>{displayName}</h1><p>{ready ? t.lead : material.description[locale]}</p>
+      <div className="tp-material-metadata"><span>{material.id}</span><span lang="en">{material.name}</span><span>{t[material.type]}</span><SystemBadge tone={ready ? 'success' : 'neutral'}>{ready ? t.available : t.planned}</SystemBadge></div></div>
       <div className="tp-material-heading-actions"><SystemBadge>{material.access === 'free' ? t.free : t.paid}</SystemBadge><SystemIconButton icon="bookmark" label={saved ? t.unsave : t.save} aria-pressed={saved} onClick={onToggleFavorite} /></div>
     </header>
-    {material.available ? <>
+    {ready ? <>
       <div className="tp-workbench">
         <section className="tp-workspace" aria-label={displayName}>
           <div className="tp-workbar"><SystemTabList label={displayName} value={view} onChange={(next: View) => changeQuery('view', next)} options={(['demo', 'code', 'prompt'] as const).map(value => ({ value, label: t[value], tabId: `material-tab-${value}`, panelId: `material-panel-${value}` }))} />
@@ -165,7 +173,7 @@ export function MaterialPage({ material, locale, search, catalogSearch, onSearch
           <div className="tp-panel" id="material-panel-demo" role="tabpanel" aria-labelledby="material-tab-demo" hidden={view !== 'demo'}>
             <p className="tp-panel-explanation">{t.demoHelp}</p>
             <SystemPreviewViewport locale={locale} label={displayName} width={width} onWidthChange={setWidth} motionOff={off}>
-              <AfterlightExample {...config} renderStateIcon={renderRelayIcon} actionIcon={<SystemIcon name="external" />} resetIcon={<SystemIcon name="replay" />} />
+              {Demo && <Demo {...config} />}
             </SystemPreviewViewport>
           </div>
           <div className="tp-panel tp-code" id="material-panel-code" role="tabpanel" aria-labelledby="material-tab-code" hidden={view !== 'code'}>

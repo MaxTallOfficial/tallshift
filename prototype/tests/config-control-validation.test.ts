@@ -69,3 +69,12 @@ test('normal-text contrast remains valid throughout a representative RGB lattice
     assert.ok(previewColorContrast(hex).ratio >= 4.5, hex);
   }
 });
+
+
+test('effect-specific duration limit supports 600 ms while existing controls retain 480 ms', () => {
+  assert.deepEqual(validateDurationDraft('600', 600), { value: 600, error: null });
+  assert.deepEqual(validateDurationDraft('481', 600), { value: 481, error: null });
+  assert.deepEqual(validateDurationDraft('600'), { value: null, error: 'range' });
+  assert.deepEqual(validateDurationDraft('601', 600), { value: null, error: 'range' });
+  assert.deepEqual(validateDurationDraft('599.5', 600), { value: null, error: 'step' });
+});

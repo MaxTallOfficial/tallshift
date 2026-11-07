@@ -7,6 +7,8 @@
 - [KB-UI-008 · Превью и проверка внутренних границ](preview-layout-and-audit.ru.md)
 - [UX-копирайтер: журнал проверки текстов и правило следующих страниц](copy-review.ru.md)
 - [KB-UI-010 · Шапка и понятное имя примера](header-navigation.ru.md)
+- [KB-UI-011 · C001/C002: бесплатные примеры, единая выдача и параллельная работа](starter-examples-and-parallel-work.ru.md)
+- [KB-UI-012 · E001/S003: видимый fallback, диапазоны настроек и составные комплекты](reveal-and-composed-sections.ru.md)
 
 - [KB-UI-001 · Контекстные размеры кнопок](button-sizing.ru.md)
 - [KB-UI-002 · Иерархия карточки предложения](offer-card-hierarchy.ru.md)

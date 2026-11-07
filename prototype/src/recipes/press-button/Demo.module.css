@@ -1,0 +1,57 @@
+/* Hallmark v2.0.0 | theme: Tallshift Saffron (locked) | scope: component | signature: a real local counter beside explicit state samples */
+/* Critique: one action, honest local state, and a native link demonstrate the contract without invented progress. */
+:root {
+  --press-demo-default-text: #EDECE8;
+  --press-demo-default-secondary: #C4C3BF;
+  --press-demo-default-line: #3E3D39;
+  --press-demo-default-surface: #1E1D19;
+  --press-demo-default-focus: #F7EBCB;
+}
+.demo {
+  --press-demo-text: var(--f-text, var(--press-demo-default-text));
+  --press-demo-secondary: var(--f-secondary, var(--press-demo-default-secondary));
+  --press-demo-line: var(--f-line, var(--press-demo-default-line));
+  --press-demo-surface: var(--f-raised, var(--press-demo-default-surface));
+  --press-demo-focus: var(--f-focus, var(--press-demo-default-focus));
+  --press-demo-transparent: transparent;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  color: var(--press-demo-text);
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.demo * { box-sizing: border-box; }
+.scenarios { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 24px; }
+.scenarios button {
+  min-width: 44px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--press-demo-line);
+  border-radius: 8px;
+  background: var(--press-demo-transparent);
+  color: var(--press-demo-secondary);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.scenarios button[aria-pressed='true'] { background: var(--press-demo-surface); color: var(--press-demo-text); border-color: var(--press-demo-secondary); }
+.scenarios button:focus-visible, .demo[data-input-modality='keyboard'] .scenarios button:focus { outline: 2px solid var(--press-demo-focus); outline-offset: 3px; }
+.demo[data-input-modality='pointer'] .scenarios button:focus { outline: none; }
+.stage { display: grid; justify-items: start; gap: 24px; padding: 24px 0; border-top: 1px solid var(--press-demo-line); }
+.help { max-width: 42em; min-height: 3.2em; margin: 0; color: var(--press-demo-secondary); overflow-wrap: anywhere; }
+.count { margin: 0; }
+.count strong { font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.linkExample { display: grid; justify-items: start; gap: 16px; padding-top: 24px; border-top: 1px solid var(--press-demo-line); }
+.linkExample p { margin: 0; max-width: 42em; color: var(--press-demo-secondary); overflow-wrap: anywhere; }
+.destination:focus { outline: 2px solid var(--press-demo-focus); outline-offset: 4px; }
+.demo[data-input-modality='pointer'] .destination:focus { outline: none; }
+@media (forced-colors: active) {
+  .scenarios button { border-color: ButtonText; color: ButtonText; background: ButtonFace; }
+  .scenarios button[aria-pressed='true'] { border-color: Highlight; }
+  .scenarios button:focus-visible, .demo[data-input-modality='keyboard'] .scenarios button:focus, .destination:focus { outline-color: Highlight; }
+}

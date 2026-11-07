@@ -1,0 +1,196 @@
+{
+  "date": "2026-11-07",
+  "baseCommit": "03784eb",
+  "scope": "E001/S003 local prototype; no commerce or user approval",
+  "unit": {
+    "fullSuitePassed": 166,
+    "failed": 0,
+    "postScrollFixFocusedRevealPassed": 8,
+    "postLinkFixFocusedRevealPassed": 8
+  },
+  "exportFidelity": {
+    "cases": 48,
+    "items": [
+      "C001",
+      "C002",
+      "E001",
+      "S003"
+    ],
+    "locales": [
+      "ru",
+      "en",
+      "vi"
+    ],
+    "targets": [
+      "next",
+      "vite"
+    ],
+    "modes": [
+      "preserve",
+      "adapt"
+    ],
+    "deterministicZip": true,
+    "hashes": "SHA-256 every file except checksums.json",
+    "sourcePolicy": "Exact source; S003 press-button.ts facade only relocates ../press-button/ to ./vendor/press-button/"
+  },
+  "consumerBuilds": [
+    {
+      "itemId": "C001",
+      "targetConfiguration": "next",
+      "strictTypecheck": true,
+      "viteBuild": true,
+      "nextRuntimeBuild": false
+    },
+    {
+      "itemId": "C001",
+      "targetConfiguration": "vite",
+      "strictTypecheck": true,
+      "viteBuild": true,
+      "nextRuntimeBuild": false
+    },
+    {
+      "itemId": "C002",
+      "targetConfiguration": "next",
+      "strictTypecheck": true,
+      "viteBuild": true,
+      "nextRuntimeBuild": false
+    },
+    {
+      "itemId": "C002",
+      "targetConfiguration": "vite",
+      "strictTypecheck": true,
+      "viteBuild": true,
+      "nextRuntimeBuild": false
+    },
+    {
+      "itemId": "E001",
+      "targetConfiguration": "next",
+      "strictTypecheck": true,
+      "viteBuild": true,
+      "nextRuntimeBuild": false
+    },
+    {
+      "itemId": "E001",
+      "targetConfiguration": "vite",
+      "strictTypecheck": true,
+      "viteBuild": true,
+      "nextRuntimeBuild": false
+    },
+    {
+      "itemId": "S003",
+      "targetConfiguration": "next",
+      "strictTypecheck": true,
+      "viteBuild": true,
+      "nextRuntimeBuild": false
+    },
+    {
+      "itemId": "S003",
+      "targetConfiguration": "vite",
+      "strictTypecheck": true,
+      "viteBuild": true,
+      "nextRuntimeBuild": false
+    }
+  ],
+  "a001Fidelity": {
+    "cases": 12,
+    "passed": true
+  },
+  "builds": {
+    "product": true,
+    "system": true
+  },
+  "offlineHallmark": {
+    "product": {
+      "uiFiles": 18,
+      "fail": 0,
+      "reflex": 0,
+      "warn": 0
+    },
+    "recipes": {
+      "uiFiles": 16,
+      "fail": 0,
+      "reflex": 0,
+      "warn": 0
+    },
+    "foundations": {
+      "uiFiles": 121,
+      "fail": 0,
+      "reflex": 0,
+      "warn": 13
+    },
+    "isolatedSystemMotionControlsTsx": {
+      "fail": 1,
+      "reflex": 2,
+      "note": "CSS was not included in single-file scope; no clean isolated verdict claimed"
+    },
+    "entry": "npm run check:design via pinned offline wrapper only"
+  },
+  "browser": {
+    "newExamples": {
+      "passed": true,
+      "checks": 159,
+      "flows": [
+        "E001: RU/EN/VI, five widths, demo/code/AI request/guide, real interaction, item-specific settings, blocked exports and item-bound shared appearance",
+        "S003: RU/EN/VI, five widths, demo/code/AI request/guide, real interaction, item-specific settings, blocked exports and item-bound shared appearance",
+        "Reusable APIs: real viewport entry, 600ms animation, immediate focus/reduce/off cancellation, re-entry, StrictMode, native action/link and blocked action, absent empty note, contrast on custom surfaces and 320px layout"
+      ],
+      "pageErrors": 0,
+      "externalRequests": 0,
+      "evidence": "checks.json"
+    },
+    "siteRegression": {
+      "passed": true,
+      "checks": 343,
+      "pageErrors": 0,
+      "externalRequests": 0,
+      "evidence": "site-regression/checks.json"
+    },
+    "extra375": {
+      "passed": true,
+      "captures": 6,
+      "errors": 0,
+      "external": 0,
+      "evidence": "captures-375.json"
+    },
+    "focusedReplayAgent": {
+      "passed": 21,
+      "reportedBy": "reveal_qa_debug",
+      "scope": "three locales, five widths plus repeated390/1024; parent-realm animate and target visibility"
+    },
+    "correctiveCaptures": {
+      "passed": true,
+      "captures": 6,
+      "evidence": "recapture.json",
+      "sourceChanged": false
+    }
+  },
+  "copyReview": {
+    "independentAgent": true,
+    "locales": [
+      "ru",
+      "en",
+      "vi"
+    ],
+    "userResearch": false,
+    "nativeVietnameseReview": false,
+    "userApproval": false
+  },
+  "git": {
+    "commitCreated": false,
+    "pushed": false,
+    "githubActionsManuallyRun": false
+  },
+  "finishReview": {
+    "independent": true,
+    "initialVerdict": "fix",
+    "findings": [
+      "Explanation target could remain clipped after focus",
+      "Six S003 capture artifacts with sticky header"
+    ],
+    "finalVerdict": "ship",
+    "screenshots": 36,
+    "openFindings": 0,
+    "resolved": true,
+    "userApproval": false
+  }
+}

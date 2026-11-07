@@ -1,0 +1,966 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal",
+      "width": 320,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal?view=code",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal?view=prompt",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal",
+      "width": 390,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal?view=code",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal?view=prompt",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal",
+      "width": 768,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal?view=code",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal?view=prompt",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal",
+      "width": 1024,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal?view=code",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal?view=prompt",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal",
+      "width": 1440,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal?view=code",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal?view=prompt",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal",
+      "width": 320,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal?view=code",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal?view=prompt",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal",
+      "width": 390,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal?view=code",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal?view=prompt",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal",
+      "width": 768,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal?view=code",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal?view=prompt",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal",
+      "width": 1024,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal?view=code",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal?view=prompt",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal",
+      "width": 1440,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal?view=code",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal?view=prompt",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal",
+      "width": 320,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal?view=code",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal?view=prompt",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal",
+      "width": 390,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal?view=code",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal?view=prompt",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal",
+      "width": 768,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal?view=code",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal?view=prompt",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal",
+      "width": 1024,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal?view=code",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal?view=prompt",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal",
+      "width": 1440,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal?view=code",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal?view=prompt",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal",
+      "width": 320,
+      "tag": "settings-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal#share=%7B%22schemaVersion%22%3A%221.0.0%22%2C%22itemId%22%3A%22E001%22%2C%22itemVersion%22%3A%220.1.0-prototype%22%2C%22configSchemaVersion%22%3A%221.0.0%22%2C%22shareMode%22%3A%22appearance%22%2C%22configProjection%22%3A%7B%22motion%22%3A%22subtle%22%2C%22duration%22%3A600%7D%7D",
+      "width": 320,
+      "tag": "guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal",
+      "width": 1440,
+      "tag": "settings-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-reveal#share=%7B%22schemaVersion%22%3A%221.0.0%22%2C%22itemId%22%3A%22E001%22%2C%22itemVersion%22%3A%220.1.0-prototype%22%2C%22configSchemaVersion%22%3A%221.0.0%22%2C%22shareMode%22%3A%22appearance%22%2C%22configProjection%22%3A%7B%22motion%22%3A%22subtle%22%2C%22duration%22%3A600%7D%7D",
+      "width": 1440,
+      "tag": "guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal",
+      "width": 320,
+      "tag": "settings-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal#share=%7B%22schemaVersion%22%3A%221.0.0%22%2C%22itemId%22%3A%22E001%22%2C%22itemVersion%22%3A%220.1.0-prototype%22%2C%22configSchemaVersion%22%3A%221.0.0%22%2C%22shareMode%22%3A%22appearance%22%2C%22configProjection%22%3A%7B%22motion%22%3A%22subtle%22%2C%22duration%22%3A600%7D%7D",
+      "width": 320,
+      "tag": "guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal",
+      "width": 1440,
+      "tag": "settings-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/content-reveal#share=%7B%22schemaVersion%22%3A%221.0.0%22%2C%22itemId%22%3A%22E001%22%2C%22itemVersion%22%3A%220.1.0-prototype%22%2C%22configSchemaVersion%22%3A%221.0.0%22%2C%22shareMode%22%3A%22appearance%22%2C%22configProjection%22%3A%7B%22motion%22%3A%22subtle%22%2C%22duration%22%3A600%7D%7D",
+      "width": 1440,
+      "tag": "guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal",
+      "width": 320,
+      "tag": "settings-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal#share=%7B%22schemaVersion%22%3A%221.0.0%22%2C%22itemId%22%3A%22E001%22%2C%22itemVersion%22%3A%220.1.0-prototype%22%2C%22configSchemaVersion%22%3A%221.0.0%22%2C%22shareMode%22%3A%22appearance%22%2C%22configProjection%22%3A%7B%22motion%22%3A%22subtle%22%2C%22duration%22%3A600%7D%7D",
+      "width": 320,
+      "tag": "guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal",
+      "width": 1440,
+      "tag": "settings-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/content-reveal#share=%7B%22schemaVersion%22%3A%221.0.0%22%2C%22itemId%22%3A%22E001%22%2C%22itemVersion%22%3A%220.1.0-prototype%22%2C%22configSchemaVersion%22%3A%221.0.0%22%2C%22shareMode%22%3A%22appearance%22%2C%22configProjection%22%3A%7B%22motion%22%3A%22subtle%22%2C%22duration%22%3A600%7D%7D",
+      "width": 1440,
+      "tag": "guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band",
+      "width": 320,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band?view=code",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band?view=prompt",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band",
+      "width": 390,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band?view=code",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band?view=prompt",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band",
+      "width": 768,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band?view=code",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band?view=prompt",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band",
+      "width": 1024,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band?view=code",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band?view=prompt",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band",
+      "width": 1440,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band?view=code",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band?view=prompt",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band",
+      "width": 320,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band?view=code",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band?view=prompt",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band",
+      "width": 390,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band?view=code",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band?view=prompt",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band",
+      "width": 768,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band?view=code",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band?view=prompt",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band",
+      "width": 1024,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band?view=code",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band?view=prompt",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band",
+      "width": 1440,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band?view=code",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band?view=prompt",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band",
+      "width": 320,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band?view=code",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band?view=prompt",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band",
+      "width": 390,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band?view=code",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band?view=prompt",
+      "width": 390,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band",
+      "width": 768,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band?view=code",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band?view=prompt",
+      "width": 768,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band",
+      "width": 1024,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band?view=code",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band?view=prompt",
+      "width": 1024,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band",
+      "width": 1440,
+      "tag": "interaction",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band?view=code",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band?view=prompt",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band",
+      "width": 320,
+      "tag": "settings-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band#share=%7B%22schemaVersion%22%3A%221.0.0%22%2C%22itemId%22%3A%22S003%22%2C%22itemVersion%22%3A%220.1.0-prototype%22%2C%22configSchemaVersion%22%3A%221.0.0%22%2C%22shareMode%22%3A%22appearance%22%2C%22configProjection%22%3A%7B%22accent%22%3A%22%23C4DB9B%22%2C%22motion%22%3A%22subtle%22%2C%22duration%22%3A160%7D%7D",
+      "width": 320,
+      "tag": "guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band",
+      "width": 1440,
+      "tag": "settings-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/starter-action-band#share=%7B%22schemaVersion%22%3A%221.0.0%22%2C%22itemId%22%3A%22S003%22%2C%22itemVersion%22%3A%220.1.0-prototype%22%2C%22configSchemaVersion%22%3A%221.0.0%22%2C%22shareMode%22%3A%22appearance%22%2C%22configProjection%22%3A%7B%22accent%22%3A%22%23C4DB9B%22%2C%22motion%22%3A%22subtle%22%2C%22duration%22%3A160%7D%7D",
+      "width": 1440,
+      "tag": "guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band",
+      "width": 320,
+      "tag": "settings-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band#share=%7B%22schemaVersion%22%3A%221.0.0%22%2C%22itemId%22%3A%22S003%22%2C%22itemVersion%22%3A%220.1.0-prototype%22%2C%22configSchemaVersion%22%3A%221.0.0%22%2C%22shareMode%22%3A%22appearance%22%2C%22configProjection%22%3A%7B%22accent%22%3A%22%23C4DB9B%22%2C%22motion%22%3A%22subtle%22%2C%22duration%22%3A160%7D%7D",
+      "width": 320,
+      "tag": "guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band",
+      "width": 1440,
+      "tag": "settings-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/en/library/starter-action-band#share=%7B%22schemaVersion%22%3A%221.0.0%22%2C%22itemId%22%3A%22S003%22%2C%22itemVersion%22%3A%220.1.0-prototype%22%2C%22configSchemaVersion%22%3A%221.0.0%22%2C%22shareMode%22%3A%22appearance%22%2C%22configProjection%22%3A%7B%22accent%22%3A%22%23C4DB9B%22%2C%22motion%22%3A%22subtle%22%2C%22duration%22%3A160%7D%7D",
+      "width": 1440,
+      "tag": "guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band",
+      "width": 320,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band",
+      "width": 320,
+      "tag": "settings-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band#share=%7B%22schemaVersion%22%3A%221.0.0%22%2C%22itemId%22%3A%22S003%22%2C%22itemVersion%22%3A%220.1.0-prototype%22%2C%22configSchemaVersion%22%3A%221.0.0%22%2C%22shareMode%22%3A%22appearance%22%2C%22configProjection%22%3A%7B%22accent%22%3A%22%23C4DB9B%22%2C%22motion%22%3A%22subtle%22%2C%22duration%22%3A160%7D%7D",
+      "width": 320,
+      "tag": "guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band",
+      "width": 1440,
+      "tag": "settings-applied",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/vi/library/starter-action-band#share=%7B%22schemaVersion%22%3A%221.0.0%22%2C%22itemId%22%3A%22S003%22%2C%22itemVersion%22%3A%220.1.0-prototype%22%2C%22configSchemaVersion%22%3A%221.0.0%22%2C%22shareMode%22%3A%22appearance%22%2C%22configProjection%22%3A%7B%22accent%22%3A%22%23C4DB9B%22%2C%22motion%22%3A%22subtle%22%2C%22duration%22%3A160%7D%7D",
+      "width": 1440,
+      "tag": "guide",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/state-relay",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/press-button",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/ru/library/content-tabs",
+      "width": 1440,
+      "tag": "page",
+      "issues": []
+    }
+  ],
+  "flows": [
+    "E001: RU/EN/VI, five widths, demo/code/AI request/guide, real interaction, item-specific settings, blocked exports and item-bound shared appearance",
+    "S003: RU/EN/VI, five widths, demo/code/AI request/guide, real interaction, item-specific settings, blocked exports and item-bound shared appearance",
+    "Reusable APIs: real viewport entry, 600ms animation, immediate focus/reduce/off cancellation, re-entry, StrictMode, native action/link and blocked action, absent empty note, contrast on custom surfaces and 320px layout"
+  ],
+  "errors": [],
+  "blockedRequests": []
+}

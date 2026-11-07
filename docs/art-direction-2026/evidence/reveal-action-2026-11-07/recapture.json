@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "captures": [
+    {
+      "file": "starter-action-band-ru-1440-settings.png",
+      "width": 1440,
+      "locale": "ru",
+      "metrics": {
+        "scrollY": 0,
+        "headerTop": 0,
+        "overflow": false
+      }
+    },
+    {
+      "file": "starter-action-band-en-1440-settings.png",
+      "width": 1440,
+      "locale": "en",
+      "metrics": {
+        "scrollY": 0,
+        "headerTop": 0,
+        "overflow": false
+      }
+    },
+    {
+      "file": "starter-action-band-vi-1440-settings.png",
+      "width": 1440,
+      "locale": "vi",
+      "metrics": {
+        "scrollY": 0,
+        "headerTop": 0,
+        "overflow": false
+      }
+    },
+    {
+      "file": "starter-action-band-ru-375.png",
+      "width": 375,
+      "locale": "ru",
+      "metrics": {
+        "scrollY": 0,
+        "headerTop": 0,
+        "overflow": false
+      }
+    },
+    {
+      "file": "starter-action-band-en-375.png",
+      "width": 375,
+      "locale": "en",
+      "metrics": {
+        "scrollY": 0,
+        "headerTop": 0,
+        "overflow": false
+      }
+    },
+    {
+      "file": "starter-action-band-vi-375.png",
+      "width": 375,
+      "locale": "vi",
+      "metrics": {
+        "scrollY": 0,
+        "headerTop": 0,
+        "overflow": false
+      }
+    }
+  ],
+  "errors": [],
+  "external": []
+}

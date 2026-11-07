@@ -1,0 +1,26 @@
+
+> tallshift-local-prototype@0.1.0 check:design
+> node scripts/hallmark-offline.mjs prototype/src/foundations
+
+prototype/src/foundations/typography-specimen.css
+  WARN 25 :9 measure 78ch on .fts-intro > p (28-75ch range) | fix: Set prose measure between 45 and 75ch; a one-sentence lede or caption from 28ch
+prototype/src/foundations/SystemEmptyState.tsx
+  WARN 54 :6 section labelled by <heading> with no heading element | fix: Promote it to <h2>; a label doing heading duty should be a heading
+prototype/src/foundations/ModalSpecimen.tsx
+  WARN 70 :1 a script prints success (", done: ") with no request behind it | fix: No success state until the form posts somewhere; an empty data-endpoint and a handoff note
+prototype/src/foundations/IconSpecimen.tsx
+  WARN F1 :84 straight quote in prose x4 (first: value="center" options) | fix: Use typographic quotes: “ ” ’
+prototype/src/foundations/access-states-lab.css
+  WARN F6 :141 numeric selector .as-offer[data-price-state="owned"]… at display size without tabular figures | fix: Add font-variant-numeric: tabular-nums
+  WARN F7 :3 same container recipe on 9 selectors (.as-specimen-note, .icon-specimen-grid > li, .i…...) | fix: Vary weight, radius, or fill by role; not every box is the same box
+  WARN F7 :7 same container recipe on 6 selectors (.as-offer, .as-access-panel, .ca-details, .il-w…...)
+  WARN F7 :49 same container recipe on 22 selectors (.as-scenario-options label > span, .dl-search-b…...)
+  WARN F7 :106 same container recipe on 21 selectors (.as-comparison, .act-card, .cs-lab > details, .…...)
+prototype/src/foundations/discovery-lab.css
+  WARN F7 :10 same container recipe on 9 selectors (.dl-scope i, .f-brand > span, .il-live-dot, .sn…...)
+  WARN F7 :24 same container recipe on 6 selectors (.dl-chip, .dl-card-footer .dl-open, .dl-card-fo…...)
+prototype/src/foundations/library-states-lab.css
+  WARN F7 :54 same container recipe on 9 selectors (.ls-material, .ls-skeleton, .sn-desktop-files, …...)
+prototype/src/foundations/foundations.css
+  WARN F24 :129 a hairline border under a wide soft shadow on .f-toast | fix: Commit to one: a defined edge, or elevation by shadow
+sloplint: 0 FAIL, 13 WARN across 121 file(s).

@@ -11,6 +11,8 @@ import './system-config-controls.css';
 export interface SystemDurationControlProps {
   locale: Locale;
   value: number;
+  /** Recipe limit; existing consumers keep the 480 ms contract. */
+  max?: 480 | 600;
   onChange: (value: number) => void;
   disabled?: boolean;
   readOnly?: boolean;
@@ -23,7 +25,7 @@ export interface SystemDurationControlProps {
 }
 
 /** A native range and number input share one applied value, never an invalid draft. */
-export function SystemDurationControl({ locale, value, onChange, disabled = false, readOnly = false, initialDraft, draftValue, onDraftChange, onDraftStateChange }: SystemDurationControlProps) {
+export function SystemDurationControl({ locale, value, max = MOTION_DURATION.max, onChange, disabled = false, readOnly = false, initialDraft, draftValue, onDraftChange, onDraftStateChange }: SystemDurationControlProps) {
   const id = useId();
   const t = configControlWords[locale];
   const [localDraft, setLocalDraft] = useState(initialDraft ?? String(value));
@@ -31,27 +33,28 @@ export function SystemDurationControl({ locale, value, onChange, disabled = fals
   const setDraft = (next: string) => { setLocalDraft(next); onDraftChange?.(next); };
   const previousValue = useRef(value);
   useEffect(() => { if (previousValue.current !== value) { setDraft(String(value)); previousValue.current = value; } }, [value]);
-  const result = validateDurationDraft(draft);
+  const result = validateDurationDraft(draft, max);
+  const seconds = new Intl.NumberFormat(locale, { maximumFractionDigits: 3 }).format(max / 1000);
   useLayoutEffect(() => { onDraftStateChange?.(result.error ? 'invalid' : 'applied'); }, [result.error, onDraftStateChange]);
   const feedback = {
-    help: t.durationHelp,
+    help: t.durationHelp.replace('480', String(max)).replace(/0[.,]48/, seconds),
     required: t.durationRequired,
     number: t.durationNumber,
-    range: t.durationRange,
+    range: t.durationRange.replace('480', String(max)),
     step: t.durationStep,
   };
   const changeDraft = (next: string) => {
     if (disabled || readOnly) return;
     setDraft(next);
-    const validation = validateDurationDraft(next);
+    const validation = validateDurationDraft(next, max);
     if (validation.error === null) onChange(validation.value);
   };
 
   return <div className="sc-duration" data-disabled={disabled || undefined} data-readonly={readOnly || undefined}>
     <div className="sc-field-heading"><label htmlFor={`${id}-range`}>{t.duration}</label><span>{t.applied}: <output>{value} ms</output></span></div>
     <div className="sc-duration-inputs">
-      <input id={`${id}-range`} className="sc-range" type="range" min={MOTION_DURATION.min} max={MOTION_DURATION.max} step={MOTION_DURATION.step} value={value} disabled={disabled || readOnly} aria-readonly={readOnly || undefined} aria-describedby={`${id}-feedback`} onChange={event => changeDraft(event.target.value)} />
-      <div className="sc-number"><input type="number" aria-label={`${t.duration} (ms)`} min={MOTION_DURATION.min} max={MOTION_DURATION.max} step={MOTION_DURATION.step} value={draft} disabled={disabled} readOnly={readOnly} aria-invalid={result.error !== null} aria-describedby={`${id}-feedback`} onChange={event => changeDraft(event.target.value)} onBlur={() => { if (result.error === null) setDraft(String(result.value)); }} /><span aria-hidden="true">ms</span></div>
+      <input id={`${id}-range`} className="sc-range" type="range" min={MOTION_DURATION.min} max={max} step={MOTION_DURATION.step} value={value} disabled={disabled || readOnly} aria-readonly={readOnly || undefined} aria-describedby={`${id}-feedback`} onChange={event => changeDraft(event.target.value)} />
+      <div className="sc-number"><input type="number" aria-label={`${t.duration} (ms)`} min={MOTION_DURATION.min} max={max} step={MOTION_DURATION.step} value={draft} disabled={disabled} readOnly={readOnly} aria-invalid={result.error !== null} aria-describedby={`${id}-feedback`} onChange={event => changeDraft(event.target.value)} onBlur={() => { if (result.error === null) setDraft(String(result.value)); }} /><span aria-hidden="true">ms</span></div>
     </div>
     <div className="sc-feedback" id={`${id}-feedback`} aria-live="polite">{Object.entries(feedback).map(([key, text]) => <span key={key} className={key === 'help' ? '' : 'sc-field-error'} aria-hidden={key !== (result.error ?? 'help')}>{text}</span>)}</div>
   </div>;

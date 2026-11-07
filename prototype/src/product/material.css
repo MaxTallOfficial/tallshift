@@ -113,3 +113,6 @@
  .tp-action-link { font-size:13px;padding-inline:12px; }
 }
 @media(max-width:359px) { .tp-settings-content .system-segmented-choice { padding-inline:4px;overflow-wrap:normal; } }
+
+/* Keep whole motion labels in the narrow shared settings rail on every screen. */
+.tp-settings-content .system-segmented-choice { padding-inline:var(--sy-space-4);overflow-wrap:normal; }

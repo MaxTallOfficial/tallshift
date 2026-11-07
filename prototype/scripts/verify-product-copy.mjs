@@ -12,7 +12,7 @@ import {productCopy} from '../src/product/product-copy.ts';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'../..');
 const require=createRequire(resolve(process.env.HALLMARK_PUPPETEER||'.','product-copy-qa.cjs'));
 const puppeteer=require('puppeteer-core');
-const out=resolve(root,'docs/art-direction-2026/evidence/copy-and-checkout-2026-11-06');mkdirSync(out,{recursive:true});
+const out=resolve(root,process.env.TALLSHIFT_QA_OUT||'docs/art-direction-2026/evidence/copy-and-checkout-2026-11-06');mkdirSync(out,{recursive:true});
 const browser=await puppeteer.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true,protocolTimeout:60000,args:['--disable-background-networking','--disable-sync','--disable-component-update']});
 const checks=[],flows=[],inventory=[],errors=[],blockedRequests=[];let passed=false;
 const settingsOnly=process.argv.includes('--settings-only');

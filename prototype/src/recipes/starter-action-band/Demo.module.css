@@ -1,0 +1,10 @@
+/* Hallmark v2.0.0 | theme: Tallshift Saffron (locked) | scope: component | signature: the closing action opens local setup steps. */
+/* Critique: only the working section has a surface; its revealed explanation stays in normal document flow. */
+:root { --ab-demo-default-text: #EDECE8; --ab-demo-default-secondary: #C4C3BF; --ab-demo-default-line: #3E3D39; }
+.demo { --ab-demo-text: var(--f-text, var(--ab-demo-default-text)); --ab-demo-secondary: var(--f-secondary, var(--ab-demo-default-secondary)); --ab-demo-line: var(--f-line, var(--ab-demo-default-line)); inline-size: 100%; min-inline-size: 0; color: var(--ab-demo-text); }
+.steps { margin-block-start: 24px; padding-block-start: 24px; border-block-start: 1px solid var(--ab-demo-line); }
+.steps[hidden] { display: none; }
+.steps h3 { margin: 0 0 16px; font-size: 20px; font-weight: 600; line-height: 1.4; min-inline-size: 0; overflow-wrap: break-word; }
+.steps ol { margin: 0; padding-inline-start: 24px; color: var(--ab-demo-secondary); font-size: 16px; line-height: 1.7; }
+.steps li { padding-inline-start: 4px; overflow-wrap: anywhere; }
+.steps li + li { margin-block-start: 12px; }

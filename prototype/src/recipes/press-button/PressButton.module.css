@@ -1,0 +1,64 @@
+/* Hallmark v2.0.0 | theme: Tallshift Saffron (locked) | scope: component | signature: native action with a quiet press response */
+/* Critique: the action retains one stable target; state labels carry meaning without decorative icons. */
+:root {
+  --press-default-accent: #EBD183;
+  --press-default-on-accent: #17150F;
+  --press-default-disabled-background: #1E1D19;
+  --press-default-disabled-text: #A8A7A3;
+  --press-default-border: #858480;
+  --press-default-focus: #F7EBCB;
+}
+.control {
+  --press-accent: var(--f-accent, var(--press-default-accent));
+  --press-on-accent: var(--f-on-accent, var(--press-default-on-accent));
+  --press-disabled-background: var(--f-raised, var(--press-default-disabled-background));
+  --press-disabled-text: var(--f-muted, var(--press-default-disabled-text));
+  --press-border: var(--f-control-border, var(--press-default-border));
+  --press-focus: var(--f-focus, var(--press-default-focus));
+  --press-radius: 8px;
+  --press-duration: 160ms;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 52px;
+  max-width: 100%;
+  padding: 12px 20px;
+  border: 1px solid var(--press-accent);
+  border-radius: var(--press-radius);
+  background: var(--press-accent);
+  color: var(--press-on-accent);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  transition: transform var(--press-duration) cubic-bezier(.2,.8,.2,1), opacity var(--press-duration);
+}
+.label { min-width: 0; overflow-wrap: anywhere; }
+.icon { display: inline-flex; flex: 0 0 20px; align-items: center; justify-content: center; width: 20px; height: 20px; }
+.icon > * { max-width: 100%; max-height: 100%; }
+.control[data-size='sm'] { min-height: 44px; padding: 12px 16px; }
+.control[data-size='lg'] { min-height: 60px; padding: 16px 24px; }
+@media (hover: hover) { .control:not([aria-disabled='true']):hover { opacity: .9; } }
+.control:not([aria-disabled='true']):active { transform: translateY(1px) scale(.985); }
+.control[data-motion='expressive']:not([aria-disabled='true']):active { transform: translateY(2px) scale(.97); }
+.control:focus-visible { outline: 2px solid var(--press-focus); outline-offset: 4px; }
+.control[data-input-modality='keyboard']:focus { outline: 2px solid var(--press-focus); outline-offset: 4px; }
+.control[data-input-modality='pointer']:focus { outline: none; }
+.control[aria-disabled='true'] { border-color: var(--press-border); background: var(--press-disabled-background); color: var(--press-disabled-text); cursor: not-allowed; }
+.control[aria-busy='true'] { cursor: progress; }
+.control[data-motion='off'] { transition: none; }
+.control[data-motion='off']:active { transform: none; }
+@media (max-width: 600px) { .control[data-size='md'] { min-height: 48px; } }
+@media (prefers-reduced-motion: reduce) { .control { transition: none; } .control:active { transform: none !important; } }
+@media (forced-colors: active) {
+  .control { border-color: ButtonText; color: ButtonText; background: ButtonFace; }
+  .control[aria-disabled='true'] { border-color: GrayText; color: GrayText; }
+  .control:focus-visible, .control[data-input-modality='keyboard']:focus { outline-color: Highlight; }
+}

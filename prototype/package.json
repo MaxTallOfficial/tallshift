@@ -18,7 +18,8 @@
     "test:foundations": "node --test tests/foundations-tokens.test.ts",
     "test:system": "node --test tests/*.test.ts",
     "build:system": "vite build --config vite.system.config.ts && tsc -p tsconfig.system.json",
-    "test:consumers": "node scripts/verify-system-consumers.mjs"
+    "test:consumers": "node scripts/verify-system-consumers.mjs",
+    "test:examples": "node tests/examples-export.mjs"
   },
   "dependencies": {
     "@fontsource-variable/inter": "5.3.0",

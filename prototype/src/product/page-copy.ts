@@ -6,7 +6,7 @@ const en = {
   "lead": "Choose a block or animation. Get the source for your React project, with setup instructions and a ready-to-use request for an AI assistant.",
   "browse": "Open catalog",
   "try": "View free example",
-  "free": "One free example is ready to download: a button with a progress indicator. No account required.",
+  "free": "Five free examples are ready to download. No account required.",
   "live": "Button with a progress indicator (State Relay)",
   "liveNote": "Press “Copy text”. The button shows whether the action is running, finished or has failed.",
   "open": "Open example and settings",
@@ -21,8 +21,8 @@ const en = {
   "guide": "Guide",
   "full": "Open the complete kit",
   "kitLabel": "Button files",
-  "collection": "Planned blocks and animations",
-  "collectionBody": "These images show ideas. Working examples and source files are not available yet.",
+  "collection": "Examples from the catalog",
+  "collectionBody": "Each card shows its status. Ready examples include working previews and source; planned items have a description and concept illustration.",
   "brief": "View description",
   "flow": "How to add an example to your project",
   "steps": [
@@ -43,13 +43,13 @@ const en = {
   "closingBody": "Open the button with a progress indicator. Customize it and get the source for your site.",
   "priceTitle": "Block and animation packs for React.",
   "priceLead": "Starter is free. Product and All packs require a one-time payment, with no subscription.",
-  "review": "One free example is ready. The other pack items are planned. Sales and sign-in are not open yet; you can review pack contents and prices.",
+  "review": "Five free examples are ready. The other pack items are planned. Sales and sign-in are not open yet; you can review pack contents and prices.",
   "packs": "Choose your pack",
   "starter": "Explore the library",
   "product": "For your product page",
   "bundle": "All four paid packs",
   "planDescriptions": {
-    "starter": "A pack of 9 free items for exploring the library. One example is ready now; the others are planned.",
+    "starter": "A pack of 9 free items for exploring the library. Five examples are ready; four are planned.",
     "product": "6 items for a product site: an opening example, feature explanations, a pricing comparison and interface controls.",
     "bundle": "Product for product sites, Editorial for portfolios, Playful for pages with graphics and stickers, and UI Motion for interface animation."
   },
@@ -71,7 +71,7 @@ const en = {
     ]
   },
   "planDelivery": {
-    "starter": "Download the free example without an account.",
+    "starter": "Download the ready free examples without an account.",
     "product": "One-time purchase. No subscription or automatic renewal.",
     "bundle": "One-time purchase. No subscription or automatic renewal."
   },
@@ -113,7 +113,7 @@ const en = {
   "emptySaved": "You have not saved anything yet.",
   "savedBody": "Open the catalog and use the bookmark next to a block or animation. It will appear here.",
   "emptyPurchases": "Purchases are not open yet.",
-  "purchasesBody": "Once purchases launch, you will be able to download your paid packs here. You can already open and download the free example without an account.",
+  "purchasesBody": "Once purchases launch, you will be able to download your paid packs here. You can already open and download the ready free examples without an account.",
   "emptyOrders": "Orders are not available yet.",
   "ordersBody": "Once purchases are available, your orders, confirmed payments and receipts will appear here.",
   "emptyUpdates": "No updates yet.",
@@ -129,7 +129,7 @@ const ru: typeof en = {
   "lead": "Выберите блок или анимацию. Скачайте код для своего React-проекта вместе с инструкцией и готовым запросом для ИИ.",
   "browse": "Открыть каталог",
   "try": "Посмотреть бесплатный пример",
-  "free": "Сейчас можно скачать один бесплатный пример: кнопку с индикатором выполнения. Без регистрации.",
+  "free": "Пять бесплатных примеров уже можно скачать без регистрации.",
   "live": "Кнопка с индикатором выполнения (State Relay)",
   "liveNote": "Нажмите «Скопировать текст». Кнопка покажет, выполняется ли действие, завершилось ли оно или произошла ошибка.",
   "open": "Открыть пример и настройки",
@@ -144,8 +144,8 @@ const ru: typeof en = {
   "guide": "Инструкция",
   "full": "Открыть полный комплект",
   "kitLabel": "Файлы кнопки",
-  "collection": "Запланированные блоки и анимации",
-  "collectionBody": "Ниже — иллюстрации идей. Рабочие примеры и код для них пока недоступны.",
+  "collection": "Примеры из каталога",
+  "collectionBody": "У каждой карточки указан статус. Готовые примеры можно открыть и скачать; у запланированных пока есть описание и иллюстрация.",
   "brief": "Посмотреть описание",
   "flow": "Как добавить пример в свой проект",
   "steps": [
@@ -166,13 +166,13 @@ const ru: typeof en = {
   "closingBody": "Откройте кнопку с индикатором выполнения. Настройте её и получите код для своего сайта.",
   "priceTitle": "Наборы блоков и анимаций для React.",
   "priceLead": "Starter бесплатный. Product и All packs оплачиваются один раз, без подписки.",
-  "review": "Сейчас доступен один бесплатный пример. Остальные элементы набора в плане. Продажи и вход в аккаунт ещё не открыты; состав и цены наборов можно посмотреть.",
+  "review": "Сейчас доступны пять бесплатных примеров. Остальные элементы набора в плане. Продажи и вход в аккаунт ещё не открыты; состав и цены наборов можно посмотреть.",
   "packs": "Выберите набор",
   "starter": "Познакомьтесь с библиотекой",
   "product": "Для страницы вашего продукта",
   "bundle": "Все четыре платных набора",
   "planDescriptions": {
-    "starter": "Набор из 9 бесплатных элементов для знакомства с библиотекой. Сейчас готов один пример; остальные запланированы.",
+    "starter": "Набор из 9 бесплатных элементов для знакомства с библиотекой. Пять примеров готовы, четыре запланированы.",
     "product": "6 элементов для сайта продукта: блок с рабочим примером, описание возможностей, сравнение тарифов и элементы управления.",
     "bundle": "Product — для сайта продукта, Editorial — для портфолио, Playful — для страниц с графикой и стикерами, UI Motion — для анимации интерфейса."
   },
@@ -194,7 +194,7 @@ const ru: typeof en = {
     ]
   },
   "planDelivery": {
-    "starter": "Бесплатный пример можно скачать без аккаунта.",
+    "starter": "Готовые бесплатные примеры можно скачать без регистрации.",
     "product": "Разовая покупка. Без подписки и автоматического продления.",
     "bundle": "Разовая покупка. Без подписки и автоматического продления."
   },
@@ -236,7 +236,7 @@ const ru: typeof en = {
   "emptySaved": "Вы пока ничего не сохранили.",
   "savedBody": "Откройте каталог и нажмите закладку у нужного блока или анимации. Они появятся здесь.",
   "emptyPurchases": "Покупки ещё не открыты.",
-  "purchasesBody": "После запуска здесь можно будет скачать купленные наборы. Пока можно открыть и скачать бесплатный пример без аккаунта.",
+  "purchasesBody": "После запуска здесь можно будет скачать купленные наборы. Готовые бесплатные примеры уже можно открыть и скачать без регистрации.",
   "emptyOrders": "Заказы пока недоступны.",
   "ordersBody": "Когда покупки заработают, здесь будут ваши заказы, подтверждённые оплаты и чеки.",
   "emptyUpdates": "Обновлений пока нет.",
@@ -252,7 +252,7 @@ const vi: typeof en = {
   "lead": "Chọn một khối giao diện hoặc hoạt ảnh. Tải mã nguồn cho dự án React, kèm hướng dẫn cài đặt và yêu cầu soạn sẵn cho trợ lý AI.",
   "browse": "Khám phá thư viện",
   "try": "Xem ví dụ miễn phí",
-  "free": "Hiện có một ví dụ miễn phí để tải: nút có chỉ báo tiến trình. Không cần tài khoản.",
+  "free": "Có năm ví dụ miễn phí đã sẵn sàng để tải. Không cần tài khoản.",
   "live": "Nút có chỉ báo tiến trình (State Relay)",
   "liveNote": "Nhấn “Sao chép văn bản”. Nút cho biết thao tác đang chạy, đã xong hay gặp lỗi.",
   "open": "Mở ví dụ và cài đặt",
@@ -267,8 +267,8 @@ const vi: typeof en = {
   "guide": "Hướng dẫn",
   "full": "Mở toàn bộ tệp",
   "kitLabel": "Các tệp của nút",
-  "collection": "Khối giao diện và hoạt ảnh dự kiến",
-  "collectionBody": "Các hình ảnh này minh họa ý tưởng. Ví dụ hoạt động và mã nguồn chưa có sẵn.",
+  "collection": "Ví dụ trong thư viện",
+  "collectionBody": "Mỗi thẻ ghi rõ trạng thái. Ví dụ đã sẵn sàng có bản chạy thử và mã nguồn; mục dự kiến có mô tả và hình minh họa ý tưởng.",
   "brief": "Xem mô tả",
   "flow": "Cách thêm ví dụ vào dự án",
   "steps": [
@@ -289,13 +289,13 @@ const vi: typeof en = {
   "closingBody": "Mở nút có chỉ báo tiến trình. Tùy chỉnh rồi lấy mã nguồn cho website của bạn.",
   "priceTitle": "Bộ khối giao diện và hoạt ảnh React.",
   "priceLead": "Starter miễn phí. Product và All packs thanh toán một lần, không đăng ký định kỳ.",
-  "review": "Hiện có một ví dụ miễn phí đã sẵn sàng. Các mục khác trong bộ đang được lên kế hoạch. Chưa mở bán hoặc đăng nhập; bạn có thể xem nội dung và giá các bộ.",
+  "review": "Hiện có năm ví dụ miễn phí đã sẵn sàng. Các mục khác trong bộ đang được lên kế hoạch. Chưa mở bán hoặc đăng nhập; bạn có thể xem nội dung và giá các bộ.",
   "packs": "Chọn bộ của bạn",
   "starter": "Khám phá thư viện",
   "product": "Cho trang sản phẩm của bạn",
   "bundle": "Cả bốn bộ trả phí",
   "planDescriptions": {
-    "starter": "Bộ gồm 9 mục miễn phí để tìm hiểu thư viện. Hiện có một ví dụ đã sẵn sàng; các mục khác đang được lên kế hoạch.",
+    "starter": "Bộ gồm 9 mục miễn phí để tìm hiểu thư viện. Năm ví dụ đã sẵn sàng, bốn mục đang được lên kế hoạch.",
     "product": "6 mục cho website sản phẩm: ví dụ ở đầu trang, giới thiệu tính năng, so sánh giá và các điều khiển giao diện.",
     "bundle": "Product cho website sản phẩm, Editorial cho portfolio, Playful cho trang có đồ họa và sticker, UI Motion cho hoạt ảnh giao diện."
   },
@@ -317,7 +317,7 @@ const vi: typeof en = {
     ]
   },
   "planDelivery": {
-    "starter": "Tải ví dụ miễn phí mà không cần tài khoản.",
+    "starter": "Tải các ví dụ miễn phí đã sẵn sàng mà không cần tài khoản.",
     "product": "Mua một lần. Không đăng ký định kỳ hoặc tự động gia hạn.",
     "bundle": "Mua một lần. Không đăng ký định kỳ hoặc tự động gia hạn."
   },
@@ -359,7 +359,7 @@ const vi: typeof en = {
   "emptySaved": "Bạn chưa lưu mục nào.",
   "savedBody": "Mở thư viện rồi nhấn dấu trang bên cạnh khối giao diện hoặc hoạt ảnh. Mục đó sẽ xuất hiện tại đây.",
   "emptyPurchases": "Chưa mở bán.",
-  "purchasesBody": "Khi mở bán, bạn có thể tải các bộ đã mua tại đây. Hiện bạn đã có thể mở và tải ví dụ miễn phí mà không cần tài khoản.",
+  "purchasesBody": "Khi mở bán, bạn có thể tải các bộ đã mua tại đây. Hiện bạn đã có thể mở và tải các ví dụ miễn phí đã sẵn sàng mà không cần tài khoản.",
   "emptyOrders": "Chưa có chức năng đơn hàng.",
   "ordersBody": "Khi có mua hàng, đơn hàng, thanh toán đã xác nhận và biên nhận sẽ xuất hiện tại đây.",
   "emptyUpdates": "Chưa có bản cập nhật.",

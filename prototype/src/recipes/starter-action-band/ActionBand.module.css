@@ -1,0 +1,33 @@
+/* Hallmark v2.0.0 | theme: Tallshift Saffron (locked) | scope: component | signature: one clear closing action beside the page conclusion. */
+/* Critique: one quiet surface groups a real task; the action remains usable before any visual response. */
+:root {
+  --ab-default-surface: #1E1D19;
+  --ab-default-text: #EDECE8;
+  --ab-default-secondary: #C4C3BF;
+  --ab-default-border: #3E3D39;
+}
+.band {
+  --ab-surface: var(--f-surface, var(--ab-default-surface));
+  --ab-text: var(--f-text, var(--ab-default-text));
+  --ab-secondary: var(--f-secondary, var(--ab-default-secondary));
+  --ab-border: var(--f-line, var(--ab-default-border));
+  --ab-radius: 16px;
+  box-sizing: border-box;
+  container-type: inline-size;
+  inline-size: 100%;
+  min-inline-size: 0;
+  border: 1px solid var(--ab-border);
+  border-radius: var(--ab-radius);
+  color: var(--ab-text);
+  background: var(--ab-surface);
+}
+.band *, .band *::before, .band *::after { box-sizing: border-box; }
+.inner { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; gap: 24px; min-inline-size: 0; padding: 24px; }
+.copy { min-inline-size: 0; }
+.title { max-inline-size: 24ch; margin: 0; font-size: clamp(24px, 4cqi, 36px); font-weight: 600; line-height: 1.25; letter-spacing: -.025em; min-inline-size: 0; overflow-wrap: break-word; text-wrap: balance; }
+.description { max-inline-size: 54ch; margin: 16px 0 0; color: var(--ab-secondary); font-size: 16px; line-height: 1.7; overflow-wrap: anywhere; }
+.action { min-inline-size: 0; max-inline-size: 100%; justify-self: start; }
+.note { grid-column: 1 / -1; max-inline-size: 70ch; margin: 0; color: var(--ab-secondary); font-size: 13px; line-height: 1.7; overflow-wrap: anywhere; }
+@container (min-width: 640px) { .inner { grid-template-columns: minmax(0, 1fr) minmax(0, auto); column-gap: 32px; padding: 32px; } .action { max-inline-size: 260px; } }
+@container (max-width: 320px) { .inner { padding: 16px; } }
+@media (forced-colors: active) { .band { border-color: CanvasText; color: CanvasText; background: Canvas; } .description, .note { color: CanvasText; } }

@@ -1,3 +1,4 @@
+import { availableExampleIds } from './available-examples.ts';
 import canonical from '../data/catalog.json' with { type: 'json' };
 import type { DiscoveryPreview } from '../foundations/discovery-data';
 
@@ -21,7 +22,7 @@ export interface Material {
 }
 
 // This metadata describes the production plan. A preview illustration does not
-// make a material available; only State Relay currently has source and a demo.
+// make a material available; availability requires a connected demo and complete kit.
 const translations: Record<string, [string, string, string]> = {
   S001: ['A two-column opening for a small product site, with a short introduction and one main action.', 'Phần mở đầu hai cột', 'Phần đầu của website sản phẩm, gồm hai cột, giới thiệu ngắn và một hành động chính.'],
   S002: ['A grid for three to six benefits, each with a short heading and explanation.', 'Lưới lợi ích', 'Lưới trình bày từ ba đến sáu lợi ích, mỗi mục có tiêu đề ngắn và phần giải thích.'],
@@ -149,7 +150,7 @@ export const materials: readonly Material[] = canonical.items.map(item => {
     searchAliases: [item.title.ru, item.purpose_ru, ...(item.id==='A001'?['Кнопка с откликом','Button with feedback','Nút phản hồi','Phản hồi trạng thái']:[]), ...(item.id==='C002'?['Контентные вкладки']:[])],
     type: item.type as MaterialType, access: item.access as Material['access'], pack: item.pack,
     packs: item.granted_by_product_ids.filter(id => id !== 'BUNDLE-LAUNCH'),
-    available: item.id === 'A001', preview: previewFor(item.id, item.type, item.pack),
+    available: availableExampleIds.includes(item.id), preview: previewFor(item.id, item.type, item.pack),
   };
 });
 

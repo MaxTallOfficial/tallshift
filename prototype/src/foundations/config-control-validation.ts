@@ -8,13 +8,13 @@ export type DurationError = 'required' | 'number' | 'range' | 'step';
 export type DurationResult = { value: number; error: null } | { value: null; error: DurationError };
 
 /** A draft never changes the applied value until the whole number is valid. */
-export function validateDurationDraft(draft: string): DurationResult {
+export function validateDurationDraft(draft: string, maximum: 480 | 600 = MOTION_DURATION.max): DurationResult {
   const trimmed = draft.trim();
   if (!trimmed) return { value: null, error: 'required' };
   if (!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i.test(trimmed)) return { value: null, error: 'number' };
   const value = Number(trimmed);
   if (!Number.isFinite(value)) return { value: null, error: 'number' };
-  if (value < MOTION_DURATION.min || value > MOTION_DURATION.max) return { value: null, error: 'range' };
+  if (value < MOTION_DURATION.min || value > maximum) return { value: null, error: 'range' };
   if (!Number.isInteger(value) || value % MOTION_DURATION.step !== 0) return { value: null, error: 'step' };
   return { value: Object.is(value, -0) ? 0 : value, error: null };
 }

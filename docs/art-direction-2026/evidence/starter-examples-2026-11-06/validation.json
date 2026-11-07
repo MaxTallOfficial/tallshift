@@ -1,0 +1,114 @@
+{
+  "date": "2026-11-06",
+  "baseCommit": "03784eb",
+  "branch": "main",
+  "scope": "local prototype C001/C002; no commerce or release approval",
+  "unit": {
+    "command": "node --test --test-concurrency=2 tests/*.test.ts",
+    "passed": 151,
+    "failed": 0
+  },
+  "newExportFidelity": {
+    "command": "npm run test:examples",
+    "passed": true,
+    "cases": 24,
+    "deterministicZip": true,
+    "exactSource": true,
+    "checksums": "SHA-256 every file except checksums.json",
+    "independentConsumers": [
+      {
+        "itemId": "C001",
+        "targetConfiguration": "next",
+        "typecheck": true,
+        "viteBuild": true,
+        "nextRuntimeBuild": false
+      },
+      {
+        "itemId": "C001",
+        "targetConfiguration": "vite",
+        "typecheck": true,
+        "viteBuild": true,
+        "nextRuntimeBuild": false
+      },
+      {
+        "itemId": "C002",
+        "targetConfiguration": "next",
+        "typecheck": true,
+        "viteBuild": true,
+        "nextRuntimeBuild": false
+      },
+      {
+        "itemId": "C002",
+        "targetConfiguration": "vite",
+        "typecheck": true,
+        "viteBuild": true,
+        "nextRuntimeBuild": false
+      }
+    ]
+  },
+  "a001Regression": {
+    "command": "npm run test:study",
+    "passed": true,
+    "cases": 12
+  },
+  "builds": {
+    "product": true,
+    "system": true
+  },
+  "offlineHallmark": {
+    "product": {
+      "uiFiles": 18,
+      "fail": 0,
+      "reflex": 0,
+      "warn": 0
+    },
+    "recipes": {
+      "uiFiles": 8,
+      "fail": 0,
+      "reflex": 0,
+      "warn": 0
+    },
+    "entry": "npm run check:design; pinned offline wrapper"
+  },
+  "browser": {
+    "newExamples": {
+      "checks": 157,
+      "passed": true,
+      "pageErrors": 0,
+      "externalRequests": 0,
+      "evidence": "checks.json"
+    },
+    "siteRegression": {
+      "checks": 343,
+      "passed": true,
+      "pageErrors": 0,
+      "externalRequests": 0,
+      "evidence": "site-regression/checks.json"
+    }
+  },
+  "copyReview": {
+    "independentAgent": true,
+    "locales": [
+      "ru",
+      "en",
+      "vi"
+    ],
+    "userResearch": false,
+    "nativeVietnameseReview": false,
+    "userApproval": false
+  },
+  "network": "Hallmark/Together not invoked over network; local browser page requests restricted to project origin and data/blob/about",
+  "git": {
+    "commitCreated": false,
+    "pushed": false,
+    "githubActionsManuallyRun": false
+  },
+  "finishReview": {
+    "independent": true,
+    "initialVerdict": "fix",
+    "resolved": "Motion labels wrapped within a word in desktop settings",
+    "finalVerdict": "ship",
+    "screenshotsReviewed": 24,
+    "openFindings": 0
+  }
+}

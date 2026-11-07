@@ -1,6 +1,6 @@
 const en = {
   duration: 'Animation duration',
-  durationHelp: '0–480 ms, up to 0.48 seconds. Use a whole number. At zero, the state changes instantly.',
+  durationHelp: '0–480 ms, up to 0.48 seconds. Use a whole number. At zero, animation is off.',
   durationRequired: 'Enter a duration. The last applied value is unchanged.',
   durationNumber: 'Enter a number. The last applied value is unchanged.',
   durationRange: 'Use 0–480 ms. The last applied value is unchanged.',
@@ -64,7 +64,7 @@ type Copy = { [Key in keyof typeof en]: string };
 
 const ru: Copy = {
   duration: 'Длительность анимации',
-  durationHelp: 'От 0 до 480 мс — до 0,48 секунды. Введите целое число. При нуле состояние меняется сразу.',
+  durationHelp: 'От 0 до 480 мс — до 0,48 секунды. Введите целое число. При нуле анимация отключена.',
   durationRequired: 'Введите длительность. Применённое значение не изменилось.',
   durationNumber: 'Введите число. Применённое значение не изменилось.',
   durationRange: 'Укажите 0–480 мс. Применённое значение не изменилось.',
@@ -126,7 +126,7 @@ const ru: Copy = {
 
 const vi: Copy = {
   duration: 'Thời lượng chuyển động',
-  durationHelp: '0–480 ms, tối đa 0,48 giây. Nhập số nguyên. Giá trị 0 đổi trạng thái ngay lập tức.',
+  durationHelp: '0–480 ms, tối đa 0,48 giây. Nhập số nguyên. Giá trị 0 tắt hoạt ảnh.',
   durationRequired: 'Nhập thời lượng. Giá trị đã áp dụng không thay đổi.',
   durationNumber: 'Nhập một số. Giá trị đã áp dụng không thay đổi.',
   durationRange: 'Dùng 0–480 ms. Giá trị đã áp dụng không thay đổi.',

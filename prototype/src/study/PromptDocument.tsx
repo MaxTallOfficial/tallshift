@@ -56,8 +56,8 @@ export function PromptDocument({ prompt, locale = 'en', files }: PromptDocumentP
     try { const value: unknown = JSON.parse(contextLine[1]); if (typeof value === 'string') context = value; } catch { /* The complete source text remains available below. */ }
   }
   const sources = files.filter(file => /\.(tsx?|css)$/.test(file.path));
-  const guideAt = sourceAt < 0 ? -1 : prompt.lastIndexOf('\n\n# State Relay / A001 — ');
-  const guide = guideAt > sourceAt ? prompt.slice(guideAt + 2) : '';
+  const guideFile = files.find(file => file.path === `INSTALL.${locale}.md`);
+  const guide = guideFile && sourceAt >= 0 && prompt.endsWith(guideFile.content) ? guideFile.content : '';
 
   return <article className="pd-document" aria-label={t.kicker}>
     <p className="pd-kicker">{t.kicker}</p>

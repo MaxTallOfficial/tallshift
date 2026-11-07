@@ -1,3 +1,4 @@
+import { availableExampleIds } from './available-examples.ts';
 import { materials, catalogPacks, type Locale, type Material, type MaterialType } from './catalog-data.ts';
 import {materialDisplayName} from './material-presentation.ts';
 
@@ -54,5 +55,5 @@ export function filterCatalog(filters: CatalogFilters, favorites: readonly strin
     return words.every(word => text.includes(word));
   });
   if (filters.sort === 'name') return matches.sort((left, right) => left.title[locale].localeCompare(right.title[locale], locale));
-  return matches.sort((left, right) => Number(right.available) - Number(left.available));
+  return matches.sort((left, right) => Number(right.available) - Number(left.available) || (left.available ? availableExampleIds.indexOf(left.id) - availableExampleIds.indexOf(right.id) : 0));
 }

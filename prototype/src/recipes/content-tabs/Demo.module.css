@@ -1,0 +1,23 @@
+/* Hallmark: Tallshift locked Saffron system; scope: component; material: local content; signature: tabs switch complete text. */
+/* Critique: a short explanation precedes the working control; panels use space and type rather than nested cards. */
+:root {
+  --tabs-demo-default-text: #EDECE8;
+  --tabs-demo-default-secondary: #C4C3BF;
+}
+.demo {
+  --tabs-demo-text: var(--f-text, var(--tabs-demo-default-text));
+  --tabs-demo-secondary: var(--f-secondary, var(--tabs-demo-default-secondary));
+  inline-size: 100%;
+  min-inline-size: 0;
+  max-inline-size: 760px;
+  margin-inline: auto;
+  color: var(--tabs-demo-text);
+}
+.header { margin-block-end: 28px; }
+.header h2 { margin: 0 0 12px; font-size: clamp(22px, 3.6vw, 32px); font-weight: 600; line-height: 1.25; letter-spacing: -.025em; min-inline-size: 0; overflow-wrap: break-word; text-wrap: balance; }
+.header p { max-inline-size: 55ch; margin: 0; color: var(--tabs-demo-secondary); font-size: 15px; line-height: 1.65; }
+.article { min-inline-size: 0; max-inline-size: 58ch; }
+.article h3 { margin: 0 0 16px; font-size: clamp(20px, 3vw, 26px); font-weight: 600; line-height: 1.3; letter-spacing: -.02em; min-inline-size: 0; overflow-wrap: break-word; }
+.article p { margin: 0 0 16px; font-size: 16px; line-height: 1.7; }
+.article .note { margin-block-end: 0; color: var(--tabs-demo-secondary); font-size: 14px; line-height: 1.65; }
+@media (max-width: 480px) { .header { margin-block-end: 20px; } }

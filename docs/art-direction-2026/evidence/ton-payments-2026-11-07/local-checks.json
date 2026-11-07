@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-07",
+  "independentRootChecks": {
+    "command": "npm run test:ton",
+    "tests": 67,
+    "passed": 67,
+    "failed": 0,
+    "typecheck": "npx tsc --noEmit passed",
+    "productBuild": "npm run build passed",
+    "clientBundleServerMarkerSearch": "No matching server code markers in dist JS/HTML"
+  },
+  "scope": "Node.js tests, serialized BOC fixtures, mocked Toncenter responses, in-memory SQLite facade for D1. Not Cloudflare Workers or live payment evidence.",
+  "notTested": [
+    "Real TON or USDT payment",
+    "Cloudflare Workers runtime and real D1 deployment",
+    "Live exchange-rate provider",
+    "Live auth sessions",
+    "Real entitlements or paid file delivery",
+    "Payment page browser layout"
+  ]
+}

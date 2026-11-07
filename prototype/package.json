@@ -19,17 +19,28 @@
     "test:system": "node --test tests/*.test.ts",
     "build:system": "vite build --config vite.system.config.ts && tsc -p tsconfig.system.json",
     "test:consumers": "node scripts/verify-system-consumers.mjs",
-    "test:examples": "node tests/examples-export.mjs"
+    "test:examples": "node tests/examples-export.mjs",
+    "dev:web": "NEXT_TELEMETRY_DISABLED=1 next dev --webpack --hostname 127.0.0.1 --port 4174",
+    "build:web": "NEXT_TELEMETRY_DISABLED=1 next build --webpack",
+    "start:web": "NEXT_TELEMETRY_DISABLED=1 next start --hostname 127.0.0.1 --port 4174",
+    "build:preview": "vite build --config vite.preview.config.ts",
+    "start:preview": "node scripts/serve-preview.mjs",
+    "test:examples:next": "node tests/examples-next.mjs",
+    "test:ton": "node --test --test-concurrency=2 tests/ton-*.test.ts"
   },
   "dependencies": {
     "@fontsource-variable/inter": "5.3.0",
     "@hugeicons-pro/core-duotone-rounded": "4.3.4",
     "@hugeicons/react": "1.1.10",
+    "@ton/core": "0.63.1",
     "fflate": "0.8.3",
+    "next": "16.4.2",
     "react": "19.3.1",
-    "react-dom": "19.3.1"
+    "react-dom": "19.3.1",
+    "tldts": "7.4.19"
   },
   "devDependencies": {
+    "@types/node": "24.10.0",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "6.1.2",

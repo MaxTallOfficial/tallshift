@@ -1,6 +1,6 @@
 /* Hallmark: Tallshift locked Saffron system; scope: component; material: local content; signature: tabs switch complete text. */
 /* Critique: a short explanation precedes the working control; panels use space and type rather than nested cards. */
-:root {
+:root .demo {
   --tabs-demo-default-text: #EDECE8;
   --tabs-demo-default-secondary: #C4C3BF;
 }

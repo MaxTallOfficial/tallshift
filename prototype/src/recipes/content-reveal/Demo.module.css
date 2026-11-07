@@ -1,6 +1,6 @@
 /* Hallmark · component: content reveal demo · theme: Tallshift Saffron (locked) · signature: real scrolling entrance · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: variety; the scroll window shows actual content and has no imitation browser chrome. */
-:root {
+:root .demo {
   --reveal-default-text: #EDECE8;
   --reveal-default-secondary: #C4C3BF;
   --reveal-default-raised: #1E1D19;

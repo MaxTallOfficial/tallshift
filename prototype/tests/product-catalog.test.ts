@@ -5,11 +5,11 @@ import { catalogPacks, materials } from '../src/product/catalog-data.ts';
 import { catalogDefaults, filterCatalog, readCatalogFilters, writeCatalogFilters } from '../src/product/catalog-model.ts';
 import {productCopy} from '../src/product/product-copy.ts';
 
-test('product catalog preserves every canonical identity and accurately exposes the five connected working examples', () => {
+test('product catalog preserves every canonical identity and accurately exposes the nine connected working examples', () => {
   assert.equal(materials.length, 32);
   assert.deepEqual(materials.map(material => material.id), canonical.items.map(material => material.id));
   assert.equal(new Set(materials.map(material => material.slug)).size, 32);
-  assert.deepEqual(materials.filter(material => material.available).map(material => material.id), ['S003', 'C001', 'C002', 'E001', 'A001']);
+  assert.deepEqual(materials.filter(material => material.available).map(material => material.id), ['S001', 'S002', 'S003', 'C001', 'C002', 'E001', 'A001', 'A003', 'A006']);
   assert.equal(materials.filter(material => material.access === 'free').length, 9);
   for (const material of materials) {
     const original = canonical.items.find(entry => entry.id === material.id)!;
@@ -31,8 +31,8 @@ test('catalog URL roundtrip preserves combined criteria and removes default nois
 
 test('combined filters handle ready, planned, free and empty saved states without granting access', () => {
   assert.equal(filterCatalog(catalogDefaults, [], 'en')[0].id, 'A001');
-  assert.deepEqual(filterCatalog({ ...catalogDefaults, availability: 'ready' }, [], 'ru').map(material => material.id), ['A001', 'C001', 'C002', 'E001', 'S003']);
-  assert.equal(filterCatalog({ ...catalogDefaults, availability: 'planned' }, [], 'vi').length, 27);
+  assert.deepEqual(filterCatalog({ ...catalogDefaults, availability: 'ready' }, [], 'ru').map(material => material.id), ['A001', 'C001', 'C002', 'E001', 'S003', 'S001', 'S002', 'A003', 'A006']);
+  assert.equal(filterCatalog({ ...catalogDefaults, availability: 'planned' }, [], 'vi').length, 23);
   assert.equal(filterCatalog({ ...catalogDefaults, availability: 'ready', access: 'pro' }, [], 'en').length, 0);
   assert.equal(filterCatalog({ ...catalogDefaults, saved: true }, [], 'en').length, 0);
   assert.deepEqual(filterCatalog({ ...catalogDefaults, saved: true }, ['A001', 'unknown'], 'en').map(material => material.id), ['A001']);

@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "incremental": true,
+    "plugins": [{ "name": "next" }],
+    "types": ["vite/client", "node"],
+    "jsx": "preserve"
+  },
+  "include": ["next-env.d.ts", "app/**/*.ts", "app/**/*.tsx", "src/**/*", "recipe-exports/**/*", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

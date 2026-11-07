@@ -1,0 +1,22 @@
+/* Hallmark v2.0.0 | theme: Tallshift Saffron (locked) | scope: component | signature: content-first adaptable section. */
+/* Critique: no hidden content, invented metrics or decorative interface glyphs; text determines height. */
+:root .section { --section-default-surface: #1E1D19; --section-default-text: #EDECE8; --section-default-secondary: #C4C3BF; --section-default-line: #3E3D39; --section-default-accent: #EBD183; }
+.section { --section-surface: var(--f-surface, var(--section-default-surface)); --section-text: var(--f-text, var(--section-default-text)); --section-secondary: var(--f-secondary, var(--section-default-secondary)); --section-line: var(--f-line, var(--section-default-line)); --section-accent: var(--section-default-accent); --section-radius: 16px; --section-padding: 32px; container-type: inline-size; inline-size: 100%; min-inline-size: 0; color: var(--section-text); }
+.section *, .section *::before, .section *::after { box-sizing: border-box; }
+.section[data-density="compact"] { --section-padding: 24px; }
+.section[data-density="relaxed"] { --section-padding: 48px; }
+.title { margin: 0; min-inline-size: 0; overflow-wrap: break-word; font-size: clamp(28px, 5cqi, 48px); font-weight: 600; line-height: 1.15; letter-spacing: -.025em; text-wrap: balance; }
+.description { margin: 20px 0 0; max-inline-size: 58ch; color: var(--section-secondary); font-size: 16px; line-height: 1.7; overflow-wrap: anywhere; }
+@container (max-width: 400px) { .section { --section-padding: 20px; } }
+@media (forced-colors: active) { .section { --section-text: CanvasText; --section-secondary: CanvasText; --section-surface: Canvas; --section-line: CanvasText; --section-accent: CanvasText; } }
+
+.section { padding: var(--section-padding); background: var(--section-surface); border-radius: var(--section-radius); }
+.header { margin-block-end: 32px; }
+.title { max-inline-size: 26ch; }
+.grid { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; margin: 0; padding: 0; }
+.feature { min-inline-size: 0; padding-block-start: 20px; border-block-start: 2px solid var(--section-accent); }
+.feature h3 { margin: 0; font-size: 20px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.feature p { margin: 12px 0 0; color: var(--section-secondary); font-size: 16px; line-height: 1.7; overflow-wrap: anywhere; }
+.icon { display: inline-flex; margin-block-end: 16px; color: var(--section-text); }
+@container (min-width: 520px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@container (min-width: 860px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }

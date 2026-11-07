@@ -17,8 +17,10 @@ try {
   const { materialRecipe } = await server.ssrLoadModule('/src/product/material-recipes.tsx');
   const { materials } = await server.ssrLoadModule('/src/product/catalog-data.ts');
   for (const material of materials) assert.equal(Boolean(materialRecipe(material.id)), material.available, `${material.id}: catalog readiness matches the connected demo and exporter`);
-  for (const [id, slug] of [['C001', 'press-button'], ['C002', 'content-tabs'], ['E001', 'content-reveal'], ['S003', 'starter-action-band']]) {
+  for (const [id, slug] of [['C001', 'press-button'], ['C002', 'content-tabs'], ['E001', 'content-reveal'], ['S003', 'starter-action-band'], ['S001', 'starter-split-hero'], ['S002', 'starter-feature-grid'], ['A003', 'line-assemble'], ['A006', 'ledger-reflow']]) {
     const { recipe } = await server.ssrLoadModule(`/src/recipes/${slug}/index.ts`);
+    const colorControl = recipe.colorControl;
+    const durationMax = recipe.durationMax;
     const { Demo } = await server.ssrLoadModule(`/src/recipes/${slug}/Demo.tsx`);
     assert.equal(typeof Demo, 'function');
     for (const locale of ['ru', 'en', 'vi']) for (const target of ['next', 'vite']) for (const mode of ['preserve', 'adapt']) {
@@ -33,23 +35,28 @@ try {
         assert.equal(text(file.path), file.content, `${id}: code view and ZIP use the same source`);
         assert.ok(recipe.prompt(config).includes(file.content), `${id}: AI request includes ${file.path}`);
         if (file.path !== 'SelectedExample.tsx') {
-          const sourcePath = id === 'S003' && file.path.startsWith('vendor/press-button/')
-            ? resolve(root, 'src/recipes/press-button', file.path.slice('vendor/press-button/'.length))
+          const vendor = file.path.match(/^vendor\/(press-button|content-reveal)\/(.+)$/);
+          const sourcePath = vendor
+            ? resolve(root, 'src/recipes', vendor[1], vendor[2])
             : resolve(root, 'src/recipes', slug, file.path);
           let expected = await readFile(sourcePath, 'utf8');
-          if (id === 'S003' && file.path === 'press-button.ts') expected = expected.replaceAll('../press-button/', './vendor/press-button/');
+          if (file.path === 'press-button.ts') expected = expected.replaceAll('../press-button/', './vendor/press-button/');
+          if (file.path === 'reveal.ts') expected = expected.replaceAll('../content-reveal/', './vendor/content-reveal/');
           assert.equal(file.content, expected, `${id}: exact mounted source, with only the declared dependency facade relocation`);
         }
+        if (file.path.endsWith('.module.css')) assert.doesNotMatch(file.content, /:root\s*\{/, `${id}: CSS Modules tokens use pure scoped selectors compatible with real Next builds`);
         assert.doesNotMatch(file.content, /@hugeicons-pro|<svg\b|<path\b|https?:\/\//i, 'no private icon paths or remote runtime assets');
         for (const match of file.content.matchAll(/from\s+['"](\.[^'"]+)['"]/g)) {
           const base = resolve('/', dirname(file.path), match[1]).slice(1);
           assert.ok([base, `${base}.ts`, `${base}.tsx`].some(path => path in zipped), `${file.path}: includes local import ${match[1]}`);
         }
       }
-      assert.deepEqual(json('config.json'), { locale, target, ...(id === 'E001' ? {} : { accent: '#C4DB9B' }), duration: 210, motion: 'expressive' });
-      assert.equal(text('SelectedExample.tsx').includes('"accent": "#C4DB9B"'), id !== 'E001');
+      assert.deepEqual(json('config.json'), { locale, target, ...(colorControl ? { accent: '#C4DB9B' } : {}), duration: 210, motion: 'expressive' });
+      assert.equal(text('SelectedExample.tsx').includes('"accent": "#C4DB9B"'), colorControl);
       assert.equal(json('manifest.json').itemId, id);
-      if (id === 'E001') assert.ok(zipped[json('manifest.json').animationEntry], 'effect manifest identifies the included animation controller');
+      if (['E001', 'A003', 'A006'].includes(id)) assert.ok(zipped[json('manifest.json').animationEntry], 'effect manifest identifies the included animation controller');
+      if (id === 'S001') assert.deepEqual(json('manifest.json').bundledItemIds, ['C001', 'E001']);
+      if (id === 'S002') assert.deepEqual(json('manifest.json').bundledItemIds, ['E001']);
       if (id === 'S003') assert.deepEqual(json('manifest.json').bundledItemIds, ['C001']);
       assert.equal(json('manifest.json').target, target === 'next' ? 'next-app-router' : 'vite-react-ts');
       assert.deepEqual([...json('manifest.json').files].sort(), Object.keys(zipped).sort());
@@ -65,12 +72,12 @@ try {
       assert.ok(text('INTEGRATION_PROMPT.txt').endsWith(text(`INSTALL.${locale}.md`)));
       cases++;
     }
-    for (const invalid of [{ accent: 'url(x)' }, { duration: -1 }, { duration: id === 'E001' ? 601 : 481 }, { duration: 1.5 }, { locale: 'de' }, { target: 'other' }, { motion: 'auto' }]) assert.throws(() => recipe.files(invalid));
+    for (const invalid of [{ accent: 'url(x)' }, { duration: -1 }, { duration: durationMax + 1 }, { duration: 1.5 }, { locale: 'de' }, { target: 'other' }, { motion: 'auto' }]) assert.throws(() => recipe.files(invalid));
     assert.throws(() => recipe.prompt({ mode: 'unknown' }));
-    const maximum = id === 'E001' ? 600 : 480;
+    const maximum = durationMax;
     assert.equal(JSON.parse(recipe.files({ duration: maximum }).find(file => file.path === 'config.json').content).duration, maximum);
     assert.equal(JSON.parse(recipe.files().find(file => file.path === 'config.schema.json').content).properties.duration.maximum, maximum);
-    if (id === 'E001') assert.equal('accent' in JSON.parse(recipe.files().find(file => file.path === 'config.schema.json').content).properties, false);
+    if (!colorControl) assert.equal('accent' in JSON.parse(recipe.files().find(file => file.path === 'config.schema.json').content).properties, false);
     assert.equal(JSON.parse(recipe.files({ motion: 'off', duration: 480 }).find(file => file.path === 'config.json').content).duration, 0);
     for (const target of ['next', 'vite']) {
       const consumer = resolve(temporary, `${slug}-${target}`);

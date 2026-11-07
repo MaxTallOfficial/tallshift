@@ -1,0 +1,23 @@
+/* Hallmark v2.0.0 | theme: Tallshift Saffron (locked) | scope: component | signature: content-first adaptable section. */
+/* Critique: no hidden content, invented metrics or decorative interface glyphs; text determines height. */
+:root .hero { --section-default-surface: #1E1D19; --section-default-text: #EDECE8; --section-default-secondary: #C4C3BF; --section-default-line: #3E3D39; --section-default-accent: #EBD183; }
+.hero { --section-surface: var(--f-surface, var(--section-default-surface)); --section-text: var(--f-text, var(--section-default-text)); --section-secondary: var(--f-secondary, var(--section-default-secondary)); --section-line: var(--f-line, var(--section-default-line)); --section-accent: var(--section-default-accent); --section-radius: 16px; --section-padding: 32px; container-type: inline-size; inline-size: 100%; min-inline-size: 0; color: var(--section-text); }
+.hero *, .hero *::before, .hero *::after { box-sizing: border-box; }
+.hero[data-density="compact"] { --section-padding: 24px; }
+.hero[data-density="relaxed"] { --section-padding: 48px; }
+.title { margin: 0; min-inline-size: 0; overflow-wrap: break-word; font-size: clamp(28px, 5cqi, 48px); font-weight: 600; line-height: 1.15; letter-spacing: -.025em; text-wrap: balance; }
+.description { margin: 20px 0 0; max-inline-size: 58ch; color: var(--section-secondary); font-size: 16px; line-height: 1.7; overflow-wrap: anywhere; }
+@container (max-width: 400px) { .hero { --section-padding: 20px; } }
+@media (forced-colors: active) { .hero { --section-text: CanvasText; --section-secondary: CanvasText; --section-surface: Canvas; --section-line: CanvasText; --section-accent: CanvasText; } }
+
+.layout { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; gap: 32px; padding: var(--section-padding); background: var(--section-surface); border-radius: var(--section-radius); }
+.copy { min-inline-size: 0; }
+.actions { display: flex; align-items: start; flex-wrap: wrap; gap: 12px; margin-block-start: 24px; }
+.hero .secondary { --press-accent: var(--section-surface); --press-on-accent: var(--section-text); border-color: var(--section-text); }
+.panel { min-inline-size: 0; padding-inline-start: 24px; border-inline-start: 2px solid var(--section-line); }
+.panelTitle { margin: 0 0 24px; font-size: 20px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.points { display: grid; gap: 24px; margin: 0; padding-inline-start: 24px; }
+.points li { padding-inline-start: 4px; min-inline-size: 0; }
+.points h4 { margin: 0; font-size: 16px; font-weight: 600; line-height: 1.5; overflow-wrap: anywhere; }
+.points p { margin: 8px 0 0; color: var(--section-secondary); font-size: 16px; line-height: 1.6; overflow-wrap: anywhere; }
+@container (min-width: 960px) { .layout { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 48px; } }

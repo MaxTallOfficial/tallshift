@@ -32,6 +32,8 @@ import {materialDisplayName} from './material-presentation';
 import { materialRecipe } from './material-recipes';
 import { exampleCopy } from './example-copy';
 import './material.css';
+import {usePlatform} from '../platform/platform-context';
+import {RemotePreview} from '../platform/RemotePreview';
 
 type View = 'demo' | 'code' | 'prompt';
 interface MaterialPageProps {
@@ -40,6 +42,7 @@ interface MaterialPageProps {
 }
 
 export function MaterialPage({ material, locale, search, catalogSearch, onSearchChange, saved, onToggleFavorite }: MaterialPageProps) {
+  const platform = usePlatform();
   const baseCopy = productCopy[locale];
   const specificCopy = Object.hasOwn(exampleCopy[locale], material.id) ? exampleCopy[locale][material.id as keyof typeof exampleCopy[typeof locale]] : undefined;
   const t = { ...baseCopy, ...specificCopy, accent: specificCopy?.accentLabel ?? baseCopy.accent };
@@ -172,9 +175,9 @@ export function MaterialPage({ material, locale, search, catalogSearch, onSearch
           {blocked && <p className="tp-blocked-note" role="status">{blockedReason}</p>}
           <div className="tp-panel" id="material-panel-demo" role="tabpanel" aria-labelledby="material-tab-demo" hidden={view !== 'demo'}>
             <p className="tp-panel-explanation">{t.demoHelp}</p>
-            <SystemPreviewViewport locale={locale} label={displayName} width={width} onWidthChange={setWidth} motionOff={off}>
+            <>{platform.production ? <RemotePreview itemId={material.id} config={config} label={displayName}/> : <SystemPreviewViewport locale={locale} label={displayName} width={width} onWidthChange={setWidth} motionOff={off}>
               {Demo && <Demo {...config} />}
-            </SystemPreviewViewport>
+            </SystemPreviewViewport>}</>
           </div>
           <div className="tp-panel tp-code" id="material-panel-code" role="tabpanel" aria-labelledby="material-tab-code" hidden={view !== 'code'}>
             <div className="tp-source-toolbar"><SystemCheckbox label={t.wrap} checked={wrap} onChange={setWrap} /><SystemButton leadingIcon={<SystemIcon name="copy" />} disabled={blocked} loading={copy.state === 'pending'} onClick={() => void copyText(selected.content)}>{t.copyCode}</SystemButton></div>

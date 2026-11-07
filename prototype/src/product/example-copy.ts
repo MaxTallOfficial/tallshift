@@ -17,8 +17,60 @@ interface ExampleCopy {
 }
 
 /** Item-specific explanations keep the shared workbench faithful to each example. */
-export const exampleCopy: Record<ProductLocale, Record<'C001' | 'C002' | 'E001' | 'S003', ExampleCopy>> = {
+export const exampleCopy: Record<ProductLocale, Record<'C001' | 'C002' | 'E001' | 'S003' | 'S001' | 'S002' | 'A003' | 'A006', ExampleCopy>> = {
   ru: {
+    S001: {
+      "lead": "Первый экран с заголовком, двумя ссылками и полезными пояснениями во второй колонке. Проверьте ссылки, настройте секцию и скачайте код.",
+      "demoHelp": "«Посмотреть возможности» и «Как подключить блок» ведут к соответствующим разделам ниже внутри примера.",
+      "accentLabel": "Цвет главной кнопки",
+      "accentHelp": "Меняет фон главной ссылки. Вторая ссылка сохраняет вторичное оформление.",
+      "useBody": "Для начала страницы: объяснить предложение и дать посетителю два понятных пути. Текст и настоящие адреса ссылок задаёте вы.",
+      "modeHelp": "Запрос попросит ИИ сохранить дизайн или согласовать его с сайтом, сохранив настоящие ссылки, читаемое содержимое, адаптивность и уменьшение движения.",
+      "contextPlaceholder": "На чём создан сайт, что должен объяснять первый экран и куда ведут ссылки…",
+      "instructionsHelp": "Как добавить секцию в React-проект и заменить текст и адреса ссылок. Выбранные настройки уже включены в файлы.",
+      "promptBody": "Полный код и настройки. Вставьте запрос в ИИ-редактор своего React-проекта, чтобы добавить секцию в две колонки.",
+      "guideBody": "Куда добавить файлы, как заменить текст и ссылки, как проверить вёрстку и клавиатуру."
+    },
+    S002: {
+      "lead": "Сетка преимуществ с полностью видимыми описаниями. Посмотрите раскладку, настройте оформление и скачайте код.",
+      "demoHelp": "Прочитайте три преимущества в примере. Здесь нет скрытых описаний и карточек-кнопок; сетка подстраивается под доступную ширину.",
+      "accentLabel": "Цвет линий преимуществ",
+      "accentHelp": "Меняет линию над каждым преимуществом, а не цвет текста.",
+      "useBody": "Чтобы вместе объяснить от трёх до шести преимуществ или возможностей. Замените заголовки и описания полезными подробностями о своём продукте.",
+      "modeHelp": "Запрос попросит ИИ сохранить дизайн или согласовать его с сайтом, сохранив читаемый список преимуществ, адаптивность и уменьшение движения.",
+      "contextPlaceholder": "На чём создан сайт, где нужна сетка и какие преимущества она объясняет…",
+      "instructionsHelp": "Как добавить сетку в React-проект и задать от трёх до шести преимуществ. Выбранные настройки уже включены в файлы.",
+      "promptBody": "Полный код и настройки. Вставьте запрос в ИИ-редактор своего React-проекта, чтобы добавить сетку преимуществ.",
+      "guideBody": "Куда добавить файлы, как задать преимущества и проверить длинные тексты и вёрстку."
+    },
+    A003: {
+      "lead": "Заголовок появляется по естественным строкам текста. Повторите эффект, настройте режим и длительность, затем скачайте код.",
+      "demoHelp": "Нажмите «Повторить появление», чтобы увидеть эффект. «Сменить заголовок» заменяет текст без автоматического повтора.",
+      "accentLabel": "Цвет примера",
+      "accentHelp": "У этого эффекта нет настройки цвета.",
+      "useBody": "Чтобы привлечь внимание к заголовку без разрыва смысла и жёстких переносов под язык. Текст остаётся читаемым без анимации.",
+      "modeHelp": "Запрос попросит ИИ сохранить эффект или согласовать его с сайтом, сохранив один настоящий заголовок, естественные переносы, видимость без эффекта и уменьшение движения.",
+      "contextPlaceholder": "На чём создан сайт, какой заголовок нужен и где его разместить…",
+      "instructionsHelp": "Как добавить эффект заголовка в React-проект и задать свой текст. Выбранные настройки уже включены в файлы.",
+      "promptBody": "Полный код и настройки. Вставьте запрос в ИИ-редактор своего React-проекта, чтобы добавить появление заголовка.",
+      "guideBody": "Куда добавить файлы, как задать заголовок и проверить переносы, повтор и уменьшение движения.",
+      "settingsHelp": "Режим и длительность применяются к примеру и файлам для скачивания.",
+      "blocked": "Исправьте настройки перед копированием или скачиванием."
+    },
+    A006: {
+      "lead": "После изменения списка элементы плавно занимают новые места. Добавляйте, удаляйте и переставляйте задачи в примере, затем скачайте код.",
+      "demoHelp": "Добавьте задачу, выберите обратный порядок или оставьте только активные. Завершение и удаление меняют локальный пример; на сервер ничего не сохраняется.",
+      "accentLabel": "Цвет примера",
+      "accentHelp": "У этого эффекта нет настройки цвета.",
+      "useBody": "Для списков, в которых меняются состав и порядок. Данными управляет ваш проект; эффект помогает следить за оставшимися элементами, не задерживая обновление.",
+      "modeHelp": "Запрос попросит ИИ сохранить эффект или согласовать его с сайтом, сохранив немедленное обновление данных, постоянные ID, фокус, положение прокрутки и уменьшение движения.",
+      "contextPlaceholder": "На чём создан сайт, что находится в списке и как его добавляют, удаляют или переставляют…",
+      "instructionsHelp": "Как подключить эффект к изменяемому списку React. Выбранные настройки уже включены в файлы.",
+      "promptBody": "Полный код и настройки. Вставьте запрос в ИИ-редактор своего React-проекта, чтобы добавить движение списка.",
+      "guideBody": "Куда добавить файлы, как связать обновления списка и проверить фокус, прокрутку и быстрые действия.",
+      "settingsHelp": "Режим и длительность применяются к примеру и файлам для скачивания.",
+      "blocked": "Исправьте настройки перед копированием или скачиванием."
+    },
     C001: {
       lead: 'Кнопка меняет вид при наведении, нажатии и выборе с клавиатуры. Проверьте её в работе, настройте цвет и анимацию, затем скачайте код.',
       demoHelp: 'Нажмите «Увеличить счётчик» — число под кнопкой вырастет. Переключатель показывает доступную кнопку и образцы состояний, в которых нажать нельзя.',
@@ -72,6 +124,58 @@ export const exampleCopy: Record<ProductLocale, Record<'C001' | 'C002' | 'E001' 
     },
   },
   en: {
+    S001: {
+      "lead": "A two-column introduction with a heading, two links and useful supporting details. Try the links, then customize the section and download its source.",
+      "demoHelp": "“Explore features” and “How to add this block” lead to the corresponding sections below the example.",
+      "accentLabel": "Primary button color",
+      "accentHelp": "Changes the primary link background. The second link keeps its secondary style.",
+      "useBody": "For the start of a page: explain your offer and give visitors two clear paths. You provide the text and real link destinations.",
+      "modeHelp": "The request asks AI to keep the design or match your site while preserving real links, readable content, responsive layout and reduced motion.",
+      "contextPlaceholder": "Your site’s technology, page introduction, supporting details and link destinations…",
+      "instructionsHelp": "How to add the section to a React project and replace its text and link destinations. Selected settings are already included.",
+      "promptBody": "The full source and settings. Paste this request into the AI coding tool you use for your React project to add the two-column section.",
+      "guideBody": "Where to place the files, replace text and links, and check layout and keyboard use."
+    },
+    S002: {
+      "lead": "A grid of benefits with all descriptions visible. Explore the layout, customize its appearance and download the source.",
+      "demoHelp": "Read the three example benefits. This section has no hidden descriptions or clickable cards; the grid adapts to the available width.",
+      "accentLabel": "Feature line color",
+      "accentHelp": "Changes the line above each benefit, not its text color.",
+      "useBody": "To explain three to six benefits or capabilities together. Replace the example headings and descriptions with useful details about your product.",
+      "modeHelp": "The request asks AI to keep the design or match your site while preserving the readable feature list, responsive layout and reduced motion.",
+      "contextPlaceholder": "Your site’s technology, where the grid belongs and which benefits it should explain…",
+      "instructionsHelp": "How to add the grid to a React project and provide three to six benefits. Selected settings are already included.",
+      "promptBody": "The full source and settings. Paste this request into the AI coding tool you use for your React project to add the feature grid.",
+      "guideBody": "Where to place the files, provide the benefits and check long text and layout."
+    },
+    A003: {
+      "lead": "A heading entrance that follows the text’s natural lines. Replay the effect, set its motion and duration, then download the source.",
+      "demoHelp": "Press “Replay entrance” to see the effect. “Change heading” replaces the text without replaying it automatically.",
+      "accentLabel": "Example color",
+      "accentHelp": "This effect has no color setting.",
+      "useBody": "To draw attention to a heading without splitting its meaning or forcing language-specific line breaks. Text stays readable without animation.",
+      "modeHelp": "The request asks AI to keep the effect or match your site while preserving one real heading, natural wrapping, visible fallback and reduced motion.",
+      "contextPlaceholder": "Your site’s technology, the heading text and where it should appear…",
+      "instructionsHelp": "How to add the heading effect to a React project and provide your own text. Selected settings are already included.",
+      "promptBody": "The full source and settings. Paste this request into the AI coding tool you use for your React project to add the heading effect.",
+      "guideBody": "Where to place the files, provide a heading and check wrapping, replay and reduced motion.",
+      "settingsHelp": "Motion mode and duration apply to the example and download files.",
+      "blocked": "Fix the settings before copying or downloading."
+    },
+    A006: {
+      "lead": "List items move to their new positions after you change the list. Try adding, removing and reordering tasks, then download the source.",
+      "demoHelp": "Add a task, reverse the order or show active tasks only. Complete and remove actions affect this local example; nothing is saved to a server.",
+      "accentLabel": "Example color",
+      "accentHelp": "This effect has no color setting.",
+      "useBody": "For lists whose content or order changes. Your project owns the data; the effect helps people follow the remaining items without delaying updates.",
+      "modeHelp": "The request asks AI to keep the effect or match your site while preserving immediate data updates, stable item IDs, focus, scroll position and reduced motion.",
+      "contextPlaceholder": "Your site’s technology, list data and how people add, remove or reorder items…",
+      "instructionsHelp": "How to connect the effect to a changing React list. Selected settings are already included.",
+      "promptBody": "The full source and settings. Paste this request into the AI coding tool you use for your React project to add list motion.",
+      "guideBody": "Where to place the files, connect list updates and check focus, scrolling and rapid actions.",
+      "settingsHelp": "Motion mode and duration apply to the example and download files.",
+      "blocked": "Fix the settings before copying or downloading."
+    },
     C001: {
       lead: 'The button responds to hover, press and keyboard focus. Try it, customize its color and animation, then download the source.',
       demoHelp: 'Press “Increase counter” to raise the number below the button. The selector shows the available button and examples of states that prevent activation.',
@@ -125,6 +229,58 @@ export const exampleCopy: Record<ProductLocale, Record<'C001' | 'C002' | 'E001' 
     },
   },
   vi: {
+    S001: {
+      "lead": "Phần mở đầu có tiêu đề, hai liên kết và thông tin bổ sung ở cột thứ hai. Thử liên kết, tùy chỉnh rồi tải mã nguồn.",
+      "demoHelp": "“Xem tính năng” và “Cách thêm khối này” dẫn tới phần tương ứng bên dưới trong ví dụ.",
+      "accentLabel": "Màu nút chính",
+      "accentHelp": "Đổi nền liên kết chính. Liên kết còn lại giữ kiểu phụ.",
+      "useBody": "Dùng ở đầu trang để giới thiệu sản phẩm và đưa ra hai hướng đi rõ ràng. Bạn đặt văn bản và địa chỉ liên kết thật.",
+      "modeHelp": "Yêu cầu đề nghị AI giữ thiết kế hoặc điều chỉnh theo website, giữ liên kết thật, nội dung dễ đọc, bố cục thích ứng và giảm chuyển động.",
+      "contextPlaceholder": "Website dùng công nghệ nào, phần mở đầu cần giải thích gì và liên kết dẫn tới đâu…",
+      "instructionsHelp": "Cách thêm khối vào dự án React, đổi văn bản và địa chỉ liên kết. Các tệp đã có thiết lập bạn chọn.",
+      "promptBody": "Toàn bộ mã nguồn và thiết lập. Dán yêu cầu vào công cụ lập trình AI của dự án React để thêm khối hai cột.",
+      "guideBody": "Nơi đặt tệp, cách đổi văn bản và liên kết, kiểm tra bố cục và bàn phím."
+    },
+    S002: {
+      "lead": "Lưới lợi ích với mô tả luôn hiển thị. Xem bố cục, tùy chỉnh giao diện rồi tải mã nguồn.",
+      "demoHelp": "Đọc ba lợi ích trong ví dụ. Không có mô tả ẩn hay ô đóng vai trò nút; lưới thích ứng với chiều rộng có sẵn.",
+      "accentLabel": "Màu đường trên lợi ích",
+      "accentHelp": "Đổi đường phía trên mỗi lợi ích, không đổi màu chữ.",
+      "useBody": "Để giải thích từ ba đến sáu lợi ích hoặc tính năng cùng nhau. Thay tiêu đề và mô tả bằng thông tin hữu ích về sản phẩm của bạn.",
+      "modeHelp": "Yêu cầu đề nghị AI giữ thiết kế hoặc điều chỉnh theo website, giữ danh sách lợi ích dễ đọc, bố cục thích ứng và giảm chuyển động.",
+      "contextPlaceholder": "Website dùng công nghệ nào, cần đặt lưới ở đâu và giải thích lợi ích gì…",
+      "instructionsHelp": "Cách thêm lưới vào dự án React và đặt từ ba đến sáu lợi ích. Các tệp đã có thiết lập bạn chọn.",
+      "promptBody": "Toàn bộ mã nguồn và thiết lập. Dán yêu cầu vào công cụ lập trình AI của dự án React để thêm lưới lợi ích.",
+      "guideBody": "Nơi đặt tệp, cách đặt lợi ích và kiểm tra văn bản dài cùng bố cục."
+    },
+    A003: {
+      "lead": "Tiêu đề xuất hiện theo dòng xuống tự nhiên của văn bản. Phát lại hiệu ứng, chọn chế độ và thời lượng rồi tải mã nguồn.",
+      "demoHelp": "Nhấn “Phát lại hiệu ứng” để xem. “Đổi tiêu đề” thay văn bản mà không tự phát lại.",
+      "accentLabel": "Màu ví dụ",
+      "accentHelp": "Hiệu ứng này không có thiết lập màu.",
+      "useBody": "Để thu hút chú ý tới tiêu đề mà không chia cắt ý nghĩa hay đặt ngắt dòng cố định theo ngôn ngữ. Văn bản vẫn đọc được khi không có hoạt ảnh.",
+      "modeHelp": "Yêu cầu đề nghị AI giữ hiệu ứng hoặc điều chỉnh theo website, giữ một tiêu đề thật, xuống dòng tự nhiên, nội dung nhìn thấy khi không có hiệu ứng và giảm chuyển động.",
+      "contextPlaceholder": "Website dùng công nghệ nào, văn bản tiêu đề là gì và đặt ở đâu…",
+      "instructionsHelp": "Cách thêm hiệu ứng tiêu đề vào dự án React và đặt văn bản của bạn. Các tệp đã có thiết lập bạn chọn.",
+      "promptBody": "Toàn bộ mã nguồn và thiết lập. Dán yêu cầu vào công cụ lập trình AI của dự án React để thêm hiệu ứng tiêu đề.",
+      "guideBody": "Nơi đặt tệp, cách đặt tiêu đề và kiểm tra xuống dòng, phát lại và giảm chuyển động.",
+      "settingsHelp": "Chế độ và thời lượng áp dụng cho ví dụ và các tệp tải xuống.",
+      "blocked": "Sửa thiết lập trước khi sao chép hoặc tải xuống."
+    },
+    A006: {
+      "lead": "Sau khi danh sách thay đổi, các mục di chuyển tới vị trí mới. Thử thêm, xóa và đảo thứ tự công việc rồi tải mã nguồn.",
+      "demoHelp": "Thêm việc, đảo thứ tự hoặc chỉ hiện việc đang làm. Hoàn thành và xóa chỉ đổi ví dụ cục bộ, không lưu lên máy chủ.",
+      "accentLabel": "Màu ví dụ",
+      "accentHelp": "Hiệu ứng này không có thiết lập màu.",
+      "useBody": "Dùng cho danh sách thay đổi nội dung hoặc thứ tự. Dự án quản lý dữ liệu; hiệu ứng giúp theo dõi các mục còn lại mà không trì hoãn cập nhật.",
+      "modeHelp": "Yêu cầu đề nghị AI giữ hiệu ứng hoặc điều chỉnh theo website, giữ cập nhật dữ liệu ngay, ID ổn định, tiêu điểm, vị trí cuộn và giảm chuyển động.",
+      "contextPlaceholder": "Website dùng công nghệ nào, dữ liệu danh sách là gì và cách thêm, xóa hoặc đổi thứ tự…",
+      "instructionsHelp": "Cách kết nối hiệu ứng với danh sách React thay đổi. Các tệp đã có thiết lập bạn chọn.",
+      "promptBody": "Toàn bộ mã nguồn và thiết lập. Dán yêu cầu vào công cụ lập trình AI của dự án React để thêm chuyển động danh sách.",
+      "guideBody": "Nơi đặt tệp, cách kết nối cập nhật danh sách và kiểm tra tiêu điểm, cuộn và thao tác nhanh.",
+      "settingsHelp": "Chế độ và thời lượng áp dụng cho ví dụ và các tệp tải xuống.",
+      "blocked": "Sửa thiết lập trước khi sao chép hoặc tải xuống."
+    },
     C001: {
       lead: 'Nút phản hồi khi di chuột, nhấn hoặc chọn bằng bàn phím. Hãy thử, tùy chỉnh màu và hoạt ảnh, rồi tải mã nguồn.',
       demoHelp: 'Nhấn “Tăng bộ đếm” để tăng số bên dưới nút. Bộ chọn hiển thị nút có thể nhấn và các trạng thái mẫu không thể nhấn.',

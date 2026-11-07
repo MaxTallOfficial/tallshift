@@ -1,6 +1,6 @@
 /* Hallmark v2.0.0 | theme: Tallshift Saffron (locked) | scope: component | signature: a real local counter beside explicit state samples */
 /* Critique: one action, honest local state, and a native link demonstrate the contract without invented progress. */
-:root {
+:root .demo {
   --press-demo-default-text: #EDECE8;
   --press-demo-default-secondary: #C4C3BF;
   --press-demo-default-line: #3E3D39;

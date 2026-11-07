@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-07",
+  "provider": "https://toncenter.com",
+  "network": "ton-mainnet",
+  "scope": "Two read-only RPC queries. Not a payment or fulfillment test. No wallet keys used and no funds transferred. Balances omitted from evidence.",
+  "checks": [
+    {
+      "method": "getAddressInformation",
+      "httpStatus": 200,
+      "ok": true,
+      "state": "active"
+    },
+    {
+      "method": "runGetMethod:get_wallet_address",
+      "httpStatus": 200,
+      "ok": true,
+      "exitCode": 0,
+      "returnedCellDecodedAsWorkchainZeroAddress": true
+    }
+  ],
+  "paymentReceivedTested": false,
+  "workersRuntimeTested": false,
+  "paidDeliveryTested": false
+}

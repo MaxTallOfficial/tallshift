@@ -15,3 +15,11 @@ prototype/.qa/
 *.pem
 *.key
 *.p12
+
+# Local Cloudflare state and generated deployment artifacts
+.open-next/
+.wrangler/
+prototype/dist-preview/
+.dev.vars
+.dev.vars.*
+!.dev.vars.example

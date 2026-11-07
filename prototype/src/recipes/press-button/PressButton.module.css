@@ -1,6 +1,6 @@
 /* Hallmark v2.0.0 | theme: Tallshift Saffron (locked) | scope: component | signature: native action with a quiet press response */
 /* Critique: the action retains one stable target; state labels carry meaning without decorative icons. */
-:root {
+:root .control {
   --press-default-accent: #EBD183;
   --press-default-on-accent: #17150F;
   --press-default-disabled-background: #1E1D19;

@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "next": "16.4.2",
+  "react": "19.3.1",
+  "productionBuilds": 1,
+  "cases": [
+    {
+      "id": "A001",
+      "extractedFromZip": true,
+      "nextTarget": true,
+      "nextProductionBuild": true,
+      "httpSsr": true,
+      "hydration": true,
+      "runtimeErrors": 0,
+      "blockedRequests": 0
+    },
+    {
+      "id": "C001",
+      "extractedFromZip": true,
+      "nextTarget": true,
+      "nextProductionBuild": true,
+      "httpSsr": true,
+      "hydration": true,
+      "runtimeErrors": 0,
+      "blockedRequests": 0
+    },
+    {
+      "id": "C002",
+      "extractedFromZip": true,
+      "nextTarget": true,
+      "nextProductionBuild": true,
+      "httpSsr": true,
+      "hydration": true,
+      "runtimeErrors": 0,
+      "blockedRequests": 0
+    },
+    {
+      "id": "E001",
+      "extractedFromZip": true,
+      "nextTarget": true,
+      "nextProductionBuild": true,
+      "httpSsr": true,
+      "hydration": true,
+      "runtimeErrors": 0,
+      "blockedRequests": 0
+    },
+    {
+      "id": "S003",
+      "extractedFromZip": true,
+      "nextTarget": true,
+      "nextProductionBuild": true,
+      "httpSsr": true,
+      "hydration": true,
+      "runtimeErrors": 0,
+      "blockedRequests": 0
+    },
+    {
+      "id": "S001",
+      "extractedFromZip": true,
+      "nextTarget": true,
+      "nextProductionBuild": true,
+      "httpSsr": true,
+      "hydration": true,
+      "runtimeErrors": 0,
+      "blockedRequests": 0
+    },
+    {
+      "id": "S002",
+      "extractedFromZip": true,
+      "nextTarget": true,
+      "nextProductionBuild": true,
+      "httpSsr": true,
+      "hydration": true,
+      "runtimeErrors": 0,
+      "blockedRequests": 0
+    },
+    {
+      "id": "A003",
+      "extractedFromZip": true,
+      "nextTarget": true,
+      "nextProductionBuild": true,
+      "httpSsr": true,
+      "hydration": true,
+      "runtimeErrors": 0,
+      "blockedRequests": 0
+    },
+    {
+      "id": "A006",
+      "extractedFromZip": true,
+      "nextTarget": true,
+      "nextProductionBuild": true,
+      "httpSsr": true,
+      "hydration": true,
+      "runtimeErrors": 0,
+      "blockedRequests": 0
+    }
+  ],
+  "scope": "Nine ZIP-only Next App Router pages, real production build, HTTP SSR and browser hydration probe. Detailed item interactions, layout/locales and all framework versions are separate checks."
+}

@@ -1,6 +1,6 @@
 /* Hallmark: Tallshift locked Saffron system; scope: component; material: interactive content tabs; signature: one active content panel. */
 /* Critique: text remains the subject; one quiet separator and one moving selection line explain the grouping. */
-:root {
+:root .root {
   --ct-default-accent: #EBD183;
   --ct-default-text: #EDECE8;
   --ct-default-secondary: #C4C3BF;

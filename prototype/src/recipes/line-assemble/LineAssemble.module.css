@@ -1,0 +1,5 @@
+/* Hallmark · component: line assemble · theme: Tallshift Saffron (locked) · signature: measured natural text lines · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: variety; plain semantic text keeps the effect secondary. */
+.heading { margin: 0; min-inline-size: 0; max-inline-size: 100%; font: inherit; font-weight: 600; line-height: 1.2; overflow-wrap: anywhere; white-space: pre-wrap; }
+.word { display: inline-block; max-inline-size: 100%; vertical-align: top; overflow-wrap: anywhere; }
+@media (prefers-reduced-motion: reduce) { .word { animation: none; } }

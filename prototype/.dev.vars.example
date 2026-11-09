@@ -1,0 +1,10 @@
+# Local only. Copy to .dev.vars (ignored), never share real credentials.
+NEXTJS_ENV=development
+AUTH_ENABLED=false
+COMMERCE_ENABLED=false
+TON_PAYMENTS_ENABLED=false
+# Mail delivery requires an actual reviewed provider; no log-based or local mail fallback.
+# AUTH_SECRET=<generate-a-random-secret-at-least-32-characters>
+# AUTH_EMAIL_FROM=no-reply@tallshift.com
+# AUTH_EMAIL_API_URL=https://your-reviewed-email-provider.example/send
+# AUTH_EMAIL_API_KEY=<secret>

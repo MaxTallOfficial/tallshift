@@ -1,0 +1,19 @@
+/* Hallmark · checked: 2026-11-07 · genre: modern-minimal · shape: focused form · theme: Tallshift Saffron (locked) · nav: shared product shell · footer: shared · built: real account forms · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: density; each view shows one task and its outcome, without decorative panels. */
+.au-page{width:min(1040px,calc(100% - 64px));margin-inline:auto;padding-block:64px 96px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start;}
+.au-page h1{font-size:clamp(32px,4vw,48px);font-weight:550;line-height:1.2;letter-spacing:-.025em;overflow-wrap:break-word;min-width:0;max-width:18ch;}
+.au-lead{color:var(--f-secondary);font-size:18px;line-height:1.7;margin-top:24px!important;max-width:42ch;}
+.au-free{color:var(--f-muted);line-height:1.7;margin-block:32px 12px!important;font-size:14px;}
+.au-page a{color:var(--f-text);text-underline-offset:4px;}
+.au-form-region{min-width:0;max-width:440px;width:100%;}
+.au-form-region form{display:grid;gap:24px;}
+.au-form-region .system-field{min-width:0;}
+.au-form-region .system-button{white-space:normal;overflow-wrap:break-word;min-height:48px;}
+.au-status{color:var(--f-secondary);line-height:1.7;overflow-wrap:break-word;}
+.au-error{color:var(--f-error);line-height:1.7;overflow-wrap:break-word;}
+.au-links{display:flex;flex-direction:column;align-items:flex-start;gap:24px;margin-top:32px;}
+.au-profile{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-block:24px 32px;padding-block:24px;border-block:1px solid var(--f-line);}
+.au-profile p{color:var(--f-secondary);overflow-wrap:anywhere;line-height:1.7;}
+.au-profile strong{display:block;color:var(--f-text);font-weight:550;margin-block:8px 16px;}
+.au-profile-actions{display:flex;gap:12px;flex-wrap:wrap;}
+@media(max-width:767px){.au-page{width:calc(100% - 32px);grid-template-columns:minmax(0,1fr);gap:32px;padding-block:40px 64px;}.au-form-region{max-width:none;}.au-free{margin-top:24px!important;}.au-profile{flex-direction:column;}.au-profile-actions{width:100%;}.au-profile-actions .system-button{flex:1 1 auto;}}

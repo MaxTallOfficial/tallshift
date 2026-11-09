@@ -6,8 +6,10 @@ import {ProductLink} from './ProductLink';
 import {materials,type Locale} from './catalog-data';
 import {pageCopy} from './page-copy';
 import './pages.css';
+import {AccountIdentity} from './AccountIdentity';
+import type {SessionState} from './auth-client';
 
-export function AccountPage({locale,search,onSearchChange,favorites,onToggleFavorite}:{locale:Locale;search:string;onSearchChange:(search:string)=>void;favorites:readonly string[];onToggleFavorite:(id:string)=>void}) {
+export function AccountPage({locale,search,onSearchChange,favorites,onToggleFavorite,session,onRefreshSession}:{session:SessionState;onRefreshSession:()=>Promise<void>;locale:Locale;search:string;onSearchChange:(search:string)=>void;favorites:readonly string[];onToggleFavorite:(id:string)=>void}) {
  const t=pageCopy[locale],id=useId(),root=useRef<HTMLDivElement>(null),heading=useRef<HTMLHeadingElement>(null);
  const tabs=['saved','purchases','orders','updates'] as const;
  const query=new URLSearchParams(search),tab=tabs.find(value=>value===query.get('tab'))??'saved';
@@ -16,6 +18,7 @@ export function AccountPage({locale,search,onSearchChange,favorites,onToggleFavo
  const empty={saved:[t.emptySaved,t.savedBody],purchases:[t.emptyPurchases,t.purchasesBody],orders:[t.emptyOrders,t.ordersBody],updates:[t.emptyUpdates,t.updatesBody]}[tab];
  return <div className="product-page ap-page" ref={root}>
   <header className="product-page-heading"><h1 ref={heading} tabIndex={-1}>{t.accountTitle}</h1><p>{t.accountLead}</p></header>
+  <AccountIdentity locale={locale} session={session} onRefresh={onRefreshSession}/>
   <p className="product-preview-note">{t.local}</p>
   <SystemTabList label={t.account} value={tab} onChange={next=>{const params=new URLSearchParams(search);params.set('tab',next);onSearchChange(`?${params}`);}} options={tabs.map(value=>({value,label:value==='saved'?`${t.saved} (${saved.length})`:t[value],tabId:`${id}-${value}`,panelId:`${id}-panel`}))}/>
   <section className="ap-panel" id={`${id}-panel`} role="tabpanel" aria-labelledby={`${id}-${tab}`} tabIndex={0}>

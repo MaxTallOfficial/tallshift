@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-10",
+  "nodeSuite": {
+    "tests": 260,
+    "passed": 260,
+    "failed": 0
+  },
+  "authFocusedAfterAdditionalUnverifiedLoginAssertions": {
+    "tests": 5,
+    "passed": 5,
+    "failed": 0
+  },
+  "typecheck": true,
+  "openNextBuild": true,
+  "localWorkerdSmoke": {
+    "locales": [
+      "en",
+      "ru",
+      "vi"
+    ],
+    "nonceUniqueness": true,
+    "scriptNonces": true,
+    "headers": true,
+    "staticAsset": true
+  },
+  "betterAuthScryptInWorkerd": {
+    "correctPassword": true,
+    "incorrectPasswordRejected": true,
+    "elapsedMs": 262,
+    "scope": "Elapsed local time, not production CPU or load measurement"
+  },
+  "localD1Migrations": [
+    "0001_ton_payments.sql",
+    "0002_auth.sql"
+  ],
+  "npmAudit": {
+    "vulnerabilities": 0,
+    "scope": "Registry audit snapshot; not a security guarantee"
+  },
+  "hallmarkProduct": {
+    "files": 23,
+    "fail": 0,
+    "reflex": 0,
+    "warn": 0
+  },
+  "notPerformed": [
+    "Cloudflare account provisioning",
+    "Remote D1 migrations",
+    "Deployment",
+    "Real email delivery",
+    "Real authentication browser E2E",
+    "Live TON/USDT payment",
+    "Paid entitlements and downloads"
+  ]
+}

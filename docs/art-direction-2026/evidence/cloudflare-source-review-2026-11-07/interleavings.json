@@ -1,0 +1,13 @@
+{
+  "scope": "Deterministic interleaving reproductions of the supplied algorithms, not a deployed Cloudflare integration test.",
+  "tokenConsume": {
+    "parallelRequests": 2,
+    "accepted": 2,
+    "expectedAtMost": 1
+  },
+  "kvAttemptCounter": {
+    "parallelFailures": 2,
+    "storedCount": 1,
+    "expected": 2
+  }
+}

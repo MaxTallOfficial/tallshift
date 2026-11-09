@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tallshift-local",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-07",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "workers_dev": false,
+  "upload_source_maps": false,
+  "assets": {"directory": ".open-next/assets", "binding": "ASSETS"},
+  "services": [{"binding": "WORKER_SELF_REFERENCE", "service": "tallshift-local"}],
+  "observability": {"enabled": false},
+  "vars": {
+    "APP_ENV": "development",
+    "APP_URL": "http://127.0.0.1:8787",
+    "AUTH_ENABLED": "false",
+    "COMMERCE_ENABLED": "false",
+    "TON_PAYMENTS_ENABLED": "false"
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "tallshift-local",
+    "database_id": "00000000-0000-0000-0000-000000000000",
+    "migrations_dir": "migrations"
+  }]
+}

@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "locale": "ru",
+      "view": "login",
+      "width": 390,
+      "emailReady": false,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "register",
+      "width": 390,
+      "emailReady": false,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "forgot-password",
+      "width": 390,
+      "emailReady": false,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "reset-password",
+      "width": 390,
+      "emailReady": false,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "verify-email",
+      "width": 390,
+      "emailReady": false,
+      "passed": true
+    }
+  ],
+  "runtimeErrors": [],
+  "scope": "Real Vite browser rendering; auth HTTP responses intercepted with synthetic local fixtures. Not real auth/Workers/email/payment evidence."
+}

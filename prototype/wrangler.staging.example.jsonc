@@ -1,0 +1,47 @@
+// TEMPLATE ONLY: set the real D1 ID and secrets before choosing this config.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tallshift-staging",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-07",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "workers_dev": false,
+  "upload_source_maps": false,
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "tallshift-staging"
+    }
+  ],
+  "observability": {
+    "enabled": false
+  },
+  "vars": {
+    "APP_ENV": "preview",
+    "APP_URL": "https://preview.tallshift.com",
+    "AUTH_ENABLED": "false",
+    "COMMERCE_ENABLED": "false",
+    "TON_PAYMENTS_ENABLED": "false"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "tallshift-db-staging",
+      "database_id": "<SET_REAL_STAGING_DATABASE_ID>",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "preview.tallshift.com",
+      "custom_domain": true
+    }
+  ]
+}

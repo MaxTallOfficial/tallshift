@@ -1,0 +1,277 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "locale": "en",
+      "view": "login",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "view": "register",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "view": "forgot-password",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "view": "reset-password",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "view": "verify-email",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "view": "login",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "view": "register",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "view": "forgot-password",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "view": "reset-password",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "view": "verify-email",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "view": "login",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "view": "register",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "view": "forgot-password",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "view": "reset-password",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "view": "verify-email",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "login",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "register",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "forgot-password",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "reset-password",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "verify-email",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "login",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "register",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "forgot-password",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "reset-password",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "verify-email",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "login",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "register",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "forgot-password",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "reset-password",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "view": "verify-email",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "view": "login",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "view": "register",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "view": "forgot-password",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "view": "reset-password",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "view": "verify-email",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "view": "login",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "view": "register",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "view": "forgot-password",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "view": "reset-password",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "view": "verify-email",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "view": "login",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "view": "register",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "view": "forgot-password",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "view": "reset-password",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "view": "verify-email",
+      "width": 1440,
+      "passed": true
+    }
+  ],
+  "runtimeErrors": [],
+  "scope": "Real Vite browser rendering; auth HTTP responses intercepted with synthetic local fixtures. Not real auth/Workers/email/payment evidence."
+}

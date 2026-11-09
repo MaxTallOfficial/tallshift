@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "locale": "en",
+      "width": 390,
+      "logoutAll": true,
+      "passed": true
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "logoutAll": true,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "width": 390,
+      "logoutAll": true,
+      "passed": true
+    },
+    {
+      "locale": "ru",
+      "width": 1440,
+      "logoutAll": true,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "width": 390,
+      "logoutAll": true,
+      "passed": true
+    },
+    {
+      "locale": "vi",
+      "width": 1440,
+      "logoutAll": true,
+      "passed": true
+    }
+  ],
+  "scope": "Browser UI with synthetic auth session responses, not real login or revocation evidence."
+}

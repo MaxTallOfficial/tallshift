@@ -1,0 +1,47 @@
+// Staging only. Runtime secrets are configured outside Git.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tallshift-staging",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-07",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "workers_dev": false,
+  "upload_source_maps": false,
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "tallshift-staging"
+    }
+  ],
+  "observability": {
+    "enabled": false
+  },
+  "vars": {
+    "APP_ENV": "preview",
+    "APP_URL": "https://preview.tallshift.com",
+    "AUTH_ENABLED": "false",
+    "COMMERCE_ENABLED": "false",
+    "TON_PAYMENTS_ENABLED": "false"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "tallshift-db-staging",
+      "database_id": "4bb5fab5-5ec7-4e39-b5ba-9f662ba014be",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "preview.tallshift.com",
+      "custom_domain": true
+    }
+  ]
+}

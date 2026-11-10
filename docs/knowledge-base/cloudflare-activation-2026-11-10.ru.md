@@ -29,3 +29,19 @@ Cloudflare build `51aecfc5-541e-4488-ac4e-0157754dea65` завершился у�
 Пользователь выбрал бесплатный Resend, самостоятельно зарегистрировался и подтвердил вход; отдельно разрешил DNS и Sending API key только для Tallshift. Создан Resend domain tallshift.com в Tokyo. Добавлены TXT resend._domainkey и DNS-only CNAME rsend/send по данным интерфейса Resend; публичный DNS подтвердил значения. Входящие MX/SPF Cloudflare Email Routing не менялись.
 
 Создана отдельная D1 tallshift-db-prod, ID e33e431b-18cc-4dc4-9ff0-3227b8511d1e. Обе SQL-миграции применены, схема проверена. Подготовлен production конфиг и build:cf:production, локальная OpenNext сборка успешна. AUTH_ENABLED=true в конфиге требует настоящих runtime AUTH_SECRET и почтового ключа; без них readiness не должна объявлять готовность. COMMERCE/TON false. На момент этой записи основной сайт ещё не опубликован.
+
+## Resend: подтверждённая отправка
+
+Домен tallshift.com в Resend получил Verified, обе отправляющие CNAME и DKIM Verified. Создан ключ Tallshift auth с Sending access только для tallshift.com; сохранён как runtime AUTH_EMAIL_API_KEY в Worker tallshift. Создан случайный AUTH_SECRET (48 bytes), сохранён как зашифрованный runtime secret. Значения не включены в репозиторий.
+
+Тестовое письмо Tallshift <no-reply@tallshift.com> на mtalldesign@gmail.com принято Resend (message ID 01a1c3f6-a231-7199-ad7b-184e55477708); Gmail подтвердил письмо во INBOX, message ID 1a1c3f6a85e581aa. Это реальная доставка, но ещё не сквозная регистрация пользователя. Пользователь самостоятельно создал пароль и подтвердил Resend аккаунт.
+
+Production миграции сверены и зарегистрированы в d1_migrations; build Cloudflare 604b571d-041f-44d5-bc6a-d0d429638630 запущен из main 22f0c98.
+
+## Production: опубликовано и проверено
+
+Build 604b571d завершился успешно, Worker version 4cf7b278-976c-4b2d-ab54-8a10651e6296, custom domain tallshift.com. Chrome открыл https://tallshift.com/ru по обычному HTTPS. Публичный DNS 1.1.1.1 возвращает адреса Cloudflare; локальный системный resolver временно сохраняет отрицательный ответ, поэтому CLI-проверки использовали curl --resolve с адресом из публичного DNS и полной проверкой TLS.
+
+HTTPS EN/RU/VI: 200, правильный html lang, nonce скриптов соответствует CSP, unsafe-eval отсутствует. /api/auth/readiness: enabled=true,emailReady=true. Корректный POST /csrf с JSON {}: 200, Secure/HttpOnly cookie; неизвестный пользователь: 401 INVALID_CREDENTIALS. Регистрационная форма активна в Chrome. Полная регистрация/подтверждение/сброс с настоящим новым аккаунтом не проверялись; пользовательский пароль не создавался. Ошибочный smoke POST /csrf без JSON вернул ожидаемый 400; исправленный запрос прошёл, код приложения не менялся.
+
+Доказательства: /tmp/tallshift-production-live-checks.json, /tmp/tallshift-production-live.png. Отдельный сервер интерактивных примеров ещё не подключён; UI честно сообщает об этом. Платежи выключены. Runtime секреты зашифрованы в Cloudflare, временные файлы ключей удалены. Платные тарифы не подключались.

@@ -25,6 +25,7 @@
   },
   "vars": {
     "APP_ENV": "preview",
+    "NEXT_PUBLIC_PREVIEW_ORIGIN": "https://tallshift-demo-staging.mtalldesign.workers.dev",
     "APP_URL": "https://preview.tallshift.com",
     "AUTH_ENABLED": "false",
     "COMMERCE_ENABLED": "false",

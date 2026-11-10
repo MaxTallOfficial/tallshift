@@ -25,6 +25,7 @@
   },
   "vars": {
     "APP_ENV": "production",
+    "NEXT_PUBLIC_PREVIEW_ORIGIN": "https://tallshift-demo.mtalldesign.workers.dev",
     "APP_URL": "https://tallshift.com",
     "AUTH_ENABLED": "true",
     "AUTH_EMAIL_FROM": "Tallshift <no-reply@tallshift.com>",

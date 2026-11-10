@@ -29,6 +29,7 @@
     "test:ton": "node --test --test-concurrency=2 tests/ton-*.test.ts",
     "build:cf": "NEXT_TELEMETRY_DISABLED=1 opennextjs-cloudflare build",
     "build:cf:staging": "npm run build:cf -- --config wrangler.staging.jsonc",
+    "build:cf:production": "npm run build:cf -- --config wrangler.production.jsonc",
     "dev:cf": "WRANGLER_SEND_METRICS=false wrangler dev --local --ip 127.0.0.1 --port 8787",
     "db:migrate:local": "WRANGLER_SEND_METRICS=false wrangler d1 migrations apply DB --local",
     "cf:typegen": "WRANGLER_SEND_METRICS=false wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",

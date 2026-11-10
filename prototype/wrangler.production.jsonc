@@ -1,0 +1,49 @@
+// Production configuration. Runtime secrets are stored in Cloudflare.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tallshift",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-07",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "workers_dev": false,
+  "upload_source_maps": false,
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "tallshift"
+    }
+  ],
+  "observability": {
+    "enabled": false
+  },
+  "vars": {
+    "APP_ENV": "production",
+    "APP_URL": "https://tallshift.com",
+    "AUTH_ENABLED": "true",
+    "AUTH_EMAIL_FROM": "Tallshift <no-reply@tallshift.com>",
+    "AUTH_EMAIL_API_URL": "https://api.resend.com/emails",
+    "COMMERCE_ENABLED": "false",
+    "TON_PAYMENTS_ENABLED": "false"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "tallshift-db-prod",
+      "database_id": "e33e431b-18cc-4dc4-9ff0-3227b8511d1e",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "tallshift.com",
+      "custom_domain": true
+    }
+  ]
+}

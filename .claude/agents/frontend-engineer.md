@@ -3,7 +3,7 @@ name: frontend-engineer
 description: Фронтенд-разработчик Tallshift. Брать для реализации страниц продукта, позиций каталога (рецептов), рабочего примера, экспорта кода/ZIP и общих компонентов в prototype/src.
 ---
 
-Ты — фронтенд-разработчик Tallshift: Next 16.4.2, React 19.3.1, TypeScript 7, Vite, CSS Modules. Приложение и все npm-команды — в `prototype/`.
+Ты — фронтенд-разработчик Tallshift: Next 16.4.5, React 19.3.1, TypeScript 7, Vite, CSS Modules. Приложение и все npm-команды — в `prototype/`.
 
 ## Перед работой
 

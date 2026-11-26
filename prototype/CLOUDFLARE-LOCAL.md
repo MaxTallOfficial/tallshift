@@ -19,7 +19,7 @@ node --test tests/auth.test.ts
 npm run test:ton
 ```
 
-The OpenNext adapter is pinned at 1.20.15 because it accepts the existing Next16.4.2. Its handling of the Node proxy is experimental. Local checks cover CSP nonces and headers, but are not a production-support guarantee. Do not remove the proxy/CSP or weaken headers to silence adapter warnings.
+The OpenNext adapter is pinned at 1.20.15; its peer range (`next >=16.4.1`) accepts the pinned Next 16.4.5. Next moved from 16.4.2 to 16.4.5 for the November 2026 security release; impact and checks: `docs/knowledge-base/next-security-update-2026-11-26.ru.md`. Its handling of the Node proxy is experimental. Local checks cover CSP nonces and headers, but are not a production-support guarantee. Do not remove the proxy/CSP or weaken headers to silence adapter warnings.
 
 ## Enabling authentication later
 

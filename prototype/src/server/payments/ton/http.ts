@@ -2,6 +2,7 @@ import {TonPaymentError,type createTonPaymentService} from './service.ts';
 import {PaymentStoreError,type TonPaymentStore} from './store.ts';
 import {canonicalAddress} from './config.ts';
 import type {TonPaymentConfig} from './config.ts';
+import {transactionHint} from './hints.ts';
 type Session={userId:string};
 type Service=ReturnType<typeof createTonPaymentService>;
 export interface TonHttpDependencies {
@@ -33,7 +34,6 @@ async function body(request:Request,limit:number):Promise<unknown> {
 }
 const record=(v:unknown):v is Record<string,unknown>=>Boolean(v)&&typeof v==='object'&&!Array.isArray(v);
 async function hash(text:string) {return new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text)));}
-const hex=(bytes:Uint8Array)=>Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
 async function sameSecret(actual:string,expected:string) {const [a,b]=await Promise.all([hash(actual),hash(expected)]);let difference=0;for(let i=0;i<a.length;i++)difference|=a[i]^b[i];return difference===0;}
 
 /** Mount these factories only after real auth, server quotes, rate limits and D1 have been wired. */
@@ -74,10 +74,9 @@ export function createTonHttpHandlers(deps:TonHttpDependencies) {
         const value=await body(request,16384);
         if(!record(value)||Object.keys(value).sort().join(',')!=='account_id,event_type,lt,tx_hash'||value.event_type!=='account_tx'||typeof value.account_id!=='string'||typeof value.lt!=='string'||!/^[1-9]\d{0,19}$/.test(value.lt)||BigInt(value.lt)>=(1n<<64n)||typeof value.tx_hash!=='string'||!/^[a-f0-9]{64}$/.test(value.tx_hash))return error('INVALID_INPUT',400);
         try {if(canonicalAddress(value.account_id,deps.config.network)!==deps.config.recipient)return error('INVALID_INPUT',400);}catch{return error('INVALID_INPUT',400);}
-        const reference=`${deps.config.network}:${deps.config.recipient}:${value.lt}:${value.tx_hash}`;
-        // Derive the dedupe key ourselves; HTTP Idempotency-Key is only a delivery hint.
-        const receiptDigest=hex(await hash(reference));
-        await deps.store.receiveWebhook({eventKey:`hint_${receiptDigest}`,bodyDigest:receiptDigest,receivedAt:(deps.now??(()=>Math.floor(Date.now()/1000)))(),reference});
+        // Derive the dedupe key ourselves (same as the chain scanner); HTTP Idempotency-Key is only a delivery hint.
+        const hint=await transactionHint(deps.config.network,deps.config.recipient,value.lt,value.tx_hash);
+        await deps.store.receiveWebhook({...hint,receivedAt:(deps.now??(()=>Math.floor(Date.now()/1000)))()});
         return json({received:true},202);
       }catch(cause){return cause instanceof RangeError?error('PAYLOAD_TOO_LARGE',413):failure(cause);}
     },

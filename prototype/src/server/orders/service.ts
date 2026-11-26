@@ -2,8 +2,9 @@ import {quotePricingPlan,type PricingOwnership} from '../../foundations/pricing-
 import {pricingPlanScopes} from '../../foundations/pricing-plans.ts';
 import type {PayableQuote} from '../payments/ton/service.ts';
 import {CommerceError,type CommerceQuote,type PaidPlan,type createCommerceStore} from './store.ts';
-/** No paid release is published yet. This server registry must change only with reviewed immutable assets. */
-export const publishedPaidReleases:Readonly<Record<string,string>>=Object.freeze({});
+import {currentReleaseHashes,paidReleaseRegistry} from '../delivery/releases.ts';
+/** Newest reviewed release per item, derived from the server registry (empty: all paid items planned). */
+export const publishedPaidReleases:Readonly<Record<string,string>>=currentReleaseHashes(paidReleaseRegistry);
 export interface CommerceDependencies {
  enabled:boolean;store:ReturnType<typeof createCommerceStore>;
  /** Authoritative grants/receipts, never URL examples or browser storage. */
@@ -12,6 +13,8 @@ export interface CommerceDependencies {
  releases:Readonly<Record<string,string>>;
  readiness:()=>Promise<{deliveryReady:boolean;sellerTermsReady:boolean;termsRevision:string}>;
  tax:(userId:string,subtotalMinor:number)=>Promise<{amountMinor:number;revision:string}>;
+ /** Withdrawal journal: a revoked current release makes that item unsellable until a safe replacement. */
+ revokedReleases?:(hashes:readonly string[])=>Promise<ReadonlySet<string>>;
  now?:()=>number;
 }
 const identifier=(s:unknown):s is string=>typeof s==='string'&&/^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/.test(s);
@@ -29,6 +32,7 @@ export function createCommerceService(deps:CommerceDependencies){
   // Planned items cannot become payable merely by switching environment flags.
   const releases:Record<string,string>={};
   for(const id of price.missingItemIds){const release=deps.releases[id];if(!release||!/^[a-f0-9]{64}$/.test(release))throw new CommerceError('OFFER_CHANGED');releases[id]=release;}
+  if(deps.revokedReleases){const revoked=await deps.revokedReleases(Object.values(releases));if(Object.values(releases).some(hash=>revoked.has(hash)))throw new CommerceError('OFFER_CHANGED');}
   const tax=await deps.tax(userId,price.amountMinor);
   if(!Number.isSafeInteger(tax.amountMinor)||tax.amountMinor<0||!identifier(tax.revision)||price.amountMinor+tax.amountMinor>100000000)throw new CommerceError('TEMPORARILY_UNAVAILABLE');
   const ownershipDigest=await digest({itemIds:[...ownership.itemIds].sort(),productNetPaidMinor:ownership.productNetPaidMinor??0});

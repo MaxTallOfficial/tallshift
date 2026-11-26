@@ -108,6 +108,16 @@ export function createToncenterReader(config:TonPaymentConfig,options:{apiKey?:s
         return base;
       }catch(error){if(error instanceof TonChainError)throw error;throw new TonChainError('INVALID_CHAIN_RESPONSE');}
     },
+    /** Newest account transaction; used only to initialize an absent scan cursor safely. */
+    async head() {
+      const data=await json('/api/v3/transactions',{account:config.recipient,limit:'1',sort:'desc'});
+      const entries=array(data.transactions);
+      if(entries.length>1)throw new TonChainError('INVALID_CHAIN_RESPONSE');
+      if(!entries.length)return null;
+      const tx=object(entries[0]),lt=string(tx.lt);
+      if(!/^[1-9]\d{0,19}$/.test(lt)||BigInt(lt)>=(1n<<64n)||canonicalAddress(string(tx.account),config.network)!==config.recipient||!Number.isSafeInteger(tx.now)||Number(tx.now)<=0)throw new TonChainError('INVALID_CHAIN_RESPONSE');
+      return {lt,utime:Number(tx.now),finalized:tx.finality===2};
+    },
     /** Host persists last processed lt only after all earlier records are durably handled. */
     async scan(afterLt:string,limit=100) {
       if(!/^(?:0|[1-9]\d{0,19})$/.test(afterLt)||BigInt(afterLt)>=(1n<<64n)||!Number.isInteger(limit)||limit<1||limit>100)throw new TonChainError('INVALID_TRANSFER');

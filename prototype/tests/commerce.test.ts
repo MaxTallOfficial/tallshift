@@ -16,6 +16,7 @@ function fixture(){
  const f=createD1Fixture();
  f.sqlite.exec(readFileSync(new URL('../migrations/0002_auth.sql',import.meta.url),'utf8'));
  f.sqlite.exec(readFileSync(new URL('../migrations/0003_commerce.sql',import.meta.url),'utf8'));
+ f.sqlite.exec(readFileSync(new URL('../migrations/0004_commerce_fulfillment.sql',import.meta.url),'utf8'));
  for(const id of ['buyer','other'])f.sqlite.prepare('INSERT INTO auth_user(id,name,email,email_verified,created_at,updated_at) VALUES(?,?,?,1,0,0)').run(id,id,`${id}@example.com`);
  const state={now:1000,enabled:true,ready:true,owned:[] as string[],paid:0,tax:0,terms:'terms-v1',taxRevision:'tax-v1',releases:Object.fromEntries(pricingPlanScopes.bundle.map(id=>[id,'a'.repeat(64)]))};
  const store=createCommerceStore(f.db);
@@ -69,7 +70,9 @@ test('paid order requires exact settled owner invoice and never claims delivery 
   const input={id:'invoice',userId:'buyer',quoteId:q.id,itemIds:q.itemIds,termsRevision:q.termsRevision,asset:'USDT' as const,network:'ton-testnet' as const,recipient:'0:'+'a'.repeat(64),jettonMaster:'0:'+'b'.repeat(64),amountBaseUnits:'16000000',comment:'ts_'+'1'.repeat(32),createdAt:1000,expiresAt:1800,fxQuoteId:'fx',fxSnapshot:{usdMinor:q.amountMinor},idempotencyKey:'invoice',inputDigest:'c'.repeat(64)};
   const ton=createD1TonStore(f);await ton.createInvoice(input);
   const proof={eventKey:'event',txIdentity:'ton-testnet:tx',invoiceId:input.id,asset:input.asset,network:input.network,recipient:input.recipient,comment:input.comment,amountBaseUnits:input.amountBaseUnits,transactionAt:1100,observedAt:1101,proofDigest:'d'.repeat(64)};
-  await ton.recordVerifiedPayment(proof);const order=await f.service.orderStatus('buyer',q.orderId);assert.equal(order.status,'paid');assert.equal(order.deliveryStatus,'not_ready');assert.deepEqual(await f.service.orderStatus('buyer',q.orderId),order);assert.equal(f.count('ton_payment_outbox'),1);
+  await ton.recordVerifiedPayment(proof);const order=await f.service.orderStatus('buyer',q.orderId);assert.equal(order.status,'paid');assert.equal(order.deliveryStatus,'pending');assert.deepEqual(await f.service.orderStatus('buyer',q.orderId),order);assert.equal(f.count('ton_payment_outbox'),1);
+  // Paid is not delivered: reading the order never creates receipts or grants; only the fulfillment worker does.
+  assert.equal(f.count('commerce_receipts'),0);assert.equal(f.count('commerce_grants'),0);
  }finally{f.sqlite.close();}
 });
 test('HTTP rejects client price/tax/ownership and owner-only reads never disclose other orders',async()=>{
@@ -89,7 +92,7 @@ test('real host uses primary D1 auth/CSRF and disabled paid registry even when b
   const basePrepare=f.db.prepare.bind(f.db);let primaryCalls=0;
   const db={...f.db,prepare(sql:string){const decorate=(statement:ReturnType<typeof basePrepare>,args:unknown[]=[])=>Object.assign(statement,{bind:(...values:unknown[])=>decorate(basePrepare(sql).bind(...values),values),run:async()=>{const result=f.sqlite.prepare(sql).run(...args as never[]);return {success:true,meta:{changes:Number(result.changes)}};}});return decorate(basePrepare(sql));},withSession(mode:string){assert.equal(mode,'first-primary');primaryCalls++;return db;}} as unknown as D1Database;
   const origin='https://tallshift.test',secret='test-only-secret-at-least-32-characters',raw='test-session-token-with-enough-entropy',at=Date.now();f.sqlite.prepare('INSERT INTO auth_session VALUES(?,?,?,?,?,?,?,?,?)').run('session',await sha256(raw),'buyer',at+86400000,at,at,null,null,0);
-  const host=createCommerceHost({DB:db,APP_URL:origin,AUTH_ENABLED:'true',AUTH_SECRET:secret,COMMERCE_ENABLED:'true',TON_PAYMENTS_ENABLED:'true'},{ownership:f.deps.ownership,readiness:f.deps.readiness,tax:f.deps.tax,exchangeRate:async()=>{throw new Error('must not fetch FX');}});
+  const host=createCommerceHost({DB:db,APP_URL:origin,AUTH_ENABLED:'true',AUTH_SECRET:secret,COMMERCE_ENABLED:'true',TON_PAYMENTS_ENABLED:'true'},{readiness:f.deps.readiness,tax:f.deps.tax,exchangeRate:async()=>{throw new Error('must not fetch FX');}});
   const req=new Request(origin+'/api/commerce/quotes',{method:'POST',headers:{origin,'content-type':'application/json',cookie:`${sessionCookie}=${raw}`},body:'{"plan":"product"}'});
   assert.equal((await host.commerce.quote(req)).status,403);
   const issued=(await issueCsrf(req,origin,secret))!;const request=new Request(req,{headers:{origin,'content-type':'application/json','idempotency-key':'q',cookie:`${sessionCookie}=${raw}; ${issued.cookie.split(';')[0]}`,'x-csrf-token':issued.csrfToken}});
@@ -110,7 +113,10 @@ test('settled invoice with mismatched quote value cannot promote the order to pa
   const q=await f.service.createQuote('buyer',{plan:'product',idempotencyKey:'q'}),ton=createD1TonStore(f);
   const input={id:'wrong-value',userId:'buyer',quoteId:q.id,itemIds:q.itemIds,termsRevision:q.termsRevision,asset:'TON' as const,network:'ton-testnet' as const,recipient:'0:'+'a'.repeat(64),jettonMaster:null,amountBaseUnits:'1',comment:'ts_'+'1'.repeat(32),createdAt:1000,expiresAt:1800,fxQuoteId:'fx',fxSnapshot:{usdMinor:1},idempotencyKey:'invoice',inputDigest:'c'.repeat(64)};
   await ton.createInvoice(input);await ton.recordVerifiedPayment({eventKey:'event',txIdentity:'ton-testnet:tx',invoiceId:input.id,asset:input.asset,network:input.network,recipient:input.recipient,comment:input.comment,amountBaseUnits:'1',transactionAt:1100,observedAt:1101,proofDigest:'d'.repeat(64)});
-  await assert.rejects(()=>f.service.orderStatus('buyer',q.orderId),/verified invoice required/);assert.equal(f.sqlite.prepare('SELECT status FROM commerce_orders WHERE id=?').get(q.orderId)?.status,'pending');
+  // The mismatch never promotes the order; the read stays available and asks for support review.
+  const order=await f.service.orderStatus('buyer',q.orderId);assert.equal(order.status,'pending');assert.equal(order.deliveryStatus,'review');
+  assert.equal(f.sqlite.prepare('SELECT status FROM commerce_orders WHERE id=?').get(q.orderId)?.status,'pending');
+  assert.throws(()=>f.sqlite.prepare("UPDATE commerce_orders SET status='paid',paid_at=1100 WHERE id=?").run(q.orderId),/verified invoice required/);
  }finally{f.sqlite.close();}
 });
 test('one transaction identity cannot settle a second order under a different asset and owner',async()=>{

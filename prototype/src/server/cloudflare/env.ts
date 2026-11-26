@@ -1,4 +1,4 @@
-import type {D1Database} from '@cloudflare/workers-types';
+import type {D1Database,R2Bucket} from '@cloudflare/workers-types';
 import {getCloudflareContext} from '@opennextjs/cloudflare';
 
 /** Server-only bindings. No environment object is serialized to RSC or a client component. */
@@ -14,6 +14,10 @@ export interface TallshiftCloudflareEnv {
   AUTH_LOCAL_MAIL?: string;
   COMMERCE_ENABLED?: string;
   TON_PAYMENTS_ENABLED?: string;
+  /** Entitlements and paid downloads; absent means disabled. Independent of new-sale flags. */
+  COMMERCE_DELIVERY_ENABLED?: string;
+  /** Private R2 bucket with reviewed paid ZIPs. Never public, never listed, keys from the registry only. */
+  PAID_ARTIFACTS?: R2Bucket;
   TONCENTER_API_KEY?: string;
   TONAPI_WEBHOOK_SECRET?: string;
 }

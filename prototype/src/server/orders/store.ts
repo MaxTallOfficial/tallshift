@@ -1,4 +1,5 @@
 import type {D1DatabaseLike,D1StatementLike} from '../payments/ton/store.ts';
+import {matchingSettledInvoice} from './ledger.ts';
 export type PaidPlan='product'|'bundle';
 export interface CommerceQuote {
  id:string;userId:string;plan:PaidPlan;currency:'USD';subtotalMinor:number;taxMinor:number;totalMinor:number;
@@ -33,10 +34,14 @@ export function createCommerceStore(db:D1DatabaseLike){
    const result=decode(stored);if(result.inputDigest!==q.inputDigest)throw new CommerceError('IDEMPOTENCY_CONFLICT');return result;
   },
   async ownedOrder(id:string,userId:string){
-   // Paid status is derived only from a settled invoice; no client/worker flag can claim fulfillment.
-   await batch([statement(`UPDATE commerce_orders SET status='paid',paid_at=(SELECT i.paid_at FROM ton_invoices i WHERE i.quote_id=commerce_orders.quote_id AND i.user_id=commerce_orders.user_id AND i.status='paid') WHERE id=? AND user_id=? AND status='pending' AND EXISTS(SELECT 1 FROM ton_invoices i WHERE i.quote_id=commerce_orders.quote_id AND i.user_id=commerce_orders.user_id AND i.status='paid')`,id,userId)]);
-   const row=await statement(`SELECT o.id,o.quote_id,o.status,o.paid_at,o.created_at,q.total_minor,q.currency FROM commerce_orders o JOIN commerce_quotes q ON q.id=o.quote_id AND q.user_id=o.user_id WHERE o.id=? AND o.user_id=?`,id,userId).first<Record<string,unknown>>();
-   return row?{id:String(row.id),quoteId:String(row.quote_id),status:row.status as 'pending'|'paid',paidAt:row.paid_at===null?null:Number(row.paid_at),createdAt:Number(row.created_at),amountMinor:Number(row.total_minor),currency:'USD' as const,deliveryStatus:'not_ready' as const}:null;
+   // Paid comes only from a settled invoice matching the immutable quote; fulfilled only from the worker's ledger row.
+   await batch([statement(`UPDATE commerce_orders SET status='paid',paid_at=(SELECT i.paid_at FROM ton_invoices i WHERE i.quote_id=commerce_orders.quote_id AND i.user_id=commerce_orders.user_id AND i.status='paid') WHERE id=? AND user_id=? AND status='pending' AND EXISTS(${matchingSettledInvoice})`,id,userId)]);
+   const row=await statement(`SELECT o.id,o.quote_id,o.status,o.paid_at,o.created_at,q.total_minor,q.currency,f.state AS fulfillment_state,i.status AS invoice_status FROM commerce_orders o JOIN commerce_quotes q ON q.id=o.quote_id AND q.user_id=o.user_id LEFT JOIN commerce_fulfillments f ON f.order_id=o.id LEFT JOIN ton_invoices i ON i.quote_id=o.quote_id AND i.user_id=o.user_id WHERE o.id=? AND o.user_id=?`,id,userId).first<Record<string,unknown>>();
+   if(!row)return null;
+   const status=row.status as 'pending'|'paid';
+   // review: a settled or disputed payment that cannot be fulfilled automatically and needs support.
+   const deliveryStatus=row.fulfillment_state==='fulfilled'?'fulfilled' as const:row.fulfillment_state==='review'||row.invoice_status==='review'||(status==='pending'&&row.invoice_status==='paid')?'review' as const:status==='paid'?'pending' as const:'not_ready' as const;
+   return {id:String(row.id),quoteId:String(row.quote_id),status,paidAt:row.paid_at===null?null:Number(row.paid_at),createdAt:Number(row.created_at),amountMinor:Number(row.total_minor),currency:'USD' as const,deliveryStatus};
   },
   async orderForQuote(quoteId:string,userId:string){return statement('SELECT id FROM commerce_orders WHERE quote_id=? AND user_id=?',quoteId,userId).first<{id:string}>();},
  };

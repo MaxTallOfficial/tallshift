@@ -12,11 +12,14 @@ class Statement implements D1StatementLike {
   bind(...values: unknown[]) {return new Statement(this.db,this.sql,values);}
   async first<T>() {return this.db.prepare(this.sql).get(...this.values as never[]) as T | null ?? null;}
   async all<T>() {return {results: this.db.prepare(this.sql).all(...this.values as never[]) as T[]};}
+  async run() {const result=this.db.prepare(this.sql).run(...this.values as never[]);return {success:true,meta:{changes:Number(result.changes)}};}
 }
 export function createD1Fixture() {
   const sqlite = new DatabaseSync(':memory:');
   sqlite.exec(readFileSync(new URL('../../migrations/0001_ton_payments.sql',import.meta.url),'utf8'));
-  const db: D1DatabaseLike = {
+  // withSession mirrors D1's primary session API so host code can run against the fixture.
+  const db: D1DatabaseLike & {withSession(mode?: string): D1DatabaseLike} = {
+    withSession: () => db,
     prepare: sql=>new Statement(sqlite,sql),
     async batch(statements) {
       sqlite.exec('BEGIN IMMEDIATE');

@@ -1,6 +1,6 @@
 /* Hallmark v2.0.0 | theme: Tallshift Saffron (locked) | scope: component | signature: content-first adaptable section. */
 /* Critique: no hidden content, invented metrics or decorative interface glyphs; text determines height. */
-:root .hero { --section-default-surface: #1E1D19; --section-default-text: #EDECE8; --section-default-secondary: #C4C3BF; --section-default-line: #3E3D39; --section-default-accent: #EBD183; }
+:root .hero { --section-default-surface: #161512; --section-default-text: #EDECE8; --section-default-secondary: #C4C3BF; --section-default-line: #3E3D39; --section-default-accent: #EBD183; }
 .hero { --section-surface: var(--f-surface, var(--section-default-surface)); --section-text: var(--f-text, var(--section-default-text)); --section-secondary: var(--f-secondary, var(--section-default-secondary)); --section-line: var(--f-line, var(--section-default-line)); --section-accent: var(--section-default-accent); --section-radius: 16px; --section-padding: 32px; container-type: inline-size; inline-size: 100%; min-inline-size: 0; color: var(--section-text); }
 .hero *, .hero *::before, .hero *::after { box-sizing: border-box; }
 .hero[data-density="compact"] { --section-padding: 24px; }
@@ -20,4 +20,5 @@
 .points li { padding-inline-start: 4px; min-inline-size: 0; }
 .points h4 { margin: 0; font-size: 16px; font-weight: 600; line-height: 1.5; overflow-wrap: anywhere; }
 .points p { margin: 8px 0 0; color: var(--section-secondary); font-size: 16px; line-height: 1.6; overflow-wrap: anywhere; }
-@container (min-width: 960px) { .layout { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 48px; } }
+/* Two columns once the section itself is at least 720px wide: a typical page column, and the Tallshift preview at desktop width. */
+@container (min-width: 720px) { .layout { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 48px; } }

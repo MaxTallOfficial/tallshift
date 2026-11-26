@@ -14,7 +14,7 @@ export type { LineAssembleProps } from './LineAssemble';
 
 export const recipe = createExampleRecipe({
   id: 'A003', slug: 'line-assemble', name: 'Line Assemble',
-  displayName: {"ru": "Построчное появление заголовка", "en": "Line-by-line heading entrance", "vi": "Hiện tiêu đề theo dòng"},
+  displayName: {"ru": "Появление заголовка по строкам", "en": "Headline appearing line by line", "vi": "Tiêu đề hiện theo dòng"},
   durationMax: 480, colorControl: false, animationEntry: 'line-controller.ts', docs, rules,
   sourceFiles: [
     { path: "LineAssemble.tsx", content: source0 },

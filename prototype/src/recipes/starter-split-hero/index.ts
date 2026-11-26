@@ -22,7 +22,7 @@ export { Demo } from './Demo';
 
 export const recipe = createExampleRecipe({
   id: 'S001', slug: 'starter-split-hero', name: 'Starter Split Hero',
-  displayName: {"ru": "Первый экран в две колонки", "en": "Two-column page introduction", "vi": "Phần mở đầu hai cột"},
+  displayName: {"ru": "Первый экран в две колонки", "en": "Two-column opening section", "vi": "Phần mở đầu hai cột"},
   bundledItemIds: ["C001", "E001"], docs, rules,
   sourceFiles: [
     { path: 'SplitHero.tsx', content: component },

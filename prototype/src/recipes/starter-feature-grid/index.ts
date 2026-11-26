@@ -16,7 +16,7 @@ export { Demo } from './Demo';
 
 export const recipe = createExampleRecipe({
   id: 'S002', slug: 'starter-feature-grid', name: 'Starter Feature Grid',
-  displayName: {"ru": "Сетка преимуществ", "en": "Feature grid", "vi": "Lưới lợi ích"},
+  displayName: {"ru": "Сетка преимуществ", "en": "Benefits grid", "vi": "Lưới lợi ích"},
   bundledItemIds: ["E001"], docs, rules,
   sourceFiles: [
     { path: 'FeatureGrid.tsx', content: component },

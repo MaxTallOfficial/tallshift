@@ -13,6 +13,7 @@
     "preview": "vite preview --host 127.0.0.1",
     "test": "node --test tests/*.test.ts",
     "check:design": "node scripts/hallmark-offline.mjs",
+    "check:design:recipes": "node scripts/hallmark-recipes.mjs",
     "test:study": "node tests/study-export.mjs",
     "build:foundations": "tsc -b && vite build --config vite.foundations.config.ts && node scripts/package-study.mjs foundations",
     "test:foundations": "node --test tests/foundations-tokens.test.ts",

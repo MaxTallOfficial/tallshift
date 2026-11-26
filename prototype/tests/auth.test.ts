@@ -59,3 +59,20 @@ test('HTTP route fails closed, rejects cross-origin, enforces bounds and never e
  assert.equal((await handleAuthRequest(request('sign-in/email',{email:'unverified@example.com',password:'Wrong password long enough'},headers),env)).status,401);
  assert.equal((await handleAuthRequest(request('sign-out',{oversized:'x'.repeat(5000)},headers),env)).status,400);
 });
+test('successful sign-in removes only this user\'s expired sessions and dead email links, in bounded passes',async()=>{
+ const {db,store,sqlite}=database(),env={DB:db,AUTH_ENABLED:'true',APP_URL:origin,AUTH_SECRET:secret};
+ const ctx=await createAuthEngine(db,origin,secret).$context;await store.register('clean@example.com',await ctx.password.hash(password),'','1'.repeat(64));await store.consumeAction('1'.repeat(64),'verify');
+ await store.register('other@example.com',await ctx.password.hash(password),'','2'.repeat(64));await store.consumeAction('2'.repeat(64),'verify');
+ const id=(await store.userByEmail('clean@example.com'))!.id,other=(await store.userByEmail('other@example.com'))!.id,at=Date.now(),day=86400000;
+ const session=(name:string,user:string,expires:number,created:number,updated:number)=>sqlite.prepare('INSERT INTO auth_session VALUES(?,?,?,?,?,?,?,?,?)').run(name,name.padEnd(64,'0'),user,expires,created,updated,null,null,0);
+ session('live',id,at+day,at-day,at-day);session('expired',id,at-1,at-2*day,at-2*day);session('idle',id,at+day,at-8*day,at-8*day);session('absolute',id,at+day,at-31*day,at-day);session('foreign-expired',other,at-1,at-2*day,at-2*day);
+ await store.issueAction('3'.repeat(64),id,'reset',3600);await store.issueAction('4'.repeat(64),id,'reset',-1);await store.issueAction('5'.repeat(64),other,'reset',-1);
+ const response=await handleAuthRequest(request('csrf'),env),data=await response.json() as {csrfToken:string};
+ assert.equal((await handleAuthRequest(request('sign-in/email',{email:'clean@example.com',password},{'x-csrf-token':data.csrfToken,cookie:response.headers.get('set-cookie')!.split(';')[0]}),env)).status,200);
+ const ids=sqlite.prepare('SELECT id FROM auth_session WHERE user_id=? ORDER BY id').all(id).map(row=>String(row.id));assert.equal(ids.length,2);assert.ok(ids.includes('live'));
+ assert.ok(sqlite.prepare("SELECT 1 FROM auth_session WHERE id='foreign-expired'").get());
+ const tokens=sqlite.prepare('SELECT token_hash FROM auth_action_tokens WHERE user_id=?').all(id).map(row=>String(row.token_hash));assert.deepEqual(tokens,[await sha256('3'.repeat(64))]);
+ assert.equal(Number(sqlite.prepare('SELECT COUNT(*) AS n FROM auth_action_tokens WHERE user_id=?').get(other)!.n),2);
+ for(const name of ['a','b','c'])session(`old-${name}`,id,at-1,at-2*day,at-2*day);
+ await store.cleanupExpired(id,2);assert.equal(Number(sqlite.prepare("SELECT COUNT(*) AS n FROM auth_session WHERE id LIKE 'old-%'").get()!.n),1);
+});

@@ -7,6 +7,7 @@ import {AuthClientError,authMutation,readAuthReadiness} from './auth-client';
 import type {ProductLocale} from './routes';
 import './auth.css';
 import {passwordLimits} from '../shared/auth-policy';
+import {privacyCopy} from './privacy-copy';
 
 export function AuthPage({locale,view,search,onNavigate}: {locale:ProductLocale;view:AuthView;search:string;onNavigate:(href:string)=>void}) {
   const t=authCopy[locale],page=t.views[view];
@@ -69,7 +70,7 @@ export function AuthPage({locale,view,search,onNavigate}: {locale:ProductLocale;
         {view==='login'&&errorCode==='EMAIL_NOT_VERIFIED'&&<SystemButton type="button" disabled={pending||ready!=='ready'} onClick={()=>{void resend();}}>{t.actions.resendVerification}</SystemButton>}
       </form>
       <nav className="au-links" aria-label={t.nav}>
-        {(view==='verify-email'&&!token)&&<p>{t.verificationHelp}</p>}{view==='reset-password'&&<a href={`/${locale}/auth/forgot-password`}>{t.actions.forgotPassword}</a>}{view==='login'?<><a href={`/${locale}/auth/forgot-password`}>{t.actions.forgotPassword}</a><ProductLink href={`/${locale}/auth/register`}>{t.actions.register}</ProductLink></>:<a href={`/${locale}/auth/login`}>{t.actions.backToLogin}</a>}
+        {view==='register'&&<a href={`/${locale}/privacy`}>{privacyCopy[locale].navLabel}</a>}{(view==='verify-email'&&!token)&&<p>{t.verificationHelp}</p>}{view==='reset-password'&&<a href={`/${locale}/auth/forgot-password`}>{t.actions.forgotPassword}</a>}{view==='login'?<><a href={`/${locale}/auth/forgot-password`}>{t.actions.forgotPassword}</a><ProductLink href={`/${locale}/auth/register`}>{t.actions.register}</ProductLink></>:<a href={`/${locale}/auth/login`}>{t.actions.backToLogin}</a>}
       </nav>
     </div>
   </section>;

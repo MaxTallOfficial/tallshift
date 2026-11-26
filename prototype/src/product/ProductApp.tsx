@@ -18,6 +18,8 @@ import './tokens.css';
 import {useAccountSession} from './use-account-session';
 import {AuthPage} from './AuthPage';
 import {authCopy} from './auth-copy';
+import {PrivacyPage} from './PrivacyPage';
+import {privacyCopy} from './privacy-copy';
 import {DocsPage} from './DocsPage';
 import {docsUiCopy} from './docs-content';
 
@@ -42,6 +44,7 @@ export default function ProductApp({initialUrl}: {initialUrl?: string} = {}) {
   const [hydrated, setHydrated] = useState(!initialUrl);
   useEffect(() => { if (initialUrl) { setRoute(current()); setFavorites(readSaved()); setHydrated(true); } }, [initialUrl]);
   const [navigationTick, setNavigationTick] = useState(0);
+  const [accountDeleted, setAccountDeleted] = useState(false);
   const main = useRef<HTMLElement>(null);
   const catalogSearch = useRef(!route.page && !route.slug ? route.search : '');
   const nextScroll = useRef(0);
@@ -69,7 +72,7 @@ export default function ProductApp({initialUrl}: {initialUrl?: string} = {}) {
   }, []);
   useEffect(() => {
     document.documentElement.lang = route.locale;
-    document.title = `${route.notFound || (route.slug && !material) ? '404' : route.page === 'checkout' ? checkoutCopy[route.locale].title : route.page === 'auth' ? authCopy[route.locale].views[route.authView??'login'].title : route.page === 'docs' ? docsUiCopy[route.locale].title : route.page ? pages[route.page] : material ? materialDisplayName(material,route.locale) : t.materials} — Tallshift`;
+    document.title = `${route.notFound || (route.slug && !material) ? '404' : route.page === 'checkout' ? checkoutCopy[route.locale].title : route.page === 'auth' ? authCopy[route.locale].views[route.authView??'login'].title : route.page === 'docs' ? docsUiCopy[route.locale].title : route.page === 'privacy' ? privacyCopy[route.locale].title : route.page ? pages[route.page] : material ? materialDisplayName(material,route.locale) : t.materials} — Tallshift`;
   }, [route, material, t]);
   useLayoutEffect(() => {
     if (navigationTick === 0) return;
@@ -84,7 +87,11 @@ export default function ProductApp({initialUrl}: {initialUrl?: string} = {}) {
     const url = new URL(href, location.href);
     history.replaceState({ ...history.state, tallshiftScroll: window.scrollY }, '', location.href);
     history.pushState({}, '', url.pathname + url.search + url.hash);
-    nextScroll.current = 0; setRoute(current()); setNavigationTick(value => value + 1);
+    nextScroll.current = 0; setAccountDeleted(false); setRoute(current()); setNavigationTick(value => value + 1);
+  }
+  async function finishAccountDeletion() {
+    await refreshSession();
+    navigate(`/${route.locale}`); setAccountDeleted(true);
   }
   function searchChanged(search: string) {
     const href = `${location.pathname}${search}${location.hash}`;
@@ -112,11 +119,12 @@ export default function ProductApp({initialUrl}: {initialUrl?: string} = {}) {
   return <SystemTheme locale={route.locale} className="tp-app"><div onClick={intercept}>
     <ProductHeader route={route} catalogSearch={catalogSearch.current} savedCount={favorites.ids.length} session={session} onLocaleChange={localeChanged}/>
     <main id="product-main" ref={main} tabIndex={-1}>
+      {accountDeleted && <div className="tp-storage-note"><SystemInlineAlert tone="success" announce="polite" title={authCopy[route.locale].deletion.done}/></div>}
       {favorites.unavailable && <div className="tp-storage-note"><SystemInlineAlert tone="warning" title={t.storage}>{t.storageBody}</SystemInlineAlert></div>}
       <Suspense fallback={<p className="tp-loading" role="status">{t.loading}</p>}>
-      {route.notFound || (route.slug && !material) ? <section className="tp-not-found"><h1>{t.notFound}</h1><p>{t.notFoundBody}</p><SystemButton leadingIcon={<SystemIcon name="arrow-left" />} onClick={() => navigate(`/${route.locale}/library`)}>{t.back}</SystemButton></section> : route.page==='home'?<HomePage locale={route.locale} favorites={favorites.ids} onToggleFavorite={toggleFavorite}/>:route.page==='pricing'?<PricingPage locale={route.locale} search={route.search} onSearchChange={searchChanged}/>:route.page==='checkout'?<CheckoutPage locale={route.locale} search={route.search}/>:route.page==='auth'?<AuthPage key={route.authView} locale={route.locale} view={route.authView??'login'} search={route.search} onNavigate={navigate}/>:route.page==='account'?<AccountPage session={session} onRefreshSession={refreshSession} locale={route.locale} search={route.search} onSearchChange={searchChanged} favorites={favorites.ids} onToggleFavorite={toggleFavorite}/>:route.page==='docs'?<DocsPage locale={route.locale} slug={route.docSlug}/>:material ? hydrated ? <MaterialPage key={material.id} material={material} locale={route.locale} search={route.search} catalogSearch={catalogSearch.current} onSearchChange={searchChanged} saved={favorites.ids.includes(material.id)} onToggleFavorite={() => toggleFavorite(material.id)} /> : <section className="tp-not-found"><h1>{materialDisplayName(material,route.locale)}</h1><p>{t.loading}</p></section> : <CatalogPage locale={route.locale} search={route.search} onSearchChange={searchChanged} onNavigate={navigate} favorites={favorites.ids} onToggleFavorite={toggleFavorite} />}
+      {route.notFound || (route.slug && !material) ? <section className="tp-not-found"><h1>{t.notFound}</h1><p>{t.notFoundBody}</p><SystemButton leadingIcon={<SystemIcon name="arrow-left" />} onClick={() => navigate(`/${route.locale}/library`)}>{t.back}</SystemButton></section> : route.page==='home'?<HomePage locale={route.locale} favorites={favorites.ids} onToggleFavorite={toggleFavorite}/>:route.page==='pricing'?<PricingPage locale={route.locale} search={route.search} onSearchChange={searchChanged}/>:route.page==='checkout'?<CheckoutPage locale={route.locale} search={route.search}/>:route.page==='auth'?<AuthPage key={route.authView} locale={route.locale} view={route.authView??'login'} search={route.search} onNavigate={navigate}/>:route.page==='account'?<AccountPage session={session} onRefreshSession={refreshSession} onAccountDeleted={()=>{void finishAccountDeletion();}} locale={route.locale} search={route.search} onSearchChange={searchChanged} favorites={favorites.ids} onToggleFavorite={toggleFavorite}/>:route.page==='privacy'?<PrivacyPage locale={route.locale}/>:route.page==='docs'?<DocsPage locale={route.locale} slug={route.docSlug}/>:material ? hydrated ? <MaterialPage key={material.id} material={material} locale={route.locale} search={route.search} catalogSearch={catalogSearch.current} onSearchChange={searchChanged} saved={favorites.ids.includes(material.id)} onToggleFavorite={() => toggleFavorite(material.id)} /> : <section className="tp-not-found"><h1>{materialDisplayName(material,route.locale)}</h1><p>{t.loading}</p></section> : <CatalogPage locale={route.locale} search={route.search} onSearchChange={searchChanged} onNavigate={navigate} favorites={favorites.ids} onToggleFavorite={toggleFavorite} />}
       </Suspense>
     </main>
-    <footer className="tp-footer"><div><SystemBrandMark href={`/${route.locale}`} aria-label="Tallshift" /><p>{t.footer}</p></div><div><a href={`/${route.locale}/docs`}>{docsUiCopy[route.locale].title}</a><p>{t.by}</p><p>React + TypeScript / EN / RU / VI</p></div></footer>
+    <footer className="tp-footer"><div><SystemBrandMark href={`/${route.locale}`} aria-label="Tallshift" /><p>{t.footer}</p></div><div><a href={`/${route.locale}/docs`}>{docsUiCopy[route.locale].title}</a> <a href={`/${route.locale}/privacy`}>{privacyCopy[route.locale].navLabel}</a><p>{t.by}</p><p>React + TypeScript / EN / RU / VI</p></div></footer>
   </div></SystemTheme>;
 }

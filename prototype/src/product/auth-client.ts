@@ -35,13 +35,13 @@ export async function readAuthReadiness(signal?:AbortSignal):Promise<{enabled:bo
   if(!data||typeof data.enabled!=='boolean'||typeof data.emailReady!=='boolean')throw new AuthClientError('AUTH_UNAVAILABLE');
   return {enabled:data.enabled,emailReady:data.emailReady};
 }
-const paths=['sign-up/email','sign-in/email','sign-out','revoke-sessions','request-password-reset','reset-password','send-verification-email','verify-email'] as const;
+const paths=['sign-up/email','sign-in/email','sign-out','revoke-sessions','request-password-reset','reset-password','send-verification-email','verify-email','delete-account'] as const;
 export async function authMutation(path:typeof paths[number],data:Record<string,unknown>,signal?:AbortSignal) {
   if(!paths.includes(path))throw new AuthClientError('INVALID_INPUT');
   // Tokens live only in this request's memory; never localStorage or query parameters.
   const challenge=await parse(await authFetch('/api/auth/csrf',{method:'POST',credentials:'same-origin',cache:'no-store',headers:{'Content-Type':'application/json'},body:'{}',signal}));
   if(!challenge||typeof challenge.csrfToken!=='string')throw new AuthClientError('AUTH_UNAVAILABLE');
   const result=await parse(await authFetch(`/api/auth/${path}`,{method:'POST',credentials:'same-origin',cache:'no-store',headers:{'Content-Type':'application/json','x-csrf-token':challenge.csrfToken},body:JSON.stringify(data),signal}));
-  if(path==='sign-in/email'||path==='sign-out'||path==='revoke-sessions'||path==='reset-password')window.dispatchEvent(new Event('tallshift:auth-changed'));
+  if(path==='sign-in/email'||path==='sign-out'||path==='revoke-sessions'||path==='reset-password'||path==='delete-account')window.dispatchEvent(new Event('tallshift:auth-changed'));
   return result;
 }

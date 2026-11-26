@@ -8,6 +8,7 @@ import {checkoutCopy} from '../../../src/product/checkout-copy';
 import {pageCopy} from '../../../src/product/page-copy';
 import {docsTopics, docsPromptTemplates, docsUiCopy} from '../../../src/product/docs-content';
 import {authCopy} from '../../../src/product/auth-copy';
+import {privacyCopy} from '../../../src/product/privacy-copy';
 import ClientProduct from '../../product-client';
 
 type Props = {params: Promise<{locale: string; path?: string[]}>};
@@ -18,7 +19,7 @@ function resolve(locale: string, path: string[] = []) {
   const doc = docsTopics.find(topic => topic.slug === route.docSlug);
   const template = docsPromptTemplates.find(topic => `ai-template-${topic.slug}` === route.docSlug);
   if (route.notFound || route.slug && !material || route.docSlug && !doc && !template) notFound();
-  const title = material ? materialDisplayName(material,route.locale) : route.page === 'auth' ? authCopy[route.locale].views[route.authView??'login'].title : route.page === 'docs' ? doc?.title[route.locale] ?? template?.title[route.locale] ?? docsUiCopy[route.locale].title : route.page === 'checkout' ? checkoutCopy[route.locale].title : route.page ? pageCopy[route.locale][route.page] : {en:'Catalog',ru:'Каталог',vi:'Danh mục'}[route.locale];
+  const title = material ? materialDisplayName(material,route.locale) : route.page === 'auth' ? authCopy[route.locale].views[route.authView??'login'].title : route.page === 'docs' ? doc?.title[route.locale] ?? template?.title[route.locale] ?? docsUiCopy[route.locale].title : route.page === 'checkout' ? checkoutCopy[route.locale].title : route.page === 'privacy' ? privacyCopy[route.locale].title : route.page ? pageCopy[route.locale][route.page] : {en:'Catalog',ru:'Каталог',vi:'Danh mục'}[route.locale];
   return {pathname,route,title};
 }
 export async function generateMetadata({params}: Props): Promise<Metadata> {

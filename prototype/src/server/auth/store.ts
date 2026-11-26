@@ -35,23 +35,33 @@ export function createAuthStore(db:AuthDatabase,now=()=>Date.now()) {
     async touch(rawToken:string){await statement('UPDATE auth_session SET updated_at=? WHERE token_hash=?',now(),await sha256(rawToken)).run();},
     async logout(rawToken:string){await statement('DELETE FROM auth_session WHERE token_hash=?',await sha256(rawToken)).run();},
     async logoutAll(userId:string){await batch([statement('UPDATE auth_user SET auth_version=auth_version+1,updated_at=? WHERE id=?',now(),userId),statement('DELETE FROM auth_session WHERE user_id=?',userId)]);},
-    /** Any purchase record blocks self-service deletion until retention rules are decided; tables may be absent before commerce migrations. */
-    async hasCommerceRecords(userId:string){
-      const tables=await statement("SELECT name FROM sqlite_master WHERE type='table' AND name IN ('commerce_quotes','commerce_orders','ton_invoices')").all<{name:string}>();
-      for(const {name} of tables.results??[])if(await statement(`SELECT 1 FROM ${name==='commerce_quotes'?'commerce_quotes':name==='commerce_orders'?'commerce_orders':'ton_invoices'} WHERE user_id=? LIMIT 1`,userId).first())return true;
+    /** Purchase tables present in this database; they may be absent before commerce migrations are applied. */
+    async commerceTables(){
+      const rows=await statement("SELECT name FROM sqlite_master WHERE type='table' AND name IN ('commerce_quotes','commerce_orders','ton_invoices') ORDER BY name").all<{name:string}>();
+      return (rows.results??[]).map(row=>row.name).filter((name):name is 'commerce_orders'|'commerce_quotes'|'ton_invoices'=>name==='commerce_orders'||name==='commerce_quotes'||name==='ton_invoices');
+    },
+    async hasCommerceRecords(userId:string,tables:readonly string[]){
+      for(const name of tables)if(await statement(`SELECT 1 FROM ${name} WHERE user_id=? LIMIT 1`,userId).first())return true;
       return false;
     },
-    /** One D1 batch: every statement is guarded by the epoch read with the verified password, so a racing reset or logout-all turns the whole batch into a no-op. */
-    async deleteAccount(userId:string,version:number,limitKeys:readonly string[]) {
-      const guard='EXISTS(SELECT 1 FROM auth_user WHERE id=? AND auth_version=?)';
+    async userExists(userId:string){return !!await statement('SELECT 1 FROM auth_user WHERE id=?',userId).first();},
+    /**
+     * One D1 batch. Every statement repeats the same guard: the user still has the epoch read with the verified password,
+     * the requesting session still exists, and no purchase record exists. A racing reset, logout, logout-all or purchase
+     * turns the whole batch into a no-op instead of a partial delete or a foreign-key failure.
+     */
+    async deleteAccount(userId:string,sessionId:string,version:number,limitKeys:readonly string[],commerceTables:readonly string[]=[]) {
+      const purchases=commerceTables.map(name=>` AND NOT EXISTS(SELECT 1 FROM ${name} WHERE user_id=?)`).join('');
+      const guard=`EXISTS(SELECT 1 FROM auth_user u JOIN auth_session s ON s.user_id=u.id WHERE u.id=? AND u.auth_version=? AND s.id=?)${purchases}`;
+      const guardArgs=[userId,version,sessionId,...commerceTables.map(()=>userId)];
       const keys=await Promise.all(limitKeys.map(value=>sha256(value)));
       const statements=[
-        ...(keys.length?[statement(`DELETE FROM auth_request_limits WHERE key_hash IN (${keys.map(()=>'?').join(',')}) AND ${guard}`,...keys,userId,version)]:[]),
-        statement(`DELETE FROM auth_action_tokens WHERE user_id=? AND ${guard}`,userId,userId,version),
-        statement(`DELETE FROM auth_session WHERE user_id=? AND ${guard}`,userId,userId,version),
-        statement(`DELETE FROM auth_account WHERE user_id=? AND ${guard}`,userId,userId,version),
-        statement('DELETE FROM auth_user WHERE id=? AND auth_version=?',userId,version),
+        ...(keys.length?[statement(`DELETE FROM auth_request_limits WHERE key_hash IN (${keys.map(()=>'?').join(',')}) AND ${guard}`,...keys,...guardArgs)]:[]),
+        statement(`DELETE FROM auth_action_tokens WHERE user_id=? AND ${guard}`,userId,...guardArgs),
+        statement(`DELETE FROM auth_account WHERE user_id=? AND ${guard}`,userId,...guardArgs),
+        statement(`DELETE FROM auth_user WHERE id=? AND ${guard}`,userId,...guardArgs),
       ];
+      // auth_session rows go with the user through ON DELETE CASCADE; deleting them earlier would break the session guard.
       const results=await batch(statements);return results[results.length-1].meta.changes===1;
     },
     async limit(key:string,max:number,windowSeconds:number){const at=now(),start=at-at%(windowSeconds*1000);const row=await statement(`INSERT INTO auth_request_limits(key_hash,window_start,attempts) VALUES(?,?,1) ON CONFLICT(key_hash) DO UPDATE SET attempts=CASE WHEN window_start=excluded.window_start THEN attempts+1 ELSE 1 END,window_start=excluded.window_start RETURNING attempts`,await sha256(key),start).first<{attempts:number}>();return !!row&&row.attempts<=max;},

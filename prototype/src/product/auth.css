@@ -17,3 +17,12 @@
 .au-profile strong{display:block;color:var(--f-text);font-weight:550;margin-block:8px 16px;}
 .au-profile-actions{display:flex;gap:12px;flex-wrap:wrap;}
 @media(max-width:767px){.au-page{width:calc(100% - 32px);grid-template-columns:minmax(0,1fr);gap:32px;padding-block:40px 64px;}.au-form-region{max-width:none;}.au-free{margin-top:24px!important;}.au-profile{flex-direction:column;}.au-profile-actions{width:100%;}.au-profile-actions .system-button{flex:1 1 auto;}}
+/* Account deletion: separated from session actions, destructive action last. */
+.au-delete{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:48px;margin-top:64px;padding-top:32px;border-top:1px solid var(--f-line);}
+.au-delete h2{font-size:24px;margin-bottom:16px;}
+.au-delete-copy p{color:var(--f-secondary);line-height:1.7;max-width:56ch;}
+.au-delete-copy p + p{margin-top:8px;}
+.au-delete-copy a{display:inline-block;margin-top:16px;}
+.au-delete form{display:grid;gap:20px;align-content:start;}
+.au-delete form .system-button{justify-self:start;}
+@media(max-width:767px){.au-delete{grid-template-columns:minmax(0,1fr);gap:24px;margin-top:48px;}.au-delete form .system-button{justify-self:stretch;}}

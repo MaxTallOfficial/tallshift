@@ -121,3 +121,17 @@
 }
 @media(prefers-reduced-motion:reduce) { .product-page * { scroll-behavior:auto; } }
 @media(forced-colors:active) { .pp-page .as-offer[data-featured] { border-color:Highlight; }.hp-demo,.product-preview-note { outline:1px solid CanvasText; } }
+
+/* Data page: plain reading column, shared tokens only. */
+.pv-page { max-width:800px; }
+.pv-section { padding-block:32px;border-top:1px solid var(--f-line); }
+.pv-section h2 { font-size:24px;margin-bottom:16px; }
+.pv-section p,.pv-section dd { color:var(--f-secondary);line-height:1.7;max-width:68ch; }
+.pv-section p + p { margin-top:12px; }
+.pv-section dl { display:grid;gap:16px; }
+.pv-section dl > div { display:grid;grid-template-columns:minmax(160px,220px) minmax(0,1fr);gap:24px; }
+.pv-section dt { color:var(--f-text);font-weight:550;line-height:1.7; }
+.pv-links { display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:16px;list-style:none;padding:0; }
+.pv-links a,.au-delete a { color:var(--f-text);text-underline-offset:4px; }
+.pv-updated { padding-top:24px;border-top:1px solid var(--f-line);color:var(--f-muted);font-size:14px; }
+@media(max-width:767px) { .product-page.pv-page { width:calc(100% - 32px);padding-block:40px 64px; }.pv-page h1 { font-size:30px; }.pv-section dl > div { grid-template-columns:minmax(0,1fr);gap:4px; } }

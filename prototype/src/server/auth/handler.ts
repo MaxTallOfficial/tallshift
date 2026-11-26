@@ -21,8 +21,6 @@ function emailValue(value:unknown){if(typeof value!=='string'||value.length>254)
 const passwordValid=(value:unknown):value is string=>typeof value==='string'&&value.length>=authPolicy.passwordMin&&value.length<=authPolicy.passwordMax;
 const tokenValid=(value:unknown):value is string=>typeof value==='string'&&/^[a-f0-9]{64}$/.test(value);
 const actions=new Set(['csrf','sign-up/email','sign-in/email','sign-out','revoke-sessions','request-password-reset','reset-password','send-verification-email','verify-email','delete-account']);
-/** Rate-limit rows keyed by this account's email or id; removed together with the account. */
-const identityActions=['sign-up/email','sign-in/email','request-password-reset','send-verification-email','delete-account'];
 export async function handleAuthRequest(request:Request,env:TallshiftCloudflareEnv|null){
   const path=new URL(request.url).pathname.replace(/^\/api\/auth\/?/,'');
   const config=authConfiguration(env);
@@ -49,14 +47,21 @@ export async function handleAuthRequest(request:Request,env:TallshiftCloudflareE
     if(path==='delete-account'){
       // Same-origin + CSRF bound to this session cookie are checked above. Deletion never depends on email delivery.
       const session=await readAuthSession(request,db);if(!session)return error('UNAUTHORIZED',401);
-      if(!await store.limit(`identity:${path}:${session.user.id}`,5,600))return error('RATE_LIMITED',429);
+      const id=session.user.id;
+      if(!await store.limit(`identity:${path}:${id}`,5,600)||!await store.limit(`identity:${path}-day:${id}`,20,86400))return error('RATE_LIMITED',429);
       if(!passwordValid(body.password))return error('INVALID_CREDENTIALS',401);
-      const credential=await store.credential(session.user.id);if(!credential)return error('UNAUTHORIZED',401);
+      const credential=await store.credential(id);if(!credential)return error('UNAUTHORIZED',401);
       const context=await createAuthEngine(db,config.origin,config.secret).$context;
       if(!await context.password.verify({hash:credential.password,password:body.password}))return error('INVALID_CREDENTIALS',401);
-      if(await store.hasCommerceRecords(session.user.id))return error('ACCOUNT_HAS_ORDERS',409);
-      const keys=[...identityActions.map(action=>`identity:${action}:${session.user.email}`),`identity:delete-account:${session.user.id}`];
-      if(!await store.deleteAccount(session.user.id,credential.version,keys))return error('ACCOUNT_CHANGED',409);
+      const tables=await store.commerceTables();
+      if(await store.hasCommerceRecords(id,tables))return error('ACCOUNT_HAS_ORDERS',409);
+      // Sign-up and verification-email counters stay: deleting them would let a mailbox owner reset email limits by cycling accounts.
+      const keys=[`identity:sign-in/email:${session.user.email}`,`identity:request-password-reset:${session.user.email}`,`identity:${path}:${id}`,`identity:${path}-day:${id}`];
+      if(!await store.deleteAccount(id,session.session.id,credential.version,keys,tables)){
+        if(await store.hasCommerceRecords(id,tables))return error('ACCOUNT_HAS_ORDERS',409);
+        if(await store.userExists(id))return error('ACCOUNT_CHANGED',409);
+        // A parallel request already deleted this account: report the same outcome and clear cookies.
+      }
       const response=json({ok:true});response.headers.append('set-cookie',cookie(sessionCookie,'',0));response.headers.append('set-cookie',cookie(csrfCookie,'',0));return response;
     }
     if(path==='verify-email'){

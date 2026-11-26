@@ -64,6 +64,17 @@ export function createAuthStore(db:AuthDatabase,now=()=>Date.now()) {
       // auth_session rows go with the user through ON DELETE CASCADE; deleting them earlier would break the session guard.
       const results=await batch(statements);return results[results.length-1].meta.changes===1;
     },
+    /**
+     * Removes this user's dead rows on a successful sign-in, no scheduler needed: sessions past the absolute, idle or
+     * stored expiry or from an old epoch, and email links that expired or were used. Bounded per pass so sign-in stays fast.
+     */
+    async cleanupExpired(userId:string,max=50){
+      const at=now();
+      await batch([
+        statement('DELETE FROM auth_session WHERE id IN (SELECT s.id FROM auth_session s JOIN auth_user u ON u.id=s.user_id WHERE s.user_id=? AND (s.expires_at<=? OR s.created_at<=? OR s.updated_at<=? OR s.auth_version<>u.auth_version) LIMIT ?)',userId,at,at-authPolicy.sessionAbsoluteSeconds*1000,at-authPolicy.sessionIdleSeconds*1000,max),
+        statement('DELETE FROM auth_action_tokens WHERE token_hash IN (SELECT token_hash FROM auth_action_tokens WHERE user_id=? AND (expires_at<=? OR consumed_at IS NOT NULL) LIMIT ?)',userId,at,max),
+      ]);
+    },
     async limit(key:string,max:number,windowSeconds:number){const at=now(),start=at-at%(windowSeconds*1000);const row=await statement(`INSERT INTO auth_request_limits(key_hash,window_start,attempts) VALUES(?,?,1) ON CONFLICT(key_hash) DO UPDATE SET attempts=CASE WHEN window_start=excluded.window_start THEN attempts+1 ELSE 1 END,window_start=excluded.window_start RETURNING attempts`,await sha256(key),start).first<{attempts:number}>();return !!row&&row.attempts<=max;},
   };
 }

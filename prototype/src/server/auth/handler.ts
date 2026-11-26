@@ -79,6 +79,8 @@ export async function handleAuthRequest(request:Request,env:TallshiftCloudflareE
       if(!passwordValid(body.password))return error('INVALID_CREDENTIALS',401);
       try{
         const result=await engine.api.signInEmail({body:{email,password:body.password},headers:request.headers});
+        // Housekeeping must never block a successful sign-in.
+        try{const user=await store.userByEmail(email);if(user)await store.cleanupExpired(user.id);}catch{}
         return json({ok:true},200,{'set-cookie':cookie(sessionCookie,result.token,authPolicy.sessionAbsoluteSeconds)});
       }catch(cause){
         // Better Auth checks the password before this verification error; expose only this safe code.

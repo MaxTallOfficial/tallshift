@@ -37,13 +37,14 @@ export const privacyCopy: Record<ProductLocale, PrivacyCopy> = {
       {id: 'retention', heading: 'Сколько хранятся данные', items: [
         {term: 'Аккаунт и email', text: 'Пока вы не удалите аккаунт.'},
         {term: 'Сессия входа', text: 'Перестаёт действовать через 30 дней после входа или через 7 дней без активности, что наступит раньше. Запись о сессии удаляется при выходе, смене пароля или удалении аккаунта.'},
+        {term: 'Истёкшие записи', text: 'Истёкшие сессии и ссылки из писем, которые истекли или уже использованы, удаляются при вашем следующем входе.'},
         {term: 'Ссылки из писем', text: 'Подтверждение адреса действует 24 часа, смена пароля — 1 час. После использования ссылка перестаёт работать.'},
         {term: 'Счётчики попыток', text: 'Каждый счётчик действует 10 минут, затем начинается заново.'},
       ]},
       {id: 'processors', heading: 'Кто обрабатывает данные', items: [
         {term: 'Cloudflare', text: 'Хостинг сайта и база данных D1, в которой лежат перечисленные выше данные.'},
         {term: 'Resend', text: 'Отправляет письма подтверждения и смены пароля. Получает ваш email и текст письма. Письма отправляются из региона Токио. Сколько Resend хранит данные, указано в его политике конфиденциальности.'},
-        {term: 'Cloudflare Web Analytics', text: 'Сейчас включена. Считает посещения страниц и не ставит cookie.'},
+        {term: 'Cloudflare Web Analytics', text: 'Включена. Считает посещения страниц и не ставит cookie.'},
       ], links: [
         {label: 'Политика конфиденциальности Resend', href: resendPolicy},
         {label: 'Политика конфиденциальности Cloudflare', href: cloudflarePolicy},
@@ -80,13 +81,14 @@ export const privacyCopy: Record<ProductLocale, PrivacyCopy> = {
       {id: 'retention', heading: 'How long data is kept', items: [
         {term: 'Account and email', text: 'Until you delete your account.'},
         {term: 'Sign-in session', text: 'Stops working 30 days after sign-in or after 7 days without activity, whichever comes first. The session record is deleted when you sign out, reset your password or delete your account.'},
+        {term: 'Expired records', text: 'Expired sessions and email links that have expired or been used are deleted the next time you sign in.'},
         {term: 'Email links', text: 'Address confirmation works for 24 hours, password reset for 1 hour. A link stops working once used.'},
         {term: 'Attempt counters', text: 'Each counter lasts 10 minutes and then starts over.'},
       ]},
       {id: 'processors', heading: 'Who processes the data', items: [
         {term: 'Cloudflare', text: 'Hosts the site and the D1 database that holds the data listed above.'},
         {term: 'Resend', text: 'Sends confirmation and password reset emails. Receives your email address and the message text. Emails are sent from the Tokyo region. How long Resend keeps data is described in its privacy policy.'},
-        {term: 'Cloudflare Web Analytics', text: 'Currently on. Counts page visits and sets no cookies.'},
+        {term: 'Cloudflare Web Analytics', text: 'On. Counts page visits and sets no cookies.'},
       ], links: [
         {label: 'Resend privacy policy', href: resendPolicy},
         {label: 'Cloudflare privacy policy', href: cloudflarePolicy},
@@ -123,13 +125,14 @@ export const privacyCopy: Record<ProductLocale, PrivacyCopy> = {
       {id: 'retention', heading: 'Dữ liệu được lưu trong bao lâu', items: [
         {term: 'Tài khoản và email', text: 'Cho đến khi bạn xóa tài khoản.'},
         {term: 'Phiên đăng nhập', text: 'Hết hiệu lực sau 30 ngày kể từ khi đăng nhập hoặc sau 7 ngày không hoạt động, tùy điều nào đến trước. Bản ghi phiên bị xóa khi bạn đăng xuất, đặt lại mật khẩu hoặc xóa tài khoản.'},
+        {term: 'Bản ghi đã hết hạn', text: 'Phiên đã hết hiệu lực và liên kết trong email đã hết hạn hoặc đã dùng sẽ bị xóa khi bạn đăng nhập lần tiếp theo.'},
         {term: 'Liên kết trong email', text: 'Liên kết xác nhận địa chỉ có hiệu lực 24 giờ, đặt lại mật khẩu 1 giờ. Liên kết hết hiệu lực sau khi dùng.'},
         {term: 'Bộ đếm lượt thử', text: 'Mỗi bộ đếm kéo dài 10 phút rồi bắt đầu lại.'},
       ]},
       {id: 'processors', heading: 'Ai xử lý dữ liệu', items: [
         {term: 'Cloudflare', text: 'Lưu trữ trang web và cơ sở dữ liệu D1 chứa các dữ liệu nêu trên.'},
         {term: 'Resend', text: 'Gửi email xác nhận và đặt lại mật khẩu. Nhận địa chỉ email của bạn và nội dung thư. Email được gửi từ khu vực Tokyo. Thời gian Resend lưu dữ liệu được nêu trong chính sách quyền riêng tư của Resend.'},
-        {term: 'Cloudflare Web Analytics', text: 'Hiện đang bật. Đếm lượt xem trang và không đặt cookie.'},
+        {term: 'Cloudflare Web Analytics', text: 'Đang bật. Đếm lượt xem trang và không đặt cookie.'},
       ], links: [
         {label: 'Chính sách quyền riêng tư của Resend', href: resendPolicy},
         {label: 'Chính sách quyền riêng tư của Cloudflare', href: cloudflarePolicy},

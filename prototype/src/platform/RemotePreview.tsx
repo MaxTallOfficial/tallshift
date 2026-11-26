@@ -8,13 +8,20 @@ import {colorless,messageBudget,parsePreviewMessage,previewMessage} from './prev
 import './remote-preview.css';
 
 const copy={en:{off:'The interactive example is unavailable because the preview server is not configured yet. You can still read and download the files.',failed:'The preview did not respond. Try loading it again.',retry:'Reload preview',width:'Preview width',full:'Fit',tablet:'640 px',mobile:'320 px',loading:'Loading preview…'},ru:{off:'Интерактивный пример пока недоступен: сервер превью не настроен. Файлы можно просмотреть и скачать.',failed:'Превью не ответило. Попробуйте загрузить его ещё раз.',retry:'Загрузить снова',width:'Ширина превью',full:'Авто',tablet:'640 px',mobile:'320 px',loading:'Загружаем превью…'},vi:{off:'Chưa mở được ví dụ tương tác vì máy chủ xem trước chưa được thiết lập. Bạn vẫn có thể đọc và tải các tệp.',failed:'Bản xem trước không phản hồi. Hãy thử tải lại.',retry:'Tải lại',width:'Chiều rộng bản xem trước',full:'Tự động',tablet:'640 px',mobile:'320 px',loading:'Đang tải bản xem trước…'}};
+/** Exact http(s) origin of the isolated preview server; empty when it is missing, malformed or equals the current origin. */
+export function previewFrameOrigin(value:string,current='') {
+  try {const url=new URL(value);return url.origin===value&&['https:','http:'].includes(url.protocol)&&url.origin!==current?url.origin:'';}catch{return '';}
+}
 export function RemotePreview({itemId,config,label}: {itemId:string;config:ExampleConfiguration;label:string}) {
   const {previewOrigin}=usePlatform(),t=copy[config.locale];
+  // The configured origin is inlined into the server and client bundles alike, so SSR and the first client render
+  // show the loading state; only the same-origin guard needs `location` and runs after hydration.
+  const configured=previewFrameOrigin(previewOrigin)!=='';
   const frame=useRef<HTMLIFrameElement>(null),latest=useRef(config);latest.current=config;
   const [generation,setGeneration]=useState(0),[channel,setChannel]=useState(''),[status,setStatus]=useState<'loading'|'ready'|'error'>('loading'),[height,setHeight]=useState(440),[width,setWidth]=useState<'full'|'tablet'|'mobile'>('full');
   const sendApply=useRef<(()=>void)|null>(null);
-  const [origin,setOrigin]=useState('');
-  useEffect(()=>{try {const url=new URL(previewOrigin);setOrigin(url.origin===previewOrigin&&url.origin!==location.origin&&['https:','http:'].includes(url.protocol)?url.origin:'');}catch{setOrigin('');}},[previewOrigin]);
+  const [origin,setOrigin]=useState<string|null>(null);
+  useEffect(()=>{setOrigin(previewFrameOrigin(previewOrigin,location.origin));},[previewOrigin]);
   useEffect(()=>{setChannel(crypto.randomUUID());setStatus('loading');},[generation,itemId]);
   useEffect(()=>{
     if(!channel||!origin)return;
@@ -52,6 +59,6 @@ export function RemotePreview({itemId,config,label}: {itemId:string;config:Examp
     return ()=>{active=false;ready=false;sendApply.current=null;clearTimeout(timer);observer?.disconnect();removeEventListener('message',receive);document.removeEventListener('visibilitychange',visibility);};
   },[origin,channel,itemId]);
   useEffect(()=>{sendApply.current?.();},[config]);
-  if(!origin)return <p className="rp-unavailable">{t.off}</p>;
-  return <div className="rp-preview"><div className="rp-toolbar"><SystemSegmentedControl label={t.width} value={width} onChange={setWidth} options={[{value:'full',label:t.full},{value:'tablet',label:t.tablet},{value:'mobile',label:t.mobile}]}/><SystemButton leadingIcon={<SystemIcon name="replay"/>} onClick={()=>setGeneration(n=>n+1)}>{t.retry}</SystemButton></div><p role="status">{status==='error'?t.failed:status==='loading'?t.loading:''}</p>{channel&&<iframe key={channel} ref={frame} title={label} src={`${origin}/?item=${encodeURIComponent(itemId)}#channel=${channel}`} sandbox="allow-scripts allow-same-origin" allow={itemId==='A001'?`clipboard-write ${origin}`:undefined} referrerPolicy="no-referrer" style={{height,maxWidth:width==='mobile'?320:width==='tablet'?640:'100%'}}/>}</div>;
+  if(!configured||origin==='')return <p className="rp-unavailable">{t.off}</p>;
+  return <div className="rp-preview"><div className="rp-toolbar"><SystemSegmentedControl label={t.width} value={width} onChange={setWidth} options={[{value:'full',label:t.full},{value:'tablet',label:t.tablet},{value:'mobile',label:t.mobile}]}/><SystemButton leadingIcon={<SystemIcon name="replay"/>} onClick={()=>setGeneration(n=>n+1)}>{t.retry}</SystemButton></div><p role="status">{status==='error'?t.failed:status==='loading'?t.loading:''}</p>{channel&&origin&&<iframe key={channel} ref={frame} title={label} src={`${origin}/?item=${encodeURIComponent(itemId)}#channel=${channel}`} sandbox="allow-scripts allow-same-origin" allow={itemId==='A001'?`clipboard-write ${origin}`:undefined} referrerPolicy="no-referrer" style={{height,maxWidth:width==='mobile'?320:width==='tablet'?640:'100%'}}/>}</div>;
 }

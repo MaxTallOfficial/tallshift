@@ -5,6 +5,7 @@
 - [Команда агентов Tallshift](agent-team.ru.md) · [Критерии оценки и определение готовности, редакция 2](product-evaluation-criteria.ru.md)
 - [BETA-17 · Уязвимости Next.js 16.4.2 и обновление до 16.4.5 (26.11.2026)](next-security-update-2026-11-26.ru.md)
 - [Живые демо и авторизация: проверка 26.11.2026](live-demo-auth-check-2026-11-26.ru.md) — 120/120 демо на production и staging, исправление ложной заглушки превью, план сквозной проверки входа
+- [Дорожная карта на 26.11.2026: решения Max Tall, этапы до беты, задачи и вопросы](../roadmap/tallshift-roadmap-2026-11-26.ru.md) — предложение `product-lead`; решения Max Tall от 26.11 записаны внутри, план в целом не утверждён
 
 - [KB-UI-007 · Hallmark: обязательный workflow следующих страниц](hallmark-workflow.ru.md)
 - [Hallmark: аудит безопасности и локальный режим без отправки владельцу](hallmark-security-2026-11-05.ru.md)

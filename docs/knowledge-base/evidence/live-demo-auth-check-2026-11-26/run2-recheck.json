@@ -1,0 +1,1331 @@
+{
+ "run": "recheck of pages that hit transient 503 or harness timeouts in run 2",
+ "checkedAt": "2026-11-26T14:19:04.093Z",
+ "slowNetwork": false,
+ "total": 22,
+ "failed": 6,
+ "results": [
+  {
+   "env": "staging",
+   "locale": "ru",
+   "width": 375,
+   "page": "home",
+   "item": "A001",
+   "verdict": "fail",
+   "failures": [
+    "words broken across lines in the demo: Скопировать (6 lines, button), текст (3 lines, button), Копируем… (5 lines, button), Текст (3 lines, button), скопирован (5 lines, button)"
+   ],
+   "readyMs": 2408,
+   "placeholderVisibleMs": 316,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "ru",
+   "interaction": {
+    "status": "changed",
+    "control": "Скопировать текст"
+   },
+   "settings": null,
+   "heightOnScreen": {
+    "iframe": 608,
+    "content": 608
+   },
+   "toolbar": {
+    "narrowMaxWidth": "320px",
+    "reloaded": true
+   },
+   "splitWords": [
+    {
+     "word": "Скопировать",
+     "lines": 6,
+     "in": "button"
+    },
+    {
+     "word": "текст",
+     "lines": 3,
+     "in": "button"
+    },
+    {
+     "word": "Копируем…",
+     "lines": 5,
+     "in": "button"
+    },
+    {
+     "word": "Текст",
+     "lines": 3,
+     "in": "button"
+    },
+    {
+     "word": "скопирован",
+     "lines": 5,
+     "in": "button"
+    },
+    {
+     "word": "Повторить",
+     "lines": 5,
+     "in": "button"
+    }
+   ],
+   "attempt": 1,
+   "notes": [
+    "staging auth disabled: /api/auth/get-session 503 logged in console"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "ru",
+   "width": 375,
+   "page": "library/A001",
+   "item": "A001",
+   "verdict": "fail",
+   "failures": [
+    "words broken across lines in the demo: Скопировать (6 lines, button), текст (3 lines, button), Копируем… (5 lines, button), Текст (3 lines, button), скопирован (5 lines, button)"
+   ],
+   "readyMs": 958,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "ru",
+   "interaction": {
+    "status": "changed",
+    "control": "Скопировать текст"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Выкл.",
+     "acknowledged": true,
+     "domBefore": [
+      "off"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 591,
+    "content": 591
+   },
+   "toolbar": null,
+   "splitWords": [
+    {
+     "word": "Скопировать",
+     "lines": 6,
+     "in": "button"
+    },
+    {
+     "word": "текст",
+     "lines": 3,
+     "in": "button"
+    },
+    {
+     "word": "Копируем…",
+     "lines": 5,
+     "in": "button"
+    },
+    {
+     "word": "Текст",
+     "lines": 3,
+     "in": "button"
+    },
+    {
+     "word": "скопирован",
+     "lines": 5,
+     "in": "button"
+    },
+    {
+     "word": "Повторить",
+     "lines": 5,
+     "in": "button"
+    }
+   ],
+   "attempt": 1,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 591",
+    "motion change has no DOM marker; acknowledged through the bridge only",
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Длительность анимации (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "ru",
+   "width": 375,
+   "page": "library/C001",
+   "item": "C001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 706,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=C001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "ru",
+   "interaction": {
+    "status": "changed",
+    "control": "Выполняется — образец"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Выкл.",
+     "acknowledged": true,
+     "domBefore": [
+      "off"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 672,
+    "content": 672
+   },
+   "toolbar": {
+    "narrowMaxWidth": "320px",
+    "reloaded": true
+   },
+   "splitWords": [],
+   "attempt": 1,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 646",
+    "motion change has no DOM marker; acknowledged through the bridge only",
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Длительность анимации (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "ru",
+   "width": 375,
+   "page": "library/C002",
+   "item": "C002",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 1365,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=C002#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "ru",
+   "interaction": {
+    "status": "changed",
+    "control": "Подключение"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Выкл.",
+     "acknowledged": true,
+     "domBefore": [
+      "off"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 574,
+    "content": 574
+   },
+   "toolbar": null,
+   "splitWords": [],
+   "attempt": 1,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 523",
+    "motion change has no DOM marker; acknowledged through the bridge only",
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Длительность анимации (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "ru",
+   "width": 375,
+   "page": "library/E001",
+   "item": "E001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 1209,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=E001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "ru",
+   "interaction": {
+    "status": "changed",
+    "control": "Показать содержимое"
+   },
+   "settings": {
+    "accent": null,
+    "motion": {
+     "selected": "Выкл.",
+     "acknowledged": true,
+     "domBefore": [],
+     "domAfter": [],
+     "runningAnimations": {
+      "subtle": 1,
+      "off": 0
+     }
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 695,
+    "content": 695
+   },
+   "toolbar": null,
+   "splitWords": [],
+   "attempt": 1,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 695",
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Длительность анимации (ms)\",\"min\",\"0\",\"max\",\"600\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "ru",
+   "width": 375,
+   "page": "library/S003",
+   "item": "S003",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 976,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=S003#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "ru",
+   "interaction": {
+    "status": "changed",
+    "control": "Показать шаги подключения"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Выкл.",
+     "acknowledged": true,
+     "domBefore": [
+      "off"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 700,
+    "content": 700
+   },
+   "toolbar": null,
+   "splitWords": [],
+   "attempt": 1,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 392",
+    "motion change has no DOM marker; acknowledged through the bridge only",
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Длительность анимации (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "ru",
+   "width": 375,
+   "page": "library/S001",
+   "item": "S001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 834,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=S001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "ru",
+   "interaction": {
+    "status": "changed",
+    "control": "Посмотреть возможности"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Выкл.",
+     "acknowledged": true,
+     "domBefore": [
+      "off"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 1355,
+    "content": 1355
+   },
+   "toolbar": null,
+   "splitWords": [],
+   "attempt": 1,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 1355",
+    "motion change has no DOM marker; acknowledged through the bridge only",
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Длительность анимации (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "ru",
+   "width": 375,
+   "page": "library/S002",
+   "item": "S002",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 840,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=S002#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "ru",
+   "interaction": {
+    "status": "no-controls"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Выкл.",
+     "acknowledged": true,
+     "domBefore": [],
+     "domAfter": [],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 916,
+    "content": 916
+   },
+   "toolbar": null,
+   "splitWords": [],
+   "attempt": 1,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 861",
+    "motion change has no DOM marker; acknowledged through the bridge only",
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Длительность анимации (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "ru",
+   "width": 375,
+   "page": "library/A003",
+   "item": "A003",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 1003,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=A003#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "ru",
+   "interaction": {
+    "status": "changed",
+    "control": "Сменить заголовок"
+   },
+   "settings": {
+    "accent": null,
+    "motion": {
+     "selected": "Выкл.",
+     "acknowledged": true,
+     "domBefore": [],
+     "domAfter": [],
+     "runningAnimations": {
+      "subtle": 8,
+      "off": 0
+     }
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 672,
+    "content": 672
+   },
+   "toolbar": null,
+   "splitWords": [],
+   "attempt": 1,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 605",
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Длительность анимации (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "ru",
+   "width": 375,
+   "page": "library/A006",
+   "item": "A006",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 744,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=A006#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "ru",
+   "interaction": {
+    "status": "changed",
+    "control": "Добавить задачу"
+   },
+   "settings": {
+    "accent": null,
+    "motion": {
+     "selected": "Выкл.",
+     "acknowledged": true,
+     "domBefore": [],
+     "domAfter": [],
+     "runningAnimations": {
+      "subtle": 2,
+      "off": 0
+     }
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 946,
+    "content": 946
+   },
+   "toolbar": null,
+   "splitWords": [],
+   "attempt": 1,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 946",
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Длительность анимации (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "vi",
+   "width": 375,
+   "page": "home",
+   "item": "A001",
+   "verdict": "fail",
+   "failures": [
+    "words broken across lines in the demo: Sao (2 lines, button), chép (2 lines, button), văn (2 lines, button), bản (2 lines, button), Đang (2 lines, button)"
+   ],
+   "readyMs": 1142,
+   "placeholderVisibleMs": 265,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "vi",
+   "interaction": {
+    "status": "changed",
+    "control": "Sao chép văn bản"
+   },
+   "settings": null,
+   "heightOnScreen": {
+    "iframe": 563,
+    "content": 563
+   },
+   "toolbar": {
+    "narrowMaxWidth": "320px",
+    "reloaded": true
+   },
+   "splitWords": [
+    {
+     "word": "Sao",
+     "lines": 2,
+     "in": "button"
+    },
+    {
+     "word": "chép",
+     "lines": 2,
+     "in": "button"
+    },
+    {
+     "word": "văn",
+     "lines": 2,
+     "in": "button"
+    },
+    {
+     "word": "bản",
+     "lines": 2,
+     "in": "button"
+    },
+    {
+     "word": "Đang",
+     "lines": 2,
+     "in": "button"
+    },
+    {
+     "word": "sao",
+     "lines": 2,
+     "in": "button"
+    },
+    {
+     "word": "chép…",
+     "lines": 3,
+     "in": "button"
+    },
+    {
+     "word": "sao",
+     "lines": 2,
+     "in": "button"
+    },
+    {
+     "word": "chép",
+     "lines": 2,
+     "in": "button"
+    },
+    {
+     "word": "Thử",
+     "lines": 2,
+     "in": "button"
+    }
+   ],
+   "attempt": 1,
+   "notes": [
+    "staging auth disabled: /api/auth/get-session 503 logged in console"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "vi",
+   "width": 375,
+   "page": "library/A001",
+   "item": "A001",
+   "verdict": "fail",
+   "failures": [
+    "words broken across lines in the demo: Sao (2 lines, button), chép (2 lines, button), văn (2 lines, button), bản (2 lines, button), Đang (2 lines, button)"
+   ],
+   "readyMs": 1054,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "vi",
+   "interaction": {
+    "status": "changed",
+    "control": "Sao chép văn bản"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Tắt",
+     "acknowledged": true,
+     "domBefore": [
+      "subtle"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 563,
+    "content": 563
+   },
+   "toolbar": null,
+   "splitWords": [
+    {
+     "word": "Sao",
+     "lines": 2,
+     "in": "button"
+    },
+    {
+     "word": "chép",
+     "lines": 2,
+     "in": "button"
+    },
+    {
+     "word": "văn",
+     "lines": 2,
+     "in": "button"
+    },
+    {
+     "word": "bản",
+     "lines": 2,
+     "in": "button"
+    },
+    {
+     "word": "Đang",
+     "lines": 2,
+     "in": "button"
+    },
+    {
+     "word": "sao",
+     "lines": 2,
+     "in": "button"
+    },
+    {
+     "word": "chép…",
+     "lines": 3,
+     "in": "button"
+    },
+    {
+     "word": "sao",
+     "lines": 2,
+     "in": "button"
+    },
+    {
+     "word": "chép",
+     "lines": 2,
+     "in": "button"
+    },
+    {
+     "word": "Thử",
+     "lines": 2,
+     "in": "button"
+    }
+   ],
+   "attempt": 1,
+   "notes": [
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Thời lượng chuyển động (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "vi",
+   "width": 375,
+   "page": "library/C001",
+   "item": "C001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 822,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=C001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "vi",
+   "interaction": {
+    "status": "changed",
+    "control": "Đang xử lý — mẫu"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Tắt",
+     "acknowledged": true,
+     "domBefore": [
+      "subtle"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 621,
+    "content": 621
+   },
+   "toolbar": {
+    "narrowMaxWidth": "320px",
+    "reloaded": true
+   },
+   "splitWords": [],
+   "attempt": 1,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 621",
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Thời lượng chuyển động (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "vi",
+   "width": 375,
+   "page": "library/C002",
+   "item": "C002",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 752,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=C002#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "vi",
+   "interaction": {
+    "status": "changed",
+    "control": "Cài đặt"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Tắt",
+     "acknowledged": true,
+     "domBefore": [
+      "subtle"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 445,
+    "content": 445
+   },
+   "toolbar": null,
+   "splitWords": [],
+   "attempt": 1,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 445",
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Thời lượng chuyển động (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "vi",
+   "width": 375,
+   "page": "library/E001",
+   "item": "E001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 709,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=E001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "vi",
+   "interaction": {
+    "status": "changed",
+    "control": "Hiển thị nội dung"
+   },
+   "settings": {
+    "accent": null,
+    "motion": {
+     "selected": "Tắt",
+     "acknowledged": true,
+     "domBefore": [],
+     "domAfter": [],
+     "runningAnimations": {
+      "subtle": 1,
+      "off": 0
+     }
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 608,
+    "content": 608
+   },
+   "toolbar": null,
+   "splitWords": [],
+   "attempt": 1,
+   "notes": [
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Thời lượng chuyển động (ms)\",\"min\",\"0\",\"max\",\"600\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "vi",
+   "width": 375,
+   "page": "library/S003",
+   "item": "S003",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 970,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=S003#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "vi",
+   "interaction": {
+    "status": "changed",
+    "control": "Xem các bước cài đặt"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Tắt",
+     "acknowledged": true,
+     "domBefore": [
+      "subtle"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 618,
+    "content": 618
+   },
+   "toolbar": null,
+   "splitWords": [],
+   "attempt": 1,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 365",
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Thời lượng chuyển động (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "vi",
+   "width": 375,
+   "page": "library/S001",
+   "item": "S001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 745,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=S001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "vi",
+   "interaction": {
+    "status": "changed",
+    "control": "Xem tính năng"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Tắt",
+     "acknowledged": true,
+     "domBefore": [
+      "subtle"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 1243,
+    "content": 1243
+   },
+   "toolbar": null,
+   "splitWords": [],
+   "attempt": 1,
+   "notes": [
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Thời lượng chuyển động (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "vi",
+   "width": 375,
+   "page": "library/S002",
+   "item": "S002",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 738,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=S002#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "vi",
+   "interaction": {
+    "status": "no-controls"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Tắt",
+     "acknowledged": true,
+     "domBefore": [],
+     "domAfter": [],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 747,
+    "content": 747
+   },
+   "toolbar": null,
+   "splitWords": [],
+   "attempt": 1,
+   "notes": [
+    "motion change has no DOM marker; acknowledged through the bridge only",
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Thời lượng chuyển động (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "vi",
+   "width": 375,
+   "page": "library/A003",
+   "item": "A003",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 1568,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=A003#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "vi",
+   "interaction": {
+    "status": "changed",
+    "control": "Đổi tiêu đề"
+   },
+   "settings": {
+    "accent": null,
+    "motion": {
+     "selected": "Tắt",
+     "acknowledged": true,
+     "domBefore": [],
+     "domAfter": [],
+     "runningAnimations": {
+      "subtle": 15,
+      "off": 0
+     }
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 588,
+    "content": 588
+   },
+   "toolbar": null,
+   "splitWords": [],
+   "attempt": 1,
+   "notes": [
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Thời lượng chuyển động (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "vi",
+   "width": 375,
+   "page": "library/A006",
+   "item": "A006",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 963,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=A006#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "vi",
+   "interaction": {
+    "status": "changed",
+    "control": "Thêm công việc"
+   },
+   "settings": {
+    "accent": null,
+    "motion": {
+     "selected": "Tắt",
+     "acknowledged": true,
+     "domBefore": [],
+     "domAfter": [],
+     "runningAnimations": {
+      "subtle": 2,
+      "off": 0
+     }
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 861,
+    "content": 861
+   },
+   "toolbar": null,
+   "splitWords": [],
+   "attempt": 1,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 861",
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Thời lượng chuyển động (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "production",
+   "locale": "ru",
+   "width": 375,
+   "page": "home",
+   "item": "A001",
+   "verdict": "fail",
+   "failures": [
+    "words broken across lines in the demo: Скопировать (6 lines, button), текст (3 lines, button), Копируем… (5 lines, button), Текст (3 lines, button), скопирован (5 lines, button)"
+   ],
+   "readyMs": 2506,
+   "placeholderVisibleMs": 291,
+   "iframe": {
+    "src": "https://tallshift-demo.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "ru",
+   "interaction": {
+    "status": "changed",
+    "control": "Скопировать текст"
+   },
+   "settings": null,
+   "heightOnScreen": {
+    "iframe": 608,
+    "content": 608
+   },
+   "toolbar": {
+    "narrowMaxWidth": "320px",
+    "reloaded": true
+   },
+   "splitWords": [
+    {
+     "word": "Скопировать",
+     "lines": 6,
+     "in": "button"
+    },
+    {
+     "word": "текст",
+     "lines": 3,
+     "in": "button"
+    },
+    {
+     "word": "Копируем…",
+     "lines": 5,
+     "in": "button"
+    },
+    {
+     "word": "Текст",
+     "lines": 3,
+     "in": "button"
+    },
+    {
+     "word": "скопирован",
+     "lines": 5,
+     "in": "button"
+    },
+    {
+     "word": "Повторить",
+     "lines": 5,
+     "in": "button"
+    }
+   ],
+   "attempt": 1,
+   "notes": [],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "production",
+   "locale": "ru",
+   "width": 375,
+   "page": "library/A001",
+   "item": "A001",
+   "verdict": "fail",
+   "failures": [
+    "words broken across lines in the demo: Скопировать (6 lines, button), текст (3 lines, button), Копируем… (5 lines, button), Текст (3 lines, button), скопирован (5 lines, button)"
+   ],
+   "readyMs": 1342,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "ru",
+   "interaction": {
+    "status": "changed",
+    "control": "Скопировать текст"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Выкл.",
+     "acknowledged": true,
+     "domBefore": [
+      "off"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 591,
+    "content": 591
+   },
+   "toolbar": null,
+   "splitWords": [
+    {
+     "word": "Скопировать",
+     "lines": 6,
+     "in": "button"
+    },
+    {
+     "word": "текст",
+     "lines": 3,
+     "in": "button"
+    },
+    {
+     "word": "Копируем…",
+     "lines": 5,
+     "in": "button"
+    },
+    {
+     "word": "Текст",
+     "lines": 3,
+     "in": "button"
+    },
+    {
+     "word": "скопирован",
+     "lines": 5,
+     "in": "button"
+    },
+    {
+     "word": "Повторить",
+     "lines": 5,
+     "in": "button"
+    }
+   ],
+   "attempt": 1,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 591",
+    "motion change has no DOM marker; acknowledged through the bridge only",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Длительность анимации (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  }
+ ]
+}

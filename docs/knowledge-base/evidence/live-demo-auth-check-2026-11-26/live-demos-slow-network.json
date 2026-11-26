@@ -1,0 +1,518 @@
+{
+ "run": "slow network 1.6 Mbit/s + 150 ms + CPU x4, 375 px",
+ "checkedAt": "2026-11-26T11:59:35.882Z",
+ "slowNetwork": true,
+ "total": 12,
+ "failed": 0,
+ "results": [
+  {
+   "env": "production",
+   "locale": "en",
+   "width": 375,
+   "page": "home",
+   "item": "A001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 5129,
+   "placeholderVisibleMs": 1434,
+   "iframe": {
+    "src": "https://tallshift-demo.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "en",
+   "interaction": {
+    "status": "changed",
+    "control": "Copy text"
+   },
+   "settings": null,
+   "heightOnScreen": {
+    "iframe": 478,
+    "content": 478
+   },
+   "toolbar": {
+    "narrowMaxWidth": "320px",
+    "reloaded": true
+   },
+   "notes": [],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "production",
+   "locale": "en",
+   "width": 375,
+   "page": "library/A001",
+   "item": "A001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 2367,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "en",
+   "interaction": {
+    "status": "changed",
+    "control": "Copy text"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Off",
+     "acknowledged": true,
+     "domBefore": [
+      "subtle"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 478,
+    "content": 478
+   },
+   "toolbar": null,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 478",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Animation duration (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "production",
+   "locale": "ru",
+   "width": 375,
+   "page": "home",
+   "item": "A001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 2595,
+   "placeholderVisibleMs": 301,
+   "iframe": {
+    "src": "https://tallshift-demo.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "ru",
+   "interaction": {
+    "status": "changed",
+    "control": "Скопировать текст"
+   },
+   "settings": null,
+   "heightOnScreen": {
+    "iframe": 608,
+    "content": 608
+   },
+   "toolbar": {
+    "narrowMaxWidth": "320px",
+    "reloaded": true
+   },
+   "notes": [],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "production",
+   "locale": "ru",
+   "width": 375,
+   "page": "library/A001",
+   "item": "A001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 1925,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "ru",
+   "interaction": {
+    "status": "changed",
+    "control": "Скопировать текст"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Выкл.",
+     "acknowledged": true,
+     "domBefore": [
+      "off"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 591,
+    "content": 591
+   },
+   "toolbar": null,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 591",
+    "motion change has no DOM marker; acknowledged through the bridge only",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Длительность анимации (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "production",
+   "locale": "vi",
+   "width": 375,
+   "page": "home",
+   "item": "A001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 4738,
+   "placeholderVisibleMs": 208,
+   "iframe": {
+    "src": "https://tallshift-demo.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "vi",
+   "interaction": {
+    "status": "changed",
+    "control": "Sao chép văn bản"
+   },
+   "settings": null,
+   "heightOnScreen": {
+    "iframe": 563,
+    "content": 563
+   },
+   "toolbar": {
+    "narrowMaxWidth": "320px",
+    "reloaded": true
+   },
+   "notes": [
+    "before scrolling: iframe height 152 vs content 563"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "production",
+   "locale": "vi",
+   "width": 375,
+   "page": "library/A001",
+   "item": "A001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 1585,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "vi",
+   "interaction": {
+    "status": "changed",
+    "control": "Sao chép văn bản"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Tắt",
+     "acknowledged": true,
+     "domBefore": [
+      "subtle"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 563,
+    "content": 563
+   },
+   "toolbar": null,
+   "notes": [
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Thời lượng chuyển động (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "en",
+   "width": 375,
+   "page": "home",
+   "item": "A001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 8203,
+   "placeholderVisibleMs": 1730,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "en",
+   "interaction": {
+    "status": "changed",
+    "control": "Copy text"
+   },
+   "settings": null,
+   "heightOnScreen": {
+    "iframe": 478,
+    "content": 478
+   },
+   "toolbar": {
+    "narrowMaxWidth": "320px",
+    "reloaded": true
+   },
+   "notes": [
+    "staging auth disabled: /api/auth/get-session 503 logged in console"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "en",
+   "width": 375,
+   "page": "library/A001",
+   "item": "A001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 3979,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "en",
+   "interaction": {
+    "status": "changed",
+    "control": "Copy text"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Off",
+     "acknowledged": true,
+     "domBefore": [
+      "subtle"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 478,
+    "content": 478
+   },
+   "toolbar": null,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 478",
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Animation duration (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "ru",
+   "width": 375,
+   "page": "home",
+   "item": "A001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 3118,
+   "placeholderVisibleMs": 78,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "ru",
+   "interaction": {
+    "status": "changed",
+    "control": "Скопировать текст"
+   },
+   "settings": null,
+   "heightOnScreen": {
+    "iframe": 608,
+    "content": 608
+   },
+   "toolbar": {
+    "narrowMaxWidth": "320px",
+    "reloaded": true
+   },
+   "notes": [
+    "staging auth disabled: /api/auth/get-session 503 logged in console"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "ru",
+   "width": 375,
+   "page": "library/A001",
+   "item": "A001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 2021,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "ru",
+   "interaction": {
+    "status": "changed",
+    "control": "Скопировать текст"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Выкл.",
+     "acknowledged": true,
+     "domBefore": [
+      "off"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 591,
+    "content": 591
+   },
+   "toolbar": null,
+   "notes": [
+    "before scrolling: iframe height 440 vs content 591",
+    "motion change has no DOM marker; acknowledged through the bridge only",
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Длительность анимации (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "vi",
+   "width": 375,
+   "page": "home",
+   "item": "A001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 2530,
+   "placeholderVisibleMs": 312,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "vi",
+   "interaction": {
+    "status": "changed",
+    "control": "Sao chép văn bản"
+   },
+   "settings": null,
+   "heightOnScreen": {
+    "iframe": 563,
+    "content": 563
+   },
+   "toolbar": {
+    "narrowMaxWidth": "320px",
+    "reloaded": true
+   },
+   "notes": [
+    "staging auth disabled: /api/auth/get-session 503 logged in console"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  },
+  {
+   "env": "staging",
+   "locale": "vi",
+   "width": 375,
+   "page": "library/A001",
+   "item": "A001",
+   "verdict": "pass",
+   "failures": [],
+   "readyMs": 2170,
+   "placeholderVisibleMs": 0,
+   "iframe": {
+    "src": "https://tallshift-demo-staging.mtalldesign.workers.dev/?item=A001#channel=…",
+    "sandbox": "allow-scripts allow-same-origin"
+   },
+   "demoLang": "vi",
+   "interaction": {
+    "status": "changed",
+    "control": "Sao chép văn bản"
+   },
+   "settings": {
+    "accent": {
+     "applied": true,
+     "found": true,
+     "blocked": "false"
+    },
+    "motion": {
+     "selected": "Tắt",
+     "acknowledged": true,
+     "domBefore": [
+      "subtle"
+     ],
+     "domAfter": [
+      "off"
+     ],
+     "runningAnimations": null
+    }
+   },
+   "heightOnScreen": {
+    "iframe": 563,
+    "content": 563
+   },
+   "toolbar": null,
+   "notes": [
+    "staging auth disabled: /api/auth/get-session 503 logged in console",
+    "page DevTools issue: FormEmptyIdAndNameAttributesForInputError on input [\"aria-label\",\"Thời lượng chuyển động (ms)\",\"min\",\"0\",\"max\",\"480\",\"step\",\"1\",\"aria-invalid\",\"false\",\"aria-describedby\",\"…\",\"type\",\"number\",\"value\",\"160\",\"disabled\",\"\"]"
+   ],
+   "cloudflareAnalytics": true,
+   "otherHosts": [],
+   "cspViolations": 0
+  }
+ ]
+}

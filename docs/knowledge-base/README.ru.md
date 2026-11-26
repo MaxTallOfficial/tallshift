@@ -2,7 +2,7 @@
 
 **Начать следующий чат:** [передача проекта на 06.11.2026 — состояние, правила, проверки и следующий этап](handoff-2026-11-06.ru.md), затем [промпт следующему агенту на 10.11.2026](next-agent-prompt-2026-11-10.ru.md).
 
-- [Команда агентов Tallshift](agent-team.ru.md) · [Критерии оценки предложений и определение готовности](product-evaluation-criteria.ru.md)
+- [Команда агентов Tallshift](agent-team.ru.md) · [Критерии оценки и определение готовности, редакция 2](product-evaluation-criteria.ru.md)
 
 - [KB-UI-007 · Hallmark: обязательный workflow следующих страниц](hallmark-workflow.ru.md)
 - [Hallmark: аудит безопасности и локальный режим без отправки владельцу](hallmark-security-2026-11-05.ru.md)

@@ -12,7 +12,7 @@ export { useLedgerReflow } from './useLedgerReflow';
 
 export const recipe = createExampleRecipe({
   id: 'A006', slug: 'ledger-reflow', name: 'Ledger Reflow',
-  displayName: {"ru": "Перестроение списка", "en": "List reordering animation", "vi": "Hoạt ảnh sắp xếp danh sách"},
+  displayName: {"ru": "Анимация изменений в списке", "en": "Animated list changes", "vi": "Chuyển động trong danh sách"},
   durationMax: 480, colorControl: false, animationEntry: 'reflow-controller.ts', docs, rules,
   sourceFiles: [
     { path: "useLedgerReflow.ts", content: source0 },

@@ -24,7 +24,7 @@ export interface Material {
 // This metadata describes the production plan. A preview illustration does not
 // make a material available; availability requires a connected demo and complete kit.
 const translations: Record<string, [string, string, string]> = {
-  S001: ['A two-column opening for a small product site, with a short introduction and one main action.', 'Phần mở đầu hai cột', 'Phần đầu của website sản phẩm, gồm hai cột, giới thiệu ngắn và một hành động chính.'],
+  S001: ['A two-column opening for a product site: a heading, a short description, two links and three supporting points.', 'Phần mở đầu hai cột', 'Phần mở đầu hai cột cho website sản phẩm: tiêu đề, mô tả ngắn, hai liên kết và ba ý bổ sung.'],
   S002: ['A grid for three to six benefits, each with a short heading and explanation.', 'Lưới lợi ích', 'Lưới trình bày từ ba đến sáu lợi ích, mỗi mục có tiêu đề ngắn và phần giải thích.'],
   S003: ['A closing section with one main action, such as opening a form or signing up.', 'Khối hành động cuối trang', 'Khối cuối trang với một hành động chính, chẳng hạn mở biểu mẫu hoặc đăng ký.'],
   S004: ['An opening section with an interactive example that lets visitors try your product.', 'Phần mở đầu với bản thử', 'Phần đầu trang có ví dụ tương tác để khách truy cập thử sản phẩm của bạn.'],
@@ -96,7 +96,7 @@ const englishPresentation: Record<string,string> = {
 };
 
 const russianPresentation: Record<string, readonly [string, string]> = {
-  S001: ['Первый экран в две колонки', 'Первый экран небольшого сайта с кратким описанием продукта и основным действием.'],
+  S001: ['Первый экран в две колонки', 'Первый экран сайта в две колонки: заголовок, короткое описание, две ссылки и три пояснения.'],
   S002: ['Сетка преимуществ', 'Сетка для 3–6 преимуществ: краткие заголовки, пояснения и понятный порядок чтения.'],
   S003: ['Завершающий блок с действием', 'Короткий завершающий блок с одним главным действием, например переходом к форме или регистрации.'],
   S004: ['Первый экран с демо продукта', 'Первый экран с интерактивным примером, чтобы посетитель мог сразу попробовать ваш продукт.'],

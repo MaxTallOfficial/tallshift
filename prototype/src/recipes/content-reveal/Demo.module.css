@@ -5,7 +5,7 @@
   --reveal-default-secondary: #C4C3BF;
   --reveal-default-raised: #1E1D19;
   --reveal-default-line: #858480;
-  --reveal-default-focus: #F7EBCB;
+  --reveal-default-focus: #B8B8B2;
   --reveal-clear: transparent;
 }
 .demo { --reveal-text: var(--f-text, var(--reveal-default-text)); --reveal-secondary: var(--f-secondary, var(--reveal-default-secondary)); --reveal-raised: var(--f-raised, var(--reveal-default-raised)); --reveal-line: var(--f-control-border, var(--reveal-default-line)); --reveal-focus: var(--f-focus, var(--reveal-default-focus)); min-inline-size: 0; color: var(--reveal-text); }

@@ -2,11 +2,11 @@
 /* Critique: the action retains one stable target; state labels carry meaning without decorative icons. */
 :root .control {
   --press-default-accent: #EBD183;
-  --press-default-on-accent: #17150F;
+  --press-default-on-accent: #171C1A;
   --press-default-disabled-background: #1E1D19;
   --press-default-disabled-text: #A8A7A3;
   --press-default-border: #858480;
-  --press-default-focus: #F7EBCB;
+  --press-default-focus: #B8B8B2;
 }
 .control {
   --press-accent: var(--f-accent, var(--press-default-accent));

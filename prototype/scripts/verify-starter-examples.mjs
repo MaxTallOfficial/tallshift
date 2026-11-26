@@ -8,7 +8,8 @@ import { exampleCopy } from '../src/product/example-copy.ts';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const require = createRequire(resolve(process.env.HALLMARK_PUPPETEER || '.', 'starter-examples-qa.cjs'));
 const puppeteer = require('puppeteer-core');
-const out = resolve(root, 'docs/art-direction-2026/evidence/starter-examples-2026-11-06');
+// Run evidence stays outside Git (criteria v2); the committed 06.11 evidence is not overwritten.
+const out = resolve(root, process.env.TALLSHIFT_QA_OUT || 'prototype/.qa/starter-examples');
 mkdirSync(out, { recursive: true });
 const origin = 'http://127.0.0.1:4173';
 const browser = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true, args: ['--disable-background-networking', '--disable-sync', '--disable-component-update'] });

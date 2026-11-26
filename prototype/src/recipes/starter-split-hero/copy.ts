@@ -53,7 +53,7 @@ export const copy = {
     "featuresTitle": "A place for your features",
     "featuresText": "The first link leads here. Replace this section with details about your product.",
     "setupTitle": "How to add this block",
-    "setupText": "The second link leads here. Copy the bundle into a React project, open SelectedExample.tsx and replace text in copy.ts and link URLs in Demo.tsx."
+    "setupText": "The second link leads here. Copy the kit into your React project, open SelectedExample.tsx and replace text in copy.ts and link URLs in Demo.tsx."
   },
   "vi": {
     "title": "Tập trung trang vào điều quan trọng",
@@ -81,6 +81,6 @@ export const copy = {
     "featuresTitle": "Nơi giới thiệu tính năng của bạn",
     "featuresText": "Liên kết đầu tiên dẫn đến đây. Thay phần này bằng thông tin về sản phẩm của bạn.",
     "setupTitle": "Cách thêm khối này",
-    "setupText": "Liên kết thứ hai dẫn đến đây. Sao chép bộ tệp vào dự án React, mở SelectedExample.tsx rồi thay nội dung trong copy.ts và địa chỉ liên kết trong Demo.tsx."
+    "setupText": "Liên kết thứ hai dẫn đến đây. Sao chép bộ mã vào dự án React, mở SelectedExample.tsx rồi thay nội dung trong copy.ts và địa chỉ liên kết trong Demo.tsx."
   }
 } as const;

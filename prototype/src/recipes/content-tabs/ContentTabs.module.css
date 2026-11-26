@@ -6,6 +6,7 @@
   --ct-default-secondary: #C4C3BF;
   --ct-default-raised: #1E1D19;
   --ct-default-line: #3E3D39;
+  --ct-default-focus: #B8B8B2;
   --ct-clear: transparent;
 }
 .root {
@@ -14,7 +15,7 @@
   --ct-secondary: var(--f-secondary, var(--ct-default-secondary));
   --ct-raised: var(--f-raised, var(--ct-default-raised));
   --ct-line: var(--f-line, var(--ct-default-line));
-  --ct-focus: var(--f-focus, var(--ct-default-accent));
+  --ct-focus: var(--f-focus, var(--ct-default-focus));
   --ct-duration: 160ms;
   min-inline-size: 0;
   inline-size: 100%;

@@ -11,6 +11,7 @@
 - [KB-UI-010 · Шапка и понятное имя примера](header-navigation.ru.md)
 - [KB-UI-011 · C001/C002: бесплатные примеры, единая выдача и параллельная работа](starter-examples-and-parallel-work.ru.md)
 - [KB-UI-012 · E001/S003: видимый fallback, диапазоны настроек и составные комплекты](reveal-and-composed-sections.ru.md)
+- [KB-UI-013 · S001/S002/A003/A006: закрытие этапа, комплект выглядит как демо, Hallmark и CSS Modules, выдача Free](free-examples-final-2026-11-26.ru.md)
 
 - [KB-UI-001 · Контекстные размеры кнопок](button-sizing.ru.md)
 - [KB-UI-002 · Иерархия карточки предложения](offer-card-hierarchy.ru.md)

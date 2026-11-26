@@ -31,6 +31,7 @@ test('three and six feature variants retain full text without phantom actions', 
   for (const count of [3, 6]) {
     const html = render(FeatureGrid, { title: 'Benefits', features: features.slice(0, count), motion: 'off' });
     assert.equal((html.match(/<li\b/g) ?? []).length, count);
+    assert.match(html, new RegExp(`<ul[^>]*data-count="${count}"`), 'CSS chooses columns by count, so three benefits never leave an orphan');
     assert.doesNotMatch(html, /<a\b|<button\b|hidden=|aria-hidden="true"/);
     for (const feature of features.slice(0, count)) assert.ok(html.includes(feature.description));
   }
@@ -66,6 +67,7 @@ test('three locales render and hero links match unique real local targets', () =
     const links = [...html.matchAll(/href="#([^"]+)"/g)].map(match => match[1]);
     assert.equal(links.length, 2);
     for (const target of links) assert.ok(html.includes(`id="${target}"`));
+    for (const target of links) assert.match(html, new RegExp(`id="${target}" tabindex="-1"`), 'A link can move focus to its section');
     assert.match(html, /SelectedExample\.tsx/);
     assert.equal((render(GridDemo, { locale }).match(/<li\b/g) ?? []).length, 3);
   }

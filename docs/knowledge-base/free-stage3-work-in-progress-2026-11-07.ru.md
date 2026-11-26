@@ -1,5 +1,7 @@
 # Параллельный этап 1–3: работа продолжается, 07.11.2026
 
+**Статус 26.11.2026:** проверка S001/S002/A003/A006 и разбор Hallmark для CSS Modules закрыты — [KB-UI-013](free-examples-final-2026-11-26.ru.md). Цифры ниже исторические; 56 FAIL / 4 REFLEX / 2 WARN разобраны там (10 настоящих FAIL исправлены, 4 REFLEX и 2 WARN исправлены, остальное — объявления токенов, которые закреплённый checker не распознаёт).
+
 Пользователь подтвердил объём: S001/S002, бесплатная production-платформа со справкой, A003/A006. Домены и хостинг выберет позже. Публичного развёртывания нет. Изменения пока не закоммичены и не отправлены; GitHub Actions не запускались.
 
 В рабочем дереве добавлены четыре recipe-папки, их реестр/availability/share, справка (8 тем, 4 шаблона, glossary/changelog RU/EN/VI), Next.js 16.4.2 App Router поверх общего UI, отдельная Vite preview-сборка, строгий message bridge и локальный HTTP preview server, deployment policy на tldts. Это незавершённая интеграция, не опубликованный релиз. Все manifests пока local-prototype; immutable publisher/registry и production gates ещё предстоят.

@@ -5,7 +5,7 @@
   --press-demo-default-secondary: #C4C3BF;
   --press-demo-default-line: #3E3D39;
   --press-demo-default-surface: #1E1D19;
-  --press-demo-default-focus: #F7EBCB;
+  --press-demo-default-focus: #B8B8B2;
 }
 .demo {
   --press-demo-text: var(--f-text, var(--press-demo-default-text));

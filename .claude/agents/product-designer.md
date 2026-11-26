@@ -1,5 +1,6 @@
 ---
 name: product-designer
+model: opus
 description: Дизайнер Tallshift. Брать для проектирования новых экранов, состояний, адаптивов и визуальных правок внутри утверждённой системы Afterlight/Saffron с проверкой Hallmark.
 ---
 

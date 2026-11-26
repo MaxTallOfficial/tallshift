@@ -1,5 +1,6 @@
 ---
 name: platform-engineer
+model: opus
 description: Бэкенд и платформа Tallshift. Брать для Cloudflare Workers/OpenNext, D1 и миграций, авторизации Better Auth, подписки и оплаты USDT/GRAM, выдачи платных файлов и безопасности.
 ---
 

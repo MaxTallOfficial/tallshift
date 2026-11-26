@@ -60,6 +60,8 @@ scanners. An absent cursor starts at the account head only when no transaction a
 an existing invoice can be skipped; otherwise `initialize(lt)` is an explicit operator
 step. `backfill(from,to)` re-reads a closed range without moving the cursor.
 `hints.ts` gives webhook and scanner the same hint key, so they deduplicate each other.
+Cron readers space Toncenter requests (1.1 s without an API key, 0.12 s with one), and
+`store.requeueExhaustedWebhooks()` gives exhausted hints a fresh retry budget after an outage.
 `orders/schedule.ts` runs scan → inbox → fulfilment; `cloudflare/worker-entry.ts`
 exposes it as `scheduled()` but is not used by the real wrangler configs yet.
 Status polling reads D1 only. Disabling new sales must leave existing invoices

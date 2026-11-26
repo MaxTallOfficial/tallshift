@@ -42,10 +42,20 @@ function checkFinalized(tx:ObjectValue) {
   if(d.aborted!==false||d.destroyed===true||compute.success!==true||(d.action!==undefined&&d.action!==null&&object(d.action).success!==true))throw new TonChainError('INVALID_TRANSFER');
 }
 /** Fixed provider origins. Neither invoice JSON nor webhook can change the fetch destination. */
-export function createToncenterReader(config:TonPaymentConfig,options:{apiKey?:string;fetcher?:typeof fetch}={}) {
+export function createToncenterReader(config:TonPaymentConfig,options:{apiKey?:string;fetcher?:typeof fetch;minIntervalMs?:number}={}) {
   const origin=config.network==='ton-mainnet'?'https://toncenter.com':'https://testnet.toncenter.com';
   const fetcher=options.fetcher??fetch;
+  // Optional spacing between requests of one reader (cron runs) so the provider's rate limit is not hit.
+  const interval=Math.max(0,Math.min(5000,Math.floor(options.minIntervalMs??0)));
+  let lastRequest=0,queue:Promise<void>=Promise.resolve();
+  const pace=()=>{
+    if(!interval)return Promise.resolve();
+    const turn=queue.then(async()=>{const wait=lastRequest+interval-Date.now();if(wait>0)await new Promise(resolve=>setTimeout(resolve,wait));lastRequest=Date.now();});
+    queue=turn.catch(()=>undefined);
+    return turn;
+  };
   const json=async(path:string,query?:Record<string,string>,post?:ObjectValue)=>{
+    await pace();
     const url=new URL(path,origin);
     for(const [key,value] of Object.entries(query??{}))url.searchParams.set(key,value);
     const headers:Record<string,string>={Accept:'application/json'};

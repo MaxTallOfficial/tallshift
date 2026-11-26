@@ -59,6 +59,19 @@ test('mounted route files only delegate to the server adapter; nothing commerce-
   }
 });
 
+test('documented exception: with its bearer secret the webhook stores a hint even while sales are off', async () => {
+  const f = createCommerceFixture();
+  try {
+    const secret = 'w'.repeat(40), config = paymentConfig();
+    const env: TallshiftCloudflareEnv = {DB: f.db as unknown as D1Database, TONAPI_WEBHOOK_SECRET: secret};
+    const hint = (authorization: string) => new Request(origin + '/api/v1/payment/webhooks/tonapi', {method: 'POST', headers: {authorization, 'content-type': 'application/json'}, body: JSON.stringify({event_type: 'account_tx', account_id: config.recipient, lt: '101', tx_hash: '3'.repeat(64)})});
+    assert.equal((await commerceRoutes.tonWebhook(hint('Bearer wrong-secret-of-sufficient-length-000'), env)).status, 401);
+    assert.equal((await commerceRoutes.tonWebhook(hint(`Bearer ${secret}`), env)).status, 202);
+    assert.equal(f.count('ton_webhook_inbox'), 1, 'a hint, not a payment: existing invoices keep reconciling when new sales stop');
+    assert.equal(f.count('ton_payment_events'), 0);
+  } finally {f.sqlite.close();}
+});
+
 async function signedIn(f: ReturnType<typeof createCommerceFixture>) {
   const raw = 'test-session-token-with-enough-entropy', at = Date.now();
   f.sqlite.prepare('INSERT INTO auth_session VALUES(?,?,?,?,?,?,?,?,?)').run('session-1', await sha256(raw), 'buyer', at + 86_400_000, at, at, null, null, 0);
@@ -92,8 +105,12 @@ test('schedule skips without database, without the commerce schema, or when ther
   try {
     let reads = 0;
     const reader = {scan: async () => {reads++; return [];}, head: async () => {reads++; return null;}, readProof: async (): Promise<TonChainProof> => {throw new Error('unused');}};
+    // First run only creates the scan cursor (one head read) so no early payment can ever be skipped.
+    const first = await runCommerceSchedule({}, {db: f.db, reader});
+    assert.equal(first.reason, 'NOTHING_TO_RECONCILE'); assert.equal((first.scan as {state: string}).state, 'initialized');
+    assert.equal(reads, 1);
     assert.equal((await runCommerceSchedule({}, {db: f.db, reader})).reason, 'NOTHING_TO_RECONCILE');
-    assert.equal(reads, 0, 'no chain reads while sales are off and no invoice exists');
+    assert.equal(reads, 1, 'no further chain reads while sales are off and no invoice exists');
   } finally {f.sqlite.close();}
 });
 

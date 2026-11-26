@@ -54,4 +54,7 @@ test('policy limits are enforced: max age <= 60s, ttl <= 900s and > max age, uni
   for (const bad of [{...policy, maxAgeSeconds: 61}, {...policy, ttlSeconds: 901}, {...policy, ttlSeconds: 30, maxAgeSeconds: 30}, {...policy, minSources: 0}, {...policy, maxDeviationBps: 5000}]) assert.throws(() => createUsdExchangeRate({providers: [provider('a', () => ({usdPerUnit: '1', quotedAt: 1}))], policy: bad}), code('FX_INVALID'));
   assert.throws(() => createUsdExchangeRate({providers: [provider('a', () => ({usdPerUnit: '1', quotedAt: 1})), provider('a', () => ({usdPerUnit: '1', quotedAt: 1}))], policy}), code('FX_INVALID'));
   assert.throws(() => createUsdExchangeRate({providers: [provider('a', () => ({usdPerUnit: '1', quotedAt: 1}))], policy: {...policy, minSources: 2}}), code('FX_INVALID'));
+  // The combined source label must fit the 200-character invoice snapshot field.
+  const long = (tag: string) => provider(tag + 'x'.repeat(62), () => ({usdPerUnit: '1', quotedAt: 1}));
+  assert.throws(() => createUsdExchangeRate({providers: [long('a'), long('b'), long('c'), long('d')], policy}), code('FX_INVALID'));
 });

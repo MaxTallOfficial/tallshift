@@ -44,15 +44,25 @@ export function createCommerceFixture(options: {items?: readonly string[]} = {})
   const deps: CommerceDependencies = {enabled: true, store, ownership: ledger.pricingOwnership, readiness: async () => ({deliveryReady: state.ready, sellerTermsReady: state.ready, termsRevision: state.terms}), tax: async () => ({amountMinor: state.tax, revision: state.taxRevision}), releases: currentReleaseHashes(releases), revokedReleases: ledger.revokedReleases, now: () => state.now};
   const service = createCommerceService(deps);
   let sequence = 0;
-  /** Quote -> invoice -> verified settlement (as the TON verifier would record it). */
-  async function settle(userId: string, plan: 'product' | 'bundle', change: {usdMinor?: number; asset?: TonAsset} = {}) {
+  /** Quote -> pending TON invoice; payment is recorded separately with pay(). */
+  async function invoice(userId: string, plan: 'product' | 'bundle', change: {usdMinor?: number; asset?: TonAsset} = {}) {
     const n = ++sequence;
     const q = await service.createQuote(userId, {plan, idempotencyKey: `quote-${n}`});
     const asset = change.asset ?? 'TON';
-    const invoice = {id: `invoice-${n}`, userId, quoteId: q.id, itemIds: q.itemIds, termsRevision: q.termsRevision, asset, network: 'ton-testnet' as const, recipient: fixtureRecipient, jettonMaster: asset === 'USDT' ? '0:' + 'b'.repeat(64) : null, amountBaseUnits: '5333333334', comment: `ts_${n.toString(16).padStart(32, '0')}`, createdAt: state.now, expiresAt: state.now + 800, fxQuoteId: `fx-${n}`, fxSnapshot: {source: 'fixture', usdPerUnit: '3', quotedAt: state.now, expiresAt: state.now + 800, usdMinor: change.usdMinor ?? q.amountMinor}, idempotencyKey: `invoice-${n}`, inputDigest: 'c'.repeat(64)};
-    await ton.createInvoice(invoice);
-    await ton.recordVerifiedPayment({eventKey: `event-${n}`, txIdentity: `ton-testnet:tx-${n}`, invoiceId: invoice.id, asset, network: invoice.network, recipient: invoice.recipient, comment: invoice.comment, amountBaseUnits: invoice.amountBaseUnits, transactionAt: state.now + 10, observedAt: state.now + 11, proofDigest: 'd'.repeat(64)});
-    return {quote: q, invoiceId: invoice.id, paidAt: state.now + 10};
+    const input = {id: `invoice-${n}`, userId, quoteId: q.id, itemIds: q.itemIds, termsRevision: q.termsRevision, asset, network: 'ton-testnet' as const, recipient: fixtureRecipient, jettonMaster: asset === 'USDT' ? '0:' + 'b'.repeat(64) : null, amountBaseUnits: '5333333334', comment: `ts_${n.toString(16).padStart(32, '0')}`, createdAt: state.now, expiresAt: state.now + 800, fxQuoteId: `fx-${n}`, fxSnapshot: {source: 'fixture', usdPerUnit: '3', quotedAt: state.now, expiresAt: state.now + 800, usdMinor: change.usdMinor ?? q.amountMinor}, idempotencyKey: `invoice-${n}`, inputDigest: 'c'.repeat(64)};
+    await ton.createInvoice(input);
+    return {quote: q, invoiceId: input.id, input, n};
   }
-  return {...f, state, store, ledger, ton, deps, service, releases, objects, settle};
+  /** Records the verified on-chain settlement the TON verifier would produce. */
+  async function pay(issued: Awaited<ReturnType<typeof invoice>>, transactionAt = state.now + 10) {
+    const {input, n} = issued;
+    await ton.recordVerifiedPayment({eventKey: `event-${n}`, txIdentity: `ton-testnet:tx-${n}`, invoiceId: input.id, asset: input.asset, network: input.network, recipient: input.recipient, comment: input.comment, amountBaseUnits: input.amountBaseUnits, transactionAt, observedAt: Math.max(transactionAt, state.now) + 1, proofDigest: 'd'.repeat(64)});
+    return transactionAt;
+  }
+  async function settle(userId: string, plan: 'product' | 'bundle', change: {usdMinor?: number; asset?: TonAsset} = {}) {
+    const issued = await invoice(userId, plan, change);
+    const paidAt = await pay(issued);
+    return {quote: issued.quote, invoiceId: issued.invoiceId, paidAt};
+  }
+  return {...f, state, store, ledger, ton, deps, service, releases, objects, settle, invoice, pay};
 }

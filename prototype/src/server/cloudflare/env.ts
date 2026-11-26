@@ -18,6 +18,8 @@ export interface TallshiftCloudflareEnv {
   COMMERCE_DELIVERY_ENABLED?: string;
   /** Private R2 bucket with reviewed paid ZIPs. Never public, never listed, keys from the registry only. */
   PAID_ARTIFACTS?: R2Bucket;
+  /** Cron work per run: absent or "small" fits Workers Free limits; "large" needs Workers Paid. */
+  COMMERCE_SCHEDULE_BUDGET?: string;
   TONCENTER_API_KEY?: string;
   TONAPI_WEBHOOK_SECRET?: string;
 }

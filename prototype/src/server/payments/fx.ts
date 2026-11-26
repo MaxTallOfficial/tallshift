@@ -60,7 +60,9 @@ export function createUsdExchangeRate(deps: {providers: readonly FxProvider[]; p
   const now = deps.now ?? (() => Math.floor(Date.now() / 1000));
   if (!deps.providers.length) return async (): Promise<UsdExchangeRate> => {throw new FxError('FX_NOT_CONFIGURED');};
   if (deps.providers.length < policy.minSources || new Set(deps.providers.map(provider => provider.source)).size !== deps.providers.length
-    || !deps.providers.every(provider => typeof provider.source === 'string' && /^[A-Za-z0-9][A-Za-z0-9._:-]{0,63}$/.test(provider.source))) throw new FxError('FX_INVALID');
+    || !deps.providers.every(provider => typeof provider.source === 'string' && /^[A-Za-z0-9][A-Za-z0-9._:-]{0,63}$/.test(provider.source))
+    // The invoice snapshot accepts at most 200 characters for the combined source label.
+    || `${deps.providers[0].source};check=${deps.providers.slice(1).map(provider => provider.source).join(',')}`.length > 200) throw new FxError('FX_INVALID');
   return async (asset: TonAsset): Promise<UsdExchangeRate> => {
     if (asset !== 'TON' && asset !== 'USDT') throw new FxError('FX_INVALID');
     const settled = await Promise.allSettled(deps.providers.map(provider => provider.quote(asset)));

@@ -5,7 +5,7 @@ import {PaymentStoreError,type TonAsset,type TonInvoice,createTonPaymentStore} f
 import {verifyTonPayment,type TonChainProof} from './verification.ts';
 
 export class TonPaymentError extends Error {
-  readonly code:'COMMERCE_DISABLED'|'INVALID_INPUT'|'NOT_FOUND'|'QUOTE_EXPIRED'|'OFFER_CHANGED'|'IDEMPOTENCY_CONFLICT'|'TEMPORARILY_UNAVAILABLE';
+  readonly code:'COMMERCE_DISABLED'|'INVALID_INPUT'|'NOT_FOUND'|'QUOTE_EXPIRED'|'OFFER_CHANGED'|'IDEMPOTENCY_CONFLICT'|'TEMPORARILY_UNAVAILABLE'|'CHECKOUT_IN_PROGRESS';
   constructor(code:TonPaymentError['code']){super(code);this.code=code;}
 }
 /** Resolved exclusively by the host's authenticated server quote/ownership service. */
@@ -58,7 +58,13 @@ export function createTonPaymentService(deps:TonPaymentDependencies) {
       try {
         const result=await deps.store.createInvoice({id:crypto.randomUUID(),userId,quoteId:quote.id,itemIds:[...quote.itemIds],termsRevision:quote.termsRevision,asset:input.asset,network:deps.config.network,recipient:deps.config.recipient,jettonMaster:input.asset==='USDT'?deps.config.usdtMaster:null,amountBaseUnits,comment:`ts_${crypto.randomUUID().replaceAll('-','')}`,createdAt,expiresAt,fxQuoteId:rate.id,fxSnapshot:{source:rate.source,usdPerUnit:rate.usdPerUnit,quotedAt:rate.quotedAt,expiresAt:rate.expiresAt,usdMinor:quote.amountMinor},idempotencyKey:input.idempotencyKey,inputDigest});
         return publicTonInvoice(result.invoice,now());
-      }catch(error){if(error instanceof PaymentStoreError&&error.code==='IDEMPOTENCY_CONFLICT')throw new TonPaymentError('IDEMPOTENCY_CONFLICT');if(error instanceof PaymentStoreError&&error.code==='INVOICE_CONFLICT')throw new TonPaymentError('OFFER_CHANGED');throw error;}
+      }catch(error){
+        if(error instanceof PaymentStoreError&&error.code==='IDEMPOTENCY_CONFLICT')throw new TonPaymentError('IDEMPOTENCY_CONFLICT');
+        if(error instanceof PaymentStoreError&&error.code==='INVOICE_CONFLICT')throw new TonPaymentError('OFFER_CHANGED');
+        // Race-proof guard from migration 0004: a concurrent invoice already covers some of these items.
+        if(error instanceof Error&&error.message.includes('checkout in progress'))throw new TonPaymentError('CHECKOUT_IN_PROGRESS');
+        throw error;
+      }
     },
     async status(userId:string,invoiceId:string):Promise<PublicTonInvoice> {
       if(!identifier(userId)||!identifier(invoiceId))throw new TonPaymentError('NOT_FOUND');

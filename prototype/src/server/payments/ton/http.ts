@@ -20,7 +20,7 @@ function json(value:unknown,status=200,extra:Record<string,string>={}) {return R
 function error(code:string,status:number,headers:Record<string,string>={}) {return json({error:{code,requestId:crypto.randomUUID(),retryable:status===429||status>=500}},status,headers);}
 function failure(cause:unknown) {
   const code=cause instanceof TonPaymentError||cause instanceof PaymentStoreError?cause.code:'TEMPORARILY_UNAVAILABLE';
-  const statuses:Record<string,number>={INVALID_INPUT:400,NOT_FOUND:404,QUOTE_EXPIRED:409,OFFER_CHANGED:409,IDEMPOTENCY_CONFLICT:409,COMMERCE_DISABLED:503};
+  const statuses:Record<string,number>={INVALID_INPUT:400,NOT_FOUND:404,QUOTE_EXPIRED:409,OFFER_CHANGED:409,IDEMPOTENCY_CONFLICT:409,CHECKOUT_IN_PROGRESS:409,COMMERCE_DISABLED:503};
   return error(Object.hasOwn(statuses,code)?code:'TEMPORARILY_UNAVAILABLE',statuses[code]??503);
 }
 async function body(request:Request,limit:number):Promise<unknown> {

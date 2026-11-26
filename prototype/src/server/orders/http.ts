@@ -9,7 +9,7 @@ export interface CommerceHttpDependencies {
 const json=(value:unknown,status=200)=>Response.json(value,{status,headers:{'Cache-Control':'private, no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer'}});
 export function commerceFailure(cause:unknown){
  const code=cause instanceof CommerceError?cause.code:'TEMPORARILY_UNAVAILABLE';
- const status={INVALID_INPUT:400,NOT_FOUND:404,IDEMPOTENCY_CONFLICT:409,OFFER_CHANGED:409,QUOTE_EXPIRED:409,COMMERCE_DISABLED:503,TEMPORARILY_UNAVAILABLE:503}[code];
+ const status={INVALID_INPUT:400,NOT_FOUND:404,IDEMPOTENCY_CONFLICT:409,OFFER_CHANGED:409,QUOTE_EXPIRED:409,CHECKOUT_IN_PROGRESS:409,COMMERCE_DISABLED:503,TEMPORARILY_UNAVAILABLE:503}[code];
  return json({error:{code,retryable:status>=500}},status);
 }
 export function createCommerceHttpHandlers(deps:CommerceHttpDependencies){

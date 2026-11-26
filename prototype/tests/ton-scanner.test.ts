@@ -6,6 +6,7 @@ import {createTonChainScanner} from '../src/server/payments/ton/scanner.ts';
 import {transactionHint} from '../src/server/payments/ton/hints.ts';
 import {createTonHttpHandlers} from '../src/server/payments/ton/http.ts';
 import {createTonInboxWorker} from '../src/server/payments/ton/worker.ts';
+import {createToncenterReader} from '../src/server/payments/ton/toncenter.ts';
 import type {TonPaymentService} from './helpers/scanner-types.ts';
 
 const recipient = '0:' + 'a'.repeat(64), network = 'ton-testnet' as const;
@@ -140,4 +141,25 @@ test('scanned hints are verified by the existing inbox worker exactly like webho
     assert.deepEqual(seen.sort(), ['TON:065', 'TON:066', 'USDT:066']);
     assert.equal(s.f.sqlite.prepare("SELECT count(*) AS n FROM ton_webhook_inbox WHERE state='processed'").get()?.n, 2);
   } finally {s.f.sqlite.close();}
+});
+
+test('operator requeue gives only exhausted hints a fresh retry budget', async () => {
+  const s = setup();
+  try {
+    const insert = s.f.sqlite.prepare("INSERT INTO ton_webhook_inbox(event_key,body_digest,received_at,reference,state,attempts,last_error) VALUES(?,?,1,'ref','review',?,?)");
+    insert.run('hint_exhausted', 'a'.repeat(64), 8, 'RETRY_EXHAUSTED');
+    insert.run('hint_invalid', 'b'.repeat(64), 1, 'INVALID_REFERENCE');
+    assert.equal(await s.f.store.requeueExhaustedWebhooks(), 1);
+    const rows = s.f.sqlite.prepare('SELECT event_key,state,attempts,last_error FROM ton_webhook_inbox ORDER BY event_key').all();
+    assert.deepEqual(rows.map(r => [r.event_key, r.state, r.attempts, r.last_error]), [['hint_exhausted', 'received', 0, null], ['hint_invalid', 'review', 1, 'INVALID_REFERENCE']]);
+  } finally {s.f.sqlite.close();}
+});
+
+test('Toncenter requests of one cron reader are spaced to respect the provider rate limit', async () => {
+  const times: number[] = [];
+  const fetcher = (async () => {times.push(Date.now()); return new Response(JSON.stringify({ok: true, result: {state: 'active'}}), {headers: {'content-type': 'application/json'}});}) as unknown as typeof fetch;
+  const reader = createToncenterReader({network, recipient, usdtMaster: '0:' + 'b'.repeat(64), enabled: false}, {fetcher, minIntervalMs: 40});
+  await Promise.all([reader.isRecipientActive(), reader.isRecipientActive(), reader.isRecipientActive()]);
+  assert.equal(times.length, 3);
+  assert.ok(times[1] - times[0] >= 35 && times[2] - times[1] >= 35, JSON.stringify(times));
 });

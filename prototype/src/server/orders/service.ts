@@ -8,7 +8,7 @@ export const publishedPaidReleases:Readonly<Record<string,string>>=currentReleas
 export interface CommerceDependencies {
  enabled:boolean;store:ReturnType<typeof createCommerceStore>;
  /** Authoritative grants/receipts, never URL examples or browser storage. */
- ownership:(userId:string)=>Promise<PricingOwnership>;
+ ownership:(userId:string)=>Promise<PricingOwnership&{productReceiptOrderId?:string|null}>;
  /** Hashes of reviewed, available private releases; empty by default in the real host. */
  releases:Readonly<Record<string,string>>;
  readiness:()=>Promise<{deliveryReady:boolean;sellerTermsReady:boolean;termsRevision:string}>;
@@ -35,8 +35,10 @@ export function createCommerceService(deps:CommerceDependencies){
   if(deps.revokedReleases){const revoked=await deps.revokedReleases(Object.values(releases));if(Object.values(releases).some(hash=>revoked.has(hash)))throw new CommerceError('OFFER_CHANGED');}
   const tax=await deps.tax(userId,price.amountMinor);
   if(!Number.isSafeInteger(tax.amountMinor)||tax.amountMinor<0||!identifier(tax.revision)||price.amountMinor+tax.amountMinor>100000000)throw new CommerceError('TEMPORARILY_UNAVAILABLE');
-  const ownershipDigest=await digest({itemIds:[...ownership.itemIds].sort(),productNetPaidMinor:ownership.productNetPaidMinor??0});
-  return {price,releases,tax,termsRevision:ready.termsRevision,ownershipDigest};
+  const upgradeBasisOrderId=price.kind==='upgrade'?ownership.productReceiptOrderId??null:null;
+  if(price.kind!=='purchase'&&price.kind!=='partial'&&price.kind!=='upgrade')throw new CommerceError('OFFER_CHANGED');
+  const ownershipDigest=await digest({itemIds:[...ownership.itemIds].sort(),productNetPaidMinor:ownership.productNetPaidMinor??0,productReceiptOrderId:ownership.productReceiptOrderId??null});
+  return {price,pricingKind:price.kind,upgradeBasisOrderId,releases,tax,termsRevision:ready.termsRevision,ownershipDigest};
  }
  return {
   async createQuote(userId:string,input:{plan:PaidPlan;idempotencyKey:string}){
@@ -46,7 +48,7 @@ export function createCommerceService(deps:CommerceDependencies){
    const old=await deps.store.byIdempotency(userId,input.idempotencyKey);
    if(old){if(old.inputDigest!==inputDigest)throw new CommerceError('IDEMPOTENCY_CONFLICT');return publicQuote(old,await deps.store.orderForQuote(old.id,userId));}
    const offered=await offer(userId,input.plan),at=now();
-   const q=await deps.store.create({id:crypto.randomUUID(),userId,plan:input.plan,currency:'USD',subtotalMinor:offered.price.amountMinor,taxMinor:offered.tax.amountMinor,totalMinor:offered.price.amountMinor+offered.tax.amountMinor,itemIds:offered.price.missingItemIds,releases:offered.releases,ownershipDigest:offered.ownershipDigest,termsRevision:offered.termsRevision,taxRevision:offered.tax.revision,createdAt:at,expiresAt:at+900,idempotencyKey:input.idempotencyKey,inputDigest},crypto.randomUUID());
+   const q=await deps.store.create({id:crypto.randomUUID(),userId,plan:input.plan,currency:'USD',subtotalMinor:offered.price.amountMinor,taxMinor:offered.tax.amountMinor,totalMinor:offered.price.amountMinor+offered.tax.amountMinor,itemIds:offered.price.missingItemIds,releases:offered.releases,ownershipDigest:offered.ownershipDigest,termsRevision:offered.termsRevision,taxRevision:offered.tax.revision,createdAt:at,expiresAt:at+900,idempotencyKey:input.idempotencyKey,inputDigest,pricingKind:offered.pricingKind,upgradeBasisOrderId:offered.upgradeBasisOrderId},crypto.randomUUID());
    return publicQuote(q,await deps.store.orderForQuote(q.id,userId));
   },
   async resolveQuote(id:string,userId:string):Promise<PayableQuote|null>{
@@ -55,6 +57,8 @@ export function createCommerceService(deps:CommerceDependencies){
    if(q.expiresAt<=now())throw new CommerceError('QUOTE_EXPIRED');
    const offered=await offer(userId,q.plan);
    if(offered.ownershipDigest!==q.ownershipDigest||offered.termsRevision!==q.termsRevision||offered.tax.revision!==q.taxRevision||offered.tax.amountMinor!==q.taxMinor||offered.price.amountMinor!==q.subtotalMinor||JSON.stringify(offered.price.missingItemIds)!==JSON.stringify(q.itemIds)||JSON.stringify(offered.releases)!==JSON.stringify(q.releases))throw new CommerceError('OFFER_CHANGED');
+   // One open checkout per overlapping items: never let a second invoice charge for the same IDs.
+   if(await deps.store.openCheckout(userId,q.id,q.itemIds,now()))throw new CommerceError('CHECKOUT_IN_PROGRESS');
    return {id:q.id,userId:q.userId,currency:'USD',amountMinor:q.totalMinor,itemIds:q.itemIds,termsRevision:q.termsRevision,expiresAt:q.expiresAt,payable:true};
   },
   async orderStatus(userId:string,id:string){if(!identifier(userId)||!identifier(id))throw new CommerceError('NOT_FOUND');const order=await deps.store.ownedOrder(id,userId);if(!order)throw new CommerceError('NOT_FOUND');return order;},
@@ -62,7 +66,7 @@ export function createCommerceService(deps:CommerceDependencies){
 }
 function publicQuote(q:CommerceQuote,order:{id:string}|null){
  if(!order)throw new CommerceError('TEMPORARILY_UNAVAILABLE');
- return {id:q.id,orderId:order.id,plan:q.plan,currency:q.currency,subtotalMinor:q.subtotalMinor,taxMinor:q.taxMinor,amountMinor:q.totalMinor,itemIds:q.itemIds,termsRevision:q.termsRevision,expiresAt:q.expiresAt};
+ return {id:q.id,orderId:order.id,plan:q.plan,pricingKind:q.pricingKind,currency:q.currency,subtotalMinor:q.subtotalMinor,taxMinor:q.taxMinor,amountMinor:q.totalMinor,itemIds:q.itemIds,termsRevision:q.termsRevision,expiresAt:q.expiresAt};
 }
 // Exporting the scope prevents a separate server/client offer-ID mapping from drifting.
 export const paidPlanScopes={product:pricingPlanScopes.product,bundle:pricingPlanScopes.bundle} as const;

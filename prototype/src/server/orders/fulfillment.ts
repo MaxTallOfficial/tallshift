@@ -1,5 +1,5 @@
 import {addUtcMonths,validatePaidReleases,type PaidRelease} from '../delivery/releases.ts';
-import {LedgerError,type CommerceLedger,type GrantPlan} from './ledger.ts';
+import {LedgerError,type CommerceLedger,type GrantPlan,type Settlement} from './ledger.ts';
 
 /**
  * Idempotent fulfillment worker: turns a verified settlement intent (ton_payment_outbox)
@@ -29,9 +29,8 @@ class Permanent extends Error {
 
 export function createFulfillmentWorker(deps: FulfillmentDependencies) {
   const now = deps.now ?? (() => Math.floor(Date.now() / 1000));
-  const known = new Set(validatePaidReleases(deps.releases).map(release => release.sha256));
-  async function plan(invoiceId: string) {
-    const settlement = await deps.ledger.settlement(invoiceId);
+  const known = new Map(validatePaidReleases(deps.releases).map(release => [release.sha256, release.itemId]));
+  function plan(invoiceId: string, settlement: Settlement | null) {
     if (!settlement) throw new Permanent('INVOICE_MISSING');
     const {invoice, quote, order} = settlement;
     if (!quote || !order) throw new Permanent('ORDER_MISSING');
@@ -40,7 +39,8 @@ export function createFulfillmentWorker(deps: FulfillmentDependencies) {
     const sorted = [...quote.itemIds].sort();
     if (!quote.itemIds.length || JSON.stringify(sorted) !== JSON.stringify(quote.itemIds) || invoice.itemIdsJson !== JSON.stringify(quote.itemIds)
       || invoice.termsRevision !== quote.termsRevision || invoice.usdMinor !== quote.totalMinor) throw new Permanent('SNAPSHOT_MISMATCH');
-    if (Object.keys(quote.releases).length !== quote.itemIds.length || !quote.itemIds.every(id => known.has(quote.releases[id]))) throw new Permanent('RELEASE_UNKNOWN');
+    // Each snapshot hash must be a reviewed release of that very item.
+    if (Object.keys(quote.releases).length !== quote.itemIds.length || !quote.itemIds.every(id => known.get(quote.releases[id]) === id)) throw new Permanent('RELEASE_UNKNOWN');
     const grants: GrantPlan[] = allocateMinor(quote.subtotalMinor, quote.itemIds).map(({itemId, allocationMinor}) => ({itemId, allocationMinor, releaseSha256: quote.releases[itemId]}));
     return {invoiceId, orderId: order.id, userId: order.userId, paidAt: invoice.paidAt, updatesEnd: addUtcMonths(invoice.paidAt, 12), grants};
   }
@@ -50,8 +50,10 @@ export function createFulfillmentWorker(deps: FulfillmentDependencies) {
       for (const candidate of await deps.ledger.fulfillmentCandidates(now(), limit)) {
         let orderId: string | null = null;
         try {
-          const next = await plan(candidate.invoiceId);
-          orderId = next.orderId;
+          const settlement = await deps.ledger.settlement(candidate.invoiceId);
+          // Known before validation, so a review state is always attached to the owner's order.
+          orderId = settlement?.order?.id ?? null;
+          const next = plan(candidate.invoiceId, settlement);
           // Paid grants for an item the owner already holds are still delivered; the overlap is surfaced to support.
           const held = new Set((await deps.ledger.activeGrants(next.userId)).filter(grant => grant.orderId !== next.orderId).map(grant => grant.itemId));
           const note = next.grants.some(grant => held.has(grant.itemId)) ? 'OWNERSHIP_OVERLAP' : null;

@@ -109,10 +109,15 @@ test('invoice that does not match its quote, or an unknown release, goes to revi
     assert.equal(order.status, 'pending'); assert.equal(order.deliveryStatus, 'review');
 
     const other = await f.settle('other', 'product');
-    const strict = createFulfillmentWorker({ledger: f.ledger, releases: f.releases.filter(r => r.itemId !== 'S004'), now: () => f.state.now});
+    // A registry entry whose hash belongs to another item is not accepted either.
+    const s004 = f.releases.find(r => r.itemId === 'S004')!;
+    const strict = createFulfillmentWorker({ledger: f.ledger, releases: [...f.releases.filter(r => r.itemId !== 'S004' && r.itemId !== 'S012'), {...s004, itemId: 'S012', objectKey: s004.objectKey.replace('S004', 'S012')}], now: () => f.state.now});
     assert.deepEqual(await strict.process(), {fulfilled: 0, retried: 0, review: 1, skipped: 0});
     assert.equal(rows(f, 'SELECT last_error FROM commerce_fulfillments WHERE invoice_id=?', other.invoiceId)[0].last_error, 'RELEASE_UNKNOWN');
     assert.equal(f.count('commerce_grants'), 0);
+    // The owner sees the review state, not an endless "paid, preparing access".
+    const stuck = await f.service.orderStatus('other', other.quote.orderId);
+    assert.equal(stuck.status, 'paid'); assert.equal(stuck.deliveryStatus, 'review');
   } finally {f.sqlite.close();}
 });
 
@@ -141,10 +146,14 @@ test('server ledger is the pricing authority: Product owner gets the $23 upgrade
   try {
     await f.settle('buyer', 'product');
     await worker(f).process();
-    assert.deepEqual(await f.ledger.pricingOwnership('buyer'), {itemIds: [...pricingPlanScopes.product].sort(), productNetPaidMinor: 1600});
-    assert.deepEqual(await f.ledger.pricingOwnership('other'), {itemIds: [], productNetPaidMinor: 0});
+    const productOrder = (f.sqlite.prepare("SELECT order_id FROM commerce_receipts WHERE user_id='buyer'").get() as {order_id: string}).order_id;
+    assert.deepEqual(await f.ledger.pricingOwnership('buyer'), {itemIds: [...pricingPlanScopes.product].sort(), productNetPaidMinor: 1600, productReceiptOrderId: productOrder});
+    assert.deepEqual(await f.ledger.pricingOwnership('other'), {itemIds: [], productNetPaidMinor: 0, productReceiptOrderId: null});
     const upgrade = await f.service.createQuote('buyer', {plan: 'bundle', idempotencyKey: 'upgrade'});
     assert.equal(upgrade.subtotalMinor, 2300); assert.equal(upgrade.itemIds.length, 17);
+    // The quote records the applied rule and the Product order that enabled it (pricing contract section 4).
+    assert.equal(upgrade.pricingKind, 'upgrade');
+    assert.equal(f.sqlite.prepare('SELECT upgrade_basis_order_id FROM commerce_quotes WHERE id=?').get(upgrade.id)?.upgrade_basis_order_id, productOrder);
     assert.equal((await f.service.createQuote('other', {plan: 'bundle', idempotencyKey: 'new'})).subtotalMinor, 3900);
     // A partial refund lowers the upgrade credit to the net paid amount; the cheaper proportional price then wins.
     f.sqlite.prepare("UPDATE commerce_receipts SET status='partially_refunded',refunded_subtotal_minor=600 WHERE user_id='buyer'").run();
@@ -160,15 +169,41 @@ test('server ledger is the pricing authority: Product owner gets the $23 upgrade
   } finally {f.sqlite.close();}
 });
 
-test('a second paid order for owned items is still delivered and flagged for support as an overlap', async () => {
+test('one open checkout per overlapping items: a second invoice is refused until the first expires or is delivered', async () => {
   const f = createCommerceFixture();
   try {
-    const first = await f.settle('buyer', 'product');
-    // Second quote was created before the first fulfilment (both quotes priced against empty ownership).
-    const second = await f.settle('buyer', 'product');
+    const first = await f.invoice('buyer', 'product');
+    // A second quote for overlapping items can be priced, but cannot become a payable invoice.
+    const second = await f.service.createQuote('buyer', {plan: 'bundle', idempotencyKey: 'second'});
+    await assert.rejects(() => f.service.resolveQuote(second.id, 'buyer'), (e: unknown) => e instanceof CommerceError && e.code === 'CHECKOUT_IN_PROGRESS');
+    // The database guard holds even if the service check is bypassed (race between two requests).
+    await assert.rejects(() => f.invoice('buyer', 'product'), /checkout in progress/);
+    assert.equal(f.count('ton_invoices'), 1);
+    // Another user is unaffected.
+    await f.invoice('other', 'product');
+    // Paid but not yet delivered still blocks; delivery or expiry releases the lock.
+    await f.pay(first);
+    await assert.rejects(() => f.service.resolveQuote(second.id, 'buyer'), (e: unknown) => e instanceof CommerceError && e.code === 'CHECKOUT_IN_PROGRESS');
     await worker(f).process();
-    assert.equal(rows(f, 'SELECT note FROM commerce_fulfillments WHERE invoice_id=?', first.invoiceId)[0].note, null);
-    assert.equal(rows(f, 'SELECT note FROM commerce_fulfillments WHERE invoice_id=?', second.invoiceId)[0].note, 'OWNERSHIP_OVERLAP');
+    // After delivery the bundle quote no longer matches ownership: a fresh quote prices the upgrade.
+    await assert.rejects(() => f.service.resolveQuote(second.id, 'buyer'), (e: unknown) => e instanceof CommerceError && e.code === 'OFFER_CHANGED');
+  } finally {f.sqlite.close();}
+});
+
+test('a late-observed on-time payment that overlaps a newer purchase is still delivered and flagged for support', async () => {
+  const f = createCommerceFixture();
+  try {
+    const first = await f.invoice('buyer', 'product');
+    const firstPaidAt = f.state.now + 10;
+    // The first invoice looks expired before its on-time transfer is observed, so a new checkout opens.
+    f.state.now += 801;
+    const second = await f.invoice('buyer', 'product');
+    await f.pay(second);
+    await worker(f).process();
+    await f.pay(first, firstPaidAt);
+    await worker(f).process();
+    assert.equal(f.sqlite.prepare('SELECT note FROM commerce_fulfillments WHERE invoice_id=?').get(second.invoiceId)?.note, null);
+    assert.equal(f.sqlite.prepare('SELECT note FROM commerce_fulfillments WHERE invoice_id=?').get(first.invoiceId)?.note, 'OWNERSHIP_OVERLAP');
     assert.equal(f.count('commerce_grants'), 12);
     assert.equal((await f.ledger.pricingOwnership('buyer')).itemIds.length, 6);
   } finally {f.sqlite.close();}

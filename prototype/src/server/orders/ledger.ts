@@ -58,22 +58,28 @@ export function createCommerceLedger(db: D1DatabaseLike) {
      * refunded) net of refunds, before tax, capped at the Product price. Disputed/refunded
      * receipts never qualify and several receipts are not summed.
      */
-    async pricingOwnership(userId: string): Promise<PricingOwnership> {
+    async pricingOwnership(userId: string): Promise<PricingOwnership & {productReceiptOrderId: string | null}> {
       if (!identifier(userId)) throw new LedgerError('INVALID_INPUT');
       const items = await statement("SELECT DISTINCT item_id FROM commerce_grants WHERE user_id=? AND status='active' ORDER BY item_id", userId).all<Row>();
-      const best = await statement(`SELECT max(subtotal_minor-refunded_subtotal_minor) AS net FROM commerce_receipts r
+      const best = await statement(`SELECT r.order_id,r.subtotal_minor-r.refunded_subtotal_minor AS net FROM commerce_receipts r
         WHERE r.user_id=? AND r.plan='product' AND r.status IN ('paid','partially_refunded')
-        AND EXISTS (SELECT 1 FROM commerce_grants g WHERE g.order_id=r.order_id AND g.status='active')`, userId).first<Row>();
-      const net = best?.net === null || best?.net === undefined ? 0 : Number(best.net);
+        AND EXISTS (SELECT 1 FROM commerce_grants g WHERE g.order_id=r.order_id AND g.status='active')
+        ORDER BY net DESC,r.paid_at,r.order_id LIMIT 1`, userId).first<Row>();
+      const net = best ? Number(best.net) : 0;
       if (!Number.isSafeInteger(net) || net < 0) throw new LedgerError('DATABASE_ERROR');
-      return {itemIds: items.results.map(row => String(row.item_id)), productNetPaidMinor: Math.min(net, pricingPlanTerms.product.priceMinor)};
+      return {itemIds: items.results.map(row => String(row.item_id)), productNetPaidMinor: Math.min(net, pricingPlanTerms.product.priceMinor), productReceiptOrderId: best ? String(best.order_id) : null};
     },
+    /** Withdrawn releases among the given hashes; chunked under D1's bound-parameter limit. */
     async revokedReleases(hashes: readonly string[]): Promise<Set<string>> {
       const unique = [...new Set(hashes)];
-      if (unique.length > 100 || !unique.every(sha)) throw new LedgerError('INVALID_INPUT');
-      if (!unique.length) return new Set();
-      const rows = await statement(`SELECT release_sha256 FROM commerce_release_revocations WHERE release_sha256 IN (${unique.map(() => '?').join(',')})`, ...unique).all<Row>();
-      return new Set(rows.results.map(row => String(row.release_sha256)));
+      if (unique.length > 5000 || !unique.every(sha)) throw new LedgerError('INVALID_INPUT');
+      const revoked = new Set<string>();
+      for (let index = 0; index < unique.length; index += 90) {
+        const chunk = unique.slice(index, index + 90);
+        const rows = await statement(`SELECT release_sha256 FROM commerce_release_revocations WHERE release_sha256 IN (${chunk.map(() => '?').join(',')})`, ...chunk).all<Row>();
+        for (const row of rows.results) revoked.add(String(row.release_sha256));
+      }
+      return revoked;
     },
     async recordDownload(userId: string, itemId: string, releaseSha256: string, outcome: 'issued' | 'served', at: number) {
       if (!identifier(userId) || !/^[SCEA]\d{3}$/.test(itemId) || !sha(releaseSha256) || !time(at)) throw new LedgerError('INVALID_INPUT');
@@ -149,6 +155,23 @@ export function createCommerceLedger(db: D1DatabaseLike) {
       if (!identifier(orderId) || !identifier(userId)) return null;
       const row = await statement('SELECT f.state FROM commerce_fulfillments f JOIN commerce_orders o ON o.id=f.order_id WHERE f.order_id=? AND o.user_id=?', orderId, userId).first<Row>();
       return row ? String(row.state) as 'retry' | 'review' | 'fulfilled' : null;
+    },
+    /**
+     * Operator primitive for a manual refund already sent from the owner's wallet. One INSERT;
+     * migration triggers revoke exactly these active grants of the order and derive the refunded
+     * subtotal from their allocations. `items: 'all'` refunds every still-active item of the order.
+     */
+    async recordRefund(input: {orderId: string; items: readonly string[] | 'all'; reason: 'before_download' | 'defect' | 'duplicate_payment' | 'not_delivered' | 'other'; reference: string; at: number}) {
+      const {orderId, items, reason, reference, at} = input;
+      if (!identifier(orderId) || !['before_download', 'defect', 'duplicate_payment', 'not_delivered', 'other'].includes(reason) || typeof reference !== 'string' || !/^[A-Za-z0-9:_.\-]{1,200}$/.test(reference) || !time(at)
+        || (items !== 'all' && (!items.length || items.length > 32 || !items.every(id => /^[SCEA]\d{3}$/.test(id))))) throw new LedgerError('INVALID_INPUT');
+      const id = `refund_${crypto.randomUUID().replaceAll('-', '')}`;
+      await batch([items === 'all'
+        ? statement(`INSERT INTO commerce_refunds(id,order_id,item_ids_json,reason,refund_reference,created_at)
+            SELECT ?,?,json_group_array(item_id),?,?,? FROM commerce_grants WHERE order_id=? AND status='active'`, id, orderId, reason, reference, at, orderId)
+        : statement('INSERT INTO commerce_refunds(id,order_id,item_ids_json,reason,refund_reference,created_at) VALUES(?,?,?,?,?,?)', id, orderId, JSON.stringify(items), reason, reference, at)]);
+      const receipt = await statement('SELECT status,refunded_subtotal_minor FROM commerce_receipts WHERE order_id=?', orderId).first<Row>();
+      return {id, status: String(receipt?.status), refundedSubtotalMinor: Number(receipt?.refunded_subtotal_minor)};
     },
     /**
      * Operator primitive for a reviewed withdrawal (security/integrity/legal). No route calls it;

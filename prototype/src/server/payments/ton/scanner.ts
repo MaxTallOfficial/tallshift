@@ -58,6 +58,8 @@ export function createTonChainScanner(deps: {
   }
 
   return {
+    /** Durable cursor key: one cursor per network and receiving account. */
+    scope,
     async scan(): Promise<ScanReport> {
       const existing = await statement('SELECT last_lt FROM ton_scan_cursors WHERE scope=?', scope).first<{last_lt: string}>();
       if (!existing) return initializeIfSafe();

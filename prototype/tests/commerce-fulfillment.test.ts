@@ -4,6 +4,7 @@ import {createCommerceFixture} from './helpers/commerce-fixture.ts';
 import {addUtcMonths,inclusiveUtcDate} from '../src/server/delivery/releases.ts';
 import {CommerceError} from '../src/server/orders/store.ts';
 import {currentAccess} from '../src/server/orders/subscription.ts';
+import {releaseAccess} from '../src/server/delivery/releases.ts';
 
 type Fixture = ReturnType<typeof createCommerceFixture>;
 const rows = (f: Fixture, sql: string, ...values: unknown[]) => f.sqlite.prepare(sql).all(...values as never[]) as Record<string, unknown>[];
@@ -89,7 +90,7 @@ test('switching level while another level is paid is closed at the quote, at ful
     assert.equal(one(f, 'SELECT last_error FROM commerce_fulfillments WHERE invoice_id=?', late.invoiceId).last_error, 'PLAN_CONFLICT');
     assert.equal((await f.service.orderStatus('buyer', late.quote.orderId)).deliveryStatus, 'review');
     // The database refuses that period even if the worker check were bypassed; nothing is half-written.
-    await assert.rejects(() => f.ledger.fulfill({invoiceId: late.invoiceId, orderId: late.quote.orderId, userId: 'buyer', paidAt: latePaidAt, startsAt: latePaidAt, endsAt: addUtcMonths(latePaidAt, 1), now: f.state.now}), /another level is active/);
+    await assert.rejects(() => f.ledger.fulfill({invoiceId: late.invoiceId, orderId: late.quote.orderId, userId: 'buyer', kind: 'term', paidAt: latePaidAt, startsAt: latePaidAt, endsAt: addUtcMonths(latePaidAt, 1), now: f.state.now}), /another level is active/);
     assert.equal(one(f, 'SELECT status FROM commerce_orders WHERE id=?', late.quote.orderId).status, 'pending');
     assert.equal(rows(f, 'SELECT 1 FROM commerce_receipts WHERE order_id=?', late.quote.orderId).length, 0);
     assert.equal(f.count('commerce_access_periods'), 1);
@@ -105,7 +106,7 @@ test('the database also refuses a renewal that would not continue from the curre
     await f.settle('buyer', 'product');
     await f.fulfil();
     const renewal = await f.settle('buyer', 'product');
-    await assert.rejects(() => f.ledger.fulfill({invoiceId: renewal.invoiceId, orderId: renewal.quote.orderId, userId: 'buyer', paidAt: renewal.paidAt, startsAt: renewal.paidAt, endsAt: addUtcMonths(renewal.paidAt, 1), now: f.state.now}), /access must continue from the current end/);
+    await assert.rejects(() => f.ledger.fulfill({invoiceId: renewal.invoiceId, orderId: renewal.quote.orderId, userId: 'buyer', kind: 'term', paidAt: renewal.paidAt, startsAt: renewal.paidAt, endsAt: addUtcMonths(renewal.paidAt, 1), now: f.state.now}), /access must continue from the current end/);
     assert.equal(f.count('commerce_receipts'), 1);
     assert.deepEqual(await f.fulfil(), {fulfilled: 1, retried: 0, review: 0, skipped: 0});
     assert.equal(f.count('commerce_access_periods'), 2);
@@ -180,8 +181,8 @@ test('SQL triggers refuse periods and receipts without a paid order and keep the
     assert.throws(() => f.sqlite.prepare('DELETE FROM commerce_access_periods').run(), /ledger row/);
     assert.throws(() => f.sqlite.prepare('DELETE FROM commerce_receipts').run(), /ledger row/);
     f.sqlite.prepare("UPDATE commerce_access_periods SET status='revoked',revoked_at=2000,revoke_reason='operator' WHERE id=?").run(period);
-    assert.throws(() => f.sqlite.prepare("UPDATE commerce_access_periods SET status='active',revoked_at=NULL,revoke_reason=NULL WHERE id=?").run(period), /revoked period is final/);
-    assert.throws(() => f.sqlite.prepare("UPDATE commerce_access_periods SET revoke_reason='other' WHERE id=?").run(period), /revoked period is final/);
+    assert.throws(() => f.sqlite.prepare("UPDATE commerce_access_periods SET status='active',revoked_at=NULL,revoke_reason=NULL WHERE id=?").run(period), /closed period is final/);
+    assert.throws(() => f.sqlite.prepare("UPDATE commerce_access_periods SET revoke_reason='other' WHERE id=?").run(period), /closed period is final/);
   } finally {f.sqlite.close();}
 });
 
@@ -232,5 +233,76 @@ test('a withdrawn release is left out of new quotes; a level with nothing delive
     assert.deepEqual(Object.keys(JSON.parse(String(one(f, 'SELECT release_snapshot_json AS r FROM commerce_quotes WHERE id=?', all.id).r))), ['S012']);
     assert.throws(() => f.sqlite.prepare('DELETE FROM commerce_release_revocations').run(), /release revocation is final/);
     assert.throws(() => f.sqlite.prepare("UPDATE commerce_release_revocations SET reason='withdrawn'").run(), /release revocation is final/);
+  } finally {f.sqlite.close();}
+});
+
+test('switching from Product to «Всё» mid-term: the rest is recalculated, only the difference is paid, «Всё» lasts until the Product end', async () => {
+  const f = createCommerceFixture();
+  try {
+    const product = await f.settle('buyer', 'product');
+    await f.fulfil();
+    const end = addUtcMonths(product.paidAt, 1), total = end - product.paidAt;
+    // Exactly half of the paid month is left: half of the 23 USDT price difference is due.
+    f.state.now = product.paidAt + total / 2;
+    const upgrade = await f.settle('buyer', 'all', {upgrade: true});
+    assert.deepEqual([upgrade.quote.kind, upgrade.quote.months, upgrade.quote.subtotalMinor, upgrade.quote.currentAccessEnd], ['upgrade', null, 1150, end]);
+    assert.deepEqual(upgrade.quote.upgrade, [{orderId: product.quote.orderId, startsAt: product.paidAt, endsAt: end, remainingSeconds: total / 2, paidMinor: 1600, allPriceMinor: 3900, topUpMinor: 1150}]);
+    assert.deepEqual(await f.fulfil(), {fulfilled: 1, retried: 0, review: 0, skipped: 0});
+    assert.deepEqual(one(f, 'SELECT plan,kind,months,starts_at,ends_at,status FROM commerce_access_periods WHERE order_id=?', upgrade.quote.orderId), {plan: 'all', kind: 'upgrade', months: null, starts_at: upgrade.paidAt, ends_at: end, status: 'active'});
+    assert.deepEqual(one(f, 'SELECT status,revoked_at,revoke_reason FROM commerce_access_periods WHERE order_id=?', product.quote.orderId), {status: 'upgraded', revoked_at: upgrade.paidAt, revoke_reason: `upgrade:${upgrade.quote.orderId}`});
+    assert.deepEqual(one(f, 'SELECT kind,months,subtotal_minor,amount_base_units FROM commerce_receipts WHERE order_id=?', upgrade.quote.orderId), {kind: 'upgrade', months: null, subtotal_minor: 1150, amount_base_units: '11500000'});
+    const access = currentAccess(await f.ledger.accessPeriods('buyer'), upgrade.paidAt);
+    assert.deepEqual(access, {plan: 'all', startsAt: upgrade.paidAt, endsAt: end});
+    assert.equal(releaseAccess(f.releases.find(r => r.itemId === 'S012')!, access, new Set()), 'available');
+    // A renewal continues «Всё» from the same end; back to Product mid-term and a second switch stay closed.
+    assert.equal((await f.service.createQuote('buyer', {plan: 'all', months: 1, idempotencyKey: 'renew'})).currentAccessEnd, end);
+    await assert.rejects(() => f.service.createQuote('buyer', {plan: 'product', months: 1, idempotencyKey: 'down'}), isCode('PLAN_CHANGE_UNAVAILABLE'));
+    await assert.rejects(() => f.service.createQuote('buyer', {plan: 'all', upgrade: true, idempotencyKey: 'again'}), isCode('PLAN_CHANGE_UNAVAILABLE'));
+    assert.throws(() => f.sqlite.prepare("UPDATE commerce_access_periods SET status='active',revoked_at=NULL,revoke_reason=NULL WHERE order_id=?").run(product.quote.orderId), /closed period is final/);
+  } finally {f.sqlite.close();}
+});
+
+test('an annual Product with a queued month is recalculated per period at the «Всё» price for the same term', async () => {
+  const f = createCommerceFixture();
+  try {
+    const year = await f.settle('buyer', 'product', {months: 12});
+    await f.fulfil();
+    const yearEnd = addUtcMonths(year.paidAt, 12);
+    const month = await f.settle('buyer', 'product');
+    await f.fulfil();
+    const monthEnd = addUtcMonths(yearEnd, 1);
+    f.state.now = year.paidAt + 90 * day;
+    const yearLeft = yearEnd - f.state.now, expectedYear = Math.ceil(23000 * yearLeft / (yearEnd - year.paidAt));
+    const upgrade = await f.settle('buyer', 'all', {upgrade: true});
+    assert.deepEqual(upgrade.quote.upgrade!.map(line => [line.orderId, line.paidMinor, line.allPriceMinor, line.remainingSeconds, line.topUpMinor]),
+      [[year.quote.orderId, 16000, 39000, yearLeft, expectedYear], [month.quote.orderId, 1600, 3900, monthEnd - yearEnd, 2300]]);
+    assert.deepEqual([upgrade.quote.subtotalMinor, upgrade.quote.currentAccessEnd], [expectedYear + 2300, monthEnd]);
+    await f.fulfil();
+    assert.deepEqual(f.sqlite.prepare("SELECT status FROM commerce_access_periods WHERE plan='product' ORDER BY starts_at").all().map(row => row.status), ['upgraded', 'upgraded']);
+    assert.deepEqual(currentAccess(await f.ledger.accessPeriods('buyer'), upgrade.paidAt), {plan: 'all', startsAt: upgrade.paidAt, endsAt: monthEnd});
+  } finally {f.sqlite.close();}
+});
+
+test('a changed Product access voids the switch: the quote is refused, a paid switch goes to review, the database needs the paid receipt', async () => {
+  const f = createCommerceFixture();
+  try {
+    await assert.rejects(() => f.service.createQuote('buyer', {plan: 'all', upgrade: true, idempotencyKey: 'nothing'}), isCode('PLAN_CHANGE_UNAVAILABLE'));
+    await assert.rejects(() => f.service.createQuote('buyer', {plan: 'product', upgrade: true, idempotencyKey: 'wrong'}), isCode('INVALID_INPUT'));
+    const product = await f.settle('buyer', 'product');
+    await f.fulfil();
+    assert.throws(() => f.sqlite.prepare("UPDATE commerce_access_periods SET status='upgraded',revoked_at=2000,revoke_reason='upgrade:forged' WHERE order_id=?").run(product.quote.orderId), /upgrade receipt required/);
+    f.state.now = 2000;
+    const quote = await f.service.createQuote('buyer', {plan: 'all', upgrade: true, idempotencyKey: 'upgrade'});
+    await f.ledger.recordRefund({orderId: product.quote.orderId, amountMinor: 1600, reason: 'before_download', reference: 'tx-refund', at: 2001});
+    await assert.rejects(() => f.service.resolveQuote(quote.id, 'buyer'), isCode('OFFER_CHANGED'));
+    // The same change after the invoice was issued: the paid switch is not applied automatically.
+    const other = await f.settle('other', 'product');
+    await f.fulfil();
+    const issued = await f.invoice('other', 'all', {upgrade: true});
+    await f.ledger.recordRefund({orderId: other.quote.orderId, amountMinor: 1600, reason: 'before_download', reference: 'tx-other', at: 2002});
+    await f.pay(issued);
+    assert.deepEqual(await f.fulfil(), {fulfilled: 0, retried: 0, review: 1, skipped: 0});
+    assert.equal(one(f, 'SELECT last_error FROM commerce_fulfillments WHERE invoice_id=?', issued.invoiceId).last_error, 'UPGRADE_CHANGED');
+    assert.equal((await f.service.orderStatus('other', issued.quote.orderId)).deliveryStatus, 'review');
   } finally {f.sqlite.close();}
 });

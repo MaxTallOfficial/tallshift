@@ -34,23 +34,24 @@ test('a quote prices one paid term of a level in USDT from approved prices; tax 
   } finally {f.sqlite.close();}
 });
 
-test('only approved terms are sold: monthly prices of 27.11 in production, no annual term, malformed input refused', async () => {
+test('only approved terms are sold: monthly and discounted annual prices of 27.11; other terms and malformed input refused', async () => {
   const f = createCommerceFixture();
   try {
-    await assert.rejects(() => f.service.createQuote('buyer', {plan: 'product', months: 12, idempotencyKey: 'year'}), isCode('TERM_UNAVAILABLE'));
+    await assert.rejects(() => f.service.createQuote('buyer', {plan: 'product', months: 6, idempotencyKey: 'half-year'}), isCode('TERM_UNAVAILABLE'));
     for (const months of [0, 13, 1.5, Number.NaN]) await assert.rejects(() => f.service.createQuote('buyer', {plan: 'product', months, idempotencyKey: `bad-${months}`}), isCode('INVALID_INPUT'));
     await assert.rejects(() => f.service.createQuote('buyer', {plan: 'bundle' as never, months: 1, idempotencyKey: 'old-plan'}), isCode('INVALID_INPUT'));
     assert.equal(f.count('commerce_orders'), 0);
-    // Max Tall, 27.11.2026: a monthly subscription, Product 16 USDT and «Всё» 39 USDT; no annual price yet.
-    assert.deepEqual(commerceLaunchDecisions.prices, {product: {1: 1600}, all: {1: 3900}});
-    assert.equal(subscriptionPrice(commerceLaunchDecisions.prices, 'product', 12), null);
+    // Max Tall, 27.11.2026: Product 16 / «Всё» 39 USDT per month; a year costs 10 months (160 / 390 USDT).
+    assert.deepEqual(commerceLaunchDecisions.prices, {product: {1: 1600, 12: 16000}, all: {1: 3900, 12: 39000}});
+    assert.equal(subscriptionPrice(commerceLaunchDecisions.prices, 'product', 12), 16000);
+    assert.equal(subscriptionPrice(commerceLaunchDecisions.prices, 'product', 6), null);
     assert.equal(subscriptionPrice(commerceLaunchDecisions.prices, 'all', 1), 3900);
     // Seller terms, tax and the Gram rate are still not approved, so production sales stay closed.
     assert.deepEqual([commerceLaunchDecisions.termsRevision, commerceLaunchDecisions.tax, commerceLaunchDecisions.gramFx], [null, null, null]);
     const production = productionCommerceDependencies({deliveryReady: true});
     assert.deepEqual(await production.readiness(), {deliveryReady: true, sellerTermsReady: false, termsRevision: ''});
     await assert.rejects(() => production.tax('buyer', 1600), isCode('COMMERCE_DISABLED'));
-    assert.equal(production.price('product', 1), 1600); assert.equal(production.price('all', 12), null);
+    assert.equal(production.price('product', 1), 1600); assert.equal(production.price('all', 12), 39000); assert.equal(production.price('all', 3), null);
   } finally {f.sqlite.close();}
 });
 
@@ -83,7 +84,7 @@ test('closed readiness, nothing deliverable, and changed terms, tax, price or re
     const service = createCommerceService({...f.deps, releases});
     const changes = [() => {f.state.terms = 'terms-v2';}, () => {f.state.tax = 1;}, () => {f.state.taxRevision = 'tax-v2';}, () => {releases.S004 = 'b'.repeat(64);}, () => {f.state.prices.product[1] = 1700;}, () => {delete f.state.prices.product[1];}];
     for (const change of changes) {
-      f.state.terms = 'terms-v1'; f.state.tax = 0; f.state.taxRevision = 'tax-v1'; releases.S004 = original; f.state.prices.product = {1: 1600, 3: 4500};
+      f.state.terms = 'terms-v1'; f.state.tax = 0; f.state.taxRevision = 'tax-v1'; releases.S004 = original; f.state.prices.product = {1: 1600, 3: 4500, 12: 16000};
       const q = await service.createQuote('buyer', {plan: 'product', months: 1, idempotencyKey: crypto.randomUUID()});
       change();
       await assert.rejects(() => service.resolveQuote(q.id, 'buyer'), isCode('OFFER_CHANGED'));
@@ -139,7 +140,7 @@ test('HTTP accepts only the level and the term; client price, tax or dates are r
     const h = createCommerceHttpHandlers({service: f.service, mainOrigin: origin, authenticate: async () => userId ? {userId} : null, verifyCsrf: async () => csrf, rateLimit: async () => limit});
     const request = (body: unknown, key = 'quote', customOrigin = origin) => new Request(origin + '/api/v1/checkout-quotes', {method: 'POST', headers: {origin: customOrigin, 'content-type': 'application/json', 'idempotency-key': key}, body: JSON.stringify(body)});
     assert.equal((await h.quote(new Request(origin + '/api/v1/checkout-quotes', {method: 'POST', headers: {origin, 'content-type': 'application/json'}, body: new Uint8Array([0xff])}))).status, 400);
-    for (const body of [{plan: 'product', months: 1, amountMinor: 1}, {plan: 'product'}, {plan: 'product', months: '1'}, {plan: 'product', months: 1, currentAccessEnd: 5}, {plan: 'bundle', months: 1}, {plan: 'product', months: 1, ownership: []}]) assert.equal((await h.quote(request(body))).status, 400);
+    for (const body of [{plan: 'product', months: 1, amountMinor: 1}, {plan: 'product'}, {plan: 'product', months: '1'}, {plan: 'product', months: 1, currentAccessEnd: 5}, {plan: 'bundle', months: 1}, {plan: 'product', months: 1, ownership: []}, {plan: 'all', upgrade: true, months: 1}, {plan: 'product', upgrade: true}, {plan: 'all', upgrade: 'yes'}]) assert.equal((await h.quote(request(body))).status, 400);
     assert.equal((await h.quote(request({plan: 'product', months: 1}, 'quote', 'https://evil.test'))).status, 403);
     csrf = false; assert.equal((await h.quote(request({plan: 'product', months: 1}))).status, 403); csrf = true;
     limit = false; assert.equal((await h.quote(request({plan: 'product', months: 1}))).status, 429); limit = true;
@@ -148,8 +149,11 @@ test('HTTP accepts only the level and the term; client price, tax or dates are r
     assert.equal(response.status, 201);
     const q = await response.json();
     assert.deepEqual([q.amountMinor, q.currency, q.months, q.plan], [1600, 'USDT', 1, 'product']);
-    const year = await h.quote(request({plan: 'product', months: 12}, 'year'));
-    assert.equal(year.status, 409); assert.equal((await year.json()).error.code, 'TERM_UNAVAILABLE');
+    const halfYear = await h.quote(request({plan: 'product', months: 6}, 'half-year'));
+    assert.equal(halfYear.status, 409); assert.equal((await halfYear.json()).error.code, 'TERM_UNAVAILABLE');
+    // The switch to «Всё» is its own request; without paid Product there is nothing to switch.
+    const upgrade = await h.quote(request({plan: 'all', upgrade: true}, 'upgrade'));
+    assert.equal(upgrade.status, 409); assert.equal((await upgrade.json()).error.code, 'PLAN_CHANGE_UNAVAILABLE');
     userId = 'other'; assert.equal((await h.order(new Request(origin), q.orderId)).status, 404);
   } finally {f.sqlite.close();}
 });

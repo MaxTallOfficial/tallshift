@@ -97,7 +97,7 @@ export function createDeliveryHttpHandlers(deps: DeliveryDependencies) {
           releases: state.relevant.filter(release => release.itemId === itemId).sort((a, b) => b.publishedAt - a.publishedAt)
             .map(release => ({version: release.version, sha256: release.sha256, byteLength: release.byteLength, publishedAt: release.publishedAt, kind: release.kind, access: releaseAccess(release, state.access, state.revoked)})),
         }));
-        const periods = state.periods.map(period => ({orderId: period.orderId, plan: period.plan, months: period.months, startsAt: period.startsAt, endsAt: period.endsAt, status: period.status}));
+        const periods = state.periods.map(period => ({orderId: period.orderId, plan: period.plan, kind: period.kind, months: period.months, startsAt: period.startsAt, endsAt: period.endsAt, status: period.status}));
         const receipts = (await deps.ledger.receipts(session.userId)).map(receipt => ({...receipt}));
         return json({verifiedAt: state.at, subscription: subscription(state.periods, state.access, state.at), items, periods, receipts});
       } catch {return failure('TEMPORARILY_UNAVAILABLE', 503);}

@@ -17,8 +17,16 @@ export const planCovers = (plan: SubscriptionPlan, itemId: string) => subscripti
 /** A paid term in whole calendar months. Which terms are actually sold is decided in launch.ts. */
 export const isPaidMonths = (value: unknown): value is number => Number.isSafeInteger(value) && (value as number) >= 1 && (value as number) <= 12;
 
-/** One paid period of one level: open from startsAt (inclusive) to endsAt (exclusive). */
-export interface AccessPeriod {orderId: string; plan: SubscriptionPlan; months: number; startsAt: number; endsAt: number; status: 'active' | 'revoked'}
+/**
+ * One paid period of one level: open from startsAt (inclusive) to endsAt (exclusive). A 'term'
+ * is a paid number of months; an 'upgrade' is the rest of a Product access switched to «Всё».
+ * 'revoked' closes a period after a refund, 'upgraded' after a paid switch to «Всё».
+ * paidMinor is the subtotal of the period's receipt (USDT minor units).
+ */
+export interface AccessPeriod {
+  orderId: string; plan: SubscriptionPlan; kind: 'term' | 'upgrade'; months: number | null;
+  startsAt: number; endsAt: number; status: 'active' | 'revoked' | 'upgraded'; paidMinor: number;
+}
 export interface CurrentAccess {plan: SubscriptionPlan; startsAt: number; endsAt: number}
 
 const live = (periods: readonly AccessPeriod[]) => periods.filter(period => period.status === 'active');
@@ -45,8 +53,31 @@ export function levelEnd(periods: readonly AccessPeriod[], plan: SubscriptionPla
  */
 export const renewalStart = (periods: readonly AccessPeriod[], plan: SubscriptionPlan, paidAt: number) => Math.max(paidAt, levelEnd(periods, plan) ?? 0);
 
-/** True while another level is still paid after `at`. Switching level mid-term is not decided, so it is refused. */
+/** True while another level is still paid after `at`. A new term of another level then waits; only Product → «Всё» has an upgrade. */
 export const otherLevelPaid = (periods: readonly AccessPeriod[], plan: SubscriptionPlan, at: number) => live(periods).some(period => period.plan !== plan && period.endsAt > at);
+
+/** One remaining Product period in an upgrade recalculation (USDT minor units, seconds). */
+export interface UpgradeLine {orderId: string; startsAt: number; endsAt: number; remainingSeconds: number; paidMinor: number; allPriceMinor: number; topUpMinor: number}
+/** Rounds up to the next minor unit (towards zero for a negative difference, which is also up). */
+const ceilDiv = (numerator: bigint, denominator: bigint) => numerator >= 0n ? (numerator + denominator - 1n) / denominator : numerator / denominator;
+
+/**
+ * Product → «Всё» before the paid Product time ends (Max Tall, 27.11.2026: recalculation and a
+ * top-up). For every remaining Product period the unused share of what was paid is credited and
+ * the same share of the «Всё» price for the same term is charged; the sum is the top-up.
+ * «Всё» then lasts until the Product access would have ended. Null: no Product access to switch.
+ */
+export function upgradeTopUp(periods: readonly AccessPeriod[], allPrice: (months: number) => number, at: number) {
+  const product = live(periods).filter(period => period.plan === 'product' && period.endsAt > at).sort((a, b) => a.startsAt - b.startsAt || a.endsAt - b.endsAt);
+  if (!product.length) return null;
+  const lines: UpgradeLine[] = product.map(period => {
+    if (period.kind !== 'term' || period.months === null) throw new RangeError('INVALID_PERIOD');
+    const total = period.endsAt - period.startsAt, remainingSeconds = period.endsAt - Math.max(period.startsAt, at), allPriceMinor = allPrice(period.months);
+    const topUpMinor = Number(ceilDiv(BigInt(allPriceMinor - period.paidMinor) * BigInt(remainingSeconds), BigInt(total)));
+    return {orderId: period.orderId, startsAt: period.startsAt, endsAt: period.endsAt, remainingSeconds, paidMinor: period.paidMinor, allPriceMinor, topUpMinor};
+  });
+  return {lines, topUpMinor: lines.reduce((sum, line) => sum + line.topUpMinor, 0), endsAt: Math.max(...product.map(period => period.endsAt))};
+}
 
 /** USDT on TON has 6 decimals and prices are kept in 2-decimal minor units: one minor unit is 10⁴ base units. */
 export function usdtBaseUnits(priceMinor: number) {

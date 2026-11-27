@@ -1,12 +1,16 @@
 -- Subscription checkout (Max Tall, 26-27.11.2026). Additive preparation only: it does not enable
--- sales or open access. A quote prices one paid term (whole calendar months) of one level.
+-- sales or open access. A quote prices one paid term (whole calendar months) of one level, or the
+-- switch from Product to «Всё» before the Product time ends.
 -- Amounts are USDT minor units (cents): 1600 = 16 USDT. The payment module's invoice snapshot key
 -- usdMinor (0001, unchanged) carries the same number.
 CREATE TABLE commerce_quotes (
   id TEXT PRIMARY KEY,
   user_id TEXT NOT NULL REFERENCES auth_user(id),
   plan TEXT NOT NULL CHECK(plan IN ('product','all')),
-  months INTEGER NOT NULL CHECK(months BETWEEN 1 AND 12),
+  -- 'term': a paid number of months (new subscription or renewal). 'upgrade': Product -> «Всё»
+  -- before the Product time ends, priced as the recalculated difference (Max Tall, 27.11).
+  kind TEXT NOT NULL DEFAULT 'term' CHECK(kind IN ('term','upgrade')),
+  months INTEGER,
   currency TEXT NOT NULL CHECK(currency='USDT'),
   subtotal_minor INTEGER NOT NULL CHECK(subtotal_minor>0 AND subtotal_minor<=100000000),
   tax_minor INTEGER NOT NULL CHECK(tax_minor>=0 AND tax_minor<=100000000),
@@ -15,14 +19,18 @@ CREATE TABLE commerce_quotes (
   item_ids_json TEXT NOT NULL CHECK(json_valid(item_ids_json) AND json_type(item_ids_json)='array' AND json_array_length(item_ids_json) BETWEEN 1 AND 32),
   -- Published releases of those items when quoted (audit only; access is checked at download).
   release_snapshot_json TEXT NOT NULL CHECK(json_valid(release_snapshot_json)),
-  -- Exclusive end of the same level's paid access when quoted; NULL for a new subscription.
+  -- Term: exclusive end of the same level's paid access when quoted (NULL for a new subscription).
+  -- Upgrade: end of the Product access that becomes «Всё».
   current_access_end INTEGER CHECK(current_access_end IS NULL OR current_access_end>0),
+  -- Upgrade only: the recalculation per remaining Product period (credit of what was paid, «Всё» price).
+  upgrade_snapshot_json TEXT CHECK(upgrade_snapshot_json IS NULL OR (json_valid(upgrade_snapshot_json) AND json_type(upgrade_snapshot_json)='array')),
   terms_revision TEXT NOT NULL,
   tax_revision TEXT NOT NULL,
   created_at INTEGER NOT NULL,
   expires_at INTEGER NOT NULL CHECK(expires_at>created_at),
   idempotency_key TEXT NOT NULL,
   input_digest TEXT NOT NULL,
+  CHECK((kind='term' AND months BETWEEN 1 AND 12 AND upgrade_snapshot_json IS NULL) OR (kind='upgrade' AND plan='all' AND months IS NULL AND current_access_end IS NOT NULL AND upgrade_snapshot_json IS NOT NULL)),
   UNIQUE(user_id,idempotency_key)
 );
 CREATE TABLE commerce_orders (

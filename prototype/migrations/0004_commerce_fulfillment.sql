@@ -10,7 +10,8 @@ CREATE TABLE commerce_receipts (
   quote_id TEXT NOT NULL UNIQUE REFERENCES commerce_quotes(id),
   invoice_id TEXT NOT NULL UNIQUE REFERENCES ton_invoices(id),
   plan TEXT NOT NULL CHECK(plan IN ('product','all')),
-  months INTEGER NOT NULL CHECK(months BETWEEN 1 AND 12),
+  kind TEXT NOT NULL DEFAULT 'term' CHECK(kind IN ('term','upgrade')),
+  months INTEGER,
   currency TEXT NOT NULL CHECK(currency='USDT'),
   subtotal_minor INTEGER NOT NULL CHECK(subtotal_minor>0 AND subtotal_minor<=100000000),
   tax_minor INTEGER NOT NULL CHECK(tax_minor>=0 AND tax_minor<=100000000),
@@ -23,26 +24,31 @@ CREATE TABLE commerce_receipts (
   tax_revision TEXT NOT NULL,
   paid_at INTEGER NOT NULL,
   created_at INTEGER NOT NULL,
-  status TEXT NOT NULL DEFAULT 'paid' CHECK(status IN ('paid','refunded','disputed'))
+  status TEXT NOT NULL DEFAULT 'paid' CHECK(status IN ('paid','refunded','disputed')),
+  CHECK((kind='term' AND months BETWEEN 1 AND 12) OR (kind='upgrade' AND plan='all' AND months IS NULL))
 );
 CREATE INDEX commerce_receipt_owner ON commerce_receipts(user_id,paid_at);
 
 -- One access period per paid order: the level is open from starts_at (inclusive) to ends_at
 -- (exclusive). A renewal starts at the current end of the same level, so remaining days are kept.
+-- An upgrade period opens «Всё» from its payment to the end of the Product access it replaces.
 CREATE TABLE commerce_access_periods (
   id TEXT PRIMARY KEY,
   user_id TEXT NOT NULL REFERENCES auth_user(id),
   order_id TEXT NOT NULL UNIQUE REFERENCES commerce_orders(id),
   plan TEXT NOT NULL CHECK(plan IN ('product','all')),
-  months INTEGER NOT NULL CHECK(months BETWEEN 1 AND 12),
+  kind TEXT NOT NULL DEFAULT 'term' CHECK(kind IN ('term','upgrade')),
+  months INTEGER,
   paid_at INTEGER NOT NULL,
   starts_at INTEGER NOT NULL CHECK(starts_at>=paid_at),
   ends_at INTEGER NOT NULL CHECK(ends_at>starts_at),
-  status TEXT NOT NULL DEFAULT 'active' CHECK(status IN ('active','revoked')),
+  -- 'revoked': closed by a refund or an operator; 'upgraded': its rest became «Всё» (revoke_reason upgrade:<order>).
+  status TEXT NOT NULL DEFAULT 'active' CHECK(status IN ('active','revoked','upgraded')),
   revoked_at INTEGER,
   revoke_reason TEXT,
   created_at INTEGER NOT NULL,
-  CHECK((status='active' AND revoked_at IS NULL AND revoke_reason IS NULL) OR (status='revoked' AND revoked_at IS NOT NULL AND revoke_reason IS NOT NULL))
+  CHECK((status='active' AND revoked_at IS NULL AND revoke_reason IS NULL) OR (status<>'active' AND revoked_at IS NOT NULL AND revoke_reason IS NOT NULL)),
+  CHECK((kind='term' AND months BETWEEN 1 AND 12) OR (kind='upgrade' AND plan='all' AND months IS NULL))
 );
 CREATE INDEX commerce_access_owner ON commerce_access_periods(user_id,status,ends_at);
 
@@ -101,7 +107,7 @@ WHEN NEW.status<>'paid' OR NEW.refunded_subtotal_minor<>0 OR NOT EXISTS (
   JOIN ton_invoices i ON i.quote_id=q.id AND i.user_id=q.user_id
   WHERE o.id=NEW.order_id AND o.user_id=NEW.user_id AND q.id=NEW.quote_id AND i.id=NEW.invoice_id
     AND o.status='paid' AND i.status='paid' AND o.paid_at=NEW.paid_at AND i.paid_at=NEW.paid_at
-    AND q.plan=NEW.plan AND q.months=NEW.months AND q.currency=NEW.currency
+    AND q.plan=NEW.plan AND q.kind=NEW.kind AND q.months IS NEW.months AND q.currency=NEW.currency
     AND q.subtotal_minor=NEW.subtotal_minor AND q.tax_minor=NEW.tax_minor AND q.total_minor=NEW.total_minor
     AND i.asset=NEW.asset AND i.amount_base_units=NEW.amount_base_units
     AND q.terms_revision=NEW.terms_revision AND q.tax_revision=NEW.tax_revision
@@ -112,12 +118,18 @@ WHEN NEW.status<>'paid' OR NEW.refunded_subtotal_minor<>0 OR NOT EXISTS (
 )
 BEGIN SELECT RAISE(ABORT,'paid order required'); END;
 
--- A period needs that receipt: same owner, level and paid term; 28-31 days per calendar month.
+-- A period needs that receipt: same owner, level, kind and term. A term lasts 28-31 days per paid
+-- month; an upgrade runs from its payment to the Product end fixed in its quote.
 CREATE TRIGGER commerce_access_requires_receipt BEFORE INSERT ON commerce_access_periods
-WHEN NEW.status<>'active' OR NEW.ends_at-NEW.starts_at NOT BETWEEN NEW.months*2419200 AND NEW.months*2678400 OR NOT EXISTS (
+WHEN NEW.status<>'active'
+  OR (NEW.kind='term' AND (NEW.months IS NULL OR NEW.ends_at-NEW.starts_at NOT BETWEEN NEW.months*2419200 AND NEW.months*2678400))
+  OR (NEW.kind='upgrade' AND (NEW.plan<>'all' OR NEW.months IS NOT NULL OR NEW.starts_at<>NEW.paid_at OR NOT EXISTS (
+    SELECT 1 FROM commerce_orders o JOIN commerce_quotes q ON q.id=o.quote_id AND q.user_id=o.user_id
+    WHERE o.id=NEW.order_id AND q.kind='upgrade' AND q.current_access_end=NEW.ends_at)))
+  OR NOT EXISTS (
   SELECT 1 FROM commerce_receipts r JOIN commerce_orders o ON o.id=r.order_id AND o.user_id=r.user_id
   WHERE r.order_id=NEW.order_id AND r.user_id=NEW.user_id AND r.paid_at=NEW.paid_at
-    AND o.status='paid' AND r.status='paid' AND r.plan=NEW.plan AND r.months=NEW.months
+    AND o.status='paid' AND r.status='paid' AND r.plan=NEW.plan AND r.kind=NEW.kind AND r.months IS NEW.months
 )
 BEGIN SELECT RAISE(ABORT,'paid receipt required'); END;
 
@@ -128,19 +140,26 @@ WHEN NEW.starts_at<>max(NEW.paid_at,coalesce((SELECT max(p.ends_at) FROM commerc
   WHERE p.user_id=NEW.user_id AND p.plan=NEW.plan AND p.status='active' AND p.order_id<>NEW.order_id),0))
 BEGIN SELECT RAISE(ABORT,'access must continue from the current end'); END;
 
--- Switching level while another level is still paid is not decided by the owner: refused.
+-- Two levels are never open at once: a new term of another level waits for the paid one to end;
+-- an upgrade first closes the remaining Product periods in the same batch.
 CREATE TRIGGER commerce_access_one_level BEFORE INSERT ON commerce_access_periods
 WHEN EXISTS (SELECT 1 FROM commerce_access_periods p WHERE p.user_id=NEW.user_id AND p.plan<>NEW.plan
   AND p.status='active' AND p.ends_at>NEW.starts_at)
 BEGIN SELECT RAISE(ABORT,'another level is active'); END;
 
-CREATE TRIGGER commerce_receipt_immutable BEFORE UPDATE OF id,order_id,user_id,quote_id,invoice_id,plan,months,currency,subtotal_minor,tax_minor,total_minor,asset,amount_base_units,terms_revision,tax_revision,paid_at,created_at ON commerce_receipts
+CREATE TRIGGER commerce_receipt_immutable BEFORE UPDATE OF id,order_id,user_id,quote_id,invoice_id,plan,kind,months,currency,subtotal_minor,tax_minor,total_minor,asset,amount_base_units,terms_revision,tax_revision,paid_at,created_at ON commerce_receipts
 BEGIN SELECT RAISE(ABORT,'immutable commerce receipt'); END;
-CREATE TRIGGER commerce_access_immutable BEFORE UPDATE OF id,user_id,order_id,plan,months,paid_at,starts_at,ends_at,created_at ON commerce_access_periods
+CREATE TRIGGER commerce_access_immutable BEFORE UPDATE OF id,user_id,order_id,plan,kind,months,paid_at,starts_at,ends_at,created_at ON commerce_access_periods
 BEGIN SELECT RAISE(ABORT,'immutable access period'); END;
-CREATE TRIGGER commerce_access_revocation_final BEFORE UPDATE OF status,revoked_at,revoke_reason ON commerce_access_periods
-WHEN OLD.status='revoked'
-BEGIN SELECT RAISE(ABORT,'revoked period is final'); END;
+CREATE TRIGGER commerce_access_closing_final BEFORE UPDATE OF status,revoked_at,revoke_reason ON commerce_access_periods
+WHEN OLD.status<>'active'
+BEGIN SELECT RAISE(ABORT,'closed period is final'); END;
+-- A Product period becomes 'upgraded' only with the paid upgrade receipt named in revoke_reason, at its payment time.
+CREATE TRIGGER commerce_access_upgrade_requires_receipt BEFORE UPDATE OF status ON commerce_access_periods
+WHEN NEW.status='upgraded' AND NOT (OLD.status='active' AND OLD.plan='product' AND NEW.revoke_reason LIKE 'upgrade:%' AND EXISTS (
+  SELECT 1 FROM commerce_receipts r WHERE r.order_id=substr(NEW.revoke_reason,9) AND r.user_id=OLD.user_id
+    AND r.kind='upgrade' AND r.status='paid' AND r.paid_at=NEW.revoked_at AND OLD.ends_at>r.paid_at))
+BEGIN SELECT RAISE(ABORT,'upgrade receipt required'); END;
 CREATE TRIGGER commerce_receipt_ledger BEFORE DELETE ON commerce_receipts
 BEGIN SELECT RAISE(ABORT,'ledger row'); END;
 CREATE TRIGGER commerce_access_ledger BEFORE DELETE ON commerce_access_periods
@@ -199,7 +218,7 @@ BEGIN SELECT RAISE(ABORT,'audit row'); END;
 -- Manual refund journal, one record per paid period (operator only, no route). The money is sent
 -- by the owner from the wallet; this single INSERT records it and, through the triggers below,
 -- atomically closes exactly that period and stores the amount on its receipt. Other periods,
--- renewals included, are never touched. Refund rules are not decided yet.
+-- renewals included, are never touched. Policy (Max Tall, 27.11): the trigger below.
 CREATE TABLE commerce_refunds (
   id TEXT PRIMARY KEY,
   period_id TEXT NOT NULL UNIQUE REFERENCES commerce_access_periods(id),
@@ -214,12 +233,13 @@ WHEN NOT EXISTS (SELECT 1 FROM commerce_access_periods p JOIN commerce_receipts 
   WHERE p.id=NEW.period_id AND p.status='active' AND r.status='paid' AND NEW.amount_minor<=r.subtotal_minor)
 BEGIN SELECT RAISE(ABORT,'refund needs an active paid period'); END;
 
--- The "before_download" label must be true: nothing served to that owner since this payment.
-CREATE TRIGGER commerce_refund_label_truthful BEFORE INSERT ON commerce_refunds
-WHEN NEW.reason='before_download' AND EXISTS (
+-- Refund policy (Max Tall, 27.11): money back only if nothing was served to the owner after this
+-- payment; after a download only a defect or a duplicate payment is refunded.
+CREATE TRIGGER commerce_refund_policy BEFORE INSERT ON commerce_refunds
+WHEN NEW.reason NOT IN ('defect','duplicate_payment') AND EXISTS (
   SELECT 1 FROM commerce_download_events d JOIN commerce_access_periods p ON p.user_id=d.user_id
   WHERE p.id=NEW.period_id AND d.outcome='served' AND d.created_at>=p.paid_at)
-BEGIN SELECT RAISE(ABORT,'already downloaded after this payment'); END;
+BEGIN SELECT RAISE(ABORT,'already downloaded after this payment: only a defect or a duplicate payment is refunded'); END;
 
 CREATE TRIGGER commerce_refund_apply AFTER INSERT ON commerce_refunds
 BEGIN

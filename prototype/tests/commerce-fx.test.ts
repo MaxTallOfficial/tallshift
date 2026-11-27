@@ -21,7 +21,7 @@ test('no approved provider means no rate for either asset; production prices a U
   await assert.rejects(() => deps.exchangeRate('TON'), code('FX_NOT_CONFIGURED'));
   await assert.rejects(() => deps.tax('buyer', 1600), (e: unknown) => e instanceof CommerceError && e.code === 'COMMERCE_DISABLED');
   assert.deepEqual(await deps.readiness(), {deliveryReady: true, sellerTermsReady: false, termsRevision: ''});
-  assert.deepEqual({...commerceLaunchDecisions}, {termsRevision: null, tax: null, prices: {product: {1: 1600}, all: {1: 3900}}, gramFx: null});
+  assert.deepEqual({...commerceLaunchDecisions}, {termsRevision: null, tax: null, prices: {product: {1: 1600, 12: 16000}, all: {1: 3900, 12: 39000}}, gramFx: null});
 });
 
 test('fresh primary quote carries source, provider time and expiry and prices the invoice in integer units', async () => {

@@ -29,10 +29,13 @@ export function createCommerceHttpHandlers(deps:CommerceHttpDependencies){
     let size=0,text='';const decoder=new TextDecoder('utf-8',{fatal:true});
     try{for(;;){const {value,done}=await reader.read();if(done)break;size+=value.length;if(size>1024){await reader.cancel();return json({error:{code:'PAYLOAD_TOO_LARGE'}},413);}text+=decoder.decode(value,{stream:true});}text+=decoder.decode();}catch(cause){if(cause instanceof TypeError)throw new CommerceError('INVALID_INPUT');throw cause;}finally{reader.releaseLock();}
     let value:unknown;try{value=JSON.parse(text);}catch{throw new CommerceError('INVALID_INPUT');}
-    // Only the level and the paid term come from the client; price, tax and access dates never do.
-    const input=value as {plan?:unknown;months?:unknown};
-    if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).sort().join(',')!=='months,plan'||!isSubscriptionPlan(input.plan)||!isPaidMonths(input.months))throw new CommerceError('INVALID_INPUT');
-    return json(await deps.service.createQuote(session.userId,{plan:input.plan as SubscriptionPlan,months:input.months as number,idempotencyKey:request.headers.get('idempotency-key')??''}),201);
+    // Only the level and the paid term, or the switch to «Всё», come from the client; price, tax and dates never do.
+    const input=value as {plan?:unknown;months?:unknown;upgrade?:unknown};
+    const keys=value&&typeof value==='object'&&!Array.isArray(value)?Object.keys(value).sort().join(','):'';
+    const term=keys==='months,plan'&&isSubscriptionPlan(input.plan)&&isPaidMonths(input.months),upgrade=keys==='plan,upgrade'&&input.plan==='all'&&input.upgrade===true;
+    if(!term&&!upgrade)throw new CommerceError('INVALID_INPUT');
+    const idempotencyKey=request.headers.get('idempotency-key')??'';
+    return json(await deps.service.createQuote(session.userId,upgrade?{plan:'all',upgrade:true,idempotencyKey}:{plan:input.plan as SubscriptionPlan,months:input.months as number,idempotencyKey}),201);
    }catch(cause){return commerceFailure(cause);}
   },
   async order(request:Request,id:string){

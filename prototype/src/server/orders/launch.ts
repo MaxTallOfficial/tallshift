@@ -24,9 +24,10 @@ export interface CommerceLaunchDecisions {
 export const commerceLaunchDecisions: Readonly<CommerceLaunchDecisions> = Object.freeze({
   termsRevision: null,
   tax: null,
-  // Max Tall, 27.11.2026 (roadmap decision 26): a monthly subscription, «Product» 16 USDT and
-  // «Всё» 39 USDT per month. No annual price has been set, so a 12-month term is not sold.
-  prices: Object.freeze({product: Object.freeze({1: 1600}), all: Object.freeze({1: 3900})}),
+  // Max Tall, 27.11.2026: a monthly subscription, «Product» 16 USDT and «Всё» 39 USDT per month
+  // (roadmap decision 26), plus a discounted annual term he asked to set right away: 12 months for
+  // the price of 10 — «Product» 160 USDT and «Всё» 390 USDT per year.
+  prices: Object.freeze({product: Object.freeze({1: 1600, 12: 16000}), all: Object.freeze({1: 3900, 12: 39000})}),
   gramFx: null,
 });
 

@@ -41,17 +41,17 @@ export function createCommerceFixture(options: {items?: readonly string[]} = {})
   const releases: PaidRelease[] = built.map(entry => entry.release);
   const objects = new Map(built.map(entry => [entry.release.objectKey, entry.bytes]));
   // Fixture prices only (USDT minor units); production prices live in src/server/orders/launch.ts.
-  const state = {now: 1000, ready: true, tax: 0, terms: 'terms-v1', taxRevision: 'tax-v1', prices: {product: {1: 1600, 3: 4500}, all: {1: 3900}} as Record<SubscriptionPlan, Record<number, number>>};
+  const state = {now: 1000, ready: true, tax: 0, terms: 'terms-v1', taxRevision: 'tax-v1', prices: {product: {1: 1600, 3: 4500, 12: 16000}, all: {1: 3900, 12: 39000}} as Record<SubscriptionPlan, Record<number, number>>};
   const store = createCommerceStore(f.db), ledger = createCommerceLedger(f.db), ton = createTonPaymentStore(f.db);
   const deps: CommerceDependencies = {enabled: true, store, periods: ledger.accessPeriods, price: (plan, months) => state.prices[plan][months] ?? null, readiness: async () => ({deliveryReady: state.ready, sellerTermsReady: state.ready, termsRevision: state.terms}), tax: async () => ({amountMinor: state.tax, revision: state.taxRevision}), releases: currentReleaseHashes(releases), revokedReleases: ledger.revokedReleases, now: () => state.now};
   const service = createCommerceService(deps);
   let sequence = 0;
   /** Quote -> pending TON invoice; payment is recorded separately with pay(). */
-  type Change = {usdMinor?: number; asset?: TonAsset; months?: number};
+  type Change = {usdMinor?: number; asset?: TonAsset; months?: number; upgrade?: boolean};
   /** Quote -> pending invoice (USDT by default: the price itself, no market rate); pay() records payment. */
   async function invoice(userId: string, plan: SubscriptionPlan, change: Change = {}) {
     const n = ++sequence;
-    const q = await service.createQuote(userId, {plan, months: change.months ?? 1, idempotencyKey: `quote-${n}`});
+    const q = await service.createQuote(userId, change.upgrade ? {plan, upgrade: true, idempotencyKey: `quote-${n}`} : {plan, months: change.months ?? 1, idempotencyKey: `quote-${n}`});
     const asset = change.asset ?? 'USDT', usdt = asset === 'USDT';
     const input = {id: `invoice-${n}`, userId, quoteId: q.id, itemIds: q.itemIds, termsRevision: q.termsRevision, asset, network: 'ton-testnet' as const, recipient: fixtureRecipient, jettonMaster: usdt ? '0:' + 'b'.repeat(64) : null, amountBaseUnits: usdt ? usdtBaseUnits(q.amountMinor) : '5000000000', comment: `ts_${n.toString(16).padStart(32, '0')}`, createdAt: state.now, expiresAt: state.now + 800, fxQuoteId: `fx-${n}`, fxSnapshot: {source: usdt ? 'tallshift:usdt-price' : 'fixture-gram', usdPerUnit: usdt ? '1' : '3.2', quotedAt: state.now, expiresAt: state.now + 800, usdMinor: change.usdMinor ?? q.amountMinor}, idempotencyKey: `invoice-${n}`, inputDigest: 'c'.repeat(64)};
     await ton.createInvoice(input);

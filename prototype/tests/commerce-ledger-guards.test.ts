@@ -34,6 +34,8 @@ test('"before_download" is refused once anything was served after the payment; t
     await f.fulfil();
     await f.ledger.recordDownload('buyer', 'S004', f.releases.find(r => r.itemId === 'S004')!.sha256, 'served', paidAt + 5);
     await assert.rejects(() => f.ledger.recordRefund({orderId: quote.orderId, amountMinor: 1600, reason: 'before_download', reference: 'tx', at: 2000}), /already downloaded after this payment/);
+    // Policy of 27.11: after a download only a defect or a duplicate payment is refunded.
+    await assert.rejects(() => f.ledger.recordRefund({orderId: quote.orderId, amountMinor: 1600, reason: 'other', reference: 'tx', at: 2000}), /only a defect or a duplicate payment/);
     await assert.rejects(() => f.ledger.recordRefund({orderId: quote.orderId, amountMinor: 1601, reason: 'defect', reference: 'tx', at: 2000}), /refund needs an active paid period/);
     for (const amountMinor of [0, -1, 1.5]) await assert.rejects(() => f.ledger.recordRefund({orderId: quote.orderId, amountMinor, reason: 'defect', reference: 'tx', at: 2000}), invalid);
     await assert.rejects(() => f.ledger.recordRefund({orderId: quote.orderId, amountMinor: 800, reason: 'defect', reference: 'bad reference with spaces', at: 2000}), invalid);

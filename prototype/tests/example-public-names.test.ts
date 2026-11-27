@@ -15,7 +15,7 @@ test('the AI request names each example exactly as its page does, in every langu
     const material = materials.find((item: { id: string }) => item.id === id);
     const name = materialDisplayName(material, locale);
     const firstLine = materialRecipe(id).prompt({ locale }).split('\n')[0];
-    assert.ok(firstLine.includes(`${name} (${material.name}, ${id})`), `${id} ${locale}: “${name}” in “${firstLine.slice(0, 120)}”`);
+    assert.ok(firstLine.includes(`${{ en: `“${name}”`, ru: `«${name}»`, vi: `“${name}”` }[locale]} (${material.name}, ${id})`), `${id} ${locale}: “${name}” in “${firstLine.slice(0, 120)}”`);
   }
 });
 
@@ -24,5 +24,18 @@ test('each new Free guide starts with the same public name, canonical name and I
     const material = materials.find((item: { id: string }) => item.id === id);
     const guide = materialRecipe(id).files({ locale }).find((file: { path: string }) => file.path === `INSTALL.${locale}.md`).content;
     assert.ok(guide.startsWith(`# ${materialDisplayName(material, locale)} (${material.name}, ${id}) — `), `${id} ${locale}: ${guide.split('\n')[0]}`);
+  }
+});
+
+test('every generated guide starts with a ready-to-paste step for the chosen project type', () => {
+  for (const id of generated) for (const locale of ['en', 'ru', 'vi'] as const) {
+    const slug = materials.find((item: { id: string }) => item.id === id).slug;
+    const recipe = materialRecipe(id);
+    const next = recipe.files({ locale, target: 'next' }).find((file: { path: string }) => file.path === `INSTALL.${locale}.md`).content;
+    const vite = recipe.files({ locale, target: 'vite' }).find((file: { path: string }) => file.path === `INSTALL.${locale}.md`).content;
+    assert.ok(next.split('\n')[2].startsWith('## '), `${id} ${locale}: quick start follows the title`);
+    assert.ok(next.includes(`import SelectedExample from '@/recipes/${slug}/SelectedExample';`) && next.includes('// app/page.tsx'), `${id} ${locale} next`);
+    assert.ok(vite.includes(`import SelectedExample from './recipes/${slug}/SelectedExample';`) && vite.includes('// src/App.tsx'), `${id} ${locale} vite`);
+    assert.ok(recipe.prompt({ locale, target: 'vite' }).endsWith(vite), `${id} ${locale}: AI request ends with the same guide`);
   }
 });

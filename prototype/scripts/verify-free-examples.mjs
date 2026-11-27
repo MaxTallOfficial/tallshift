@@ -205,7 +205,7 @@ try {
       [add, reverse, filter] = await controls();
       await tap(filter);
       assert.equal(await filter.evaluate(node => node.getAttribute('aria-pressed')), 'true');
-      assert.equal(await filter.evaluate(node => node.textContent), t.all);
+      assert.equal(await filter.evaluate(node => node.textContent), t.filter, 'The pressed state, not a changing label, shows the filter is on');
       assert((await rows()).every(row => row.status === t.active));
       assert.equal(await status(), `${t.count} 4`);
       // Complete the first visible task, then remove the rest: the active filter becomes empty.

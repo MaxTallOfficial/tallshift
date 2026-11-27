@@ -13,6 +13,11 @@ export async function sendAuthEmail(env:TallshiftCloudflareEnv,origin:string,ema
   const seconds=purpose==='verify'?authPolicy.verifySeconds:authPolicy.resetSeconds;
   const text=[copy.title,copy.intro,`${copy.action}: ${url.href}`,`${copy.expires} ${new Date(Date.now()+seconds*1000).toISOString()}`,copy.ignore].join('\n\n');
   const response=await fetch(env.AUTH_EMAIL_API_URL!,{method:'POST',headers:{'content-type':'application/json',authorization:`Bearer ${env.AUTH_EMAIL_API_KEY}`},body:JSON.stringify({from:env.AUTH_EMAIL_FROM,to:email,subject:copy.subject,text}),signal:AbortSignal.timeout(10000),redirect:'error'});
-  if(!response.ok)throw new Error('EMAIL_UNAVAILABLE');
+  if(!response.ok){
+    // Diagnostics only: provider status and error name; never the key, address or message body.
+    let reason='';try{const detail=await response.json() as {name?:unknown};if(typeof detail.name==='string')reason=detail.name.slice(0,60);}catch{}
+    console.error(`auth-email: provider ${response.status} ${reason}`.trim());
+    throw new Error('EMAIL_UNAVAILABLE');
+  }
   await response.body?.cancel();
 }

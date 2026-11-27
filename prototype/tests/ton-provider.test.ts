@@ -34,7 +34,7 @@ function fixture(asset:'TON'|'USDT'='TON') {
   const requests:{url:URL;init?:RequestInit}[]=[];
   const fetcher:typeof fetch=async(input,init)=>{
     const url=new URL(String(input));requests.push({url,init});
-    assert.equal(url.origin,'https://toncenter.com');assert.equal(init?.redirect,'error');assert.ok(init?.signal);assert.equal(new Headers(init?.headers).get('X-API-Key'),'test-only-key');
+    assert.equal(url.origin,'https://toncenter.com');assert.equal(init?.redirect,'manual');assert.ok(init?.signal);assert.equal(new Headers(init?.headers).get('X-API-Key'),'test-only-key');
     if(state.fail)throw new Error('provider private detail');
     if(state.response)return state.response;
     if(url.pathname==='/api/v2/getAddressInformation')return Response.json({ok:true,result:{state:state.active?'active':'uninitialized'}});
@@ -121,7 +121,7 @@ test('malformed BOC, oversized transfer bodies and mismatching fetched hash/acco
 });
 test('provider has fixed origins, no redirects, bounded body size, timeout and safe unavailable errors',async()=>{
   const f=fixture();f.state.fail=true;await assert.rejects(f.reader.readProof(txHash,'TON'),chainCode('CHAIN_UNAVAILABLE'));
-  for(const response of [new Response('unavailable',{status:503}),new Response(null,{status:200})]){
+  for(const response of [new Response('unavailable',{status:503}),new Response(null,{status:200}),new Response(null,{status:302,headers:{Location:'https://example.test/'}})]){
     const f=fixture();f.state.response=response;await assert.rejects(f.reader.readProof(txHash,'TON'),chainCode('CHAIN_UNAVAILABLE'));
   }
   for(const response of [new Response('{}',{headers:{'Content-Length':'1048577'}}),new Response('x'.repeat(1048577)),new Response('not json')]){

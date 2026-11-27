@@ -52,7 +52,7 @@ export function createToncenterReader(config:TonPaymentConfig,options:{apiKey?:s
     if(options.apiKey)headers['X-API-Key']=options.apiKey;
     if(post)headers['Content-Type']='application/json';
     let response:Response;
-    try {response=await fetcher(url,{method:post?'POST':'GET',headers,body:post?JSON.stringify(post):undefined,redirect:'error',signal:AbortSignal.timeout(8000)});}catch{throw new TonChainError('CHAIN_UNAVAILABLE');}
+    try {response=await fetcher(url,{method:post?'POST':'GET',headers,body:post?JSON.stringify(post):undefined,redirect:'manual',signal:AbortSignal.timeout(8000)});}catch{throw new TonChainError('CHAIN_UNAVAILABLE');}
     if(!response.ok||!response.body)throw new TonChainError('CHAIN_UNAVAILABLE');
     if(Number(response.headers.get('content-length'))>1048576)throw new TonChainError('INVALID_CHAIN_RESPONSE');
     const reader=response.body.getReader(),chunks:Uint8Array[]=[];let size=0;

@@ -9,15 +9,19 @@ const policy: FxPolicy = {maxAgeSeconds: 30, ttlSeconds: 300, clockSkewSeconds: 
 const provider = (source: string, value: () => {usdPerUnit: string; quotedAt: number} | Promise<never>): FxProvider => ({source, quote: async () => value()});
 const code = (expected: FxError['code']) => (error: unknown) => error instanceof FxError && error.code === expected;
 
-test('no approved provider means no rate for either asset: USDT is never assumed to be $1', async () => {
+test('no approved provider means no rate for either asset; production prices a USDT invoice by the USDT price itself', async () => {
   const rate = createUsdExchangeRate({providers: [], policy, now: () => 1000});
   await assert.rejects(() => rate('USDT'), code('FX_NOT_CONFIGURED'));
   await assert.rejects(() => rate('TON'), code('FX_NOT_CONFIGURED'));
-  const deps = productionCommerceDependencies({deliveryReady: true});
-  await assert.rejects(() => deps.exchangeRate('USDT'), code('FX_NOT_CONFIGURED'));
+  const deps = productionCommerceDependencies({deliveryReady: true, now: () => 1000});
+  // Prices are in USDT: a USDT invoice needs no market rate (1 price unit = 1 USDT); Gram needs an approved provider.
+  const usdt = await deps.exchangeRate('USDT');
+  assert.deepEqual([usdt.asset, usdt.usdPerUnit, usdt.source, usdt.quotedAt, usdt.expiresAt], ['USDT', '1', 'tallshift:usdt-price', 1000, 1900]);
+  assert.equal(settlementAmount(1600, usdt, 1000), '16000000');
+  await assert.rejects(() => deps.exchangeRate('TON'), code('FX_NOT_CONFIGURED'));
   await assert.rejects(() => deps.tax('buyer', 1600), (e: unknown) => e instanceof CommerceError && e.code === 'COMMERCE_DISABLED');
   assert.deepEqual(await deps.readiness(), {deliveryReady: true, sellerTermsReady: false, termsRevision: ''});
-  assert.deepEqual({...commerceLaunchDecisions}, {termsRevision: null, tax: null, fx: null});
+  assert.deepEqual({...commerceLaunchDecisions}, {termsRevision: null, tax: null, prices: {product: {1: 1600}, all: {1: 3900}}, gramFx: null});
 });
 
 test('fresh primary quote carries source, provider time and expiry and prices the invoice in integer units', async () => {

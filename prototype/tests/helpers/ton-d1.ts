@@ -41,7 +41,7 @@ export function createPaymentFixture() {
   const f=createD1Fixture();
   const config:TonPaymentConfig={network:'ton-testnet',recipient:testRecipient,usdtMaster:testMaster,enabled:true};
   const state:{now:number;quote:PayableQuote|null;rates:Record<'TON'|'USDT',UsdExchangeRate>;failRate:boolean;recipientActive:boolean;chainProof:TonChainProof|null}={
-    now:1000,quote:{id:'quote-1',userId:'buyer-1',currency:'USD',amountMinor:1600,itemIds:['S004','C003'],termsRevision:'terms-1',expiresAt:1700,payable:true},
+    now:1000,quote:{id:'quote-1',userId:'buyer-1',currency:'USDT',amountMinor:1600,itemIds:['S004','C003'],termsRevision:'terms-1',expiresAt:1700,payable:true},
     rates:{TON:{id:'rate-ton',asset:'TON',usdPerUnit:'3',source:'fixture',quotedAt:1000,expiresAt:1800},USDT:{id:'rate-usdt',asset:'USDT',usdPerUnit:'0.999',source:'fixture',quotedAt:1000,expiresAt:1800}},
     failRate:false,recipientActive:true,chainProof:null,
   };

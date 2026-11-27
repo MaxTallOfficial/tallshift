@@ -19,9 +19,10 @@ import {createCommerceHttpHandlers} from './http.ts';
 import {createCommerceLedger} from './ledger.ts';
 import {deliveryFlagEnabled,salesFlagsEnabled} from './flags.ts';
 
-/** Required server-only launch dependencies; no fallback tax, FX, terms or fabricated release. */
+/** Required server-only launch dependencies; no fallback price, tax, FX, terms or fabricated release. */
 export interface CommerceHostDependencies {
- readiness:CommerceDependencies['readiness'];tax:CommerceDependencies['tax'];
+ readiness:CommerceDependencies['readiness'];tax:CommerceDependencies['tax'];price:CommerceDependencies['price'];
+ /** USDT: the price itself (no market rate); TON (Gram): an approved FX provider only. */
  exchangeRate:(asset:'TON'|'USDT')=>Promise<UsdExchangeRate>;
 }
 export interface CommerceHostOptions {
@@ -40,7 +41,7 @@ export function createCommerceHost(env:TallshiftCloudflareEnv,host:CommerceHostD
  const db=primaryAuthDatabase(auth.db),authStore=createAuthStore(db),store=createCommerceStore(db),ledger=createCommerceLedger(db);
  const releases=validatePaidReleases(options.releases??paidReleaseRegistry),current=currentReleaseHashes(releases);
  const enabled=salesFlagsEnabled(env)&&Object.keys(current).length>0;
- const commerce=createCommerceService({enabled,store,ownership:ledger.pricingOwnership,readiness:host.readiness,tax:host.tax,releases:current,revokedReleases:ledger.revokedReleases,now:options.now});
+ const commerce=createCommerceService({enabled,store,periods:ledger.accessPeriods,price:host.price,readiness:host.readiness,tax:host.tax,releases:current,revokedReleases:ledger.revokedReleases,now:options.now});
  const session=async(request:Request)=>readAuthSession(request,db);
  const authenticate=async(request:Request)=>{const value=await session(request);return value?{userId:value.user.id}:null;};
  const verifyCsrf=(request:Request)=>requireCsrf(request,auth.origin,auth.secret);
@@ -54,7 +55,7 @@ export function createCommerceHost(env:TallshiftCloudflareEnv,host:CommerceHostD
  };
  const tonConfig=paymentConfig({enabled}),tonStore=createTonPaymentStore(db),reader=options.reader??createToncenterReader(tonConfig,{apiKey:env.TONCENTER_API_KEY});
  const ton=createTonPaymentService({config:tonConfig,store:tonStore,
-  resolveQuote:async(id,userId)=>{try{return await commerce.resolveQuote(id,userId);}catch(cause){if(cause instanceof CommerceError)throw new TonPaymentError(cause.code);throw cause;}},
+  resolveQuote:async(id,userId)=>{try{return await commerce.resolveQuote(id,userId);}catch(cause){if(cause instanceof CommerceError)throw new TonPaymentError(cause.code==='TERM_UNAVAILABLE'||cause.code==='PLAN_CHANGE_UNAVAILABLE'?'OFFER_CHANGED':cause.code);throw cause;}},
   exchangeRate:host.exchangeRate,isRecipientActive:reader.isRecipientActive,readProof:reader.readProof,now:options.now,
  });
  const perRequestInvoices=(request:Request)=>createTonHttpHandlers({service:ton,store:tonStore,config:tonConfig,mainOrigin:auth.origin,authenticate,verifyCsrf,rateLimit:(userId,action)=>rateLimit(request,userId,action),webhookSecret:env.TONAPI_WEBHOOK_SECRET});

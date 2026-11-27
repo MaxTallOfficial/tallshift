@@ -1,16 +1,18 @@
-import {inclusiveUtcDate,releaseAccess,validatePaidReleases,type PaidRelease,type ReleaseAccess} from './releases.ts';
+import {inclusiveUtcDate,releaseAccess,validatePaidReleases,type PaidRelease} from './releases.ts';
 import {ArtifactError,type PrivateArtifactStore} from './storage.ts';
 import {downloadTicketSeconds,ticketBinding,type DownloadTicketSigner} from './tickets.ts';
-import type {ActiveGrant,ReceiptSummary} from '../orders/ledger.ts';
+import type {ReceiptSummary} from '../orders/ledger.ts';
+import {currentAccess,planCovers,type AccessPeriod,type CurrentAccess} from '../orders/subscription.ts';
 
 /**
- * Entitlements and private delivery. Every response is private/no-store. Ownership comes only
- * from the server ledger; a download needs the owner's live session, a short-lived ticket
- * bound to that session, current grant coverage and an unrevoked release, checked again on
- * every request. Storage, database or auth failures fail closed and never remove ownership.
+ * Entitlements and private delivery. Every response is private/no-store. Access comes only from
+ * the server ledger; a download needs the owner's live session, a short-lived ticket bound to
+ * that session, a subscription level open right now that covers the item and an unrevoked
+ * release, checked again on every request. After the paid period ends new downloads answer 403;
+ * nothing already downloaded is touched. Storage, database or auth failures fail closed.
  */
 export interface DeliveryLedger {
-  activeGrants(userId: string): Promise<ActiveGrant[]>;
+  accessPeriods(userId: string): Promise<AccessPeriod[]>;
   receipts(userId: string): Promise<ReceiptSummary[]>;
   revokedReleases(hashes: readonly string[]): Promise<Set<string>>;
   recordDownload(userId: string, itemId: string, releaseSha256: string, outcome: 'issued' | 'served', at: number): Promise<void>;
@@ -62,16 +64,26 @@ export function createDeliveryHttpHandlers(deps: DeliveryDependencies) {
   const byHash = new Map(releases.map(release => [release.sha256, release]));
 
   async function coverage(userId: string) {
-    const grants = await deps.ledger.activeGrants(userId);
-    const owned = new Set(grants.map(grant => grant.itemId));
-    const relevant = releases.filter(release => owned.has(release.itemId));
+    const periods = await deps.ledger.accessPeriods(userId), at = now();
+    const access = currentAccess(periods, at);
+    const relevant = access ? releases.filter(release => planCovers(access.plan, release.itemId)) : [];
     const revoked = await deps.ledger.revokedReleases(relevant.map(release => release.sha256));
-    return {grants, relevant, revoked};
+    return {periods, access, relevant, revoked, at};
   }
-  const access = (release: PaidRelease, state: Awaited<ReturnType<typeof coverage>>): ReleaseAccess => releaseAccess(release, state.grants, state.revoked);
+  /** Level and end date for the cabinet; the inclusive last day is computed once on the server. */
+  function subscription(periods: readonly AccessPeriod[], access: CurrentAccess | null, at: number) {
+    const live = periods.filter(period => period.status === 'active');
+    const describe = (status: 'active' | 'scheduled' | 'expired', plan: AccessPeriod['plan'], startsAt: number, endsAt: number) => ({plan, status, startsAt, endsAt, accessUntil: inclusiveUtcDate(endsAt)});
+    if (access) return describe('active', access.plan, access.startsAt, access.endsAt);
+    // Only after a manual refund of the current period can a paid period lie entirely in the future.
+    const next = live.filter(period => period.startsAt > at).sort((a, b) => a.startsAt - b.startsAt)[0];
+    if (next) return describe('scheduled', next.plan, next.startsAt, next.endsAt);
+    const last = live.filter(period => period.endsAt <= at).sort((a, b) => b.endsAt - a.endsAt)[0];
+    return last ? describe('expired', last.plan, last.startsAt, last.endsAt) : {plan: null, status: 'none' as const};
+  }
 
   return {
-    /** GET: authoritative ownership for the cabinet. Errors are never "no purchases". */
+    /** GET: authoritative level, end date and downloadable releases for the cabinet. Errors are never "no subscription". */
     async entitlements(request: Request) {
       if (request.method !== 'GET') return failure('METHOD_NOT_ALLOWED', 405, {Allow: 'GET'});
       if (!deps.enabled) return failure('COMMERCE_DISABLED', 503);
@@ -80,20 +92,17 @@ export function createDeliveryHttpHandlers(deps: DeliveryDependencies) {
         if (!session) return failure('UNAUTHENTICATED', 401);
         if (!await deps.rateLimit(request, session.userId, 'entitlements')) return failure('RATE_LIMITED', 429, {'Retry-After': '60'});
         const state = await coverage(session.userId);
-        const items = [...new Set(state.grants.map(grant => grant.itemId))].sort().map(itemId => {
-          const updatesEnd = Math.max(...state.grants.filter(grant => grant.itemId === itemId).map(grant => grant.updatesEnd));
-          return {
-            itemId,
-            functionalUpdatesUntil: inclusiveUtcDate(updatesEnd),
-            releases: state.relevant.filter(release => release.itemId === itemId).sort((a, b) => b.publishedAt - a.publishedAt)
-              .map(release => ({version: release.version, sha256: release.sha256, byteLength: release.byteLength, publishedAt: release.publishedAt, kind: release.kind, access: access(release, state)})),
-          };
-        });
+        const items = [...new Set(state.relevant.map(release => release.itemId))].sort().map(itemId => ({
+          itemId,
+          releases: state.relevant.filter(release => release.itemId === itemId).sort((a, b) => b.publishedAt - a.publishedAt)
+            .map(release => ({version: release.version, sha256: release.sha256, byteLength: release.byteLength, publishedAt: release.publishedAt, kind: release.kind, access: releaseAccess(release, state.access, state.revoked)})),
+        }));
+        const periods = state.periods.map(period => ({orderId: period.orderId, plan: period.plan, months: period.months, startsAt: period.startsAt, endsAt: period.endsAt, status: period.status}));
         const receipts = (await deps.ledger.receipts(session.userId)).map(receipt => ({...receipt}));
-        return json({verifiedAt: now(), items, receipts});
+        return json({verifiedAt: state.at, subscription: subscription(state.periods, state.access, state.at), items, periods, receipts});
       } catch {return failure('TEMPORARILY_UNAVAILABLE', 503);}
     },
-    /** POST {itemId, sha256?}: issues a ticket for one covered release of an owned item. */
+    /** POST {itemId, sha256?}: issues a ticket for one release of an item the open level covers. */
     async issue(request: Request) {
       if (request.method !== 'POST') return failure('METHOD_NOT_ALLOWED', 405, {Allow: 'POST'});
       if (!deps.enabled || !deps.storage) return failure('COMMERCE_DISABLED', 503);
@@ -108,18 +117,19 @@ export function createDeliveryHttpHandlers(deps: DeliveryDependencies) {
         const input = body as {itemId?: unknown; sha256?: unknown};
         if ((keys !== 'itemId' && keys !== 'itemId,sha256') || typeof input.itemId !== 'string' || !/^[SCEA]\d{3}$/.test(input.itemId) || (input.sha256 !== undefined && (typeof input.sha256 !== 'string' || !/^[a-f0-9]{64}$/.test(input.sha256)))) return failure('INVALID_INPUT', 400);
         const state = await coverage(session.userId);
-        if (!state.grants.some(grant => grant.itemId === input.itemId)) return failure('RELEASE_NOT_COVERED', 403);
+        if (!state.access) return failure('SUBSCRIPTION_INACTIVE', 403);
+        if (!planCovers(state.access.plan, input.itemId)) return failure('RELEASE_NOT_COVERED', 403);
         const candidates = state.relevant.filter(release => release.itemId === input.itemId && (input.sha256 === undefined || release.sha256 === input.sha256));
         if (!candidates.length) return failure('NOT_FOUND', 404);
-        const available = candidates.filter(release => access(release, state) === 'available').sort((a, b) => b.publishedAt - a.publishedAt);
-        if (!available.length) return candidates.some(release => access(release, state) === 'revoked') ? failure('RELEASE_REVOKED', 410) : failure('RELEASE_NOT_COVERED', 403);
+        const available = candidates.filter(release => releaseAccess(release, state.access, state.revoked) === 'available').sort((a, b) => b.publishedAt - a.publishedAt);
+        if (!available.length) return failure('RELEASE_REVOKED', 410);
         const release = available[0], at = now(), expiresAt = at + downloadTicketSeconds;
         const ticket = await (await deps.tickets()).sign({binding: await ticketBinding(session.userId, session.sessionId), itemId: release.itemId, sha256: release.sha256, expiresAt});
         await deps.ledger.recordDownload(session.userId, release.itemId, release.sha256, 'issued', at);
         return json({url: `/api/v1/downloads/${ticket}`, expiresAt, itemId: release.itemId, version: release.version, sha256: release.sha256, byteLength: release.byteLength}, 201);
       } catch {return failure('TEMPORARILY_UNAVAILABLE', 503);}
     },
-    /** GET /downloads/{ticket}: same session, fresh coverage, registry object key, verified bytes. */
+    /** GET /downloads/{ticket}: same session, access still open now, registry object key, verified bytes. */
     async serve(request: Request, token: string) {
       if (request.method !== 'GET') return failure('METHOD_NOT_ALLOWED', 405, {Allow: 'GET'});
       if (!deps.enabled || !deps.storage) return failure('COMMERCE_DISABLED', 503);
@@ -132,7 +142,8 @@ export function createDeliveryHttpHandlers(deps: DeliveryDependencies) {
         const release = byHash.get(ticket.sha256);
         if (!release || release.itemId !== ticket.itemId) return failure('NOT_FOUND', 404);
         const state = await coverage(session.userId);
-        const verdict = access(release, state);
+        const verdict = releaseAccess(release, state.access, state.revoked);
+        if (verdict === 'inactive') return failure('SUBSCRIPTION_INACTIVE', 403);
         if (verdict === 'revoked') return failure('RELEASE_REVOKED', 410);
         if (verdict !== 'available') return failure('RELEASE_NOT_COVERED', 403);
         let bytes: Uint8Array<ArrayBuffer>;

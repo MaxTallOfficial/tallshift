@@ -28,7 +28,7 @@ test('with commerce flags off every mounted route answers 503 before touching th
   const post = (path: string, body: unknown) => new Request(origin + path, {method: 'POST', headers: {origin, 'content-type': 'application/json'}, body: JSON.stringify(body)});
   for (const env of [base, {...base, COMMERCE_ENABLED: 'false', TON_PAYMENTS_ENABLED: 'false'}, {...base, COMMERCE_ENABLED: 'true'}, null]) {
     const responses = await Promise.all([
-      commerceRoutes.quote(post('/api/v1/checkout-quotes', {plan: 'product'}), env),
+      commerceRoutes.quote(post('/api/v1/checkout-quotes', {plan: 'product', months: 1}), env),
       commerceRoutes.createInvoice(post('/api/v1/payments/ton/invoices', {quoteId: 'q', asset: 'TON'}), env),
       commerceRoutes.order(new Request(origin), 'order', env),
       commerceRoutes.invoiceStatus(new Request(origin), 'invoice', env),
@@ -89,7 +89,7 @@ test('flags on but no approved terms, tax, FX or released files still keeps sale
   try {
     const env: TallshiftCloudflareEnv = {...base, DB: f.db as unknown as D1Database, COMMERCE_ENABLED: 'true', TON_PAYMENTS_ENABLED: 'true', COMMERCE_DELIVERY_ENABLED: 'true'};
     const user = await signedIn(f);
-    const response = await commerceRoutes.quote(user.post('/api/v1/checkout-quotes', {plan: 'product'}), env);
+    const response = await commerceRoutes.quote(user.post('/api/v1/checkout-quotes', {plan: 'product', months: 1}), env);
     assert.equal(response.status, 503); assert.equal((await response.json()).error.code, 'COMMERCE_DISABLED');
     assert.equal(f.count('commerce_quotes'), 0);
     // Delivery flag without a private bucket binding stays closed as well.
@@ -130,10 +130,10 @@ test('SQLite chain: quote -> TON invoice -> scanned hint -> verified payment -> 
     // Test-only FX adapter; production has none until an owner-approved provider exists.
     const exchangeRate = createUsdExchangeRate({providers: [{source: 'fixture-ton-usd', quote: async () => ({usdPerUnit: '3.2', quotedAt: clock.now})}], policy: {maxAgeSeconds: 30, ttlSeconds: 600, clockSkewSeconds: 5, minSources: 1, maxDeviationBps: 50}, now: () => clock.now});
     const storage = memoryBucket(f.objects);
-    const host = createCommerceHost(env, {readiness: async () => ({deliveryReady: true, sellerTermsReady: true, termsRevision: 'terms-v1'}), tax: async () => ({amountMinor: 0, revision: 'tax-v1'}), exchangeRate}, {releases: f.releases, storage: createR2ArtifactStore(storage.bucket), reader, now: () => clock.now});
+    const host = createCommerceHost(env, {readiness: async () => ({deliveryReady: true, sellerTermsReady: true, termsRevision: 'terms-v1'}), tax: async () => ({amountMinor: 0, revision: 'tax-v1'}), price: (plan, months) => plan === 'product' && months === 1 ? 1600 : null, exchangeRate}, {releases: f.releases, storage: createR2ArtifactStore(storage.bucket), reader, now: () => clock.now});
     const user = await signedIn(f);
 
-    const quoteResponse = await host.commerce.quote(user.post('/api/v1/checkout-quotes', {plan: 'product'}, 'quote-1'));
+    const quoteResponse = await host.commerce.quote(user.post('/api/v1/checkout-quotes', {plan: 'product', months: 1}, 'quote-1'));
     assert.equal(quoteResponse.status, 201);
     const quote = await quoteResponse.json();
     assert.equal(quote.amountMinor, 1600);
@@ -144,14 +144,14 @@ test('SQLite chain: quote -> TON invoice -> scanned hint -> verified payment -> 
     assert.equal(invoice.paymentStatus, 'pending');
 
     // First cron run: the cursor starts at the head, which predates the invoice.
-    let report = await runCommerceSchedule(env, {db: f.db, reader, releases: f.releases, now: () => clock.now});
+    let report = await runCommerceSchedule(env, {db: f.db, reader, now: () => clock.now});
     assert.equal((report.scan as {state: string}).state, 'initialized');
     // The buyer pays from any wallet with the exact comment; the chain shows a finalized transfer.
     const hash = '2'.repeat(64);
     chain.txs.push({lt: '101', hash, finalized: true, utime: clock.now + 5});
     chain.proofs.set(hash, {network: config.network, account: config.recipient, transactionHash: hash, lt: '101', transactionAt: clock.now + 5, successful: true, aborted: false, finalized: true, masterchainSeqno: 1, outgoingMessageCount: 0, asset: 'TON', incoming: {bounced: false, source: '0:' + 'c'.repeat(64), destination: config.recipient, amountBaseUnits: invoice.amountBaseUnits, comment: invoice.comment}});
     clock.now += 10;
-    report = await runCommerceSchedule(env, {db: f.db, reader, releases: f.releases, now: () => clock.now});
+    report = await runCommerceSchedule(env, {db: f.db, reader, now: () => clock.now});
     assert.deepEqual(report.errors, []);
     assert.equal((report.scan as {hints: number}).hints, 1);
     assert.equal((report.inbox as {matched: number}).matched, 1);
@@ -163,16 +163,17 @@ test('SQLite chain: quote -> TON invoice -> scanned hint -> verified payment -> 
     assert.equal(status.paymentStatus, 'paid'); assert.equal(status.deliveryStatus, 'delivered');
     const entitlements = await (await host.delivery.entitlements(user.get('/api/v1/me/entitlements'))).json();
     assert.deepEqual(entitlements.items.map((x: {itemId: string}) => x.itemId), [...pricingPlanScopes.product].sort());
+    assert.deepEqual([entitlements.subscription.plan, entitlements.subscription.status], ['product', 'active']);
     const ticket = await (await host.delivery.issue(user.post('/api/v1/downloads', {itemId: 'S004'}))).json();
     const download = await host.delivery.serve(user.get(ticket.url), ticket.url.split('/').pop());
     assert.equal(download.status, 200);
     assert.deepEqual(new Uint8Array(await download.arrayBuffer()), f.objects.get(f.releases.find(r => r.itemId === 'S004')!.objectKey));
 
-    // Replays change nothing; owning the plan now means no second payment.
-    report = await runCommerceSchedule(env, {db: f.db, reader, releases: f.releases, now: () => clock.now});
+    // Replays change nothing; a renewal quote continues from the current end of the paid period.
+    report = await runCommerceSchedule(env, {db: f.db, reader, now: () => clock.now});
     assert.deepEqual([(report.scan as {hints: number}).hints, (report.fulfillment as {fulfilled: number}).fulfilled], [0, 0]);
-    assert.equal(f.count('commerce_grants'), 6); assert.equal(f.count('commerce_receipts'), 1);
-    const again = await host.commerce.quote(user.post('/api/v1/checkout-quotes', {plan: 'product'}, 'quote-2'));
-    assert.equal(again.status, 409); assert.equal((await again.json()).error.code, 'OFFER_CHANGED');
+    assert.equal(f.count('commerce_access_periods'), 1); assert.equal(f.count('commerce_receipts'), 1);
+    const again = await host.commerce.quote(user.post('/api/v1/checkout-quotes', {plan: 'product', months: 1}, 'quote-2'));
+    assert.equal(again.status, 201); assert.equal((await again.json()).currentAccessEnd, entitlements.subscription.endsAt);
   } finally {f.sqlite.close();}
 });

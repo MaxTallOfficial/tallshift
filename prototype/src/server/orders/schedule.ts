@@ -7,7 +7,6 @@ import {createToncenterReader} from '../payments/ton/toncenter.ts';
 import {createTonInboxWorker} from '../payments/ton/worker.ts';
 import {createTonChainScanner,type ChainScanReader} from '../payments/ton/scanner.ts';
 import type {TonChainProof} from '../payments/ton/verification.ts';
-import {paidReleaseRegistry,type PaidRelease} from '../delivery/releases.ts';
 import {createCommerceLedger} from './ledger.ts';
 import {createFulfillmentWorker} from './fulfillment.ts';
 import {salesFlagsEnabled} from './flags.ts';
@@ -30,7 +29,6 @@ export interface ScheduleOptions {
   now?: () => number;
   /** Test seams; production uses the fixed Toncenter adapter for the confirmed recipient. */
   reader?: ChainScanReader & {readProof(hash: string, asset: 'TON' | 'USDT'): Promise<TonChainProof>};
-  releases?: readonly PaidRelease[];
   db?: D1DatabaseLike;
   limits?: ScheduleLimits;
 }
@@ -40,7 +38,7 @@ export interface ScheduleReport {
   scan?: unknown; inbox?: unknown; fulfillment?: unknown;
   errors: string[];
 }
-const requiredTables = ['ton_invoices', 'ton_webhook_inbox', 'ton_payment_outbox', 'commerce_quotes', 'commerce_orders', 'commerce_receipts', 'commerce_grants', 'commerce_fulfillments', 'ton_scan_cursors', 'commerce_release_revocations', 'commerce_refunds'];
+const requiredTables = ['ton_invoices', 'ton_webhook_inbox', 'ton_payment_outbox', 'commerce_quotes', 'commerce_orders', 'commerce_receipts', 'commerce_access_periods', 'commerce_fulfillments', 'ton_scan_cursors', 'commerce_release_revocations', 'commerce_refunds'];
 const code = (cause: unknown) => {
   const value = cause instanceof Error ? (cause as Error & {code?: unknown}).code : undefined;
   return typeof value === 'string' && /^[A-Z_]{1,64}$/.test(value) ? value : 'TEMPORARILY_UNAVAILABLE';
@@ -71,6 +69,6 @@ export async function runCommerceSchedule(env: TallshiftCloudflareEnv, options: 
   const service = createTonPaymentService({config, store, resolveQuote: unavailable, exchangeRate: unavailable, isRecipientActive: async () => false, readProof: reader.readProof, now: options.now});
   try {report.scan = await scanner.scan();} catch (cause) {report.errors.push(`scan:${code(cause)}`);}
   try {report.inbox = await createTonInboxWorker({store, network: config.network, recipient: config.recipient, reconcile: service.reconcile, now: options.now}).process(limits.inbox);} catch (cause) {report.errors.push(`inbox:${code(cause)}`);}
-  try {report.fulfillment = await createFulfillmentWorker({ledger: createCommerceLedger(db), releases: options.releases ?? paidReleaseRegistry, now: options.now}).process(limits.fulfillment);} catch (cause) {report.errors.push(`fulfillment:${code(cause)}`);}
+  try {report.fulfillment = await createFulfillmentWorker({ledger: createCommerceLedger(db), now: options.now}).process(limits.fulfillment);} catch (cause) {report.errors.push(`fulfillment:${code(cause)}`);}
   return report;
 }

@@ -1,11 +1,9 @@
-import type {PricingOwnership} from '../../foundations/pricing-quote.ts';
-import {pricingPlanTerms} from '../../foundations/pricing-plans.ts';
 import type {D1DatabaseLike,D1StatementLike} from '../payments/ton/store.ts';
-import type {CoverageGrant} from '../delivery/releases.ts';
+import type {AccessPeriod,SubscriptionPlan} from './subscription.ts';
 
 /**
- * Authoritative ownership ledger (receipts, grants, fulfillment state, release withdrawals).
- * Browser storage, URL examples and client payloads are never inputs to these reads.
+ * Authoritative subscription ledger (receipts, access periods, fulfillment state, release
+ * withdrawals). Browser storage, URL examples and client payloads are never inputs to these reads.
  */
 export class LedgerError extends Error {
   readonly code: 'INVALID_INPUT' | 'DATABASE_ERROR';
@@ -15,21 +13,24 @@ type Row = Record<string, unknown>;
 const identifier = (value: unknown): value is string => typeof value === 'string' && /^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/.test(value);
 const sha = (value: unknown): value is string => typeof value === 'string' && /^[a-f0-9]{64}$/.test(value);
 const time = (value: unknown): value is number => Number.isSafeInteger(value) && Number(value) >= 0;
+export type RefundReason = 'before_download' | 'defect' | 'duplicate_payment' | 'not_delivered' | 'other';
+const refundReasons: readonly RefundReason[] = ['before_download', 'defect', 'duplicate_payment', 'not_delivered', 'other'];
 
-export interface ActiveGrant extends CoverageGrant {orderId: string; paidAt: number}
 export interface ReceiptSummary {
-  orderId: string; plan: 'product' | 'bundle'; currency: 'USD'; subtotalMinor: number; taxMinor: number; totalMinor: number;
-  refundedSubtotalMinor: number; asset: 'TON' | 'USDT'; paidAt: number; status: 'paid' | 'partially_refunded' | 'refunded' | 'disputed';
+  orderId: string; plan: SubscriptionPlan; months: number; currency: 'USDT'; subtotalMinor: number; taxMinor: number; totalMinor: number;
+  refundedSubtotalMinor: number; asset: 'TON' | 'USDT'; paidAt: number; status: 'paid' | 'refunded' | 'disputed';
 }
 export interface FulfillmentCandidate {invoiceId: string; attempts: number}
 export interface Settlement {
   invoice: {id: string; userId: string; quoteId: string; status: string; paidAt: number | null; itemIdsJson: string; termsRevision: string; usdMinor: number | null};
-  quote: {id: string; userId: string; plan: string; subtotalMinor: number; totalMinor: number; itemIds: string[]; releases: Record<string, string>; termsRevision: string} | null;
+  quote: {id: string; userId: string; plan: string; months: number; subtotalMinor: number; totalMinor: number; itemIds: string[]; termsRevision: string} | null;
   order: {id: string; userId: string; status: string} | null;
 }
-export interface GrantPlan {itemId: string; releaseSha256: string; allocationMinor: number}
 
-/** SQL fragment: the order's settled invoice exactly matches its immutable quote (mirrors the 0003 trigger). */
+/**
+ * SQL fragment: the order's settled invoice exactly matches its immutable quote (mirrors the 0003
+ * trigger). The payment module's snapshot key usdMinor carries the quote total in USDT minor units.
+ */
 export const matchingSettledInvoice = `SELECT 1 FROM ton_invoices i JOIN commerce_quotes q ON q.id=i.quote_id
   WHERE q.id=commerce_orders.quote_id AND q.user_id=commerce_orders.user_id AND i.user_id=commerce_orders.user_id
   AND i.status='paid' AND i.item_ids_json=q.item_ids_json AND i.terms_revision=q.terms_revision
@@ -43,31 +44,16 @@ export function createCommerceLedger(db: D1DatabaseLike) {
     return result;
   };
   return {
-    async activeGrants(userId: string): Promise<ActiveGrant[]> {
+    /** Every paid period of the user, refunded ones included (status 'revoked'), oldest first. */
+    async accessPeriods(userId: string): Promise<AccessPeriod[]> {
       if (!identifier(userId)) throw new LedgerError('INVALID_INPUT');
-      const rows = await statement("SELECT order_id,item_id,release_sha256,paid_at,updates_end FROM commerce_grants WHERE user_id=? AND status='active' ORDER BY item_id,paid_at", userId).all<Row>();
-      return rows.results.map(row => ({orderId: String(row.order_id), itemId: String(row.item_id), releaseSha256: String(row.release_sha256), paidAt: Number(row.paid_at), updatesEnd: Number(row.updates_end)}));
+      const rows = await statement('SELECT order_id,plan,months,starts_at,ends_at,status FROM commerce_access_periods WHERE user_id=? ORDER BY starts_at,order_id', userId).all<Row>();
+      return rows.results.map(row => ({orderId: String(row.order_id), plan: row.plan as SubscriptionPlan, months: Number(row.months), startsAt: Number(row.starts_at), endsAt: Number(row.ends_at), status: row.status as AccessPeriod['status']}));
     },
     async receipts(userId: string): Promise<ReceiptSummary[]> {
       if (!identifier(userId)) throw new LedgerError('INVALID_INPUT');
-      const rows = await statement('SELECT order_id,plan,currency,subtotal_minor,tax_minor,total_minor,refunded_subtotal_minor,asset,paid_at,status FROM commerce_receipts WHERE user_id=? ORDER BY paid_at DESC,order_id', userId).all<Row>();
-      return rows.results.map(row => ({orderId: String(row.order_id), plan: row.plan as ReceiptSummary['plan'], currency: 'USD', subtotalMinor: Number(row.subtotal_minor), taxMinor: Number(row.tax_minor), totalMinor: Number(row.total_minor), refundedSubtotalMinor: Number(row.refunded_subtotal_minor), asset: row.asset as ReceiptSummary['asset'], paidAt: Number(row.paid_at), status: row.status as ReceiptSummary['status']}));
-    },
-    /**
-     * Pricing input from active grants and one qualifying Product receipt: paid (or partially
-     * refunded) net of refunds, before tax, capped at the Product price. Disputed/refunded
-     * receipts never qualify and several receipts are not summed.
-     */
-    async pricingOwnership(userId: string): Promise<PricingOwnership & {productReceiptOrderId: string | null}> {
-      if (!identifier(userId)) throw new LedgerError('INVALID_INPUT');
-      const items = await statement("SELECT DISTINCT item_id FROM commerce_grants WHERE user_id=? AND status='active' ORDER BY item_id", userId).all<Row>();
-      const best = await statement(`SELECT r.order_id,r.subtotal_minor-r.refunded_subtotal_minor AS net FROM commerce_receipts r
-        WHERE r.user_id=? AND r.plan='product' AND r.status IN ('paid','partially_refunded')
-        AND EXISTS (SELECT 1 FROM commerce_grants g WHERE g.order_id=r.order_id AND g.status='active')
-        ORDER BY net DESC,r.paid_at,r.order_id LIMIT 1`, userId).first<Row>();
-      const net = best ? Number(best.net) : 0;
-      if (!Number.isSafeInteger(net) || net < 0) throw new LedgerError('DATABASE_ERROR');
-      return {itemIds: items.results.map(row => String(row.item_id)), productNetPaidMinor: Math.min(net, pricingPlanTerms.product.priceMinor), productReceiptOrderId: best ? String(best.order_id) : null};
+      const rows = await statement('SELECT order_id,plan,months,subtotal_minor,tax_minor,total_minor,refunded_subtotal_minor,asset,paid_at,status FROM commerce_receipts WHERE user_id=? ORDER BY paid_at DESC,order_id', userId).all<Row>();
+      return rows.results.map(row => ({orderId: String(row.order_id), plan: row.plan as SubscriptionPlan, months: Number(row.months), currency: 'USDT', subtotalMinor: Number(row.subtotal_minor), taxMinor: Number(row.tax_minor), totalMinor: Number(row.total_minor), refundedSubtotalMinor: Number(row.refunded_subtotal_minor), asset: row.asset as ReceiptSummary['asset'], paidAt: Number(row.paid_at), status: row.status as ReceiptSummary['status']}));
     },
     /** Withdrawn releases among the given hashes; chunked under D1's bound-parameter limit. */
     async revokedReleases(hashes: readonly string[]): Promise<Set<string>> {
@@ -98,38 +84,36 @@ export function createCommerceLedger(db: D1DatabaseLike) {
       if (!identifier(invoiceId)) throw new LedgerError('INVALID_INPUT');
       const invoice = await statement('SELECT id,user_id,quote_id,status,paid_at,item_ids_json,terms_revision,json_extract(fx_snapshot_json,\'$.usdMinor\') AS usd_minor FROM ton_invoices WHERE id=?', invoiceId).first<Row>();
       if (!invoice) return null;
-      const quote = await statement('SELECT id,user_id,plan,subtotal_minor,total_minor,item_ids_json,release_snapshot_json,terms_revision FROM commerce_quotes WHERE id=? AND user_id=?', invoice.quote_id, invoice.user_id).first<Row>();
+      const quote = await statement('SELECT id,user_id,plan,months,subtotal_minor,total_minor,item_ids_json,terms_revision FROM commerce_quotes WHERE id=? AND user_id=?', invoice.quote_id, invoice.user_id).first<Row>();
       const order = quote ? await statement('SELECT id,user_id,status FROM commerce_orders WHERE quote_id=? AND user_id=?', quote.id, quote.user_id).first<Row>() : null;
       return {
         invoice: {id: String(invoice.id), userId: String(invoice.user_id), quoteId: String(invoice.quote_id), status: String(invoice.status), paidAt: invoice.paid_at === null ? null : Number(invoice.paid_at), itemIdsJson: String(invoice.item_ids_json), termsRevision: String(invoice.terms_revision), usdMinor: invoice.usd_minor === null || invoice.usd_minor === undefined ? null : Number(invoice.usd_minor)},
-        quote: quote ? {id: String(quote.id), userId: String(quote.user_id), plan: String(quote.plan), subtotalMinor: Number(quote.subtotal_minor), totalMinor: Number(quote.total_minor), itemIds: JSON.parse(String(quote.item_ids_json)), releases: JSON.parse(String(quote.release_snapshot_json)), termsRevision: String(quote.terms_revision)} : null,
+        quote: quote ? {id: String(quote.id), userId: String(quote.user_id), plan: String(quote.plan), months: Number(quote.months), subtotalMinor: Number(quote.subtotal_minor), totalMinor: Number(quote.total_minor), itemIds: JSON.parse(String(quote.item_ids_json)), termsRevision: String(quote.terms_revision)} : null,
         order: order ? {id: String(order.id), userId: String(order.user_id), status: String(order.status)} : null,
       };
     },
     /**
-     * One transaction: paid order (trigger-verified), receipt, grants, fulfilled state, closed
-     * outbox intent and invoice delivery state. Replays are no-ops; a crash leaves nothing half-done.
+     * One transaction: paid order (trigger-verified), receipt, the access period, fulfilled state,
+     * closed outbox intent and invoice delivery state. Replays are no-ops; a crash leaves nothing half-done.
      */
-    async fulfill(input: {invoiceId: string; orderId: string; userId: string; paidAt: number; updatesEnd: number; grants: readonly GrantPlan[]; note: string | null; now: number}) {
-      const {invoiceId, orderId, userId, paidAt, updatesEnd, grants, note, now} = input;
-      if (![invoiceId, orderId, userId].every(identifier) || !time(paidAt) || !time(updatesEnd) || updatesEnd <= paidAt || !time(now) || !grants.length || grants.length > 32
-        || new Set(grants.map(g => g.itemId)).size !== grants.length || !grants.every(g => /^[SCEA]\d{3}$/.test(g.itemId) && sha(g.releaseSha256) && Number.isSafeInteger(g.allocationMinor) && g.allocationMinor >= 0)
-        || (note !== null && !/^[A-Z_]{1,64}$/.test(note))) throw new LedgerError('INVALID_INPUT');
+    async fulfill(input: {invoiceId: string; orderId: string; userId: string; paidAt: number; startsAt: number; endsAt: number; now: number}) {
+      const {invoiceId, orderId, userId, paidAt, startsAt, endsAt, now} = input;
+      if (![invoiceId, orderId, userId].every(identifier) || ![paidAt, startsAt, endsAt, now].every(time) || startsAt < paidAt || endsAt <= startsAt) throw new LedgerError('INVALID_INPUT');
       const statements = [
         statement(`UPDATE commerce_orders SET status='paid',paid_at=(SELECT paid_at FROM ton_invoices WHERE id=?)
           WHERE id=? AND user_id=? AND status='pending' AND quote_id=(SELECT quote_id FROM ton_invoices WHERE id=?) AND EXISTS (${matchingSettledInvoice})`, invoiceId, orderId, userId, invoiceId),
-        statement(`INSERT INTO commerce_receipts(id,order_id,user_id,quote_id,invoice_id,plan,currency,subtotal_minor,tax_minor,total_minor,asset,amount_base_units,terms_revision,tax_revision,paid_at,created_at)
-          SELECT ?,o.id,o.user_id,q.id,i.id,q.plan,q.currency,q.subtotal_minor,q.tax_minor,q.total_minor,i.asset,i.amount_base_units,q.terms_revision,q.tax_revision,o.paid_at,?
+        statement(`INSERT INTO commerce_receipts(id,order_id,user_id,quote_id,invoice_id,plan,months,currency,subtotal_minor,tax_minor,total_minor,asset,amount_base_units,terms_revision,tax_revision,paid_at,created_at)
+          SELECT ?,o.id,o.user_id,q.id,i.id,q.plan,q.months,q.currency,q.subtotal_minor,q.tax_minor,q.total_minor,i.asset,i.amount_base_units,q.terms_revision,q.tax_revision,o.paid_at,?
           FROM commerce_orders o JOIN commerce_quotes q ON q.id=o.quote_id AND q.user_id=o.user_id JOIN ton_invoices i ON i.quote_id=q.id AND i.user_id=q.user_id
           WHERE o.id=? AND o.user_id=? AND i.id=? AND o.status='paid' AND i.status='paid' ON CONFLICT DO NOTHING`, crypto.randomUUID(), now, orderId, userId, invoiceId),
-        ...grants.map(grant => statement(`INSERT INTO commerce_grants(id,user_id,order_id,item_id,release_sha256,allocation_minor,paid_at,updates_end,created_at)
-          SELECT ?,o.user_id,o.id,?,?,?,o.paid_at,?,? FROM commerce_orders o WHERE o.id=? AND o.user_id=? AND o.status='paid' AND o.paid_at=? ON CONFLICT DO NOTHING`,
-          crypto.randomUUID(), grant.itemId, grant.releaseSha256, grant.allocationMinor, updatesEnd, now, orderId, userId, paidAt)),
+        statement(`INSERT INTO commerce_access_periods(id,user_id,order_id,plan,months,paid_at,starts_at,ends_at,created_at)
+          SELECT ?,o.user_id,o.id,q.plan,q.months,o.paid_at,?,?,? FROM commerce_orders o JOIN commerce_quotes q ON q.id=o.quote_id AND q.user_id=o.user_id
+          WHERE o.id=? AND o.user_id=? AND o.status='paid' AND o.paid_at=? ON CONFLICT DO NOTHING`, crypto.randomUUID(), startsAt, endsAt, now, orderId, userId, paidAt),
         statement(`INSERT INTO commerce_fulfillments(invoice_id,order_id,state,attempts,next_attempt_at,last_error,note,updated_at,fulfilled_at)
-          SELECT ?,?,'fulfilled',0,0,NULL,?,?,? WHERE EXISTS (SELECT 1 FROM commerce_receipts WHERE order_id=? AND invoice_id=?)
-          AND (SELECT count(*) FROM commerce_grants WHERE order_id=? AND user_id=?)=?
-          ON CONFLICT(invoice_id) DO UPDATE SET order_id=excluded.order_id,state='fulfilled',next_attempt_at=0,last_error=NULL,note=excluded.note,updated_at=excluded.updated_at,fulfilled_at=excluded.fulfilled_at
-          WHERE commerce_fulfillments.state<>'fulfilled'`, invoiceId, orderId, note, now, now, orderId, invoiceId, orderId, userId, grants.length),
+          SELECT ?,?,'fulfilled',0,0,NULL,NULL,?,? WHERE EXISTS (SELECT 1 FROM commerce_receipts WHERE order_id=? AND invoice_id=?)
+          AND EXISTS (SELECT 1 FROM commerce_access_periods WHERE order_id=? AND user_id=?)
+          ON CONFLICT(invoice_id) DO UPDATE SET order_id=excluded.order_id,state='fulfilled',next_attempt_at=0,last_error=NULL,note=NULL,updated_at=excluded.updated_at,fulfilled_at=excluded.fulfilled_at
+          WHERE commerce_fulfillments.state<>'fulfilled'`, invoiceId, orderId, now, now, orderId, invoiceId, orderId, userId),
         statement(`UPDATE ton_payment_outbox SET state='delivered' WHERE invoice_id=? AND state='pending' AND EXISTS (SELECT 1 FROM commerce_fulfillments WHERE invoice_id=? AND state='fulfilled')`, invoiceId, invoiceId),
         statement(`UPDATE ton_invoices SET delivery_state='delivered' WHERE id=? AND status='paid' AND delivery_state='pending' AND EXISTS (SELECT 1 FROM commerce_fulfillments WHERE invoice_id=? AND state='fulfilled')`, invoiceId, invoiceId),
       ];
@@ -157,21 +141,20 @@ export function createCommerceLedger(db: D1DatabaseLike) {
       return row ? String(row.state) as 'retry' | 'review' | 'fulfilled' : null;
     },
     /**
-     * Operator primitive for a manual refund already sent from the owner's wallet. One INSERT;
-     * migration triggers revoke exactly these active grants of the order and derive the refunded
-     * subtotal from their allocations. `items: 'all'` refunds every still-active item of the order.
+     * Operator primitive for a manual refund already sent from the owner's wallet. One INSERT for
+     * the order's period; migration triggers close that period and record the amount on the
+     * receipt. Other periods, renewals included, are never touched. Refund rules are not decided:
+     * the amount is what support actually sent, at most the paid subtotal.
      */
-    async recordRefund(input: {orderId: string; items: readonly string[] | 'all'; reason: 'before_download' | 'defect' | 'duplicate_payment' | 'not_delivered' | 'other'; reference: string; at: number}) {
-      const {orderId, items, reason, reference, at} = input;
-      if (!identifier(orderId) || !['before_download', 'defect', 'duplicate_payment', 'not_delivered', 'other'].includes(reason) || typeof reference !== 'string' || !/^[A-Za-z0-9:_.\-]{1,200}$/.test(reference) || !time(at)
-        || (items !== 'all' && (!items.length || items.length > 32 || !items.every(id => /^[SCEA]\d{3}$/.test(id))))) throw new LedgerError('INVALID_INPUT');
+    async recordRefund(input: {orderId: string; amountMinor: number; reason: RefundReason; reference: string; at: number}) {
+      const {orderId, amountMinor, reason, reference, at} = input;
+      if (!identifier(orderId) || !Number.isSafeInteger(amountMinor) || amountMinor <= 0 || !refundReasons.includes(reason) || typeof reference !== 'string' || !/^[A-Za-z0-9:_.\-]{1,200}$/.test(reference) || !time(at)) throw new LedgerError('INVALID_INPUT');
       const id = `refund_${crypto.randomUUID().replaceAll('-', '')}`;
-      await batch([items === 'all'
-        ? statement(`INSERT INTO commerce_refunds(id,order_id,item_ids_json,reason,refund_reference,created_at)
-            SELECT ?,?,json_group_array(item_id),?,?,? FROM commerce_grants WHERE order_id=? AND status='active'`, id, orderId, reason, reference, at, orderId)
-        : statement('INSERT INTO commerce_refunds(id,order_id,item_ids_json,reason,refund_reference,created_at) VALUES(?,?,?,?,?,?)', id, orderId, JSON.stringify(items), reason, reference, at)]);
-      const receipt = await statement('SELECT status,refunded_subtotal_minor FROM commerce_receipts WHERE order_id=?', orderId).first<Row>();
-      return {id, status: String(receipt?.status), refundedSubtotalMinor: Number(receipt?.refunded_subtotal_minor)};
+      await batch([statement(`INSERT INTO commerce_refunds(id,period_id,amount_minor,reason,refund_reference,created_at)
+        SELECT ?,id,?,?,?,? FROM commerce_access_periods WHERE order_id=?`, id, amountMinor, reason, reference, at, orderId)]);
+      const receipt = await statement('SELECT r.status,r.refunded_subtotal_minor FROM commerce_refunds f JOIN commerce_access_periods p ON p.id=f.period_id JOIN commerce_receipts r ON r.order_id=p.order_id WHERE f.id=?', id).first<Row>();
+      if (!receipt) throw new LedgerError('INVALID_INPUT');
+      return {id, status: String(receipt.status), refundedSubtotalMinor: Number(receipt.refunded_subtotal_minor)};
     },
     /**
      * Operator primitive for a reviewed withdrawal (security/integrity/legal). No route calls it;

@@ -1,3 +1,5 @@
+import {planCovers,type CurrentAccess} from '../orders/subscription.ts';
+
 /**
  * Server-only registry of reviewed, immutable paid releases.
  *
@@ -12,7 +14,7 @@ export interface PaidRelease {
   sha256: string;
   byteLength: number;
   objectKey: string;
-  /** Unix seconds; coverage compares it with each grant's exclusive updates end. */
+  /** Unix seconds; the newest release of an item is the one a new download gets by default. */
   publishedAt: number;
   kind: PaidReleaseKind;
 }
@@ -56,23 +58,20 @@ export function currentReleaseHashes(registry: readonly PaidRelease[]): Readonly
   return Object.freeze(Object.fromEntries([...latest].map(([itemId, release]) => [itemId, release.sha256])));
 }
 
-export interface CoverageGrant { itemId: string; releaseSha256: string; updatesEnd: number }
-export type ReleaseAccess = 'available' | 'revoked' | 'not_covered';
+export type ReleaseAccess = 'available' | 'revoked' | 'not_covered' | 'inactive';
 
 /**
- * Coverage of one release by the union of active grants: the release bought, any release
- * published before a grant's exclusive updates end, and security remediation for owned items.
- * Revocation always wins; a revoked release is never served.
+ * Subscription access to one release: a level open right now that covers the item. Every
+ * release of a covered item is available while access lasts; after the paid period ends nothing
+ * new is served (code downloaded earlier stays with the customer). Revocation always wins.
  */
-export function releaseAccess(release: PaidRelease, grants: readonly CoverageGrant[], revoked: ReadonlySet<string>): ReleaseAccess {
-  const owned = grants.filter(grant => grant.itemId === release.itemId);
-  if (!owned.length) return 'not_covered';
-  if (revoked.has(release.sha256)) return 'revoked';
-  const covered = owned.some(grant => grant.releaseSha256 === release.sha256 || release.publishedAt < grant.updatesEnd || release.kind === 'security');
-  return covered ? 'available' : 'not_covered';
+export function releaseAccess(release: PaidRelease, access: Pick<CurrentAccess, 'plan'> | null, revoked: ReadonlySet<string>): ReleaseAccess {
+  if (!access) return 'inactive';
+  if (!planCovers(access.plan, release.itemId)) return 'not_covered';
+  return revoked.has(release.sha256) ? 'revoked' : 'available';
 }
 
-/** Twelve calendar months in UTC with end-of-month clamp (e.g. 29 Feb -> 28 Feb). */
+/** Calendar months in UTC with end-of-month clamp (e.g. 31 Jan + 1 month -> 28/29 Feb). */
 export function addUtcMonths(seconds: number, months: number) {
   if (!Number.isSafeInteger(seconds) || seconds < 0 || !Number.isSafeInteger(months) || months < 1 || months > 120) throw new RangeError('INVALID_DATE');
   const date = new Date(seconds * 1000);

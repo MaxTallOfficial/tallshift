@@ -4,10 +4,11 @@ import {createD1Fixture} from './ton-d1.ts';
 import {createCommerceStore} from '../../src/server/orders/store.ts';
 import {createCommerceService,type CommerceDependencies} from '../../src/server/orders/service.ts';
 import {createCommerceLedger} from '../../src/server/orders/ledger.ts';
+import {createFulfillmentWorker} from '../../src/server/orders/fulfillment.ts';
+import {subscriptionPlanItems,usdtBaseUnits,type SubscriptionPlan} from '../../src/server/orders/subscription.ts';
 import {createTonPaymentStore,type TonAsset} from '../../src/server/payments/ton/store.ts';
 import {currentReleaseHashes,paidReleaseObjectKey,type PaidRelease} from '../../src/server/delivery/releases.ts';
 import type {R2BucketLike} from '../../src/server/delivery/storage.ts';
-import {pricingPlanScopes} from '../../src/foundations/pricing-plans.ts';
 
 /** Minimal valid empty ZIP (end-of-central-directory record) with a distinguishing comment. */
 export function zipBytes(label: string) {
@@ -35,21 +36,24 @@ export function createCommerceFixture(options: {items?: readonly string[]} = {})
   const f = createD1Fixture();
   for (const file of ['0002_auth.sql', '0003_commerce.sql', '0004_commerce_fulfillment.sql']) f.sqlite.exec(readFileSync(new URL(`../../migrations/${file}`, import.meta.url), 'utf8'));
   for (const id of ['buyer', 'other']) f.sqlite.prepare('INSERT INTO auth_user(id,name,email,email_verified,created_at,updated_at) VALUES(?,?,?,1,0,0)').run(id, id, `${id}@example.com`);
-  const items = options.items ?? pricingPlanScopes.bundle;
+  const items = options.items ?? subscriptionPlanItems.all;
   const built = items.map(itemId => release(itemId, '1.0.0', 500));
   const releases: PaidRelease[] = built.map(entry => entry.release);
   const objects = new Map(built.map(entry => [entry.release.objectKey, entry.bytes]));
-  const state = {now: 1000, ready: true, tax: 0, terms: 'terms-v1', taxRevision: 'tax-v1'};
+  // Fixture prices only (USDT minor units); production prices live in src/server/orders/launch.ts.
+  const state = {now: 1000, ready: true, tax: 0, terms: 'terms-v1', taxRevision: 'tax-v1', prices: {product: {1: 1600, 3: 4500}, all: {1: 3900}} as Record<SubscriptionPlan, Record<number, number>>};
   const store = createCommerceStore(f.db), ledger = createCommerceLedger(f.db), ton = createTonPaymentStore(f.db);
-  const deps: CommerceDependencies = {enabled: true, store, ownership: ledger.pricingOwnership, readiness: async () => ({deliveryReady: state.ready, sellerTermsReady: state.ready, termsRevision: state.terms}), tax: async () => ({amountMinor: state.tax, revision: state.taxRevision}), releases: currentReleaseHashes(releases), revokedReleases: ledger.revokedReleases, now: () => state.now};
+  const deps: CommerceDependencies = {enabled: true, store, periods: ledger.accessPeriods, price: (plan, months) => state.prices[plan][months] ?? null, readiness: async () => ({deliveryReady: state.ready, sellerTermsReady: state.ready, termsRevision: state.terms}), tax: async () => ({amountMinor: state.tax, revision: state.taxRevision}), releases: currentReleaseHashes(releases), revokedReleases: ledger.revokedReleases, now: () => state.now};
   const service = createCommerceService(deps);
   let sequence = 0;
   /** Quote -> pending TON invoice; payment is recorded separately with pay(). */
-  async function invoice(userId: string, plan: 'product' | 'bundle', change: {usdMinor?: number; asset?: TonAsset} = {}) {
+  type Change = {usdMinor?: number; asset?: TonAsset; months?: number};
+  /** Quote -> pending invoice (USDT by default: the price itself, no market rate); pay() records payment. */
+  async function invoice(userId: string, plan: SubscriptionPlan, change: Change = {}) {
     const n = ++sequence;
-    const q = await service.createQuote(userId, {plan, idempotencyKey: `quote-${n}`});
-    const asset = change.asset ?? 'TON';
-    const input = {id: `invoice-${n}`, userId, quoteId: q.id, itemIds: q.itemIds, termsRevision: q.termsRevision, asset, network: 'ton-testnet' as const, recipient: fixtureRecipient, jettonMaster: asset === 'USDT' ? '0:' + 'b'.repeat(64) : null, amountBaseUnits: '5333333334', comment: `ts_${n.toString(16).padStart(32, '0')}`, createdAt: state.now, expiresAt: state.now + 800, fxQuoteId: `fx-${n}`, fxSnapshot: {source: 'fixture', usdPerUnit: '3', quotedAt: state.now, expiresAt: state.now + 800, usdMinor: change.usdMinor ?? q.amountMinor}, idempotencyKey: `invoice-${n}`, inputDigest: 'c'.repeat(64)};
+    const q = await service.createQuote(userId, {plan, months: change.months ?? 1, idempotencyKey: `quote-${n}`});
+    const asset = change.asset ?? 'USDT', usdt = asset === 'USDT';
+    const input = {id: `invoice-${n}`, userId, quoteId: q.id, itemIds: q.itemIds, termsRevision: q.termsRevision, asset, network: 'ton-testnet' as const, recipient: fixtureRecipient, jettonMaster: usdt ? '0:' + 'b'.repeat(64) : null, amountBaseUnits: usdt ? usdtBaseUnits(q.amountMinor) : '5000000000', comment: `ts_${n.toString(16).padStart(32, '0')}`, createdAt: state.now, expiresAt: state.now + 800, fxQuoteId: `fx-${n}`, fxSnapshot: {source: usdt ? 'tallshift:usdt-price' : 'fixture-gram', usdPerUnit: usdt ? '1' : '3.2', quotedAt: state.now, expiresAt: state.now + 800, usdMinor: change.usdMinor ?? q.amountMinor}, idempotencyKey: `invoice-${n}`, inputDigest: 'c'.repeat(64)};
     await ton.createInvoice(input);
     return {quote: q, invoiceId: input.id, input, n};
   }
@@ -59,10 +63,11 @@ export function createCommerceFixture(options: {items?: readonly string[]} = {})
     await ton.recordVerifiedPayment({eventKey: `event-${n}`, txIdentity: `ton-testnet:tx-${n}`, invoiceId: input.id, asset: input.asset, network: input.network, recipient: input.recipient, comment: input.comment, amountBaseUnits: input.amountBaseUnits, transactionAt, observedAt: Math.max(transactionAt, state.now) + 1, proofDigest: 'd'.repeat(64)});
     return transactionAt;
   }
-  async function settle(userId: string, plan: 'product' | 'bundle', change: {usdMinor?: number; asset?: TonAsset} = {}) {
+  async function settle(userId: string, plan: SubscriptionPlan, change: Change = {}) {
     const issued = await invoice(userId, plan, change);
     const paidAt = await pay(issued);
     return {quote: issued.quote, invoiceId: issued.invoiceId, paidAt};
   }
-  return {...f, state, store, ledger, ton, deps, service, releases, objects, settle, invoice, pay};
+  const fulfil = (limit = 25) => createFulfillmentWorker({ledger, now: () => state.now}).process(limit);
+  return {...f, state, store, ledger, ton, deps, service, releases, objects, settle, invoice, pay, fulfil};
 }

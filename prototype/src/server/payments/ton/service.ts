@@ -8,8 +8,8 @@ export class TonPaymentError extends Error {
   readonly code:'COMMERCE_DISABLED'|'INVALID_INPUT'|'NOT_FOUND'|'QUOTE_EXPIRED'|'OFFER_CHANGED'|'IDEMPOTENCY_CONFLICT'|'TEMPORARILY_UNAVAILABLE'|'CHECKOUT_IN_PROGRESS';
   constructor(code:TonPaymentError['code']){super(code);this.code=code;}
 }
-/** Resolved exclusively by the host's authenticated server quote/ownership service. */
-export interface PayableQuote {id:string;userId:string;currency:'USD';amountMinor:number;itemIds:readonly string[];termsRevision:string;expiresAt:number;payable:boolean}
+/** Resolved exclusively by the host's authenticated server quote service. Prices are in USDT minor units. */
+export interface PayableQuote {id:string;userId:string;currency:'USDT';amountMinor:number;itemIds:readonly string[];termsRevision:string;expiresAt:number;payable:boolean}
 export type TonStore=ReturnType<typeof createTonPaymentStore>;
 export interface TonPaymentDependencies {
   config:TonPaymentConfig;store:TonStore;
@@ -46,7 +46,7 @@ export function createTonPaymentService(deps:TonPaymentDependencies) {
       if(!quote||quote.userId!==userId||quote.id!==input.quoteId)throw new TonPaymentError('NOT_FOUND');
       const createdAt=now();
       if(!Number.isSafeInteger(quote.expiresAt)||quote.expiresAt<=createdAt)throw new TonPaymentError('QUOTE_EXPIRED');
-      if(!quote.payable||quote.currency!=='USD'||!quote.itemIds.length||quote.itemIds.length>32)throw new TonPaymentError('OFFER_CHANGED');
+      if(!quote.payable||quote.currency!=='USDT'||!quote.itemIds.length||quote.itemIds.length>32)throw new TonPaymentError('OFFER_CHANGED');
       const rate=await deps.exchangeRate(input.asset);
       // External rate delay must not create a fresh-looking expired invoice.
       const afterRate=now();

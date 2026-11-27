@@ -1,15 +1,22 @@
--- Additive preparation only. Does not enable sales or issue download grants.
+-- Subscription checkout (Max Tall, 26-27.11.2026). Additive preparation only: it does not enable
+-- sales or open access. A quote prices one paid term (whole calendar months) of one level.
+-- Amounts are USDT minor units (cents): 1600 = 16 USDT. The payment module's invoice snapshot key
+-- usdMinor (0001, unchanged) carries the same number.
 CREATE TABLE commerce_quotes (
   id TEXT PRIMARY KEY,
   user_id TEXT NOT NULL REFERENCES auth_user(id),
-  plan TEXT NOT NULL CHECK(plan IN ('product','bundle')),
-  currency TEXT NOT NULL CHECK(currency='USD'),
+  plan TEXT NOT NULL CHECK(plan IN ('product','all')),
+  months INTEGER NOT NULL CHECK(months BETWEEN 1 AND 12),
+  currency TEXT NOT NULL CHECK(currency='USDT'),
   subtotal_minor INTEGER NOT NULL CHECK(subtotal_minor>0 AND subtotal_minor<=100000000),
   tax_minor INTEGER NOT NULL CHECK(tax_minor>=0 AND tax_minor<=100000000),
   total_minor INTEGER NOT NULL CHECK(total_minor=subtotal_minor+tax_minor AND total_minor<=100000000),
-  item_ids_json TEXT NOT NULL CHECK(json_valid(item_ids_json)),
+  -- Items of the level when quoted; also the invoice overlap key (Product and «Всё» overlap).
+  item_ids_json TEXT NOT NULL CHECK(json_valid(item_ids_json) AND json_type(item_ids_json)='array' AND json_array_length(item_ids_json) BETWEEN 1 AND 32),
+  -- Published releases of those items when quoted (audit only; access is checked at download).
   release_snapshot_json TEXT NOT NULL CHECK(json_valid(release_snapshot_json)),
-  ownership_digest TEXT NOT NULL,
+  -- Exclusive end of the same level's paid access when quoted; NULL for a new subscription.
+  current_access_end INTEGER CHECK(current_access_end IS NULL OR current_access_end>0),
   terms_revision TEXT NOT NULL,
   tax_revision TEXT NOT NULL,
   created_at INTEGER NOT NULL,

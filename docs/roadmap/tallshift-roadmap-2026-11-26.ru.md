@@ -231,7 +231,7 @@
 | SALE-16 | Приватный репозиторий для платного кода | release-maintainer, platform-engineer | C | S | да | репозиторий `MaxTallOfficial/tallshift-paid` создан 27.11 (приватный); осталось проверить путь «ZIP → R2» на первом примере |
 | SALE-05 | Первые три платных: E002 → C004 → C003 | frontend-engineer | B | L | да | ждёт SALE-04 |
 | SALE-06 | Секции Product: S006 → S004 → S005 | frontend-engineer | B | L | да | ждёт SALE-05 |
-| SALE-20 | Анимации UI Motion: E003, E004, A002, A004, A005, A007, A008 | frontend-engineer | B | L | да | ждёт SALE-05, вопрос 4 |
+| SALE-20 | Анимации UI Motion: E003, E004, A002, A004, A005, A007, A008 | frontend-engineer | B | L | да | E003 на приёмке MT (27.11), остальные в очереди |
 | SALE-02 | Юрист и бухгалтер: продавец, налоги, законность, вывод в донги | MT + специалист | C | L | да | ждёт вопрос 6 |
 | SALE-03 | Условия: лицензия, подписка, возвраты, данные, поддержка | product-lead, ux-copywriter + специалист | C | M | да | ждёт SALE-02, вопросы 3 и 14 |
 | SALE-22 | Подписка: срок доступа, продление, напоминания | platform-engineer, product-designer, ux-copywriter | C | L | да | пауза по S9; цены за месяц решены 27.11 |

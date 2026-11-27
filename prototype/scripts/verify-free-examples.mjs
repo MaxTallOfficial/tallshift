@@ -19,7 +19,8 @@ import { strFromU8, unzipSync } from 'fflate';
 
 const prototype = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const repository = resolve(prototype, '..');
-const out = resolve(repository, process.env.TALLSHIFT_QA_OUT || 'docs/art-direction-2026/evidence/free-examples-final-2026-11-26');
+// Run evidence stays outside Git (criteria v2): prototype/.qa is ignored.
+const out = resolve(repository, process.env.TALLSHIFT_QA_OUT || 'prototype/.qa/free-examples');
 const screens = resolve(out, 'screens');
 mkdirSync(screens, { recursive: true });
 const origin = 'http://127.0.0.1:4173';

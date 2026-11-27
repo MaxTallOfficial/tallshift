@@ -8,11 +8,13 @@ import {currentAccess,planCovers,type AccessPeriod,type CurrentAccess} from '../
  * Entitlements and private delivery. Every response is private/no-store. Access comes only from
  * the server ledger; a download needs the owner's live session, a short-lived ticket bound to
  * that session, a subscription level open right now that covers the item and an unrevoked
- * release, checked again on every request. After the paid period ends new downloads answer 403;
- * nothing already downloaded is touched. Storage, database or auth failures fail closed.
+ * release, checked again on every request. After the paid period ends new downloads answer 403,
+ * except security fixes of examples the owner already downloaded; nothing already downloaded is
+ * touched. Storage, database or auth failures fail closed.
  */
 export interface DeliveryLedger {
   accessPeriods(userId: string): Promise<AccessPeriod[]>;
+  downloadedItems(userId: string): Promise<Set<string>>;
   receipts(userId: string): Promise<ReceiptSummary[]>;
   revokedReleases(hashes: readonly string[]): Promise<Set<string>>;
   recordDownload(userId: string, itemId: string, releaseSha256: string, outcome: 'issued' | 'served', at: number): Promise<void>;
@@ -65,10 +67,11 @@ export function createDeliveryHttpHandlers(deps: DeliveryDependencies) {
 
   async function coverage(userId: string) {
     const periods = await deps.ledger.accessPeriods(userId), at = now();
-    const access = currentAccess(periods, at);
-    const relevant = access ? releases.filter(release => planCovers(access.plan, release.itemId)) : [];
+    const access = currentAccess(periods, at), downloaded = await deps.ledger.downloadedItems(userId);
+    // Covered by the open level, or a security fix of an example this owner already downloaded.
+    const relevant = releases.filter(release => (access !== null && planCovers(access.plan, release.itemId)) || (release.kind === 'security' && downloaded.has(release.itemId)));
     const revoked = await deps.ledger.revokedReleases(relevant.map(release => release.sha256));
-    return {periods, access, relevant, revoked, at};
+    return {periods, access, downloaded, relevant, revoked, at};
   }
   /** Level and end date for the cabinet; the inclusive last day is computed once on the server. */
   function subscription(periods: readonly AccessPeriod[], access: CurrentAccess | null, at: number) {
@@ -95,7 +98,7 @@ export function createDeliveryHttpHandlers(deps: DeliveryDependencies) {
         const items = [...new Set(state.relevant.map(release => release.itemId))].sort().map(itemId => ({
           itemId,
           releases: state.relevant.filter(release => release.itemId === itemId).sort((a, b) => b.publishedAt - a.publishedAt)
-            .map(release => ({version: release.version, sha256: release.sha256, byteLength: release.byteLength, publishedAt: release.publishedAt, kind: release.kind, access: releaseAccess(release, state.access, state.revoked)})),
+            .map(release => ({version: release.version, sha256: release.sha256, byteLength: release.byteLength, publishedAt: release.publishedAt, kind: release.kind, access: releaseAccess(release, state.access, state.revoked, state.downloaded)})),
         }));
         const periods = state.periods.map(period => ({orderId: period.orderId, plan: period.plan, kind: period.kind, months: period.months, startsAt: period.startsAt, endsAt: period.endsAt, status: period.status}));
         const receipts = (await deps.ledger.receipts(session.userId)).map(receipt => ({...receipt}));
@@ -117,12 +120,14 @@ export function createDeliveryHttpHandlers(deps: DeliveryDependencies) {
         const input = body as {itemId?: unknown; sha256?: unknown};
         if ((keys !== 'itemId' && keys !== 'itemId,sha256') || typeof input.itemId !== 'string' || !/^[SCEA]\d{3}$/.test(input.itemId) || (input.sha256 !== undefined && (typeof input.sha256 !== 'string' || !/^[a-f0-9]{64}$/.test(input.sha256)))) return failure('INVALID_INPUT', 400);
         const state = await coverage(session.userId);
-        if (!state.access) return failure('SUBSCRIPTION_INACTIVE', 403);
-        if (!planCovers(state.access.plan, input.itemId)) return failure('RELEASE_NOT_COVERED', 403);
-        const candidates = state.relevant.filter(release => release.itemId === input.itemId && (input.sha256 === undefined || release.sha256 === input.sha256));
+        const covered = state.access !== null && planCovers(state.access.plan, input.itemId), denied = state.access ? 'RELEASE_NOT_COVERED' : 'SUBSCRIPTION_INACTIVE';
+        // Without the level only security fixes of an example downloaded earlier are served.
+        if (!covered && !state.downloaded.has(input.itemId)) return failure(denied, 403);
+        const candidates = releases.filter(release => release.itemId === input.itemId && (input.sha256 === undefined || release.sha256 === input.sha256));
         if (!candidates.length) return failure('NOT_FOUND', 404);
-        const available = candidates.filter(release => releaseAccess(release, state.access, state.revoked) === 'available').sort((a, b) => b.publishedAt - a.publishedAt);
-        if (!available.length) return failure('RELEASE_REVOKED', 410);
+        const verdicts = candidates.map(release => ({release, verdict: releaseAccess(release, state.access, state.revoked, state.downloaded)}));
+        const available = verdicts.filter(entry => entry.verdict === 'available').map(entry => entry.release).sort((a, b) => b.publishedAt - a.publishedAt);
+        if (!available.length) return verdicts.some(entry => entry.verdict === 'revoked') ? failure('RELEASE_REVOKED', 410) : failure(denied, 403);
         const release = available[0], at = now(), expiresAt = at + downloadTicketSeconds;
         const ticket = await (await deps.tickets()).sign({binding: await ticketBinding(session.userId, session.sessionId), itemId: release.itemId, sha256: release.sha256, expiresAt});
         await deps.ledger.recordDownload(session.userId, release.itemId, release.sha256, 'issued', at);
@@ -142,7 +147,7 @@ export function createDeliveryHttpHandlers(deps: DeliveryDependencies) {
         const release = byHash.get(ticket.sha256);
         if (!release || release.itemId !== ticket.itemId) return failure('NOT_FOUND', 404);
         const state = await coverage(session.userId);
-        const verdict = releaseAccess(release, state.access, state.revoked);
+        const verdict = releaseAccess(release, state.access, state.revoked, state.downloaded);
         if (verdict === 'inactive') return failure('SUBSCRIPTION_INACTIVE', 403);
         if (verdict === 'revoked') return failure('RELEASE_REVOKED', 410);
         if (verdict !== 'available') return failure('RELEASE_NOT_COVERED', 403);

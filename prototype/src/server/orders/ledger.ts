@@ -67,6 +67,12 @@ export function createCommerceLedger(db: D1DatabaseLike) {
       }
       return revoked;
     },
+    /** Items whose bytes were served to this owner at least once: the code they already have. */
+    async downloadedItems(userId: string): Promise<Set<string>> {
+      if (!identifier(userId)) throw new LedgerError('INVALID_INPUT');
+      const rows = await statement("SELECT DISTINCT item_id FROM commerce_download_events WHERE user_id=? AND outcome='served'", userId).all<Row>();
+      return new Set(rows.results.map(row => String(row.item_id)));
+    },
     async recordDownload(userId: string, itemId: string, releaseSha256: string, outcome: 'issued' | 'served', at: number) {
       if (!identifier(userId) || !/^[SCEA]\d{3}$/.test(itemId) || !sha(releaseSha256) || !time(at)) throw new LedgerError('INVALID_INPUT');
       await batch([statement('INSERT INTO commerce_download_events(id,user_id,item_id,release_sha256,outcome,created_at) VALUES(?,?,?,?,?,?)', crypto.randomUUID(), userId, itemId, releaseSha256, outcome, at)]);

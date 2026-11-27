@@ -61,13 +61,14 @@ export function currentReleaseHashes(registry: readonly PaidRelease[]): Readonly
 export type ReleaseAccess = 'available' | 'revoked' | 'not_covered' | 'inactive';
 
 /**
- * Subscription access to one release: a level open right now that covers the item. Every
- * release of a covered item is available while access lasts; after the paid period ends nothing
- * new is served (code downloaded earlier stays with the customer). Revocation always wins.
+ * Access to one release. While a level is open, every release of an item it covers. A security
+ * fix of an example the owner already downloaded stays available after the subscription ends and
+ * outside the current level (Max Tall, 27.11.2026); nothing else is served without the level, and
+ * code downloaded earlier stays with the customer. Revocation always wins.
  */
-export function releaseAccess(release: PaidRelease, access: Pick<CurrentAccess, 'plan'> | null, revoked: ReadonlySet<string>): ReleaseAccess {
-  if (!access) return 'inactive';
-  if (!planCovers(access.plan, release.itemId)) return 'not_covered';
+export function releaseAccess(release: PaidRelease, access: Pick<CurrentAccess, 'plan'> | null, revoked: ReadonlySet<string>, downloaded: ReadonlySet<string>): ReleaseAccess {
+  const covered = access !== null && planCovers(access.plan, release.itemId);
+  if (!covered && !(release.kind === 'security' && downloaded.has(release.itemId))) return access ? 'not_covered' : 'inactive';
   return revoked.has(release.sha256) ? 'revoked' : 'available';
 }
 

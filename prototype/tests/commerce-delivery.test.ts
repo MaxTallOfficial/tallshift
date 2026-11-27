@@ -178,9 +178,37 @@ test('while access lasts every release of a covered item is available, newer fun
     const fix = await (await issue({itemId: 'S005'})).json();
     assert.equal(fix.version, '1.0.1');
     assert.deepEqual(new Uint8Array(await (await serve(fix.url)).arrayBuffer()), security.bytes);
-    assert.equal(releaseAccess(security.release, null, new Set()), 'inactive', 'nothing new after the period, security fixes included');
-    assert.equal(releaseAccess(release('S012', '1.0.0', 500).release, {plan: 'product'}, new Set()), 'not_covered');
-    assert.equal(releaseAccess(release('S012', '1.0.0', 500).release, {plan: 'all'}, new Set()), 'available');
+    assert.equal(releaseAccess(security.release, null, new Set(), new Set()), 'inactive', 'without the level nothing is served to someone who never downloaded the example');
+    assert.equal(releaseAccess(security.release, null, new Set(), new Set(['S005'])), 'available', 'a security fix of a downloaded example stays available');
+    assert.equal(releaseAccess(functional.release, null, new Set(), new Set(['S004'])), 'inactive');
+    assert.equal(releaseAccess(release('S012', '1.0.0', 500).release, {plan: 'product'}, new Set(), new Set()), 'not_covered');
+    assert.equal(releaseAccess(release('S012', '1.0.1', 600, 'security').release, {plan: 'product'}, new Set(), new Set(['S012'])), 'available', 'also outside the current level');
+    assert.equal(releaseAccess(release('S012', '1.0.0', 500).release, {plan: 'all'}, new Set(), new Set()), 'available');
+  } finally {f.sqlite.close();}
+});
+
+test('after the subscription ends, a security fix of an example the owner downloaded stays available; nothing else does', async () => {
+  const late = 4_000_000_000;
+  const fix = release('S004', '1.0.1', late, 'security'), feature = release('S004', '1.1.0', late + 1, 'functional'), otherFix = release('S005', '1.0.1', late, 'security');
+  const {f, h, issue, serve, endsAt} = await delivery({extra: [fix, feature, otherFix]});
+  try {
+    const original = f.releases.find(r => r.itemId === 'S004' && r.version === '1.0.0')!;
+    assert.equal((await serve((await (await issue({itemId: 'S004', sha256: original.sha256})).json()).url)).status, 200);
+    f.state.now = endsAt;
+    const ticket = await (await issue({itemId: 'S004'})).json();
+    assert.equal(ticket.version, '1.0.1');
+    assert.deepEqual(new Uint8Array(await (await serve(ticket.url)).arrayBuffer()), fix.bytes);
+    for (const sha256 of [feature.release.sha256, original.sha256]) {
+      const denied = await issue({itemId: 'S004', sha256});
+      assert.equal(denied.status, 403); assert.equal(await code(denied), 'SUBSCRIPTION_INACTIVE');
+    }
+    const never = await issue({itemId: 'S005'});
+    assert.equal(never.status, 403, 'S005 was never downloaded'); assert.equal(await code(never), 'SUBSCRIPTION_INACTIVE');
+    const body = await (await h.entitlements(new Request(origin))).json();
+    assert.equal(body.subscription.status, 'expired');
+    assert.deepEqual(body.items.map((item: {itemId: string; releases: {version: string; kind: string; access: string}[]}) => [item.itemId, item.releases.map(r => [r.version, r.kind, r.access])]), [['S004', [['1.0.1', 'security', 'available']]]]);
+    await f.ledger.revokeRelease('S004', fix.release.sha256, 'integrity', endsAt + 1);
+    assert.equal((await issue({itemId: 'S004'})).status, 410);
   } finally {f.sqlite.close();}
 });
 

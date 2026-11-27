@@ -253,7 +253,7 @@ test('switching from Product to «Всё» mid-term: the rest is recalculated, o
     assert.deepEqual(one(f, 'SELECT kind,months,subtotal_minor,amount_base_units FROM commerce_receipts WHERE order_id=?', upgrade.quote.orderId), {kind: 'upgrade', months: null, subtotal_minor: 1150, amount_base_units: '11500000'});
     const access = currentAccess(await f.ledger.accessPeriods('buyer'), upgrade.paidAt);
     assert.deepEqual(access, {plan: 'all', startsAt: upgrade.paidAt, endsAt: end});
-    assert.equal(releaseAccess(f.releases.find(r => r.itemId === 'S012')!, access, new Set()), 'available');
+    assert.equal(releaseAccess(f.releases.find(r => r.itemId === 'S012')!, access, new Set(), new Set()), 'available');
     // A renewal continues «Всё» from the same end; back to Product mid-term and a second switch stay closed.
     assert.equal((await f.service.createQuote('buyer', {plan: 'all', months: 1, idempotencyKey: 'renew'})).currentAccessEnd, end);
     await assert.rejects(() => f.service.createQuote('buyer', {plan: 'product', months: 1, idempotencyKey: 'down'}), isCode('PLAN_CHANGE_UNAVAILABLE'));

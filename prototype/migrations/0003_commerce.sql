@@ -30,7 +30,7 @@ CREATE TABLE commerce_quotes (
   expires_at INTEGER NOT NULL CHECK(expires_at>created_at),
   idempotency_key TEXT NOT NULL,
   input_digest TEXT NOT NULL,
-  CHECK((kind='term' AND months BETWEEN 1 AND 12 AND upgrade_snapshot_json IS NULL) OR (kind='upgrade' AND plan='all' AND months IS NULL AND current_access_end IS NOT NULL AND upgrade_snapshot_json IS NOT NULL)),
+  CHECK((kind='term' AND months IS NOT NULL AND months BETWEEN 1 AND 12 AND upgrade_snapshot_json IS NULL) OR (kind='upgrade' AND plan='all' AND months IS NULL AND current_access_end IS NOT NULL AND upgrade_snapshot_json IS NOT NULL AND json_array_length(upgrade_snapshot_json)>=1)),
   UNIQUE(user_id,idempotency_key)
 );
 CREATE TABLE commerce_orders (

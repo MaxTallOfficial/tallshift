@@ -25,7 +25,7 @@ CREATE TABLE commerce_receipts (
   paid_at INTEGER NOT NULL,
   created_at INTEGER NOT NULL,
   status TEXT NOT NULL DEFAULT 'paid' CHECK(status IN ('paid','refunded','disputed')),
-  CHECK((kind='term' AND months BETWEEN 1 AND 12) OR (kind='upgrade' AND plan='all' AND months IS NULL))
+  CHECK((kind='term' AND months IS NOT NULL AND months BETWEEN 1 AND 12) OR (kind='upgrade' AND plan='all' AND months IS NULL))
 );
 CREATE INDEX commerce_receipt_owner ON commerce_receipts(user_id,paid_at);
 
@@ -48,7 +48,7 @@ CREATE TABLE commerce_access_periods (
   revoke_reason TEXT,
   created_at INTEGER NOT NULL,
   CHECK((status='active' AND revoked_at IS NULL AND revoke_reason IS NULL) OR (status<>'active' AND revoked_at IS NOT NULL AND revoke_reason IS NOT NULL)),
-  CHECK((kind='term' AND months BETWEEN 1 AND 12) OR (kind='upgrade' AND plan='all' AND months IS NULL))
+  CHECK((kind='term' AND months IS NOT NULL AND months BETWEEN 1 AND 12) OR (kind='upgrade' AND plan='all' AND months IS NULL))
 );
 CREATE INDEX commerce_access_owner ON commerce_access_periods(user_id,status,ends_at);
 
@@ -65,6 +65,29 @@ CREATE TABLE commerce_fulfillments (
   fulfilled_at INTEGER,
   CHECK((state='fulfilled' AND fulfilled_at IS NOT NULL AND order_id IS NOT NULL) OR (state!='fulfilled' AND fulfilled_at IS NULL))
 );
+
+-- Operator closure of a paid invoice that cannot be fulfilled (fulfillment in review): the money
+-- was sent back from the wallet. Append-only; it releases the one-open-checkout lock for that
+-- invoice and keeps the fulfillment from ever running again.
+CREATE TABLE commerce_review_refunds (
+  invoice_id TEXT PRIMARY KEY REFERENCES ton_invoices(id),
+  amount_minor INTEGER NOT NULL CHECK(amount_minor>0),
+  reason TEXT NOT NULL CHECK(reason IN ('not_delivered','duplicate_payment','other')),
+  refund_reference TEXT NOT NULL CHECK(length(refund_reference) BETWEEN 1 AND 200),
+  created_at INTEGER NOT NULL
+);
+CREATE TRIGGER commerce_review_refund_requires_review BEFORE INSERT ON commerce_review_refunds
+WHEN NOT EXISTS (SELECT 1 FROM ton_invoices i JOIN commerce_fulfillments f ON f.invoice_id=i.id
+    WHERE i.id=NEW.invoice_id AND i.status='paid' AND f.state='review' AND NEW.amount_minor<=json_extract(i.fx_snapshot_json,'$.usdMinor'))
+  OR EXISTS (SELECT 1 FROM commerce_receipts r WHERE r.invoice_id=NEW.invoice_id)
+BEGIN SELECT RAISE(ABORT,'refund needs a paid invoice in review'); END;
+CREATE TRIGGER commerce_review_refund_final BEFORE UPDATE ON commerce_review_refunds
+BEGIN SELECT RAISE(ABORT,'refund record is final'); END;
+CREATE TRIGGER commerce_review_refund_ledger BEFORE DELETE ON commerce_review_refunds
+BEGIN SELECT RAISE(ABORT,'ledger row'); END;
+CREATE TRIGGER commerce_fulfillment_refunded_final BEFORE UPDATE OF state ON commerce_fulfillments
+WHEN OLD.state='review' AND NEW.state<>'review' AND EXISTS (SELECT 1 FROM commerce_review_refunds WHERE invoice_id=OLD.invoice_id)
+BEGIN SELECT RAISE(ABORT,'refunded fulfillment is final'); END;
 
 -- Append-only withdrawal journal: a revoked release is denied immediately without a deploy.
 CREATE TABLE commerce_release_revocations (
@@ -147,12 +170,31 @@ WHEN EXISTS (SELECT 1 FROM commerce_access_periods p WHERE p.user_id=NEW.user_id
   AND p.status='active' AND p.ends_at>NEW.starts_at)
 BEGIN SELECT RAISE(ABORT,'another level is active'); END;
 
+-- An upgrade period is backed, without gaps, by the Product periods this upgrade closed: one of
+-- them covers the payment, the last ends where «Всё» ends, and each of the others is directly
+-- followed by another. «Всё» never covers refunded or unpaid time.
+CREATE TRIGGER commerce_access_upgrade_backed BEFORE INSERT ON commerce_access_periods
+WHEN NEW.kind='upgrade' AND (
+  NOT EXISTS (SELECT 1 FROM commerce_access_periods p WHERE p.user_id=NEW.user_id AND p.status='upgraded'
+    AND p.revoke_reason='upgrade:'||NEW.order_id AND p.starts_at<=NEW.starts_at AND p.ends_at>NEW.starts_at)
+  OR (SELECT max(p.ends_at) FROM commerce_access_periods p WHERE p.user_id=NEW.user_id AND p.status='upgraded'
+    AND p.revoke_reason='upgrade:'||NEW.order_id) IS NOT NEW.ends_at
+  OR EXISTS (SELECT 1 FROM commerce_access_periods p WHERE p.user_id=NEW.user_id AND p.status='upgraded'
+    AND p.revoke_reason='upgrade:'||NEW.order_id AND p.ends_at<NEW.ends_at AND NOT EXISTS (
+      SELECT 1 FROM commerce_access_periods n WHERE n.user_id=NEW.user_id AND n.status='upgraded'
+        AND n.revoke_reason='upgrade:'||NEW.order_id AND n.starts_at<=p.ends_at AND n.ends_at>p.ends_at)))
+BEGIN SELECT RAISE(ABORT,'upgrade must be backed by uninterrupted Product access'); END;
+
 CREATE TRIGGER commerce_receipt_immutable BEFORE UPDATE OF id,order_id,user_id,quote_id,invoice_id,plan,kind,months,currency,subtotal_minor,tax_minor,total_minor,asset,amount_base_units,terms_revision,tax_revision,paid_at,created_at ON commerce_receipts
 BEGIN SELECT RAISE(ABORT,'immutable commerce receipt'); END;
 CREATE TRIGGER commerce_access_immutable BEFORE UPDATE OF id,user_id,order_id,plan,kind,months,paid_at,starts_at,ends_at,created_at ON commerce_access_periods
 BEGIN SELECT RAISE(ABORT,'immutable access period'); END;
+-- Closed periods stay closed. The one exception: a refund of a switch to «Всё» reopens the
+-- Product periods that switch closed (see commerce_refund_apply).
 CREATE TRIGGER commerce_access_closing_final BEFORE UPDATE OF status,revoked_at,revoke_reason ON commerce_access_periods
-WHEN OLD.status<>'active'
+WHEN OLD.status<>'active' AND NOT (OLD.status='upgraded' AND NEW.status='active' AND EXISTS (
+  SELECT 1 FROM commerce_access_periods u JOIN commerce_refunds f ON f.period_id=u.id
+  WHERE u.order_id=substr(OLD.revoke_reason,9) AND u.user_id=OLD.user_id AND u.kind='upgrade' AND u.status='revoked'))
 BEGIN SELECT RAISE(ABORT,'closed period is final'); END;
 -- A Product period becomes 'upgraded' only with the paid upgrade receipt named in revoke_reason, at its payment time.
 CREATE TRIGGER commerce_access_upgrade_requires_receipt BEFORE UPDATE OF status ON commerce_access_periods
@@ -198,7 +240,8 @@ BEGIN SELECT RAISE(ABORT,'ledger row'); END;
 -- covers any of the same items.
 CREATE TRIGGER ton_invoice_one_open_checkout BEFORE INSERT ON ton_invoices
 WHEN EXISTS (SELECT 1 FROM ton_invoices i WHERE i.user_id=NEW.user_id AND i.quote_id<>NEW.quote_id
-  AND ((i.status IN ('pending','expired') AND i.expires_at>NEW.created_at) OR (i.status='paid' AND i.delivery_state<>'delivered'))
+  AND ((i.status IN ('pending','expired') AND i.expires_at>NEW.created_at)
+    OR (i.status='paid' AND i.delivery_state<>'delivered' AND NOT EXISTS (SELECT 1 FROM commerce_review_refunds r WHERE r.invoice_id=i.id)))
   AND EXISTS (SELECT 1 FROM json_each(i.item_ids_json) a WHERE a.value IN (SELECT value FROM json_each(NEW.item_ids_json))))
 BEGIN SELECT RAISE(ABORT,'checkout in progress'); END;
 
@@ -247,6 +290,9 @@ BEGIN
     WHERE id=NEW.period_id AND status='active';
   UPDATE commerce_receipts SET refunded_subtotal_minor=NEW.amount_minor,status='refunded'
     WHERE order_id=(SELECT order_id FROM commerce_access_periods WHERE id=NEW.period_id);
+  -- Refunding a switch to «Всё» undoes it: the Product periods it closed are open again.
+  UPDATE commerce_access_periods SET status='active',revoked_at=NULL,revoke_reason=NULL
+    WHERE status='upgraded' AND revoke_reason='upgrade:'||(SELECT order_id FROM commerce_access_periods WHERE id=NEW.period_id AND kind='upgrade');
 END;
 CREATE TRIGGER commerce_refund_final BEFORE UPDATE ON commerce_refunds
 BEGIN SELECT RAISE(ABORT,'refund record is final'); END;

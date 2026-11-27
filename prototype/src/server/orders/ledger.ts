@@ -167,6 +167,24 @@ export function createCommerceLedger(db: D1DatabaseLike) {
       return {id, status: String(receipt.status), refundedSubtotalMinor: Number(receipt.refunded_subtotal_minor)};
     },
     /**
+     * Operator primitive: a paid invoice that cannot be fulfilled (fulfillment in review) and whose
+     * money was sent back from the wallet. The record is final and releases the one-open-checkout
+     * lock, so the customer can pay again.
+     */
+    async refundUnfulfilled(input: {invoiceId: string; amountMinor: number; reason: 'not_delivered' | 'duplicate_payment' | 'other'; reference: string; at: number}) {
+      const {invoiceId, amountMinor, reason, reference, at} = input;
+      if (!identifier(invoiceId) || !Number.isSafeInteger(amountMinor) || amountMinor <= 0 || !['not_delivered', 'duplicate_payment', 'other'].includes(reason) || typeof reference !== 'string' || !/^[A-Za-z0-9:_.\-]{1,200}$/.test(reference) || !time(at)) throw new LedgerError('INVALID_INPUT');
+      await batch([statement('INSERT INTO commerce_review_refunds(invoice_id,amount_minor,reason,refund_reference,created_at) VALUES(?,?,?,?,?)', invoiceId, amountMinor, reason, reference, at)]);
+    },
+    /** Operator primitive after an outage: puts a reviewed fulfillment back in the queue; the worker re-validates everything. */
+    async requeueFulfillment(invoiceId: string, now: number) {
+      if (!identifier(invoiceId) || !time(now)) throw new LedgerError('INVALID_INPUT');
+      await batch([statement(`UPDATE commerce_fulfillments SET state='retry',attempts=0,next_attempt_at=?,last_error=NULL,updated_at=?
+        WHERE invoice_id=? AND state='review' AND NOT EXISTS (SELECT 1 FROM commerce_review_refunds WHERE invoice_id=?)`, now, now, invoiceId, invoiceId)]);
+      const row = await statement('SELECT state FROM commerce_fulfillments WHERE invoice_id=?', invoiceId).first<Row>();
+      return row?.state === 'retry';
+    },
+    /**
      * Operator primitive for a reviewed withdrawal (security/integrity/legal). No route calls it;
      * it denies delivery of that exact release immediately and is final.
      */

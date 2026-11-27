@@ -65,18 +65,21 @@ const ceilDiv = (numerator: bigint, denominator: bigint) => numerator >= 0n ? (n
  * Product → «Всё» before the paid Product time ends (Max Tall, 27.11.2026: recalculation and a
  * top-up). For every remaining Product period the unused share of what was paid is credited and
  * the same share of the «Всё» price for the same term is charged; the sum is the top-up.
- * «Всё» then lasts until the Product access would have ended. Null: no Product access to switch.
+ * «Всё» then lasts until the Product access would have ended. Null: no Product access open now,
+ * or a gap in it (a refunded period), which «Всё» must never cover.
  */
 export function upgradeTopUp(periods: readonly AccessPeriod[], allPrice: (months: number) => number, at: number) {
   const product = live(periods).filter(period => period.plan === 'product' && period.endsAt > at).sort((a, b) => a.startsAt - b.startsAt || a.endsAt - b.endsAt);
   if (!product.length) return null;
+  const access = currentAccess(periods, at), endsAt = Math.max(...product.map(period => period.endsAt));
+  if (access?.plan !== 'product' || access.endsAt !== endsAt) return null;
   const lines: UpgradeLine[] = product.map(period => {
     if (period.kind !== 'term' || period.months === null) throw new RangeError('INVALID_PERIOD');
     const total = period.endsAt - period.startsAt, remainingSeconds = period.endsAt - Math.max(period.startsAt, at), allPriceMinor = allPrice(period.months);
     const topUpMinor = Number(ceilDiv(BigInt(allPriceMinor - period.paidMinor) * BigInt(remainingSeconds), BigInt(total)));
     return {orderId: period.orderId, startsAt: period.startsAt, endsAt: period.endsAt, remainingSeconds, paidMinor: period.paidMinor, allPriceMinor, topUpMinor};
   });
-  return {lines, topUpMinor: lines.reduce((sum, line) => sum + line.topUpMinor, 0), endsAt: Math.max(...product.map(period => period.endsAt))};
+  return {lines, topUpMinor: lines.reduce((sum, line) => sum + line.topUpMinor, 0), endsAt};
 }
 
 /** USDT on TON has 6 decimals and prices are kept in 2-decimal minor units: one minor unit is 10⁴ base units. */

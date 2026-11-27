@@ -20,6 +20,8 @@ export interface CommerceDependencies {
 }
 /** A paid term of a level ({plan, months}) or the switch from Product to «Всё» ({plan: 'all', upgrade: true}). */
 export interface QuoteInput {plan:SubscriptionPlan;months?:number;upgrade?:boolean;idempotencyKey:string}
+/** Lifetime of a quote; its invoice never outlives it. */
+const quoteSeconds=900;
 const identifier=(s:unknown):s is string=>typeof s==='string'&&/^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/.test(s);
 const digest=async(value:unknown)=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(value)))),b=>b.toString(16).padStart(2,'0')).join('');
 export function createCommerceService(deps:CommerceDependencies){
@@ -59,7 +61,8 @@ export function createCommerceService(deps:CommerceDependencies){
   // Already «Всё» (or a «Всё» term is queued): nothing to switch.
   if(otherLevelPaid(periods,'product',at))throw new CommerceError('PLAN_CHANGE_UNAVAILABLE');
   const upgrade=upgradeTopUp(periods,months=>{const price=deps.price('all',months);if(price===null)throw new CommerceError('TERM_UNAVAILABLE');return price;},at);
-  if(!upgrade||upgrade.topUpMinor<=0)throw new CommerceError('PLAN_CHANGE_UNAVAILABLE');
+  // The Product access must outlast the quote and its invoice, so an on-time payment always lands before it ends.
+  if(!upgrade||upgrade.topUpMinor<=0||upgrade.endsAt<=at+quoteSeconds)throw new CommerceError('PLAN_CHANGE_UNAVAILABLE');
   return {...base,kind:'upgrade' as const,months:null as number|null,priceMinor:upgrade.topUpMinor,currentAccessEnd:upgrade.endsAt as number|null,upgrade:upgrade.lines as UpgradeLine[]|null,tax:await taxed(userId,upgrade.topUpMinor)};
  }
  return {
@@ -73,7 +76,7 @@ export function createCommerceService(deps:CommerceDependencies){
    // The quote time is the moment of an upgrade recalculation, so it can be re-checked exactly later.
    const at=now();
    const offered=upgrade?await offerUpgrade(userId,at):await offerTerm(userId,input.plan,input.months as number);
-   const q=await deps.store.create({id:crypto.randomUUID(),userId,plan:input.plan,kind:offered.kind,months:offered.months,currency:'USDT',subtotalMinor:offered.priceMinor,taxMinor:offered.tax.amountMinor,totalMinor:offered.priceMinor+offered.tax.amountMinor,itemIds:offered.itemIds,releases:offered.releases,currentAccessEnd:offered.currentAccessEnd,upgrade:offered.upgrade,termsRevision:offered.termsRevision,taxRevision:offered.tax.revision,createdAt:at,expiresAt:at+900,idempotencyKey:input.idempotencyKey,inputDigest},crypto.randomUUID());
+   const q=await deps.store.create({id:crypto.randomUUID(),userId,plan:input.plan,kind:offered.kind,months:offered.months,currency:'USDT',subtotalMinor:offered.priceMinor,taxMinor:offered.tax.amountMinor,totalMinor:offered.priceMinor+offered.tax.amountMinor,itemIds:offered.itemIds,releases:offered.releases,currentAccessEnd:offered.currentAccessEnd,upgrade:offered.upgrade,termsRevision:offered.termsRevision,taxRevision:offered.tax.revision,createdAt:at,expiresAt:at+quoteSeconds,idempotencyKey:input.idempotencyKey,inputDigest},crypto.randomUUID());
    return publicQuote(q,await deps.store.orderForQuote(q.id,userId));
   },
   async resolveQuote(id:string,userId:string):Promise<PayableQuote|null>{

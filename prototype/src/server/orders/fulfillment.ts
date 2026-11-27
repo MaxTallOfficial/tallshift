@@ -1,6 +1,6 @@
 import {addUtcMonths} from '../delivery/releases.ts';
 import {LedgerError,type CommerceLedger,type Settlement} from './ledger.ts';
-import {isPaidMonths,isSubscriptionPlan,levelEnd,otherLevelPaid,renewalStart} from './subscription.ts';
+import {currentAccess,isPaidMonths,isSubscriptionPlan,levelEnd,otherLevelPaid,renewalStart,type AccessPeriod,type SubscriptionPlan} from './subscription.ts';
 
 /**
  * Idempotent fulfillment worker: turns a verified settlement intent (ton_payment_outbox) into a
@@ -15,6 +15,20 @@ export interface FulfillmentDependencies {
   now?: () => number;
 }
 export interface FulfillmentReport {fulfilled: number; retried: number; review: number; skipped: number}
+
+/**
+ * End of a paid term that starts at `startsAt`. A renewal keeps the day of month of the
+ * uninterrupted chain of terms it continues (31 Jan → 28 Feb → 31 Mar), so a subscription started
+ * on the 29th–31st does not drift to the 28th.
+ */
+export function termEnd(periods: readonly AccessPeriod[], plan: SubscriptionPlan, startsAt: number, months: number) {
+  const terms = periods.filter(period => period.status === 'active' && period.plan === plan && period.kind === 'term' && period.months !== null);
+  let anchor = startsAt, total = months;
+  for (let previous = terms.find(period => period.endsAt === anchor); previous && total + previous.months! <= 120; previous = terms.find(period => period.endsAt === anchor)) {
+    anchor = previous.startsAt; total += previous.months!;
+  }
+  return addUtcMonths(anchor, total);
+}
 
 class Permanent extends Error {
   readonly code: string;
@@ -49,17 +63,21 @@ export function createFulfillmentWorker(deps: FulfillmentDependencies) {
           const periods = (await deps.ledger.accessPeriods(next.userId)).filter(period => period.orderId !== next.orderId);
           let startsAt: number, endsAt: number;
           if (next.kind === 'upgrade') {
-            // The Product access recalculated in the quote must still be exactly the one being switched.
-            const product = periods.filter(period => period.status === 'active' && period.plan === 'product' && period.endsAt > next.paidAt);
-            if (levelEnd(periods, 'product') !== next.productEnd || product.some(period => !next.upgradeOrderIds.includes(period.orderId))) throw new Permanent('UPGRADE_CHANGED');
             if (next.productEnd! <= next.paidAt) throw new Permanent('UPGRADE_EXPIRED');
+            // The Product access recalculated in the quote must still be open at the payment, unrefunded,
+            // uninterrupted and exactly the one being switched.
+            const quoted = periods.filter(period => next.upgradeOrderIds.includes(period.orderId));
+            const remaining = periods.filter(period => period.status === 'active' && period.plan === 'product' && period.endsAt > next.paidAt);
+            const access = currentAccess(periods, next.paidAt);
+            if (quoted.length !== next.upgradeOrderIds.length || quoted.some(period => period.status !== 'active') || remaining.some(period => !next.upgradeOrderIds.includes(period.orderId))
+              || access?.plan !== 'product' || access.endsAt !== next.productEnd || levelEnd(periods, 'product') !== next.productEnd) throw new Permanent('UPGRADE_CHANGED');
             if (otherLevelPaid(periods, 'product', next.paidAt)) throw new Permanent('PLAN_CONFLICT');
             startsAt = next.paidAt; endsAt = next.productEnd!;
           } else {
             startsAt = renewalStart(periods, next.plan, next.paidAt);
             // A new term of another level while one is paid is not sold; such a payment waits for support.
             if (otherLevelPaid(periods, next.plan, startsAt)) throw new Permanent('PLAN_CONFLICT');
-            endsAt = addUtcMonths(startsAt, next.months!);
+            endsAt = termEnd(periods, next.plan, startsAt, next.months!);
           }
           const fulfilled = await deps.ledger.fulfill({invoiceId: candidate.invoiceId, orderId: next.orderId, userId: next.userId, kind: next.kind, paidAt: next.paidAt, startsAt, endsAt, now: now()});
           if (fulfilled) report.fulfilled++;

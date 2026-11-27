@@ -51,24 +51,26 @@ export function createCommerceStore(db:D1DatabaseLike){
   },
   /** Read-only: GET never changes state. Paid is derived from the single invoice of the quote matching it exactly. */
   async ownedOrder(id:string,userId:string){
-   const row=await statement(`SELECT o.id,o.quote_id,o.status,o.paid_at,o.created_at,q.plan,q.kind,q.months,q.total_minor,f.state AS fulfillment_state,i.status AS invoice_status,i.paid_at AS invoice_paid_at,
+   const row=await statement(`SELECT o.id,o.quote_id,o.status,o.paid_at,o.created_at,q.plan,q.kind,q.months,q.total_minor,f.state AS fulfillment_state,rr.invoice_id AS review_refund,i.status AS invoice_status,i.paid_at AS invoice_paid_at,
      (i.status='paid' AND i.item_ids_json=q.item_ids_json AND i.terms_revision=q.terms_revision AND json_extract(i.fx_snapshot_json,'$.usdMinor')=q.total_minor) AS settled
      FROM commerce_orders o JOIN commerce_quotes q ON q.id=o.quote_id AND q.user_id=o.user_id
      LEFT JOIN ton_invoices i ON i.quote_id=o.quote_id AND i.user_id=o.user_id
      LEFT JOIN commerce_fulfillments f ON f.invoice_id=i.id
+     LEFT JOIN commerce_review_refunds rr ON rr.invoice_id=i.id
      WHERE o.id=? AND o.user_id=?`,id,userId).first<Record<string,unknown>>();
    if(!row)return null;
    const settled=Number(row.settled)===1,paid=row.status==='paid'||settled;
    const status:'pending'|'paid'=paid?'paid':'pending';
    const paidAt=row.paid_at!==null?Number(row.paid_at):settled?Number(row.invoice_paid_at):null;
    // review: a settled or disputed payment that cannot be fulfilled automatically and needs support.
-   const deliveryStatus=row.fulfillment_state==='fulfilled'?'fulfilled' as const:row.fulfillment_state==='review'||row.invoice_status==='review'||(row.invoice_status==='paid'&&!paid)?'review' as const:paid?'pending' as const:'not_ready' as const;
+   // refunded: support sent back a payment that could not be fulfilled.
+   const deliveryStatus=row.review_refund!=null?'refunded' as const:row.fulfillment_state==='fulfilled'?'fulfilled' as const:row.fulfillment_state==='review'||row.invoice_status==='review'||(row.invoice_status==='paid'&&!paid)?'review' as const:paid?'pending' as const:'not_ready' as const;
    return {id:String(row.id),quoteId:String(row.quote_id),plan:row.plan as SubscriptionPlan,kind:row.kind as CommerceQuote['kind'],months:row.months==null?null:Number(row.months),status,paidAt,createdAt:Number(row.created_at),amountMinor:Number(row.total_minor),currency:'USDT' as const,deliveryStatus};
   },
   /** True while another unexpired invoice, or a paid but undelivered one, covers any of these items (Product and «Всё» overlap). */
   async openCheckout(userId:string,quoteId:string,itemIds:readonly string[],now:number){
    const row=await statement(`SELECT 1 AS open FROM ton_invoices i WHERE i.user_id=? AND i.quote_id<>?
-     AND ((i.status IN ('pending','expired') AND i.expires_at>?) OR (i.status='paid' AND i.delivery_state<>'delivered'))
+     AND ((i.status IN ('pending','expired') AND i.expires_at>?) OR (i.status='paid' AND i.delivery_state<>'delivered' AND NOT EXISTS (SELECT 1 FROM commerce_review_refunds r WHERE r.invoice_id=i.id)))
      AND EXISTS (SELECT 1 FROM json_each(i.item_ids_json) a WHERE a.value IN (SELECT value FROM json_each(?))) LIMIT 1`,userId,quoteId,now,JSON.stringify(itemIds)).first<Record<string,unknown>>();
    return Boolean(row);
   },

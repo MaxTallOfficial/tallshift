@@ -23,7 +23,7 @@ export function Demo({ locale = 'en', duration = 240, motion = 'subtle' }: DemoP
     <div className={styles.controls}>
       <button type="button" onClick={() => { capture(); const id = nextId.current++; setTasks(current => [{ id: String(id), index: id - 1, done: false }, ...current]); }}>{t.add}</button>
       <button type="button" onClick={() => { capture(); setTasks(current => [...current].reverse()); }}>{t.sort}</button>
-      <button type="button" aria-pressed={activeOnly} onClick={() => { capture(); setActiveOnly(value => !value); }}>{activeOnly ? t.all : t.filter}</button>
+      <button type="button" aria-pressed={activeOnly} onClick={() => { capture(); setActiveOnly(value => !value); }}>{t.filter}</button>
     </div>
     <p className={styles.count} role="status" aria-live="polite">{t.count} {shown.length}</p>
     <div className={styles.viewport}>

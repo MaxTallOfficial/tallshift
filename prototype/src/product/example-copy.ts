@@ -49,7 +49,7 @@ export const exampleCopy: Record<ProductLocale, Record<'C001' | 'C002' | 'E001' 
     },
     A003: {
       "lead": "Заголовок появляется строка за строкой — так, как текст переносится на экране. Повторите эффект, настройте анимацию и скачайте код.",
-      "demoHelp": "Заголовок уже на экране, поэтому при открытии страницы он не анимируется. Нажмите «Повторить появление», чтобы увидеть эффект; «Сменить заголовок» заменяет текст без повтора.",
+      "demoHelp": "Заголовок уже на экране, поэтому при открытии страницы он не анимируется. Эффект запускает кнопка внутри примера, а кнопка над примером перезагружает его целиком.",
       "accentLabel": "Цвет примера",
       "accentHelp": "У этого эффекта нет настройки цвета.",
       "useBody": "Для заголовка, который должен выделяться, например в начале раздела. Строки следуют реальным переносам текста, поэтому не нужно расставлять их вручную для каждого языка. Без анимации текст остаётся читаемым.",
@@ -63,7 +63,7 @@ export const exampleCopy: Record<ProductLocale, Record<'C001' | 'C002' | 'E001' 
     },
     A006: {
       "lead": "После изменения списка элементы плавно занимают новые места. Добавляйте, удаляйте и переставляйте задачи в примере, затем скачайте код.",
-      "demoHelp": "Добавьте или удалите задачу, включите обратный порядок или оставьте только активные — остальные задачи плавно займут новые места. Изменения остаются в примере и не сохраняются на сервере.",
+      "demoHelp": "Добавьте или удалите задачу, включите обратный порядок или оставьте только активные — остальные задачи плавно займут новые места.",
       "accentLabel": "Цвет примера",
       "accentHelp": "У этого эффекта нет настройки цвета.",
       "useBody": "Для списков, в которых меняются состав и порядок. Данными управляет ваш проект; эффект помогает следить за оставшимися элементами, не задерживая обновление.",
@@ -158,7 +158,7 @@ export const exampleCopy: Record<ProductLocale, Record<'C001' | 'C002' | 'E001' 
     },
     A003: {
       "lead": "The heading appears one line at a time, following how the text wraps on screen. Replay the effect, adjust the animation and download the source.",
-      "demoHelp": "The heading is already visible, so it does not animate when the page opens. Press “Replay animation” to see the effect; “Change heading” swaps the text without replaying it.",
+      "demoHelp": "The heading is already visible, so it does not animate when the page opens. The button inside the example plays the effect; the button above the example reloads it completely.",
       "accentLabel": "Example color",
       "accentHelp": "This effect has no color setting.",
       "useBody": "For a heading that should stand out, such as the first heading of a section. Lines follow the real text wrapping, so you don’t set line breaks by hand for each language. Without animation, the text stays readable.",
@@ -172,7 +172,7 @@ export const exampleCopy: Record<ProductLocale, Record<'C001' | 'C002' | 'E001' 
     },
     A006: {
       "lead": "List items move to their new positions after you change the list. Try adding, removing and reordering tasks, then download the source.",
-      "demoHelp": "Add or remove a task, reverse the order or show active tasks only, and watch the other tasks move into place. Changes stay in this example; nothing is saved to a server.",
+      "demoHelp": "Add or remove a task, reverse the order or show active tasks only, and watch the other tasks move into place.",
       "accentLabel": "Example color",
       "accentHelp": "This effect has no color setting.",
       "useBody": "For lists whose content or order changes. Your project owns the data; the effect helps people follow the remaining items without delaying updates.",
@@ -267,7 +267,7 @@ export const exampleCopy: Record<ProductLocale, Record<'C001' | 'C002' | 'E001' 
     },
     A003: {
       "lead": "Tiêu đề hiện ra từng dòng, theo cách văn bản xuống dòng trên màn hình. Phát lại hiệu ứng, chỉnh hoạt ảnh rồi tải mã nguồn.",
-      "demoHelp": "Tiêu đề đã hiển thị nên không chạy hiệu ứng khi mở trang. Nhấn “Phát lại hiệu ứng” để xem; “Đổi tiêu đề” thay văn bản mà không phát lại.",
+      "demoHelp": "Tiêu đề đã hiển thị nên không chạy hiệu ứng khi mở trang. Nút bên trong ví dụ phát hiệu ứng; nút phía trên ví dụ tải lại toàn bộ ví dụ.",
       "accentLabel": "Màu ví dụ",
       "accentHelp": "Hiệu ứng này không có thiết lập màu.",
       "useBody": "Dùng cho tiêu đề cần nổi bật, chẳng hạn tiêu đề đầu một phần. Các dòng theo cách văn bản thực sự xuống dòng, nên không cần tự ngắt dòng cho từng ngôn ngữ. Khi không có hoạt ảnh, văn bản vẫn dễ đọc.",
@@ -281,7 +281,7 @@ export const exampleCopy: Record<ProductLocale, Record<'C001' | 'C002' | 'E001' 
     },
     A006: {
       "lead": "Sau khi danh sách thay đổi, các mục di chuyển tới vị trí mới. Thử thêm, xóa và đảo thứ tự công việc rồi tải mã nguồn.",
-      "demoHelp": "Thêm hoặc xóa việc, đảo thứ tự hoặc chỉ hiện việc đang làm, rồi xem các việc khác di chuyển vào chỗ mới. Thay đổi chỉ nằm trong ví dụ, không lưu lên máy chủ.",
+      "demoHelp": "Thêm hoặc xóa việc, đảo thứ tự hoặc chỉ hiện việc đang làm, rồi xem các việc khác di chuyển vào chỗ mới.",
       "accentLabel": "Màu ví dụ",
       "accentHelp": "Hiệu ứng này không có thiết lập màu.",
       "useBody": "Dùng cho danh sách thay đổi nội dung hoặc thứ tự. Dự án quản lý dữ liệu; hiệu ứng giúp theo dõi các mục còn lại mà không trì hoãn cập nhật.",

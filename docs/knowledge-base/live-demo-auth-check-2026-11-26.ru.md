@@ -42,9 +42,9 @@ node scripts/verify-live-demos.mjs --env production,staging --widths 375 --items
 
 | Прогон | Когда (UTC) | Итог | Протокол |
 | --- | --- | --- | --- |
-| 1 — функции | 26.11, закончен в 11:54 | 120 из 120, без повторов | [run1-functional.json](evidence/live-demo-auth-check-2026-11-26/run1-functional.json) |
-| 2 — те же функции и разрывы слов | 12:19–14:12 | 85 прошли, 35 упали. Причины: 20 — разрывы слов A001; 13 — staging отвечал 503 на HTML-страницы подряд около 14:10–14:12; 2 — проверка на production (375 px, RU, главная и A001) дважды не уложилась в 120 с | [run2-with-word-check.json](evidence/live-demo-auth-check-2026-11-26/run2-with-word-check.json) |
-| Перепроверка 15 упавших не из-за A001 | ~14:19 | 22 страницы (staging 375 px RU/VI и production 375 px RU A001): 503 и таймаутов нет; упали только 6 страниц A001 — снова разрывы слов | [run2-recheck.json](evidence/live-demo-auth-check-2026-11-26/run2-recheck.json) |
+| 1 — функции | 26.11, закончен в 11:54 | 120 из 120, без повторов | run1-functional.json (вне Git: `prototype/.qa/evidence/live-demo-auth-check-2026-11-26/run1-functional.json`) |
+| 2 — те же функции и разрывы слов | 12:19–14:12 | 85 прошли, 35 упали. Причины: 20 — разрывы слов A001; 13 — staging отвечал 503 на HTML-страницы подряд около 14:10–14:12; 2 — проверка на production (375 px, RU, главная и A001) дважды не уложилась в 120 с | run2-with-word-check.json (вне Git: `prototype/.qa/evidence/live-demo-auth-check-2026-11-26/run2-with-word-check.json`) |
+| Перепроверка 15 упавших не из-за A001 | ~14:19 | 22 страницы (staging 375 px RU/VI и production 375 px RU A001): 503 и таймаутов нет; упали только 6 страниц A001 — снова разрывы слов | run2-recheck.json (вне Git: `prototype/.qa/evidence/live-demo-auth-check-2026-11-26/run2-recheck.json`) |
 
 Прогон 2 шёл почти 2 часа вместо обычных 10–20 минут: параллельно на машине работали другие сессии. Поэтому таймауты на production скорее всего вызваны нагрузкой на машину, но доказать это нельзя.
 
@@ -89,14 +89,14 @@ node scripts/verify-live-demos.mjs --env production,staging --widths 375 --items
 | Условия | Результат на главной |
 | --- | --- |
 | Обычная сеть, 12 замеров | 54–323 мс |
-| Медленная сеть (1,6 Мбит/с, 150 мс, CPU ×4, 375 px), 6 замеров | 78–1730 мс; первый заход без кэша — 1434 мс на production и 1730 мс на staging ([протокол](evidence/live-demo-auth-check-2026-11-26/live-demos-slow-network.json)) |
+| Медленная сеть (1,6 Мбит/с, 150 мс, CPU ×4, 375 px), 6 замеров | 78–1730 мс; первый заход без кэша — 1434 мс на production и 1730 мс на staging (протокол (вне Git: `prototype/.qa/evidence/live-demo-auth-check-2026-11-26/live-demos-slow-network.json`)) |
 | JavaScript выключен | Заглушка не исчезает |
 
 Покадрово на медленной сети (production, `/ru`, 375 px):
 
 1. Ложное сообщение на первом экране: [снимок](evidence/live-demo-auth-check-2026-11-26/prod-ru-375-slow-1-false-notice.png).
-2. После гидрации главная на ~0,5 с заменяется экраном «Загружаем страницу…»: [снимок](evidence/live-demo-auth-check-2026-11-26/prod-ru-375-slow-2-page-loading.png). Это отдельная проблема, замечание 3.
-3. Работающее демо: [снимок](evidence/live-demo-auth-check-2026-11-26/prod-ru-375-slow-3-demo.png).
+2. После гидрации главная на ~0,5 с заменяется экраном «Загружаем страницу…»: снимок (вне Git: `prototype/.qa/evidence/live-demo-auth-check-2026-11-26/prod-ru-375-slow-2-page-loading.png`). Это отдельная проблема, замечание 3.
+3. Работающее демо: снимок (вне Git: `prototype/.qa/evidence/live-demo-auth-check-2026-11-26/prod-ru-375-slow-3-demo.png`).
 
 Вывод: демо-серверы исправны. Ложный текст — дефект выбора заглушки, и посетитель его реально видит.
 
@@ -152,7 +152,7 @@ node scripts/verify-live-demos.mjs --env production,staging --widths 375 --items
 **A001 — подпись главной кнопки рвётся по слогам.** Дефект нашёл `user-critic` (отчёт `docs/reviews/user-critic-2026-11-26.ru.md` в ветке `claude/user-critic-066247`). Здесь он подтверждён замером на живых сайтах:
 
 - на всех 24 страницах с A001 (главная и страница примера, оба сайта, RU/EN/VI, 1440/375) слова подписей занимают по 2–6 строк. Примеры: «Скопировать» — 6 строк, «Copying…» — 4–5, «Sao chép» — по 2;
-- снимок: [a001-label-split-prod-en-1440.png](evidence/live-demo-auth-check-2026-11-26/a001-label-split-prod-en-1440.png).
+- снимок: a001-label-split-prod-en-1440.png (вне Git: `prototype/.qa/evidence/live-demo-auth-check-2026-11-26/a001-label-split-prod-en-1440.png`).
 
 Причина в CSS примера: `.buttonContent` в `prototype/src/study/AfterlightExample.module.css` всегда резервирует первую колонку 37 px (30 px на узких экранах) под иконку. Демо-сервер не передаёт `renderStateIcon`, поэтому подпись попадает в эту колонку. В выдаваемом коде иконки тоже необязательны: инструкция A001 (`src/study/recipe.ts`) обещает, что «текстовые состояния и действия работают без иконок». Значит, пользователь по умолчанию получит ту же сломанную раскладку.
 
@@ -176,7 +176,7 @@ node scripts/verify-live-demos.mjs --env production,staging --widths 375 --items
 Решения Max Tall от 26.11, переданные основной сессией:
 
 - проверка на production, staging не трогаем;
-- постоянные тестовые аккаунты: тестовый алиас Gmail Max Tall, тестовый алиас Gmail Max Tall, тестовый алиас Gmail Max Tall, по одному на язык. После проверки не удалять — «оставим для дальнейших тестов»;
+- постоянные тестовые аккаунты: `mtalldesign+ts-ru@gmail.com`, `mtalldesign+ts-en@gmail.com`, `mtalldesign+ts-vi@gmail.com`, по одному на язык. После проверки не удалять — «оставим для дальнейших тестов»;
 - пересылку support@, tallback@ и mt@tallshift.com не проверять: **не проверялось по решению Max Tall**.
 
 Перед первым шагом Max Tall спросил, не рано ли проверять вход, пока кабинет не готов, и предложил сверить порядок с roadmap.

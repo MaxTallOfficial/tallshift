@@ -16,6 +16,7 @@ const consumerBuilds = [];
 try {
   const { materialRecipe } = await server.ssrLoadModule('/src/product/material-recipes.tsx');
   const { materials } = await server.ssrLoadModule('/src/product/catalog-data.ts');
+  const { distributedSource } = await server.ssrLoadModule('/src/recipes/shared/example-recipe.ts');
   for (const material of materials) assert.equal(Boolean(materialRecipe(material.id)), material.available, `${material.id}: catalog readiness matches the connected demo and exporter`);
   for (const [id, slug] of [['C001', 'press-button'], ['C002', 'content-tabs'], ['E001', 'content-reveal'], ['S003', 'starter-action-band'], ['S001', 'starter-split-hero'], ['S002', 'starter-feature-grid'], ['A003', 'line-assemble'], ['A006', 'ledger-reflow']]) {
     const { recipe } = await server.ssrLoadModule(`/src/recipes/${slug}/index.ts`);
@@ -39,11 +40,12 @@ try {
           const sourcePath = vendor
             ? resolve(root, 'src/recipes', vendor[1], vendor[2])
             : resolve(root, 'src/recipes', slug, file.path);
-          let expected = await readFile(sourcePath, 'utf8');
+          let expected = distributedSource(file.path, await readFile(sourcePath, 'utf8'));
           if (file.path === 'press-button.ts') expected = expected.replaceAll('../press-button/', './vendor/press-button/');
           if (file.path === 'reveal.ts') expected = expected.replaceAll('../content-reveal/', './vendor/content-reveal/');
           assert.equal(file.content, expected, `${id}: exact mounted source, with only the declared dependency facade relocation`);
         }
+        if (file.path.endsWith('.css')) assert.doesNotMatch(file.content, /\/\*\s*(?:Hallmark|Critique)\b/, `${id}: internal design-check comments are not shipped`);
         if (file.path.endsWith('.module.css')) assert.doesNotMatch(file.content, /:root\s*\{/, `${id}: CSS Modules tokens use pure scoped selectors compatible with real Next builds`);
         assert.doesNotMatch(file.content, /@hugeicons-pro|<svg\b|<path\b|https?:\/\//i, 'no private icon paths or remote runtime assets');
         for (const match of file.content.matchAll(/from\s+['"](\.[^'"]+)['"]/g)) {

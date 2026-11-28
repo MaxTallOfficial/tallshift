@@ -172,7 +172,13 @@ async function checkPage(browser, env, locale, width, item, kind) {
         if (inside.lang !== locale) result.failures.push(`demo language ${inside.lang} instead of ${locale}`);
         if (inside.failed) result.failures.push('demo error boundary shown');
         if (inside.overflow) result.failures.push('demo horizontal overflow inside iframe');
-        if (shell.iframe && Math.abs(shell.iframe.height - Math.max(120, inside.height)) > 4) result.notes.push(`before scrolling: iframe height ${shell.iframe.height} vs content ${inside.height}`);
+        // Before any scrolling: on phones the demo starts below the fold, where Chrome pauses rendering of
+        // cross-origin iframes. A height that only arrives once the demo is on screen moves the page under the visitor.
+        await delay(300);
+        const atLoad = await page.evaluate(`(f => { const r = f.getBoundingClientRect(); return { iframe: Math.round(r.height), onScreen: r.top < innerHeight && r.bottom > 0 }; })(document.querySelector('.rp-preview iframe'))`);
+        const content = await page.evaluate(`Math.ceil(document.getElementById('root').getBoundingClientRect().height)`, frame);
+        result.heightBeforeScroll = { ...atLoad, content };
+        if (Math.abs(atLoad.iframe - Math.max(120, content)) > 4) result.failures.push(`demo height not applied before scrolling: iframe ${atLoad.iframe} px, content ${content} px${atLoad.onScreen ? '' : ' (demo off screen; the page jumps when the visitor reaches it)'}`);
       }
       const splits = inside ? await page.evaluate(wordSplits, frame) : [];
       result.splitWords = splits;
@@ -240,7 +246,7 @@ async function checkPage(browser, env, locale, width, item, kind) {
       if (kind === 'home' || item === 'C001') {
         await clickMain(page, `document.querySelectorAll('.rp-toolbar label.system-segmented-option')[2]`, mobile);
         await delay(400);
-        const max = await page.evaluate(`document.querySelector('.rp-preview iframe')?.style.maxWidth ?? null`);
+        const max = await page.evaluate(`(document.querySelector('.rp-stage') ?? document.querySelector('.rp-preview iframe'))?.style.maxWidth ?? null`);
         await page.evaluate(`(window.__qaOldFrame = document.querySelector('.rp-preview iframe'), true)`);
         await clickMain(page, `document.querySelector('.rp-toolbar button')`, mobile);
         await delay(300);

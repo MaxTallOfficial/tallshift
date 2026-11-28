@@ -101,7 +101,10 @@ export function classifyTokenFinding(finding, css, theme) {
   const literal = LITERAL_48.exec(finding.evidence);
   if (!literal) return reject('not a colour literal finding');
   const [, value, property] = literal;
-  if (!/^prototype\/src\/recipes\/[\w-]+\/[\w-]+\.module\.css$/.test(finding.file)) return reject('not a recipe CSS Module');
+  // Paid examples are reviewed in place in the private clone (TALLSHIFT_PAID_ROOT, decision of Max Tall 29.11.2026).
+  const paidRoot = process.env.TALLSHIFT_PAID_ROOT ? process.env.TALLSHIFT_PAID_ROOT.replace(/\/+$/, '') : '';
+  const paidModule = paidRoot && finding.file.startsWith(`${paidRoot}/examples/`) && /\/examples\/[A-Z]\d{3}\/src\/[\w-]+\.module\.css$/.test(finding.file);
+  if (!paidModule && !/^prototype\/src\/recipes\/[\w-]+\/[\w-]+\.module\.css$/.test(finding.file)) return reject('not a recipe CSS Module');
   let parsed;
   try { parsed = topLevelRules(css); } catch (error) { return reject(error.message); }
   const block = parsed.rules.find(rule => rule.close !== undefined && finding.line >= rule.startLine && finding.line <= rule.endLine);

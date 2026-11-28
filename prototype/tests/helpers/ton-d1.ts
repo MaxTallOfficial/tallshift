@@ -12,11 +12,14 @@ class Statement implements D1StatementLike {
   bind(...values: unknown[]) {return new Statement(this.db,this.sql,values);}
   async first<T>() {return this.db.prepare(this.sql).get(...this.values as never[]) as T | null ?? null;}
   async all<T>() {return {results: this.db.prepare(this.sql).all(...this.values as never[]) as T[]};}
+  async run() {const result=this.db.prepare(this.sql).run(...this.values as never[]);return {success:true,meta:{changes:Number(result.changes)}};}
 }
 export function createD1Fixture() {
   const sqlite = new DatabaseSync(':memory:');
   sqlite.exec(readFileSync(new URL('../../migrations/0001_ton_payments.sql',import.meta.url),'utf8'));
-  const db: D1DatabaseLike = {
+  // withSession mirrors D1's primary session API so host code can run against the fixture.
+  const db: D1DatabaseLike & {withSession(mode?: string): D1DatabaseLike} = {
+    withSession: () => db,
     prepare: sql=>new Statement(sqlite,sql),
     async batch(statements) {
       sqlite.exec('BEGIN IMMEDIATE');
@@ -38,7 +41,7 @@ export function createPaymentFixture() {
   const f=createD1Fixture();
   const config:TonPaymentConfig={network:'ton-testnet',recipient:testRecipient,usdtMaster:testMaster,enabled:true};
   const state:{now:number;quote:PayableQuote|null;rates:Record<'TON'|'USDT',UsdExchangeRate>;failRate:boolean;recipientActive:boolean;chainProof:TonChainProof|null}={
-    now:1000,quote:{id:'quote-1',userId:'buyer-1',currency:'USD',amountMinor:1600,itemIds:['S004','C003'],termsRevision:'terms-1',expiresAt:1700,payable:true},
+    now:1000,quote:{id:'quote-1',userId:'buyer-1',currency:'USDT',amountMinor:1600,itemIds:['S004','C003'],termsRevision:'terms-1',expiresAt:1700,payable:true},
     rates:{TON:{id:'rate-ton',asset:'TON',usdPerUnit:'3',source:'fixture',quotedAt:1000,expiresAt:1800},USDT:{id:'rate-usdt',asset:'USDT',usdPerUnit:'0.999',source:'fixture',quotedAt:1000,expiresAt:1800}},
     failRate:false,recipientActive:true,chainProof:null,
   };

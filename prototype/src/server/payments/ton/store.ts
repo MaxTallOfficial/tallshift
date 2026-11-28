@@ -176,6 +176,15 @@ export function createTonPaymentStore(db: D1DatabaseLike) {
       const changed=await batch([statement("UPDATE ton_webhook_inbox SET state=?,next_attempt_at=?,lease_until=NULL,lease_token=NULL,last_error=? WHERE event_key=? AND body_digest=? AND state='processing' AND attempts=? AND lease_token=?",state,next,reason,receipt.eventKey,receipt.bodyDigest,receipt.attempt,receipt.leaseToken)]);
       return changed[0].meta?.changes===1;
     },
+    /**
+     * Operator recovery after an indexer outage or rate limiting: hints that exhausted their
+     * retries get a fresh budget. Never touches matched, unmatched or permanently invalid hints.
+     */
+    async requeueExhaustedWebhooks(limit = 100): Promise<number> {
+      if (!Number.isSafeInteger(limit) || limit < 1 || limit > 1000) throw new PaymentStoreError('INVALID_INPUT');
+      const result = await batch([statement("UPDATE ton_webhook_inbox SET state='received',attempts=0,next_attempt_at=0,last_error=NULL WHERE event_key IN (SELECT event_key FROM ton_webhook_inbox WHERE state='review' AND last_error='RETRY_EXHAUSTED' ORDER BY received_at,event_key LIMIT ?)",limit)]);
+      return result[0].meta?.changes ?? 0;
+    },
     async markWebhookProcessed(eventKey: string,bodyDigest: string): Promise<void> {
       if (!id(eventKey) || !digest(bodyDigest)) throw new PaymentStoreError('INVALID_INPUT');
       const result = await batch([statement("UPDATE ton_webhook_inbox SET state = 'processed',lease_until=NULL,lease_token=NULL WHERE event_key = ? AND body_digest = ?",eventKey,bodyDigest)]);

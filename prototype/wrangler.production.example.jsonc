@@ -28,8 +28,19 @@
     "APP_URL": "https://tallshift.com",
     "AUTH_ENABLED": "false",
     "COMMERCE_ENABLED": "false",
-    "TON_PAYMENTS_ENABLED": "false"
+    "TON_PAYMENTS_ENABLED": "false",
+    "COMMERCE_DELIVERY_ENABLED": "false"
   },
+  // Commerce (disabled). Each step below is a separate cloud change that needs Max Tall's explicit "yes", staging first:
+  //  1. Apply migrations 0003_commerce.sql and 0004_commerce_fulfillment.sql to this environment's D1.
+  //  2. Private paid files: create a private R2 bucket (no public access, no r2.dev URL, no custom domain) and add
+  //     "r2_buckets": [{"binding": "PAID_ARTIFACTS", "bucket_name": "<PRIVATE_PAID_BUCKET>"}]
+  //  3. Reconciliation/fulfilment cron: set "main": "src/server/cloudflare/worker-entry.ts" (wraps .open-next/worker.js
+  //     and adds scheduled()) and "triggers": {"crons": ["*/5 * * * *"]}. Default cron work per run is "small"
+  //     (Workers Free limits); on Workers Paid set "COMMERCE_SCHEDULE_BUDGET": "large".
+  //  4. Secrets (never in Git): TONAPI_WEBHOOK_SECRET (webhook hint bearer), optional TONCENTER_API_KEY.
+  //  5. Flags last: COMMERCE_DELIVERY_ENABLED, then COMMERCE_ENABLED + TON_PAYMENTS_ENABLED. Sales also stay closed
+  //     until src/server/orders/launch.ts has approved terms, tax and FX and the paid release registry is non-empty.
   "d1_databases": [
     {
       "binding": "DB",

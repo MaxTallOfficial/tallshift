@@ -52,11 +52,20 @@ an API management key. Configure short `account_tx` payloads without extra info:
 `event_type/account_id/lt/tx_hash`. HTTP202 means durable receipt, not payment.
 
 Host cron/queue invokes `worker.process(25)`: lease60s with random token/CAS,
-8 attempts maximum, backoff60s→1h, quarantine. For missed webhooks use
-`reader.scan(cursor,100)`: persist inbox hints before a durable per-network/account
-cursor, advance only over a contiguous finalized prefix, paginate until caught up.
-Cursor persistence/cron installation belong to the host. Status polling reads D1
-only. Disabling new sales must leave existing invoices reconcilable.
+8 attempts maximum, backoff60s→1h, quarantine. Missed webhooks are covered by
+`scanner.ts` (2026-11-26): it stores each finalized transaction as an inbox hint
+and advances the durable `ton_scan_cursors` row (migration 0004) **in the same D1
+batch**, only over the contiguous finalized prefix, with a lease against concurrent
+scanners. An absent cursor starts at the account head only when no transaction after
+an existing invoice can be skipped; otherwise `initialize(lt)` is an explicit operator
+step. `backfill(from,to)` re-reads a closed range without moving the cursor.
+`hints.ts` gives webhook and scanner the same hint key, so they deduplicate each other.
+Cron readers space Toncenter requests (1.1 s without an API key, 0.12 s with one), and
+`store.requeueExhaustedWebhooks()` gives exhausted hints a fresh retry budget after an outage.
+`orders/schedule.ts` runs scan → inbox → fulfilment; `cloudflare/worker-entry.ts`
+exposes it as `scheduled()` but is not used by the real wrangler configs yet.
+Status polling reads D1 only. Disabling new sales must leave existing invoices
+reconcilable.
 
 The recipient must be active before invoice creation. Native TON9/USDT6 amounts
 are integers. USDT requires allowlisted master, independently derived receiving
@@ -71,8 +80,11 @@ An exchange’s hot-wallet address is not user identity. If comments are unsuppo
 use another agreed payment path before sending; per-invoice addresses are not
 implemented. Host must supply authenticated operator handling and refunds policy.
 
-Fulfillment outbox is only an intent: host must implement idempotent grants,
-release/access checks and delivery updates before showing downloadable paid files.
+Fulfillment outbox is only an intent. `orders/fulfillment.ts` (2026-11-26) turns a
+settled intent into a receipt and grants for exactly the paid quote items in one
+idempotent D1 batch; SQL triggers refuse grants without that receipt. Downloads are
+served only by `delivery/downloads.ts` after per-request session, grant and
+withdrawal checks. Paid files are still absent: the release registry is empty.
 
 ## Checks
 

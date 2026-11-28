@@ -14,7 +14,8 @@
     "APP_URL": "http://127.0.0.1:8787",
     "AUTH_ENABLED": "false",
     "COMMERCE_ENABLED": "false",
-    "TON_PAYMENTS_ENABLED": "false"
+    "TON_PAYMENTS_ENABLED": "false",
+    "COMMERCE_DELIVERY_ENABLED": "false"
   },
   "d1_databases": [{
     "binding": "DB",

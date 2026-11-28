@@ -42,10 +42,20 @@ function checkFinalized(tx:ObjectValue) {
   if(d.aborted!==false||d.destroyed===true||compute.success!==true||(d.action!==undefined&&d.action!==null&&object(d.action).success!==true))throw new TonChainError('INVALID_TRANSFER');
 }
 /** Fixed provider origins. Neither invoice JSON nor webhook can change the fetch destination. */
-export function createToncenterReader(config:TonPaymentConfig,options:{apiKey?:string;fetcher?:typeof fetch}={}) {
+export function createToncenterReader(config:TonPaymentConfig,options:{apiKey?:string;fetcher?:typeof fetch;minIntervalMs?:number}={}) {
   const origin=config.network==='ton-mainnet'?'https://toncenter.com':'https://testnet.toncenter.com';
   const fetcher=options.fetcher??fetch;
+  // Optional spacing between requests of one reader (cron runs) so the provider's rate limit is not hit.
+  const interval=Math.max(0,Math.min(5000,Math.floor(options.minIntervalMs??0)));
+  let lastRequest=0,queue:Promise<void>=Promise.resolve();
+  const pace=()=>{
+    if(!interval)return Promise.resolve();
+    const turn=queue.then(async()=>{const wait=lastRequest+interval-Date.now();if(wait>0)await new Promise(resolve=>setTimeout(resolve,wait));lastRequest=Date.now();});
+    queue=turn.catch(()=>undefined);
+    return turn;
+  };
   const json=async(path:string,query?:Record<string,string>,post?:ObjectValue)=>{
+    await pace();
     const url=new URL(path,origin);
     for(const [key,value] of Object.entries(query??{}))url.searchParams.set(key,value);
     const headers:Record<string,string>={Accept:'application/json'};
@@ -107,6 +117,16 @@ export function createToncenterReader(config:TonPaymentConfig,options:{apiKey?:s
         base.jetton={master:config.usdtMaster,owner:config.recipient,wallet,derivedWallet:wallet,notificationSender:base.incoming.source,notificationOpcode:'0x7362d09c',credited:true,creditTransactionHash:creditHash};
         return base;
       }catch(error){if(error instanceof TonChainError)throw error;throw new TonChainError('INVALID_CHAIN_RESPONSE');}
+    },
+    /** Newest account transaction; used only to initialize an absent scan cursor safely. */
+    async head() {
+      const data=await json('/api/v3/transactions',{account:config.recipient,limit:'1',sort:'desc'});
+      const entries=array(data.transactions);
+      if(entries.length>1)throw new TonChainError('INVALID_CHAIN_RESPONSE');
+      if(!entries.length)return null;
+      const tx=object(entries[0]),lt=string(tx.lt);
+      if(!/^[1-9]\d{0,19}$/.test(lt)||BigInt(lt)>=(1n<<64n)||canonicalAddress(string(tx.account),config.network)!==config.recipient||!Number.isSafeInteger(tx.now)||Number(tx.now)<=0)throw new TonChainError('INVALID_CHAIN_RESPONSE');
+      return {lt,utime:Number(tx.now),finalized:tx.finality===2};
     },
     /** Host persists last processed lt only after all earlier records are durably handled. */
     async scan(afterLt:string,limit=100) {

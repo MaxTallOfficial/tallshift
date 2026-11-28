@@ -6,6 +6,7 @@
  * (SHA-256 manifest, no network, no inherited secrets). Its raw report is printed first and
  * its own counts are kept in the result. This script never edits sources, the manifest or the skill.
  * TALLSHIFT_QA_OUT=<repo-relative dir> stores the JSON evidence.
+ * `node scripts/hallmark-recipes.mjs <TALLSHIFT_PAID_ROOT>/examples/<ID>/src` reviews one paid example in place.
  */
 import { spawnSync } from 'node:child_process';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -16,7 +17,8 @@ import { classifyTokenFinding, parseSloplintReport } from './hallmark-token-bloc
 
 const prototype = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const repository = resolve(prototype, '..');
-const target = 'prototype/src/recipes';
+// Optional argument: a paid example's src in the private clone (see hallmark-offline.mjs, TALLSHIFT_PAID_ROOT).
+const target = process.argv[2] ?? 'prototype/src/recipes';
 const run = spawnSync(process.execPath, [resolve(prototype, 'scripts/hallmark-offline.mjs'), target], { cwd: prototype, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], timeout: 60000 });
 if (run.error) throw run.error;
 process.stdout.write(run.stdout);

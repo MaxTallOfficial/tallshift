@@ -52,6 +52,30 @@ CREATE TABLE commerce_access_periods (
 );
 CREATE INDEX commerce_access_owner ON commerce_access_periods(user_id,status,ends_at);
 
+-- Append-only history of every status change of a period (closed by a refund, an operator or an
+-- upgrade; reopened after an upgrade refund), so reopening never erases what happened.
+CREATE TABLE commerce_access_period_events (
+  id TEXT PRIMARY KEY,
+  period_id TEXT NOT NULL REFERENCES commerce_access_periods(id),
+  from_status TEXT NOT NULL,
+  to_status TEXT NOT NULL,
+  reason TEXT NOT NULL,
+  at INTEGER NOT NULL
+);
+CREATE INDEX commerce_access_event_period ON commerce_access_period_events(period_id,at);
+CREATE TRIGGER commerce_access_status_history AFTER UPDATE OF status ON commerce_access_periods
+WHEN OLD.status IS NOT NEW.status
+BEGIN
+  INSERT INTO commerce_access_period_events(id,period_id,from_status,to_status,reason,at)
+  VALUES(lower(hex(randomblob(16))),NEW.id,OLD.status,NEW.status,coalesce(NEW.revoke_reason,OLD.revoke_reason),
+    coalesce(NEW.revoked_at,(SELECT max(f.created_at) FROM commerce_refunds f JOIN commerce_access_periods u ON u.id=f.period_id
+      WHERE u.order_id=substr(OLD.revoke_reason,9) AND u.user_id=OLD.user_id AND u.kind='upgrade')));
+END;
+CREATE TRIGGER commerce_access_event_final BEFORE UPDATE ON commerce_access_period_events
+BEGIN SELECT RAISE(ABORT,'audit row'); END;
+CREATE TRIGGER commerce_access_event_ledger BEFORE DELETE ON commerce_access_period_events
+BEGIN SELECT RAISE(ABORT,'audit row'); END;
+
 -- Worker state per settled invoice. 'fulfilled' is written in the same batch as receipt+period.
 CREATE TABLE commerce_fulfillments (
   invoice_id TEXT PRIMARY KEY REFERENCES ton_invoices(id),
@@ -88,6 +112,14 @@ BEGIN SELECT RAISE(ABORT,'ledger row'); END;
 CREATE TRIGGER commerce_fulfillment_refunded_final BEFORE UPDATE OF state ON commerce_fulfillments
 WHEN OLD.state='review' AND NEW.state<>'review' AND EXISTS (SELECT 1 FROM commerce_review_refunds WHERE invoice_id=OLD.invoice_id)
 BEGIN SELECT RAISE(ABORT,'refunded fulfillment is final'); END;
+-- Money sent back for a payment means it is never fulfilled afterwards, not even by hand.
+CREATE TRIGGER commerce_order_paid_not_refunded BEFORE UPDATE OF status,paid_at ON commerce_orders
+WHEN NEW.status='paid' AND EXISTS (SELECT 1 FROM ton_invoices i JOIN commerce_review_refunds rr ON rr.invoice_id=i.id
+  WHERE i.quote_id=NEW.quote_id AND i.user_id=NEW.user_id)
+BEGIN SELECT RAISE(ABORT,'payment was refunded'); END;
+CREATE TRIGGER commerce_receipt_not_refunded BEFORE INSERT ON commerce_receipts
+WHEN EXISTS (SELECT 1 FROM commerce_review_refunds WHERE invoice_id=NEW.invoice_id)
+BEGIN SELECT RAISE(ABORT,'payment was refunded'); END;
 
 -- Append-only withdrawal journal: a revoked release is denied immediately without a deploy.
 CREATE TABLE commerce_release_revocations (

@@ -19,10 +19,11 @@ export interface FulfillmentReport {fulfilled: number; retried: number; review: 
 /**
  * End of a paid term that starts at `startsAt`. A renewal keeps the day of month of the
  * uninterrupted chain of terms it continues (31 Jan → 28 Feb → 31 Mar), so a subscription started
- * on the 29th–31st does not drift to the 28th.
+ * on the 29th–31st does not drift to the 28th. Closed (refunded or upgraded) terms still fix the
+ * day of month; only the start of the new term comes from paid, open access.
  */
 export function termEnd(periods: readonly AccessPeriod[], plan: SubscriptionPlan, startsAt: number, months: number) {
-  const terms = periods.filter(period => period.status === 'active' && period.plan === plan && period.kind === 'term' && period.months !== null);
+  const terms = periods.filter(period => period.plan === plan && period.kind === 'term' && period.months !== null);
   let anchor = startsAt, total = months;
   for (let previous = terms.find(period => period.endsAt === anchor); previous && total + previous.months! <= 120; previous = terms.find(period => period.endsAt === anchor)) {
     anchor = previous.startsAt; total += previous.months!;

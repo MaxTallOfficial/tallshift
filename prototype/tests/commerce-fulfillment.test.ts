@@ -301,7 +301,7 @@ test('a changed Product access voids the switch: the quote is refused, a paid sw
     f.state.now = 2100;
     const issued = await f.invoice('other', 'all', {upgrade: true});
     await f.ledger.recordRefund({orderId: other.quote.orderId, amountMinor: 1600, reason: 'before_download', reference: 'tx-other', at: 2101});
-    await f.pay(issued);
+    const issuedPaidAt = await f.pay(issued);
     assert.deepEqual(await f.fulfil(), {fulfilled: 0, retried: 0, review: 1, skipped: 0});
     assert.equal(one(f, 'SELECT last_error FROM commerce_fulfillments WHERE invoice_id=?', issued.invoiceId).last_error, 'UPGRADE_CHANGED');
     assert.equal((await f.service.orderStatus('other', issued.quote.orderId)).deliveryStatus, 'review');
@@ -316,6 +316,8 @@ test('a changed Product access voids the switch: the quote is refused, a paid sw
     assert.equal(await f.ledger.requeueFulfillment(issued.invoiceId, 2300), false);
     assert.throws(() => f.sqlite.prepare("UPDATE commerce_fulfillments SET state='retry' WHERE invoice_id=?").run(issued.invoiceId), /refunded fulfillment is final/);
     assert.throws(() => f.sqlite.prepare('DELETE FROM commerce_review_refunds').run(), /ledger row/);
+    // Not even by hand: a refunded payment never becomes a paid order or a receipt.
+    assert.throws(() => f.sqlite.prepare("UPDATE commerce_orders SET status='paid',paid_at=? WHERE id=?").run(issuedPaidAt, issued.quote.orderId), /payment was refunded/);
   } finally {f.sqlite.close();}
 });
 
@@ -355,6 +357,10 @@ test('refunding a switch to «Всё» returns the customer to Product until its
     await f.ledger.recordRefund({orderId: upgrade.quote.orderId, amountMinor: upgrade.quote.subtotalMinor, reason: 'duplicate_payment', reference: 'tx-upgrade', at: f.state.now + 100});
     assert.deepEqual(one(f, 'SELECT status,revoked_at,revoke_reason FROM commerce_access_periods WHERE order_id=?', product.quote.orderId), {status: 'active', revoked_at: null, revoke_reason: null});
     assert.deepEqual(currentAccess(await f.ledger.accessPeriods('buyer'), f.state.now + 200), {plan: 'product', startsAt: product.paidAt, endsAt: end});
+    // The reopen is itself history: both status changes stay in the append-only journal.
+    assert.deepEqual(f.sqlite.prepare('SELECT e.from_status,e.to_status,e.reason,e.at FROM commerce_access_period_events e JOIN commerce_access_periods p ON p.id=e.period_id WHERE p.order_id=? ORDER BY e.at').all(product.quote.orderId).map(row => ({...row})),
+      [{from_status: 'active', to_status: 'upgraded', reason: `upgrade:${upgrade.quote.orderId}`, at: upgrade.paidAt}, {from_status: 'upgraded', to_status: 'active', reason: `upgrade:${upgrade.quote.orderId}`, at: f.state.now + 100}]);
+    assert.throws(() => f.sqlite.prepare('DELETE FROM commerce_access_period_events').run(), /audit row/);
     assert.equal((await f.ledger.recordRefund({orderId: product.quote.orderId, amountMinor: 1000, reason: 'defect', reference: 'tx-product', at: f.state.now + 300})).status, 'refunded');
   } finally {f.sqlite.close();}
 });
@@ -380,6 +386,11 @@ test('renewals keep the day of month of the subscription: 31 Jan → 28 Feb → 
     await f.fulfil();
     for (let i = 0; i < 2; i++) {f.state.now += day; await f.settle('buyer', 'product'); await f.fulfil();}
     assert.deepEqual(f.sqlite.prepare('SELECT ends_at FROM commerce_access_periods ORDER BY starts_at').all().map(row => new Date(Number(row.ends_at) * 1000).toISOString().slice(0, 10)), ['2027-02-28', '2027-03-31', '2027-04-30']);
+    // A refunded first month still fixes the day of month for the next renewal.
+    const firstOrder = String(one(f, 'SELECT order_id FROM commerce_access_periods ORDER BY starts_at LIMIT 1').order_id);
+    await f.ledger.recordRefund({orderId: firstOrder, amountMinor: 1600, reason: 'duplicate_payment', reference: 'tx-first', at: f.state.now + 1});
+    f.state.now += day; await f.settle('buyer', 'product'); await f.fulfil();
+    assert.equal(new Date(Number(one(f, 'SELECT max(ends_at) AS e FROM commerce_access_periods').e) * 1000).toISOString().slice(0, 10), '2027-05-31');
   } finally {f.sqlite.close();}
 });
 

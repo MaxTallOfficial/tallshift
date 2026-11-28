@@ -2,7 +2,7 @@ export const productCopy = {
   "en": {
     "materials": "Catalog",
     "preview": "Product preview",
-    "try": "Open example",
+    "try": "Free example",
     "nav": "Main navigation",
     "menu": "Menu",
     "close": "Close",
@@ -105,7 +105,7 @@ export const productCopy = {
   "ru": {
     "materials": "Каталог",
     "preview": "Превью продукта",
-    "try": "Открыть пример",
+    "try": "Бесплатный пример",
     "nav": "Основная навигация",
     "menu": "Меню",
     "close": "Закрыть",
@@ -208,7 +208,7 @@ export const productCopy = {
   "vi": {
     "materials": "Thư viện",
     "preview": "Bản xem trước sản phẩm",
-    "try": "Mở ví dụ",
+    "try": "Ví dụ miễn phí",
     "nav": "Điều hướng chính",
     "menu": "Menu",
     "close": "Đóng",

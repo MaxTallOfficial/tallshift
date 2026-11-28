@@ -1,4 +1,4 @@
-import {Component,useEffect,useLayoutEffect,useRef,useState,type ReactNode} from 'react';
+import {Component,useEffect,useLayoutEffect,useMemo,useRef,useState,type ReactNode} from 'react';
 import {createRoot} from 'react-dom/client';
 import {SystemTheme} from '../src/foundations/SystemTheme';
 import {AfterlightExample} from '../src/study/AfterlightExample';
@@ -11,6 +11,7 @@ import {Demo as FeatureGrid} from '../src/recipes/starter-feature-grid/Demo';
 import {Demo as Line} from '../src/recipes/line-assemble/Demo';
 import {Demo as Ledger} from '../src/recipes/ledger-reflow/Demo';
 import {messageBudget,parsePreviewMessage,previewMessage,type PreviewConfig} from '../src/platform/preview-protocol';
+import {heightReporter} from './preview-height';
 import '../src/product/tokens.css';
 import './preview.css';
 
@@ -30,6 +31,7 @@ class Boundary extends Component<{children:ReactNode},{error:boolean}> {
 function Preview() {
   const [config,setConfig]=useState<PreviewConfig|null>(null),[paused,setPaused]=useState(false),[replay,setReplay]=useState(0);
   const root=useRef<HTMLDivElement>(null),ack=useRef('');
+  const reportHeight=useMemo(()=>heightReporter(()=>root.current?.getBoundingClientRect().height,height=>emit('RESIZE',{height})),[]);
   useEffect(()=>{
     const allowed=messageBudget();
     const receive=(event:MessageEvent)=>{
@@ -43,14 +45,19 @@ function Preview() {
     addEventListener('message',receive);emit('READY');
     return ()=>removeEventListener('message',receive);
   },[]);
-  useLayoutEffect(()=>{if(config&&ack.current){emit('APPLIED',{},ack.current);ack.current='';document.documentElement.lang=config.locale;}},[config]);
+  // Height first, then APPLIED: the parent already has the real height when it marks the preview ready,
+  // even while this iframe is off screen and its animation frames are paused.
+  useLayoutEffect(()=>{if(config&&ack.current){document.documentElement.lang=config.locale;reportHeight();emit('APPLIED',{},ack.current);ack.current='';}},[config,reportHeight]);
   useEffect(()=>{
     if(!root.current)return;
-    let previous=0,frame=0;
-    const report=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{const height=Math.max(120,Math.min(2400,Math.ceil(root.current?.getBoundingClientRect().height??440)));if(height!==previous){previous=height;emit('RESIZE',{height});}});};
+    let frame=0;
+    const report=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(reportHeight);};
     const observer=new ResizeObserver(report);observer.observe(root.current);report();
-    return ()=>{cancelAnimationFrame(frame);observer.disconnect();};
-  },[]);
+    // DOM changes and font loading are not tied to rendering, so they keep the height current off screen.
+    const mutations=new MutationObserver(reportHeight);mutations.observe(root.current,{subtree:true,childList:true,characterData:true,attributes:true});
+    document.fonts?.addEventListener('loadingdone',reportHeight);
+    return ()=>{cancelAnimationFrame(frame);observer.disconnect();mutations.disconnect();document.fonts?.removeEventListener('loadingdone',reportHeight);};
+  },[reportHeight]);
   const c=config?{...config,motion:paused?'off' as const:config.motion,duration:paused?0:config.duration}:null;
   const Demo=({A001:AfterlightExample,A003:Line,A006:Ledger,C001:PressButton,C002:Tabs,E001:Reveal,S003:ActionBand,S001:SplitHero,S002:FeatureGrid} as const)[itemId as 'A001'];
   return <div ref={root}><SystemTheme locale={c?.locale??'en'} className="preview-theme"><Boundary key={replay}>{c&&Demo?<Demo {...c}/>:<p>Loading preview…</p>}</Boundary></SystemTheme></div>;

@@ -7,7 +7,7 @@ import {usePlatform} from './platform-context';
 import {colorless,messageBudget,parsePreviewMessage,previewMessage} from './preview-protocol';
 import './remote-preview.css';
 
-const copy={en:{off:'The interactive example is unavailable because the preview server is not configured yet. You can still read and download the files.',failed:'The preview did not respond. Try loading it again.',retry:'Reload preview',width:'Preview width',full:'Fit',tablet:'640 px',mobile:'320 px',loading:'Loading preview…'},ru:{off:'Интерактивный пример пока недоступен: сервер превью не настроен. Файлы можно просмотреть и скачать.',failed:'Превью не ответило. Попробуйте загрузить его ещё раз.',retry:'Загрузить снова',width:'Ширина превью',full:'Авто',tablet:'640 px',mobile:'320 px',loading:'Загружаем превью…'},vi:{off:'Chưa mở được ví dụ tương tác vì máy chủ xem trước chưa được thiết lập. Bạn vẫn có thể đọc và tải các tệp.',failed:'Bản xem trước không phản hồi. Hãy thử tải lại.',retry:'Tải lại',width:'Chiều rộng bản xem trước',full:'Tự động',tablet:'640 px',mobile:'320 px',loading:'Đang tải bản xem trước…'}};
+const copy={en:{off:'The interactive example is unavailable because the preview server is not configured yet. You can still read and download the files.',failed:'The preview did not respond. Try loading it again.',retry:'Reload preview',width:'Preview width',full:'Fit',tablet:'640 px',mobile:'320 px',loading:'Loading preview…',stage:'Loading the example. It will appear here in a few seconds.'},ru:{off:'Интерактивный пример пока недоступен: сервер превью не настроен. Файлы можно просмотреть и скачать.',failed:'Превью не ответило. Попробуйте загрузить его ещё раз.',retry:'Загрузить снова',width:'Ширина превью',full:'Авто',tablet:'640 px',mobile:'320 px',loading:'Загружаем превью…',stage:'Загружаем пример. Он появится здесь через несколько секунд.'},vi:{off:'Chưa mở được ví dụ tương tác vì máy chủ xem trước chưa được thiết lập. Bạn vẫn có thể đọc và tải các tệp.',failed:'Bản xem trước không phản hồi. Hãy thử tải lại.',retry:'Tải lại',width:'Chiều rộng bản xem trước',full:'Tự động',tablet:'640 px',mobile:'320 px',loading:'Đang tải bản xem trước…',stage:'Đang tải ví dụ. Ví dụ sẽ hiện ở đây sau vài giây.'}};
 /** Exact http(s) origin of the isolated preview server; empty when it is missing, malformed or equals the current origin. */
 export function previewFrameOrigin(value:string,current='') {
   try {const url=new URL(value);return url.origin===value&&['https:','http:'].includes(url.protocol)&&url.origin!==current?url.origin:'';}catch{return '';}
@@ -20,9 +20,9 @@ export function RemotePreview({itemId,config,label}: {itemId:string;config:Examp
   const frame=useRef<HTMLIFrameElement>(null),latest=useRef(config);latest.current=config;
   const [generation,setGeneration]=useState(0),[channel,setChannel]=useState(''),[status,setStatus]=useState<'loading'|'ready'|'error'>('loading'),[height,setHeight]=useState(440),[width,setWidth]=useState<'full'|'tablet'|'mobile'>('full');
   const sendApply=useRef<(()=>void)|null>(null);
-  const [origin,setOrigin]=useState<string|null>(null);
+  const [origin,setOrigin]=useState<string|null>(null),[painted,setPainted]=useState(false);
   useEffect(()=>{setOrigin(previewFrameOrigin(previewOrigin,location.origin));},[previewOrigin]);
-  useEffect(()=>{setChannel(crypto.randomUUID());setStatus('loading');},[generation,itemId]);
+  useEffect(()=>{setChannel(crypto.randomUUID());setStatus('loading');setPainted(false);},[generation,itemId]);
   useEffect(()=>{
     if(!channel||!origin)return;
     let active=true,ready=false,sequence=0,pending='',timer:ReturnType<typeof setTimeout>;
@@ -45,7 +45,7 @@ export function RemotePreview({itemId,config,label}: {itemId:string;config:Examp
       const message=parsePreviewMessage(event.data);
       if(!message||message.channelId!==channel||message.itemId!==itemId)return;
       if(message.type==='READY'&&!ready){ready=true;apply();}
-      else if(message.type==='APPLIED'&&message.requestId===pending){clearTimeout(timer);setStatus('ready');}
+      else if(message.type==='APPLIED'&&message.requestId===pending){clearTimeout(timer);setStatus('ready');setPainted(true);}
       else if(message.type==='RESIZE')setHeight(Number(message.payload.height));
       else if(message.type==='ERROR'){clearTimeout(timer);fail();}
     };
@@ -60,5 +60,5 @@ export function RemotePreview({itemId,config,label}: {itemId:string;config:Examp
   },[origin,channel,itemId]);
   useEffect(()=>{sendApply.current?.();},[config]);
   if(!configured||origin==='')return <p className="rp-unavailable">{t.off}</p>;
-  return <div className="rp-preview"><div className="rp-toolbar"><SystemSegmentedControl label={t.width} value={width} onChange={setWidth} options={[{value:'full',label:t.full},{value:'tablet',label:t.tablet},{value:'mobile',label:t.mobile}]}/><SystemButton leadingIcon={<SystemIcon name="replay"/>} onClick={()=>setGeneration(n=>n+1)}>{t.retry}</SystemButton></div><p role="status">{status==='error'?t.failed:status==='loading'?t.loading:''}</p>{channel&&origin&&<iframe key={channel} ref={frame} title={label} src={`${origin}/?item=${encodeURIComponent(itemId)}#channel=${channel}`} sandbox="allow-scripts allow-same-origin" allow={itemId==='A001'?`clipboard-write ${origin}`:undefined} referrerPolicy="no-referrer" style={{height,maxWidth:width==='mobile'?320:width==='tablet'?640:'100%'}}/>}</div>;
+  return <div className="rp-preview"><div className="rp-toolbar"><SystemSegmentedControl label={t.width} value={width} onChange={setWidth} options={[{value:'full',label:t.full},{value:'tablet',label:t.tablet},{value:'mobile',label:t.mobile}]}/><SystemButton leadingIcon={<SystemIcon name="replay"/>} onClick={()=>setGeneration(n=>n+1)}>{t.retry}</SystemButton></div><p role="status">{status==='error'?t.failed:status==='loading'?t.loading:''}</p><div className="rp-stage" data-status={painted?'ready':status} style={{height,maxWidth:width==='mobile'?320:width==='tablet'?640:'100%'}}>{!painted&&<div className="rp-stage-state" aria-hidden="true"><span className="rp-stage-bar"/><span className="rp-stage-bar"/><span className="rp-stage-text">{status==='error'?t.failed:t.stage}</span></div>}{channel&&origin&&<iframe key={channel} ref={frame} title={label} src={`${origin}/?item=${encodeURIComponent(itemId)}#channel=${channel}`} sandbox="allow-scripts allow-same-origin" allow={itemId==='A001'?`clipboard-write ${origin}`:undefined} referrerPolicy="no-referrer" style={{height}}/>}</div></div>;
 }

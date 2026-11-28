@@ -63,6 +63,15 @@ test('the label row reserves no fixed icon column and never splits words', () =>
   assert.doesNotMatch(stylesheet, /overflow-wrap:\s*anywhere|word-break:\s*break-(?:all|word)/, 'no rule may split words into syllables');
 });
 
+test('at 288 px the hint line plus the label fit two lines (script measures the whole button)', () => {
+  // verify-example-labels.mjs counts every text row of the button: the hint line above the label counts too.
+  // The label alone wrapping to two lines (BETA-19 check) still made RU 3 lines in total at 288 px.
+  for (const body of [...declarations('.labelStack')].slice(1)) assert.match(body, /font-size: (?:2[01]|1\d)px;|font-size: 24px;/);
+  const narrow = stylesheet.match(/@media \(max-width: 340px\) \{([^}]*\{[^}]*\}[^}]*)\}/)?.[1] ?? '';
+  const container = stylesheet.match(/@container state-relay \(max-width: 300px\) \{([^}]*\{[^}]*\}[^}]*)\}/)?.[1] ?? '';
+  for (const rule of [narrow, container]) assert.match(rule, /\.labelStack \{ font-size: 21px;/, 'label drops to 21px on the narrowest widths');
+});
+
 test('the downloaded example renders the checked no-icon case with the checked stylesheet', () => {
   for (const locale of locales) {
     const files: { path: string; content: string }[] = studyFiles({ locale });

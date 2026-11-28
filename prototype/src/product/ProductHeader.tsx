@@ -22,7 +22,8 @@ export function ProductHeader({route,catalogSearch,savedCount,onLocaleChange,ses
   items={[{id:'library',href:`/${locale}/library${catalogSearch}`,label:t.navCatalog},{id:'pricing',href:`/${locale}/pricing`,label:pageCopy[locale].pricing},{id:'docs',href:`/${locale}/docs`,label:docsUiCopy[locale].navLabel},{id:'auth',href:accountHref,label:accountLabel,visibility:'mobile'},{id:'saved',href:savedHref,label:`${t.navSaved}${savedCount?` (${savedCount})`:''}`,visibility:'mobile'}]}
   localeControl={<SystemLocaleControl locale={locale} onChange={onLocaleChange} variant="compact" label={t.languageLabel} className="tp-language-trigger"/>}
   utilityAction={<div className="tp-account-tools"><a className="tp-auth-link" href={accountHref}>{accountLabel}</a><a className="tp-saved-link" href={savedHref} aria-label={`${t.navSaved}${savedCount>0?`: ${savedCount}`:''}`} aria-current={saved?'location':undefined}><SystemIcon name="bookmark" size={20}/><span>{t.navSaved}{savedCount>0&&<span className="tp-saved-count">{savedCount}</span>}</span></a></div>}
-  primaryAction={<a className="system-button tp-demo-link" data-variant="primary" href={`/${locale}/library/state-relay`}><span className="system-button-label">{t.try}</span><span className="tp-demo-icon"><SystemIcon name="play" size={20}/></span></a>}
+  // On an example page the visitor is already in an example; the shortcut would lead to a different one.
+  primaryAction={route.slug&&!route.notFound?undefined:<a className="system-button tp-demo-link" data-variant="primary" href={`/${locale}/library/state-relay`}><span className="system-button-label">{t.try}</span><span className="tp-demo-icon"><SystemIcon name="play" size={20}/></span></a>}
   menuLabels={{label:t.menuLabel,open:t.menuLabel,close:t.closeMenuLabel}} skipLink={{href:'#product-main',label:t.skip}}
  /></div></div>;
 }
